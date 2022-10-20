@@ -15,8 +15,14 @@ import defaultTheme from "Theme/defaultTheme";
 // Import theme provider from styled components
 import { ThemeProvider } from "styled-components";
 
+// Import pages
+import { CreatePost } from "Features/Post";
+
 // Import bootstrap
 import { Button } from "react-bootstrap";
+
+// Import react router dom components
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 /**
  * The main app of our application it handles routing
@@ -40,25 +46,13 @@ function App() {
   };
   return (
     <ThemeProvider theme={theme}>
-      <styles.AppContainer>
-        <styles.AppHeader>
-          <styles.AppLogo src={logo} alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
+      <Button onClick={handleToggleTheme}>Toggle Theme</Button>
 
-          <styles.AppLink
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </styles.AppLink>
-          <Button onClick={handleToggleTheme}>
-            Toggle theme
-          </Button>
-        </styles.AppHeader>
-      </styles.AppContainer>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<CreatePost />} />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
