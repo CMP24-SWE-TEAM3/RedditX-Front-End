@@ -1,6 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+// Import react (for jsdoc)
+import React from "react";
 
+// Import Images
+import logo from "./logo.svg";
+
+// Import css
+import "App.css";
+
+// Import bootstrap
+import { Button } from "react-bootstrap";
+
+/**
+ * The main app of our application it handles routing
+ *
+ * @returns {React.Component} The app component
+ */
 function App() {
   return (
     <div className="App">
@@ -17,6 +31,7 @@ function App() {
         >
           Learn React
         </a>
+        <Button className="btn">hello</Button>
       </header>
     </div>
   );
