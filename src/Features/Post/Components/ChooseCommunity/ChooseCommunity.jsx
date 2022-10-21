@@ -15,6 +15,8 @@ import {
   ArrowIcon,
   DropdownItem,
   ItemsGroup,
+  CreateButton,
+  CreateCommunity,
 } from "./ChooseCommunity.styled";
 
 // Import icons
@@ -58,7 +60,11 @@ const ChooseCommunity = () => {
               </DropdownItem>
             </ItemsGroup>
 
-            <GroupTitle>Your communities</GroupTitle>
+            <CreateCommunity>
+              <GroupTitle>Your communities</GroupTitle>
+              {/* TODO: Add handler for create community button */}
+              <CreateButton variant="light">Create New</CreateButton>
+            </CreateCommunity>
             <ItemsGroup>
               <DropdownItem>
                 <UserImage src={Image} alt="post guidelines" />

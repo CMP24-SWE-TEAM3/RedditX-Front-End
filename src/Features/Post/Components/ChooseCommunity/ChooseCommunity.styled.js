@@ -1,6 +1,32 @@
 // Import styled
 import styled from "styled-components";
 
+// Import bootstrap components
+import { Button } from "react-bootstrap";
+
+export const CreateButton = styled(Button)`
+  background-color: ${({ theme }) => theme.background.primary};
+  color: ${({ theme }) => theme.color.secondary};
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 20px;
+  border: none;
+  margin-top: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  &:hover {
+    color: ${({ theme }) => theme.color.secondary};
+    background-color: ${({ theme }) => theme.background.muted};
+  }
+`;
+
+// Main container for the main section
+export const CreateCommunity = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 // Main container for the main section
 export const Container = styled.div`
   width: 350px;
@@ -30,7 +56,7 @@ export const Input = styled.input`
   border: 0;
   font-weight: 500;
   background-color: ${({ theme }) => theme.background.primary};
-
+  width: 100%;
   &:focus {
     outline: none;
   }

@@ -12,6 +12,8 @@ const lightTheme = {
   color: {
     // The color of the text on the website
     primary: "#1c1c1c",
+    // The blue color of the website
+    secondary: "#0079d3",
     // The color of the muted text on the website
     muted: "#7c7c7c",
     // The color of the links on the website
@@ -19,7 +21,10 @@ const lightTheme = {
   },
   // The colors of the backgrounds in the website
   background: {
+    // The primary color of the background on the website
     primary: "#fff",
+    // The color of the muted background on the website
+    muted: "#D3D3D3",
   },
   // The colors of the lines in the website
   lineColor: {
