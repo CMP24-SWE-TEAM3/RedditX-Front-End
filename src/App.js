@@ -10,6 +10,12 @@ import "App.css";
 // Import bootstrap
 import { Button } from "react-bootstrap";
 
+import SignUp from './Features/Authentication/Layouts/SignUp/SignUp';
+
+import VerticalModal from "Features/Authentication/Components/Modal/VerticalModal";
+
+import TestHome from "Features/Authentication/Pages/TestHome";
+
 /**
  * The main app of our application it handles routing
  *
@@ -17,23 +23,7 @@ import { Button } from "react-bootstrap";
  */
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Button className="btn">hello</Button>
-      </header>
-    </div>
+    <TestHome/>
   );
 }
 
