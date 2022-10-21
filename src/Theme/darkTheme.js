@@ -21,6 +21,10 @@ const darkTheme = {
   background: {
     primary: "#1a1a1b",
   },
+  // The colors of the lines in the website
+  lineColor: {
+    primary: "#343536",
+  },
 };
 
 export default darkTheme;

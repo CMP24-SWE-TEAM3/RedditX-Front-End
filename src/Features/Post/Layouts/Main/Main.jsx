@@ -1,8 +1,17 @@
+// Import styled components
+import { Title, Container } from "./Main.styled";
+
+// Import components
+import ChooseCommunity from "Features/Post/Components/ChooseCommunity/ChooseCommunity";
+
 const Main = () => {
   return (
-    <div>
-      <h1>Main</h1>
-    </div>
+    <Container>
+      <Title>
+        <h4>Create a Post</h4>
+      </Title>
+      <ChooseCommunity />
+    </Container>
   );
 };
 

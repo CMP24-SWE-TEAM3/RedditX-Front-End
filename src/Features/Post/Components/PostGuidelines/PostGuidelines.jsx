@@ -1,3 +1,6 @@
+// Import react bootstrap components
+import Table from "react-bootstrap/Table";
+
 // Import styled components
 import {
   Container,
@@ -5,9 +8,6 @@ import {
   TableData,
   TableHeader,
 } from "./PostGuidelines.styled";
-
-// Import react bootstrap components
-import Table from "react-bootstrap/Table";
 
 // Import images
 import Guideline from "Features/Post/Assets/Images/Post-guidelines.png";
@@ -18,10 +18,10 @@ const PostGuidelines = () => {
       <Table>
         <thead>
           <tr>
-            <div>
+            <TableHeader>
               <PostLogo src={Guideline} alt="post guidelines" />
-              <TableHeader>Posting to Reddit</TableHeader>
-            </div>
+              Posting to Reddit
+            </TableHeader>
           </tr>
         </thead>
         <tbody>

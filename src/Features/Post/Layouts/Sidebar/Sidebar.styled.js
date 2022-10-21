@@ -6,6 +6,7 @@ export const Container = styled.div`
   margin-left: 24px;
   margin-top: 25px;
   display: block;
+  width: 360px;
 
   /* Disappear when width is less than 960px */
   @media (max-width: 960px) {
@@ -23,5 +24,6 @@ export const Footer = styled.div`
   max-width: 250px;
   a {
     color: ${({ theme }) => theme.color.link};
+    text-decoration: none;
   }
 `;

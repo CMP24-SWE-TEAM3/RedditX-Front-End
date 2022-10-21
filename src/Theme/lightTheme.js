@@ -21,6 +21,10 @@ const lightTheme = {
   background: {
     primary: "#fff",
   },
+  // The colors of the lines in the website
+  lineColor: {
+    primary: "#edeff1",
+  },
 };
 
 export default lightTheme;

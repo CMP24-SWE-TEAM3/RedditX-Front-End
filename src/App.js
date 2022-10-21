@@ -1,12 +1,6 @@
 // Import react and hooks
 import React, { useState } from "react";
 
-// Import Images
-import logo from "./logo.svg";
-
-// Import styled components
-import * as styles from "App.styled";
-
 // Import themes
 import darkTheme from "Theme/darkTheme";
 import lightTheme from "Theme/lightTheme";

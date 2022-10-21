@@ -4,9 +4,13 @@ import styled from "styled-components";
 // Main container for the post guidelines component
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.background.primary};
-  color: ${({ theme }) => theme.color.primary};
   padding: 12px;
   border-radius: 4px;
+  width: 360px;
+
+  tr {
+    color: ${({ theme }) => theme.color.primary};
+  }
 `;
 
 // Data item for the post guidelines table
@@ -20,6 +24,7 @@ export const TableHeader = styled.th`
   font-size: 18px;
   font-weight: 500;
   display: inline-block;
+  width: 100%;
 `;
 
 // Image (logo) for the post guidelines component
