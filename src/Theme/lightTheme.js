@@ -18,6 +18,8 @@ const lightTheme = {
     muted: "#7c7c7c",
     // The color of the links on the website
     link: "#0079d3",
+    // The orange color of the website
+    orange: "#d93a00",
   },
   // The colors of the backgrounds in the website
   background: {
@@ -25,6 +27,8 @@ const lightTheme = {
     primary: "#fff",
     // The color of the muted background on the website
     muted: "#D3D3D3",
+    // The pink color of the website
+    pink: "#fb133a",
   },
   // The colors of the lines in the website
   lineColor: {

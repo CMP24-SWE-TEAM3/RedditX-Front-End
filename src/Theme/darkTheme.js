@@ -18,6 +18,10 @@ const darkTheme = {
     muted: "#7c7c7c",
     // The color of the links on the website
     link: "#0079d3",
+    // The orange color of the website
+    orange: "#d93a00",
+    // The pink color of the website
+    pink: "#fb133a",
   },
   // The colors of the backgrounds in the website
   background: {
