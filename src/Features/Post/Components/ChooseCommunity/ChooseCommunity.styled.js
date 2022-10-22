@@ -80,7 +80,8 @@ export const Input = styled.input`
 
 // Communities menu container
 export const Menu = styled.div`
-  width: 100%;
+  position: fixed;
+  width: 350px;
   border-radius: 0;
   outline: 0;
   background-color: ${({ theme }) => theme.background.primary};
