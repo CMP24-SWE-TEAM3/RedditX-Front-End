@@ -3,7 +3,6 @@ import { useState } from "react";
 
 // Import bootstrap components
 import Col from "react-bootstrap/Col";
-import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
 
@@ -12,6 +11,7 @@ import { ImFileText } from "react-icons/im";
 import { CgImage } from "react-icons/cg";
 import { BsLink45Deg } from "react-icons/bs";
 
+// Import styled components
 import {
   NavLink,
   NavItem,
@@ -19,6 +19,9 @@ import {
   Column,
   NavContainer,
 } from "./PostDraftEditor.styled.js";
+
+// Import layouts
+import LinkTab from "../LinkTab/LinkTab.jsx";
 
 const PostDraftEditor = () => {
   // State to store the selected tab
@@ -63,7 +66,7 @@ const PostDraftEditor = () => {
               </NavItem>
             </NavContainer>
           </Column>
-          <Col sm={12}>
+          <Column sm={12}>
             <Tab.Content>
               <Tab.Pane eventKey="Post">
                 <h1>Tab 1</h1>
@@ -72,10 +75,10 @@ const PostDraftEditor = () => {
                 <h1>Tab 2</h1>
               </Tab.Pane>
               <Tab.Pane eventKey="Link">
-                <h1>Tab 3</h1>
+                <LinkTab />
               </Tab.Pane>
             </Tab.Content>
-          </Col>
+          </Column>
         </Row>
       </Tab.Container>
     </Editor>

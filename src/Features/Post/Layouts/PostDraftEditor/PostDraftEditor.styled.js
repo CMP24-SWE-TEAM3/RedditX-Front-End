@@ -10,8 +10,8 @@ export const Editor = styled.div`
 `;
 
 export const NavLink = styled(Nav.Link)`
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   color: ${({ theme }) => theme.color.muted};
   background-color: ${({ theme }) => theme.background.primary};
   width: 100%;
@@ -48,3 +48,4 @@ export const NavContainer = styled(Nav)`
   border-radius: 10px;
   height: fit-content;
 `;
+
