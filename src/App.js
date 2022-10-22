@@ -18,9 +18,6 @@ import { ThemeProvider } from "styled-components";
 // Import bootstrap
 import { Button } from "react-bootstrap";
 
-import SignUp from './Features/Authentication/Layouts/SignUp/SignUp';
-
-import VerticalModal from "Features/Authentication/Components/Modal/VerticalModal";
 
 import TestHome from "Features/Authentication/Pages/TestHome";
 

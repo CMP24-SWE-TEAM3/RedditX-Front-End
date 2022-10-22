@@ -44,7 +44,7 @@ export const Input = styled.input`
   width: calc(100% - 0px);
   padding: 0px 20px;
   transition: ${transition};
-
+  letter-spacing: 0.0em !important;
 
   &:focus {
     outline: none;
@@ -78,7 +78,7 @@ export const Group = styled.div`
   span {
     display: ${p => (p.valid ? "block" : "none")};
     position: absolute;
-    right: 10%;
+    right: 5%;
     transition: ${transition};
     color: ${blueValid};
   }

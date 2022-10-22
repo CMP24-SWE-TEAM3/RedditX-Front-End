@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const linkColor = "#0079d3";
 const errorColor = "#ea0027";
@@ -9,9 +10,14 @@ export const AuthContainer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 280px;
-  margin: 100px auto;
-  display:  ${p => (p.secondScreen ? "none"  : "block")};
+  margin: 0px auto 0;
+  position: relative;
+  display: ${(p) => (p.userNameScreen ? "none" : "block")};
   width: 280px;
+`;
+
+export const AuthContainerDiv = styled.span`
+  display: ${(p) => (p.userNameScreen ? "none" : "block")};
 `;
 
 export const Privacy = styled.span`
@@ -117,7 +123,7 @@ export const OrHeader = styled.h2`
   text-align: center;
   border-bottom: 1px solid #93908e;
   line-height: 0.1em;
-  margin: 20px 0;
+  margin: 30px 0;
   line-height: 0 !important;
   color: #93908e;
   font-size: 12px !important;
@@ -126,4 +132,36 @@ export const OrHeader = styled.h2`
     background: #fff;
     padding: 0 10px;
   }
+`;
+export const Forget = styled.span`
+  font-size: 12px;
+
+  button {
+    padding: 0;
+    font-weight: 700;
+    border: none;
+    background-color: transparent;
+    text-decoration: underline;
+    color: #0079d3;
+    font-family: ${fontFamily};
+  }
+`;
+export const MyReCAPTCHA = styled(ReCAPTCHA)`
+  body {
+    background-color: red;
+
+    #rc-anchor-alert {
+      color: transparent !important;
+    }
+
+    .rc-anchor-alert {
+      color: transparent !important;
+    }
+  }
+`;
+export const ReCAPTCHAContainer = styled.div`
+  transform: translateX(-3%) scale(0.9);
+  margin: 10px 0;
+
+  display: ${(p) => (p.validEmail ? "block" : "none")};
 `;

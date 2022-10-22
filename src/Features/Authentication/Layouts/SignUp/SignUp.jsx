@@ -6,13 +6,12 @@ import FacebookLogin from "react-facebook-login";
 
 import RandomUserName from "Features/Authentication/Utils/RandomUserName";
 
-
-
 import FormInput from "Features/Authentication/Components/FormInput/FormInput";
 import Button from "../../Components/Button/Button";
+import PasswordStrength from "Features/Authentication/Components/PasswordStrength/PasswordStrenght";
+import GetPasswordStrength from "Features/Authentication/Utils/GetPasswordStrenght";
 
 import {
-  AuthContainer,
   ButtonsContainer,
   Privacy,
   ErrorParagraph,
@@ -23,7 +22,12 @@ import {
   AuthHeader,
 } from "../LogIn/LogIn.styled";
 
-import { BackSpan, AuthContainerDiv, Group } from "./SignUp.styled";
+import {
+  AuthContainer,
+  BackSpan,
+  AuthContainerDiv,
+  Group,
+} from "./SignUp.styled";
 
 const USER_EMAIL =
   /[a-zA-Z0-9._-]{3,}@[a-zA-Z0-9._-]{3,}[.]{1}[a-zA-Z0-9._-]{2,}/;
@@ -42,6 +46,7 @@ const SignUp = forwardRef((props, ref) => {
   //   const [user, setUser] = useState("");
   const [validEmail, setValidEmail] = useState(false);
   const [validUserName, setValidUserName] = useState(false);
+  const [passwordStrength, setPasswordStrength] = useState();
   const [userFocus, setUserFocus] = useState(false);
   const [secondScreen, setSecondScreen] = useState(false);
   const [initialFocus, setInitialFocus] = useState(true);
@@ -69,15 +74,22 @@ const SignUp = forwardRef((props, ref) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    setFormFields({ ...formFields, [name]: value });
     // console.log("name : " + name);
     if (name === "email") {
       setValidEmail(USER_EMAIL.test(email));
+    }
+    if (name === "password") {
+      setPasswordStrength(GetPasswordStrength(password));
+
+      //console.log(GetPasswordStrength(toString(password)));
+      console.log("pass : " + passwordStrength);
     }
     if (name === "userName") {
       // console.log(userName);
       setValidUserName(USER_NAME.test(userName));
     }
-    setFormFields({ ...formFields, [name]: value });
+    
   };
 
   const handleCallbackResponse = (response) => {
@@ -214,9 +226,6 @@ const SignUp = forwardRef((props, ref) => {
 
           <br></br>
           <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
           <AuthHeader>Create your username and password</AuthHeader>
           <AuthParagraph>
             Reddit is anonymous, so your username is what you’ll go by here.
@@ -253,18 +262,21 @@ const SignUp = forwardRef((props, ref) => {
               {errMsg}
             </ErrorParagraph>
 
-            <FormInput
-              valid={validUserName}
-              initialFocus={initialFocus}
-              showIcon={true}
-              label="Password"
-              type="password"
-              required
-              onChange={handleChange}
-              name="password"
-              value={password}
-            />
-
+            <Group>
+              <FormInput
+                valid={validUserName}
+                initialFocus={initialFocus}
+                label="Password"
+                type="password"
+                required
+                onChange={handleChange}
+                name="password"
+                value={password}
+              />
+              <span onClick={() => {}}>
+                <PasswordStrength strength = {passwordStrength}></PasswordStrength>
+              </span>
+            </Group>
             <ButtonsContainer>
               {validUserName && (
                 <Button
