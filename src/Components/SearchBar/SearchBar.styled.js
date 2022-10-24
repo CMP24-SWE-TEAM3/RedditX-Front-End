@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import lightTheme from 'Theme/lightTheme'
 import {CiSearch} from "react-icons/ci";
-import LightTheme from "../../Theme/lightTheme";
+import LightTheme from "Theme/lightTheme";
 export const StyledSearchButton = styled.div`
   display: flex;
   border-radius: 20px;
