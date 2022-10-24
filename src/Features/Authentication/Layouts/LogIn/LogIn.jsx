@@ -83,6 +83,7 @@ const LogIn = () => {
 
   const handleCallbackResponse = (response) => {
     let userObject = jwt_decode(response.credential);
+    console.log(response);
     console.log(userObject);
   };
 

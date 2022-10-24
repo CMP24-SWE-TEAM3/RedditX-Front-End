@@ -21,6 +21,10 @@ import { Button } from "react-bootstrap";
 
 import TestHome from "Features/Authentication/Pages/TestHome";
 
+import LogInPage from "Features/Authentication/Pages/LogInPage/LogInPage";
+
+import SignUpPage from "Features/Authentication/Pages/SignUpPage/SignUpPage";
+
 /**
  * The main app of our application it handles routing
  *
@@ -42,7 +46,7 @@ function App() {
     }
   };
   return (
-    <TestHome/>
+    <SignUpPage/>
   );
 }
 

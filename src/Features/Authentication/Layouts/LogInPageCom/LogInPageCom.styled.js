@@ -2,7 +2,10 @@ import styled from "styled-components";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const linkColor = "#0079d3";
+const facebookBlue = "#237df3";
 const errorColor = "#ea0027";
+
+const transition = "300ms ease all";
 
 const fontFamily = "'IBM Plex Sans', sans-serif;";
 
@@ -87,22 +90,52 @@ width: 280px;
 
 margin: 20px 0 5px 0;
 
+
+
 span {
   width: 100%;
-
+ 
   button{
+    transition: ${transition}
+    position: relative;
     width: 100%;
-    border-radius: 8px;
-    background-color: #237df3;
+    border-radius: 5px;
+    background-color: white;
     height: 47px;
-    border-color: transparent;
-    color: white;
+    border-color: ${facebookBlue};
+    color: ${facebookBlue};
     cursor: pointer;
     font-size: 14px;
     font-weight: 600;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    outline: none;
+    padding: 0 0 0 20px;
+
+    svg{
+      
+        width: 40px;
+        height: 60px;
+        position: absolute;
+        left: 1%;
+
+        path{
+          color: ${facebookBlue};
+        }
+        
+    }
+
+
+    &:hover {
+      background-color: ${facebookBlue};
+      color: white;
+      border: none;
+      path{
+        color: white;
+      }
+
+    }
   }
 }
 
@@ -133,27 +166,7 @@ export const Forget = styled.span`
     font-weight: 700;
     border: none;
     background-color: transparent;
-    text-decoration: underline;
     color: #0079d3;
     font-family: ${fontFamily};
   }
-`;
-export const MyReCAPTCHA = styled(ReCAPTCHA)`
-  body {
-    background-color: red;
-
-    #rc-anchor-alert {
-      color: transparent !important;
-    }
-
-    .rc-anchor-alert {
-      color: transparent !important;
-    }
-  }
-`;
-export const ReCAPTCHAContainer = styled.div`
-  transform: translateX(-3%) scale(0.9);
-  margin: 10px 0;
-
-  display: ${(p) => (p.validEmail ? "block" : "none")};
 `;

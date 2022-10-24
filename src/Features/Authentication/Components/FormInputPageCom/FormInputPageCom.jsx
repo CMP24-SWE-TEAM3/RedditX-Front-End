@@ -1,7 +1,8 @@
-import { FormInputLabel, Input, Group } from "./FormInput.styled";
+import { FormInputLabel, Input, Group } from "./FormInputPageCom.styled";
 import { BsCheckLg } from "react-icons/bs";
+import { GoPrimitiveDot } from "react-icons/go";
 
-const FormInput = ({ label, ...otherProps }) => {
+const FormInputPageCom = ({ label, ...otherProps }) => {
   return (
     <>
       {otherProps.showIcon && (
@@ -10,7 +11,7 @@ const FormInput = ({ label, ...otherProps }) => {
           {label && (
             <>
               <FormInputLabel shrink={otherProps.value}>
-                {label}
+                {label} <span><GoPrimitiveDot/></span>
               </FormInputLabel>
             </>
           )}
@@ -44,4 +45,4 @@ const FormInput = ({ label, ...otherProps }) => {
   );
 };
 
-export default FormInput;
+export default FormInputPageCom;
