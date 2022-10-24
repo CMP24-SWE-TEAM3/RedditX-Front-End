@@ -1,8 +1,8 @@
 import React from 'react';
-import {StyledSearchButton, StyledSearchIcon} from "./SearchLogin.styled";
+import {StyledSearchButton, StyledSearchIcon} from "./LandingSearch.styled";
 import InputForm from "Components/InputForm/InputForm";
 
-const   SearchLogin = (props) => {
+const   LandingSearch = (props) => {
     return (
         <>
             <StyledSearchButton>
@@ -13,4 +13,4 @@ const   SearchLogin = (props) => {
     );
 };
 
-export default SearchLogin;
+export default LandingSearch;
