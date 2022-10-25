@@ -4,11 +4,8 @@ export const StyledIcon = styled.img`
   height: 32px;
   margin: 8px 8px 8px 0;
   width: 32px;
-  @media (max-width: 768px){
-    height: 24px;
-    margin: 4px 4px 4px 0;
-    width: 25%;
-  }
+  //min-height: 5px;
+  //min-width: 5px;
   
 
 `
@@ -16,8 +13,12 @@ export const StyledTextLogo = styled.img`
   height: 18px;
   margin: 0 20px 0 0;
   width: 57px;
-  @media only screen and (max-width: 768px) {
+  //max-height: 32px;
+  //max-width: 57px;
+  
+  @media only screen and (max-width: 1200px) {
     width: 25%;
+    display: none;
   }
 `
 export const StyledLink = styled.div`

@@ -6,12 +6,17 @@ export const SignUpStyled = styled(Button)`
   color: #1779d3;
   border-color: ${LightTheme.color.secondary};
   width: 118px;
-  margin-left: 100px;
+  margin-left: 5%;
   font-size: 14px;
 
-  &:hover, &:active ,&:focus,&:visited {
-    color: #1779d3;
-    background-color: #f5fafd;
+  &:hover {
+    color: #1779d3 !important;
+    background-color: #f5fafd !important;
+  }
+
+  &:active {
+    color: #1779d3 !important;
+    background-color: #ebf4fc!important;
   }
 
   font-weight: bold;
