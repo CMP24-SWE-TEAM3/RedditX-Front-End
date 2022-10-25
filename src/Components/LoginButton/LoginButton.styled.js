@@ -7,10 +7,12 @@ export const LoginStyled = styled(Button)`
   border-color: ${LightTheme.color.secondary};
   background-color: ${LightTheme.color.secondary};
   width: 118px;
-  margin: 15px;
+  margin: 15px 0 15px 0;
   &:hover {
-    background-color: #1484d6;
-
+    background-color: #1484d6 !important;
+  }
+  &:active {
+    background-color: #0079d3 !important;
   }
 
   font-weight:bold;

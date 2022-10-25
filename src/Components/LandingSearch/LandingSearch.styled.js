@@ -7,7 +7,7 @@ export const StyledSearchButton = styled.div`
   display: flex;
   border-radius: 20px;
   height: 40px;
-  width: 656px;
+  width: 50%;
   background: #f6f7f8;
   margin-left: 48px;
 `

@@ -6,14 +6,29 @@ import LightTheme from "Theme/lightTheme";
 
 export const DropdownButtonStyled = styled(Dropdown)`
   color: ${LightTheme.color.muted};
+
+  & button {
+    background-color: white;
+
+    &:hover {
+      background-color: white !important;
+      border-color: red !important;
+    }
+  }
+
+  &:active {
+    transition-duration: unset !important;
+    transition-delay: unset !important;
+  }
+
+  left: 160px;
+  @media only screen and (max-width: 1290px) {
+    left: 30px;
+  }
 `
 export const DropdownButtonIconStyled = styled(BsPerson)`
   color: grey;
-  min-width: 20px;
-  min-height: 20px;
+  width: 20px;
+  height: 20px;
   margin-right: 5px;
-`
-export const DropdownCoainterStyled = styled.div`
-  margin-left: 100px;
-  
 `
