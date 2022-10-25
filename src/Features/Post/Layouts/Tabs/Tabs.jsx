@@ -2,7 +2,6 @@
 import { useState } from "react";
 
 // Import bootstrap components
-import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
 
@@ -15,21 +14,21 @@ import { BsLink45Deg } from "react-icons/bs";
 import {
   NavLink,
   NavItem,
-  Editor,
+  StyledTabs,
   Column,
   NavContainer,
-} from "./PostDraftEditor.styled.js";
+} from "./Tabs.styled.js";
 
 // Import layouts
-import LinkTab from "../LinkTab/LinkTab.jsx";
+import LinkTab from "Features/Post/Layouts/LinkTab/LinkTab";
+import ImagesAndVideosTab from "Features/Post/Layouts/ImagesAndVideosTab/ImagesAndVideosTab";
 
-const PostDraftEditor = () => {
+const Tabs = () => {
   // State to store the selected tab
   const [selected, setSelected] = useState("post");
 
-  console.log(selected);
   return (
-    <Editor>
+    <StyledTabs>
       <Tab.Container defaultActiveKey="Post">
         <Row className="w-100 m-0">
           <Column sm={12}>
@@ -47,13 +46,13 @@ const PostDraftEditor = () => {
               </NavItem>
               <NavItem
                 className="flex-fill"
-                onClick={() => setSelected("Images & Videos")}
+                onClick={() => setSelected("Images & Video")}
               >
                 <NavLink
-                  eventKey="Images & Videos"
-                  selected={selected === "Images & Videos"}
+                  eventKey="Images & Video"
+                  selected={selected === "Images & Video"}
                 >
-                  <CgImage size={30} /> Images & Videos
+                  <CgImage size={30} /> Images & Video
                 </NavLink>
               </NavItem>
               <NavItem
@@ -71,8 +70,8 @@ const PostDraftEditor = () => {
               <Tab.Pane eventKey="Post">
                 <h1>Tab 1</h1>
               </Tab.Pane>
-              <Tab.Pane eventKey="Images & Videos">
-                <h1>Tab 2</h1>
+              <Tab.Pane eventKey="Images & Video">
+                <ImagesAndVideosTab />
               </Tab.Pane>
               <Tab.Pane eventKey="Link">
                 <LinkTab />
@@ -81,8 +80,8 @@ const PostDraftEditor = () => {
           </Column>
         </Row>
       </Tab.Container>
-    </Editor>
+    </StyledTabs>
   );
 };
 
-export default PostDraftEditor;
+export default Tabs;

@@ -29,6 +29,8 @@ const lightTheme = {
     muted: "#D3D3D3",
     // The pink color of the website
     pink: "#fb133a",
+    // The light muted color of the website
+    lightMuted: "#f6f7f8",
   },
   // The colors of the lines in the website
   lineColor: {

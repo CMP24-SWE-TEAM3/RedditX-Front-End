@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledLinkForm = styled.div`
+export const StyledImageAndVideoFrom = styled.div`
   .form-control:focus {
     box-shadow: none;
     border-color: ${({ theme }) => theme.color.primary};

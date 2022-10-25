@@ -5,12 +5,12 @@ import styled from "styled-components";
 import Nav from "react-bootstrap/Nav";
 import Col from "react-bootstrap/Col";
 
-export const Editor = styled.div`
+export const StyledTabs = styled.div`
   margin-top: 10px;
 `;
 
 export const NavLink = styled(Nav.Link)`
-  font-size: 1rem;
+  font-size: 13px;
   font-weight: 700;
   color: ${({ theme }) => theme.color.muted};
   background-color: ${({ theme }) => theme.background.primary};
@@ -34,7 +34,12 @@ export const NavItem = styled(Nav.Item)`
   & .active.nav-link {
     color: ${({ theme }) => theme.color.secondary};
     background-color: ${({ theme }) => theme.background.primary};
-    border-bottom: 5px solid ${({ theme }) => theme.color.secondary};
+    border-bottom: 3px solid ${({ theme }) => theme.color.secondary};
+  }
+  a.nav-link {
+    border-left: none;
+    border-right: none;
+    border-top: none;
   }
 `;
 
@@ -48,4 +53,3 @@ export const NavContainer = styled(Nav)`
   border-radius: 10px;
   height: fit-content;
 `;
-

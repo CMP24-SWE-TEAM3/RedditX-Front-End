@@ -29,6 +29,10 @@ const darkTheme = {
     primary: "#1a1a1b",
     // The color of the muted background on the website
     muted: "#7c7c7c3d",
+    // The pink color of the website
+    pink: "#fb133a",
+    // The light muted color of the website
+    lightMuted: "#f6f7f8",
   },
   // The colors of the lines in the website
   lineColor: {

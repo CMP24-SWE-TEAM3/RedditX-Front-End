@@ -80,7 +80,8 @@ export const Input = styled.input`
 
 // Communities menu container
 export const Menu = styled.div`
-  position: fixed;
+  position: absolute;
+  z-index: 1;
   width: 350px;
   border-radius: 0;
   outline: 0;
