@@ -32,9 +32,23 @@ const lightTheme = {
     // The light muted color of the website
     lightMuted: "#f6f7f8",
   },
+  // Border colors
+  borderColor: {
+    // Primary border color
+    primary: "#878a8c",
+    // Secondary border color
+    secondary: "#ccc",
+    // Muted border color
+    muted: "#878a8c80",
+  },
   // The colors of the lines in the website
   lineColor: {
     primary: "#edeff1",
+  },
+  // The colors of the buttons in the website
+  button: {
+    // The color when hover on buttons on the website
+    muted: "#f6f7f8",
   },
 };
 

@@ -30,7 +30,7 @@ const UploadedImage = ({
         <StyledUploadedImage
           thumbnail={isSelected && selectedImageId === id}
           selected={isSelected && selectedImageId === id}
-          src={file.preview}
+          src={file.src}
           // Revoke data uri after image is loaded
           onLoad={() => {
             URL.revokeObjectURL(file.preview);

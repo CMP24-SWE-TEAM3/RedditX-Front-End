@@ -22,6 +22,7 @@ import {
 // Import layouts
 import LinkTab from "Features/Post/Layouts/LinkTab/LinkTab";
 import ImagesAndVideosTab from "Features/Post/Layouts/ImagesAndVideosTab/ImagesAndVideosTab";
+import DraftEditorForm from "Features/Post/Components/DraftEditorForm/DraftEditorForm.jsx";
 
 const Tabs = () => {
   // State to store the selected tab
@@ -68,7 +69,7 @@ const Tabs = () => {
           <Column sm={12}>
             <Tab.Content>
               <Tab.Pane eventKey="Post">
-                <h1>Tab 1</h1>
+                <DraftEditorForm />
               </Tab.Pane>
               <Tab.Pane eventKey="Images & Video">
                 <ImagesAndVideosTab />

@@ -1,6 +1,9 @@
 // Import bootstrap components
 import Form from "react-bootstrap/Form";
 
+// Import components
+import PostFlagsWrapper from "../PostFlagsWrapper/PostFlagsWrapper";
+
 // Import styled components
 import { StyledLinkForm } from "./LinkForm.styled";
 
@@ -14,6 +17,7 @@ const LinkForm = () => {
       <Form.Group className="mb-3">
         <Form.Control as="textarea" placeholder="Url" rows={3} />
       </Form.Group>
+      <PostFlagsWrapper />
     </StyledLinkForm>
   );
 };

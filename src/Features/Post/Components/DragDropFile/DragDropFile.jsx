@@ -30,18 +30,22 @@ function DragAndDropFile() {
       "video/*": [],
     },
     onDrop: (acceptedFiles) => {
-      console.log("acceptedFiles = ", acceptedFiles);
-
-      setFiles(() => [
+      const newFiles = [
         ...files,
-        ...acceptedFiles.map((file) =>
-          Object.assign(file, {
-            preview: URL.createObjectURL(file),
-            src: URL.createObjectURL(file),
-            uploadDate: new Date().getTime(),
-          })
-        ),
-      ]);
+        ...acceptedFiles.map((file) => {
+          const reader = new FileReader();
+          reader.onload = (x) => {
+            Object.assign(file, {
+              preview: URL.createObjectURL(file),
+              src: x.target.result,
+              uploadDate: new Date().getTime(),
+            });
+          };
+          reader.readAsDataURL(file);
+          return file;
+        }),
+      ];
+      setFiles(() => newFiles);
     },
   });
 
