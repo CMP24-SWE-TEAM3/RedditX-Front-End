@@ -29,10 +29,28 @@ const darkTheme = {
     primary: "#1a1a1b",
     // The color of the muted background on the website
     muted: "#7c7c7c3d",
+    // The pink color of the website
+    pink: "#fb133a",
+    // The light muted color of the website
+    lightMuted: "#f6f7f8",
+  },
+  // Border colors
+  borderColor: {
+    // Primary border color
+    primary: "#818384",
+    // Secondary border color
+    secondary: "#343536",
+    // Muted border color
+    muted: "#878a8c80",
   },
   // The colors of the lines in the website
   lineColor: {
     primary: "#343536",
+  },
+  // The colors of the buttons in the website
+  button: {
+    // The color when hover on buttons on the website
+    muted: "#1a1a1b",
   },
 };
 
