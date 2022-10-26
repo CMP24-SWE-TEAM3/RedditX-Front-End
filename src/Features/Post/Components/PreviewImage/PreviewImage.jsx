@@ -10,7 +10,7 @@ import {
   LinkForm,
 } from "./PreviewImage.styled";
 
-const PreviewImage = ({ selectedImageId, files }) => {
+const PreviewImage = ({ selectedImageId, files, isLoadingDone }) => {
   // State to store the selected image
   const [image, setImage] = useState(null);
 

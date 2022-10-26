@@ -20,6 +20,9 @@ function DragAndDropFile() {
   // State to store the selected image id
   const [selectedImageId, setSelectedImageId] = useState(null);
 
+  // State to store whether the image loading is done or not
+  const [isLoadingDone, setIsLoadingDone] = useState(false);
+
   // Use dropzone hook
   const { getRootProps, getInputProps, open } = useDropzone({
     // Disable click and keydown behavior
@@ -40,6 +43,9 @@ function DragAndDropFile() {
               src: x.target.result,
               uploadDate: new Date().getTime(),
             });
+            // TODO: rerender preview image when image loading is done
+            if (reader.readyState === FileReader.DONE)
+              setIsLoadingDone(() => !isLoadingDone);
           };
           reader.readAsDataURL(file);
           return file;
@@ -74,7 +80,11 @@ function DragAndDropFile() {
           setSelectedImageId={setSelectedImageId}
         />
       </DragAndDropFrame>
-      <PreviewImage selectedImageId={selectedImageId} files={files} />
+      <PreviewImage
+        selectedImageId={selectedImageId}
+        files={files}
+        isLoadingDone={isLoadingDone}
+      />
     </div>
   );
 }
