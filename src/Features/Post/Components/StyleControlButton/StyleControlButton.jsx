@@ -1,16 +1,15 @@
-const StyleControlButton = ({ style, onToggle, active, label }) => {
+import { StyledButton } from "./StyleControlButton.styled";
+
+const StyleControlButton = ({ style, onToggle, active, label, icon }) => {
   const onToggleHandler = (e) => {
     e.preventDefault();
     onToggle(style);
   };
-  let className = "RichEditor-styleButton";
-  if (active) {
-    className += " RichEditor-activeButton";
-  }
+
   return (
-    <span className={className} onMouseDown={onToggleHandler}>
-      {label}
-    </span>
+    <StyledButton active={active} onMouseDown={onToggleHandler}>
+      {icon}
+    </StyledButton>
   );
 };
 

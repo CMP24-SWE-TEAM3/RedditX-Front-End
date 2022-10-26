@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
 import Draft from "draft-js";
-import "./DraftEditor.css";
 import BlockStyleControls from "../BlockStyleControls/BlockStyleControls";
 import InlineStyleControls from "../InlineStyleControls/InlineStyleControls";
 import MediaControls from "../MediaControls/MediaControls";
+import { Controls, DraftEditorContainer, RichEditorEditor } from "./DraftEditor.styled";
 const {
   AtomicBlockUtils,
   Editor,
@@ -92,44 +92,39 @@ const DraftEditor = () => {
   // If the user changes block type before entering any text, we can
   // either style the placeholder or hide it. Let's just hide it now.
   let className = "RichEditor-editor";
-  var contentState = editorState.getCurrentContent();
-  if (!contentState.hasText()) {
-    if (contentState.getBlockMap().first().getType() !== "unstyled") {
-      className += " RichEditor-hidePlaceholder";
-    }
-  }
 
   return (
-    <div className="RichEditor-root">
-      <MediaControls
-        styles={styles}
-        addAudio={addAudio}
-        addImage={addImage}
-        addVideo={addVideo}
-      />
-      {showURLInput && (
-        <div style={styles.urlInputContainer}>
-          <input
-            onChange={onURLChange}
-            ref={urlRef}
-            style={styles.urlInput}
-            type="text"
-            value={urlValue}
-            onKeyDown={onURLInputKeyDown}
-          />
-          <button onMouseDown={_confirmMedia}>Confirm</button>
-        </div>
-      )}
-
-      <BlockStyleControls
-        editorState={editorState}
-        onToggle={toggleBlockType}
-      />
-      <InlineStyleControls
-        editorState={editorState}
-        onToggle={toggleInlineStyle}
-      />
-      <div className={className} onClick={focus}>
+    <DraftEditorContainer>
+      <Controls>
+        <InlineStyleControls
+          editorState={editorState}
+          onToggle={toggleInlineStyle}
+        />
+        <BlockStyleControls
+          editorState={editorState}
+          onToggle={toggleBlockType}
+        />
+        <MediaControls
+          styles={styles}
+          addAudio={addAudio}
+          addImage={addImage}
+          addVideo={addVideo}
+        />
+        {showURLInput && (
+          <div style={styles.urlInputContainer}>
+            <input
+              onChange={onURLChange}
+              ref={urlRef}
+              style={styles.urlInput}
+              type="text"
+              value={urlValue}
+              onKeyDown={onURLInputKeyDown}
+            />
+            <button onMouseDown={_confirmMedia}>Confirm</button>
+          </div>
+        )}
+      </Controls>
+      <RichEditorEditor onClick={focus}>
         <Editor
           blockStyleFn={getBlockStyle}
           customStyleMap={styleMap}
@@ -137,23 +132,39 @@ const DraftEditor = () => {
           handleKeyCommand={handleKeyCommand}
           keyBindingFn={mapKeyToEditorCommand}
           onChange={onChange}
-          placeholder="Tell a story..."
+          placeholder="Text (optional)"
           ref={editorRef}
           spellCheck={true}
           blockRendererFn={mediaBlockRenderer}
         />
-      </div>
-    </div>
+      </RichEditorEditor>
+    </DraftEditorContainer>
   );
 };
 
 // Custom overrides for "code" style.
 const styleMap = {
   CODE: {
-    backgroundColor: "rgba(0, 0, 0, 0.05)",
-    fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-    fontSize: 16,
-    padding: 2,
+    backgroundColor: "#f6f7f8",
+    caretColor: "rgb(0, 0, 0)",
+    color: "#ff006d",
+    fontFamily: `"Noto Mono", Menlo, Monaco, Consolas, monospace`,
+    padding: "0.1em 0.2em",
+    fontSize: "0.8em",
+    borderRadius: "3px",
+  },
+  SUPERSCRIPT: {
+    verticalAlign: "super",
+    fontSize: "12px",
+  },
+  SPOILER: {
+    backgroundColor: "#545452",
+    borderRadius: "2px",
+    caretColor: "#fff",
+    color: "#fff",
+    display: "inline-block",
+    margin: "0 3px",
+    padding: "0 4px",
   },
 };
 function getBlockStyle(block) {

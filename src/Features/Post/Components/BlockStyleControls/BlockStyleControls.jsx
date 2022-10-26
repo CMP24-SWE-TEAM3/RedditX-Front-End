@@ -1,16 +1,35 @@
 import StyleControlButton from "../StyleControlButton/StyleControlButton";
 
+// Import icons
+import { MdOutlineTextFields } from "react-icons/md";
+import { BsListUl } from "react-icons/bs";
+import { AiOutlineOrderedList } from "react-icons/ai";
+import { TfiQuoteRight } from "react-icons/tfi";
+import { HiOutlineCodeBracketSquare } from "react-icons/hi2";
+import { StyledBlockControls } from "./BlockStyleControls.styled";
 const BLOCK_TYPES = [
-  { label: "H1", style: "header-one" },
-  { label: "H2", style: "header-two" },
-  { label: "H3", style: "header-three" },
-  { label: "H4", style: "header-four" },
-  { label: "H5", style: "header-five" },
-  { label: "H6", style: "header-six" },
-  { label: "Blockquote", style: "blockquote" },
-  { label: "UL", style: "unordered-list-item" },
-  { label: "OL", style: "ordered-list-item" },
-  { label: "Code Block", style: "code-block" },
+  {
+    label: "H4",
+    style: "header-four",
+    icon: <MdOutlineTextFields size={20} />,
+  },
+
+  { label: "UL", style: "unordered-list-item", icon: <BsListUl size={20} /> },
+  {
+    label: "OL",
+    style: "ordered-list-item",
+    icon: <AiOutlineOrderedList size={20} />,
+  },
+  {
+    label: "Blockquote",
+    style: "blockquote",
+    icon: <TfiQuoteRight size={20} />,
+  },
+  {
+    label: "Code Block",
+    style: "code-block",
+    icon: <HiOutlineCodeBracketSquare size={20} />,
+  },
 ];
 
 const BlockStyleControls = ({ onToggle, editorState }) => {
@@ -20,7 +39,7 @@ const BlockStyleControls = ({ onToggle, editorState }) => {
     .getBlockForKey(selection.getStartKey())
     .getType();
   return (
-    <div className="RichEditor-controls">
+    <StyledBlockControls>
       {BLOCK_TYPES.map((type) => (
         <StyleControlButton
           key={type.label}
@@ -28,9 +47,10 @@ const BlockStyleControls = ({ onToggle, editorState }) => {
           label={type.label}
           onToggle={onToggle}
           style={type.style}
+          icon={type.icon}
         />
       ))}
-    </div>
+    </StyledBlockControls>
   );
 };
 
