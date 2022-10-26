@@ -7,7 +7,12 @@ import React from "react";
 import Links from "../../Components/MainHeader/MainHeader";
 import Posts from "../../Layouts/PostsPage/Posts";
 import { Container } from "./Search.styled";
-
+/**
+ * Component that contains the Search Page and the Main Links component and routes for the four pages Posts page, Comments page, Community page and People page.
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const Search = () => {
   return (
     <Container>

@@ -3,6 +3,12 @@ import { NavLink } from "react-router-dom";
 import SafeSearch from "../SafeSearch/SafeSearch";
 import { MainLinks } from "./MainHeader.styled";
 
+/**
+ * Component that contains the Main Links.
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const Links = () => {
   return (
     <MainLinks>

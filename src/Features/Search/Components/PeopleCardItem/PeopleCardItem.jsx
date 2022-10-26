@@ -1,13 +1,20 @@
 import { Container } from "./PeopleCardItem.styled";
 import { useState } from "react";
 import logo from "../../Assets/download.jpg";
+/**
+ * Component that contains the PeopleCardItem and manage the state of the button Follow.
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const PeopleCardItem = () => {
   const [btnContent, setstate] = useState("Follow");
-  /**
-   * If the button content is "Follow", then set the state to "Following", otherwise set the state to
-   * "Follow".
-   */
 
+  /**
+   * it is the function that handle the state of the button when click on it.
+   *
+   * @param {Object} e it is an object which i can preventDefault and not redirect to the link
+   */
   function clickHandler(e) {
     e.preventDefault();
     if (btnContent === "Follow") {
@@ -16,11 +23,21 @@ const PeopleCardItem = () => {
       setstate("Follow");
     }
   }
+
+  /**
+   * it is the function that handle the state of the button when mouseEnter on it.
+   *
+   */
   function mouseEnterHandler() {
     if (btnContent === "Following") {
       setstate("Unfollow");
     }
   }
+
+  /**
+   * it is the function that handle the state of the button when MouseLeave on it.
+   *
+   */
   function MouseLeaveHandler() {
     if (btnContent === "Unfollow") {
       setstate("Following");

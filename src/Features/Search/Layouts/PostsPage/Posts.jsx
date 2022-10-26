@@ -6,6 +6,13 @@ import TopCommunities from "../../Components/CommunityCard/TopCommunities";
 import CreateCommunity from "../../Components/CreateCommunity/CreateCommunity";
 // import { PeopleContainer } from "../../Components/People/People.styled";
 import People from "../../Components/People/People";
+
+/**
+ * Component that contains the Posts Page included the 2 drop downs and posts list component and the People Card Component ,Community Card Component.
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const Posts = () => {
   return (
     <>

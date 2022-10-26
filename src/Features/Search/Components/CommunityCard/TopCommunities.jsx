@@ -3,6 +3,12 @@ import { CommunityContainer } from "./TopCommunities.styled";
 // import logo from "../../Assets/download.jpg";
 import { Link } from "react-router-dom";
 import CommunityCardItem from "../CommunityCardItem/CommunityCardItem";
+/**
+ * Component that contains the Community Card Elements.
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const TopCommunities = () => {
   return (
     <CommunityContainer>

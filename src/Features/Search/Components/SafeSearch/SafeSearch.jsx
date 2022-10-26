@@ -1,6 +1,12 @@
 import Form from "react-bootstrap/Form";
 import { SafeSearchStyle, StyledSwitch } from "./SafeSearch.styled";
 
+/**
+ * Component that contains the Safe Search component.
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const SafeSearch = () => {
   return (
     <SafeSearchStyle>

@@ -1,6 +1,13 @@
 import { ContainerCreateComm } from "./CreateCommunity.styled";
 import BackgroundImage from "../../Assets/search-results-community-banner.png";
 import logo from "../../Assets/snoo-thinking.png";
+
+/**
+ * Component that contains the CreateCommunity component.
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const CreateCommunity = () => {
   return (
     <ContainerCreateComm>
