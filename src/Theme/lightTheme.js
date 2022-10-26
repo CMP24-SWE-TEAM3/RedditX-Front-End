@@ -20,6 +20,8 @@ const lightTheme = {
     link: "#0079d3",
     // The orange color of the website
     orange: "#d93a00",
+    //border
+    border:"#ccc",
   },
   // The colors of the backgrounds in the website
   background: {

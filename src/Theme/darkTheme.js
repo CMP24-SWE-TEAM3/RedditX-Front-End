@@ -22,6 +22,8 @@ const darkTheme = {
     orange: "#d93a00",
     // The pink color of the website
     pink: "#fb133a",
+    //border
+    border:"#343536",
   },
   // The colors of the backgrounds in the website
   background: {

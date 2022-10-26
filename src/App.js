@@ -1,5 +1,6 @@
 // Import react and hooks
 import React, { useState } from "react";
+import { BrowserRouter } from "react-router-dom";
 
 // Import Images
 import logo from "./logo.svg";
@@ -9,13 +10,14 @@ import * as styles from "App.styled";
 
 // Import themes
 import darkTheme from "Theme/darkTheme";
-import lightTheme from "Theme/lightTheme";
 import defaultTheme from "Theme/defaultTheme";
+import lightTheme from "Theme/lightTheme";
 
 // Import theme provider from styled components
 import { ThemeProvider } from "styled-components";
 
 // Import bootstrap
+import { SubReddit } from "Features/Subreddit";
 import { Button } from "react-bootstrap";
 
 /**
@@ -40,14 +42,18 @@ function App() {
   };
   return (
     <ThemeProvider theme={theme}>
-      <styles.AppContainer>
-        <styles.AppHeader>
+      {/* <styles.AppContainer> */}
+        {/* <styles.AppHeader>
           <styles.AppLogo src={logo} alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
-          </p>
-
-          <styles.AppLink
+          </p> */}
+          <>
+          <BrowserRouter>
+            <SubReddit />
+          </BrowserRouter>
+          </>
+          {/* <styles.AppLink
             href="https://reactjs.org"
             target="_blank"
             rel="noopener noreferrer"
@@ -57,8 +63,8 @@ function App() {
           <Button onClick={handleToggleTheme}>
             Toggle theme
           </Button>
-        </styles.AppHeader>
-      </styles.AppContainer>
+        </styles.AppHeader> */}
+      {/* </styles.AppContainer> */}
     </ThemeProvider>
   );
 }
