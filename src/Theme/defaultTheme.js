@@ -3,6 +3,10 @@
  *
  */
 const defaultTheme = {
+    linecolor: {
+        //The color of Side Border
+        sideBorder:"#ccc"
+    }
 };
 
 export default defaultTheme;

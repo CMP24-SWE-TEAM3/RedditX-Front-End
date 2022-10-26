@@ -34,9 +34,9 @@ export default function Community(props) {
     <CommunityItem>
       <CommunityA href={`/${props.title}`}>
         <CommunityIndex>{props.index}</CommunityIndex>
-        <Arrow  up={isRising}></Arrow>
+        <Arrow up={isRising}></Arrow>
         <CommunityImg
-          src= {require(`../../Assets/images/${props.img}`)}
+          src={require(`../../Assets/images/${props.img}`)}
           alt="logo"
         ></CommunityImg>
         <TitleParagraph>{props.title}</TitleParagraph>

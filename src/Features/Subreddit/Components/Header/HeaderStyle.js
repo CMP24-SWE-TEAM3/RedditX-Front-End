@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderMarginDiv = styled.div`
-  background-color: white;
+  background-color: ${({theme})=>theme.background.primary};
   display: flex;
   height: 96px;
   justify-content: center;
@@ -15,7 +15,7 @@ export const HeaderDiv = styled.div`
   height: 96px;
   width: 100%;
   max-width: 1200px;
-  background-color: white;
+  background-color: ${({theme})=>theme.background.primary};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,7 +23,7 @@ export const HeaderDiv = styled.div`
   padding: 0 16px;
 `;
 export const HeaderH3 = styled.h3`
-  color: #1c1c1c;
+  color: ${({theme})=>theme.color.primary};
   padding-bottom: 6px;
   font-size: 22px;
   font-weight: 500;
@@ -35,6 +35,6 @@ export const HeaderP = styled.p`
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
-  color: #7c7c7c;
+  color: ${({theme})=>theme.color.muted};
   margin: 0;
 `;

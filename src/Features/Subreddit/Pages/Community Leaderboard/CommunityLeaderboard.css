@@ -147,7 +147,7 @@ body {
   width: 32px;
 }
 
-.join-btn {
+/* .join-btn {
   position: absolute;
   top: 30%;
   left: 80%;
@@ -183,7 +183,7 @@ body {
 
 .joined-btn:hover:before {
   content: "Leave";
-}
+} */
 
 /* end of middle section */
 .all-categories {
