@@ -5,6 +5,14 @@ import {
   OuterContainer,
   InnerContainer,
 } from "./CommentsPage.styled.js";
+
+/**
+ * Component that render the CommentsPage component and Contains Comment item.
+ *
+ * @Component
+ * @returns {React.Component}
+ */
+
 const CommentsPage = () => {
   return (
     <Container>

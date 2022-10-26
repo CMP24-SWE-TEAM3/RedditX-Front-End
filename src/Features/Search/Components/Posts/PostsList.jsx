@@ -1,6 +1,11 @@
 import PostItem from "./Post";
 import { ContainerPostsList } from "./PostsList.styled";
-
+/**
+ * Component that contains the Postslist component and the PostslistItems.
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const PostsList = () => {
   return (
     <ContainerPostsList>

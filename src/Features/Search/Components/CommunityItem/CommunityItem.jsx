@@ -13,7 +13,18 @@ import {
 } from "./CommunityItem.styled";
 import CommImage from "../../Assets/CommunityImage.png";
 const CommunityItem = () => {
+  /**
+   * Component that render the Community item Elements.
+   *
+   * @Component
+   * @returns {React.Component}
+   */
   const [btnContent, setstate] = useState("Join");
+  /**
+   * it is the function that handle the state of the button when click on it.
+   *
+   * @param {Object} e it is an object which i can preventDefault and not redirect to the link
+   */
   function clickHandler(e) {
     e.preventDefault();
     if (btnContent === "Join") {
@@ -23,11 +34,19 @@ const CommunityItem = () => {
     }
     // window.scrollTo(0, 0);
   }
+  /**
+   * it is the function that handle the state of the button when mouseEnter on it.
+   *
+   */
   function mouseEnterHandler() {
     if (btnContent === "Joined") {
       setstate("Leave");
     }
   }
+  /**
+   * it is the function that handle the state of the button when MouseLeave on it.
+   *
+   */
   function MouseLeaveHandler() {
     if (btnContent === "Leave") {
       setstate("Joined");

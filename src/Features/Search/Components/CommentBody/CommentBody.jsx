@@ -19,6 +19,12 @@ import {
 import CommentUserImage from "../../Assets/People_Image.jpg";
 import PostFooter from "../PostFooter/PostFooter";
 const CommentBody = () => {
+  /**
+   * Component that render the CommentBody.
+   *
+   * @Component
+   * @returns {React.Component}
+   */
   return (
     <Container>
       <FirstText>

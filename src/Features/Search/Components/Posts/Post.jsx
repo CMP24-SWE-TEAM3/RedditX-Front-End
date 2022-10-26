@@ -1,7 +1,14 @@
 import PostFooter from "../PostFooter/PostFooter";
 import PostHeader from "../PostHeader/PostHeader";
 import { ContainerPost } from "./Post.styled";
-// div nakes
+
+/**
+ * Component that contains the PostslistItems included PostHeader Component and post body and PostFooter Component.
+ *
+ * @Component
+ * @returns {React.Component}
+ */
+
 const PostItem = () => {
   return (
     <ContainerPost>

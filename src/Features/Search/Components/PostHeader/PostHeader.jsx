@@ -7,6 +7,12 @@ import {
   UserName,
 } from "./PostHeader.styled";
 
+/**
+ * Component that contains the Post Header element.
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const PostHeader = () => {
   return (
     <PostHeaderStyle>

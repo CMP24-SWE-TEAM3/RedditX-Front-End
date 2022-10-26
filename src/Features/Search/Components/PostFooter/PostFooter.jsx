@@ -1,5 +1,12 @@
 import { Footer } from "./PostFooter.styled";
 
+/**
+ * Component that contains the Post Header Footer.
+ *
+ * @Component
+ * @returns {React.Component}
+ */
+
 const PostFooter = () => {
   return (
     <Footer>
