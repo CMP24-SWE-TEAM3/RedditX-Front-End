@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from "react";
 
 import jwt_decode from "jwt-decode";
 
 import FacebookLogin from "react-facebook-login";
 
-import FormInputPageCom from "Features/Authentication/Components/FormInputPageCom/FormInputPageCom";
-import Button from "Features/Authentication/Components/Button/Button";
+import FormInput from "Features/Authentication/Components/FormInput/FormInput";
 
-import { FaFacebookSquare } from "react-icons/fa";
+import Button from "Features/Authentication/Components/Button/Button";
 
 import {
   AuthContainer,
@@ -21,40 +21,31 @@ import {
   AuthHeader,
   Forget,
   AuthContainerDiv,
-} from "./LogInPageCom.styled";
+} from "./LogInScreen.styled";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,20}$/;
 const PWD_REGEX = /^[A-z][A-z0-9-_]{8,20}$/;
 
-const defaultFormFields = {
-  userName: "",
-  password: "",
-};
-
 /**
- * LoginPageCom component that is used in Login page
- * @returns {React.Component}  LoginPageCom component that is used in Login page
+ * LoginScreen component that is used in Login Component
+ * @returns {React.Component}  LoginScreen component that is used in Login Component
  */
-const LogInPageCom = () => {
-  /**
-   * state to handel any change the user make in the input fields
-   */
-  const [formFields, setFormFields] = useState(defaultFormFields);
 
-  /**
-   * state to know if the userName is valid or not to control what to show to the user
-   */
-  const [validName, setValidName] = useState(false);
-
-  /**
-   * state to know if the password is valid or not to control what to show to the user
-   */
-  const [validPassword, setValidPassword] = useState(false);
-
-  /**
-   * state to know if the user focused on input field at least one time
-   */
-  const [initialFocus, setInitialFocus] = useState(true);
+const LogInScreen = ({
+  formFields,
+  setFormFields,
+  validName,
+  setValidName,
+  validPassword,
+  setValidPassword,
+  userNameScreen,
+  setUserNameScreen,
+  passwordScreen,
+  setPasswordScreen,
+  initialFocus,
+  setInitialFocus,
+  setErrMsg,
+}) => {
   const { userName, password } = formFields;
 
   /**
@@ -63,7 +54,6 @@ const LogInPageCom = () => {
   useEffect(() => {
     if (userName.length > 0) {
       setInitialFocus(false);
-      console.log("Entered");
     }
     setValidName(USER_REGEX.test(userName));
   }, [userName]);
@@ -74,7 +64,6 @@ const LogInPageCom = () => {
   useEffect(() => {
     if (password.length > 0) {
       setInitialFocus(false);
-      console.log("Entered");
     }
     setValidPassword(PWD_REGEX.test(password));
   }, [password]);
@@ -97,7 +86,6 @@ const LogInPageCom = () => {
     if (name === "userName") {
       setValidName(USER_REGEX.test(userName));
     }
-
     if (name === "password") {
       setValidPassword(PWD_REGEX.test(password));
     }
@@ -117,6 +105,7 @@ const LogInPageCom = () => {
   /**
    * Adding some configurations to the signIn with google feature
    */
+
   useEffect(() => {
     /* global google */
 
@@ -140,15 +129,21 @@ const LogInPageCom = () => {
     console.log(response);
   };
 
+  /**
+   * Function to handle the captcha and set the state of notRobot to true
+   * @param {boolean} value the value of captcha
+   */
+
   return (
     <>
       {
-        <AuthContainer>
-          <AuthContainerDiv>
+        <AuthContainer userNameScreen={userNameScreen}>
+          <AuthContainerDiv userNameScreen={userNameScreen || passwordScreen}>
             <AuthHeader>Log In</AuthHeader>
             <AuthParagraph>
-              By continuing, you agree to our <Privacy>User Agreement</Privacy>{" "}
-              and <Privacy>Privacy Policy</Privacy>.
+              By continuing, you agree are setting up a Reddit account and agree
+              to our <Privacy>User Agreement</Privacy> and{" "}
+              <Privacy>Privacy Policy</Privacy>.
             </AuthParagraph>
             <SignInWithGoogle>
               <div id="signInDiv"></div>
@@ -161,8 +156,7 @@ const LogInPageCom = () => {
                 fields="name,email,picture"
                 callback={responseFacebook}
                 cssClass="my-facebook-button-class"
-                icon=<FaFacebookSquare />
-                textButton="CONTINUE WITH FACEBOOK"
+                icon="fa-facebook"
               />
             </SignInWithFacebook>
 
@@ -171,11 +165,11 @@ const LogInPageCom = () => {
             </OrHeader>
 
             <form onSubmit={handleSubmit}>
-              <FormInputPageCom
+              <FormInput
                 valid={validName}
                 initialFocus={initialFocus}
                 showIcon={true}
-                label="USERNAME"
+                label="Username"
                 type="text"
                 onChange={handleChange}
                 name="userName"
@@ -185,13 +179,13 @@ const LogInPageCom = () => {
                 }}
               />
 
-              {/* Show error message if the userName if not valid and the user made a focus on the it's input field */}
+              {/* Show error message if the userName is not valid and the user made a focus on the it's input field */}
               <ErrorParagraph valid={validName || initialFocus}>
                 Username must be between 3 and 20 characters
               </ErrorParagraph>
 
-              <FormInputPageCom
-                label="PASSWORD"
+              <FormInput
+                label="Password"
                 valid={validPassword}
                 initialFocus={initialFocus}
                 showIcon={true}
@@ -201,37 +195,57 @@ const LogInPageCom = () => {
                 value={password}
               />
 
+              <Forget>
+                Forget your{" "}
+                <button
+                  onClick={() => {
+                    setInitialFocus(true);
+                    setUserNameScreen(true);
+                    setPasswordScreen(false);
+
+                    setErrMsg("Not a valid email address");
+                  }}
+                >
+                  username
+                </button>{" "}
+                or{" "}
+                <button
+                  onClick={() => {
+                    setInitialFocus(true);
+                    setUserNameScreen(false);
+                    setPasswordScreen(true);
+
+                    setErrMsg("Not a valid email address");
+                  }}
+                >
+                  password
+                </button>
+              </Forget>
+
               <ButtonsContainer>
                 {/** Show an enabled button if the password and userName are valid */}
                 {validName && validPassword && (
                   <Button
-                    page={true}
-                    valid={validName}
+                    valid={validName && validPassword}
                     type="button"
                     onClick={() => {}}
                   >
-                    LOG IN
+                    Log In
                   </Button>
                 )}
 
-
                 {/** Show an disabled button if the password or userName are not valid */}
+
                 {(!validName || !validPassword) && (
-                  <Button page={true} disabled valid={validName} type="button">
-                    LOG IN
+                  <Button
+                    disabled
+                    valid={validName && validPassword}
+                    type="button"
+                  >
+                    Log In
                   </Button>
                 )}
               </ButtonsContainer>
-
-              <Forget>
-                Forget your <button onClick={() => {}}>username</button> or{" "}
-                <button onClick={() => {}}>password</button>
-              </Forget>
-              <br></br>
-              <br></br>
-              <Forget>
-                New to Reddit? <button onClick={() => {}}>SIGN UP</button>
-              </Forget>
             </form>
           </AuthContainerDiv>
         </AuthContainer>
@@ -240,4 +254,4 @@ const LogInPageCom = () => {
   );
 };
 
-export default LogInPageCom;
+export default LogInScreen;

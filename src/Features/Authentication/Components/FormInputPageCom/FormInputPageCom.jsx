@@ -2,6 +2,14 @@ import { FormInputLabel, Input, Group } from "./FormInputPageCom.styled";
 import { BsCheckLg } from "react-icons/bs";
 import { GoPrimitiveDot } from "react-icons/go";
 
+
+/**
+ * FormInput component that is used in authentication pages
+ * @param {string} label The label of the input field
+ * @param {Array} otherProps Prop to know the shape of the input field 
+ * @returns {React.Component}  FormInput component used in authentication pages
+ */
+
 const FormInputPageCom = ({ label, ...otherProps }) => {
   return (
     <>

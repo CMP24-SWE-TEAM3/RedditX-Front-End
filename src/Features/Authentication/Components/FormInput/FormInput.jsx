@@ -1,6 +1,14 @@
 import { FormInputLabel, Input, Group } from "./FormInput.styled";
 import { BsCheckLg } from "react-icons/bs";
 
+
+/**
+ * FormInput component that is used in authentication modals
+ * @param {string} label The label of the input field
+ * @param {Array} otherProps Prop to know the shape of the input field 
+ * @returns {React.Component}  FormInput component used in authentication modals
+ */
+
 const FormInput = ({ label, ...otherProps }) => {
   return (
     <>

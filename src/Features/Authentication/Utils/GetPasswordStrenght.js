@@ -1,8 +1,11 @@
+/**
+ * Function to get the strength of the password
+ * @param {string} str The user password
+ * @returns {number}
+ */
+
 let GetPasswordStrength = (str) => {
   const uniqueCount = new Set(str).size;
-    console.log(str);
-  console.log(uniqueCount);
-  console.log(typeof(uniqueCount));
 
   return uniqueCount;
 };

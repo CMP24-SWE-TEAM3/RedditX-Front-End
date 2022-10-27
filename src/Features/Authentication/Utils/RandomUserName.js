@@ -1,4 +1,4 @@
-const RundomUserName = () => {
+const RandomUserName = () => {
   var wordList = [
     "3d",
     "a",
@@ -86779,4 +86779,4 @@ const RundomUserName = () => {
 //   console.log(randomUserName);
   return randomUserName;
 };
-export default RundomUserName;
+export default RandomUserName;

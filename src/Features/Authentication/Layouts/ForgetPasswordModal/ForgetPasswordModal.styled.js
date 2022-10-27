@@ -154,6 +154,5 @@ export const MyReCAPTCHA = styled(ReCAPTCHA)`
 export const ReCAPTCHAContainer = styled.div`
   transform: translateX(-3%) scale(0.9);
   margin: 10px 0;
-
   display: ${(p) => (p.validEmail ? "block" : "none")};
 `;

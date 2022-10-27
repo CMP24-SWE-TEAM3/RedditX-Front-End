@@ -2,8 +2,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import React from "react";
 
-import SignUpVerticalModal from '../Components/Modal/SignUp/SignUpVerticalModal';
-import LogInVerticalModal from '../Components/Modal/LogIn/LogInVerticalModal';
+import SignUpVerticalModal from '../Layouts/Modal/SignUp/SignUpVerticalModal';
+import LogInVerticalModal from '../Layouts/Modal/LogIn/LogInVerticalModal';
 
 
 export const toggle = () => {

@@ -11,7 +11,7 @@ export const MyModal = styled(Modal)`
   }
 
   > div {
-    width: 400px;
+    width: 380px;
   }
 `;
 export const MyModalHeader = styled(Modal.Header)`
@@ -21,11 +21,17 @@ export const MyModalHeader = styled(Modal.Header)`
     font-size: 10px;
   }
 `;
+export const MyBody = styled.div`
+  border: none;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+`;
+
 export const HaveAccount = styled.span`
-padding: 0 0 0 32px;
+  padding: 0 0 0 45px;
   font-size: 12px;
   margin-bottom: 100px;
-
   button {
     padding: 0;
     font-weight: 700;
@@ -36,3 +42,4 @@ padding: 0 0 0 32px;
     font-family: ${fontFamily};
   }
 `;
+

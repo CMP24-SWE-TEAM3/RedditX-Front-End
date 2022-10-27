@@ -25,6 +25,10 @@ import LogInPage from "Features/Authentication/Pages/LogInPage/LogInPage";
 
 import SignUpPage from "Features/Authentication/Pages/SignUpPage/SignUpPage";
 
+import ForgetUserNamePage from "Features/Authentication/Pages/ForgetUserNamePage/ForgetUserNamePage";
+
+import ForgetPasswordPage from "Features/Authentication/Pages/ForgetPasswordPage/ForgetPasswordPage";
+
 /**
  * The main app of our application it handles routing
  *
@@ -46,7 +50,7 @@ function App() {
     }
   };
   return (
-    <SignUpPage/>
+    <TestHome/>
   );
 }
 
