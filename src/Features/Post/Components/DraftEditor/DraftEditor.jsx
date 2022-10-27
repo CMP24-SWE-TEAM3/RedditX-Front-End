@@ -16,6 +16,7 @@ import {
   DraftEditorContainer,
   RichEditorEditor,
 } from "./DraftEditor.styled";
+import useLink from "Features/Post/Hooks/useLink";
 
 // Extract Draft variables
 const {
@@ -69,13 +70,20 @@ const DraftEditor = () => {
     EditorState.createEmpty(decorator)
   );
   const [showURLInput, setShowURLInput] = useState(false);
-  const [showLinkURLInput, setShowLinkURLInput] = useState(false);
   const [urlType, setUrltype] = useState("");
   const [urlValue, setUrlValue] = useState("");
-  const [linkUrlValue, setLinkUrlValue] = useState("");
   const editorRef = useRef(null);
   const urlRef = useRef(null);
   const linkUrlRef = useRef(null);
+  const {
+    promptForLink,
+    removeLink,
+    showLinkURLInput,
+    onLinkURLChange,
+    linkUrlValue,
+    onLinkInputKeyDown,
+    confirmLink,
+  } = useLink(editorState, setEditorState, RichUtils, EditorState);
   // start console log
   // const raw = convertToRaw(editorState.getCurrentContent());
   // console.log(raw);
@@ -146,77 +154,6 @@ const DraftEditor = () => {
     promptForMedia("video");
   }
 
-  // Link
-
-  const onLinkURLChange = (e) => setLinkUrlValue(e.target.value);
-  const removeLink = (e) => {
-    e.preventDefault();
-    const selection = editorState.getSelection();
-    if (!selection.isCollapsed()) {
-      setEditorState(RichUtils.toggleLink(editorState, selection, null));
-    }
-  };
-  const onLinkInputKeyDown = (e) => {
-    if (e.which === 13) {
-      confirmLink(e);
-    }
-  };
-
-  const confirmLink = (e) => {
-    e.preventDefault();
-    const contentState = editorState.getCurrentContent();
-
-    const contentStateWithEntity = contentState.createEntity(
-      "LINK",
-      "MUTABLE",
-      { url: linkUrlValue }
-    );
-    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-
-    // Apply entity
-    let nextEditorState = EditorState.set(editorState, {
-      currentContent: contentStateWithEntity,
-    });
-
-    // Apply selection
-    nextEditorState = RichUtils.toggleLink(
-      nextEditorState,
-      nextEditorState.getSelection(),
-      entityKey
-    );
-
-    setEditorState(nextEditorState);
-    setShowLinkURLInput(false);
-    setLinkUrlValue("");
-  };
-  const promptForLink = (e) => {
-    e.preventDefault();
-    const selection = editorState.getSelection();
-    if (!selection.isCollapsed()) {
-      const contentState = editorState.getCurrentContent();
-      const startKey = editorState.getSelection().getStartKey();
-      const startOffset = editorState.getSelection().getStartOffset();
-      const blockWithLinkAtBeginning = contentState.getBlockForKey(startKey);
-      const linkKey = blockWithLinkAtBeginning.getEntityAt(startOffset);
-      let url = "";
-      if (linkKey) {
-        const linkInstance = contentState.getEntity(linkKey);
-        url = linkInstance.getData().url;
-      }
-      // Get selected text
-      const selectionState = editorState.getSelection();
-      const anchorKey = selectionState.getAnchorKey();
-      const currentContent = editorState.getCurrentContent();
-      const currentContentBlock = currentContent.getBlockForKey(anchorKey);
-      const start = selectionState.getStartOffset();
-      const end = selectionState.getEndOffset();
-      const selectedText = currentContentBlock.getText().slice(start, end);
-      console.log("selectedText", selectedText);
-      setLinkUrlValue(url);
-      setShowLinkURLInput(true);
-    }
-  };
-
   return (
     <DraftEditorContainer>
       <Controls>
@@ -230,12 +167,12 @@ const DraftEditor = () => {
         />
         <MediaControls addImage={addImage} addVideo={addVideo} />
       </Controls>
-      {/* <div>
+      <div>
         <button onMouseDown={promptForLink} style={{ marginRight: 10 }}>
           Add Link
         </button>
         <button onMouseDown={removeLink}>Remove Link</button>
-      </div> */}
+      </div>
       <RichEditorEditor onClick={focus}>
         <Editor
           blockStyleFn={getBlockStyle}
