@@ -6,7 +6,12 @@ import DragAndDropFile from "../DragDropFile/DragDropFile";
 import PostFlagsWrapper from "../PostFlagsWrapper/PostFlagsWrapper";
 
 // Import styled components
-import { StyledImageAndVideoFrom } from "./ImageAndVideoForm.styled";
+import {
+  PostButton,
+  StyledImageAndVideoFrom,
+  CancelButton,
+  SubmitButtons,
+} from "./ImageAndVideoForm.styled";
 
 const ImageAndVideoForm = () => {
   return (
@@ -17,6 +22,10 @@ const ImageAndVideoForm = () => {
       </Form.Group>
       <DragAndDropFile />
       <PostFlagsWrapper />
+      <SubmitButtons>
+        <CancelButton variant="light">Cancel</CancelButton>
+        <PostButton>Post</PostButton>
+      </SubmitButtons>
     </StyledImageAndVideoFrom>
   );
 };

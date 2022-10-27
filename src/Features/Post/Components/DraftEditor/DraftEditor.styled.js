@@ -11,7 +11,7 @@ export const Controls = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  background-color: ${({ theme }) => theme.background.lightMuted};
+  background-color: ${({ theme }) => theme.button.muted};
   width: 100%;
   height: 100%;
   padding: 5px;

@@ -6,7 +6,7 @@ export const StyledButton = styled.span`
   padding: 2px 0;
   display: inline-block;
   color: ${({ active, theme }) =>
-    active ? "black" : theme.borderColor.primary};
+    active ? theme.color.primary : theme.borderColor.primary};
   border-radius: 4px;
   outline: none;
   padding: 4px;

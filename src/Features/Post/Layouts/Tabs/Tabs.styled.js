@@ -20,7 +20,7 @@ export const NavLink = styled(Nav.Link)`
   border-bottom: 5px solid ${({ theme }) => theme.background.primary};
   &:hover {
     color: ${({ theme }) => theme.color.muted};
-    background-color: ${({ theme }) => theme.background.muted};
+    background-color: ${({ theme }) => theme.button.hoverLight};
   }
 `;
 

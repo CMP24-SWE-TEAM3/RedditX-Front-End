@@ -6,7 +6,12 @@ import DraftEditor from "../DraftEditor/DraftEditor";
 import { Form } from "react-bootstrap";
 
 // Import styled components
-import { StyledDraftEditorForm } from "./DraftEditorForm.styled";
+import {
+  PostButton,
+  SaveDraftButton,
+  StyledDraftEditorForm,
+  SubmitButtons,
+} from "./DraftEditorForm.styled";
 
 const DraftEditorForm = () => {
   return (
@@ -17,6 +22,10 @@ const DraftEditorForm = () => {
       </Form.Group>
       <DraftEditor />
       <PostFlagsWrapper />
+      <SubmitButtons>
+        <SaveDraftButton variant="light">Save Draft</SaveDraftButton>
+        <PostButton>Post</PostButton>
+      </SubmitButtons>
     </StyledDraftEditorForm>
   );
 };

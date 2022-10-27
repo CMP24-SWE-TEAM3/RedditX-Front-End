@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import PostFlagsWrapper from "../PostFlagsWrapper/PostFlagsWrapper";
 
 // Import styled components
-import { StyledLinkForm } from "./LinkForm.styled";
+import { PostButton, SaveDraftButton, StyledLinkForm, SubmitButtons } from "./LinkForm.styled";
 
 const LinkForm = () => {
   return (
@@ -18,6 +18,10 @@ const LinkForm = () => {
         <Form.Control as="textarea" placeholder="Url" rows={3} />
       </Form.Group>
       <PostFlagsWrapper />
+      <SubmitButtons>
+        <SaveDraftButton variant="light">Save Draft</SaveDraftButton>
+        <PostButton>Post</PostButton>
+      </SubmitButtons>
     </StyledLinkForm>
   );
 };

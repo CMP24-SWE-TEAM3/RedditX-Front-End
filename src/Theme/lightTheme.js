@@ -49,6 +49,10 @@ const lightTheme = {
   button: {
     // The color when hover on buttons on the website
     muted: "#f6f7f8",
+    // Color of button when hover
+    hoverLight: "#0079d312",
+    // Color of button when hover
+    hoverBlue: "#0079d3e3",
   },
 };
 

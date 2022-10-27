@@ -50,7 +50,11 @@ const darkTheme = {
   // The colors of the buttons in the website
   button: {
     // The color when hover on buttons on the website
-    muted: "#1a1a1b",
+    muted: "#3435364d",
+    // Color of button when hover
+    hoverLight: "#3435364d",
+    // Color of button when hover
+    hoverBlue: "#cccccc",
   },
 };
 
