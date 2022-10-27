@@ -8,7 +8,7 @@ import Draft from "draft-js";
 import BlockStyleControls from "../BlockStyleControls/BlockStyleControls";
 import InlineStyleControls from "../InlineStyleControls/InlineStyleControls";
 import MediaControls from "../MediaControls/MediaControls";
-import UploadedMedia from "../UploadedMedia/UploadedMedia";
+import Media from "../Media/Media";
 
 // Import styled components
 import {
@@ -17,12 +17,11 @@ import {
   RichEditorEditor,
 } from "./DraftEditor.styled";
 import useLink from "Features/Post/Hooks/useLink";
+import useMedia from "Features/Post/Hooks/useMedia";
 
 // Extract Draft variables
 const {
   convertToRaw,
-  SelectionState,
-  Modifier,
   AtomicBlockUtils,
   Editor,
   EditorState,
@@ -69,9 +68,7 @@ const DraftEditor = () => {
   const [editorState, setEditorState] = useState(
     EditorState.createEmpty(decorator)
   );
-  const [showURLInput, setShowURLInput] = useState(false);
-  const [urlType, setUrltype] = useState("");
-  const [urlValue, setUrlValue] = useState("");
+
   const editorRef = useRef(null);
   const urlRef = useRef(null);
   const linkUrlRef = useRef(null);
@@ -84,6 +81,16 @@ const DraftEditor = () => {
     onLinkInputKeyDown,
     confirmLink,
   } = useLink(editorState, setEditorState, RichUtils, EditorState);
+
+  const {
+    showURLInput,
+    onURLChange,
+    urlValue,
+    onURLInputKeyDown,
+    confirmMedia,
+    addImage,
+    addVideo,
+  } = useMedia(editorState, setEditorState, EditorState, AtomicBlockUtils);
   // start console log
   // const raw = convertToRaw(editorState.getCurrentContent());
   // console.log(raw);
@@ -91,27 +98,6 @@ const DraftEditor = () => {
 
   const focus = () => editorRef.current.focus();
   const onChange = (editorState) => setEditorState(editorState);
-
-  const onURLChange = (e) => setUrlValue(e.target.value);
-  function _confirmMedia(e) {
-    e.preventDefault();
-    // const { editorState, urlValue, urlType } = this.state;
-    const contentState = editorState.getCurrentContent();
-    const contentStateWithEntity = contentState.createEntity(
-      urlType,
-      "IMMUTABLE",
-      { src: urlValue }
-    );
-    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-    const newEditorState = EditorState.set(editorState, {
-      currentContent: contentStateWithEntity,
-    });
-    setEditorState(
-      AtomicBlockUtils.insertAtomicBlock(newEditorState, entityKey, " ")
-    );
-    setShowURLInput(false);
-    setUrlValue("");
-  }
   function handleKeyCommand(command, editorState) {
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
@@ -135,23 +121,6 @@ const DraftEditor = () => {
   }
   function toggleInlineStyle(inlineStyle) {
     onChange(RichUtils.toggleInlineStyle(editorState, inlineStyle));
-  }
-
-  function onURLInputKeyDown(e) {
-    if (e.which === 13) {
-      _confirmMedia(e);
-    }
-  }
-  function promptForMedia(type) {
-    setShowURLInput(true);
-    setUrlValue("");
-    setUrltype(type);
-  }
-  function addImage() {
-    promptForMedia("image");
-  }
-  function addVideo() {
-    promptForMedia("video");
   }
 
   return (
@@ -196,7 +165,7 @@ const DraftEditor = () => {
             value={urlValue}
             onKeyDown={onURLInputKeyDown}
           />
-          <button onMouseDown={_confirmMedia}>Confirm</button>
+          <button onMouseDown={confirmMedia}>Confirm</button>
         </div>
       )}
       {showLinkURLInput && (
@@ -259,16 +228,5 @@ function mediaBlockRenderer(block) {
   }
   return null;
 }
-
-const Media = (props) => {
-  const entity = props.contentState.getEntity(props.block.getEntityAt(0));
-  const { src } = entity.getData();
-  const type = entity.getType();
-  if (type === "image") {
-    return <UploadedMedia type={"img"} src={src} />;
-  } else if (type === "video") {
-    return <UploadedMedia type={"video"} controls={true} src={src} />;
-  }
-};
 
 export default DraftEditor;

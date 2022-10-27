@@ -4,7 +4,7 @@ const useLink = (editorState, setEditorState, RichUtils, EditorState) => {
   // Link
   const [showLinkURLInput, setShowLinkURLInput] = useState(false);
   const [linkUrlValue, setLinkUrlValue] = useState("");
-  console.log(editorState, setEditorState, RichUtils, EditorState);
+
   const onLinkURLChange = (e) => setLinkUrlValue(e.target.value);
   const removeLink = (e) => {
     e.preventDefault();
