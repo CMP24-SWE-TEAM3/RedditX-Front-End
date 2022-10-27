@@ -5,7 +5,12 @@ import {
   List,
   OuterContainer,
 } from "./CommunitiesPage.styled";
-
+/**
+ * Component that contains the CommunitiesPage .
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const CommunitiesPage = () => {
   return (
     <Container>

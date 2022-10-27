@@ -37,6 +37,9 @@ export const PeopleInfo = styled.div`
 export const PeopleMainInfo = styled.div`
   display: flex;
   align-items: baseline;
+  @media (max-width: 500px) {
+    flex-wrap: wrap;
+  }
 `;
 export const PeopleTitle = styled.h6`
   margin: 0;
@@ -72,6 +75,11 @@ export const PeopleDescription = styled.p`
   font-weight: 400;
   line-height: 18px;
   color: ${({ theme }) => theme.color.muted};
+  @media (max-width: 570px) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;
 export const BtnContainer = styled.div`
   flex-shrink: 0;

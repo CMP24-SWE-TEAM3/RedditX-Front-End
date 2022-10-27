@@ -134,6 +134,9 @@ export const BodyText = styled.div`
   position: relative;
   padding: 2px 0;
   width: 100%;
+  @media (max-width: 500px) {
+    max-height: 270px;
+  }
 `;
 export const BodyTextStyle = styled.div`
   font-family: Noto Sans, Arial, sans-serif;

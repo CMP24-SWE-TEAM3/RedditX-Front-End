@@ -114,6 +114,9 @@ export const ContainerPost = styled.div`
     word-wrap: break-word;
     color: ${({ theme }) => theme.color.titleText_of_link};
     text-decoration: none;
+    @media (max-width: 570px) {
+      font-size: 12px;
+    }
   }
   & .post-body-content a div p {
     display: inline;
@@ -137,6 +140,9 @@ export const ContainerPost = styled.div`
   }
   & .post-image {
     padding-left: 8px;
+    @media (max-width: 570px) {
+      margin: auto;
+    }
   }
   @media (min-width: 478px) {
     & .post-image {

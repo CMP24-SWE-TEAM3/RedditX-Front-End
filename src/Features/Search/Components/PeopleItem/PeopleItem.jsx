@@ -12,8 +12,19 @@ import {
   Img,
 } from "./PeopleItem.styled.js";
 import PeopleImage from "../../Assets/People_Image.jpg";
+/**
+ * Component that contains the PeopleItem and manage the state of the button Follow.
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const PeopleItem = () => {
   const [btnContent, setstate] = useState("Follow");
+  /**
+   * it is the function that handle the state of the button when click on it.
+   *
+   * @param {Object} e it is an object which i can preventDefault and not redirect to the link
+   */
   function clickHandler(e) {
     e.preventDefault();
     if (btnContent === "Follow") {
@@ -22,11 +33,19 @@ const PeopleItem = () => {
       setstate("Follow");
     }
   }
+  /**
+   * it is the function that handle the state of the button when mouseEnter on it.
+   *
+   */
   function mouseEnterHandler() {
     if (btnContent === "Following") {
       setstate("Unfollow");
     }
   }
+  /**
+   * it is the function that handle the state of the button when MouseLeave on it.
+   *
+   */
   function MouseLeaveHandler() {
     if (btnContent === "Unfollow") {
       setstate("Following");

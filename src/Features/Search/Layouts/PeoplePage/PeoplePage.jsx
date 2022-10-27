@@ -5,7 +5,12 @@ import {
   OuterContainer,
   InnerContainer,
 } from "./PeoplePage.styled";
-
+/**
+ * Component that contains the PeoplePage .
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const PeoplePage = () => {
   return (
     <Container>
