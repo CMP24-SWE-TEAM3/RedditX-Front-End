@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import {IoIosLink} from "react-icons/io";
-import LightTheme from "Theme/lightTheme";
 
 export const IconStyled = styled(IoIosLink)`
-  color: ${LightTheme.color.muted};
+  color: ${({theme})=>theme.color.muted};
   display: flex;
 `
 export const LinkButtonStyled = styled.button
@@ -19,5 +18,5 @@ export const LinkButtonStyled = styled.button
       &:hover {
         background: #ededed;
       }
-      color: ${LightTheme.color.primary};
+      color: ${({theme})=>theme.color.primary};
     `

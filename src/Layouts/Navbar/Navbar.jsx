@@ -5,10 +5,12 @@ import {StyledHeader, StyledSeperator} from "./Navbar.styled";
 import PopularButton from "Components/PopularButton/PopularButton"
 import CoinButton from "Components/CoinButton/CoinButton";
 import ModeratorButton from "Components/ModeratorButton/ModeratorButton";
-import DropFunc from 'Components/DropDownButtonLeft/DropDown'
 import CreatePostButton from "Components/CreatePostButton/CreatePostButton"
 import ChatButton from "Components/ChatButton/Chat";
 import NotificationButton from "Components/NotificationButton/NotificationButton";
+import AdvertiseButton from "Components/AdvertiseButton/AdvertiseButton";
+import DropDownRightButton from "Components/DropDownRight/DropDownRight";
+import DropDownLeft from "Components/DropDownButtonLeft/DropDown";
 
 const Navbar = (props) => {
     const ButtonHandler = () => {
@@ -19,16 +21,18 @@ const Navbar = (props) => {
     return (
         <StyledHeader>
             <Badge/>
-            <DropFunc Name={"Home"}/>
+            <DropDownLeft Name={"Home"}/>
             <SearchBar/>
             <PopularButton onshow={ButtonHandler}/>
             <CoinButton onshow={ButtonHandler}/>
             <StyledSeperator/>
             <ModeratorButton onshow={ButtonHandler}/>
             <ChatButton onshow={ButtonHandler}/>
-            <CreatePostButton onshow={ButtonHandler}/>
             <NotificationButton onshow={ButtonHandler}/>
-            <DropFunc Name={"Profile"}/>
+            <CreatePostButton onshow={ButtonHandler}/>
+            <AdvertiseButton/>
+            {/*<DropFunc Name={"Profile"}/>*/}
+            <DropDownRightButton/>
         </StyledHeader>
     );
 };

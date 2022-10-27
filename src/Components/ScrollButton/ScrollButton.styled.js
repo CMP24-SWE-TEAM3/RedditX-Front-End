@@ -9,8 +9,8 @@ export const ButtonStyled = styled.button`
   z-index: 1;
   cursor: pointer;
   color: white;
-  border-color: ${LightTheme.color.secondary};
-  background-color: ${LightTheme.color.secondary};
+  border-color: ${({theme})=>theme.color.secondary};
+  background-color: ${({theme})=>theme.color.secondary};
   width: 112px;
 
   &:hover {
