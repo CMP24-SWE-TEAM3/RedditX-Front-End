@@ -5,30 +5,32 @@ import { MdOutlineTextFields } from "react-icons/md";
 import { BsListUl } from "react-icons/bs";
 import { AiOutlineOrderedList } from "react-icons/ai";
 import { TfiQuoteRight } from "react-icons/tfi";
-import { HiOutlineCodeBracketSquare } from "react-icons/hi2";
+import { SiCodecademy } from "react-icons/si";
+
+// Import components
 import { StyledBlockControls } from "./BlockStyleControls.styled";
 const BLOCK_TYPES = [
   {
     label: "H4",
     style: "header-four",
-    icon: <MdOutlineTextFields size={20} />,
+    icon: <MdOutlineTextFields size={22} />,
   },
 
-  { label: "UL", style: "unordered-list-item", icon: <BsListUl size={20} /> },
+  { label: "UL", style: "unordered-list-item", icon: <BsListUl size={22} /> },
   {
     label: "OL",
     style: "ordered-list-item",
-    icon: <AiOutlineOrderedList size={20} />,
+    icon: <AiOutlineOrderedList size={22} />,
   },
   {
     label: "Blockquote",
     style: "blockquote",
-    icon: <TfiQuoteRight size={20} />,
+    icon: <TfiQuoteRight size={22} />,
   },
   {
     label: "Code Block",
     style: "code-block",
-    icon: <HiOutlineCodeBracketSquare size={20} />,
+    icon: <SiCodecademy size={22} />,
   },
 ];
 

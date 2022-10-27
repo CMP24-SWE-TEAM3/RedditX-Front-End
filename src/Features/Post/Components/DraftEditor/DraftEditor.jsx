@@ -1,10 +1,25 @@
+// Import hooks
 import React, { useRef, useState } from "react";
+
+// Import draft editor
 import Draft from "draft-js";
+
+// Import components
 import BlockStyleControls from "../BlockStyleControls/BlockStyleControls";
 import InlineStyleControls from "../InlineStyleControls/InlineStyleControls";
 import MediaControls from "../MediaControls/MediaControls";
-import { Controls, DraftEditorContainer, RichEditorEditor } from "./DraftEditor.styled";
+import UploadedMedia from "../UploadedMedia/UploadedMedia";
+
+// Import styled components
+import {
+  Controls,
+  DraftEditorContainer,
+  RichEditorEditor,
+} from "./DraftEditor.styled";
+
+// Extract Draft variables
 const {
+  convertToRaw,
   AtomicBlockUtils,
   Editor,
   EditorState,
@@ -19,6 +34,10 @@ const DraftEditor = () => {
   const [urlValue, setUrlValue] = useState("");
   const editorRef = useRef(null);
   const urlRef = useRef(null);
+  // start console log
+  const raw = convertToRaw(editorState.getCurrentContent());
+  console.log(raw);
+  // end console log
 
   const focus = () => editorRef.current.focus();
   const onChange = (editorState) => setEditorState(editorState);
@@ -78,20 +97,12 @@ const DraftEditor = () => {
     setUrlValue("");
     setUrltype(type);
   }
-  function addAudio() {
-    promptForMedia("audio");
-  }
   function addImage() {
     promptForMedia("image");
   }
   function addVideo() {
     promptForMedia("video");
   }
-
-  //   In render function
-  // If the user changes block type before entering any text, we can
-  // either style the placeholder or hide it. Let's just hide it now.
-  let className = "RichEditor-editor";
 
   return (
     <DraftEditorContainer>
@@ -104,25 +115,7 @@ const DraftEditor = () => {
           editorState={editorState}
           onToggle={toggleBlockType}
         />
-        <MediaControls
-          styles={styles}
-          addAudio={addAudio}
-          addImage={addImage}
-          addVideo={addVideo}
-        />
-        {showURLInput && (
-          <div style={styles.urlInputContainer}>
-            <input
-              onChange={onURLChange}
-              ref={urlRef}
-              style={styles.urlInput}
-              type="text"
-              value={urlValue}
-              onKeyDown={onURLInputKeyDown}
-            />
-            <button onMouseDown={_confirmMedia}>Confirm</button>
-          </div>
-        )}
+        <MediaControls addImage={addImage} addVideo={addVideo} />
       </Controls>
       <RichEditorEditor onClick={focus}>
         <Editor
@@ -138,6 +131,18 @@ const DraftEditor = () => {
           blockRendererFn={mediaBlockRenderer}
         />
       </RichEditorEditor>
+      {showURLInput && (
+        <div>
+          <input
+            onChange={onURLChange}
+            ref={urlRef}
+            type="text"
+            value={urlValue}
+            onKeyDown={onURLInputKeyDown}
+          />
+          <button onMouseDown={_confirmMedia}>Confirm</button>
+        </div>
+      )}
     </DraftEditorContainer>
   );
 };
@@ -154,6 +159,7 @@ const styleMap = {
     borderRadius: "3px",
   },
   SUPERSCRIPT: {
+    color: "#1c1c1c",
     verticalAlign: "super",
     fontSize: "12px",
   },
@@ -185,62 +191,16 @@ function mediaBlockRenderer(block) {
   }
   return null;
 }
-const Audio = (props) => {
-  return <audio controls src={props.src} style={styles.media} />;
-};
-const Image = (props) => {
-  return <img src={props.src} style={styles.media} alt="uploaded" />;
-};
-const Video = (props) => {
-  return <video controls src={props.src} style={styles.media} />;
-};
+
 const Media = (props) => {
   const entity = props.contentState.getEntity(props.block.getEntityAt(0));
   const { src } = entity.getData();
   const type = entity.getType();
-  let media;
-  if (type === "audio") {
-    media = <Audio src={src} />;
-  } else if (type === "image") {
-    media = <Image src={src} />;
+  if (type === "image") {
+    return <UploadedMedia type={"img"} src={src} />;
   } else if (type === "video") {
-    media = <Video src={src} />;
+    return <UploadedMedia type={"video"} controls={true} src={src} />;
   }
-  return media;
-};
-const styles = {
-  root: {
-    fontFamily: "'Georgia', serif",
-    padding: 20,
-    width: 600,
-  },
-  buttons: {
-    marginBottom: 10,
-  },
-  urlInputContainer: {
-    marginBottom: 10,
-  },
-  urlInput: {
-    fontFamily: "'Georgia', serif",
-    marginRight: 10,
-    padding: 3,
-  },
-  editor: {
-    border: "1px solid #ccc",
-    cursor: "text",
-    minHeight: 80,
-    padding: 10,
-  },
-  button: {
-    marginTop: 10,
-    textAlign: "center",
-  },
-  media: {
-    width: "100%",
-    // Fix an issue with Firefox rendering video controls
-    // with 'pre-wrap' white-space
-    whiteSpace: "initial",
-  },
 };
 
 export default DraftEditor;

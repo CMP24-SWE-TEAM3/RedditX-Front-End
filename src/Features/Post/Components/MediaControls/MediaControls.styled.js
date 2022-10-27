@@ -1,8 +1,15 @@
+// Import styled
 import styled from "styled-components";
+
+export const MediaControlsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+`;
 
 export const StyledButton = styled.span`
   cursor: pointer;
-  margin-right: 5px;
+  /* margin-right: 5px; */
   padding: 2px 0;
   display: inline-block;
   color: ${({ active, theme }) =>

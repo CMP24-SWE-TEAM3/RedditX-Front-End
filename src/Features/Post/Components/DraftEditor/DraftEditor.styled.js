@@ -22,11 +22,17 @@ export const RichEditorEditor = styled.div`
   cursor: text;
   font-size: 16px;
   padding: 8px 16px;
-
+  position: relative;
   .public-DraftEditor-content,
   .public-DraftEditorPlaceholder-root {
     margin: 0 -15px -15px;
     padding: 15px;
+  }
+
+  .public-DraftEditorPlaceholder-inner {
+    color: ${({ theme }) => theme.color.muted};
+    position: absolute;
+    top: 35px;
   }
 
   .public-DraftEditor-content {
@@ -36,7 +42,6 @@ export const RichEditorEditor = styled.div`
   .RichEditor-blockquote {
     border-left: 5px solid #eee;
     color: #666;
-    font-family: "Hoefler Text", "Georgia", serif;
     font-style: italic;
     margin: 16px 0;
     padding: 10px 20px;
@@ -44,7 +49,6 @@ export const RichEditorEditor = styled.div`
 
   .public-DraftStyleDefault-pre {
     background-color: rgba(0, 0, 0, 0.05);
-    font-family: "Inconsolata", "Menlo", "Consolas", monospace;
     font-size: 16px;
     padding: 20px;
   }

@@ -1,16 +1,19 @@
-const MediaControls = ({ styles, addAudio, addImage, addVideo }) => {
+// Import styled components
+import { MediaControlsContainer, StyledButton } from "./MediaControls.styled";
+
+// Import icons
+import { IoImageOutline } from "react-icons/io5";
+import { SlSocialYoutube } from "react-icons/sl";
+const MediaControls = ({ addImage, addVideo }) => {
   return (
-    <div style={styles.buttons}>
-      <button onMouseDown={addAudio} style={{ marginRight: 10 }}>
-        Add Audio
-      </button>
-      <button onMouseDown={addImage} style={{ marginRight: 10 }}>
-        Add Image
-      </button>
-      <button onMouseDown={addVideo} style={{ marginRight: 10 }}>
-        Add Video
-      </button>
-    </div>
+    <MediaControlsContainer>
+      <StyledButton onMouseDown={addImage}>
+        <IoImageOutline size={25} />
+      </StyledButton>
+      <StyledButton onMouseDown={addVideo}>
+        <SlSocialYoutube size={25} />
+      </StyledButton>
+    </MediaControlsContainer>
   );
 };
 
