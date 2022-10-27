@@ -4,6 +4,8 @@ import React, { useRef, useState } from "react";
 // Import draft editor
 import Draft from "draft-js";
 
+import { onAddLink } from "../Link/Link";
+
 // Import components
 import BlockStyleControls from "../BlockStyleControls/BlockStyleControls";
 import InlineStyleControls from "../InlineStyleControls/InlineStyleControls";
@@ -35,6 +37,7 @@ const {
   RichUtils,
   getDefaultKeyBinding,
   CompositeDecorator,
+  Modifier,
 } = Draft;
 
 // Link
@@ -83,7 +86,6 @@ const DraftEditor = () => {
       component: Link,
     },
   ]);
-
   const [editorState, setEditorState] = useState(
     EditorState.createEmpty(decorator)
   );
@@ -99,7 +101,14 @@ const DraftEditor = () => {
     linkUrlValue,
     onLinkInputKeyDown,
     confirmLink,
-  } = useLink(editorState, setEditorState, RichUtils, EditorState);
+  } = useLink(
+    editorState,
+    setEditorState,
+    RichUtils,
+    EditorState,
+    Modifier,
+    decorator
+  );
 
   const {
     showURLInput,

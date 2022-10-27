@@ -1,6 +1,13 @@
 import { useState } from "react";
 
-const useLink = (editorState, setEditorState, RichUtils, EditorState) => {
+const useLink = (
+  editorState,
+  setEditorState,
+  RichUtils,
+  EditorState,
+  Modifier,
+  decorator
+) => {
   // Link
   const [showLinkURLInput, setShowLinkURLInput] = useState(false);
   const [linkUrlValue, setLinkUrlValue] = useState("");
@@ -46,6 +53,32 @@ const useLink = (editorState, setEditorState, RichUtils, EditorState) => {
     setShowLinkURLInput(false);
     setLinkUrlValue("");
   };
+
+  // call all together
+  const onAddLink = (editorState, setEditorState) => {
+    let linkUrl = window.prompt("Add link http:// ");
+    if (linkUrl) {
+      let displayLink = window.prompt("Display Text");
+      if (displayLink) {
+        const currentContent = editorState.getCurrentContent();
+        const createEntity = currentContent.createEntity("LINK", "MUTABLE", {
+          url: linkUrl,
+        });
+        let entityKey = currentContent.getLastCreatedEntityKey();
+        const selection = editorState.getSelection();
+        const textWithEntity = Modifier.insertText(
+          currentContent,
+          selection,
+          displayLink,
+          null,
+          entityKey
+        );
+        let newState = EditorState.createWithContent(textWithEntity, decorator);
+        setEditorState(newState);
+      }
+    }
+  };
+
   const promptForLink = (e) => {
     e.preventDefault();
     console.log(editorState);
@@ -72,6 +105,8 @@ const useLink = (editorState, setEditorState, RichUtils, EditorState) => {
       console.log("selectedText", selectedText);
       setLinkUrlValue(url);
       setShowLinkURLInput(true);
+    } else {
+      onAddLink(editorState, setEditorState);
     }
   };
   return {
