@@ -1,4 +1,8 @@
+// Import styled
 import styled from "styled-components";
+
+// Import bootstrap
+import Popover from "react-bootstrap/Popover";
 
 export const DraftEditorContainer = styled.div`
   background: ${({ theme }) => theme.background.primary};
@@ -52,4 +56,38 @@ export const RichEditorEditor = styled.div`
     font-size: 16px;
     padding: 20px;
   }
+`;
+
+export const Separator = styled.span`
+  display: inline-block;
+  border-right: 1px solid ${({ theme }) => theme.lineColor.primary};
+  box-sizing: border-box;
+  height: 14px;
+  margin: 0 6px;
+  width: 1px;
+`;
+
+export const StyledPopoverBody = styled(Popover.Body)`
+  padding: 10px;
+  background-color: ${({ theme }) => theme.background.primary};
+
+  a {
+    color: ${({ theme }) => theme.color.link};
+    text-decoration: none;
+  }
+  button {
+    outline: none;
+    border: none;
+    background-color: ${({ theme }) => theme.background.primary};
+    color: ${({ theme }) => theme.color.link};
+  }
+`;
+
+export const StyledPopover = styled(Popover)`
+  color: ${({ theme }) => theme.color.link};
+  box-shadow: 0 0 3px ${({ theme }) => theme.lineColor.primary};
+`;
+
+export const StyledLink = styled.a`
+  color: ${({ theme }) => theme.color.link};
 `;

@@ -15,9 +15,16 @@ import {
   Controls,
   DraftEditorContainer,
   RichEditorEditor,
+  Separator,
+  StyledPopoverBody,
+  StyledPopover,
+  StyledLink,
 } from "./DraftEditor.styled";
+
 import useLink from "Features/Post/Hooks/useLink";
 import useMedia from "Features/Post/Hooks/useMedia";
+import LinkControls from "../LinkControls/LinkControls";
+import { OverlayTrigger } from "react-bootstrap";
 
 // Extract Draft variables
 const {
@@ -44,17 +51,29 @@ function findLinkEntities(contentBlock, callback, contentState) {
 const Link = (props) => {
   const { url } = props.contentState.getEntity(props.entityKey).getData();
   return (
-    <a href={url} style={styles.link}>
-      {props.children}
-    </a>
+    <OverlayTrigger
+      placement={"bottom-start"}
+      trigger="click"
+      overlay={
+        <StyledPopover>
+          <StyledPopoverBody>
+            <a href={url}>{url}</a> - <button href={url}>Change</button> |{" "}
+            <button href={url}>Remove</button>
+          </StyledPopoverBody>
+        </StyledPopover>
+      }
+    >
+      <StyledLink
+        href={url}
+        onClick={(e) => {
+          e.preventDefault();
+          console.log("hello");
+        }}
+      >
+        {props.children}
+      </StyledLink>
+    </OverlayTrigger>
   );
-};
-
-const styles = {
-  link: {
-    color: "#3b5998",
-    textDecoration: "underline",
-  },
 };
 
 const DraftEditor = () => {
@@ -130,18 +149,15 @@ const DraftEditor = () => {
           editorState={editorState}
           onToggle={toggleInlineStyle}
         />
+        <LinkControls promptForLink={promptForLink} removeLink={removeLink} />
+        <Separator />
         <BlockStyleControls
           editorState={editorState}
           onToggle={toggleBlockType}
         />
+        <Separator />
         <MediaControls addImage={addImage} addVideo={addVideo} />
       </Controls>
-      <div>
-        <button onMouseDown={promptForLink} style={{ marginRight: 10 }}>
-          Add Link
-        </button>
-        <button onMouseDown={removeLink}>Remove Link</button>
-      </div>
       <RichEditorEditor onClick={focus}>
         <Editor
           blockStyleFn={getBlockStyle}
