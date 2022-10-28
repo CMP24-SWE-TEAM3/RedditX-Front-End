@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import cover from "Assets/web.jpg";
+import Modal from "react-bootstrap/Modal";
+import {DefaultAllowlist as styles} from "bootstrap/js/src/util/sanitizer";
+
 
 export const Container = styled.div`
-  background-color: ${({ theme }) => theme.background.primary};
+  background-color: ${({theme}) => theme.background.primary};
   border: thin solid ${({theme}) => theme.lineColor.primary};
   border-radius: 4px;
   box-shadow: 0 2px 4px 0 rgb(0 0 0 / 6%);
@@ -46,12 +49,13 @@ export const Container = styled.div`
     box-sizing: border-box;
     cursor: pointer;
   }
+
   & .sub-but1:hover {
     background-color: #1484d6 !important;
   }
 
   & .sub-but1:active {
-    background-color: #0079d3 !important;
+    background-color: ${({theme}) => theme.color.secondary} !important;
   }
 
   & .sub-but2:hover {
@@ -59,16 +63,17 @@ export const Container = styled.div`
     color: #1779d3;
   }
 
-
-  & .cover {
-    background-image: url(${cover});
-    background-size: cover;
-    background-position-y: center;
-    background-position-x: center;
-    background-repeat: no-repeat;
-    border-radius: 3px 3px 0 0;
-    height: 34px;
-  }
+  & .sub-but2:focus-visible {
+    outline: none;
+  }: & . cover {
+  background-image: url(${cover});
+  background-size: cover;
+  background-position-y: center;
+  background-position-x: center;
+  background-repeat: no-repeat;
+  border-radius: 3px 3px 0 0;
+  height: 34px;
+}
 
   & .home {
     display: flex;
