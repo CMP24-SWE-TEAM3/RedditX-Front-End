@@ -9,6 +9,9 @@ export const MainLinks = styled.div`
   & .inner-links {
     display: flex;
     /* align-items: center; */
+    @media (max-width: 600px) {
+      display: none;
+    }
   }
   & .inner-links a {
     position: relative;

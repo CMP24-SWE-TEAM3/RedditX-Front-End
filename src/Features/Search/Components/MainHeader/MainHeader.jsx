@@ -1,5 +1,6 @@
 // import Form from "react-bootstrap/Form";
 import { NavLink } from "react-router-dom";
+import ResponsiveNavbar from "../ResponsiveNavbar/ResponsiveNavbar";
 import SafeSearch from "../SafeSearch/SafeSearch";
 import { MainLinks } from "./MainHeader.styled";
 
@@ -27,6 +28,7 @@ const Links = () => {
             <button>People</button>
           </NavLink>
         </div>
+        <ResponsiveNavbar />
         <SafeSearch />
       </div>
     </MainLinks>
