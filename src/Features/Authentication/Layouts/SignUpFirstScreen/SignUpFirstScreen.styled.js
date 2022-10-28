@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import ReCAPTCHA from "react-google-recaptcha";
 
-const subColor = "#797b7d";
-const blueValid = "#24a0ed";
 const transition = "400ms ease all";
 
 export const AuthContainer = styled.div`
@@ -11,29 +9,25 @@ export const AuthContainer = styled.div`
   max-width: 280px;
   margin: 0px auto 0;
   position: relative;
-  display:  ${p => (p.secondScreen ? "none"  : "block")};
+  display: ${(p) => (p.secondScreen ? "none" : "block")};
   width: 280px;
 `;
 
 export const BackSpan = styled.span`
   margin-bottom: 25px;
   position: absolute;
-    top: -10%;
+  top: -10%;
 
   svg {
     width: 25px;
     height: 25px;
-    color: ${subColor};
+    color: ${({ theme }) => theme.color.subColor};
   }
 `;
 
-
 export const AuthContainerDiv = styled.span`
-display:  ${p => (p.secondScreen ? "none"  : "block")};
-
+  display: ${(p) => (p.secondScreen ? "none" : "block")};
 `;
-
-
 
 export const Group = styled.div`
   position: relative;
@@ -46,17 +40,13 @@ export const Group = styled.div`
     letter-spacing: 0.3em;
   }
 
-  
-
-
   span {
     position: absolute;
     right: 5%;
     transition: ${transition};
-    color: ${blueValid};
+    color: ${({ theme }) => theme.color.blueValid};
   }
 `;
-
 
 export const MyReCAPTCHA = styled(ReCAPTCHA)`
   body {

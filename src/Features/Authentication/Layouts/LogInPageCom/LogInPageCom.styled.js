@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import ReCAPTCHA from "react-google-recaptcha";
 
-const linkColor = "#0079d3";
-const facebookBlue = "#237df3";
-const errorColor = "#ea0027";
+
+
+
+
 
 const transition = "300ms ease all";
 
@@ -24,7 +24,7 @@ export const AuthContainerDiv = styled.span`
 `;
 
 export const Privacy = styled.span`
-  color: ${linkColor};
+  color:  ${({ theme }) => theme.color.link};
 `;
 export const AuthHeader = styled.h2`
   font-family: ${fontFamily};
@@ -47,7 +47,7 @@ export const ButtonsContainer = styled.div`
   justify-content: space-between;
 `;
 export const ErrorParagraph = styled.p`
-  color: ${errorColor};
+  color: ${({ theme }) => theme.color.errorColor};
   margin-top: ${(p) => (p.valid ? "-30px" : "0")};
   font-size: 12px;
   transition: all 0.2s ease-in-out;
@@ -60,26 +60,60 @@ export const UserNameInput = styled.div`
 `;
 
 export const SignInWithGoogle = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 280px;
+display: flex;
+justify-content: center;
+width: 280px;
+margin: 20px 0 5px 0;
+ 
+  button{
+    transition: ${transition}
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+    background-color: white;
+    height: 47px;
+    border-color: ${({ theme }) => theme.color.signInWithFacebookColor};
+    color: ${({ theme }) => theme.color.signInWithFacebookColor};
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    outline: none;
+    padding: 0 0 0 20px;
+
+    svg{
+      
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      left: 1%;
+      border-radius: 6px;
+
+        path{
+          color: ${({ theme }) => theme.color.signInWithFacebookColor};
+        }
+
+    }
 
 
-  margin: 20px 0 5px 0;
+    &:hover {
+      background-color: ${({ theme }) => theme.color.signInWithFacebookColor};
+      color: white;
+      border: none;
+      path{
+        color: white;
+      }
 
-  transform: scale(1.19);
-  div#singInDiv {
-    width:100% !important;
-    display: none !important;
-
-   
+      svg {
+        background-color: white;
+      }
   }
-  iframe {
-    min-width:100%;
-    border: none;
-  }
-  
-  }
+}
+
+
+}
 `;
 
 export const SignInWithFacebook = styled.div`
@@ -102,8 +136,8 @@ span {
     border-radius: 5px;
     background-color: white;
     height: 47px;
-    border-color: ${facebookBlue};
-    color: ${facebookBlue};
+    border-color: ${({ theme }) => theme.color.signInWithFacebookColor};
+    color: ${({ theme }) => theme.color.signInWithFacebookColor};
     cursor: pointer;
     font-size: 14px;
     font-weight: 600;
@@ -121,14 +155,14 @@ span {
         left: 1%;
 
         path{
-          color: ${facebookBlue};
+          color: ${({ theme }) => theme.color.signInWithFacebookColor};
         }
         
     }
 
 
     &:hover {
-      background-color: ${facebookBlue};
+      background-color: ${({ theme }) => theme.color.signInWithFacebookColor};
       color: white;
       border: none;
       path{
@@ -146,15 +180,15 @@ span {
 export const OrHeader = styled.h2`
   width: 100%;
   text-align: center;
-  border-bottom: 1px solid #93908e;
+  border-bottom: 1px solid ${({ theme }) => theme.color.orHeaderColor};
   line-height: 0.1em;
   margin: 30px 0;
   line-height: 0 !important;
-  color: #93908e;
+  color: ${({ theme }) => theme.color.orHeaderColor};
   font-size: 12px !important;
 
   span {
-    background: #fff;
+    background: ${({ theme }) => theme.color.baseButtonColor};
     padding: 0 10px;
   }
 `;
@@ -166,7 +200,7 @@ export const Forget = styled.span`
     font-weight: 700;
     border: none;
     background-color: transparent;
-    color: #0079d3;
+    color: ${({ theme }) => theme.color.link};
     font-family: ${fontFamily};
   }
 `;

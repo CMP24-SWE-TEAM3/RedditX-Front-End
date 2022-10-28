@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Features/Authentication/Layouts/ForgetUserNameModal/ForgetUserNameModal.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Features/Authentication/Layouts/ForgetUserNameModal/ForgetUserNameModal.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable react-hooks/exhaustive-deps */
+import {  useEffect } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+
+import FormInput from "Features/Authentication/Components/FormInput/FormInput";
+
+import Button from "Features/Authentication/Components/Button/Button";
+
+import {
+  AuthContainer,
+  ButtonsContainer,
+  ErrorParagraph,
+  AuthParagraph,
+  AuthHeader,
+  Forget,
+  ReCAPTCHAContainer,
+} from "./ForgetUserNameModal.styled";
+
+const USER_EMAIL =
+  /[a-zA-Z0-9._-]{3,}@[a-zA-Z0-9._-]{3,}[.]{1}[a-zA-Z0-9._-]{2,}/;
+
+/**
+ * ForgetUserNameModal component that is used in Login Component
+ * @param {boolean} validEmail Prop to know if the email is valid or not
+ * @param {Function} setValidEmail Function to set the validity of the email
+ * @param {boolean} notRobot Prop to know if the user passed the captcha or not
+ * @param {Function} setNotRobot Function to set the state of notRobot
+ * @param {Object} formFields Object contain the values of input fields
+ * @param {Function} setFormFields Function to update the values of input fields
+ * @param {boolean} userNameScreen Prop to know if we are in the userName screen or not
+ * @param {Function} setUserNameScreen Function to set the state of userNameScreen
+ * @param {boolean} initialFocus Prop to know if the user made at least one focus on the input field or not
+ * @param {Function} setInitialFocus Function to set the state of initialFocus
+ * @param {String} errMsg The error message that appear under the input field
+ * @param {Function} setErrMsg Function to set the error message
+ * @returns {React.Component}  ForgetUserNameModal component that is used in Login Component
+ */
+
+const ForgetUserNameModal = ({
+  validEmail,
+  setValidEmail,
+  notRobot,
+  setNotRobot,
+  formFields,
+  setFormFields,
+  userNameScreen,
+  setUserNameScreen,
+  initialFocus,
+  setInitialFocus,
+  errMsg,
+  setErrMsg,
+}) => {
+  const { email } = formFields;
+
+  /**
+   * some configurations for the captcha
+   */
+  const grecaptchaObject = window.grecaptcha;
+  window.recaptchaOptions = {
+    useRecaptchaNet: true,
+  };
+
+  /**
+   * useEffect for email field to check if the email that the user entered is valid or not
+   */
+  useEffect(() => {
+    if (email.length > 0) {
+      setInitialFocus(false);
+      setErrMsg("Not a valid email address");
+    } else if (email.length === 0) {
+      setErrMsg("Please enter an email address to continue");
+      // console.log(errMsg);
+    }
+    setValidEmail(USER_EMAIL.test(email));
+  }, [email]);
+
+  /**
+   * Function to handle the submit of the form of login
+   * @param {*} event
+   */
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+  };
+
+  /**
+   * Function to handle any change on the input field of the login form (check if the userName or the email or the password is valid or not)
+   * @param {*} event
+   */
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    if (name === "email") {
+      setValidEmail(USER_EMAIL.test(email));
+      console.log(validEmail);
+    }
+    setFormFields({ ...formFields, [name]: value });
+  };
+
+  /**
+   * Function to handle the captcha and set the state of notRobot to true
+   * @param {boolean} value the value of captcha
+   */
+
+  const recaptchaHandler = (value) => {
+    setNotRobot(true);
+  };
+
+  return (
+    &lt;>
+      {
+        &lt;AuthContainer userNameScreen={!userNameScreen}>
+          &lt;br>&lt;/br>
+          &lt;br>&lt;/br>
+          &lt;br>&lt;/br>
+          &lt;AuthHeader>Recover your username&lt;/AuthHeader>
+          &lt;AuthParagraph>
+            Tell us the email address associated with your Reddit account, and
+            we’ll send you an email with your username.
+          &lt;/AuthParagraph>
+
+          &lt;form onSubmit={handleSubmit}>
+            &lt;FormInput
+              valid={validEmail}
+              initialFocus={initialFocus}
+              showIcon={true}
+              label="Email"
+              type="email"
+              required
+              onChange={handleChange}
+              name="email"
+              value={email}
+              onFocus={() => {
+                setInitialFocus(false);
+              }}
+            />
+
+            {/* Show error message if the email is not valid and the user made a focus on the it's input field */}
+            &lt;ErrorParagraph valid={validEmail || initialFocus}>
+              {errMsg}
+            &lt;/ErrorParagraph>
+            &lt;ButtonsContainer>
+              {/** Show an enabled button if the email is valid and the user has passed the captcha*/}
+              {validEmail &amp;&amp; notRobot &amp;&amp; (
+                &lt;Button
+                  valid={validEmail}
+                  type="button"
+                  onClick={() => {
+                    console.log("Enabled");
+                  }}
+                >
+                  Email me
+                &lt;/Button>
+              )}
+
+              {/** Show an disabled button if the email is not valid or the user has not passed the captcha*/}
+              {(!validEmail || !notRobot) &amp;&amp; (
+                &lt;Button disabled valid={validEmail &amp;&amp; notRobot} type="button">
+                  Email me
+                &lt;/Button>
+              )}
+            &lt;/ButtonsContainer>
+            &lt;ReCAPTCHAContainer validEmail={validEmail}>
+              &lt;ReCAPTCHA
+                sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                onChange={recaptchaHandler}
+                grecaptcha={grecaptchaObject}
+                size="normal"
+              />
+            &lt;/ReCAPTCHAContainer>
+            &lt;Forget>
+              Don't have an email or need assistance logging &lt;br /> in?
+              &lt;button onClick={() => {}}>Get Help&lt;/button>{" "}
+            &lt;/Forget>
+            &lt;br>&lt;/br>
+            &lt;Forget>
+              {/* Want to login? */}
+              &lt;button
+                onClick={() => {
+                  setInitialFocus(true);
+                  setUserNameScreen(false);
+                }}
+              >
+                Log in
+              &lt;/button>{" "}
+            &lt;/Forget>
+          &lt;/form>
+        &lt;/AuthContainer>
+      }
+    &lt;/>
+  );
+};
+
+export default ForgetUserNameModal;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#Button">Button</a></li><li><a href="global.html#darkTheme">darkTheme</a></li><li><a href="global.html#defaultTheme">defaultTheme</a></li><li><a href="global.html#ForgetPassword">ForgetPassword</a></li><li><a href="global.html#ForgetPasswordModal">ForgetPasswordModal</a></li><li><a href="global.html#ForgetPasswordPage">ForgetPasswordPage</a></li><li><a href="global.html#ForgetUserName">ForgetUserName</a></li><li><a href="global.html#ForgetUserNameModal">ForgetUserNameModal</a></li><li><a href="global.html#ForgetUserNamePage">ForgetUserNamePage</a></li><li><a href="global.html#FormInput">FormInput</a></li><li><a href="global.html#FormInputPageCom">FormInputPageCom</a></li><li><a href="global.html#GetPasswordStrength">GetPasswordStrength</a></li><li><a href="global.html#lightTheme">lightTheme</a></li><li><a href="global.html#LogIn">LogIn</a></li><li><a href="global.html#LogInPage">LogInPage</a></li><li><a href="global.html#LogInPageCom">LogInPageCom</a></li><li><a href="global.html#LogInScreen">LogInScreen</a></li><li><a href="global.html#LogInVerticalModal">LogInVerticalModal</a></li><li><a href="global.html#PasswordStrength">PasswordStrength</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#SignUpFirstScreen">SignUpFirstScreen</a></li><li><a href="global.html#SignUpPageFirstScreen">SignUpPageFirstScreen</a></li><li><a href="global.html#SignUpSecondScreen">SignUpSecondScreen</a></li><li><a href="global.html#SignUpVerticalModal">SignUpVerticalModal</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Fri Oct 28 2022 11:22:02 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

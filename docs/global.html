@@ -366,7 +366,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="App.js.html">App.js</a>, <a href="App.js.html#line37">line 37</a>
+        <a href="App.js.html">App.js</a>, <a href="App.js.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -507,7 +507,7 @@
 
             
 
-            <td class="description last"><p>Prop to know the shape of the button</p></td>
+            <td class="description last"><p>Props to know the shape of the button</p></td>
         </tr>
 
     
@@ -716,6 +716,528 @@
     
 
     
+    <h4 class="name" id="ForgetPasswordModal"><span class="type-signature"></span>ForgetPasswordModal<span class="signature">(validEmail, setValidEmail, formFields, setFormFields, setUserNameScreen, validName, setValidName, passwordScreen, setPasswordScreen, initialFocus, setInitialFocus, setErrMsg)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>ForgetPasswordModal component that is used in Login Component</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>validEmail</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Prop to know if the email is valid or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setValidEmail</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the validity of the email</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>formFields</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Object contain the values of input fields</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setFormFields</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to update the values of input fields</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setUserNameScreen</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the state of userNameScreen</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>validName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Prop to know if the userName is valid or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setValidName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the validity of the userName</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>passwordScreen</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Prop to know if we are in the password screen or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setPasswordScreen</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the state of passwordScreen</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initialFocus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Prop to know if the user made at least one focus on the input field or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setInitialFocus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the state of initialFocus</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setErrMsg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the error message</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Authentication_Layouts_ForgetPasswordModal_ForgetPasswordModal.jsx.html">Features/Authentication/Layouts/ForgetPasswordModal/ForgetPasswordModal.jsx</a>, <a href="Features_Authentication_Layouts_ForgetPasswordModal_ForgetPasswordModal.jsx.html#line42">line 42</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>ForgetPasswordModal component that is used in Login Component</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="ForgetPasswordPage"><span class="type-signature"></span>ForgetPasswordPage<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>ForgetPasswordPage component (The page of forget password)</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Authentication_Pages_ForgetPasswordPage_ForgetPasswordPage.jsx.html">Features/Authentication/Pages/ForgetPasswordPage/ForgetPasswordPage.jsx</a>, <a href="Features_Authentication_Pages_ForgetPasswordPage_ForgetPasswordPage.jsx.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>ForgetPasswordPage component (The page of forget password)</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="ForgetUserName"><span class="type-signature"></span>ForgetUserName<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
     
 
@@ -798,6 +1320,528 @@
         
 <div class="param-desc">
     <p>ForgetUserName component that is used in forget userName page</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="ForgetUserNameModal"><span class="type-signature"></span>ForgetUserNameModal<span class="signature">(validEmail, setValidEmail, notRobot, setNotRobot, formFields, setFormFields, userNameScreen, setUserNameScreen, initialFocus, setInitialFocus, errMsg, setErrMsg)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>ForgetUserNameModal component that is used in Login Component</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>validEmail</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Prop to know if the email is valid or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setValidEmail</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the validity of the email</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>notRobot</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Prop to know if the user passed the captcha or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setNotRobot</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the state of notRobot</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>formFields</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Object contain the values of input fields</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setFormFields</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to update the values of input fields</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>userNameScreen</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Prop to know if we are in the userName screen or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setUserNameScreen</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the state of userNameScreen</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initialFocus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Prop to know if the user made at least one focus on the input field or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setInitialFocus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the state of initialFocus</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>errMsg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The error message that appear under the input field</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setErrMsg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the error message</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Authentication_Layouts_ForgetUserNameModal_ForgetUserNameModal.jsx.html">Features/Authentication/Layouts/ForgetUserNameModal/ForgetUserNameModal.jsx</a>, <a href="Features_Authentication_Layouts_ForgetUserNameModal_ForgetUserNameModal.jsx.html#line39">line 39</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>ForgetUserNameModal component that is used in Login Component</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="ForgetUserNamePage"><span class="type-signature"></span>ForgetUserNamePage<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>ForgetUserNamePage component (The page of forget userName)</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Authentication_Pages_ForgetUserNamePage_ForgetUserNamePage.jsx.html">Features/Authentication/Pages/ForgetUserNamePage/ForgetUserNamePage.jsx</a>, <a href="Features_Authentication_Pages_ForgetUserNamePage_ForgetUserNamePage.jsx.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>ForgetUserNamePage component (The page of forget userName)</p>
 </div>
 
 
@@ -909,7 +1953,7 @@
 
             
 
-            <td class="description last"><p>Prop to know the shape of the input field</p></td>
+            <td class="description last"><p>Props to know the shape of the input field</p></td>
         </tr>
 
     
@@ -1091,7 +2135,7 @@
 
             
 
-            <td class="description last"><p>Prop to know the shape of the input field</p></td>
+            <td class="description last"><p>Props to know the shape of the input field</p></td>
         </tr>
 
     
@@ -1345,6 +2389,881 @@
     
 
     
+    <h4 class="name" id="LogIn"><span class="type-signature"></span>LogIn<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Login component that is used in Login modal</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Authentication_Layouts_LogIn_LogIn.jsx.html">Features/Authentication/Layouts/LogIn/LogIn.jsx</a>, <a href="Features_Authentication_Layouts_LogIn_LogIn.jsx.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Login component that is used in Login modal</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="LogInPage"><span class="type-signature"></span>LogInPage<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>LogInPage component (The page of Log in)</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Authentication_Pages_LogInPage_LogInPage.jsx.html">Features/Authentication/Pages/LogInPage/LogInPage.jsx</a>, <a href="Features_Authentication_Pages_LogInPage_LogInPage.jsx.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>LogInPage component (The page of Log in)</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="LogInPageCom"><span class="type-signature"></span>LogInPageCom<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>LoginPageCom component that is used in Login page</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Authentication_Layouts_LogInPageCom_LogInPageCom.jsx.html">Features/Authentication/Layouts/LogInPageCom/LogInPageCom.jsx</a>, <a href="Features_Authentication_Layouts_LogInPageCom_LogInPageCom.jsx.html#line38">line 38</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>LoginPageCom component that is used in Login page</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="LogInScreen"><span class="type-signature"></span>LogInScreen<span class="signature">(formFields, setFormFields, validName, setValidName, validPassword, setValidPassword, userNameScreen, setUserNameScreen, passwordScreen, setPasswordScreen, initialFocus, setInitialFocus, setErrMsg)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>LoginScreen component that is used in Login Component</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>formFields</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Object contain the values of input fields</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setFormFields</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to update the values of input fields</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>validName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Prop to know if the userName is valid or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setValidName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the validity of the userName</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>validPassword</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Prop to know if the password is valid or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setValidPassword</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the validity of the password</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>userNameScreen</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Prop to know if we are in the userName screen or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setUserNameScreen</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the state of userNameScreen</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>passwordScreen</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Prop to know if we are in the password screen or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setPasswordScreen</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the state of passwordScreen</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initialFocus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Prop to know if the user made at least one focus on the input field or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setInitialFocus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the state of initialFocus</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setErrMsg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the error message</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Authentication_Layouts_LogInScreen_LogInScreen.jsx.html">Features/Authentication/Layouts/LogInScreen/LogInScreen.jsx</a>, <a href="Features_Authentication_Layouts_LogInScreen_LogInScreen.jsx.html#line47">line 47</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>LoginScreen component that is used in Login Component</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="LogInVerticalModal"><span class="type-signature"></span>LogInVerticalModal<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>LogInVerticalModal component that is used to show the modal of login</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Authentication_Layouts_Modal_LogIn_LogInVerticalModal.jsx.html">Features/Authentication/Layouts/Modal/LogIn/LogInVerticalModal.jsx</a>, <a href="Features_Authentication_Layouts_Modal_LogIn_LogInVerticalModal.jsx.html#line20">line 20</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>LogInVerticalModal component that is used to show the modal of login</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="PasswordStrength"><span class="type-signature"></span>PasswordStrength<span class="signature">(strength)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
     
 
@@ -1446,7 +3365,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Authentication_Components_PasswordStrength_PasswordStrenght.jsx.html">Features/Authentication/Components/PasswordStrength/PasswordStrenght.jsx</a>, <a href="Features_Authentication_Components_PasswordStrength_PasswordStrenght.jsx.html#line9">line 9</a>
+        <a href="Features_Authentication_Components_PasswordStrength_PasswordStrength.jsx.html">Features/Authentication/Components/PasswordStrength/PasswordStrength.jsx</a>, <a href="Features_Authentication_Components_PasswordStrength_PasswordStrength.jsx.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -1499,6 +3418,1206 @@
 
 
         
+            
+
+    
+
+    
+    <h4 class="name" id="SignUp"><span class="type-signature"></span>SignUp<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Signup component that is used in Signup modal</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Authentication_Layouts_SignUp_SignUp.jsx.html">Features/Authentication/Layouts/SignUp/SignUp.jsx</a>, <a href="Features_Authentication_Layouts_SignUp_SignUp.jsx.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Signup component that is used in Signup modal</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="SignUpFirstScreen"><span class="type-signature"></span>SignUpFirstScreen<span class="signature">(validEmail, setValidEmail, secondScreen, setSecondScreen, initialFocus, setInitialFocus, changeUserName, formFields, setFormFields)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>SignUpFirstScreen component that is used in Signup Component</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>validEmail</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Prop to know if the email is valid or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setValidEmail</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the validity of the email</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>secondScreen</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Prop to know what screen should be shown (the choose email screen or choose userName and password screen)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setSecondScreen</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the state of secondScreen</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initialFocus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Prop to know if the user made at least one focus on the input field or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setInitialFocus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the state of initialFocus</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>changeUserName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to change the random userName</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>formFields</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Object contain the values of input fields</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setFormFields</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to update the values of input fields</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Authentication_Layouts_SignUpFirstScreen_SignUpFirstScreen.jsx.html">Features/Authentication/Layouts/SignUpFirstScreen/SignUpFirstScreen.jsx</a>, <a href="Features_Authentication_Layouts_SignUpFirstScreen_SignUpFirstScreen.jsx.html#line45">line 45</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>SignUpFirstScreen component that is used in Signup Component</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="SignUpPageFirstScreen"><span class="type-signature"></span>SignUpPageFirstScreen<span class="signature">(validEmail, setValidEmail, secondScreen, setSecondScreen, initialFocus, setInitialFocus, changeUserName, formFields, setFormFields, errMsg, setErrMsg, setValidUserName, setSug1, setSug2, setSug3, setSug4, setSug5)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>SignUpPageFirstScreen component that is used in Signup page</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>validEmail</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Prop to know if the email is valid or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setValidEmail</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the validity of the email</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>secondScreen</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Prop to know what screen should be shown (the choose email screen or choose userName and password screen)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setSecondScreen</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the state of secondScreen</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initialFocus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Prop to know if the user made at least one focus on the input field or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setInitialFocus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the state of initialFocus</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>changeUserName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to change the random userName</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>formFields</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Object contain the values of input fields</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setFormFields</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to update the values of input fields</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>errMsg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The error message that appear under the input field</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setErrMsg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the error message</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setValidUserName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the validity of the userName</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setSug1</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the random userName number 1</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setSug2</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the random userName number 2</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setSug3</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the random userName number 3</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setSug4</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the random userName number 4</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setSug5</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set the random userName number 5</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Authentication_Layouts_SignUpPageFirstScreen_SignUpPageFirstScreen.jsx.html">Features/Authentication/Layouts/SignUpPageFirstScreen/SignUpPageFirstScreen.jsx</a>, <a href="Features_Authentication_Layouts_SignUpPageFirstScreen_SignUpPageFirstScreen.jsx.html#line59">line 59</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>SignUpPageFirstScreen component that is used in Signup page</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="SignUpSecondScreen"><span class="type-signature"></span>SignUpSecondScreen<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>SignUpSecondScreen component that is used in Signup Component</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Authentication_Layouts_SignUpSecondScreen_SignUpSecondScreen.jsx.html">Features/Authentication/Layouts/SignUpSecondScreen/SignUpSecondScreen.jsx</a>, <a href="Features_Authentication_Layouts_SignUpSecondScreen_SignUpSecondScreen.jsx.html#line40">line 40</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>SignUpSecondScreen component that is used in Signup Component</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="SignUpVerticalModal"><span class="type-signature"></span>SignUpVerticalModal<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>SignUpVerticalModal component that is used to show the modal of signup</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Authentication_Layouts_Modal_SignUp_SignUpVerticalModal.jsx.html">Features/Authentication/Layouts/Modal/SignUp/SignUpVerticalModal.jsx</a>, <a href="Features_Authentication_Layouts_Modal_SignUp_SignUpVerticalModal.jsx.html#line19">line 19</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>SignUpVerticalModal component that is used to show the modal of signup</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
     
 
     
@@ -1514,13 +4633,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#Button">Button</a></li><li><a href="global.html#darkTheme">darkTheme</a></li><li><a href="global.html#defaultTheme">defaultTheme</a></li><li><a href="global.html#ForgetPassword">ForgetPassword</a></li><li><a href="global.html#ForgetUserName">ForgetUserName</a></li><li><a href="global.html#FormInput">FormInput</a></li><li><a href="global.html#FormInputPageCom">FormInputPageCom</a></li><li><a href="global.html#GetPasswordStrength">GetPasswordStrength</a></li><li><a href="global.html#lightTheme">lightTheme</a></li><li><a href="global.html#PasswordStrength">PasswordStrength</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#Button">Button</a></li><li><a href="global.html#darkTheme">darkTheme</a></li><li><a href="global.html#defaultTheme">defaultTheme</a></li><li><a href="global.html#ForgetPassword">ForgetPassword</a></li><li><a href="global.html#ForgetPasswordModal">ForgetPasswordModal</a></li><li><a href="global.html#ForgetPasswordPage">ForgetPasswordPage</a></li><li><a href="global.html#ForgetUserName">ForgetUserName</a></li><li><a href="global.html#ForgetUserNameModal">ForgetUserNameModal</a></li><li><a href="global.html#ForgetUserNamePage">ForgetUserNamePage</a></li><li><a href="global.html#FormInput">FormInput</a></li><li><a href="global.html#FormInputPageCom">FormInputPageCom</a></li><li><a href="global.html#GetPasswordStrength">GetPasswordStrength</a></li><li><a href="global.html#lightTheme">lightTheme</a></li><li><a href="global.html#LogIn">LogIn</a></li><li><a href="global.html#LogInPage">LogInPage</a></li><li><a href="global.html#LogInPageCom">LogInPageCom</a></li><li><a href="global.html#LogInScreen">LogInScreen</a></li><li><a href="global.html#LogInVerticalModal">LogInVerticalModal</a></li><li><a href="global.html#PasswordStrength">PasswordStrength</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#SignUpFirstScreen">SignUpFirstScreen</a></li><li><a href="global.html#SignUpPageFirstScreen">SignUpPageFirstScreen</a></li><li><a href="global.html#SignUpSecondScreen">SignUpSecondScreen</a></li><li><a href="global.html#SignUpVerticalModal">SignUpVerticalModal</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Oct 26 2022 12:50:33 GMT+0200 (Eastern European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Fri Oct 28 2022 11:22:02 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-const logInButtonColor = "#d93a00";
-const logInButtonColorHovered = "#dc4a14";
-const logInBlue = "#0079d3";
-const logInBlueHovered = "#3394dc";
 const fontFamily = "'IBM Plex Sans', sans-serif;";
 
 export const BaseButton = styled.button`
   line-height: 40px;
-  background-color: ${(p) => (p.page ? logInBlue : logInButtonColor)};
+  background-color: ${(p) =>
+    p.page
+      ? ({ theme }) => theme.color.link
+      : ({ theme }) => theme.color.orange};
+
   border: none;
   cursor: pointer;
   display: flex;
@@ -18,7 +18,7 @@ export const BaseButton = styled.button`
   font-weight: 700;
   letter-spacing: unset;
   border-radius: ${(p) => (p.page ? "5px" : "999px")};
-  color: #fff;
+  color: ${({ theme }) => theme.color.baseButtonColor};
   height: 40px;
   padding: 0 16px;
   font-family: ${fontFamily};
@@ -34,8 +34,8 @@ export const BaseButton = styled.button`
     background-color: ${(p) =>
       !p.page
         ? p.valid
-          ? logInButtonColorHovered
-          : logInButtonColor
-        : logInBlueHovered};
+          ? ({ theme }) => theme.color.logInButtonColorHovered
+          : ({ theme }) => theme.color.orange
+        : ({ theme }) => theme.color.logInBlueHovered};
   }
 `;

@@ -21,6 +21,18 @@ const USER_EMAIL =
 
 /**
  * ForgetUserNameModal component that is used in Login Component
+ * @param {boolean} validEmail Prop to know if the email is valid or not
+ * @param {Function} setValidEmail Function to set the validity of the email
+ * @param {boolean} notRobot Prop to know if the user passed the captcha or not
+ * @param {Function} setNotRobot Function to set the state of notRobot
+ * @param {Object} formFields Object contain the values of input fields
+ * @param {Function} setFormFields Function to update the values of input fields
+ * @param {boolean} userNameScreen Prop to know if we are in the userName screen or not
+ * @param {Function} setUserNameScreen Function to set the state of userNameScreen
+ * @param {boolean} initialFocus Prop to know if the user made at least one focus on the input field or not
+ * @param {Function} setInitialFocus Function to set the state of initialFocus
+ * @param {String} errMsg The error message that appear under the input field
+ * @param {Function} setErrMsg Function to set the error message
  * @returns {React.Component}  ForgetUserNameModal component that is used in Login Component
  */
 

@@ -10,7 +10,7 @@ import RandomUserName from "Features/Authentication/Utils/RandomUserName";
 
 import FormInput from "Features/Authentication/Components/FormInput/FormInput";
 import Button from "../../Components/Button/Button";
-import PasswordStrength from "Features/Authentication/Components/PasswordStrength/PasswordStrenght";
+import PasswordStrength from "Features/Authentication/Components/PasswordStrength/PasswordStrength";
 import GetPasswordStrength from "Features/Authentication/Utils/GetPasswordStrenght";
 
 import {
@@ -34,6 +34,20 @@ const PWD_REGEX = /^[A-z][A-z0-9-_]{8,20}$/;
 
 /**
  * SignUpSecondScreen component that is used in Signup Component
+ *  @param {boolean} initialFocus Prop to know if the user made at least one focus on the input field or not
+ * @param {Function} setInitialFocus Function to set the state of initialFocus
+ * @param {Function} setValidUserName Function to set the validity of the userName
+ * @param {boolean} validUserName Prop to know if the userName is valid or not
+ * @param {boolean} secondScreen Prop to know what screen should be shown (the choose email screen or choose userName and password screen)
+ * @param {Function} setSecondScreen Function to set the state of secondScreen
+ * @param {boolean} validPassword Prop to know if the password is valid or not
+ * @param {Function} setValidPassword Function to set the validity of the password
+ * @param {boolean} notRobot Prop to know if the user passed the captcha or not
+ * @param {Function} setNotRobot Function to set the state of notRobot
+ * @param {number} passwordStrength The strength of the password
+ * @param {Function} setPasswordStrength Function to set the strength of the password
+ * @param {Object} formFields Object contain the values of input fields
+ * @param {Function} setFormFields Function to update the values of input fields
  * @returns {React.Component}  SignUpSecondScreen component that is used in Signup Component
  */
 

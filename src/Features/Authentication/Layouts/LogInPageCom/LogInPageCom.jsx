@@ -8,6 +8,9 @@ import FormInputPageCom from "Features/Authentication/Components/FormInputPageCo
 import Button from "Features/Authentication/Components/Button/Button";
 
 import { FaFacebookSquare } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+
+import { signInWithGooglePopup } from "Features/Authentication/Utils/Firebase";
 
 import {
   AuthContainer,
@@ -140,6 +143,12 @@ const LogInPageCom = () => {
     console.log(response);
   };
 
+
+  const logGoogleUser = async () => {
+    const { user } = await signInWithGooglePopup();
+    console.log(user.accessToken);
+  };
+
   return (
     <>
       {
@@ -151,7 +160,11 @@ const LogInPageCom = () => {
               and <Privacy>Privacy Policy</Privacy>.
             </AuthParagraph>
             <SignInWithGoogle>
-              <div id="signInDiv"></div>
+              {/* <div id="signInDiv"></div> */}
+              <button onClick={() => logGoogleUser()}>
+                <FcGoogle  size={22}/>
+                <span> CONTINUE WITH GOOGLE</span>
+              </button>
             </SignInWithGoogle>
 
             <SignInWithFacebook>

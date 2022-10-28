@@ -1,31 +1,23 @@
 import styled, { css } from "styled-components";
 
-const subColor = "#797b7d";
-const mainInputColor = "black";
-const mainInputBackGroundColor = "#f6f7f8";
-const initialBorderColor = "#e6e6e5";
-const borderColor = "#86888a";
-const blueValid = "#24a0ed";
 const transition = "300ms ease all";
 const fontFamily = "'IBM Plex Sans', sans-serif;";
-const initialLabelColor = "#aeadad";
 
 const shrinkLabelStyles = css`
   top: -1px;
   transform: translateY(0);
   font-size: 8px;
-  
+
   width: 60px;
   padding: 2px 0;
 
   span {
     display: none !important;
   }
- 
 `;
 
 export const FormInputLabel = styled.label`
-  color: ${initialLabelColor};
+  color: ${({ theme }) => theme.color.initialLabelColor};
   font-size: 10px;
   font-weight: 700;
   position: absolute;
@@ -39,7 +31,6 @@ export const FormInputLabel = styled.label`
   width: 83px;
   span {
     display: block !important;
-   
   }
 
   ${({ shrink }) => shrink && shrinkLabelStyles};
@@ -47,8 +38,8 @@ export const FormInputLabel = styled.label`
 
 export const Input = styled.input`
   background: none;
-  background-color: ${mainInputBackGroundColor};
-  color: ${mainInputColor};
+  background-color: ${({ theme }) => theme.color.mainInputBackGroundColor};
+  color: ${({ theme }) => theme.color.mainInputColor};
   border-radius: 5px;
   font-family: ${fontFamily};
   font-size: 14px;
@@ -56,7 +47,12 @@ export const Input = styled.input`
   line-height: 18px;
   height: 46px;
   border: 1px solid
-    ${(p) => (p.valid ? blueValid : p.initialFocus ? initialBorderColor : "red")};
+    ${(p) =>
+      p.valid
+        ? ({ theme }) => theme.color.blueValid
+        : p.initialFocus
+        ? ({ theme }) => theme.color.initialBorderColor
+        : "red"};
   width: calc(100% - 0px);
   padding: 0px 20px;
   transition: ${transition};
@@ -66,12 +62,22 @@ export const Input = styled.input`
     outline: none;
     background-color: white;
     border: 1px solid
-      ${(p) => (p.valid ? blueValid : p.initialFocus ? borderColor : "red")};
+      ${(p) =>
+        p.valid
+          ? ({ theme }) => theme.color.blueValid
+          : p.initialFocus
+          ? ({ theme }) => theme.color.borderColor
+          : "red"};
   }
   &:hover {
     background-color: white;
     border: 1px solid
-      ${(p) => (p.valid ? blueValid : p.initialFocus ? borderColor : "red")};
+      ${(p) =>
+        p.valid
+          ? ({ theme }) => theme.color.blueValid
+          : p.initialFocus
+          ? ({ theme }) => theme.color.borderColor
+          : "red"};
   }
 
   &:focus ~ ${FormInputLabel} {
@@ -97,6 +103,6 @@ export const Group = styled.div`
     position: absolute;
     right: 5%;
     transition: ${transition};
-    color: ${blueValid};
+    color: ${({ theme }) => theme.color.blueValid};
   }
 `;

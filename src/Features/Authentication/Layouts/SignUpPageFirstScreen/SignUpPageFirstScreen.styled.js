@@ -1,12 +1,6 @@
 import styled from "styled-components";
 
-const subColor = "#797b7d";
-const blueValid = "#24a0ed";
 const transition = "400ms ease all";
-
-const linkColor = "#0079d3";
-const facebookBlue = "#237df3";
-const errorColor = "#ea0027";
 
 const fontFamily = "'IBM Plex Sans', sans-serif;";
 
@@ -31,7 +25,7 @@ export const BackSpan = styled.span`
   svg {
     width: 25px;
     height: 25px;
-    color: ${subColor};
+    color: ${({ theme }) => theme.color.subColor};
   }
 `;
 
@@ -55,7 +49,7 @@ export const Group = styled.div`
     position: absolute;
     right: 5%;
     transition: ${transition};
-    color: ${blueValid};
+    color: ${({ theme }) => theme.color.blueValid};
   }
 `;
 
@@ -84,7 +78,7 @@ export const LogInContainer = styled.div`
 `;
 
 export const Privacy = styled.span`
-  color: ${linkColor};
+  color: ${({ theme }) => theme.color.link};
 `;
 export const AuthHeader = styled.h2`
   font-family: ${fontFamily};
@@ -95,7 +89,7 @@ export const AuthHeader = styled.h2`
   text-transform: none;
 `;
 export const AuthParagraph = styled.div`
-  color: #1a1a1b;
+  color: ${({ theme }) => theme.color.authParagraphColor};
   font-family: Noto Sans, sans-serif;
   font-size: 12px;
   font-weight: 400;
@@ -107,7 +101,7 @@ export const ButtonsContainer = styled.div`
   justify-content: space-between;
 `;
 export const ErrorParagraph = styled.p`
-  color: ${errorColor};
+  color: ${({ theme }) => theme.color.errorColor};
   margin-top: ${(p) => (p.valid ? "-30px" : "0")};
   font-size: 12px;
   transition: all 0.2s ease-in-out;
@@ -120,26 +114,60 @@ export const UserNameInput = styled.div`
 `;
 
 export const SignInWithGoogle = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 280px;
+display: flex;
+justify-content: center;
+width: 280px;
+margin: 20px 0 5px 0;
+ 
+  button{
+    transition: ${transition}
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+    background-color: white;
+    height: 47px;
+    border-color: ${({ theme }) => theme.color.signInWithFacebookColor};
+    color: ${({ theme }) => theme.color.signInWithFacebookColor};
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    outline: none;
+    padding: 0 0 0 20px;
+
+    svg{
+      
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      left: 1%;
+      border-radius: 6px;
+
+        path{
+          color: ${({ theme }) => theme.color.signInWithFacebookColor};
+        }
+
+    }
 
 
-  margin: 20px 0 5px 0;
+    &:hover {
+      background-color: ${({ theme }) => theme.color.signInWithFacebookColor};
+      color: white;
+      border: none;
+      path{
+        color: white;
+      }
 
-  transform: scale(1.19);
-  div#singInDiv {
-    width:100% !important;
-    display: none !important;
-
-   
+      svg {
+        background-color: white;
+      }
   }
-  iframe {
-    min-width:100%;
-    border: none;
-  }
-  
-  }
+}
+
+
+}
 `;
 
 export const SignInWithFacebook = styled.div`
@@ -162,8 +190,8 @@ span {
     border-radius: 5px;
     background-color: white;
     height: 47px;
-    border-color: ${facebookBlue};
-    color: ${facebookBlue};
+    border-color: ${({ theme }) => theme.color.signInWithFacebookColor};
+    color: ${({ theme }) => theme.color.signInWithFacebookColor};
     cursor: pointer;
     font-size: 14px;
     font-weight: 600;
@@ -181,14 +209,14 @@ span {
         left: 1%;
 
         path{
-          color: ${facebookBlue};
+          color: ${({ theme }) => theme.color.signInWithFacebookColor};
         }
         
     }
 
 
     &:hover {
-      background-color: ${facebookBlue};
+      background-color: ${({ theme }) => theme.color.signInWithFacebookColor};
       color: white;
       border: none;
       path{
@@ -206,15 +234,15 @@ span {
 export const OrHeader = styled.h2`
   width: 100%;
   text-align: center;
-  border-bottom: 1px solid #93908e;
+  border-bottom: 1px solid ${({ theme }) => theme.color.orHeaderColor};
   line-height: 0.1em;
   margin: 30px 0;
   line-height: 0 !important;
-  color: #93908e;
+  color: ${({ theme }) => theme.color.orHeaderColor};
   font-size: 12px !important;
 
   span {
-    background: #fff;
+    background: ${({ theme }) => theme.color.baseButtonColor};
     padding: 0 10px;
   }
 `;
@@ -226,7 +254,7 @@ export const Forget = styled.span`
     font-weight: 700;
     border: none;
     background-color: transparent;
-    color: #0079d3;
+    color: ${({ theme }) => theme.color.link};
     font-family: ${fontFamily};
   }
 `;
@@ -246,7 +274,7 @@ export const LastDiv = styled.div`
   justify-content: space-between;
   min-height: calc(14vh - 20px);
   padding: 0 20px 0 20px;
-  background-color: #f6f7f8;
+  background-color: ${({ theme }) => theme.color.mainInputBackGroundColor};
   position: fixed;
   bottom: 0;
   left: 0;
@@ -258,11 +286,11 @@ export const BackButton = styled.button`
 `;
 export const RandomContainer = styled.div`
   p {
-    color: ${linkColor};
+    color: ${({ theme }) => theme.color.link};
     cursor: pointer;
 
     &:hover {
-        color: ${blueValid};
+      color: ${({ theme }) => theme.color.blueValid};
     }
   }
 `;
@@ -270,5 +298,5 @@ export const Reload = styled.span`
   margin-left: 10px;
   font-size: 18px;
   cursor: pointer;
-  color: ${blueValid};
+  color: ${({ theme }) => theme.color.blueValid};
 `;

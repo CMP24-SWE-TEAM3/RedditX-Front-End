@@ -6,6 +6,10 @@ import { FaFacebookSquare } from "react-icons/fa";
 
 import FacebookLogin from "react-facebook-login";
 
+import { FcGoogle } from "react-icons/fc";
+
+import { signInWithGooglePopup } from "Features/Authentication/Utils/Firebase";
+
 import RandomUserName from "Features/Authentication/Utils/RandomUserName";
 
 import FormInputPageCom from "Features/Authentication/Components/FormInputPageCom/FormInputPageCom";
@@ -31,6 +35,28 @@ import {
 
 const USER_EMAIL =
   /[a-zA-Z0-9._-]{3,}@[a-zA-Z0-9._-]{3,}[.]{1}[a-zA-Z0-9._-]{2,}/;
+
+/**
+ * SignUpPageFirstScreen component that is used in Signup page
+ * @param {boolean} validEmail Prop to know if the email is valid or not
+ * @param {Function} setValidEmail Function to set the validity of the email
+ * @param {boolean} secondScreen Prop to know what screen should be shown (the choose email screen or choose userName and password screen)
+ * @param {Function} setSecondScreen Function to set the state of secondScreen
+ * @param {boolean} initialFocus Prop to know if the user made at least one focus on the input field or not
+ * @param {Function} setInitialFocus Function to set the state of initialFocus
+ * @param {Function} changeUserName Function to change the random userName
+ * @param {Object} formFields Object contain the values of input fields
+ * @param {Function} setFormFields Function to update the values of input fields
+ * @param {String} errMsg The error message that appear under the input field
+ * @param {Function} setErrMsg Function to set the error message
+ * @param {Function} setValidUserName Function to set the validity of the userName
+ * @param {Function} setSug1 Function to set the random userName number 1
+ * @param {Function} setSug2 Function to set the random userName number 2
+ * @param {Function} setSug3 Function to set the random userName number 3
+ * @param {Function} setSug4 Function to set the random userName number 4
+ * @param {Function} setSug5 Function to set the random userName number 5
+ * @returns {React.Component}  SignUpPageFirstScreen component that is used in Signup page
+ */
 
 const SignUpPageFirstScreen = ({
   formFields,
@@ -72,10 +98,18 @@ const SignUpPageFirstScreen = ({
     setSug5(RandomUserName());
   }, [email]);
 
+  /**
+   * Function to handle the submit of the form of signup
+   * @param {*} event
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
   };
 
+  /**
+   * Function to handle any change on the input field of the signup form (check if the userName or the email or the password is valid or not)
+   * @param {*} event
+   */
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
@@ -84,25 +118,29 @@ const SignUpPageFirstScreen = ({
     }
   };
 
+  /**
+   * Function to handle the response coming from sign in with google
+   * @param {*} response
+   */
   const handleCallbackResponse = (response) => {
     let userObject = jwt_decode(response.credential);
     console.log(userObject);
   };
 
-  const changeUserName = (name) => {
-    setFormFields({ ...formFields, userName: name });
-    setValidUserName(true);
-  };
-
+  /**
+   * Function to check email by sending request to the api and make sure that the email is good to show the second screen after that
+   * @param {string} mail The email that the user entered
+   */
   const checkEmail = (mail) => {
     /* After mail checked */
 
     setInitialFocus(true);
     setSecondScreen(true);
-
-    changeUserName();
   };
 
+  /**
+   * Adding some configurations to the signIn with google feature
+   */
   useEffect(() => {
     /* global google */
 
@@ -122,6 +160,11 @@ const SignUpPageFirstScreen = ({
     console.log(response);
   };
 
+  const logGoogleUser = async () => {
+    const { user } = await signInWithGooglePopup();
+    console.log(user.accessToken);
+  };
+
   return (
     <>
       {
@@ -138,7 +181,11 @@ const SignUpPageFirstScreen = ({
                     <Privacy>Privacy Policy</Privacy>.
                   </AuthParagraph>
                   <SignInWithGoogle>
-                    <div id="signInDiv"></div>
+                    {/* <div id="signInDiv"></div> */}
+                    <button onClick={() => logGoogleUser()}>
+                      <FcGoogle size={22} />
+                      <span> CONTINUE WITH GOOGLE</span>
+                    </button>
                   </SignInWithGoogle>
 
                   <SignInWithFacebook>

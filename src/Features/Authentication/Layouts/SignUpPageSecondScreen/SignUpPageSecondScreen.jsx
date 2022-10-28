@@ -8,7 +8,7 @@ import RandomUserName from "Features/Authentication/Utils/RandomUserName";
 
 import FormInputPageCom from "Features/Authentication/Components/FormInputPageCom/FormInputPageCom";
 import Button from "../../Components/Button/Button";
-import PasswordStrength from "Features/Authentication/Components/PasswordStrength/PasswordStrenght";
+import PasswordStrength from "Features/Authentication/Components/PasswordStrength/PasswordStrength";
 import GetPasswordStrength from "Features/Authentication/Utils/GetPasswordStrenght";
 
 import {
@@ -26,6 +26,38 @@ import {
 
 const USER_NAME = /^[A-z][A-z0-9-_]{3,20}$/;
 const PWD_REGEX = /^[A-z][A-z0-9-_]{8,20}$/;
+
+/**
+ * SignUpPageSecondScreen component that is used in Signup page
+ *
+ * @param {boolean} secondScreen Prop to know what screen should be shown (the choose email screen or choose userName and password screen)
+ * @param {Function} setSecondScreen Function to set the state of secondScreen
+ * @param {boolean} initialFocus Prop to know if the user made at least one focus on the input field or not
+ * @param {Function} setInitialFocus Function to set the state of initialFocus
+ * @param {Object} formFields Object contain the values of input fields
+ * @param {Function} setFormFields Function to update the values of input fields
+ * @param {String} errMsg The error message that appear under the input field
+ * @param {Function} setErrMsg Function to set the error message
+ * @param {Function} setValidUserName Function to set the validity of the userName
+ * @param {boolean} validUserName Prop to know if the userName is valid or not
+ * @param {boolean} notRobot Prop to know if the user passed the captcha or not
+ * @param {Function} setNotRobot Function to set the state of notRobot
+ * @param {number} passwordStrength The strength of the password
+ * @param {Function} setPasswordStrength Function to set the strength of the password
+ * @param {boolean} validPassword Prop to know if the password is valid or not
+ * @param {Function} setValidPassword Function to set the validity of the password
+ * @param {String} sug1 The random userName number 1
+ * @param {String} sug2 The random userName number 2
+ * @param {String} sug3 The random userName number 3
+ * @param {String} sug4 The random userName number 4
+ * @param {String} sug5 The random userName number 5
+ * @param {Function} setSug1 Function to set the random userName number 1
+ * @param {Function} setSug2 Function to set the random userName number 2
+ * @param {Function} setSug3 Function to set the random userName number 3
+ * @param {Function} setSug4 Function to set the random userName number 4
+ * @param {Function} setSug5 Function to set the random userName number 5
+ * @returns {React.Component}  SignUpPageSecondScreen component that is used in Signup page
+ */
 
 const SignUpPageSecondScreen = ({
   formFields,

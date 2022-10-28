@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import ReCAPTCHA from "react-google-recaptcha";
 
-const linkColor = "#0079d3";
-const errorColor = "#ea0027";
-
 const fontFamily = "'IBM Plex Sans', sans-serif;";
 
 export const AuthContainer = styled.div`
@@ -21,7 +18,7 @@ export const AuthContainerDiv = styled.span`
 `;
 
 export const Privacy = styled.span`
-  color: ${linkColor};
+  color: ${({ theme }) => theme.color.link};
 `;
 export const AuthHeader = styled.h2`
   font-family: ${fontFamily};
@@ -32,7 +29,7 @@ export const AuthHeader = styled.h2`
   text-transform: none;
 `;
 export const AuthParagraph = styled.div`
-  color: #1a1a1b;
+  color: ${({ theme }) => theme.color.authParagraphColor};
   font-family: Noto Sans, sans-serif;
   font-size: 12px;
   font-weight: 400;
@@ -44,7 +41,7 @@ export const ButtonsContainer = styled.div`
   justify-content: space-between;
 `;
 export const ErrorParagraph = styled.p`
-  color: ${errorColor};
+  color: ${({ theme }) => theme.color.errorColor};
   margin-top: ${(p) => (p.valid ? "-30px" : "0")};
   font-size: 12px;
   transition: all 0.2s ease-in-out;
@@ -93,7 +90,7 @@ span {
   button{
     width: 100%;
     border-radius: 8px;
-    background-color: #237df3;
+    background-color: ${({ theme }) => theme.color.signInWithFacebookColor};
     height: 47px;
     border-color: transparent;
     color: white;
@@ -113,15 +110,15 @@ span {
 export const OrHeader = styled.h2`
   width: 100%;
   text-align: center;
-  border-bottom: 1px solid #93908e;
+  border-bottom: 1px solid ${({ theme }) => theme.color.orHeaderColor};
   line-height: 0.1em;
   margin: 30px 0;
   line-height: 0 !important;
-  color: #93908e;
+  color: ${({ theme }) => theme.color.orHeaderColor};
   font-size: 12px !important;
 
   span {
-    background: #fff;
+    background: ${({ theme }) => theme.color.baseButtonColor};
     padding: 0 10px;
   }
 `;
@@ -134,7 +131,7 @@ export const Forget = styled.span`
     border: none;
     background-color: transparent;
     text-decoration: underline;
-    color: #0079d3;
+    color: ${({ theme }) => theme.color.link};
     font-family: ${fontFamily};
   }
 `;

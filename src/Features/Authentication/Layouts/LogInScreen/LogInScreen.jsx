@@ -9,6 +9,11 @@ import FormInput from "Features/Authentication/Components/FormInput/FormInput";
 
 import Button from "Features/Authentication/Components/Button/Button";
 
+import { FcGoogle } from "react-icons/fc";
+import { BsFacebook } from "react-icons/bs";
+
+import { signInWithGooglePopup } from "Features/Authentication/Utils/Firebase";
+
 import {
   AuthContainer,
   ButtonsContainer,
@@ -28,6 +33,19 @@ const PWD_REGEX = /^[A-z][A-z0-9-_]{8,20}$/;
 
 /**
  * LoginScreen component that is used in Login Component
+ * @param {Object} formFields Object contain the values of input fields
+ * @param {Function} setFormFields Function to update the values of input fields
+ * @param {boolean} validName Prop to know if the userName is valid or not
+ * @param {Function} setValidName Function to set the validity of the userName
+ * @param {boolean} validPassword Prop to know if the password is valid or not
+ * @param {Function} setValidPassword Function to set the validity of the password
+ * @param {boolean} userNameScreen Prop to know if we are in the userName screen or not
+ * @param {Function} setUserNameScreen Function to set the state of userNameScreen
+ * @param {boolean} passwordScreen Prop to know if we are in the password screen or not
+ * @param {Function} setPasswordScreen Function to set the state of passwordScreen
+ * @param {boolean} initialFocus Prop to know if the user made at least one focus on the input field or not
+ * @param {Function} setInitialFocus Function to set the state of initialFocus
+ * @param {Function} setErrMsg Function to set the error message
  * @returns {React.Component}  LoginScreen component that is used in Login Component
  */
 
@@ -129,10 +147,10 @@ const LogInScreen = ({
     console.log(response);
   };
 
-  /**
-   * Function to handle the captcha and set the state of notRobot to true
-   * @param {boolean} value the value of captcha
-   */
+  const logGoogleUser = async () => {
+    const { user } = await signInWithGooglePopup();
+    console.log(user.accessToken);
+  };
 
   return (
     <>
@@ -146,18 +164,23 @@ const LogInScreen = ({
               <Privacy>Privacy Policy</Privacy>.
             </AuthParagraph>
             <SignInWithGoogle>
-              <div id="signInDiv"></div>
+              {/* <div id="signInDiv"></div> */}
+              <button onClick={() => logGoogleUser()}>
+                <FcGoogle  size={22}/>
+                <span> Continue With Google</span>
+              </button>
             </SignInWithGoogle>
 
             <SignInWithFacebook>
-              <FacebookLogin
-                appId="648981979946188"
-                autoLoad={false}
-                fields="name,email,picture"
-                callback={responseFacebook}
-                cssClass="my-facebook-button-class"
-                icon="fa-facebook"
-              />
+            <FacebookLogin
+                      appId="648981979946188"
+                      autoLoad={false}
+                      fields="name,email,picture"
+                      callback={responseFacebook}
+                      cssClass="my-facebook-button-class"
+                      icon=<BsFacebook size={22}/>
+                      textButton="Continue With Facebook"
+                    />
             </SignInWithFacebook>
 
             <OrHeader>

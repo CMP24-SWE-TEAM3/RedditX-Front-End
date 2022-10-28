@@ -1,9 +1,7 @@
 import styled, { css } from "styled-components";
 
-const subColor = "#797b7d";
-const mainInputColor = "black";
-const borderColor = "#86888a";
-const blueValid = "#24a0ed";
+
+
 const transition = "400ms ease all";
 const fontFamily = "'IBM Plex Sans', sans-serif;";
 
@@ -14,11 +12,11 @@ const shrinkLabelStyles = css`
   font-size: 12px;
   font-weight: normal;
   padding: 2px 0;
-  color: ${borderColor};
+  color: ${({ theme }) => theme.color.borderColor};
 `;
 
 export const FormInputLabel = styled.label`
-  color: ${subColor};
+  color: ${({ theme }) => theme.color.subColor};
   font-size: 16px;
   font-weight: 550;
   position: absolute;
@@ -33,14 +31,14 @@ export const FormInputLabel = styled.label`
 export const Input = styled.input`
   background: none;
   background-color: #f6f7f8;
-  color: ${mainInputColor};
+  color: ${({ theme }) => theme.color.mainInputColor};
   border-radius: 100px;
   font-family: ${fontFamily};
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
   height: 46px;
-  border:1px solid ${p => (p.valid ? blueValid :p.initialFocus? "transparent" : "red")};
+  border:1px solid ${p => (p.valid ? ({ theme }) => theme.color.blueValid :p.initialFocus? "transparent" : "red")};
   width: calc(100% - 0px);
   padding: 0px 20px;
   transition: ${transition};
@@ -48,10 +46,10 @@ export const Input = styled.input`
 
   &:focus {
     outline: none;
-    border: 1px solid ${p => (p.valid ? blueValid :p.initialFocus? borderColor : "red")};
+    border: 1px solid ${p => (p.valid ? ({ theme }) => theme.color.blueValid :p.initialFocus? ({ theme }) => theme.color.borderColor : "red")};
   }
   &:hover {
-    border: 1px solid ${p => (p.valid ? blueValid :p.initialFocus? borderColor : "red")};
+    border: 1px solid ${p => (p.valid ? ({ theme }) => theme.color.blueValid :p.initialFocus? ({ theme }) => theme.color.borderColor : "red")};
   }
 
   &:focus ~ ${FormInputLabel} {
@@ -80,6 +78,6 @@ export const Group = styled.div`
     position: absolute;
     right: 5%;
     transition: ${transition};
-    color: ${blueValid};
+    color: ${({ theme }) => theme.color.blueValid};
   }
 `;

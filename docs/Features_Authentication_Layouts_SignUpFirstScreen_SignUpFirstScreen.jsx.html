@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Features/Authentication/Layouts/SignUpFirstScreen/SignUpFirstScreen.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Features/Authentication/Layouts/SignUpFirstScreen/SignUpFirstScreen.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect } from "react";
+import jwt_decode from "jwt-decode";
+
+import FacebookLogin from "react-facebook-login";
+
+import FormInput from "Features/Authentication/Components/FormInput/FormInput";
+import Button from "../../Components/Button/Button";
+
+
+
+
+import {
+  ButtonsContainer,
+  Privacy,
+  ErrorParagraph,
+  SignInWithGoogle,
+  SignInWithFacebook,
+  OrHeader,
+  AuthParagraph,
+  AuthHeader,
+} from "../LogIn/LogIn.styled";
+
+import { AuthContainer, AuthContainerDiv } from "./SignUpFirstScreen.styled";
+
+const USER_EMAIL =
+  /[a-zA-Z0-9._-]{3,}@[a-zA-Z0-9._-]{3,}[.]{1}[a-zA-Z0-9._-]{2,}/;
+
+
+
+/**
+ * SignUpFirstScreen component that is used in Signup Component
+ * @param {boolean} validEmail Prop to know if the email is valid or not
+ * @param {Function} setValidEmail Function to set the validity of the email
+ * @param {boolean} secondScreen Prop to know what screen should be shown (the choose email screen or choose userName and password screen)
+ * @param {Function} setSecondScreen Function to set the state of secondScreen
+ * @param {boolean} initialFocus Prop to know if the user made at least one focus on the input field or not
+ * @param {Function} setInitialFocus Function to set the state of initialFocus
+ * @param {Function} changeUserName Function to change the random userName
+ * @param {Object} formFields Object contain the values of input fields
+ * @param {Function} setFormFields Function to update the values of input fields
+ * @returns {React.Component}  SignUpFirstScreen component that is used in Signup Component
+ */
+
+const SignUpFirstScreen = ({
+  validEmail,
+  setValidEmail,
+  secondScreen,
+  setSecondScreen,
+  initialFocus,
+  setInitialFocus,
+  changeUserName,
+  formFields,
+  setFormFields
+}) => {
+ 
+
+  /**
+   * state to know what error message should be shown
+   */
+  const [errMsg, setErrMsg] = useState("");
+  const { email } = formFields;
+
+  /**
+   * useEffect for email field to check if the email that the user entered is valid or not
+   */
+  useEffect(() => {
+    if (email.length > 0) {
+      setInitialFocus(false);
+      setErrMsg("Not a valid email address");
+    } else if (email.length === 0) {
+      setErrMsg("Please enter an email address to continue");
+      // console.log(errMsg);
+    }
+
+    setValidEmail(USER_EMAIL.test(email));
+  }, [email]);
+
+  /**
+   * Function to handle the submit of the form of signup
+   * @param {*} event
+   */
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+  };
+
+  /**
+   * Function to handle any change on the input field of the login form (check if the userName or the email or the password is valid or not)
+   * @param {*} event
+   */
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    if (name === "email") {
+      setValidEmail(USER_EMAIL.test(email));
+    }
+
+    setFormFields({ ...formFields, [name]: value });
+  };
+
+  /**
+   * Function to handle the response coming from sign in with google
+   * @param {*} response
+   */
+  const handleCallbackResponse = (response) => {
+    let userObject = jwt_decode(response.credential);
+    console.log(userObject);
+  };
+
+  /**
+   * Function to check email by sending request to the api and make sure that the email is good to show the second screen after that
+   * @param {string} mail The email that the user entered
+   */
+  const checkEmail = (mail) => {
+    /* After mail checked */
+
+    setInitialFocus(true);
+    setSecondScreen(true);
+    changeUserName();
+  };
+
+  /**
+   * Adding some configurations to the signIn with google feature
+   */
+  useEffect(() => {
+    /* global google */
+
+    google.accounts.id.initialize({
+      client_id:
+        "598360538255-siv9rljce260ek4mvdsu2fk63h3u1g3b.apps.googleusercontent.com",
+      callback: handleCallbackResponse,
+    });
+
+    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
+      theme: "outline",
+      size: "large",
+    });
+  }, []);
+
+  /**
+   * Function to handle the response coming from sign in with facebook
+   * @param {*} response
+   */
+  const responseFacebook = (response) => {
+    console.log(response);
+  };
+
+  return (
+    &lt;>
+      {
+        &lt;AuthContainer secondScreen={secondScreen}>
+          &lt;AuthContainerDiv secondScreen={secondScreen}>
+            &lt;AuthHeader>Sign Up&lt;/AuthHeader>
+            &lt;AuthParagraph>
+              By continuing, you agree are setting up a Reddit account and agree
+              to our &lt;Privacy>User Agreement&lt;/Privacy> and{" "}
+              &lt;Privacy>Privacy Policy&lt;/Privacy>.
+            &lt;/AuthParagraph>
+            &lt;SignInWithGoogle>
+              &lt;div id="signInDiv">&lt;/div>
+            &lt;/SignInWithGoogle>
+
+            &lt;SignInWithFacebook>
+              &lt;FacebookLogin
+                appId="648981979946188"
+                autoLoad={false}
+                fields="name,email,picture"
+                callback={responseFacebook}
+                cssClass="my-facebook-button-class"
+                icon="fa-facebook"
+              />
+            &lt;/SignInWithFacebook>
+
+            &lt;OrHeader>
+              &lt;span>OR&lt;/span>
+            &lt;/OrHeader>
+
+            &lt;form onSubmit={handleSubmit}>
+              &lt;FormInput
+                valid={validEmail}
+                initialFocus={initialFocus}
+                showIcon={true}
+                label="Email"
+                type="email"
+                required
+                onChange={handleChange}
+                name="email"
+                value={email}
+                onFocus={() => {
+                  setInitialFocus(false);
+                }}
+              />
+
+              {/* Show error message if the email is not valid and the user made a focus on the it's input field */}
+              &lt;ErrorParagraph valid={validEmail || initialFocus}>
+                {errMsg}
+              &lt;/ErrorParagraph>
+
+              &lt;ButtonsContainer>
+                {/** Show an enabled button if the email is valid */}
+                {validEmail &amp;&amp; (
+                  &lt;Button
+                    valid={validEmail}
+                    type="button"
+                    onClick={() => checkEmail(email)}
+                  >
+                    Continue
+                  &lt;/Button>
+                )}
+
+                {/** Show an disabled button if the email is not valid */}
+                {!validEmail &amp;&amp; (
+                  &lt;Button disabled valid={validEmail} type="button">
+                    Continue
+                  &lt;/Button>
+                )}
+              &lt;/ButtonsContainer>
+            &lt;/form>
+          &lt;/AuthContainerDiv>
+        &lt;/AuthContainer>
+      }
+    &lt;/>
+  );
+};
+
+export default SignUpFirstScreen;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#Button">Button</a></li><li><a href="global.html#darkTheme">darkTheme</a></li><li><a href="global.html#defaultTheme">defaultTheme</a></li><li><a href="global.html#ForgetPassword">ForgetPassword</a></li><li><a href="global.html#ForgetPasswordModal">ForgetPasswordModal</a></li><li><a href="global.html#ForgetPasswordPage">ForgetPasswordPage</a></li><li><a href="global.html#ForgetUserName">ForgetUserName</a></li><li><a href="global.html#ForgetUserNameModal">ForgetUserNameModal</a></li><li><a href="global.html#ForgetUserNamePage">ForgetUserNamePage</a></li><li><a href="global.html#FormInput">FormInput</a></li><li><a href="global.html#FormInputPageCom">FormInputPageCom</a></li><li><a href="global.html#GetPasswordStrength">GetPasswordStrength</a></li><li><a href="global.html#lightTheme">lightTheme</a></li><li><a href="global.html#LogIn">LogIn</a></li><li><a href="global.html#LogInPage">LogInPage</a></li><li><a href="global.html#LogInPageCom">LogInPageCom</a></li><li><a href="global.html#LogInScreen">LogInScreen</a></li><li><a href="global.html#LogInVerticalModal">LogInVerticalModal</a></li><li><a href="global.html#PasswordStrength">PasswordStrength</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#SignUpFirstScreen">SignUpFirstScreen</a></li><li><a href="global.html#SignUpPageFirstScreen">SignUpPageFirstScreen</a></li><li><a href="global.html#SignUpSecondScreen">SignUpSecondScreen</a></li><li><a href="global.html#SignUpVerticalModal">SignUpVerticalModal</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Fri Oct 28 2022 11:22:02 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

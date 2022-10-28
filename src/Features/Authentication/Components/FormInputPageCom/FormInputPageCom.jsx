@@ -6,7 +6,7 @@ import { GoPrimitiveDot } from "react-icons/go";
 /**
  * FormInput component that is used in authentication pages
  * @param {string} label The label of the input field
- * @param {Array} otherProps Prop to know the shape of the input field 
+ * @param {Array} otherProps Props to know the shape of the input field 
  * @returns {React.Component}  FormInput component used in authentication pages
  */
 

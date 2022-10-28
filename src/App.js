@@ -18,7 +18,6 @@ import { ThemeProvider } from "styled-components";
 // Import bootstrap
 import { Button } from "react-bootstrap";
 
-
 import TestHome from "Features/Authentication/Pages/TestHome";
 
 import LogInPage from "Features/Authentication/Pages/LogInPage/LogInPage";
@@ -50,7 +49,9 @@ function App() {
     }
   };
   return (
-    <TestHome/>
+    <ThemeProvider theme={theme}>
+      <TestHome />
+    </ThemeProvider>
   );
 }
 

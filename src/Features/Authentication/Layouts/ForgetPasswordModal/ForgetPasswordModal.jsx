@@ -24,6 +24,18 @@ const USER_EMAIL =
 
 /**
  * ForgetPasswordModal component that is used in Login Component
+ * @param {boolean} validEmail Prop to know if the email is valid or not
+ * @param {Function} setValidEmail Function to set the validity of the email
+ * @param {Object} formFields Object contain the values of input fields
+ * @param {Function} setFormFields Function to update the values of input fields
+ * @param {Function} setUserNameScreen Function to set the state of userNameScreen
+ * @param {boolean} validName Prop to know if the userName is valid or not
+ * @param {Function} setValidName Function to set the validity of the userName
+ * @param {boolean} passwordScreen Prop to know if we are in the password screen or not
+ * @param {Function} setPasswordScreen Function to set the state of passwordScreen
+ * @param {boolean} initialFocus Prop to know if the user made at least one focus on the input field or not
+ * @param {Function} setInitialFocus Function to set the state of initialFocus
+ * @param {Function} setErrMsg Function to set the error message
  * @returns {React.Component}  ForgetPasswordModal component that is used in Login Component
  */
 

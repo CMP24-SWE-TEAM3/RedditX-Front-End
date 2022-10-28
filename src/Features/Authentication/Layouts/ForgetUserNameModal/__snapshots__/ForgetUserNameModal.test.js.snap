@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ForgetPasswordModal Layout this is a test for ForgetPasswordModal Layout 1`] = `ShallowWrapper {}`;
+
+exports[`ForgetUserNameModal Layout this is a test for ForgetUserNameModal Layout 1`] = `ShallowWrapper {}`;

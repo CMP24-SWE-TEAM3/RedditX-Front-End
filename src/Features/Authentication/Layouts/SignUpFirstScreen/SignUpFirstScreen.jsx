@@ -7,8 +7,10 @@ import FacebookLogin from "react-facebook-login";
 import FormInput from "Features/Authentication/Components/FormInput/FormInput";
 import Button from "../../Components/Button/Button";
 
+import { FcGoogle } from "react-icons/fc";
+import { BsFacebook } from "react-icons/bs";
 
-
+import { signInWithGooglePopup } from "Features/Authentication/Utils/Firebase";
 
 import {
   ButtonsContainer,
@@ -26,10 +28,17 @@ import { AuthContainer, AuthContainerDiv } from "./SignUpFirstScreen.styled";
 const USER_EMAIL =
   /[a-zA-Z0-9._-]{3,}@[a-zA-Z0-9._-]{3,}[.]{1}[a-zA-Z0-9._-]{2,}/;
 
-
-
 /**
  * SignUpFirstScreen component that is used in Signup Component
+ * @param {boolean} validEmail Prop to know if the email is valid or not
+ * @param {Function} setValidEmail Function to set the validity of the email
+ * @param {boolean} secondScreen Prop to know what screen should be shown (the choose email screen or choose userName and password screen)
+ * @param {Function} setSecondScreen Function to set the state of secondScreen
+ * @param {boolean} initialFocus Prop to know if the user made at least one focus on the input field or not
+ * @param {Function} setInitialFocus Function to set the state of initialFocus
+ * @param {Function} changeUserName Function to change the random userName
+ * @param {Object} formFields Object contain the values of input fields
+ * @param {Function} setFormFields Function to update the values of input fields
  * @returns {React.Component}  SignUpFirstScreen component that is used in Signup Component
  */
 
@@ -42,10 +51,8 @@ const SignUpFirstScreen = ({
   setInitialFocus,
   changeUserName,
   formFields,
-  setFormFields
+  setFormFields,
 }) => {
- 
-
   /**
    * state to know what error message should be shown
    */
@@ -76,7 +83,7 @@ const SignUpFirstScreen = ({
   };
 
   /**
-   * Function to handle any change on the input field of the login form (check if the userName or the email or the password is valid or not)
+   * Function to handle any change on the input field of the signup form (check if the userName or the email or the password is valid or not)
    * @param {*} event
    */
   const handleChange = (event) => {
@@ -136,6 +143,11 @@ const SignUpFirstScreen = ({
     console.log(response);
   };
 
+  const logGoogleUser = async () => {
+    const { user } = await signInWithGooglePopup();
+    console.log(user.accessToken);
+  };
+
   return (
     <>
       {
@@ -148,7 +160,11 @@ const SignUpFirstScreen = ({
               <Privacy>Privacy Policy</Privacy>.
             </AuthParagraph>
             <SignInWithGoogle>
-              <div id="signInDiv"></div>
+              {/* <div id="signInDiv"></div> */}
+              <button onClick={() => logGoogleUser()}>
+                <FcGoogle size={22} />
+                <span> Continue With Google</span>
+              </button>
             </SignInWithGoogle>
 
             <SignInWithFacebook>
@@ -158,7 +174,8 @@ const SignUpFirstScreen = ({
                 fields="name,email,picture"
                 callback={responseFacebook}
                 cssClass="my-facebook-button-class"
-                icon="fa-facebook"
+                icon=<BsFacebook size={22} />
+                textButton="Continue With Facebook"
               />
             </SignInWithFacebook>
 

@@ -38,7 +38,7 @@ export const HaveAccount = styled.span`
     border: none;
     background-color: transparent;
     text-decoration: underline;
-    color: #0079d3;
+    color: ${({ theme }) => theme.color.link};
     font-family: ${fontFamily};
   }
 `;

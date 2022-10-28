@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import ReCAPTCHA from "react-google-recaptcha";
 
-const subColor = "#797b7d";
-const blueValid = "#24a0ed";
+
+
 const transition = "400ms ease all";
 
 export const AuthContainer = styled.div`
@@ -23,7 +23,7 @@ export const BackSpan = styled.span`
   svg {
     width: 25px;
     height: 25px;
-    color: ${subColor};
+    color: ${({ theme }) => theme.color.subColor};
   }
 `;
 
@@ -53,7 +53,7 @@ export const Group = styled.div`
     position: absolute;
     right: 5%;
     transition: ${transition};
-    color: ${blueValid};
+    color: ${({ theme }) => theme.color.blueValid};
   }
 `;
 
