@@ -11,8 +11,11 @@ const useLink = (
   // Link
   const [showLinkURLInput, setShowLinkURLInput] = useState(false);
   const [linkUrlValue, setLinkUrlValue] = useState("");
+  const [linkTextValue, setLinkTextValue] = useState("");
+  const [isNoTextSelected, setIsNoTextSelected] = useState(false);
 
   const onLinkURLChange = (e) => setLinkUrlValue(e.target.value);
+  const onLinkTextChange = (e) => setLinkTextValue(e.target.value);
   const removeLink = (e) => {
     e.preventDefault();
     const selection = editorState.getSelection();
@@ -28,6 +31,11 @@ const useLink = (
 
   const confirmLink = (e) => {
     e.preventDefault();
+    if (isNoTextSelected) {
+      onAddLink(editorState, setEditorState);
+      setIsNoTextSelected(false);
+      return;
+    }
     const contentState = editorState.getCurrentContent();
 
     const contentStateWithEntity = contentState.createEntity(
@@ -52,31 +60,29 @@ const useLink = (
     setEditorState(nextEditorState);
     setShowLinkURLInput(false);
     setLinkUrlValue("");
+    setLinkTextValue("");
   };
 
   // call all together
   const onAddLink = (editorState, setEditorState) => {
-    let linkUrl = window.prompt("Add link http:// ");
-    if (linkUrl) {
-      let displayLink = window.prompt("Display Text");
-      if (displayLink) {
-        const currentContent = editorState.getCurrentContent();
-        const createEntity = currentContent.createEntity("LINK", "MUTABLE", {
-          url: linkUrl,
-        });
-        let entityKey = currentContent.getLastCreatedEntityKey();
-        const selection = editorState.getSelection();
-        const textWithEntity = Modifier.insertText(
-          currentContent,
-          selection,
-          displayLink,
-          null,
-          entityKey
-        );
-        let newState = EditorState.createWithContent(textWithEntity, decorator);
-        setEditorState(newState);
-      }
-    }
+    const currentContent = editorState.getCurrentContent();
+    const createEntity = currentContent.createEntity("LINK", "MUTABLE", {
+      url: linkUrlValue,
+    });
+    let entityKey = currentContent.getLastCreatedEntityKey();
+    const selection = editorState.getSelection();
+    const textWithEntity = Modifier.insertText(
+      currentContent,
+      selection,
+      linkTextValue,
+      null,
+      entityKey
+    );
+    let newState = EditorState.createWithContent(textWithEntity, decorator);
+    setEditorState(newState);
+    setShowLinkURLInput(false);
+    setLinkUrlValue("");
+    setLinkTextValue("");
   };
 
   const promptForLink = (e) => {
@@ -104,9 +110,11 @@ const useLink = (
       const selectedText = currentContentBlock.getText().slice(start, end);
       console.log("selectedText", selectedText);
       setLinkUrlValue(url);
+      setLinkTextValue(selectedText);
       setShowLinkURLInput(true);
     } else {
-      onAddLink(editorState, setEditorState);
+      setIsNoTextSelected(true);
+      setShowLinkURLInput(true);
     }
   };
   return {
@@ -117,6 +125,8 @@ const useLink = (
     linkUrlValue,
     onLinkInputKeyDown,
     confirmLink,
+    linkTextValue,
+    onLinkTextChange,
   };
 };
 

@@ -21,12 +21,16 @@ import {
   StyledPopoverBody,
   StyledPopover,
   StyledLink,
+  FormContainer,
+  Input,
+  StyledButton,
 } from "./DraftEditor.styled";
 
 import useLink from "Features/Post/Hooks/useLink";
 import useMedia from "Features/Post/Hooks/useMedia";
 import LinkControls from "../LinkControls/LinkControls";
-import { OverlayTrigger } from "react-bootstrap";
+import { OverlayTrigger, Popover } from "react-bootstrap";
+import DraftLinkForm from "../DraftLinkForm/DraftLinkForm";
 
 // Extract Draft variables
 const {
@@ -92,7 +96,6 @@ const DraftEditor = () => {
 
   const editorRef = useRef(null);
   const urlRef = useRef(null);
-  const linkUrlRef = useRef(null);
   const {
     promptForLink,
     removeLink,
@@ -101,6 +104,8 @@ const DraftEditor = () => {
     linkUrlValue,
     onLinkInputKeyDown,
     confirmLink,
+    linkTextValue,
+    onLinkTextChange,
   } = useLink(
     editorState,
     setEditorState,
@@ -153,58 +158,66 @@ const DraftEditor = () => {
 
   return (
     <DraftEditorContainer>
-      <Controls>
-        <InlineStyleControls
-          editorState={editorState}
-          onToggle={toggleInlineStyle}
-        />
-        <LinkControls promptForLink={promptForLink} removeLink={removeLink} />
-        <Separator />
-        <BlockStyleControls
-          editorState={editorState}
-          onToggle={toggleBlockType}
-        />
-        <Separator />
-        <MediaControls addImage={addImage} addVideo={addVideo} />
-      </Controls>
-      <RichEditorEditor onClick={focus}>
-        <Editor
-          blockStyleFn={getBlockStyle}
-          customStyleMap={styleMap}
-          editorState={editorState}
-          handleKeyCommand={handleKeyCommand}
-          keyBindingFn={mapKeyToEditorCommand}
-          onChange={onChange}
-          placeholder="Text (optional)"
-          ref={editorRef}
-          spellCheck={true}
-          blockRendererFn={mediaBlockRenderer}
-        />
-      </RichEditorEditor>
-      {showURLInput && (
-        <div>
-          <input
-            onChange={onURLChange}
-            ref={urlRef}
-            type="text"
-            value={urlValue}
-            onKeyDown={onURLInputKeyDown}
+      <>
+        <Controls>
+          <InlineStyleControls
+            editorState={editorState}
+            onToggle={toggleInlineStyle}
           />
-          <button onMouseDown={confirmMedia}>Confirm</button>
-        </div>
-      )}
-      {showLinkURLInput && (
-        <div>
-          <input
-            onChange={onLinkURLChange}
-            ref={linkUrlRef}
-            type="text"
-            value={linkUrlValue}
-            onKeyDown={onLinkInputKeyDown}
+          <LinkControls promptForLink={promptForLink} removeLink={removeLink} />
+          <Separator />
+          <BlockStyleControls
+            editorState={editorState}
+            onToggle={toggleBlockType}
           />
-          <button onMouseDown={confirmLink}> Confirm </button>
-        </div>
-      )}
+          <Separator />
+          <MediaControls addImage={addImage} addVideo={addVideo} />
+        </Controls>
+        <OverlayTrigger
+          trigger="click"
+          placement="bottom-start"
+          show={showLinkURLInput}
+          overlay={
+            <Popover>
+              <DraftLinkForm
+                onLinkURLChange={onLinkURLChange}
+                onLinkTextChange={onLinkTextChange}
+                linkUrlValue={linkUrlValue}
+                linkTextValue={linkTextValue}
+                onLinkInputKeyDown={onLinkInputKeyDown}
+                confirmLink={confirmLink}
+              />
+            </Popover>
+          }
+        >
+          <RichEditorEditor onClick={focus}>
+            <Editor
+              blockStyleFn={getBlockStyle}
+              customStyleMap={styleMap}
+              editorState={editorState}
+              handleKeyCommand={handleKeyCommand}
+              keyBindingFn={mapKeyToEditorCommand}
+              onChange={onChange}
+              placeholder="Text (optional)"
+              ref={editorRef}
+              spellCheck={true}
+              blockRendererFn={mediaBlockRenderer}
+            />
+          </RichEditorEditor>
+        </OverlayTrigger>
+        {showURLInput && (
+          <div>
+            <input
+              onChange={onURLChange}
+              ref={urlRef}
+              type="text"
+              value={urlValue}
+              onKeyDown={onURLInputKeyDown}
+            />
+            <button onMouseDown={confirmMedia}>Confirm</button>
+          </div>
+        )}
+      </>
     </DraftEditorContainer>
   );
 };
