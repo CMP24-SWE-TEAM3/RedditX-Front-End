@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`People Card Item this is a test for People Card Item 1`] = `ShallowWrapper {}`;
+
+exports[`People Main Header this is a test for Main Header 1`] = `ShallowWrapper {}`;

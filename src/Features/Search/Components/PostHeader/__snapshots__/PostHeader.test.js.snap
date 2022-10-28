@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post Header this is a test for Post Header 1`] = `ShallowWrapper {}`;
+
+exports[`Search Page this is a test for Search Page 1`] = `ShallowWrapper {}`;
