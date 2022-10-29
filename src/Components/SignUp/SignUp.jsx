@@ -7,7 +7,7 @@ const SignUp = () => {
     }
     return (
         <>
-            <SignUpStyled onClick={alertSignUp} variant="outline-primary rounded-pill h-4">Sign Up</SignUpStyled>>
+            <SignUpStyled onClick={alertSignUp} variant="outline-primary rounded-pill h-4">Sign Up</SignUpStyled>
         </>
 
 

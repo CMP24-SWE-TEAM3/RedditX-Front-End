@@ -4,6 +4,11 @@ import {BsPerson} from 'react-icons/bs';
 
 
 export const Container = styled(Dropdown)`
+  & span {
+    padding: 3px;
+    align-items: start;
+  }
+
   color: ${({theme}) => theme.color.muted};
   //left:10%;
 
@@ -30,6 +35,12 @@ export const Container = styled(Dropdown)`
 
   & .rs-dropdown {
     display: block;
+    color: ${({theme}) => theme.color.primary};
+    padding: 5px;
+    :hover{
+      background-color: ${({theme}) => theme.background.muted};
+
+    }
   }
 
   & .rs-dropdown-menu {
@@ -49,12 +60,27 @@ export const Container = styled(Dropdown)`
     height: auto;
     overflow-y: auto;
     overflow-x: hidden;
+    
   }
 
+  & #menu-4 {
+    position: absolute;
+    left: -142px;
+  }
+
+  & .rs-dropdown-item {
+    color: ${({theme}) => theme.color.primary};
+    
+    :hover{
+      background-color: ${({theme}) => theme.background.muted};
+      
+    }
+  }
 
   @media only screen and (max-width: 1290px) {
     left: 20px;
   }
+
 `
 export const DropdownButtonIconStyled = styled(BsPerson)`
   color: grey;

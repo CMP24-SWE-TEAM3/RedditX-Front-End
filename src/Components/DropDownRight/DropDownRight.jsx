@@ -46,8 +46,11 @@ const List_DummyData = [
 ]
 
 const DropDownRightButton = (props) => {
+    const LoginHandler = () => {
+        alert('Login or Sign up Page')
+    }
     return (
-            <Container title={<i><DropdownButtonIconStyled/> </i>}>
+            <Container title={<i><DropdownButtonIconStyled/></i>}>
                 <Dropdown.Item> <span><BsCoin/></span>Coins</Dropdown.Item>
                 <Dropdown.Item>Talk</Dropdown.Item>
                 <Dropdown.Item>Premium</Dropdown.Item>
@@ -105,7 +108,7 @@ const DropDownRightButton = (props) => {
                     <Dropdown.Item>Moderator Code of Conduct</Dropdown.Item>
                     <hr className={'border-dark my-3'}/>
                 </Dropdown>
-                <Dropdown.Item >Sign Up or Log In</Dropdown.Item>
+                <Dropdown.Item onClick={LoginHandler} >Sign Up or Log In</Dropdown.Item>
             </Container>
     );
 };
