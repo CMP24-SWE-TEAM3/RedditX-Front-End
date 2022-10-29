@@ -29,7 +29,7 @@ export const CreateCommunity = styled.div`
 
 // Main container for the main section
 export const Container = styled.div`
-  width: 350px;
+  max-width: 350px;
   margin-top: 20px;
 `;
 

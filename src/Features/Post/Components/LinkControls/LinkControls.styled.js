@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 export const LinkControlsContainer = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const StyledButton = styled.span`

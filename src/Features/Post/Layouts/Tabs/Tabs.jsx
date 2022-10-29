@@ -42,7 +42,7 @@ const Tabs = () => {
                 onClick={() => setSelected("Post")}
               >
                 <NavLink eventKey="Post" selected={selected === "Post"}>
-                  <ImFileText size={25} /> Post
+                  <ImFileText size={25} /> <span> Post </span>
                 </NavLink>
               </NavItem>
               <NavItem
@@ -53,7 +53,7 @@ const Tabs = () => {
                   eventKey="Images & Video"
                   selected={selected === "Images & Video"}
                 >
-                  <CgImage size={30} /> Images & Video
+                  <CgImage size={30} /> <span> Images & Video </span>
                 </NavLink>
               </NavItem>
               <NavItem
@@ -61,7 +61,8 @@ const Tabs = () => {
                 onClick={() => setSelected("Link")}
               >
                 <NavLink eventKey="Link" selected={selected === "Link"}>
-                  <BsLink45Deg size={30} /> Link
+                  <BsLink45Deg size={30} />
+                  <span> Link </span>
                 </NavLink>
               </NavItem>
             </NavContainer>

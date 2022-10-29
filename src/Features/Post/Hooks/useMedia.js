@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useMedia = (
   editorState,
@@ -7,28 +7,45 @@ const useMedia = (
   AtomicBlockUtils
 ) => {
   const [showURLInput, setShowURLInput] = useState(false);
-  const [urlType, setUrltype] = useState("");
+  const [urlType, setUrlType] = useState("");
   const [urlValue, setUrlValue] = useState("");
+  const [file, setFile] = useState([]);
+
+  useEffect(() => {
+    console.log("urlValue", urlValue);
+    confirmMedia();
+  }, [urlValue]);
   function onURLInputKeyDown(e) {
     if (e.which === 13) {
       confirmMedia(e);
     }
   }
-  function promptForMedia(type) {
+  function promptForMedia(type, file) {
     setShowURLInput(true);
     setUrlValue("");
-    setUrltype(type);
+    setUrlType(type);
+    setFile(file);
+    const url = URL.createObjectURL(file);
+    setUrlValue(() => url);
+    // const reader = new FileReader();
+    // reader.onload = (x) => {
+    //   setUrlValue(() => x.target.result);
+    //   console.log("urlValue", urlValue);
+    //   confirmMedia();
+    // };
+    // reader.readAsDataURL(file);
   }
-  function addImage() {
-    promptForMedia("image");
+  function addImage(file) {
+    promptForMedia("image", file);
   }
-  function addVideo() {
-    promptForMedia("video");
+  function addVideo(file) {
+    promptForMedia("video", file);
   }
   const onURLChange = (e) => setUrlValue(e.target.value);
-  function confirmMedia(e) {
-    e.preventDefault();
+  function confirmMedia() {
+    // e.preventDefault();
     // const { editorState, urlValue, urlType } = this.state;
+    if (urlValue === "") return;
     const contentState = editorState.getCurrentContent();
     const contentStateWithEntity = contentState.createEntity(
       urlType,

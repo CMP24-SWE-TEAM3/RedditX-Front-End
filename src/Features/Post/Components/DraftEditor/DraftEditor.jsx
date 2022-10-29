@@ -205,7 +205,7 @@ const DraftEditor = () => {
             />
           </RichEditorEditor>
         </OverlayTrigger>
-        {showURLInput && (
+        {/* {showURLInput && (
           <div>
             <input
               onChange={onURLChange}
@@ -216,7 +216,7 @@ const DraftEditor = () => {
             />
             <button onMouseDown={confirmMedia}>Confirm</button>
           </div>
-        )}
+        )} */}
       </>
     </DraftEditorContainer>
   );

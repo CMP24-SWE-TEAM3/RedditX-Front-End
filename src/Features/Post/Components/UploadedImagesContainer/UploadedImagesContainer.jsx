@@ -11,6 +11,17 @@ import {
   UploadIcon,
 } from "../UploadedImagesContainer/UploadedImagesContainer.styled";
 
+/**
+ * Container for uploaded images
+ *
+ * @param {Array} files - Array of files (state)
+ * @param {Function} setFiles - Function to set files (state)
+ * @param {Function} open - Function to open file explorer
+ * @param {Number} selectedImageId - Id of selected image (state)
+ * @param {Function} setSelectedImageId - Function to set selected image id (state)
+ *
+ * @returns {React.Component} - UploadedImagesContainer component
+ */
 const UploadedImagesContainer = ({
   files,
   setFiles,
@@ -34,7 +45,11 @@ const UploadedImagesContainer = ({
     setSelectedImageId(id);
   };
 
-  // TODO: Needs maintenance
+  /**
+   * Function to handle delete file
+   *
+   * @param {File} file - The file to be removed
+   */
   const deleteFile = (file) => {
     const newFiles = [...files]; // make a var for the new array
     newFiles.splice(newFiles.indexOf(file), 1); // remove the file from the array
@@ -42,7 +57,7 @@ const UploadedImagesContainer = ({
   };
   return (
     <ThumbsContainer>
-      {files.map((file, index) => (
+      {files.map((file) => (
         <UploadedImage
           key={file.name + file.uploadDate}
           id={file.name + file.uploadDate}

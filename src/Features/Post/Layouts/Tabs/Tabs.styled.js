@@ -22,6 +22,16 @@ export const NavLink = styled(Nav.Link)`
     color: ${({ theme }) => theme.color.muted};
     background-color: ${({ theme }) => theme.button.hoverLight};
   }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  span {
+    margin-left: 5px;
+    @media (max-width: 305px) {
+      display: none;
+    }
+  }
 `;
 
 export const NavItem = styled(Nav.Item)`
