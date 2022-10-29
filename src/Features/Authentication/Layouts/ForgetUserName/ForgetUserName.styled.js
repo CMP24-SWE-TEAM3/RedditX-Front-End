@@ -6,10 +6,10 @@ const fontFamily = "'IBM Plex Sans', sans-serif;";
 export const AuthContainer = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 350px;
+  max-width: 90%;
   margin: 0px auto 0;
   position: relative;
-  display: "block")};
+  display: "block";
   width: 350px;
 `;
 

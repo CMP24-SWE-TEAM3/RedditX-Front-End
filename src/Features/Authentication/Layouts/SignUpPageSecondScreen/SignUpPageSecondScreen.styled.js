@@ -60,7 +60,7 @@ export const PageContainer = styled.div`
 
 export const Photo = styled.div`
   background-image: url(https://www.redditstatic.com/accountmanager/bbb584033aa89e39bad69436c504c9bd.png);
-  width: 156px;
+  width: 10%;
   height: 100vh;
   min-height: 430px;
   background-repeat: no-repeat;
@@ -68,7 +68,7 @@ export const Photo = styled.div`
 `;
 
 export const LogInContainer = styled.div`
-  width: calc(100% - 156px);
+  width: 90%;
   display: flex;
   align-items: center;
 
@@ -233,6 +233,7 @@ export const MidDiv = styled.div`
   justify-content: space-between;
   min-height: calc(69vh - 20px);
   padding: 20px 20px 0 20px;
+  flex-wrap: wrap;
 `;
 export const LastDiv = styled.div`
   display: flex;
@@ -270,6 +271,6 @@ export const Reload = styled.span`
 export const ReCAPTCHAContainer = styled.div`
   transform: translateX(-3%) scale(0.9);
   margin: 10px 0;
-
+  max-width: 100%;
   display: ${(p) => (p.validEmail ? "block" : "none")};
 `;

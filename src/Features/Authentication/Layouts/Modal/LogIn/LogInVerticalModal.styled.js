@@ -29,7 +29,7 @@ export const MyBody = styled.div`
 `;
 
 export const HaveAccount = styled.span`
-  padding: 0 0 0 45px;
+  padding: 0 0 0 33px;
   font-size: 12px;
   margin-bottom: 100px;
   button {

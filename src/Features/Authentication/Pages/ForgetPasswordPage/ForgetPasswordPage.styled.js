@@ -7,7 +7,7 @@ export const PageContainer = styled.div`
 
 export const Photo = styled.div`
   background-image: url(https://www.redditstatic.com/accountmanager/bbb584033aa89e39bad69436c504c9bd.png);
-  width: 156px;
+  width: 10%;
   height: 100vh;
   min-height: 430px;
   background-repeat: no-repeat;
@@ -15,7 +15,7 @@ export const Photo = styled.div`
 `;
 
 export const LogInContainer = styled.div`
- width: calc(100% - 156px);
+ width: 90%;
  display:flex;
  align-items: center;
 
