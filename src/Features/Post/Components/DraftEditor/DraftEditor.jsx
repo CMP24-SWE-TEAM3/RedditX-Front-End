@@ -115,15 +115,12 @@ const DraftEditor = () => {
     decorator
   );
 
-  const {
-    showURLInput,
-    onURLChange,
-    urlValue,
-    onURLInputKeyDown,
-    confirmMedia,
-    addImage,
-    addVideo,
-  } = useMedia(editorState, setEditorState, EditorState, AtomicBlockUtils);
+  const { addImage, addVideo } = useMedia(
+    editorState,
+    setEditorState,
+    EditorState,
+    AtomicBlockUtils
+  );
   // start console log
   // const raw = convertToRaw(editorState.getCurrentContent());
   // console.log(raw);
@@ -205,18 +202,6 @@ const DraftEditor = () => {
             />
           </RichEditorEditor>
         </OverlayTrigger>
-        {/* {showURLInput && (
-          <div>
-            <input
-              onChange={onURLChange}
-              ref={urlRef}
-              type="text"
-              value={urlValue}
-              onKeyDown={onURLInputKeyDown}
-            />
-            <button onMouseDown={confirmMedia}>Confirm</button>
-          </div>
-        )} */}
       </>
     </DraftEditorContainer>
   );

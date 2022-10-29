@@ -32,7 +32,7 @@ const darkTheme = {
     // The pink color of the website
     pink: "#fb133a",
     // The light muted color of the website
-    lightMuted: "#f6f7f8",
+    lightMuted: "#272729",
   },
   // Border colors
   borderColor: {

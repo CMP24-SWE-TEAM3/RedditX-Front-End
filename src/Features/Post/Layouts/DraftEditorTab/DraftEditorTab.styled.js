@@ -5,5 +5,5 @@ import styled from "styled-components";
 export const DraftEditorTabContainer = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.background.primary};
-  padding: 20px;
+  border-radius: 0 0 6px 6px;
 `;

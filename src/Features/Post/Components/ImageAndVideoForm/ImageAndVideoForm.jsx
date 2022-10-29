@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 // Import components
 import DragAndDropFile from "../DragDropFile/DragDropFile";
 import PostFlagsWrapper from "../PostFlagsWrapper/PostFlagsWrapper";
+import PostFormFooter from "../PostFormFooter/PostFormFooter";
 
 // Import styled components
 import {
@@ -15,18 +16,21 @@ import {
 
 const ImageAndVideoForm = () => {
   return (
-    <StyledImageAndVideoFrom>
-      <Form.Group className="title-group mb-3">
-        <Form.Control type="text" placeholder="Title" />
-        <span>0/300</span>
-      </Form.Group>
-      <DragAndDropFile />
-      <PostFlagsWrapper />
-      <SubmitButtons>
-        <CancelButton variant="light">Cancel</CancelButton>
-        <PostButton>Post</PostButton>
-      </SubmitButtons>
-    </StyledImageAndVideoFrom>
+    <>
+      <StyledImageAndVideoFrom>
+        <Form.Group className="title-group mb-3">
+          <Form.Control type="text" placeholder="Title" />
+          <span>0/300</span>
+        </Form.Group>
+        <DragAndDropFile />
+        <PostFlagsWrapper />
+        <SubmitButtons>
+          <CancelButton variant="light">Cancel</CancelButton>
+          <PostButton>Post</PostButton>
+        </SubmitButtons>
+      </StyledImageAndVideoFrom>
+      <PostFormFooter id={"ImageAndVideoForm"} />
+    </>
   );
 };
 

@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { Button } from "react-bootstrap";
 
 export const StyledLinkForm = styled.div`
+  padding: 20px;
+
   .form-control:focus {
     box-shadow: none;
     border-color: ${({ theme }) => theme.color.primary};

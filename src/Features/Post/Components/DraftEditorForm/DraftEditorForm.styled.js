@@ -3,6 +3,8 @@ import { Button } from "react-bootstrap";
 import styled from "styled-components";
 
 export const StyledDraftEditorForm = styled.div`
+  padding: 20px;
+
   .form-control:focus {
     box-shadow: none;
     border-color: ${({ theme }) => theme.color.primary};
