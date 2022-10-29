@@ -4,7 +4,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 export const StyledDropdown = styled(DropdownButton)`
   display: none;
   transition: 0.3s;
-  @media (max-width: 600px) {
+  @media (max-width: 635px) {
     display: block;
   }
   & button {

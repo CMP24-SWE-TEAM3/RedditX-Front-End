@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Form from "react-bootstrap/Form";
 export const MainLinks = styled.div`
+  transition: 0.3s;
   & .links {
     display: flex;
     align-items: center;
@@ -9,7 +10,7 @@ export const MainLinks = styled.div`
   & .inner-links {
     display: flex;
     /* align-items: center; */
-    @media (max-width: 600px) {
+    @media (max-width: 635px) {
       display: none;
     }
   }

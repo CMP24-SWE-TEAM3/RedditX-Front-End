@@ -54,4 +54,17 @@ export const StyledDropdown = styled(DropdownButton)`
     background-color: ${({ theme }) => theme.background.fill};
     color: ${({ theme }) => theme.color.titleText_of_link};
   }
+  .dropdown-item.active {
+    background-color: ${({ theme }) => theme.background.muted};
+    color: ${({ theme }) => theme.color.titleText_of_link};
+  }
+  .dropdown-menu.show {
+    background-color: ${({ theme }) => theme.background.active};
+  }
+  .dropdown-item {
+    color: ${({ theme }) => theme.color.titleText_of_link};
+  }
+  .dropdown-item:hover {
+    background-color: ${({ theme }) => theme.background.muted};
+  }
 `;

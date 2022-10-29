@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import { NavLink } from "react-router-dom";
 import { StyledDropdown } from "./ResponsiveNavbar.styled";
@@ -11,6 +11,10 @@ const ResponsiveNavbar = (props) => {
    * @Component
    * @returns {React.Component}
    */
+  useEffect(() => {
+    setTitle(props.act);
+    return () => {};
+  }, [props.act]);
   return (
     <StyledDropdown
       id="dropdown-basic-button"
