@@ -16,7 +16,7 @@ export const LinkButtonStyled = styled.button
       height: 38px;
 
       &:hover {
-        background: #ededed;
+        background: ${({theme}) => theme.background.post_background};
       }
       color: ${({theme})=>theme.color.primary};
     `

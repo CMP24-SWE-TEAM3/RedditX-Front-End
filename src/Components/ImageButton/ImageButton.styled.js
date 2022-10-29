@@ -3,7 +3,7 @@ import {RiImage2Line} from "react-icons/ri";
 import LightTheme from "Theme/lightTheme";
 
 export const IconStyled = styled(RiImage2Line)`
-  color: ${LightTheme.color.muted};
+  color: ${({theme})=>theme.color.muted};
   display: flex;
   position: relative;
 `
@@ -17,7 +17,7 @@ export const ImageButtonStyled = styled.button
       height: 38px;
 
       &:hover {
-        background: #ededed;
+        background: ${({theme}) => theme.background.post_background};
       }
 
       color: ${LightTheme.color.primary};

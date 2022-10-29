@@ -22,6 +22,8 @@ const darkTheme = {
     orange: "#d93a00",
     // The pink color of the website
     pink: "#fb133a",
+    // color of paragraphs on the website
+    gray: "#818384",
   },
   // The colors of the backgrounds in the website
   background: {
@@ -29,10 +31,18 @@ const darkTheme = {
     primary: "#1a1a1b",
     // The color of the muted background on the website
     muted: "#7c7c7c3d",
+    // color of post background
+    post_background: "#343536",
+    // Search Bar Background
+    search_bar_background: "#272729",
+    // hover_background_button_blue
+    hover_background_button_blue: "#d7dadc",
   },
   // The colors of the lines in the website
   lineColor: {
     primary: "#343536",
+    // The color of lines in search and post section
+    secondary: "#d7dadc",
   },
 };
 

@@ -14,6 +14,7 @@ export const ProfileButtonStyled = styled.button`
   border-radius: 50px;
   outline: none;
   margin: 2px;
+  background-color: ${({theme})=>theme.background.search_bar_background};
   bottom: 8px;
   width: 49.4px;
   position: relative;
