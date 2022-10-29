@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledHeader = styled.header
     `
+      justify-content:space-between;
       position: relative;
       top: 0;
       left: 0;
@@ -14,6 +15,15 @@ export const StyledHeader = styled.header
       align-items: center;
       @media (max-width: 969px) {
         position: fixed;
+      }
+      .logged-out{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .search{
+        display: flex;
+        flex: 1;
       }
     `
 export const StyledSeperator = styled.div
