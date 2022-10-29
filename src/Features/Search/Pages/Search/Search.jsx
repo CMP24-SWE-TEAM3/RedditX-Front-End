@@ -21,11 +21,11 @@ const Search = () => {
           <div className="inner-container">
             <Links />
             <Routes>
-              <Route path="/post" element={<Posts />} />
+              <Route path="/posts" element={<Posts />} />
               <Route path="/comments" element={<CommentsPage />} />
               <Route path="/communities" element={<CommunitiesPage />} />
               <Route path="/people" element={<PeoplePage />} />
-              <Route path="/" element={<Navigate to={"/post"} />} />
+              <Route path="/" element={<Navigate to={"/posts"} />} />
             </Routes>
           </div>
         </div>
