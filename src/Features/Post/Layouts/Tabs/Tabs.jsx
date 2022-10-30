@@ -24,6 +24,11 @@ import LinkTab from "Features/Post/Layouts/LinkTab/LinkTab";
 import ImagesAndVideosTab from "Features/Post/Layouts/ImagesAndVideosTab/ImagesAndVideosTab";
 import DraftEditorTab from "../DraftEditorTab/DraftEditorTab.jsx";
 
+/**
+ * The tabs in the main section in create post page
+ *
+ * @returns {React.Component} Tabs component (The tabs in the create post page)
+ */
 const Tabs = () => {
   // State to store the selected tab
   const [selected, setSelected] = useState("post");

@@ -7,6 +7,11 @@ import PostGuidelines from "Features/Post/Components/PostGuidelines/PostGuidelin
 // Import react router dom components
 import { Link } from "react-router-dom";
 
+/**
+ * Sidebar component (The sidebar in the create post page)
+ *
+ * @returns {React.Component} Sidebar component (The sidebar in the create post page)
+ */
 const Sidebar = () => {
   return (
     <Container>

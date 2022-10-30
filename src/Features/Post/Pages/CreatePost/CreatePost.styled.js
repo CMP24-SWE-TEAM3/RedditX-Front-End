@@ -12,4 +12,3 @@ export const Container = styled.div`
   font-size: calc(10px + 2vmin);
   padding: 20px;
 `;
-

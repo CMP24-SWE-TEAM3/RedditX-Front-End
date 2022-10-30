@@ -5,6 +5,11 @@ import { Container } from "./CreatePost.styled";
 import Main from "Features/Post/Layouts/Main/Main";
 import Sidebar from "Features/Post/Layouts/Sidebar/Sidebar";
 
+/**
+ * Create Post page (Submit page)
+ *
+ * @returns {React.Component} CreatePost component
+ */
 const CreatePost = () => {
   return (
     <Container>

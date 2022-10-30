@@ -4,6 +4,11 @@ import ImageAndVideoForm from "Features/Post/Components/ImageAndVideoForm/ImageA
 // Import styled components
 import { ImagesAndVideosTabContainer } from "./ImagesAndVideosTab.styled";
 
+/**
+ * Images and videos Tab component (Layout) (The tab that contains the images and videos in create post page)
+ *
+ * @returns {React.Component} Images and videos Tab component (Images and videos Tab component (Layout) (The tab that contains the images and videos in create post page)
+ */
 const ImagesAndVideosTab = () => {
   return (
     <ImagesAndVideosTabContainer>
