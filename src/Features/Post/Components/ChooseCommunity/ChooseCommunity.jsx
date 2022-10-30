@@ -28,6 +28,10 @@ import { CiSearch } from "react-icons/ci";
 // Import images
 import Image from "Features/Post/Assets/Images/Post-guidelines.png";
 
+/**
+ *
+ * @returns {React.Component} - ChooseCommunity component (The dropdown menu that contains the communities in the post form)
+ */
 const ChooseCommunity = () => {
   // State to control the dropdown menu appearance
   const [showMenu, setShowMenu] = useState(false);

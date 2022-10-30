@@ -1,5 +1,5 @@
 // Import components
-import PostFlag from "../PostFlag/PostFlag";
+import PostFlag from "Features/Post/Components/PostFlag/PostFlag";
 
 // Import styled components
 import { PostFlagsWrapperContainer, Text } from "./PostFlagsWrapper.styled";
@@ -11,6 +11,11 @@ import { IoIosArrowDown } from "react-icons/io";
 import { BsCalendar4Event } from "react-icons/bs";
 import { FiTarget } from "react-icons/fi";
 
+/**
+ * Post Flags Wrapper component (The wrapper that contains the flags in the post form)
+ *
+ * @returns {React.Component} - Post Flags Wrapper component (The wrapper that contains the flags in the post form)
+ */
 const PostFlagsWrapper = () => {
   return (
     <PostFlagsWrapperContainer>

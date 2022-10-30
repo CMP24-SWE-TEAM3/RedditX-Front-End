@@ -12,6 +12,11 @@ import {
 // Import images
 import Guideline from "Features/Post/Assets/Images/Post-guidelines.png";
 
+/**
+ * Post guidelines component (The post guidelines in the sidebar in the create post page)
+ *
+ * @returns {React.Component} PostGuidelines component (The post guidelines in the sidebar in the create post page)
+ */
 const PostGuidelines = () => {
   return (
     <Container>

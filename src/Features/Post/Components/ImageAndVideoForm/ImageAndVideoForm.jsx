@@ -2,9 +2,9 @@
 import Form from "react-bootstrap/Form";
 
 // Import components
-import DragAndDropFile from "../DragDropFile/DragDropFile";
-import PostFlagsWrapper from "../PostFlagsWrapper/PostFlagsWrapper";
-import PostFormFooter from "../PostFormFooter/PostFormFooter";
+import DragAndDropFile from "Features/Post/Components/DragDropFile/DragDropFile";
+import PostFlagsWrapper from "Features/Post/Components/PostFlagsWrapper/PostFlagsWrapper";
+import PostFormFooter from "Features/Post/Components/PostFormFooter/PostFormFooter";
 
 // Import styled components
 import {
@@ -14,6 +14,11 @@ import {
   SubmitButtons,
 } from "./ImageAndVideoForm.styled";
 
+/**
+ * Image and video form component (The form that appears when you click on the image and video tab in main section)
+ *
+ * @returns {React.Component} - Image and video form component (The form that appears when you click on the image and video tab in main section)
+ */
 const ImageAndVideoForm = () => {
   return (
     <>

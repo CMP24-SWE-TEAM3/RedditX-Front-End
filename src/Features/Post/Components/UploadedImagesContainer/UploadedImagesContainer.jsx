@@ -3,7 +3,7 @@ import { useState } from "react";
 import { BsPlusLg } from "react-icons/bs";
 
 // Import components
-import UploadedImage from "../UploadedImage/UploadedImage";
+import UploadedImage from "Features/Post/Components/UploadedImage/UploadedImage";
 
 // Import styled components
 import {

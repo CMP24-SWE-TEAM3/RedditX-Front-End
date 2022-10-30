@@ -12,6 +12,17 @@ import { ImCross } from "react-icons/im";
 // Import hooks
 import React, { useEffect } from "react";
 
+/**
+ * Uploaded image component in images & videos tab
+ *
+ * @param {File} file - The uploaded image
+ * @param {Function} deleteFile - The function to delete the image
+ * @param {Boolean} isSelected - Boolean to check if the image is selected
+ * @param {Number} selectedImageId - The id of the selected image
+ * @param {Number} id - The id of this image
+ * @param {Function} handleClick - The function to handle the click event on image
+ * @returns {React.Component} - Uploaded image component in images & videos tab
+ */
 const UploadedImage = ({
   file,
   deleteFile,
@@ -23,7 +34,7 @@ const UploadedImage = ({
   useEffect(() => {
     // When image first render mark it as selected
     handleClick(id);
-  }, []);
+  }, [handleClick, id]);
   return (
     <Thumb onClick={() => handleClick(id)}>
       <ThumbInner>

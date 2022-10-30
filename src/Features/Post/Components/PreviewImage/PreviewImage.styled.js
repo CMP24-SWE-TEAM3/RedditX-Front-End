@@ -1,6 +1,8 @@
 // Import styled
-import { Form } from "react-bootstrap";
 import styled from "styled-components";
+
+// Import bootstrap components
+import { Form } from "react-bootstrap";
 
 export const ImageContainer = styled.div`
   width: 50%;

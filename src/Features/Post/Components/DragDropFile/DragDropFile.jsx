@@ -3,8 +3,10 @@ import React, { useEffect, useState } from "react";
 
 // Import react dropzone
 import { useDropzone } from "react-dropzone";
-import PreviewImage from "../PreviewImage/PreviewImage";
-import UploadedImagesContainer from "../UploadedImagesContainer/UploadedImagesContainer";
+
+// Import components
+import PreviewImage from "Features/Post/Components/PreviewImage/PreviewImage";
+import UploadedImagesContainer from "Features/Post/Components/UploadedImagesContainer/UploadedImagesContainer";
 
 // Import styled components
 import {
@@ -13,6 +15,11 @@ import {
   DragDropParagraph,
 } from "./DragDropFile.styled";
 
+/**
+ * Drag and drop file component (The component that allows you to drag and drop files)
+ *
+ * @returns {React.Component} - Drag and drop file component (The component that allows you to drag and drop files)
+ */
 function DragAndDropFile() {
   // State for files
   const [files, setFiles] = useState([]);

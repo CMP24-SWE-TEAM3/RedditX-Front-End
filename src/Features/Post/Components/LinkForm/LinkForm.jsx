@@ -2,8 +2,8 @@
 import Form from "react-bootstrap/Form";
 
 // Import components
-import PostFlagsWrapper from "../PostFlagsWrapper/PostFlagsWrapper";
-import PostFormFooter from "../PostFormFooter/PostFormFooter";
+import PostFlagsWrapper from "Features/Post/Components/PostFlagsWrapper/PostFlagsWrapper";
+import PostFormFooter from "Features/Post/Components/PostFormFooter/PostFormFooter";
 
 // Import styled components
 import {
@@ -13,6 +13,11 @@ import {
   SubmitButtons,
 } from "./LinkForm.styled";
 
+/**
+ * The form of link in create post page (Link tab)
+ *
+ * @returns {React.Component} - Link Form component (The form that appears when you click on the link tab in main section)
+ */
 const LinkForm = () => {
   return (
     <>

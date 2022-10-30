@@ -7,6 +7,14 @@ import { FooterContainer } from "./PostFormFooter.styled";
 
 // Import icons
 import { AiOutlineInfoCircle } from "react-icons/ai";
+
+/**
+ * Post Form Footer component the footer of the post form it "contains Send me post reply notifications"
+ * and "Connect accounts to share your post"
+ *
+ * @param {String} id - The id of the form group
+ * @returns
+ */
 const PostFormFooter = ({ id }) => {
   return (
     <FooterContainer>
@@ -14,7 +22,7 @@ const PostFormFooter = ({ id }) => {
         <Form.Check type="checkbox" label="Send me post reply notifications" />
       </Form.Group>
       <Link to="/">Connect accounts to share your post</Link>
-      <AiOutlineInfoCircle size={20}/>
+      <AiOutlineInfoCircle size={20} />
     </FooterContainer>
   );
 };

@@ -1,7 +1,7 @@
 // Import components
-import PostFlagsWrapper from "../PostFlagsWrapper/PostFlagsWrapper";
-import DraftEditor from "../DraftEditor/DraftEditor";
-import PostFormFooter from "../PostFormFooter/PostFormFooter";
+import PostFlagsWrapper from "Features/Post/Components/PostFlagsWrapper/PostFlagsWrapper";
+import DraftEditor from "Features/Post/Components/DraftEditor/DraftEditor";
+import PostFormFooter from "Features/Post/Components/PostFormFooter/PostFormFooter";
 
 // Import bootstrap components
 import { Form } from "react-bootstrap";
@@ -14,6 +14,11 @@ import {
   SubmitButtons,
 } from "./DraftEditorForm.styled";
 
+/**
+ * The form of draft editor in create post page (Draft editor tab)
+ *
+ * @returns {React.Component} - Draft editor Form component (The form that appears when you click on the post tab in main section)
+ */
 const DraftEditorForm = () => {
   return (
     <>

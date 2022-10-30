@@ -1,6 +1,8 @@
 // Import styled
-import { Button } from "react-bootstrap";
 import styled from "styled-components";
+
+// Import bootstrap components
+import { Button } from "react-bootstrap";
 
 export const StyledDraftEditorForm = styled.div`
   padding: 20px;
