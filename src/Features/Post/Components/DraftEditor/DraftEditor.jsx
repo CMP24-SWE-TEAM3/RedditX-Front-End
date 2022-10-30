@@ -4,13 +4,13 @@ import React, { useRef, useState } from "react";
 // Import draft editor
 import Draft from "draft-js";
 
-import { onAddLink } from "../Link/Link";
-
 // Import components
-import BlockStyleControls from "../BlockStyleControls/BlockStyleControls";
-import InlineStyleControls from "../InlineStyleControls/InlineStyleControls";
-import MediaControls from "../MediaControls/MediaControls";
-import Media from "../Media/Media";
+import BlockStyleControls from "Features/Post/Components/BlockStyleControls/BlockStyleControls";
+import InlineStyleControls from "Features/Post/Components/InlineStyleControls/InlineStyleControls";
+import MediaControls from "Features/Post/Components/MediaControls/MediaControls";
+import Media from "Features/Post/Components/Media/Media";
+import LinkControls from "Features/Post/Components/LinkControls/LinkControls";
+import DraftLinkForm from "Features/Post/Components/DraftLinkForm/DraftLinkForm";
 
 // Import styled components
 import {
@@ -21,16 +21,14 @@ import {
   StyledPopoverBody,
   StyledPopover,
   StyledLink,
-  FormContainer,
-  Input,
-  StyledButton,
 } from "./DraftEditor.styled";
 
+// Import hooks
 import useLink from "Features/Post/Hooks/useLink";
 import useMedia from "Features/Post/Hooks/useMedia";
-import LinkControls from "../LinkControls/LinkControls";
+
+// Import bootstrap components
 import { OverlayTrigger, Popover } from "react-bootstrap";
-import DraftLinkForm from "../DraftLinkForm/DraftLinkForm";
 
 // Extract Draft variables
 const {
@@ -95,7 +93,6 @@ const DraftEditor = () => {
   );
 
   const editorRef = useRef(null);
-  const urlRef = useRef(null);
   const {
     promptForLink,
     removeLink,
@@ -161,7 +158,7 @@ const DraftEditor = () => {
             editorState={editorState}
             onToggle={toggleInlineStyle}
           />
-          <LinkControls promptForLink={promptForLink} removeLink={removeLink} />
+          <LinkControls promptForLink={promptForLink} />
           <Separator />
           <BlockStyleControls
             editorState={editorState}

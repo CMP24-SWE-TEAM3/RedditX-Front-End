@@ -10,15 +10,39 @@ import { AiOutlineUnderline } from "react-icons/ai";
 import { StyledInlineControls } from "./InlineStyleControls.styled";
 
 var INLINE_STYLES = [
-  { label: "Bold", style: "BOLD", icon: <ImBold size={20}/> },
-  { label: "Italic", style: "ITALIC", icon: <GoItalic size={20}/> },
-  { label: "Underline", style: "UNDERLINE", icon: <AiOutlineUnderline size={20}/> },
-  { label: "Strikethrough", style: "STRIKETHROUGH", icon: <BsTypeStrikethrough size={20}/>,},
-  { label: "Code", style: "CODE", icon: <IoCodeSlash size={20}/> },
-  { label: "Superscript", style: "SUPERSCRIPT", icon: <ImSuperscript2 size={20}/> },
-  { label: "Spoiler", style: "SPOILER", icon: <BsExclamationDiamond size={20}/> },
+  { label: "Bold", style: "BOLD", icon: <ImBold size={20} /> },
+  { label: "Italics", style: "ITALIC", icon: <GoItalic size={20} /> },
+  {
+    label: "Underline",
+    style: "UNDERLINE",
+    icon: <AiOutlineUnderline size={20} />,
+  },
+  {
+    label: "Strikethrough",
+    style: "STRIKETHROUGH",
+    icon: <BsTypeStrikethrough size={20} />,
+  },
+  { label: "Inline Code", style: "CODE", icon: <IoCodeSlash size={20} /> },
+  {
+    label: "Superscript",
+    style: "SUPERSCRIPT",
+    icon: <ImSuperscript2 size={20} />,
+  },
+  {
+    label: "Spoiler",
+    style: "SPOILER",
+    icon: <BsExclamationDiamond size={20} />,
+  },
 ];
 
+/**
+ * The inline styles controls in the draft editor
+ * Inline styles like bold, italic, underline, etc.
+ *
+ * @param {object} editorState - The editor state
+ * @param {Function} onToggle - Function to toggle inline style
+ * @returns {React.Component} - The inline styles controls in the draft editor
+ */
 const InlineStyleControls = ({ editorState, onToggle }) => {
   const currentStyle = editorState.getCurrentInlineStyle();
 

@@ -1,3 +1,4 @@
+// Import inline styles
 import styled from "styled-components";
 
 export const StyledInlineControls = styled.div`

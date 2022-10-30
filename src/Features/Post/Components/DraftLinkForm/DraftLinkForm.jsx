@@ -8,8 +8,21 @@ import {
 } from "./DraftLinkForm.styled";
 
 // Import bootstrap components
-import { Col, Form, Row } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
+/**
+ * A small form that allows the user to enter a link in draft editor
+ * It appears when the user clicks on add link button in the draft editor controls
+ *
+ * @param {Function} onLinkURLChange - Function to handle link URL change
+ * @param {Function} onLinkTextChange - Function to handle link text change
+ * @param {Function} onLinkInputKeyDown - Function to handle enter button
+ * @param {Function} confirmLink - Function to handle form submit
+ * @param {String} linkUrlValue - Link URL value (state)
+ * @param {String} linkTextValue - Link text value (state)
+ *
+ * @returns {React.Component} - DraftLinkForm component
+ */
 const DraftLinkForm = ({
   onLinkURLChange,
   linkUrlValue,

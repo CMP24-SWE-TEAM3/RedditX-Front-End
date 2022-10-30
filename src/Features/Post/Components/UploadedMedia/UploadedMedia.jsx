@@ -2,7 +2,7 @@
 import React from "react";
 
 // Import styled components
-import { MediaContainer, StyledMedia } from "./UploadedMedia.styled";
+import { MediaContainer, StyledMedia, /*Input*/ } from "./UploadedMedia.styled";
 
 /**
  * Component for uploaded media in draft editor it is the image or video that appears in

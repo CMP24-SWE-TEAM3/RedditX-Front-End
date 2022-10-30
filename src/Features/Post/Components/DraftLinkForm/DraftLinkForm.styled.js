@@ -1,6 +1,8 @@
 // Import styled
-import { Col, Row } from "react-bootstrap";
 import styled from "styled-components";
+
+// Import bootstrap components
+import { Col, Row } from "react-bootstrap";
 
 export const FormContainer = styled.div`
   padding: 20px;

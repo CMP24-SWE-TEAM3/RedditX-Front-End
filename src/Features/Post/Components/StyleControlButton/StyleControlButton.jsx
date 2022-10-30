@@ -1,5 +1,15 @@
+// Import bootstrap components
+import Tooltip from "react-bootstrap/Tooltip";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+
+// Import styled components
 import { StyledButton } from "./StyleControlButton.styled";
 
+/**
+ *
+ * @param {*} param0
+ * @returns
+ */
 const StyleControlButton = ({ style, onToggle, active, label, icon }) => {
   const onToggleHandler = (e) => {
     e.preventDefault();
@@ -7,9 +17,14 @@ const StyleControlButton = ({ style, onToggle, active, label, icon }) => {
   };
 
   return (
-    <StyledButton active={active} onMouseDown={onToggleHandler}>
-      {icon}
-    </StyledButton>
+    <OverlayTrigger
+      placement="top"
+      overlay={<Tooltip id="button-tooltip-2">{label}</Tooltip>}
+    >
+      <StyledButton active={active} onMouseDown={onToggleHandler}>
+        {icon}
+      </StyledButton>
+    </OverlayTrigger>
   );
 };
 
