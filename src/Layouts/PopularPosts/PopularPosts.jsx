@@ -9,10 +9,7 @@ import DotButton from "Components/DotButton/DotButton";
 
 const PopularPost = () => {
     return (
-        <>
-            <h6 style={{textAlign:'left' , color:'#1a1a1b' ,fontSize:'14px',fontWeight:'500', paddingBottom:'10px'}}> Popular posts</h6>
         <Container>
-
             <HotButton/>
             <EveryWhereButton/>
             <NewButton/>
@@ -20,7 +17,6 @@ const PopularPost = () => {
             <DotButton/>
             <CategoryButton/>
         </Container>
-        </>
     );
 };
 
