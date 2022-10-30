@@ -9,6 +9,13 @@ import {
   CommunityOl,
 } from "./CommunitiesContainerStyle";
 
+
+/**
+ * Component acts as a container for all communities of the community leaderboard page
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 export default function Container() {
   const communities = data.map((community, index) => {
     return (

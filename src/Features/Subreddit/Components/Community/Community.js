@@ -23,6 +23,22 @@ import {
   Arrow,
 } from "./CommunitySyle";
 
+/**
+ * Component that contains the header of the community leaderboard page
+ *
+ * @Component
+ * @param {Object} props - Community Data
+ * @param {boolean} props.isJoined - Boolean showing whether the user joined that community or not
+ * @param {string} props.img - Subreddit Image
+ * @param {string} props.title - Subreddit Title
+ * @param {string} props.description - Subreddit Description to show in hover box
+ * @param {number} props.index - Subreddit index among fetched data to index the list
+ * @param {object} props.stats - Object containing Subreddit Stats (online, and members)
+ * @param {number} props.stats.members - Subreddit Member count
+ * @param {number} props.stats.online - Subreddit online members count
+ * @param {number} props.rankChange - Subreddit Rank Change
+ * @returns {React.Component}
+ */
 export default function Community(props) {
   const [isJoined, setIsJoined] = useState(props.isJoined);
 

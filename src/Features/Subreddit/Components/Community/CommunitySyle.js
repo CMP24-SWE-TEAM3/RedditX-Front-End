@@ -30,7 +30,7 @@ export const CommunityItem = styled.div`
   align-items: center;
 
   /*Can be put in another container to fix media queries for this part*/
-  justify-content: space-between;
+  // justify-content: space-between;
   border-bottom: 1px solid ${({ theme }) => theme.lineColor.primary};
   font-size: 16px;
   font-weight: 300;
@@ -38,7 +38,8 @@ export const CommunityItem = styled.div`
 
   .join-btn {
     position: absolute;
-    left: 80.75%;
+    // left: 80.75%;
+    right: 13%;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: unset;
@@ -60,7 +61,8 @@ export const CommunityItem = styled.div`
 
   .joined-btn {
     position: absolute;
-    left: 80%;
+    // left: 80%;
+    right: 13%;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: unset;
@@ -129,6 +131,8 @@ export const CommunityRankChange = styled.span`
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
+  position: absolute;
+  right: 4%;
   color: ${({ theme }) => theme.color.primary};
 `;
 

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Community Index Page Main Header this is a test for Main Header of Index Page 1`] = `ShallowWrapper {}`;
+
+exports[`Community Leaderboard Main Header this is a test for Main Header 1`] = `ShallowWrapper {}`;

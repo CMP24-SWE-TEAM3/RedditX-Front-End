@@ -4,8 +4,16 @@ import {
   CategoryOl,
   Category,
   CategoryHeader,
+  ShowMoreBtn,
 } from "./CategoriesStyle";
 
+
+/**
+ * Component that contains the categories [left section] of the community leaderboard page
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 export default function Categories() {
   return (
     <AllCategories>
@@ -33,6 +41,7 @@ export default function Categories() {
             <Category href="#">TV</Category>
           </li>
         </CategoryOl>
+        <ShowMoreBtn>See More</ShowMoreBtn>
       </div>
     </AllCategories>
   );

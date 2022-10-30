@@ -40,6 +40,10 @@ const darkTheme = {
     //The border color of hover card
     secondary: "#484848",
   },
+  arrowColor: {
+    up: "#46D160",
+    down: "#EA2700",
+  },
   btnColor: {
     primary: "#d7dadc",
     secondary: "#d7dadc",

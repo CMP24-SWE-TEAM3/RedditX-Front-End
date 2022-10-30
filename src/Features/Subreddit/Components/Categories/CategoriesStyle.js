@@ -57,3 +57,32 @@ export const Category = styled.a`
     width: 5px;
   }
 `;
+
+export const ShowMoreBtn = styled.button`
+  background-color: ${({ theme }) => theme.background.primary};
+  color: ${({ theme }) => theme.color.link};
+  width: 100%;
+  position: relative;
+  font-family: Noto Sans, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: unset;
+  line-height: 17px;
+  text-transform: unset;
+  min-height: 32px;
+  min-width: 32px;
+  padding: 4px 16px;
+  border: 1px solid transparent;
+  
+  &:hover::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 9999px;
+    background-color: ${({ theme }) => theme.color.primary};
+    opacity: 0.08;
+  }
+`;

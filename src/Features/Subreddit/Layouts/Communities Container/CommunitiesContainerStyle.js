@@ -51,6 +51,7 @@ export const CommunityH3 = styled.h3`
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
+  margin-bottom: 0;
   color: ${({ theme }) => theme.color.primary};
 `;
 

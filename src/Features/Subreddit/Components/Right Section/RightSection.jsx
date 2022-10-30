@@ -15,14 +15,20 @@ import {
   LettersContainer,
 } from "./RightSectionStyle";
 
+
+
+/**
+ * Component that contains the right section of the community leaderboard page
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 export default function RightSection() {
   return (
     <RightSectionContainer>
       <RightSectionStylingDiv>
-        {/* <FirstBlock> */}
         <RightSectionSticky>
           <SecondBlockWithBrowse>
-            {/* <SecondBlock></SecondBlock> */}
             <Browse>
               <BrowseH3>Browse Communities A-Z</BrowseH3>
               <LettersContainer>
@@ -60,7 +66,6 @@ export default function RightSection() {
             </BackTop>
           </SecondBlockWithBrowse>
         </RightSectionSticky>
-        {/* </FirstBlock> */}
       </RightSectionStylingDiv>
     </RightSectionContainer>
   );

@@ -20,7 +20,7 @@ import { Button } from "react-bootstrap";
 
 //Import Page
 import LeaderBoard from "./Features/Subreddit/Pages/Community Leaderboard/CommunityLeaderboard"
-
+import Index from "./Features/Subreddit/Pages/Index Page/IndexPage";
 /**
  * The main app of our application it handles routing
  *
@@ -42,12 +42,12 @@ function App() {
     }
   };
   return (
-    <ThemeProvider theme={theme}>    
-      <Button onClick={handleToggleTheme}>
-        Toggle theme
-      </Button>
-      <LeaderBoard></LeaderBoard>
-      
+    <ThemeProvider theme={theme}>   
+        <Button onClick={handleToggleTheme}>
+          Toggle theme
+        </Button>
+      <LeaderBoard />
+      {/* <Index /> */}
     </ThemeProvider>
   );
 }

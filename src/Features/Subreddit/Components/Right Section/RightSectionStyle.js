@@ -43,7 +43,7 @@ export const SecondBlock = styled.div`
   background-color: ${({theme})=>theme.background.primary};
   color: ${({theme})=>theme.color.primary};
   fill:  ${({theme})=>theme.color.primary};
-  border: 1px solid ${({theme})=>theme.linecolor.gray};
+  border: 1px solid ${({theme})=>theme.linecolor.sideBorder};
   border-radius: 4px;
   overflow: visible;
   overflow-wrap: break-word;
@@ -54,7 +54,7 @@ export const Browse = styled.div`
   background-color: ${({theme})=>theme.background.primary};
   color:  ${({theme})=>theme.color.primary};
   fill:  ${({theme})=>theme.color.primary};
-  border: 1px solid ${({theme})=>theme.linecolor.gray};
+  border: 1px solid ${({theme})=>theme.linecolor.sideBorder};
   border-radius: 4px;
   overflow: visible;
   overflow-wrap: break-word;
@@ -113,4 +113,8 @@ export const BackTopBtn = styled(RightSectionBtns)`
   cursor: pointer;
   text-decoration: none;
   scroll-behavior: smooth;
+
+  &:hover {
+    color: ${({theme})=>theme.background.primary};
+  }
 `;
