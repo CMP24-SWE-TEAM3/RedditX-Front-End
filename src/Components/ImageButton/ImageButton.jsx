@@ -1,10 +1,11 @@
 import React from 'react';
-import {IconStyled, ImageButtonStyled} from "./ImageButton.styled";
+import { ImageButtonStyled} from "./ImageButton.styled";
+import {RiImage2Line} from "react-icons/ri";
 
 const ImageButton = () => {
     return (
         <ImageButtonStyled>
-            <IconStyled/>
+            <i><RiImage2Line/> </i>
         </ImageButtonStyled>
     );
 };

@@ -1,18 +1,19 @@
 import styled from "styled-components";
-import cover from "Assets/web.jpg";
-import Modal from "react-bootstrap/Modal";
-import {DefaultAllowlist as styles} from "bootstrap/js/src/util/sanitizer";
+import cover from "Assets/background.png";
 
 
 export const Container = styled.div`
   background-color: ${({theme}) => theme.background.primary};
   border: thin solid ${({theme}) => theme.lineColor.primary};
-  border-radius: 4px;
-  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 6%);
-  //margin-bottom: 16px;
-  //max-width: 100%;
-  width: 312px;
-  height: 262px;
+  
+  & .buts {
+    margin-top: 12px;
+  }
+
+  & .out-fav {
+    margin-bottom: 8px;
+    position: relative;
+  }
 
   & .sub-but1 {
     color: ${({theme}) => theme.background.primary};
@@ -65,19 +66,37 @@ export const Container = styled.div`
 
   & .sub-but2:focus-visible {
     outline: none;
-  }: & . cover {
-  background-image: url(${cover});
-  background-size: cover;
-  background-position-y: center;
-  background-position-x: center;
-  background-repeat: no-repeat;
-  border-radius: 3px 3px 0 0;
-  height: 34px;
-}
+
+  }
+
+  & .content {
+    max-height: none;
+    padding: 12px;
+  }
+
+  & .block-home {
+    margin-left: 10px;
+    margin-top: 30px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  & .cover {
+    background-image: url(${cover});
+    background-size: cover;
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    border-radius: 3px 3px 0 0;
+    height: 34px;
+    margin: -12px -12px 10px;
+  }
 
   & .home {
     display: flex;
-    width: fit-content;
+    margin-top: -23px;
+    align-items: center;
+    margin-bottom: 8px;
     padding: 12px
   }
 
@@ -93,8 +112,6 @@ export const Container = styled.div`
     font-weight: 500;
     line-height: 20px;
     display: inline-block;
-    margin-left: 10px;
-    margin-top: 30px;
     color: ${({theme}) => theme.color.primary};
   }
 

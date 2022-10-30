@@ -1,13 +1,23 @@
-import React from 'react';
-import {ModalContainer, ModalStyled} from "./Modal.styled";
+import React, {useState} from 'react';
+import {ModalStyled} from "./Modal.styled";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal"
 import {BsFillPersonFill} from "react-icons/bs";
 import {VscEye} from "react-icons/vsc";
 import {HiLockClosed} from "react-icons/hi";
-import {useState} from "react";
+
+/**
+ * Component that  Main Links component but in responsive form.
+ *
+ * @Component
+ * @returns {Modal}
+ */
 
 const ModalCommunity = (props) => {
+        const [communityName, setCommunityName] = useState('');
+        const handlerChars = (event) => {
+            setCommunityName(event.target.value);
+        }
         return (
             <ModalStyled show={props.show}>
                 <Modal.Header closeButton>
@@ -20,7 +30,12 @@ const ModalCommunity = (props) => {
                     </p>
                     <Form>
                         <Form.Group className="mb-3">
-                            <Form.Control aria-required/></Form.Group>
+                            <Form.Control value={communityName} onChange={handlerChars} aria-required type={'text'}
+                                          id={'community-name'} name={'community-name'}
+                                          maxlength="21"/></Form.Group>
+                        <span id={'charcount'}>
+                        <span id="remaining-chars" className="some-class">{21 - communityName.length}</span> Characters remaining
+                            </span>
                     </Form>
                     <div className={'check-form'}>
                         <h6 className={'mb-4'}>

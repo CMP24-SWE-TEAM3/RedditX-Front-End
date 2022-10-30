@@ -2,8 +2,14 @@ import styled from "styled-components";
 import Modal from "react-bootstrap/Modal";
 
 export const ModalStyled = styled(Modal)`
+
+
   & .fade .modal-backdrop .show {
     background: rgb(28 28 28 / 90%);
+  }
+
+  & .btn-close :focus {
+    box-shadow: none !important;
   }
 
   & .modal-content {
@@ -31,7 +37,6 @@ export const ModalStyled = styled(Modal)`
     font-size: 12px;
     line-height: 16px;
     font-weight: 400;
-
   }
 
   & .modal-title {
@@ -42,8 +47,6 @@ export const ModalStyled = styled(Modal)`
     display: flex;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    margin-bottom: 16px;
-    padding: 0 0 16px;
   }
 
   & .check-form {
@@ -52,7 +55,7 @@ export const ModalStyled = styled(Modal)`
     .ico {
       width: 16px;
       height: 16px;
-      margin: 0 4px ;
+      margin: 0 4px;
       align-self: baseline;
       color: #878a8c;
     }

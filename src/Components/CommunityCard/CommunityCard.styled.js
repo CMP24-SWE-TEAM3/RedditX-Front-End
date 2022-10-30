@@ -7,7 +7,6 @@ export const CommunityContainer = styled.div`
     color: black;
     height: 80px;
     text-align: left;
-    //background-color: rgb(121, 121, 211);
     background-repeat: no-repeat;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;

@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {ModalContainer, Container, ModalStyled} from "./CreatePostSideBar.styled";
+import {Container} from "./CreatePostSideBar.styled";
 import reddit from 'Assets/reddit.png'
 import ModalCommunity from 'Components/Modal/Modal';
 import Form from "react-bootstrap/Form";
@@ -14,19 +14,28 @@ const CreatePostSideBar = () => {
     return (
         <>
             <Container>
+                <div className={'content'}>
                 <div className={'cover'}/>
+
                 <div className={'home'}>
                     <img src={reddit} className={'logo'}/>
+                    <div className={'block-home'}>
                     <span className={'word'}>
                     Home
                 </span>
+                    </div>
                 </div>
-                <div className={'fav-com'}>
-                    Your personal Reddit frontpage. Come here to check in with your favorite communities.
+                <div className={'out-fav'}>
+                    <div className={'fav-com'}>
+                        Your personal Reddit frontpage. Come here to check in with your favorite communities.
+                    </div>
                 </div>
                 <hr/>
-                <button className={'sub-but1'}>Create Post</button>
-                <button onClick={() => setShow(true)} className={'sub-but2'}>Create Community</button>
+                <div className={'buts'}>
+                    <button className={'sub-but1'}>Create Post</button>
+                    <button onClick={() => setShow(true)} className={'sub-but2'}>Create Community</button>
+                </div>
+                </div>
             </Container>
             {<ModalCommunity show={show} close={() => setShow(false)}/>}
         </>
