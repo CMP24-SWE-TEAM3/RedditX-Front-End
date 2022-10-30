@@ -8,7 +8,7 @@ const ScrollButton = () => {
 
     const toggleVisible = () => {
         const scrolled = document.documentElement.scrollTop;
-        console.log(scrolled, visible)
+        // console.log(scrolled, visible)
         if (scrolled > 200) {
             setVisible(true)
         } else if (scrolled <= 200) {
@@ -22,11 +22,11 @@ const ScrollButton = () => {
             behavior: 'smooth'
         });
     };
-//style={{display: visible ? 'inline' : 'none'}}
+
     window.addEventListener('scroll', toggleVisible);
 
     return (
-        <ButtonStyled onClick={scrollToTop}>Back to Top</ButtonStyled>
+        <ButtonStyled onClick={scrollToTop} style={{display: visible ? 'inline' : 'none'}}>Back to Top</ButtonStyled>
 
     );
 }

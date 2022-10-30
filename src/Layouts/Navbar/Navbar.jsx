@@ -10,7 +10,7 @@ import ChatButton from "Components/ChatButton/Chat";
 import NotificationButton from "Components/NotificationButton/NotificationButton";
 import AdvertiseButton from "Components/AdvertiseButton/AdvertiseButton";
 import DropDownRightButton from "Components/DropDownRight/DropDownRight";
-import DropDownLeft from "Components/DropDownButtonLeft/DropDown";
+import DropDownLeft from "Components/DropDownButtonLeft/DropDownLeft";
 import SignUp from "Components/SignUp/SignUp";
 import LoginButton from "Components/LoginButton/LoginButton";
 import React, {useContext} from "react";
@@ -25,12 +25,11 @@ const Navbar = (props) => {
         <StyledHeader>
             <div className='search'>
                 <Badge/>
+                <DropDownLeft Name={"Home"}/>
                 <SearchBar/>
             </div>
             {ctx.isLoggedIn &&
                 (<>
-                    <DropDownLeft Name={"Home"}/>
-
                     <PopularButton onshow={ButtonHandler}/>
                     <CoinButton onshow={ButtonHandler}/>
                     <StyledSeperator/>

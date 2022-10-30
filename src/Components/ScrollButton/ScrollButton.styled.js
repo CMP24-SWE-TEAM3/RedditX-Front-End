@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import LightTheme from "Theme/lightTheme";
 
 export const ButtonStyled = styled.button`
   position: relative;
@@ -8,18 +7,18 @@ export const ButtonStyled = styled.button`
   height: 32px;
   z-index: 1;
   cursor: pointer;
-  color: white;
+  color: ${({theme}) => theme.background.primary};
   border-color: ${({theme})=>theme.color.secondary};
   background-color: ${({theme})=>theme.color.secondary};
   width: 112px;
 
-  &:hover {
-    background-color: #1484d6 !important;
-  }
+  //&:hover {
+  //  background-color: #1484d6 !important;
+  //}
 
-  &:active {
-    background-color: #0079d3 !important;
-  }
+  //&:active {
+  //  background-color: #0079d3 !important;
+  //}
 
   border-radius: 9999px;
   font-size: 14px;

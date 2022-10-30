@@ -37,10 +37,10 @@ export const Container = styled(Dropdown)`
     display: block;
     color: ${({theme}) => theme.color.primary};
     padding: 5px;
-    :hover{
-      background-color: ${({theme}) => theme.background.muted};
-
-    }
+    // :hover{
+    //   background-color: ${({theme}) => theme.background.muted};
+    //
+    // }
   }
 
   & .rs-dropdown-menu {
@@ -73,7 +73,7 @@ export const Container = styled(Dropdown)`
     
     :hover{
       background-color: ${({theme}) => theme.background.muted};
-      
+
     }
   }
 
