@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   max-width: 100%;
+  width: 100%;
   box-sizing: border-box;
   flex-direction: row;
   justify-content: center;
@@ -14,13 +15,14 @@ export const Container = styled.div`
   & .content-posts {
     @media (min-width: 960px) {
       width: 640px;
+      //width: 100%;
     }
   }
 
-  & .posts {
-    min-height: 1000px;
-    width: 100%;
-  }
+  //& .posts {
+  //  min-height: 1000px;
+  //  width: 100%;
+  //} 
 
   & aside {
     margin-left: 24px;

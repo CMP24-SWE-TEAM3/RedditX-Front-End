@@ -8,6 +8,10 @@ import {BsFillPersonFill} from 'react-icons/bs';
 import {HiLockClosed} from 'react-icons/hi';
 import {VscEye} from 'react-icons/vsc';
 
+/**
+ * Component that displays a create post and community button on sidebar.
+ * @returns {Component.React}
+ */
 const CreatePostSideBar = () => {
     const [show, setShow] = useState(false);
     useEffect(() => console.log('Open Model'), [show]);

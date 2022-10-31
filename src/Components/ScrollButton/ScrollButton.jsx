@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
-import {FaArrowCircleUp} from 'react-icons/fa';
 import {ButtonStyled} from './ScrollButton.styled';
-
+/** 
+ *  scrolling button which has been showed after 200 px from top page to get back to new feeds
+ * @param {} 
+ * @returns {React.Component}  
+ */
 const ScrollButton = () => {
 
     const [visible, setVisible] = useState(false)

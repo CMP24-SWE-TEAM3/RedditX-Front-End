@@ -1,6 +1,10 @@
 import React from 'react';
 import {Container} from "./Footer.styled";
-
+/**
+ * Component that has a languages of different countries , privacy polices and content policies
+ *
+ * @returns {React.Component}
+ */
 const Footer = () => {
     return (
         <Container>

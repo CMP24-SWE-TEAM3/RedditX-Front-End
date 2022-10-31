@@ -15,7 +15,11 @@ import SignUp from "Components/SignUp/SignUp";
 import LoginButton from "Components/LoginButton/LoginButton";
 import React, {useContext} from "react";
 import AuthContext from "Contexts/auth-context";
-
+/**
+ * Component that  Main Links component in header  called navigation bar.
+ *
+ * @returns {Component.React}
+ */
 const Navbar = (props) => {
     const ButtonHandler = () => {
         alert('Hello Reddit!');

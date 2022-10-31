@@ -12,8 +12,8 @@ import defaultTheme from "Theme/defaultTheme";
 import {ThemeProvider} from "styled-components";
 
 /**
- * @Component
- * @returns {HomePage}
+ * Component that displays a list of layouts such as  posts , navigation , and sidebar.
+ * @returns {React.Component} returns an instance of HomePage with a list of layouts created
  * @
  */
 
@@ -32,8 +32,8 @@ const HomePage = () => {
                             <div className={'content-posts'}>
                                 <CreatePost/>
                                 <PopularPosts/>
-                                <div className={'posts'}>
-                                </div>
+                                {/*<div className={'posts'}>*/}
+                                {/*</div>*/}
                             </div>
                             <aside>
                                 <div className={'sidebar'}>

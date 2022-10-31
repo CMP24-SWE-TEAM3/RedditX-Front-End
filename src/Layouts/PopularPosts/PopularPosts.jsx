@@ -7,6 +7,10 @@ import NewButton from "Components/NewButton/NewButton";
 import TopButton from "Components/TopButton/Top";
 import DotButton from "Components/DotButton/DotButton";
 
+/**
+ * Component that displays a list of posts from a category list view
+ * @returns {React.Component}
+ */
 const PopularPost = () => {
     return (
         <Container>
