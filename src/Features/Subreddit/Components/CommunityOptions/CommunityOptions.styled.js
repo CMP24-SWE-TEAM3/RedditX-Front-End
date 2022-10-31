@@ -36,7 +36,8 @@ export const OptionsButtons = styled.div`
   border-radius: 20px;
   cursor: pointer;
 
-  :hover, :focus{
+  :hover,
+  :focus {
     background-color: #ececec;
   }
 `;
@@ -58,8 +59,10 @@ export const CommunityTheme = styled.div`
 
 export const StyledForm = styled(Form)`
   //1em === 14px
+
   .form-switch .form-check-input {
     width: 37px;
+    cursor: pointer;
   }
 
   .form-check-input {

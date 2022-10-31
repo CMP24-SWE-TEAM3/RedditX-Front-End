@@ -7,6 +7,7 @@ import {
   CreatePost,
   DataContainer,
   Flair,
+  FlairContainer,
   FlairPreview,
   Name,
   NameAndFlairContainer,
@@ -44,16 +45,16 @@ const UserFlairPreview = (props) => {
               <Name>
                 <span>user name</span>
               </Name>
-              <Flair>
-                <span
+              <FlairContainer>
+                <Flair
                   style={{
                     color: flair.color,
                     backgroundColor: flair.backgroundColor,
                   }}
                 >
                   {flair.text}
-                </span>
-              </Flair>
+                </Flair>
+              </FlairContainer>
             </NameAndFlairContainer>
           </DataContainer>
         </UserFlairContainer>

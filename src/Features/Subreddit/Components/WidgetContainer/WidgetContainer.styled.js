@@ -6,6 +6,7 @@ export const MainContainer = styled.div`
 `;
 
 export const InnerContainer = styled.div`
+  background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
   overflow: visible;

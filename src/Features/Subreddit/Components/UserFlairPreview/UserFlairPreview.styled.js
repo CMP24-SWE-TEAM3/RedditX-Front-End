@@ -127,27 +127,26 @@ export const Name = styled.div`
   }
 `;
 
-export const Flair = styled.div`
+export const FlairContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
   max-width: 100%;
   margin-top: 2px;
+`;
 
-  span {
-    font-weight: 400;
-    box-sizing: border-box;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 16px;
-    border-radius: 2px;
-    display: inline-block;
-    margin-right: 5px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    vertical-align: text-bottom;
-    white-space: pre;
-    word-break: normal;
-    padding: 0 4px;
-  }
+export const Flair = styled.span`
+  font-weight: 400;
+  box-sizing: border-box;
+  font-size: 12px;
+  line-height: 16px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-right: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: text-bottom;
+  white-space: pre;
+  word-break: normal;
+  padding: 0 4px;
 `;
