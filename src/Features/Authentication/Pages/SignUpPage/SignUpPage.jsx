@@ -55,6 +55,10 @@ const SignUpPage = () => {
    * state to know if the user focused on input field at least one time
    */
   const [initialFocus, setInitialFocus] = useState(true);
+  /**
+   * state to know if the user focused on input field at least one time
+   */
+  const [initialFocus2, setInitialFocus2] = useState(true);
 
   /**
    * state to know what error message should be shown
@@ -75,7 +79,7 @@ const SignUpPage = () => {
     <>
       {
         <SignUpPageFirstScreen
-          errMsg={errMsg}
+          errMsg={"not a valid email address"}
           formFields={formFields}
           initialFocus={initialFocus}
           secondScreen={secondScreen}
@@ -96,15 +100,17 @@ const SignUpPage = () => {
 
       {
         <SignUpPageSecondScreen
-          errMsg={errMsg}
+          errMsg={"not a valid username"}
           formFields={formFields}
           initialFocus={initialFocus}
+          initialFocus2={initialFocus2}
           notRobot={notRobot}
           passwordStrength={passwordStrength}
           secondScreen={secondScreen}
           setErrMsg={setErrMsg}
           setFormFields={setFormFields}
           setInitialFocus={setInitialFocus}
+          setInitialFocus2={setInitialFocus2}
           setNotRobot={setNotRobot}
           setPasswordStrength={setPasswordStrength}
           setSecondScreen={setSecondScreen}

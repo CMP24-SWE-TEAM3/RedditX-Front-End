@@ -22,7 +22,7 @@ export const MyModalHeader = styled(Modal.Header)`
   }
 `;
 export const HaveAccount = styled.span`
-padding: 0 0 0 33px;
+padding: 0 0 0 43px;
   font-size: 12px;
   margin-bottom: 100px;
 

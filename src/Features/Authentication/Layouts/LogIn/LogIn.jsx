@@ -62,6 +62,10 @@ const LogIn = () => {
    * state to know if the user focused on input field at least one time
    */
   const [initialFocus, setInitialFocus] = useState(true);
+  /**
+   * state to know if the user focused on input field at least one time
+   */
+  const [initialFocus2, setInitialFocus2] = useState(true);
 
 
   /**
@@ -80,10 +84,12 @@ const LogIn = () => {
         <LogInScreen
           formFields={formFields}
           initialFocus={initialFocus}
+          initialFocus2={initialFocus2}
           passwordScreen={passwordScreen}
           setErrMsg={setErrMsg}
           setFormFields={setFormFields}
           setInitialFocus={setInitialFocus}
+          setInitialFocus2={setInitialFocus2}
           setPasswordScreen={setPasswordScreen}
           setUserNameScreen={setUserNameScreen}
           setValidName={setValidName}
@@ -119,10 +125,12 @@ const LogIn = () => {
         <ForgetPasswordModal
           formFields={formFields}
           initialFocus={initialFocus}
+          initialFocus2={initialFocus2}
           passwordScreen={passwordScreen}
           setErrMsg={setErrMsg}
           setFormFields={setFormFields}
           setInitialFocus={setInitialFocus}
+          setInitialFocus2={setInitialFocus2}
           setPasswordScreen={setPasswordScreen}
           setUserNameScreen={setUserNameScreen}
           setValidEmail={setValidEmail}

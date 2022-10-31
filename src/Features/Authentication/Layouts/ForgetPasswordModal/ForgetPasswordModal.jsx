@@ -1,12 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import {useEffect } from "react";
-
+import { useEffect } from "react";
 
 import FormInput from "Features/Authentication/Components/FormInput/FormInput";
 
 import Button from "Features/Authentication/Components/Button/Button";
-
-
 
 import {
   AuthContainer,
@@ -50,14 +47,12 @@ const ForgetPasswordModal = ({
   passwordScreen,
   setPasswordScreen,
   initialFocus,
+  initialFocus2,
   setInitialFocus,
-  setErrMsg
+  setInitialFocus2,
+  setErrMsg,
 }) => {
- 
-    
   const { userName, email } = formFields;
-
-  
 
   /**
    * useEffect for userName field to check if the userName that the user entered is valid or not
@@ -146,13 +141,20 @@ const ForgetPasswordModal = ({
             <FormInput
               label="Email"
               valid={validEmail}
-              initialFocus={initialFocus}
+              initialFocus={initialFocus2}
               showIcon={true}
               type="email"
               onChange={handleChange}
               name="email"
               value={email}
+              onFocus={() => {
+                setInitialFocus2(false);
+              }}
             />
+
+            <ErrorParagraph valid={validEmail || initialFocus2}>
+              not a valid email address
+            </ErrorParagraph>
 
             <Forget>
               Forget your{" "}

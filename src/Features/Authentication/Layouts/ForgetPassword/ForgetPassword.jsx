@@ -53,6 +53,11 @@ const ForgetPassword = () => {
    */
 
   const [initialFocus, setInitialFocus] = useState(true);
+  /**
+   * state to know if the user focused on input field at least one time
+   */
+
+  const [initialFocus2, setInitialFocus2] = useState(true);
   
   const { userName, email } = formFields;
 
@@ -134,17 +139,20 @@ const ForgetPassword = () => {
           <FormInputPageCom
             label="EMAIL"
             valid={validEmail}
-            initialFocus={initialFocus}
+            initialFocus={initialFocus2}
             showIcon={true}
             type="email"
             onChange={handleChange}
             name="email"
             value={email}
+            onFocus={() => {
+              setInitialFocus2(false);
+            }}
           />
 
           {/* Show error message if the email is not valid and the user made a focus on the it's input field */}
 
-          <ErrorParagraph valid={validEmail || initialFocus}>
+          <ErrorParagraph valid={validEmail || initialFocus2}>
             not a valid email
           </ErrorParagraph>
 

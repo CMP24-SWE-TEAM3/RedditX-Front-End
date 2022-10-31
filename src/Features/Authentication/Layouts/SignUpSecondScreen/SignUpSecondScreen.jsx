@@ -54,6 +54,8 @@ const PWD_REGEX = /^[A-z][A-z0-9-_]{8,20}$/;
 const SignUpSecondScreen = ({
   initialFocus,
   setInitialFocus,
+  initialFocus2,
+  setInitialFocus2,
   validUserName,
   setValidUserName,
   secondScreen,
@@ -195,15 +197,18 @@ const SignUpSecondScreen = ({
             <Group>
               <FormInput
                 valid={validPassword}
-                initialFocus={initialFocus}
+                initialFocus={initialFocus2}
                 label="Password"
                 type="password"
                 required
                 onChange={handleChange}
                 name="password"
                 value={password}
+                onFocus={() => {
+                  setInitialFocus2(false);
+                }}
               />
-              {!initialFocus && (
+              {!initialFocus2 && (
                 <span onClick={() => {}}>
                   <PasswordStrength
                     strength={passwordStrength}
@@ -213,7 +218,7 @@ const SignUpSecondScreen = ({
             </Group>
 
             {/* Show error message if the password is not valid and the user made a focus on the it's input field */}
-            <ErrorParagraph valid={validPassword || initialFocus}>
+            <ErrorParagraph valid={validPassword || initialFocus2}>
               password should contain 8 to 20 characters
             </ErrorParagraph>
             <ButtonsContainer>

@@ -62,6 +62,10 @@ const SignUp = () => {
    * state to know if the user focused on input field at least one time
    */
   const [initialFocus, setInitialFocus] = useState(true);
+  /**
+   * state to know if the user focused on input field at least one time
+   */
+  const [initialFocus2, setInitialFocus2] = useState(true);
 
  
   /**
@@ -93,11 +97,13 @@ const SignUp = () => {
       {
         <SignUpSecondScreen
           initialFocus={initialFocus}
+          initialFocus2={initialFocus2}
           notRobot={notRobot}
           passwordStrength={passwordStrength}
           secondScreen={secondScreen}
           setSecondScreen={setSecondScreen}
           setInitialFocus={setInitialFocus}
+          setInitialFocus2={setInitialFocus2}
           setNotRobot={setNotRobot}
           setPasswordStrength={setPasswordStrength}
           setValidPassword={setValidPassword}

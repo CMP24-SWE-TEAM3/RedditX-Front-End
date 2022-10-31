@@ -61,7 +61,9 @@ const LogInScreen = ({
   passwordScreen,
   setPasswordScreen,
   initialFocus,
+  initialFocus2,
   setInitialFocus,
+  setInitialFocus2,
   setErrMsg,
 }) => {
   const { userName, password } = formFields;
@@ -210,12 +212,15 @@ const LogInScreen = ({
               <FormInput
                 label="Password"
                 valid={validPassword}
-                initialFocus={initialFocus}
+                initialFocus={initialFocus2}
                 showIcon={true}
                 type="password"
                 onChange={handleChange}
                 name="password"
                 value={password}
+                onFocus={() => {
+                  setInitialFocus2(false);
+                }}
               />
 
               <Forget>

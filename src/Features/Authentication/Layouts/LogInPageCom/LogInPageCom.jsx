@@ -58,6 +58,10 @@ const LogInPageCom = () => {
    * state to know if the user focused on input field at least one time
    */
   const [initialFocus, setInitialFocus] = useState(true);
+  /**
+   * state to know if the user focused on input field at least one time
+   */
+  const [initialFocus2, setInitialFocus2] = useState(true);
   const { userName, password } = formFields;
 
   /**
@@ -206,12 +210,15 @@ const LogInPageCom = () => {
               <FormInputPageCom
                 label="PASSWORD"
                 valid={validPassword}
-                initialFocus={initialFocus}
+                initialFocus={initialFocus2}
                 showIcon={true}
                 type="password"
                 onChange={handleChange}
                 name="password"
                 value={password}
+                onFocus={() => {
+                  setInitialFocus2(false);
+                }}
               />
 
               <ButtonsContainer>
