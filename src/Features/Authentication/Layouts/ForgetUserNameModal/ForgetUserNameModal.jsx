@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import {  useEffect } from "react";
+import { useEffect } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
 import FormInput from "Features/Authentication/Components/FormInput/FormInput";
@@ -69,7 +69,6 @@ const ForgetUserNameModal = ({
       setErrMsg("Not a valid email address");
     } else if (email.length === 0) {
       setErrMsg("Please enter an email address to continue");
-      // console.log(errMsg);
     }
     setValidEmail(USER_EMAIL.test(email));
   }, [email]);
@@ -91,7 +90,6 @@ const ForgetUserNameModal = ({
     const { name, value } = event.target;
     if (name === "email") {
       setValidEmail(USER_EMAIL.test(email));
-      console.log(validEmail);
     }
     setFormFields({ ...formFields, [name]: value });
   };
@@ -141,13 +139,7 @@ const ForgetUserNameModal = ({
             <ButtonsContainer>
               {/** Show an enabled button if the email is valid and the user has passed the captcha*/}
               {validEmail && notRobot && (
-                <Button
-                  valid={validEmail}
-                  type="button"
-                  onClick={() => {
-                    console.log("Enabled");
-                  }}
-                >
+                <Button valid={validEmail} type="button" onClick={() => {}}>
                   Email me
                 </Button>
               )}

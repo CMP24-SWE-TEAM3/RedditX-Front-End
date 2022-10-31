@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
-import jwt_decode from "jwt-decode";
+
 
 import { FaFacebookSquare } from "react-icons/fa";
 
@@ -122,10 +123,7 @@ const SignUpPageFirstScreen = ({
    * Function to handle the response coming from sign in with google
    * @param {*} response
    */
-  const handleCallbackResponse = (response) => {
-    let userObject = jwt_decode(response.credential);
-    console.log(userObject);
-  };
+  const handleCallbackResponse = (response) => {};
 
   /**
    * Function to check email by sending request to the api and make sure that the email is good to show the second screen after that
@@ -156,13 +154,10 @@ const SignUpPageFirstScreen = ({
     });
   }, []);
 
-  const responseFacebook = (response) => {
-    console.log(response);
-  };
+  const responseFacebook = (response) => {};
 
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
-    console.log(user.accessToken);
   };
 
   return (

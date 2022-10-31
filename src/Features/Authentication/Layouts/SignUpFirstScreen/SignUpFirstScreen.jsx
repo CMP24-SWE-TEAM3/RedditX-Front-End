@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
-import jwt_decode from "jwt-decode";
+
 
 import FacebookLogin from "react-facebook-login";
 
@@ -68,7 +69,6 @@ const SignUpFirstScreen = ({
       setErrMsg("Not a valid email address");
     } else if (email.length === 0) {
       setErrMsg("Please enter an email address to continue");
-      // console.log(errMsg);
     }
 
     setValidEmail(USER_EMAIL.test(email));
@@ -101,8 +101,7 @@ const SignUpFirstScreen = ({
    * @param {*} response
    */
   const handleCallbackResponse = (response) => {
-    let userObject = jwt_decode(response.credential);
-    console.log(userObject);
+    
   };
 
   /**
@@ -140,12 +139,12 @@ const SignUpFirstScreen = ({
    * @param {*} response
    */
   const responseFacebook = (response) => {
-    console.log(response);
+    
   };
 
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
-    console.log(user.accessToken);
+    
   };
 
   return (

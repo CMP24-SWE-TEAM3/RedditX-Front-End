@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const PageContainer = styled.div`
   display: flex;
   justify-content: center;
+  @media (max-width: 330px) {
+    align-items: center;
+    margin: 50px auto;
+  }
 `;
 
 export const Photo = styled.div`
@@ -12,6 +16,12 @@ export const Photo = styled.div`
   min-height: 430px;
   background-repeat: no-repeat;
   background-size: cover;
+
+
+  @media (max-width: 330px) {
+    display: none;
+    padding:20px;
+  }
 `;
 
 export const LogInContainer = styled.div`
@@ -21,7 +31,16 @@ export const LogInContainer = styled.div`
 
  >div {
     margin:0 0 0 20px;
+
+    @media (max-width: 330px) {
+      margin: auto;
+    }
  }
+
+ @media (max-width: 330px) {
+  width: 100%;
+  margin: auto;
+}
 `;
 
 

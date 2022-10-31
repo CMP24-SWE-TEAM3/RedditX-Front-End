@@ -143,7 +143,7 @@ const ForgetUserName = () => {
               valid={validEmail}
               type="button"
               onClick={() => {
-                console.log("Enabled");
+                
               }}
             >
               EMAIL ME

@@ -1,6 +1,5 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
-
-import jwt_decode from "jwt-decode";
 
 import FacebookLogin from "react-facebook-login";
 
@@ -70,7 +69,6 @@ const LogInPageCom = () => {
   useEffect(() => {
     if (userName.length > 0) {
       setInitialFocus(false);
-      console.log("Entered");
     }
     setValidName(USER_REGEX.test(userName));
   }, [userName]);
@@ -81,7 +79,6 @@ const LogInPageCom = () => {
   useEffect(() => {
     if (password.length > 0) {
       setInitialFocus(false);
-      console.log("Entered");
     }
     setValidPassword(PWD_REGEX.test(password));
   }, [password]);
@@ -115,11 +112,7 @@ const LogInPageCom = () => {
    * Function to handle the response coming from sign in with google
    * @param {*} response
    */
-  const handleCallbackResponse = (response) => {
-    let userObject = jwt_decode(response.credential);
-    console.log(response);
-    console.log(userObject);
-  };
+  const handleCallbackResponse = (response) => {};
 
   /**
    * Adding some configurations to the signIn with google feature
@@ -143,14 +136,10 @@ const LogInPageCom = () => {
    * Function to handle the response coming from sign in with facebook
    * @param {*} response
    */
-  const responseFacebook = (response) => {
-    console.log(response);
-  };
-
+  const responseFacebook = (response) => {};
 
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
-    console.log(user.accessToken);
   };
 
   return (
@@ -166,7 +155,7 @@ const LogInPageCom = () => {
             <SignInWithGoogle>
               {/* <div id="signInDiv"></div> */}
               <button onClick={() => logGoogleUser()}>
-                <FcGoogle  size={22}/>
+                <FcGoogle size={22} />
                 <span> CONTINUE WITH GOOGLE</span>
               </button>
             </SignInWithGoogle>
@@ -233,7 +222,6 @@ const LogInPageCom = () => {
                     LOG IN
                   </Button>
                 )}
-
 
                 {/** Show an disabled button if the password or userName are not valid */}
                 {(!validName || !validPassword) && (

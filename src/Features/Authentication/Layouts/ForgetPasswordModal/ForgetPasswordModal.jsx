@@ -73,7 +73,6 @@ const ForgetPasswordModal = ({
       setErrMsg("Not a valid email address");
     } else if (email.length === 0) {
       setErrMsg("Please enter an email address to continue");
-      // console.log(errMsg);
     }
 
     if (userName.length === 0) {
@@ -102,7 +101,6 @@ const ForgetPasswordModal = ({
     }
     if (name === "email") {
       setValidEmail(USER_EMAIL.test(email));
-      console.log(validEmail);
     }
 
     setFormFields({ ...formFields, [name]: value });

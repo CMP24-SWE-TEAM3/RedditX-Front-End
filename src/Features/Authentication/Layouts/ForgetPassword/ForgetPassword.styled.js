@@ -46,6 +46,10 @@ export const ErrorParagraph = styled.p`
   font-size: 12px;
   transition: all 0.2s ease-in-out;
   padding: 0 0 0 20px;
+
+  @media (max-width: 330px) {
+    margin-top: ${(p) => (p.valid ? "-35px" : "0")};
+  }
 `;
 
 export const UserNameInput = styled.div`

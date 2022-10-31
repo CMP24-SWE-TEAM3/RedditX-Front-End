@@ -8,10 +8,13 @@ export const MyModal = styled(Modal)`
   .modal-content {
     box-shadow: 0px 0px 10px 3px #8080808a;
     height: 600px;
+    width: 90%;
+    margin: auto;
+    max-width: 380px;
   }
 
   > div {
-    width: 400px;
+    min-width:350px;
   }
 `;
 export const MyModalHeader = styled(Modal.Header)`
@@ -21,11 +24,17 @@ export const MyModalHeader = styled(Modal.Header)`
     font-size: 10px;
   }
 `;
+export const MyBody = styled.div`
+  border: none;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+`;
+
 export const HaveAccount = styled.span`
-padding: 0 0 0 43px;
+  padding: 0 0 0 33px;
   font-size: 12px;
   margin-bottom: 100px;
-
   button {
     padding: 0;
     font-weight: 700;
@@ -36,3 +45,4 @@ padding: 0 0 0 43px;
     font-family: ${fontFamily};
   }
 `;
+
