@@ -7,4 +7,8 @@ export const BodyContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   margin: 0 auto;
+
+  @media (max-width: 960px) {
+    margin: 0;
+  }
 `;

@@ -12,4 +12,8 @@ export const Container = styled.div`
     margin-bottom: 16px;
     background-color: white;
   }
+
+  @media (max-width:960px){
+    width:100%;
+  }
 `;

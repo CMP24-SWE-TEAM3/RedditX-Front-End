@@ -1,38 +1,24 @@
-import { BsShield, BsThreeDots } from "react-icons/bs";
-import { Link } from "react-router-dom";
-import {
-  AboutCommunity,
-  AddDescription,
-  Container,
-  Content,
-  Dots,
-  ModTools,
-  Text
-} from "./CommunityCard.styled";
+// import { ReactComponent as CakeIcon } from "Features/Subreddit/Assets/piece-of-cake-2-svgrepo-com.svg";
+import AboutCommunity from "../AboutCommunity/AboutCommunity";
+import CommunityDate from "../CommunityDate/CommunityDate";
+import CommunityOptions from "../CommunityOptions/CommunityOptions";
+import CommunityTopics from "../CommunityTopics/CommunityTopics";
+import OnlineMember from "../OnlineMembers/OnlineMembers";
+import UserFlairPreview from "../UserFlairPreview/UserFlairPreview";
+import { Container, Content, Separator } from "./CommunityCard.styled";
 
 const CommunityCard = () => {
-
-  let isMod =false;
   return (
     <Container>
-      <AboutCommunity>
-        <Text>
-          <h2>About Community</h2>
-        </Text>
-        <ModTools>
-          {isMod &&<Link className="mod-tools">
-            <span><BsShield /></span>
-            Mod Tools
-          </Link>}
-          <Dots>
-            <span><BsThreeDots /></span>
-          </Dots>
-        </ModTools>
-      </AboutCommunity>
+      <AboutCommunity />
       <Content>
-        <AddDescription>
-          <div>Add description</div>
-        </AddDescription>
+        <CommunityDate />
+        <Separator />
+        <OnlineMember />
+        {true && <CommunityTopics />}
+        <Separator />
+        <UserFlairPreview />
+        <CommunityOptions />
       </Content>
     </Container>
   );
