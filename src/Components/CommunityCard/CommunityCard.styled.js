@@ -1,11 +1,12 @@
 import styled from "styled-components";
-import web from 'Assets/web.jpg';
+import web from 'Assets/banner-background.png';
 
 export const CommunityContainer = styled.div`
   & .cover {
     background-image: url(${web});
     color: black;
     height: 80px;
+    background-position: 50%;
     text-align: left;
     background-repeat: no-repeat;
     border-top-left-radius: 4px;
@@ -97,7 +98,7 @@ export const CommunityContainer = styled.div`
     font-weight: 500;
     line-height: 20px;
     bottom: 8px;
-    color: rgb(255, 255, 255);
+    color: ${({theme}) => theme.color.primary};
     left: 16px;
     position: absolute;
   }

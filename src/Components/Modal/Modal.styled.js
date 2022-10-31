@@ -15,6 +15,7 @@ export const ModalStyled = styled(Modal)`
   & .modal-content {
     color: ${({theme}) => theme.color.primary};
     background-color: ${({theme}) => theme.background.primary} !important;
+    margin-top: 16%;
   }
 
   & .div-content {

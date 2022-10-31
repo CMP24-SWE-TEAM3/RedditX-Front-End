@@ -1,7 +1,10 @@
 import {useState} from "react";
 import logo from "Assets/logo.png";
 import {Container} from "./CommunityCardItem.styled";
-
+/**
+ * Component that  shows the names of communities up-to-date.
+ * @returns {Component.React}
+ */
 const CommunityCardItem = () => {
     const [btnContent, setstate] = useState("Join");
 
@@ -30,7 +33,7 @@ const CommunityCardItem = () => {
         <Container>
             <a href="https://www.reddit.com/r/Steam/">
                 <div className="item">
-                    <span>1</span>
+                    <span className={'num'}>1</span>
                     <span className='caret'>&#94;</span>
                     <img src={logo} alt=""/>
                     <div className="info">

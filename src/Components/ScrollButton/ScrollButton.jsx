@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import {ButtonStyled} from './ScrollButton.styled';
-/** 
- *  scrolling button which has been showed after 200 px from top page to get back to new feeds
- * @param {} 
- * @returns {React.Component}  
+/**
+ *  Component  which has been showed after 200 px from top page to get back to new feeds
+ * @returns {React.Component}
  */
 const ScrollButton = () => {
 

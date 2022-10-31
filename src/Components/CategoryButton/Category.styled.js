@@ -10,6 +10,15 @@ export const Container = styled(DropdownButton)
       width: 52px;
       height: 32px;
 
+      & .dropdown-item span {
+        font-size: 20px;
+        font-weight: 400;
+        height: 20px;
+        line-height: 20px;
+        vertical-align: middle;
+        width: 20px;
+      }
+
       & .btn-primary {
         background-color: ${props => props.theme.background.primary};
         border-color: ${props => props.theme.background.primary};
@@ -39,7 +48,7 @@ export const Container = styled(DropdownButton)
         overflow: hidden;
         background-color: white;
         position: absolute;
-        z-index: 10;  
+        z-index: 10;
       }
 
     `

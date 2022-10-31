@@ -1,6 +1,12 @@
 import {CommunityContainer} from "./CommunityCard.styled";
 import CommunityCardItem from "Components/CommunityCardItem/CommunityCardItem";
 
+/**
+ * Component that links each  of community card item.
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const TopCommunities = () => {
     return (
         <CommunityContainer>

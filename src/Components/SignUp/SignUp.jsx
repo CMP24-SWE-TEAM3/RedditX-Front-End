@@ -1,6 +1,10 @@
 import React from 'react';
 import {SignUpStyled} from "Components/SignUp/SignUp.styled";
 
+/**
+ * Component that displays SignUp button in Navbar'
+ * @returns {React.Component}
+ */
 const SignUp = () => {
     const alertSignUp = () => {
         alert("Welcome on Board!");

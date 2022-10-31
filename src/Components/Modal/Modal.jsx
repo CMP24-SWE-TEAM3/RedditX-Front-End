@@ -7,35 +7,32 @@ import {VscEye} from "react-icons/vsc";
 import {HiLockClosed} from "react-icons/hi";
 
 /**
- * Component that  Main Links component but in responsive form.
+ * Component that has been showed after clicking on create community button in home page .
  *
- * @Component
- * @returns {Modal}
+ * @params {boolean,boolean}  create community button isLoggedIn is true if yourself loggedIn and false otherwise
+ * @returns {Modal} returns a modal that shows the user's create community form
  */
 
-const ModalCommunity = (props) => {
+const ModalCommunity = ({show,close}) => {
         const [communityName, setCommunityName] = useState('');
         const handlerChars = (event) => {
             setCommunityName(event.target.value);
         }
         return (
-            <ModalStyled show={props.show}>
+            <ModalStyled show={show}>
                 <Modal.Header closeButton>
                     <Modal.Title>Create a community</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <h6>Name</h6>
-                    <p>Community names including capitalization cannot be changed. <span
-                        className="glyphicon"> &#xe086;</span>
+                    <p>Community names including capitalization cannot be changed. <span> &#xe086;</span>
                     </p>
                     <Form>
                         <Form.Group className="mb-3">
                             <Form.Control value={communityName} onChange={handlerChars} aria-required type={'text'}
-                                          id={'community-name'} name={'community-name'}
                                           maxlength="21"/></Form.Group>
-                        <span id={'charcount'}>
-                        <span id="remaining-chars" className="some-class">{21 - communityName.length}</span> Characters remaining
-                            </span>
+                        <p> {21 - communityName.length} Characters remaining</p>
+
                     </Form>
                     <div className={'check-form'}>
                         <h6 className={'mb-4'}>
@@ -98,10 +95,10 @@ const ModalCommunity = (props) => {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <button className={'close-but'} onClick={props.close}>
+                    <button className={'close-but'} onClick={close}>
                         Close
                     </button>
-                    <button className={'create-but'} onClick={props.close}>
+                    <button className={'create-but'} onClick={close}>
                         Create Community
                     </button>
                 </Modal.Footer>

@@ -125,6 +125,15 @@ export const Container = styled.div`
   }
 
   & button:hover {
-      //background-color: ${({theme}) => theme.background.card_hover};
+      //background-color: ${({theme}) => theme.background.post_background};
+  }
+  & .num{
+    color: ${({theme}) => theme.color.primary};
+    text-align: right;
+    min-width: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    
   }
 `;

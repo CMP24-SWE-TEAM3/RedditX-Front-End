@@ -1,6 +1,10 @@
 import React from 'react';
 import {PostStyled} from "./Post.styled";
 
+/**
+ *  Component that displays a post with the specified input placeholder
+ * @returns {React.Component}
+ */
 
 const Post = () => {
     const Boom = () => {

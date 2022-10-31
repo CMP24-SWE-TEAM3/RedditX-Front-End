@@ -2,6 +2,10 @@ import React from 'react';
 import {ProfileButtonStyled, ProfileLogoStyled} from "./ProfilePostButton.styled";
 import Profile from "Assets/profile.ico";
 
+/**
+ *  Component that displays the profile's avatar or profile image
+ * @returns {Component.React}
+ */
 const ProfilePostButton = () => {
     return (
         <ProfileButtonStyled>
