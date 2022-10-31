@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import PostFooter from "../PostFooter/PostFooter";
 import PostHeader from "../PostHeader/PostHeader";
 import { ContainerPost } from "./Post.styled";
@@ -16,7 +17,7 @@ const PostItem = () => {
         <PostHeader />
         <div className="post-body">
           <div className="post-body-content">
-            <a href="https://www.w3schools.com/">
+            <Link href="https://www.w3schools.com/">
               <div>
                 <p>
                   John Oliver Refers to NFL’s ‘Monday Night Football’ as
@@ -24,14 +25,14 @@ const PostItem = () => {
                   Entertainment”
                 </p>
               </div>
-            </a>
+            </Link>
             <span className="flair">flair</span>
           </div>
           <div className="post-image">
             <div className="img">
-              <a href="https://www.w3schools.com/">
+              <Link href="https://www.w3schools.com/">
                 <div className="image"></div>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

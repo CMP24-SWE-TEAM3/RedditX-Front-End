@@ -13,6 +13,11 @@ export const Flex = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media (max-width: 380px) {
+    flex-direction: column;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;
 
 export const Img = styled.img`
@@ -27,18 +32,27 @@ export const Img = styled.img`
   width: 36px;
   line-height: normal;
   flex-shrink: 0;
+  @media (max-width: 380px) {
+    margin-bottom: 5px;
+  }
 `;
 export const CommunityInfo = styled.div`
   flex-grow: 1;
   padding: 0 8px;
   overflow: hidden;
   overflow-wrap: break-word;
+  @media (max-width: 380px) {
+    margin: auto;
+  }
 `;
 export const CommunityMainInfo = styled.div`
   display: flex;
   align-items: baseline;
   @media (max-width: 500px) {
     flex-wrap: wrap;
+  }
+  @media (max-width: 380px) {
+    margin-bottom: 5px;
   }
 `;
 export const CommunityTitle = styled.h6`
@@ -51,6 +65,9 @@ export const CommunityTitle = styled.h6`
   font-weight: 700;
   &:hover {
     text-decoration: underline;
+  }
+  @media (max-width: 380px) {
+    margin: auto;
   }
 `;
 export const CommunityMembers = styled.p`
@@ -66,6 +83,9 @@ export const CommunityMembers = styled.p`
     line-height: 20px;
     margin: 0 4px;
   }
+  @media (max-width: 380px) {
+    margin: auto;
+  }
 `;
 export const CommunityDescription = styled.p`
   margin: 0;
@@ -79,6 +99,9 @@ export const CommunityDescription = styled.p`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  @media (max-width: 380px) {
+    display: none;
   }
 `;
 export const BtnContainer = styled.div`

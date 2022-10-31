@@ -19,7 +19,7 @@ const CommunityItem = () => {
    * @Component
    * @returns {React.Component}
    */
-  const [btnContent, setstate] = useState("Join");
+  const [btnContent, setBtnContent] = useState("Join");
   /**
    * it is the function that handle the state of the button when click on it.
    *
@@ -28,9 +28,9 @@ const CommunityItem = () => {
   function clickHandler(e) {
     e.preventDefault();
     if (btnContent === "Join") {
-      setstate("Joined");
+      setBtnContent("Joined");
     } else {
-      setstate("Join");
+      setBtnContent("Join");
     }
     // window.scrollTo(0, 0);
   }
@@ -40,7 +40,7 @@ const CommunityItem = () => {
    */
   function mouseEnterHandler() {
     if (btnContent === "Joined") {
-      setstate("Leave");
+      setBtnContent("Leave");
     }
   }
   /**
@@ -49,7 +49,7 @@ const CommunityItem = () => {
    */
   function MouseLeaveHandler() {
     if (btnContent === "Leave") {
-      setstate("Joined");
+      setBtnContent("Joined");
     }
   }
   return (

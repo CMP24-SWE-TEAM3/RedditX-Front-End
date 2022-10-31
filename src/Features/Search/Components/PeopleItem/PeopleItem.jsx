@@ -19,7 +19,7 @@ import PeopleImage from "../../Assets/People_Image.jpg";
  * @returns {React.Component}
  */
 const PeopleItem = () => {
-  const [btnContent, setstate] = useState("Follow");
+  const [btnContent, setBtnContent] = useState("Follow");
   /**
    * it is the function that handle the state of the button when click on it.
    *
@@ -28,9 +28,9 @@ const PeopleItem = () => {
   function clickHandler(e) {
     e.preventDefault();
     if (btnContent === "Follow") {
-      setstate("Following");
+      setBtnContent("Following");
     } else {
-      setstate("Follow");
+      setBtnContent("Follow");
     }
   }
   /**
@@ -39,7 +39,7 @@ const PeopleItem = () => {
    */
   function mouseEnterHandler() {
     if (btnContent === "Following") {
-      setstate("Unfollow");
+      setBtnContent("Unfollow");
     }
   }
   /**
@@ -48,7 +48,7 @@ const PeopleItem = () => {
    */
   function MouseLeaveHandler() {
     if (btnContent === "Unfollow") {
-      setstate("Following");
+      setBtnContent("Following");
     }
   }
   return (

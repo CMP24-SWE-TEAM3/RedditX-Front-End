@@ -8,7 +8,7 @@ import logo from "../../Assets/download.jpg";
  * @returns {React.Component}
  */
 const PeopleCardItem = () => {
-  const [btnContent, setstate] = useState("Follow");
+  const [btnContent, setBtnContent] = useState("Follow");
 
   /**
    * it is the function that handle the state of the button when click on it.
@@ -18,9 +18,9 @@ const PeopleCardItem = () => {
   function clickHandler(e) {
     e.preventDefault();
     if (btnContent === "Follow") {
-      setstate("Following");
+      setBtnContent("Following");
     } else {
-      setstate("Follow");
+      setBtnContent("Follow");
     }
   }
 
@@ -30,7 +30,7 @@ const PeopleCardItem = () => {
    */
   function mouseEnterHandler() {
     if (btnContent === "Following") {
-      setstate("Unfollow");
+      setBtnContent("Unfollow");
     }
   }
 
@@ -40,7 +40,7 @@ const PeopleCardItem = () => {
    */
   function MouseLeaveHandler() {
     if (btnContent === "Unfollow") {
-      setstate("Following");
+      setBtnContent("Following");
     }
   }
   return (

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../Assets/download.jpg";
 import { Container } from "./CommunityCardItem.styled";
 /**
@@ -8,7 +9,7 @@ import { Container } from "./CommunityCardItem.styled";
  * @returns {React.Component}
  */
 const CommunityCardItem = () => {
-  const [btnContent, setstate] = useState("Join");
+  const [btnContent, setBtnContent] = useState("Join");
 
   /**
    * it is the function that handle the state of the button when click on it.
@@ -18,9 +19,9 @@ const CommunityCardItem = () => {
   function clickHandler(e) {
     e.preventDefault();
     if (btnContent === "Join") {
-      setstate("Joined");
+      setBtnContent("Joined");
     } else {
-      setstate("Join");
+      setBtnContent("Join");
     }
   }
   /**
@@ -29,7 +30,7 @@ const CommunityCardItem = () => {
    */
   function mouseEnterHandler() {
     if (btnContent === "Joined") {
-      setstate("Leave");
+      setBtnContent("Leave");
     }
   }
   /**
@@ -38,12 +39,12 @@ const CommunityCardItem = () => {
    */
   function MouseLeaveHandler() {
     if (btnContent === "Leave") {
-      setstate("Joined");
+      setBtnContent("Joined");
     }
   }
   return (
     <Container>
-      <a href="https://www.reddit.com/">
+      <Link href="https://www.reddit.com/">
         <div className="item">
           <img src={logo} alt="" />
           <div className="info">
@@ -62,7 +63,7 @@ const CommunityCardItem = () => {
             </button>
           </div>
         </div>
-      </a>
+      </Link>
     </Container>
   );
 };
