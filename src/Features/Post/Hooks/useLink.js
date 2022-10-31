@@ -1,5 +1,17 @@
+// Import hooks
 import { useState } from "react";
 
+/**
+ * Custom hook to handle link state in draft editor
+ *
+ * @param {Object} editorState - Editor state
+ * @param {Object} setEditorState - Editor state setter
+ * @param {Object} RichUtils - The RichUtils module is a static set of utility functions for rich text editing.
+ * @param {Object} EditorState -The top-level state object for the editor.
+ * @param {Object} Modifier - The Modifier module is a static set of utility functions that encapsulate common edit operations on ContentState objects.
+ * @param {Object} decorator - The decorator object is used to customize the rendering of content.
+ * @returns {Object} - The link state
+ */
 const useLink = (
   editorState,
   setEditorState,
@@ -8,14 +20,32 @@ const useLink = (
   Modifier,
   decorator
 ) => {
-  // Link
+  // State to handle link show and hide
   const [showLinkURLInput, setShowLinkURLInput] = useState(false);
+  // State to store input link
   const [linkUrlValue, setLinkUrlValue] = useState("");
+  // State to store input link title
   const [linkTextValue, setLinkTextValue] = useState("");
+  // State tell whether there is a selection or not
   const [isNoTextSelected, setIsNoTextSelected] = useState(false);
 
+  /**
+   * Link url change handler
+   *
+   * @param {Event} e - The event object
+   */
   const onLinkURLChange = (e) => setLinkUrlValue(e.target.value);
+  /**
+   * Link text change handler
+   *
+   * @param {Event} e - The event object
+   */
   const onLinkTextChange = (e) => setLinkTextValue(e.target.value);
+  /**
+   * Handler for link remove
+   *
+   * @param {Event} e - The event object
+   */
   const removeLink = (e) => {
     e.preventDefault();
     const selection = editorState.getSelection();
@@ -23,12 +53,23 @@ const useLink = (
       setEditorState(RichUtils.toggleLink(editorState, selection, null));
     }
   };
+
+  /**
+   * Handler for enter key press
+   * @param {Event} e - The event object
+   */
   const onLinkInputKeyDown = (e) => {
     if (e.which === 13) {
       confirmLink(e);
     }
   };
 
+  /**
+   * Function to handle link confirm (called when the link submit button is clicked)
+   *
+   * @param {Event} e - The event object
+   * @returns
+   */
   const confirmLink = (e) => {
     e.preventDefault();
     if (isNoTextSelected) {
@@ -63,7 +104,12 @@ const useLink = (
     setLinkTextValue("");
   };
 
-  // call all together
+  /**
+   * Function to handle link add to text
+   *
+   * @param {Object} editorState - Editor state
+   * @param {Function} setEditorState - Editor state setter
+   */
   const onAddLink = (editorState, setEditorState) => {
     const currentContent = editorState.getCurrentContent();
     const createEntity = currentContent.createEntity("LINK", "MUTABLE", {
@@ -85,6 +131,11 @@ const useLink = (
     setLinkTextValue("");
   };
 
+  /**
+   * Handler for link add (called when the add link button is clicked)
+   *
+   * @param {Event} e - The event object
+   */
   const promptForLink = (e) => {
     e.preventDefault();
     console.log(editorState);

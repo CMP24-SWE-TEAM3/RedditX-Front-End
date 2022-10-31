@@ -81,6 +81,10 @@ const Link = (props) => {
   );
 };
 
+/**
+ * DraftEditor component
+ * @returns {React.Component} DraftEditor
+ */
 const DraftEditor = () => {
   const decorator = new CompositeDecorator([
     {
@@ -88,11 +92,16 @@ const DraftEditor = () => {
       component: Link,
     },
   ]);
+
+  // State for draft editor
   const [editorState, setEditorState] = useState(
     EditorState.createEmpty(decorator)
   );
 
+  // Ref for draft editor
   const editorRef = useRef(null);
+
+  // Get link states and functions
   const {
     promptForLink,
     removeLink,
@@ -112,6 +121,7 @@ const DraftEditor = () => {
     decorator
   );
 
+  // Get media states and functions
   const { addImage, addVideo } = useMedia(
     editorState,
     setEditorState,
@@ -123,8 +133,25 @@ const DraftEditor = () => {
   // console.log(raw);
   // end console log
 
+  /**
+   * Handler for draft editor focus
+   */
   const focus = () => editorRef.current.focus();
+
+  /**
+   * Handler for editor state change
+   *
+   * @param {Object} editorState - Draft editor state
+   */
   const onChange = (editorState) => setEditorState(editorState);
+
+  /**
+   * We can observe and handle key commands via the handleKeyCommand such as Cmd+B (bold), Cmd+I (italic), Cmd+U (underline).
+   *
+   * @param {string } command - The name of the command to be executed.
+   * @param {Object} editorState - Draft editor state
+   * @returns {boolean} - Whether the command was handled.
+   */
   function handleKeyCommand(command, editorState) {
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
@@ -133,6 +160,11 @@ const DraftEditor = () => {
     }
     return false;
   }
+  /**
+   * Provide my own key binding function to supply custom command strings.
+   *
+   * @param {Event} e - The event.
+   */
   function mapKeyToEditorCommand(e) {
     if (e.keyCode === 9 /* TAB */) {
       const newEditorState = RichUtils.onTab(e, editorState, 4 /* maxDepth */);
@@ -143,9 +175,21 @@ const DraftEditor = () => {
     }
     return getDefaultKeyBinding(e);
   }
+
+  /**
+   * Handler for block style type change
+   *
+   * @param {String} blockType - The type of block style to change to.
+   */
   function toggleBlockType(blockType) {
     onChange(RichUtils.toggleBlockType(editorState, blockType));
   }
+
+  /**
+   * Handler for inline style type change
+   *
+   * @param {String} inlineStyle - The type of inline style to change to.
+   */
   function toggleInlineStyle(inlineStyle) {
     onChange(RichUtils.toggleInlineStyle(editorState, inlineStyle));
   }
@@ -204,7 +248,7 @@ const DraftEditor = () => {
   );
 };
 
-// Custom overrides for "code" style.
+// Custom styling.
 const styleMap = {
   CODE: {
     backgroundColor: "#f6f7f8",
