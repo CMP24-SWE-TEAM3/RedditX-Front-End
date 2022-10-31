@@ -10,11 +10,12 @@ import * as styles from "App.styled";
 import lightTheme from "Theme/lightTheme";
 import defaultTheme from "Theme/defaultTheme";
 import {ThemeProvider} from "styled-components";
+import ScrollButton from "Components/ScrollButton/ScrollButton";
 
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
+ *
  * @returns {React.Component} returns an instance of HomePage with a list of layouts created
- * @
  */
 
 const HomePage = () => {
@@ -47,6 +48,7 @@ const HomePage = () => {
                                     </footer>
                                 </div>
                             </aside>
+                            <ScrollButton/>
                         </Container>
                     </MainContainer>
                 </styles.AppHeader>

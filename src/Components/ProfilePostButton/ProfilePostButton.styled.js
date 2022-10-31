@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 export const ProfileLogoStyled = styled.img`
-  width: 100%;
+  width: 140%;
   transform-origin: bottom center;
   display: block;
   transform: scale(1.3);

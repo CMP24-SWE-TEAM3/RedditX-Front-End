@@ -16,7 +16,7 @@ export const CommunityContainer = styled.div`
 
   & .sub-but {
     position: relative;
-      //background-color: ${({theme}) => theme.background.muted};
+    background-color: ${({theme}) => theme.background.post_background};
     border: 1px solid transparent;
     color: ${({theme}) => theme.color.secondary};
     fill: ${({theme}) => theme.color.secondary};
@@ -33,10 +33,10 @@ export const CommunityContainer = styled.div`
     border-radius: 9999px;
     box-sizing: border-box;
     cursor: pointer;
-  }
 
-  &.sub-but:hover {
-    background-color: ${({theme}) => theme.background.muted};
+    :hover {
+      background-color: ${({theme}) => theme.lineColor.primary};
+    }
   }
 
   & .row-but {
@@ -51,9 +51,9 @@ export const CommunityContainer = styled.div`
   border-radius: 4px;
   box-shadow: 0 2px 4px 0 rgb(0 0 0 / 6%);
   margin-bottom: 16px;
-  
+
   //max-width: 100%;
-  width:310px;
+  width: 310px;
 
   & .title {
     font-size: 16px;
@@ -110,7 +110,8 @@ export const CommunityContainer = styled.div`
   @media (max-width: 960px) {
     display: none;
   }
-  & .view-all{
+
+  & .view-all {
     color: ${({theme}) => theme.background.primary};
     border-color: ${({theme}) => theme.color.secondary};
     background-color: ${({theme}) => theme.color.secondary};

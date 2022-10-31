@@ -1,6 +1,6 @@
 import React from 'react';
 import {MdOutlineRemoveModerator} from 'react-icons/md';
-import {GlobalButtonStyled} from "Components/GlobalButton/GlobalButton.styled";
+import {GlobalButtonStyled} from "Components/Global/GlobalButton.styled";
 
 const ModeratorButton = (props) => {
     return (

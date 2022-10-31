@@ -2,12 +2,12 @@ import styled from "styled-components";
 export const Button = styled.button`
   display: inline-flex;
   position: relative;
+  align-items: center;
   width: 36px;
   height: 38.4px;
   font-size: 14px;
   line-height: 17px;
   font-weight: 700;
-  padding: 6px 8px;
   margin-right: 8px;
   border-radius: 20px;
   background-color: ${({theme}) => theme.background.primary};
