@@ -2,6 +2,12 @@ import { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import { NavLink } from "react-router-dom";
 import { StyledDropdown } from "./ResponsiveNavbar.styled";
+/**
+ * Component that  Main Links component but in responsive form.
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const ResponsiveNavbar = () => {
   const pathname = window.location.pathname;
   const firstTwo = pathname.substring(1);
@@ -9,12 +15,6 @@ const ResponsiveNavbar = () => {
   const [Title, setTitle] = useState(secondTwo);
   // const [Title, setTitle] = useState(props.act);
 
-  /**
-   * Component that  Main Links component but in responsive form.
-   *
-   * @Component
-   * @returns {React.Component}
-   */
   useEffect(() => {
     // console.log(props.act);
     const pathname = window.location.pathname;

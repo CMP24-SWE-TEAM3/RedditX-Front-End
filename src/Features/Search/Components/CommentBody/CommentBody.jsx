@@ -19,17 +19,17 @@ import {
 import CommentUserImage from "../../Assets/People_Image.jpg";
 import PostFooter from "../PostFooter/PostFooter";
 import { Link } from "react-router-dom";
+/**
+ * Component that render the CommentBody.
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const CommentBody = () => {
-  /**
-   * Component that render the CommentBody.
-   *
-   * @Component
-   * @returns {React.Component}
-   */
   return (
     <Container>
       <FirstText>
-        <Link href="https://www.w3schools.com/">
+        <Link to="https://www.w3schools.com/">
           <FirstTextStyle>
             [WP] They tell you the warmachines aren't sentient, being kind to
             them does nothing. But at the same time, it seems funny to you that
@@ -41,7 +41,7 @@ const CommentBody = () => {
       <InnerBody>
         <InnerBodyLayout>
           <ImageAlign>
-            <Link href="https://www.w3schools.com/">
+            <Link to="https://www.w3schools.com/">
               <div>
                 <CommentImage src={CommentUserImage} alt="Comment User Image" />
               </div>
@@ -52,7 +52,7 @@ const CommentBody = () => {
               <BodyContentHeaderLayout>
                 <CommentUserName>
                   <div>
-                    <Link href="https://www.w3schools.com/">Robysto7</Link>
+                    <Link to="https://www.w3schools.com/">Robysto7</Link>
                   </div>
                 </CommentUserName>
                 <span className="break">·</span>

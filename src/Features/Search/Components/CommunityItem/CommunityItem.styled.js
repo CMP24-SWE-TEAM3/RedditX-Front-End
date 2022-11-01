@@ -85,6 +85,9 @@ export const CommunityMembers = styled.p`
   }
   @media (max-width: 380px) {
     margin: auto;
+    margin: auto;
+    display: flex;
+    align-items: center;
   }
 `;
 export const CommunityDescription = styled.p`

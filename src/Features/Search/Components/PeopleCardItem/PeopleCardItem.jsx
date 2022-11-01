@@ -1,6 +1,7 @@
 import { Container } from "./PeopleCardItem.styled";
 import { useState } from "react";
 import logo from "../../Assets/download.jpg";
+import { Link } from "react-router-dom";
 /**
  * Component that contains the PeopleCardItem and manage the state of the button Follow.
  *
@@ -45,7 +46,7 @@ const PeopleCardItem = () => {
   }
   return (
     <Container>
-      <a href="https://www.reddit.com/">
+      <Link to="https://www.reddit.com/">
         <div className="item">
           <img src={logo} alt="userImage" />
           <div className="info">
@@ -64,7 +65,7 @@ const PeopleCardItem = () => {
             </button>
           </div>
         </div>
-      </a>
+      </Link>
     </Container>
   );
 };

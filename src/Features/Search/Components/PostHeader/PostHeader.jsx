@@ -18,10 +18,10 @@ const PostHeader = () => {
   return (
     <PostHeaderStyle>
       <CommunityInfo>
-        <Link href="https://www.w3schools.com/ ">
+        <Link to="https://www.w3schools.com/ ">
           <CommunityImage src={CommImage} alt="communityimage" />
         </Link>
-        <Link href="https://www.w3schools.com/" className="community-name">
+        <Link to="https://www.w3schools.com/" className="community-name">
           r/WallStreetRiches
         </Link>
       </CommunityInfo>
@@ -29,7 +29,7 @@ const PostHeader = () => {
       <PostedBy>
         <span className="first">Posted by</span>
         <UserName>
-          <Link href="https://www.w3schools.com/">u/Old_Salamander_7479</Link>
+          <Link to="https://www.w3schools.com/">u/Old_Salamander_7479</Link>
         </UserName>
         <span className="time-post">5 days ago</span>
       </PostedBy>

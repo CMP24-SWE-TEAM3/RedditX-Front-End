@@ -85,6 +85,8 @@ export const PeopleKarma = styled.p`
   }
   @media (max-width: 380px) {
     margin: auto;
+    display: flex;
+    align-items: center;
   }
 `;
 export const PeopleDescription = styled.p`
