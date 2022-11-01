@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Create Community this is a test for Create Community 1`] = `ShallowWrapper {}`;
+
+exports[`People Card Item this is a test for People Card Item 1`] = `ShallowWrapper {}`;

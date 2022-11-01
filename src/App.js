@@ -1,11 +1,12 @@
 // Import react and hooks
+import { BrowserRouter } from "react-router-dom";
 import React, { useState } from "react";
 
 // Import Images
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 
 // Import styled components
-import * as styles from "App.styled";
+// import * as styles from "App.styled";
 
 // Import themes
 import darkTheme from "Theme/darkTheme";
@@ -17,6 +18,7 @@ import { ThemeProvider } from "styled-components";
 
 // Import bootstrap
 import { Button } from "react-bootstrap";
+import Search from "Features/Search/Pages/Search/Search";
 
 /**
  * The main app of our application it handles routing
@@ -40,25 +42,10 @@ function App() {
   };
   return (
     <ThemeProvider theme={theme}>
-      <styles.AppContainer>
-        <styles.AppHeader>
-          <styles.AppLogo src={logo} alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-
-          <styles.AppLink
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </styles.AppLink>
-          <Button onClick={handleToggleTheme}>
-            Toggle theme
-          </Button>
-        </styles.AppHeader>
-      </styles.AppContainer>
+      <Button onClick={handleToggleTheme}>Toggle theme</Button>
+      <BrowserRouter>
+        <Search />
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

@@ -20,6 +20,8 @@ const lightTheme = {
     link: "#0079d3",
     // The orange color of the website
     orange: "#d93a00",
+    // The color of the text of the main links of search page
+    titleText_of_link: "#1A1A1B",
   },
   // The colors of the backgrounds in the website
   background: {
@@ -40,10 +42,20 @@ const lightTheme = {
     secondary: "#ccc",
     // Muted border color
     muted: "#878a8c80",
+    // The button hover color of the search page
+    fill: "#f6f7f878",
+    // The button active color of the search page
+    active: "#F6F7F8",
+    // button background color hover of the search page cards
+    card_hover: "#E3EDF6",
+    // Comment background color in search page
+    comment: "#e9f5fd",
   },
   // The colors of the lines in the website
   lineColor: {
     primary: "#edeff1",
+    // Post Border Line Color Search Page
+    PostBorder: "#ccc",
   },
   // The colors of the buttons in the website
   button: {
