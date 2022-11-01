@@ -22,6 +22,22 @@ const lightTheme = {
     orange: "#d93a00",
     // The color of the text of the main links of search page
     titleText_of_link: "#1A1A1B",
+
+    // Some colors for authentication part
+    logInButtonColorHovered: "#dc4a14",
+    logInBlueHovered: "#3394dc",
+    baseButtonColor: "#fff",
+    subColor: "#797b7d",
+    mainInputColor: "black",
+    borderColor: "#86888a",
+    blueValid: "#24a0ed",
+    mainInputBackGroundColor: "#f6f7f8",
+    initialBorderColor: "#e6e6e5",
+    initialLabelColor: "#aeadad",
+    errorColor: "#ea0027",
+    orHeaderColor: "#93908e",
+    authParagraphColor: "#1a1a1b",
+    signInWithFacebookColor: "#237df3",
   },
   // The colors of the backgrounds in the website
   background: {

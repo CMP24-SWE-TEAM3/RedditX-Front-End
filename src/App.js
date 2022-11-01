@@ -20,6 +20,16 @@ import { ThemeProvider } from "styled-components";
 import { Button } from "react-bootstrap";
 import Search from "Features/Search/Pages/Search/Search";
 
+import TestHome from "Features/Authentication/Pages/TestHome";
+
+import LogInPage from "Features/Authentication/Pages/LogInPage/LogInPage";
+
+import SignUpPage from "Features/Authentication/Pages/SignUpPage/SignUpPage";
+
+import ForgetUserNamePage from "Features/Authentication/Pages/ForgetUserNamePage/ForgetUserNamePage";
+
+import ForgetPasswordPage from "Features/Authentication/Pages/ForgetPasswordPage/ForgetPasswordPage";
+
 /**
  * The main app of our application it handles routing
  *
@@ -43,9 +53,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Button onClick={handleToggleTheme}>Toggle theme</Button>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Search />
-      </BrowserRouter>
+      </BrowserRouter> */}
+      <ForgetPasswordPage />
     </ThemeProvider>
   );
 }
