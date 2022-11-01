@@ -8,7 +8,7 @@ export const Container = styled.div`
     width: 100%;
     height: 57.5px;
     padding: 8px;
-    border: solid 0.75px #ccc;
+    border: solid 0.75px ${({theme})=>theme.borderColor.secondary};
     margin-bottom: 16px;
     background-color: white;
   }

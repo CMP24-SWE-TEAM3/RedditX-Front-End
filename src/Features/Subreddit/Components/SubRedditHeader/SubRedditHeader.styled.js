@@ -8,13 +8,13 @@ export const HeaderContainer = styled.div`
 
 export const Banner = styled.div`
   height: 80px;
-  background: ${(props) => props.banner.color}
-    url(${(props) => props.banner.url}) no-repeat center / cover;
+  background: ${({ banner }) =>
+    banner.color + ` url("${banner.url}") no-repeat center`};
 `;
 
 export const HeaderContent = styled.div`
   width: 100%;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.background.primary};
   height: 78px;
 `;
 
@@ -37,7 +37,7 @@ export const HeaderDetails = styled.div`
   }
 
   img {
-    background-color: #fff;
+    background-color: ${({ theme }) => theme.background.primary};
     background-size: cover;
     border-radius: 100%;
     border: 4px solid #fff;
@@ -64,7 +64,7 @@ export const Info = styled.div`
   }
 
   .title {
-    color: #000;
+    color: ${({ theme }) => theme.color.primary};
     display: inline-block;
     font-size: 28px;
     font-weight: 700;
@@ -79,6 +79,6 @@ export const Info = styled.div`
     font-size: 14px;
     font-weight: 500;
     line-height: 0;
-    color: #7c7c7c;
+    color: ${({ theme }) => theme.color.muted};
   }
 `;

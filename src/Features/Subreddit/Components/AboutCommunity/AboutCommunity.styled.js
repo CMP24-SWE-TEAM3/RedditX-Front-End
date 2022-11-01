@@ -45,6 +45,9 @@ export const ModTools = styled.div`
     word-wrap: break-word;
     text-decoration: none;
     vertical-align: baseline;
+    :hover {
+      background-color: #026fc0;
+    }
   }
 
   span {
@@ -68,6 +71,10 @@ export const Dots = styled.button`
   border: none;
   color: inherit;
   cursor: pointer;
+
+  :hover {
+    background-color: #026fc0;
+  }
 
   span {
     font-size: 20px;

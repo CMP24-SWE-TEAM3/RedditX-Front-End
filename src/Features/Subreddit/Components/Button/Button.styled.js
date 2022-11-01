@@ -11,10 +11,9 @@ export const StyledButton = styled.div`
   button {
     width: 100%;
     position: relative;
-    background-color: #0079d3;
-    border: none;
-    color: #fff;
-    fill: #fff;
+    background-color: ${({joined, theme})=>joined?theme.background.primary:theme.color.secondary}   ;
+    border: ${({joined, theme})=>joined?`1px solid ${theme.color.secondary}`:"none"};
+    color: ${({joined, theme})=>joined?theme.color.secondary:theme.background.primary};
     font-family: "Noto Sans", Arial, sans-serif;
     font-size: 14px;
     font-weight: 700;
@@ -28,24 +27,7 @@ export const StyledButton = styled.div`
   }
 
   button:hover{
-    background-color: #1483d6;
+    background-color:${({joined})=>joined?"#f4f9fd":"#1483d6"} ;
   }
 
-  /* button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 9999px;
-    background: #fff;
-    opacity: 0;
-    font-family: "Noto Sans", Arial, sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: unset;
-    line-height: 17px;
-    text-transform: unset;
-  } */
 `;

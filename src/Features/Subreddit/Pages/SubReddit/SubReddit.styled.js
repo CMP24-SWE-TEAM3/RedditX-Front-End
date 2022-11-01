@@ -1,11 +1,9 @@
 import styled from "styled-components";
 export const SubRedditContainer = styled.div`
-  /* * { */
     margin: 0;
     padding: 0;
     border: 0;
     box-sizing: border-box;
-  /* } */
 
   header {
     height: 48px;

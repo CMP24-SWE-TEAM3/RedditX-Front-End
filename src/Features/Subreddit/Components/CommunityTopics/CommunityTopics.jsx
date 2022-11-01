@@ -4,6 +4,7 @@ import { BsCheck } from "react-icons/bs";
 import { FaPlus } from "react-icons/fa";
 import { HiOutlinePencil } from "react-icons/hi";
 import { RiArrowDownSLine } from "react-icons/ri";
+import SaveChangesModal from "../SaveChangesModal/SaveChangesModal";
 import {
   AddSubTopic,
   AddSubTopicContainer,
@@ -33,6 +34,8 @@ const CommunityTopics = (props) => {
   const [viewSubtopicInput, setViewSubtopicInput] = useState(false);
   const [focus, setFocus] = useState(false);
   const [dummySubtopics, setDummySubTopics] = useState([]);
+  const [lastSubtopics, setLastSubtopics] = useState(subtopics);
+  const [modalShow, setModalShow] = useState(false);
 
   let topics = [
     { topic: "Activism", selected: true },
@@ -90,7 +93,7 @@ const CommunityTopics = (props) => {
       const index = subtopics.findIndex((element) => {
         return element.toLowerCase() === event.target.value.toLowerCase();
       });
-      if (index === -1) {
+      if (index === -1 && event.target.value !== "") {
         setDummySubTopics((prev) => {
           return [...prev, event.target.value];
         });
@@ -112,25 +115,35 @@ const CommunityTopics = (props) => {
     setDummySubTopics([]);
     setFocus(false);
     setViewSubtopicInput(false);
+    setModalShow(false);
   }
 
   function saveHandler() {
     setDummySubTopics([]);
     setFocus(false);
     setViewSubtopicInput(false);
+    setModalShow(false);
+    setLastSubtopics(subtopics);
   }
 
-  function outsideHandler(event) {
-    if (!event.currentTarget.contains(event.relatedTarget)) {
-      setFocus(false);
-      setViewSubtopicInput(false);
-    }
-  }
+  // function outsideHandler(event) {
+  //   if (!event.currentTarget.contains(event.relatedTarget)) {
+  //     setFocus(false);
+  //     setViewSubtopicInput(false);
+  //   }
+  // }
 
   function blurFirstInputHandle(event) {
     if (!event.currentTarget.contains(event.relatedTarget)) {
-      setViewSubtopicInput(false);
-      setFocus(false);
+      if (
+        JSON.stringify(subtopics.sort()) !==
+        JSON.stringify(lastSubtopics.sort())
+      ) {
+        setModalShow(true);
+      } else {
+        setViewSubtopicInput(false);
+        setFocus(false);
+      }
     }
   }
 
@@ -224,7 +237,7 @@ const CommunityTopics = (props) => {
               );
             })}
             {subtopic.length !== 0 && (
-              <div className="add" tabIndex="0" >
+              <div className="add" tabIndex="0">
                 <span>{`Add  `}</span>
                 {subtopic}
               </div>
@@ -294,6 +307,12 @@ const CommunityTopics = (props) => {
           )}
         </AddSubTopicContainer>
       )}
+      <SaveChangesModal
+        show={modalShow}
+        onDiscard={cancelHandler}
+        onSave={saveHandler}
+        onHide={() => setModalShow(false)}
+      />
     </Container>
   );
 };

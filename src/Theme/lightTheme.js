@@ -20,8 +20,6 @@ const lightTheme = {
     link: "#0079d3",
     // The orange color of the website
     orange: "#d93a00",
-    //border
-    border:"#ccc",
   },
   // The colors of the backgrounds in the website
   background: {
@@ -32,9 +30,23 @@ const lightTheme = {
     // The pink color of the website
     pink: "#fb133a",
   },
+  // Border colors
+  borderColor: {
+    // Primary border color
+    primary: "#878a8c",
+    // Secondary border color
+    secondary: "#ccc",
+    // Muted border color
+    muted: "#878a8c80",
+  },
   // The colors of the lines in the website
   lineColor: {
     primary: "#edeff1",
+  },
+  // The colors of the buttons in the website
+  button: {
+    // The color when hover on buttons on the website
+    muted: "#f6f7f8",
   },
 };
 
