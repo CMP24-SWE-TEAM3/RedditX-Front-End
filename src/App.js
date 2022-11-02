@@ -50,7 +50,7 @@ function App() {
   };
   return (
     <ThemeProvider theme={theme}>
-      <TestHome />
+      <SignUpPage />
     </ThemeProvider>
   );
 }

@@ -120,14 +120,7 @@ export const SignInWithFacebook = styled.div`
 display: flex;
 justify-content: center;
 width: 280px;
-
-
 margin: 20px 0 5px 0;
-
-
-
-span {
-  width: 100%;
  
   button{
     transition: ${transition}
@@ -149,15 +142,16 @@ span {
 
     svg{
       
-        width: 40px;
-        height: 60px;
-        position: absolute;
-        left: 1%;
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      left: 1%;
+      border-radius: 6px;
 
         path{
           color: ${({ theme }) => theme.color.signInWithFacebookColor};
         }
-        
+
     }
 
 
@@ -169,7 +163,7 @@ span {
         color: white;
       }
 
-    }
+      
   }
 }
 

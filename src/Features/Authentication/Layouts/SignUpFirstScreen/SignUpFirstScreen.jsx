@@ -2,7 +2,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 
-
 import FacebookLogin from "react-facebook-login";
 
 import FormInput from "Features/Authentication/Components/FormInput/FormInput";
@@ -11,7 +10,10 @@ import Button from "../../Components/Button/Button";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
 
-import { signInWithGooglePopup } from "Features/Authentication/Utils/Firebase";
+import {
+  signInWithGooglePopup,
+  signInWithFacebookPopup,
+} from "Features/Authentication/Utils/Firebase";
 
 import {
   ButtonsContainer,
@@ -100,9 +102,7 @@ const SignUpFirstScreen = ({
    * Function to handle the response coming from sign in with google
    * @param {*} response
    */
-  const handleCallbackResponse = (response) => {
-    
-  };
+  const handleCallbackResponse = (response) => {};
 
   /**
    * Function to check email by sending request to the api and make sure that the email is good to show the second screen after that
@@ -138,13 +138,15 @@ const SignUpFirstScreen = ({
    * Function to handle the response coming from sign in with facebook
    * @param {*} response
    */
-  const responseFacebook = (response) => {
-    
-  };
+  const responseFacebook = (response) => {};
 
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
-    
+  };
+
+  const logFacebookUser = async () => {
+    const { user } = await signInWithFacebookPopup();
+    //console.log(user);
   };
 
   return (
@@ -167,15 +169,12 @@ const SignUpFirstScreen = ({
             </SignInWithGoogle>
 
             <SignInWithFacebook>
-              <FacebookLogin
-                appId="648981979946188"
-                autoLoad={false}
-                fields="name,email,picture"
-                callback={responseFacebook}
-                cssClass="my-facebook-button-class"
-                icon=<BsFacebook size={22} />
-                textButton="Continue With Facebook"
-              />
+              <SignInWithFacebook>
+                <button onClick={() => logFacebookUser()}>
+                  <BsFacebook size={22} />
+                  <span> Continue With Facebook</span>
+                </button>
+              </SignInWithFacebook>
             </SignInWithFacebook>
 
             <OrHeader>

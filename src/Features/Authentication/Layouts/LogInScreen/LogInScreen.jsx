@@ -11,7 +11,10 @@ import Button from "Features/Authentication/Components/Button/Button";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
 
-import { signInWithGooglePopup } from "Features/Authentication/Utils/Firebase";
+import {
+  signInWithGooglePopup,
+  signInWithFacebookPopup,
+} from "Features/Authentication/Utils/Firebase";
 
 import {
   AuthContainer,
@@ -145,6 +148,10 @@ const LogInScreen = ({
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
   };
+  const logFacebookUser = async () => {
+    const { user } = await signInWithFacebookPopup();
+   // console.log(user);
+  };
 
   return (
     <>
@@ -166,15 +173,10 @@ const LogInScreen = ({
             </SignInWithGoogle>
 
             <SignInWithFacebook>
-              <FacebookLogin
-                appId="648981979946188"
-                autoLoad={false}
-                fields="name,email,picture"
-                callback={responseFacebook}
-                cssClass="my-facebook-button-class"
-                icon=<BsFacebook size={22} />
-                textButton="Continue With Facebook"
-              />
+              <button onClick={() => logFacebookUser()}>
+                <BsFacebook size={22} />
+                <span> Continue With Facebook</span>
+              </button>
             </SignInWithFacebook>
 
             <OrHeader>

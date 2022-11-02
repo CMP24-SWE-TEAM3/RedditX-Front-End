@@ -89,46 +89,43 @@ export const SignInWithGoogle = styled.div`
 
 export const SignInWithFacebook = styled.div`
 display: flex;
-justify-content: center;
-width: 280px;
-
-
-
-
-margin: 20px 0 5px 0;
-
-
-svg {
-  color: ${({ theme }) => theme.color.signInWithFacebookColor};
-}
-
-span {
+  justify-content: center;
   width: 100%;
 
-  button{
+
+  margin: 10px 0 5px 0;
+
+  
+ 
+  button {
     width: 100%;
-    border-radius: 100px;
     background-color: white;
     border: 1px solid ${({ theme }) => theme.color.borderColor};
+    border-radius: 100px;
+    padding: 0 10px;
     height: 40px;
-    color: black;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 400;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     transition: ${transition};
 
 
+    svg {
+      color: ${({ theme }) => theme.color.signInWithFacebookColor} !important;
+      
+    }
+
     &:hover{
       background-color: #f8f8ff;
     }
   }
-}
 
+  span {
+    font-size: 14px;
+  }
 
-}
+  
+  }
 `;
 
 export const OrHeader = styled.h2`
