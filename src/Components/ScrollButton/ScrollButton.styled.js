@@ -8,6 +8,7 @@ export const ButtonStyled = styled.button`
   line-height: 17px;
   text-transform: unset;
   min-height: 32px;
+  border: none;
   min-width: 32px;
   padding: 4px 16px;
   align-items: center;

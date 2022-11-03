@@ -4,6 +4,7 @@ export const Button = styled.button`
   display: inline-flex;
   position: relative;
   width: 68.66px;
+  border: none;
   height: 32px;
   font-size: 14px;
   line-height: 17px;

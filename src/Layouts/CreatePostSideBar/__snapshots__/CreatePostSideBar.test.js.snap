@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Create Post Component this is a test for side-bar post Component 1`] = `ShallowWrapper {}`;

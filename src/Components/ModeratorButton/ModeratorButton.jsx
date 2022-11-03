@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {MdOutlineRemoveModerator} from 'react-icons/md';
 import {ButtonModerator} from './ModeratorButton.styled';
-import Dropdown from "rsuite/Dropdown";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const ModeratorButton = (props) => {
     const [show, setShow] = useState(false);

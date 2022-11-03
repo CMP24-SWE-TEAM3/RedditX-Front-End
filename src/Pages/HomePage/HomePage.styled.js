@@ -8,6 +8,10 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: center;
   margin: 0 auto;
+
+  @media (max-width: 960px) {
+    width: 100%;
+  }
   @media (min-width: 640px) {
     padding: 20px 24px;
   }
@@ -16,6 +20,9 @@ export const Container = styled.div`
     @media (min-width: 960px) {
       width: 640px;
       //width: 100%;
+    }
+    @media (max-width: 960px) {
+      width: 100%;
     }
   }
 
@@ -72,6 +79,9 @@ export const Container = styled.div`
 `
 export const MainContainer = styled.div`
   z-index: 3;
+  @media (max-width: 960px) {
+    width: 100%;
+  }
 
   & .main {
     max-width: 100%;

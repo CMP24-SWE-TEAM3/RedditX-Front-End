@@ -24,6 +24,7 @@ export const Container = styled.div`
     font-weight: 700;
     height: 32px;
     line-height: 17px;
+    border:none;
     text-transform: unset;
     text-align: center;
     width: 95%;

@@ -12,6 +12,7 @@ import defaultTheme from "Theme/defaultTheme";
 import darkTheme from "Theme/darkTheme";
 import {ThemeProvider} from "styled-components";
 import ScrollButton from "Components/ScrollButton/ScrollButton";
+import {SideBar} from "Components/DropDownButtonLeft/DropDownLeft";
 
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
@@ -29,6 +30,7 @@ const HomePage = () => {
                 <styles.AppHeader>
                     <Navbar/>
                     <MainContainer>
+                        {/*<SideBar/>*/}
                         <div className="main"/>
                         <Container>
                             <div className={'content-posts'}>

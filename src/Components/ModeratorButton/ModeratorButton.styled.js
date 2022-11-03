@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Dropdown from "rsuite/Dropdown";
+import Dropdown from "react-bootstrap/Dropdown";
 export const ButtonModerator = styled(Dropdown)`
   border: none;
   outline: none;
