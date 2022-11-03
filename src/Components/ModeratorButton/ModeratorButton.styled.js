@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Dropdown from "react-bootstrap/Dropdown";
+
 export const ButtonModerator = styled(Dropdown)`
   border: none;
   outline: none;
@@ -11,6 +12,14 @@ export const ButtonModerator = styled(Dropdown)`
     background: ${({theme}) => theme.background.post_background};
   }
 
-  color: ${({theme})=>theme.color.primary};
-    
+  span {
+    padding-right: 3px;
+  }
+
+  color: ${({theme}) => theme.color.primary} !important;
+  .dropdown-item:active{
+    background: none !important;
+    color: unset !important;
+  }
+
 `

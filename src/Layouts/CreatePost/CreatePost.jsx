@@ -1,3 +1,4 @@
+// imports
 import React from 'react';
 import {Container} from "./CreatePost.styled";
 import Post  from "Components/Post/Post";

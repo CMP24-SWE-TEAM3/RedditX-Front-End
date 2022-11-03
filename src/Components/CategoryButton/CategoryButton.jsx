@@ -4,10 +4,9 @@ import Dropdown from "react-bootstrap/Dropdown";
 import {MdOutlineStorage} from 'react-icons/md';
 import {BsCardText} from 'react-icons/bs';
 /**
- * Component that  Main Links component but in responsive form.
+ * Component that  shows dropdown list of categories
  *
- * @Component
- * @returns {CategoryButton}
+ * @returns {React.Component}
  */
 const CategoryButton = () => {
     return (

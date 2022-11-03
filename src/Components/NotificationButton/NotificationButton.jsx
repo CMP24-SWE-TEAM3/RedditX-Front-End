@@ -1,6 +1,7 @@
+// imports
 import {IoMdNotificationsOutline} from 'react-icons/io';
 import {GlobalButtonStyled} from "Components/Global/GlobalButton.styled";
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import Overlay from 'react-bootstrap/Overlay';
 import Popover from 'react-bootstrap/Popover';
 import {Container} from "./NotificationButton.styled";
@@ -10,18 +11,43 @@ import link from 'Assets/link.png';
 
 /**
  * Component that displays notifications about changes in the state of the application
+ *
  * @returns {React.Component}
- * @constructor
  */
 const NotificationButton = () => {
+    // state change
     const [show, setShow] = useState(false);
     const [target, setTarget] = useState(null);
+
+    // ref the event listener
     const ref = useRef(null);
+    const wrapperRef = useRef(null);
+
+
+    const useOutsideAlerter = (ref) => {
+        useEffect(() => {
+
+            //Close toast if clicked on outside of element
+            const handleClickOutside = (event) => {
+                if (ref.current && !ref.current.contains(event.target)) {
+                    setShow(false);
+                }
+            }
+
+            // Bind the event listener
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => {
+                // Unbind the event listener on clean up
+                document.removeEventListener("mousedown", handleClickOutside);
+            };
+        }, [ref]);
+    }
 
     const handleClick = (event) => {
         setShow(!show);
         setTarget(event.target);
     };
+    useOutsideAlerter(wrapperRef);
 
     return (
         <Container ref={ref}>
@@ -33,7 +59,8 @@ const NotificationButton = () => {
                 show={show}
                 target={target}
                 placement="bottom"
-                container={ref}>
+                container={ref}
+                ref={wrapperRef}>
                 <Popover id="popover-contained">
                     <Popover.Header>
                         <span className={'word'}>
@@ -80,7 +107,6 @@ const NotificationButton = () => {
 
                             </i>
                         </div>
-
                     </Popover.Body>
                     <footer>
                         <a href={'https://www.reddit.com/notifications'}>See All</a>

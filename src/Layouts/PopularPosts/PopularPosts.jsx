@@ -1,3 +1,4 @@
+// imports
 import React from 'react';
 import HotButton from "Components/HotButton/HotButton";
 import {Container} from "./PopularPosts.styled";

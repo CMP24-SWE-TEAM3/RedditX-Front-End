@@ -1,3 +1,4 @@
+// imports
 import React from 'react';
 import {PostStyled} from "./Post.styled";
 

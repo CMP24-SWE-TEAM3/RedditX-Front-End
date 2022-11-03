@@ -23,7 +23,7 @@ export const ModalStyled = styled(Modal)`
     font-weight: 400;
     line-height: 16px;
     color: ${({theme}) => theme.color.muted};
-    margin: 1px 0 0 4px;
+    margin: 1px 0 0 2px;
 
   }
 
@@ -141,6 +141,7 @@ export const ModalStyled = styled(Modal)`
     font-family: Noto Sans, Arial, sans-serif;
     font-size: 14px;
     font-weight: 700;
+    border: none ;
     border-radius: 999px;
     letter-spacing: unset;
     line-height: 17px;
@@ -153,4 +154,7 @@ export const ModalStyled = styled(Modal)`
       background-color: ${({theme}) => theme.background.hover_background_button_blue};
     }
   }
+`
+export const AlarmInput = styled.p`
+  color: ${({alarmValue}) => (alarmValue > 0) ? true : '#ea0027'} !important;
 `

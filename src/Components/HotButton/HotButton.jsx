@@ -1,12 +1,12 @@
+// imports
 import React from 'react';
 import {Button} from "./HotButton.styled";
-import {AiOutlineFire} from 'react-icons/ai';
 import {RiRocketLine} from 'react-icons/ri';
+
 /**
- * Component that  Main Links component but in responsive form.
+ * Component that displays a list of posts on the homepage categorized as hot posts
  *
- * @Component
- * @returns {HotButton}
+ * @returns {React.Component}
  */
 const HotButton = () => {
     return (

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ModalStyled} from "./Modal.styled";
+import {AlarmInput, ModalStyled} from "./Modal.styled";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal"
 import {BsFillPersonFill} from "react-icons/bs";
@@ -9,7 +9,7 @@ import {HiLockClosed} from "react-icons/hi";
 /**
  * Component that has been showed after clicking on create community button in home page .
  *
- * @params {boolean,boolean}  create community button isLoggedIn is true if yourself loggedIn and false otherwise
+ * @params {boolean,boolean}  create community button isLoggedIn is true if  loggedIn and false otherwise
  * @returns {Modal} returns a modal that shows the user's create community form
  */
 
@@ -31,7 +31,7 @@ const ModalCommunity = ({show,close}) => {
                         <Form.Group className="mb-3">
                             <Form.Control value={communityName} onChange={handlerChars} aria-required type={'text'}
                                           maxlength="21"/></Form.Group>
-                        <p> {21 - communityName.length} Characters remaining</p>
+                        <AlarmInput alarmValue={21 - communityName.length}> {21 - communityName.length} Characters remaining</AlarmInput>
 
                     </Form>
                     <div className={'check-form'}>

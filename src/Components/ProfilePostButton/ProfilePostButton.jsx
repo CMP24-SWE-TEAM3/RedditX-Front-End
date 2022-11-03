@@ -1,3 +1,4 @@
+// imports
 import React from 'react';
 import {ProfileButtonStyled, ProfileLogoStyled} from "./ProfilePostButton.styled";
 import Profile from "Assets/profile.ico";

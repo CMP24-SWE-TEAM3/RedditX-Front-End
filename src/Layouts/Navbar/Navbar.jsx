@@ -1,4 +1,4 @@
-// import React, {useContext} from 'react';
+// imports
 import Badge from "Components/BadgeButton/Badge";
 import SearchBar from "Components/SearchBar/SearchBar";
 import {StyledHeader, StyledSeperator} from "./Navbar.styled";
@@ -15,6 +15,7 @@ import SignUp from "Components/SignUp/SignUp";
 import LoginButton from "Components/LoginButton/LoginButton";
 import React, {useContext} from "react";
 import AuthContext from "Contexts/auth-context";
+
 /**
  * Component that  Main Links component in header  called navigation bar.
  *
@@ -37,7 +38,7 @@ const Navbar = (props) => {
                     <PopularButton onshow={ButtonHandler}/>
                     <CoinButton onshow={ButtonHandler}/>
                     <StyledSeperator/>
-                    {/*<ModeratorButton onshow={ButtonHandler}/>*/}
+                    <ModeratorButton onshow={ButtonHandler}/>
                     <ChatButton onshow={ButtonHandler}/>
                     <NotificationButton onshow={ButtonHandler}/>
                     <CreatePostButton onshow={ButtonHandler}/>

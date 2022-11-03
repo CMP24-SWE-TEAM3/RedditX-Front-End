@@ -3,6 +3,11 @@ import redditLogo from 'Assets/redditLogo.svg'
 import logo from 'Assets/logo.png'
 import {StyledIcon, StyledLink, StyledTextLogo} from './Badge.styled'
 
+/**
+ * Component that displays logos of reddit website
+ * @returns {React.Component}
+ *
+ */
 const Badge = () => {
     return (
         <StyledLink>
