@@ -2,6 +2,7 @@
 import PostFlagsWrapper from "Features/Post/Components/PostFlagsWrapper/PostFlagsWrapper";
 import DraftEditor from "Features/Post/Components/DraftEditor/DraftEditor";
 import PostFormFooter from "Features/Post/Components/PostFormFooter/PostFormFooter";
+import FlairModal from "Features/Post/Components/FlairModal/FlairModal";
 
 // Import bootstrap components
 import { Form } from "react-bootstrap";
@@ -23,6 +24,9 @@ import { useState, useRef } from "react";
  * @returns {React.Component} - Draft editor Form component (The form that appears when you click on the post tab in main section)
  */
 const DraftEditorForm = () => {
+  // State for flair modal
+  const [modalShow, setModalShow] = useState(false);
+
   // State for title
   const [title, setTitle] = useState("");
 
@@ -54,6 +58,7 @@ const DraftEditorForm = () => {
   };
   return (
     <>
+      <FlairModal show={modalShow} onHide={() => setModalShow(false)} />
       <StyledDraftEditorForm>
         <Form.Group className="title-group mb-3">
           <Form.Control
@@ -69,7 +74,7 @@ const DraftEditorForm = () => {
           <span>{title.length}/300</span>
         </Form.Group>
         <DraftEditor />
-        <PostFlagsWrapper />
+        <PostFlagsWrapper flairHandler={setModalShow} />
         <SubmitButtons>
           <SaveDraftButton variant="light">Save Draft</SaveDraftButton>
           <PostButton>Post</PostButton>

@@ -16,30 +16,37 @@ import { FiTarget } from "react-icons/fi";
  *
  * @returns {React.Component} - Post Flags Wrapper component (The wrapper that contains the flags in the post form)
  */
-const PostFlagsWrapper = () => {
+const PostFlagsWrapper = ({
+  liveChatHandler,
+  eventHandler,
+  ocHandler,
+  spoilerHandler,
+  nsfwHandler,
+  flairHandler,
+}) => {
   return (
     <PostFlagsWrapperContainer>
-      <PostFlag disabled={true}>
+      <PostFlag disabled={true} clickHandler={liveChatHandler}>
         <FiTarget />
         <Text>Live Chat</Text>
       </PostFlag>
-      <PostFlag disabled={true}>
+      <PostFlag disabled={true} clickHandler={eventHandler}>
         <BsCalendar4Event />
         <Text>Event</Text>
       </PostFlag>
-      <PostFlag disabled={true}>
+      <PostFlag disabled={true} clickHandler={ocHandler}>
         <AiOutlinePlus size={22} />
         <Text>OC</Text>
       </PostFlag>
-      <PostFlag disabled={true}>
+      <PostFlag disabled={true} clickHandler={spoilerHandler}>
         <AiOutlinePlus size={22} />
         <Text>Spoiler</Text>
       </PostFlag>
-      <PostFlag>
+      <PostFlag clickHandler={nsfwHandler}>
         <AiOutlinePlus size={22} />
         <Text>NSFW</Text>
       </PostFlag>
-      <PostFlag disabled={true}>
+      <PostFlag /*disabled={true}*/ clickHandler={flairHandler}>
         <IoPricetagOutline size={22} />
         <Text>Flair</Text>
         <IoIosArrowDown />
