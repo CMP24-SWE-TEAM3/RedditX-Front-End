@@ -15,12 +15,15 @@ import App from "App";
 
 // Import reportWebVitals to measure the real life performance the app
 import reportWebVitals from "reportWebVitals";
-
+import {AuthContextProvider} from "Contexts/auth-context";
+import HomePage from "Pages/HomePage/HomePage"
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <React.StrictMode>
+        <AuthContextProvider>
+            <HomePage/>
+        </AuthContextProvider>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

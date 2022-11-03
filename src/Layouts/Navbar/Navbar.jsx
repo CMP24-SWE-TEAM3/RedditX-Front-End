@@ -37,7 +37,7 @@ const Navbar = (props) => {
                     <PopularButton onshow={ButtonHandler}/>
                     <CoinButton onshow={ButtonHandler}/>
                     <StyledSeperator/>
-                    <ModeratorButton onshow={ButtonHandler}/>
+                    {/*<ModeratorButton onshow={ButtonHandler}/>*/}
                     <ChatButton onshow={ButtonHandler}/>
                     <NotificationButton onshow={ButtonHandler}/>
                     <CreatePostButton onshow={ButtonHandler}/>
@@ -56,3 +56,4 @@ const Navbar = (props) => {
 };
 
 export default Navbar;
+

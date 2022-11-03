@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledHeader = styled.header
     `
       justify-content:space-between;
-      position: relative;
+      //position: relative;
       top: 0;
       left: 0;
       width: 100%;

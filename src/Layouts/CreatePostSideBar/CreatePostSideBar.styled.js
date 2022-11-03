@@ -97,7 +97,6 @@ export const Container = styled.div`
     margin-top: -23px;
     align-items: center;
     margin-bottom: 8px;
-    padding: 12px
   }
 
   & img {
@@ -129,7 +128,6 @@ export const Container = styled.div`
 
   & hr {
     background-color: rgb(26 26 27 / 7%);
-    border: none;
     height: 1px;
     margin: 0;
   }

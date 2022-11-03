@@ -118,6 +118,7 @@ export const CommunityContainer = styled.div`
     width: 95%;
     height: 32px;
     position: relative;
+    border: none;
     justify-content: center;
     border-radius: 9999px;
     font-size: 14px;

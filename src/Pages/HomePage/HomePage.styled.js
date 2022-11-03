@@ -49,10 +49,25 @@ export const Container = styled.div`
     width: 312px;
   }
 
+  // footer styles
   & footer {
     flex: 1 1 auto;
     position: relative;
     width: inherit;
+  }
+
+  & .child-footer {
+    position: sticky;
+    top: 57px;
+  }
+
+  & .scroll-but {
+    top: calc(100vh - 8px);
+    display: flex;
+    margin-top: 45px;
+    justify-content: center;
+    text-align: center;
+    transform: translateY(-100%);
   }
 `
 export const MainContainer = styled.div`

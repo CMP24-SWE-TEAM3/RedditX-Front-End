@@ -98,6 +98,7 @@ export const Container = styled.div`
   & .button {
     flex-shrink: 0;
     width: 88px;
+    border: none;
   }
 
   & button {
@@ -125,7 +126,7 @@ export const Container = styled.div`
   }
 
   & button:hover {
-      //background-color: ${({theme}) => theme.background.post_background};
+      background-color: ${({theme}) => theme.background.hover_background_button_blue};
   }
   & .num{
     color: ${({theme}) => theme.color.primary};

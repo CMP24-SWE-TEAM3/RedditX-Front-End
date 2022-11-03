@@ -5,10 +5,16 @@ export const Container = styled.div`
   border: thin solid ${({theme}) => theme.lineColor.primary};
   border-radius: 4px;
   box-shadow: 0 2px 4px 0 rgb(0 0 0 / 6%);
-  width: 312px;
+  //width: 312px;
   height: 202px;
   margin-top: 16px;
-  & .menu-1{
+
+  & .content {
+    padding: 0;
+    max-height: none;
+  }
+
+  & .menu-1 {
     border-bottom: 1px solid #e9ebed;
     display: flex;
     padding-top: 8px;
@@ -16,18 +22,20 @@ export const Container = styled.div`
     margin-left: 12px;
     margin-right: 12px;
   }
-  & .sec{
+
+  & .sec {
     display: flex;
     flex-flow: column nowrap;
     width: 50%;
     padding: 0 4px;
     text-align: start;
   }
-  & a{
-    font-family: Noto Sans,Arial,sans-serif;
+
+  & a {
+    font-family: Noto Sans, Arial, sans-serif;
     font-size: 12px;
     font-weight: 400;
-    color:${({theme}) => theme.color.primary};
+    color: ${({theme}) => theme.color.primary};
     line-height: 16px;
     display: inline-block;
     text-decoration: none;
@@ -35,17 +43,19 @@ export const Container = styled.div`
     margin-top: 3px;
     margin-bottom: 3px;
   }
-  & .inc{
+
+  & .inc {
     font-family: Noto Sans, Arial, sans-serif;
     font-size: 12px;
     font-weight: 400;
-    color:${({theme}) => theme.color.primary};
+    color: ${({theme}) => theme.color.primary};
     line-height: 16px;
     display: flex;
     padding: 12px;
   }
-  @media (max-width: 960px){
+
+  @media (max-width: 960px) {
     display: none;
-    
+
   }
 `

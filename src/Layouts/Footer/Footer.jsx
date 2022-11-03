@@ -8,6 +8,7 @@ import {Container} from "./Footer.styled";
 const Footer = () => {
     return (
         <Container>
+            <div className={'content'}>
             <div className={'menu-1'}>
                 <div className={'sec'}>
                     <a href={"https://www.redditinc.com/policies/user-agreement"}>User Agreement </a>
@@ -32,6 +33,7 @@ const Footer = () => {
             </div>
             <div className={'inc'}>
                 Reddit Inc © 2022. All rights reserved
+            </div>
             </div>
         </Container>
     );

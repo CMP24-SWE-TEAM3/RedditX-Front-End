@@ -1,26 +1,7 @@
 import styled from 'styled-components';
 
 export const ButtonStyled = styled.button`
-  position: relative;
-  left: 20%;
-  bottom: 40px;
-  height: 32px;
-  z-index: 1;
-  cursor: pointer;
-  color: ${({theme}) => theme.background.primary};
-  border-color: ${({theme})=>theme.color.secondary};
-  background-color: ${({theme})=>theme.color.secondary};
-  width: 112px;
-
-  //&:hover {
-  //  background-color: #1484d6 !important;
-  //}
-
-  //&:active {
-  //  background-color: #0079d3 !important;
-  //}
-
-  border-radius: 9999px;
+  font-family: Noto Sans, Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: unset;
@@ -29,4 +10,20 @@ export const ButtonStyled = styled.button`
   min-height: 32px;
   min-width: 32px;
   padding: 4px 16px;
+  align-items: center;
+  border-radius: 9999px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: auto;
+  cursor: pointer;
+  color: ${({theme}) => theme.background.primary};
+  border-color: ${({theme}) => theme.color.secondary};
+  background-color: ${({theme}) => theme.color.secondary};
+  //width: 112px;
+
+  & :hover {
+    background-color: ${({theme}) => theme.color.hover_background_button_blue};
+  }
 `

@@ -6,6 +6,7 @@ export const AdvertiseButtonStyled = styled.button`
   border-radius: 50px;
   flex-direction: row;
   min-width: 32px;
+  border: none;
   font-size:14px;
   font-weight:500;
   color: #1c1c1c;

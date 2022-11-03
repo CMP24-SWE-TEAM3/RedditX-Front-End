@@ -5,6 +5,7 @@ export const Button = styled.button`
   width: 70px;
   height: 32px;
   font-size: 14px;
+  border: none;
   line-height: 17px;
   font-weight: 700;
   padding: 6px 8px;

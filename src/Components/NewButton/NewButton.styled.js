@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Button = styled.button`
   width: 75.36px;
   height: 32px;
+  border: none;
   display: inline-flex;
   position: relative;
   top: 0;

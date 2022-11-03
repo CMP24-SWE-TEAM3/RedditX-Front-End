@@ -57,7 +57,7 @@ const NotificationButton = () => {
                     <Popover.Body>
                         <div className={'pop'}/>
                         <div className={'content'}>
-                            <i>
+                            <i className={'content-i'}>
                                 <a className={'content-a'}
                                    href={'https://www.reddit.com/r/Eln2aa4yn/comments/yi1rd4/ccccc/'}>
                                     <span className={'a-span'}>

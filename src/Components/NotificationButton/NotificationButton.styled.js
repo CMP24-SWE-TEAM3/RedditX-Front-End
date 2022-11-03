@@ -9,7 +9,7 @@ export const Container = styled.div`
     background-color: ${({theme}) => theme.background.primary};
     border-radius: 4px;
     box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
-    margin-top: 8px;
+    //margin-top: 8px;
     overflow-y: unset;
     overflow: unset;
     width: 375px;
@@ -39,7 +39,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 16px;
-    border-bottom: none!important;
+    border-bottom: none !important;
   }
 
   & .message {
@@ -56,7 +56,8 @@ export const Container = styled.div`
       white-space: nowrap;
       font-weight: 600;
       color: ${({theme}) => theme.color.gray};
-      :hover{
+
+      :hover {
         text-decoration: none !important;
       }
     }
@@ -94,7 +95,7 @@ export const Container = styled.div`
     background-color: ${({theme}) => theme.background.primary};
     overflow: hidden;
     overflow-y: auto;
-    padding:0;
+    padding: 0;
     transition: max-height .3s ease-out;
   }
 
@@ -102,21 +103,25 @@ export const Container = styled.div`
     margin: 0 16px;
   }
 
+  .content-i {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+  }
 
   .content {
     position: relative;
 
-    i {
-      //list-style: none;
 
-      img {
-        border-radius: 50%;
-        height: 32px;
-        width: 32px;
-        background-color: ${({theme}) => theme.background.hover_background};
-        display: block;
-        object-fit: cover;
-      }
+    img {
+      border-radius: 50%;
+      height: 32px;
+      width: 32px;
+      background-color: ${({theme}) => theme.background.hover_background};
+      display: block;
+      object-fit: cover;
     }
   }
 
@@ -161,8 +166,10 @@ export const Container = styled.div`
   .dot {
     font-size: 12px;
     font-weight: 400;
+    margin: 0 5px;
     line-height: 16px;
     color: ${({theme}) => theme.color.gray};
+
     :hover {
       background-color: ${({theme}) => theme.background.post_background};
     }
@@ -175,8 +182,9 @@ export const Container = styled.div`
     color: ${({theme}) => theme.color.gray};
     line-height: 19px;
   }
-  .info-child{
-    font-family: Noto Sans,Arial,sans-serif;
+
+  .info-child {
+    font-family: Noto Sans, Arial, sans-serif;
     font-weight: 400;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -189,9 +197,9 @@ export const Container = styled.div`
     max-height: 54px;
     -webkit-line-clamp: 3;
   }
-  
+
   // footer styles
-  footer{
+  footer {
     align-items: center;
     background-color: ${({theme}) => theme.background.post_background};
     border-radius: 0 0 4px 4px;
@@ -199,8 +207,8 @@ export const Container = styled.div`
     height: 49px;
     justify-content: center;
     padding: 0 12px;
-    
-    a{
+
+    a {
       font-size: 14px;
       font-weight: 700;
       letter-spacing: .5px;
@@ -210,7 +218,7 @@ export const Container = styled.div`
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      color: #24a0ed;  
+      color: #24a0ed;
     }
   }
 `

@@ -9,6 +9,7 @@ import Footer from "Layouts/Footer/Footer";
 import * as styles from "App.styled";
 import lightTheme from "Theme/lightTheme";
 import defaultTheme from "Theme/defaultTheme";
+import darkTheme from "Theme/darkTheme";
 import {ThemeProvider} from "styled-components";
 import ScrollButton from "Components/ScrollButton/ScrollButton";
 
@@ -44,11 +45,15 @@ const HomePage = () => {
                                         <CreatePostSideBar/>
                                     </div>
                                     <footer>
-                                        <Footer/>
+                                        <div className={'child-footer'}>
+                                            <Footer/>
+                                        </div>
+                                        <div className={'scroll-but'}>
+                                            <ScrollButton/>
+                                        </div>
                                     </footer>
                                 </div>
                             </aside>
-                            <ScrollButton/>
                         </Container>
                     </MainContainer>
                 </styles.AppHeader>
