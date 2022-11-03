@@ -19,6 +19,12 @@ export const StyledDraftEditorForm = styled.div`
     caret-color: ${({ theme }) => theme.color.primary};
   }
 
+  .title-input {
+    height: auto;
+    padding-right: 50px;
+    overflow: hidden;
+  }
+
   .title-group {
     display: flex;
     align-items: center;

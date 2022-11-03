@@ -41,7 +41,7 @@ const DraftLinkForm = ({
             type="text"
             value={linkTextValue}
             onKeyDown={onLinkInputKeyDown}
-            placeholder="Paste or type link here"
+            placeholder="Title of link (optional)"
           />
         </Col>
       </FormRow>
@@ -55,7 +55,7 @@ const DraftLinkForm = ({
             type="text"
             value={linkUrlValue}
             onKeyDown={onLinkInputKeyDown}
-            placeholder="Title of link (optional)"
+            placeholder="Paste or type link here"
           />
         </Col>
       </FormRow>

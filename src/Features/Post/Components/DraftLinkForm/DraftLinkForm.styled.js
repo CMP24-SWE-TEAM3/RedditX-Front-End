@@ -19,6 +19,8 @@ export const Input = styled.input`
   outline: none;
   border: none;
   background-color: ${({ theme }) => theme.canvas};
+  color: ${({ theme }) => theme.color.primary};
+
   padding: 10px;
   width: 350px;
   @media only screen and (max-width: 600px) {

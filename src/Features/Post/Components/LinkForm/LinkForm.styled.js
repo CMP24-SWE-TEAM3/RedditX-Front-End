@@ -17,6 +17,15 @@ export const StyledLinkForm = styled.div`
     resize: none;
     background-color: ${({ theme }) => theme.background.primary};
     caret-color: ${({ theme }) => theme.color.primary};
+    overflow-wrap: break-word;
+    word-break: break-all;
+    resize: none;
+  }
+
+  .title-input {
+    height: auto;
+    padding-right: 50px;
+    overflow: hidden;
   }
 
   .title-group {
