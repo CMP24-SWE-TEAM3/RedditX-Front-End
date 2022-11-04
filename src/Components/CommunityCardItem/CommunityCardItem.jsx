@@ -5,7 +5,7 @@ import {Container} from "./CommunityCardItem.styled";
  * Component that  shows the names of communities up-to-date.
  * @returns {Component.React}
  */
-const CommunityCardItem = () => {
+const CommunityCardItem = ({community}) => {
     const [btnContent, setstate] = useState("Join");
 
     function clickHandler(e) {
@@ -38,7 +38,7 @@ const CommunityCardItem = () => {
                     <img src={logo} alt=""/>
                     <div className="info">
                         <div className="info2">
-                            <h6>r/Egypt</h6>
+                            <h6>r/{community}</h6>
                         </div>
                     </div>
                     <div className="button">

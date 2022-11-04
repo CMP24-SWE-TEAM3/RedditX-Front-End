@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-
 export const ButtonStyled = styled.button`
+  display: ${({show}) => show ? 'inline' : 'none'};
+
   font-family: Noto Sans, Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -8,13 +9,12 @@ export const ButtonStyled = styled.button`
   line-height: 17px;
   text-transform: unset;
   min-height: 32px;
-  border: none;
+  //border: none;
   min-width: 32px;
   padding: 4px 16px;
   align-items: center;
   border-radius: 9999px;
   box-sizing: border-box;
-  display: flex;
   justify-content: center;
   text-align: center;
   width: auto;

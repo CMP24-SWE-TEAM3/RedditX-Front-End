@@ -1,0 +1,20 @@
+{
+  "feedback": [
+    {
+      "id": "1",
+      "name": "worldnews"
+    },
+    {
+      "id": "2",
+      "name": "notthenion"
+    },
+    {
+      "id": "3",
+      "name": "technews"
+    },
+    {
+      "id": "4",
+      "name": "savedyouaclick"
+    }
+  ]
+}

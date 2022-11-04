@@ -1,4 +1,5 @@
 import {CommunityContainer} from "./CommunityCard.styled";
+import db from 'Data/db.json';
 import CommunityCardItem from "Components/CommunityCardItem/CommunityCardItem";
 
 /**
@@ -18,11 +19,12 @@ const TopCommunities = () => {
                     </a>
                 </h2>
             </div>
-            <CommunityCardItem/>
-            <CommunityCardItem/>
-            <CommunityCardItem/>
-            <CommunityCardItem/>
-            <CommunityCardItem/>
+            {db.feedback && db.feedback.map(community => {
+                return (
+                    <CommunityCardItem key={community.id} community={community.name}/>
+                )
+            })}
+
             <button className={'view-all'}>View All</button>
             <div className={'row-but'}>
                 <button className={'sub-but'}>New You</button>

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Create Post button Component this is a test for Create post button 1`] = `ShallowWrapper {}`;
+
+exports[`Login Button Component this is a test for Login Button 1`] = `ShallowWrapper {}`;

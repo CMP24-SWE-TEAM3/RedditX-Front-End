@@ -5,7 +5,7 @@ import cover from "Assets/background.png";
 export const Container = styled.div`
   background-color: ${({theme}) => theme.background.primary};
   border: thin solid ${({theme}) => theme.lineColor.primary};
-  
+
   & .buts {
     margin-top: 12px;
   }
@@ -24,13 +24,17 @@ export const Container = styled.div`
     font-weight: 700;
     height: 32px;
     line-height: 17px;
-    border:none;
+    border: none;
     text-transform: unset;
     text-align: center;
     width: 95%;
     border-radius: 9999px;
     box-sizing: border-box;
     cursor: pointer;
+
+    :hover, :active {
+      background-color: ${({theme}) => theme.background.hover_background_button_blue};
+    }
 
   }
 
@@ -51,18 +55,10 @@ export const Container = styled.div`
     box-sizing: border-box;
     cursor: pointer;
   }
-
-  & .sub-but1:hover {
-    background-color: #1484d6 !important;
-  }
-
-  & .sub-but1:active {
-    background-color: ${({theme}) => theme.color.secondary} !important;
-  }
-
+  
   & .sub-but2:hover {
     background-color: ${({theme}) => theme.background.hover_background};
-    color: #1779d3;
+    color: ${({theme}) => theme.color.secondary};
   }
 
   & .sub-but2:focus-visible {

@@ -129,13 +129,10 @@ export const CommunityContainer = styled.div`
     min-height: 32px;
     min-width: 32px;
     margin-bottom: 10px;
-  }
 
-  & .view-all:hover {
-    background-color: #1484d6 !important;
+    :hover, :active {
+      background-color: ${({theme}) => theme.background.hover_background_button_blue};
+    }
   }
-
-  & .view-all:active {
-    background-color: #0079d3 !important;
-  }
-`;
+  
+`

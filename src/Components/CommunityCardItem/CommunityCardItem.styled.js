@@ -53,7 +53,7 @@ export const Container = styled.div`
     width: 36px;
     line-height: normal;
     //-ms-flex-negative: 0;
-    margin: 0 8px;
+    //margin: 0 8px;
     flex-shrink: 0;
     border-radius: 100%;
     vertical-align: middle;
@@ -97,7 +97,7 @@ export const Container = styled.div`
 
   & .button {
     flex-shrink: 0;
-    width: 88px;
+    //width: 88px;
     border: none;
   }
 

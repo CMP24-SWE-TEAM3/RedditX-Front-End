@@ -12,6 +12,8 @@ import lightTheme from "Theme/lightTheme";
 import defaultTheme from "Theme/defaultTheme";
 import {ThemeProvider} from "styled-components";
 import ScrollButton from "Components/ScrollButton/ScrollButton";
+import darkTheme from "../../Theme/darkTheme";
+import {Button} from "react-bootstrap";
 
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
@@ -20,8 +22,15 @@ import ScrollButton from "Components/ScrollButton/ScrollButton";
  */
 
 const HomePage = () => {
-
     const [theme, setTheme] = useState({...defaultTheme, ...lightTheme});
+    const handleToggleTheme = () => {
+        if (theme.id === "dark") {
+            setTheme({...defaultTheme, ...lightTheme});
+        } else {
+            setTheme({...defaultTheme, ...darkTheme});
+        }
+    };
+
     return (
 
         <ThemeProvider theme={theme}>
@@ -35,6 +44,9 @@ const HomePage = () => {
                             <div className={'content-posts'}>
                                 <CreatePost/>
                                 <PopularPosts/>
+                                <Button onClick={handleToggleTheme}>
+                                    Toggle theme
+                                </Button>
                                 {/*<div className={'posts'}>*/}
                                 {/*</div>*/}
                             </div>
