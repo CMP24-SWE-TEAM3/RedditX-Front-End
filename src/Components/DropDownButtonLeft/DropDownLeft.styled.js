@@ -36,6 +36,15 @@ export const DropDownLeftStyled = styled(Dropdown)`
 
   color: ${({theme}) => theme.color.primary};
 
+  .all-drop {
+    border-radius: 4px 4px 0 0;
+    border-color: ${({theme}) => theme.lineColor.primary};
+  }
+  a:hover {
+    color: ${({theme}) => theme.color.primary};
+  }
+  
+
 `
 // canvas styles
 export const OffcanvasBody = styled(Offcanvas)`

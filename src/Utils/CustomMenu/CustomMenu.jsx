@@ -2,6 +2,7 @@
 import React, {useState} from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Form from "react-bootstrap/Form";
+import {CanvasHeader} from "./CustomMenu.styled";
 
 /**
  * Function that helps dropdown functionality
@@ -21,9 +22,8 @@ const CustomMenu = React.forwardRef(
                 style={style}
                 className={className}
                 aria-labelledby={labeledBy}>
-                <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Header</Offcanvas.Title>
-                </Offcanvas.Header>
+                <CanvasHeader closeButton>
+                </CanvasHeader>
                 <Form.Control
                     autoFocus
                     placeholder="Filter"

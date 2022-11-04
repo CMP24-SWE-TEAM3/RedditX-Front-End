@@ -1,8 +1,9 @@
 import React, {useState} from "react";
-import Button from "react-bootstrap/Button";
 import {OffcanvasBody} from "../DropDownButtonLeft/DropDownLeft.styled";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import DropDownMenu from "Components/DropDownMenu/DropDownMenu";
+import {AiOutlineContainer} from "react-icons/ai";
+import {ButtonStyled} from "./SideBar.styled";
 
 /**
  * Component that displays a sidebar which includes a dropdown menu in it
@@ -16,11 +17,11 @@ const SideBar = () => {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                Toggle
-            </Button>
+            <ButtonStyled onClick={handleShow}>
+                <AiOutlineContainer/>
+            </ButtonStyled>
 
-            <OffcanvasBody show={show} onHide={handleClose} backdrop={false}>
+            <OffcanvasBody show={show} onHide={handleClose} className={'mt-5'} backdrop={false}>
                 <Offcanvas.Body>
                     <DropDownMenu/>
                 </Offcanvas.Body>

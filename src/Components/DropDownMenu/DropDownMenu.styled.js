@@ -83,7 +83,7 @@ export const DropdownContainer = styled.div`
     box-sizing: border-box;
     transform: none !important;
     margin-top: -1px;
-    height: 100%;
+    height:482px;
     min-height: 100%;
     overflow: hidden scroll;
     position: fixed;

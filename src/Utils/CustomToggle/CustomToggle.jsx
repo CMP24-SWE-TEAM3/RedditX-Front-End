@@ -15,4 +15,4 @@ const CustomToggle = React.forwardRef(({children, onClick}, ref) => (
 ));
 //&#x25bc;
 //&#709;
-export {CustomToggle};
+export default CustomToggle;
