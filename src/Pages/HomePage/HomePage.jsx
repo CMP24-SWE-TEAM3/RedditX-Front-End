@@ -1,3 +1,4 @@
+// imports
 import React, {Component, useState} from 'react';
 import {Container, MainContainer} from "./HomePage.styled";
 import Navbar from "Layouts/Navbar/Navbar";
@@ -9,10 +10,8 @@ import Footer from "Layouts/Footer/Footer";
 import * as styles from "App.styled";
 import lightTheme from "Theme/lightTheme";
 import defaultTheme from "Theme/defaultTheme";
-import darkTheme from "Theme/darkTheme";
 import {ThemeProvider} from "styled-components";
 import ScrollButton from "Components/ScrollButton/ScrollButton";
-import {SideBar} from "Components/DropDownButtonLeft/DropDownLeft";
 
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
