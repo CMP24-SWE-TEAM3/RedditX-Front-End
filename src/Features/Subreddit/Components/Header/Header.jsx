@@ -1,4 +1,4 @@
-import { HeaderMarginDiv, HeaderDiv, HeaderH3, HeaderP } from "./HeaderStyle";
+import { HeaderMarginDiv, HeaderDiv, HeaderH3, HeaderP } from "./Header.styled";
 
 
 /**

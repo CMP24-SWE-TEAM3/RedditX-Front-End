@@ -21,7 +21,7 @@ import {
   HoverButton,
   CommunityRankChange,
   Arrow,
-} from "./CommunitySyle";
+} from "./Community.styled";
 
 /**
  * Component that contains the header of the community leaderboard page
@@ -48,7 +48,7 @@ export default function Community(props) {
   const isRising = props.isJoined;
   return (
     <CommunityItem>
-      <CommunityA href={`/${props.title}`}>
+      <CommunityA href={`/${({title})=>title}`}>
         <CommunityIndex>{props.index}</CommunityIndex>
         <Arrow up={isRising}></Arrow>
         <CommunityImg

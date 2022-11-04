@@ -13,7 +13,7 @@ import {
   RightSectionBtns,
   BackTopBtn,
   LettersContainer,
-} from "./RightSectionStyle";
+} from "./RightSection.styled";
 
 
 

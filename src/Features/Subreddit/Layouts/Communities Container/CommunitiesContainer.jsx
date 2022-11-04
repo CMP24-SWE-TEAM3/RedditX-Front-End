@@ -7,7 +7,7 @@ import {
   CommunityH3,
   CommunityHeaderSpan,
   CommunityOl,
-} from "./CommunitiesContainerStyle";
+} from "./CommunitiesContainer.styled";
 
 
 /**

@@ -7,7 +7,7 @@ import {
   ContentDiv,
   ContentItem,
   ContentA,
-} from "./IndexContainerStyle";
+} from "./IndexContainer.styled";
 
 
 /**

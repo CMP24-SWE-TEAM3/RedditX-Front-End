@@ -1,9 +1,9 @@
 import Container from "../../Layouts/Communities Container/CommunitiesContainer";
 import Categories from "../../Components/Categories/Categories";
 import Header from "../../Components/Header/Header";
-import { MainPadding } from "../../Layouts/Communities Container/CommunitiesContainerStyle";
+import { MainPadding } from "../../Layouts/Communities Container/CommunitiesContainer.styled";
 import RightSection from "../../Components/Right Section/RightSection";
-import {LeaderBoardContainer, LeaderBoardPage} from "./CommunityLeaderboardStyle"
+import {LeaderBoardContainer, LeaderBoardPage} from "./CommunityLeaderboard.styled"
 
 
 /**

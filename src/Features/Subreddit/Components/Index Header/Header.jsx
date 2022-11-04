@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HeaderMarginDiv, HeaderDiv, HeaderH3, HeaderP, Letters, LettersContainer } from "./HeaderStyle";
+import { HeaderMarginDiv, HeaderDiv, HeaderH3, HeaderP, Letters, LettersContainer } from "./Header.styled";
 
 
 /**

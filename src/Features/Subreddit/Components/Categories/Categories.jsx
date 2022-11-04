@@ -5,7 +5,7 @@ import {
   Category,
   CategoryHeader,
   ShowMoreBtn,
-} from "./CategoriesStyle";
+} from "./Categories.styled";
 
 
 /**

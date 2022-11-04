@@ -81,6 +81,11 @@ export const Letters = styled.a`
   margin-right: 8px;
   text-decoration: none;
   text-transform: capitalize;
+
+  &:hover {
+    color: ${({theme})=>theme.color.secondary};
+    opacity: 0.7;
+  }
 `;
 
 export const BackTop = styled.div`

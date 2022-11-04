@@ -4,7 +4,7 @@ import {
   CommunityH3,
   CommunityHeader,
   CommunityOl,
-} from "../../Layouts/Communities Container/CommunitiesContainerStyle";
+} from "../../Layouts/Communities Container/CommunitiesContainer.styled";
 
 export const AllCategories = styled(AllCommunities)`
   min-width: 192px;
