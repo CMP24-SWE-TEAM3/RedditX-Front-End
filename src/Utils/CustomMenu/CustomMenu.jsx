@@ -22,8 +22,6 @@ const CustomMenu = React.forwardRef(
                 style={style}
                 className={className}
                 aria-labelledby={labeledBy}>
-                <CanvasHeader closeButton>
-                </CanvasHeader>
                 <Form.Control
                     autoFocus
                     placeholder="Filter"

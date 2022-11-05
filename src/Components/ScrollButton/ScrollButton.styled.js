@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const ButtonStyled = styled.button`
   display: ${({show}) => show ? 'inline' : 'none'};
 
@@ -9,7 +10,7 @@ export const ButtonStyled = styled.button`
   line-height: 17px;
   text-transform: unset;
   min-height: 32px;
-  //border: none;
+  border: none;
   min-width: 32px;
   padding: 4px 16px;
   align-items: center;
@@ -20,11 +21,12 @@ export const ButtonStyled = styled.button`
   width: auto;
   cursor: pointer;
   color: ${({theme}) => theme.background.primary};
-  border-color: ${({theme}) => theme.color.secondary};
+  //border-color: ${({theme}) => theme.color.secondary};
   background-color: ${({theme}) => theme.color.secondary};
   //width: 112px;
 
   & :hover {
-    background-color: ${({theme}) => theme.color.hover_background_button_blue};
+    //background-color: ${({theme}) => theme.color.hover_background_button_blue};
+    background-color: red;
   }
 `

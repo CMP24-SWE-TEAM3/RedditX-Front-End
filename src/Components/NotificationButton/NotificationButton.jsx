@@ -8,6 +8,7 @@ import {Container} from "./NotificationButton.styled";
 import {BsThreeDots, BsClipboardCheck} from 'react-icons/bs';
 import {FiSettings} from 'react-icons/fi';
 import link from 'Assets/link.png';
+import db from 'Data/db.json';
 
 /**
  * Component that displays notifications about changes in the state of the application
@@ -84,18 +85,22 @@ const NotificationButton = () => {
                     <Popover.Body>
                         <div className={'pop'}/>
                         <div className={'content'}>
-                            <i className={'content-i'}>
-                                <a className={'content-a'}
-                                   href={'https://www.reddit.com/r/Eln2aa4yn/comments/yi1rd4/ccccc/'}>
+                            {db.comments.map(comment => {
+                                return (
+                                    <i className={'content-i'}>
+                                    <a className={'content-a'}
+                                       href={'https://www.reddit.com/r/Eln2aa4yn/comments/yi1rd4/ccccc/'}>
                                     <span className={'a-span'}>
                                      <img src={link} alt={'community-name'}/>
                                     </span>
-                                    <span className={'span-info'}>
+                                        <span className={'span-info'}>
                                         <span className={'child'}>
                                             <span className={'sub-child'}>
-                                            <span className={'info'}>Now in Eln2aa4yn</span>
+                                            <span className={'info'} key={comment.id}>
+                                                Now in {comment.name}
+                                            </span>
                                             <span className={'dot'}>.</span>
-                                            <span className={'time'}>6h</span>
+                                            <span className={'time'}>{comment.time}h</span>
                                             </span>
                                             <button className={'dot'}>
                                                 <i><BsThreeDots/></i>
@@ -103,11 +108,14 @@ const NotificationButton = () => {
                                         </span>
                                         <span className={'info-child'}>new message</span>
                                     </span>
-                                </a>
+                                    </a>
 
-                            </i>
+                                </i>)
+                            })}
+
                         </div>
                     </Popover.Body>
+
                     <footer>
                         <a href={'https://www.reddit.com/notifications'}>See All</a>
                     </footer>

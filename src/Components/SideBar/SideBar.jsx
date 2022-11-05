@@ -4,26 +4,31 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import DropDownMenu from "Components/DropDownMenu/DropDownMenu";
 import {AiOutlineContainer} from "react-icons/ai";
 import {ButtonStyled} from "./SideBar.styled";
+import DropDownItem from "../DropDownItem/DropDownItem";
 
 /**
  * Component that displays a sidebar which includes a dropdown menu in it
  * @returns {React.Component}
  */
-const SideBar = () => {
-    const [show, setShow] = useState(false);
+const SideBar = ({showButton,showSideBar,setShowSideBar}) => {
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClose = () => setShowSideBar(false);
+    const handleShow = () => {
+        setShowSideBar(true);
+    };
 
     return (
         <>
-            <ButtonStyled onClick={handleShow}>
+            {showButton && <ButtonStyled onClick={handleShow}>
                 <AiOutlineContainer/>
-            </ButtonStyled>
+            </ButtonStyled>}
 
-            <OffcanvasBody show={show} onHide={handleClose} className={'mt-5'} backdrop={false}>
+            <OffcanvasBody show={showSideBar} onHide={handleClose} className={'mt-5'} backdrop={false}>
                 <Offcanvas.Body>
-                    <DropDownMenu/>
+                    <Offcanvas.Header closeButton>
+                        <Offcanvas.Title/>
+                    </Offcanvas.Header>
+                    <DropDownItem/>
                 </Offcanvas.Body>
             </OffcanvasBody>
         </>

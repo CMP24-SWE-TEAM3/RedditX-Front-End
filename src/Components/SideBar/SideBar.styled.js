@@ -13,6 +13,7 @@ export const ButtonStyled = styled(Button)`
   :hover, :active, :focus-visible {
     background: none !important;
     color: ${({theme}) => theme.color.primary} !important;
+    box-shadow: none;
 
   }
 

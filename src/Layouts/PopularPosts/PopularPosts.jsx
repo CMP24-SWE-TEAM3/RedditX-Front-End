@@ -20,7 +20,7 @@ const PopularPost = () => {
             <NewButton/>
             <TopButton/>
             <DotButton/>
-            <CategoryButton/>
+            {/*<CategoryButton/>*/}
         </Container>
     );
 };

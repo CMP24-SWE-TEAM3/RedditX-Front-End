@@ -10,11 +10,39 @@
     },
     {
       "id": "3",
-      "name": "technews"
+      "name": "tech news"
     },
     {
       "id": "4",
       "name": "savedyouaclick"
     }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "name": "Hakka",
+      "time": "2"
+    },
+    {
+      "id": "2",
+      "name": "Ahly",
+      "time": "3"
+    },
+    {
+      "id": "3",
+      "name": "React App",
+      "time": "1"
+    },
+    {
+      "id": "4",
+      "name": "facebook",
+      "time": "9"
+    },
+    {
+      "id": "5",
+      "name": "twitter",
+      "time": "7"
+    }
   ]
 }
+

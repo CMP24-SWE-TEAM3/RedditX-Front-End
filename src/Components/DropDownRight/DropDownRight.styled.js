@@ -11,6 +11,12 @@ export const Container = styled(NavDropdown)`
     vertical-align: 0.1em;
     color: #878a8c
   }
+  margin: 5px;
+  display: flex;
+  vertical-align: center;
+  .dropdown-toggle::after{
+    margin-left: 2.255em;
+  }
 
 
   .accordion-button::after {
