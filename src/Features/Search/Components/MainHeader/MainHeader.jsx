@@ -11,7 +11,7 @@ import { useState } from "react";
  * @returns {React.Component}
  */
 const Links = () => {
-  const [ActiveLink, setActiveLink] = useState("Posts");
+  const [ActiveLink, setActiveLink] = useState("posts");
   return (
     <MainLinks>
       <div className="links">

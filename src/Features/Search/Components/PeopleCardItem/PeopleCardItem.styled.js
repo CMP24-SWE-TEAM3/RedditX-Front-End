@@ -24,12 +24,23 @@ export const Container = styled.div`
     color: inherit;
     text-decoration: inherit;
   }
+  /* @media (max-width: 380px) { */
+  & a {
+    padding: 10px;
+  }
+  /* } */
   & .item {
     align-items: center;
 
     display: flex;
 
     justify-content: space-between;
+  }
+  @media (max-width: 380px) {
+    & .item {
+      display: flex;
+      flex-direction: column;
+    }
   }
   & .item img {
     background-color: #205493;
@@ -67,6 +78,13 @@ export const Container = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  @media (max-width: 380px) {
+    & .info2 h6 {
+      margin: auto;
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+  }
   & .info2 h6:hover {
     text-align: center;
   }
@@ -75,6 +93,13 @@ export const Container = styled.div`
     font-weight: 400;
     line-height: 16px;
     color: ${({ theme }) => theme.color.muted};
+  }
+  @media (max-width: 380px) {
+    & .info2 p {
+      margin: auto;
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
   }
   & .button {
     flex-shrink: 0;

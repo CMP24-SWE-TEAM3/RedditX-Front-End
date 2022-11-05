@@ -2,19 +2,27 @@ import { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import { NavLink } from "react-router-dom";
 import { StyledDropdown } from "./ResponsiveNavbar.styled";
-const ResponsiveNavbar = (props) => {
-  const [Title, setTitle] = useState(props.act);
+/**
+ * Component that  Main Links component but in responsive form.
+ *
+ * @Component
+ * @returns {React.Component}
+ */
+const ResponsiveNavbar = () => {
+  const pathname = window.location.pathname;
+  const firstTwo = pathname.substring(1);
+  const secondTwo = firstTwo.charAt(0).toUpperCase() + firstTwo.slice(1);
+  const [Title, setTitle] = useState(secondTwo);
+  // const [Title, setTitle] = useState(props.act);
 
-  /**
-   * Component that  Main Links component but in responsive form.
-   *
-   * @Component
-   * @returns {React.Component}
-   */
   useEffect(() => {
-    setTitle(props.act);
+    // console.log(props.act);
+    const pathname = window.location.pathname;
+    const firstTwo = pathname.substring(1);
+    const secondTwo = firstTwo.charAt(0).toUpperCase() + firstTwo.slice(1);
+    setTitle(secondTwo);
     return () => {};
-  }, [props.act]);
+  }, []);
   return (
     <StyledDropdown
       id="dropdown-basic-button"

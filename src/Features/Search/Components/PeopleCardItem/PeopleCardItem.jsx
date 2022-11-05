@@ -1,6 +1,7 @@
 import { Container } from "./PeopleCardItem.styled";
 import { useState } from "react";
 import logo from "../../Assets/download.jpg";
+import { Link } from "react-router-dom";
 /**
  * Component that contains the PeopleCardItem and manage the state of the button Follow.
  *
@@ -8,7 +9,7 @@ import logo from "../../Assets/download.jpg";
  * @returns {React.Component}
  */
 const PeopleCardItem = () => {
-  const [btnContent, setstate] = useState("Follow");
+  const [btnContent, setBtnContent] = useState("Follow");
 
   /**
    * it is the function that handle the state of the button when click on it.
@@ -18,9 +19,9 @@ const PeopleCardItem = () => {
   function clickHandler(e) {
     e.preventDefault();
     if (btnContent === "Follow") {
-      setstate("Following");
+      setBtnContent("Following");
     } else {
-      setstate("Follow");
+      setBtnContent("Follow");
     }
   }
 
@@ -30,7 +31,7 @@ const PeopleCardItem = () => {
    */
   function mouseEnterHandler() {
     if (btnContent === "Following") {
-      setstate("Unfollow");
+      setBtnContent("Unfollow");
     }
   }
 
@@ -40,12 +41,12 @@ const PeopleCardItem = () => {
    */
   function MouseLeaveHandler() {
     if (btnContent === "Unfollow") {
-      setstate("Following");
+      setBtnContent("Following");
     }
   }
   return (
     <Container>
-      <a href="https://www.reddit.com/">
+      <Link to="https://www.reddit.com/">
         <div className="item">
           <img src={logo} alt="userImage" />
           <div className="info">
@@ -64,7 +65,7 @@ const PeopleCardItem = () => {
             </button>
           </div>
         </div>
-      </a>
+      </Link>
     </Container>
   );
 };

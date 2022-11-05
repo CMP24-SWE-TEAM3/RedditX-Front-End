@@ -8,6 +8,9 @@ export const ContainerCreateComm = styled.div`
     margin-bottom: 16px;
     max-width: 100%;
   }
+  @media (max-width: 500px) {
+    display: none;
+  }
   .create .content {
     background: ${({ theme }) => theme.background.primary};
     border-radius: 4px;

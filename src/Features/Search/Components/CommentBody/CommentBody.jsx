@@ -18,40 +18,41 @@ import {
 } from "./CommentBody.styled";
 import CommentUserImage from "../../Assets/People_Image.jpg";
 import PostFooter from "../PostFooter/PostFooter";
+import { Link } from "react-router-dom";
+/**
+ * Component that render the CommentBody.
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const CommentBody = () => {
-  /**
-   * Component that render the CommentBody.
-   *
-   * @Component
-   * @returns {React.Component}
-   */
   return (
     <Container>
       <FirstText>
-        <a href="https://www.w3schools.com/">
+        <Link to="https://www.w3schools.com/">
           <FirstTextStyle>
             [WP] They tell you the warmachines aren't sentient, being kind to
             them does nothing. But at the same time, it seems funny to you that
             their "priority" targets often seems the be the ones currently
             shooting at you.
           </FirstTextStyle>
-        </a>
+        </Link>
       </FirstText>
       <InnerBody>
         <InnerBodyLayout>
           <ImageAlign>
-            <a href="https://www.w3schools.com/">
+            <Link to="https://www.w3schools.com/">
               <div>
                 <CommentImage src={CommentUserImage} alt="Comment User Image" />
               </div>
-            </a>
+            </Link>
           </ImageAlign>
           <BodyContent>
             <BodyContentHeader>
               <BodyContentHeaderLayout>
                 <CommentUserName>
                   <div>
-                    <a href="https://www.w3schools.com/">Robysto7</a>
+                    <Link to="https://www.w3schools.com/">Robysto7</Link>
                   </div>
                 </CommentUserName>
                 <span className="break">·</span>

@@ -2,6 +2,10 @@ import styled from "styled-components";
 import Form from "react-bootstrap/Form";
 export const SafeSearchStyle = styled.div`
   margin-left: auto;
+  @media (max-width: 400px) {
+    margin: auto;
+    margin-bottom: 24px;
+  }
   & .safe-search-inner {
     font-size: 14px;
     font-weight: 500;

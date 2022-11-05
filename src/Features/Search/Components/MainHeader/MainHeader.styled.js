@@ -7,6 +7,11 @@ export const MainLinks = styled.div`
     align-items: center;
     margin-bottom: 24px;
   }
+  @media (max-width: 400px) {
+    & .links {
+      flex-direction: column-reverse;
+    }
+  }
   & .inner-links {
     display: flex;
     /* align-items: center; */
@@ -50,6 +55,7 @@ export const MainLinks = styled.div`
   & .safe-search {
     margin-left: auto;
   }
+
   & .safe-search-inner {
     font-size: 14px;
     font-weight: 500;

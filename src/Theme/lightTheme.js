@@ -22,6 +22,8 @@ const lightTheme = {
     link: "#0079d3",
     // The orange color of the website
     orange: "#d93a00",
+    // The pink color of the website
+    pink: "#fb133a",
     // The color of the text of the main links of search page
     titleText_of_link: "#1A1A1B",
 
@@ -55,6 +57,14 @@ const lightTheme = {
     lightMuted: "#f6f7f8",
     // The color of headers of the website
     header: "#f6f7f8",
+    // The button hover color of the search page
+    fill: "#f6f7f878",
+    // The button active color of the search page
+    active: "#F6F7F8",
+    // button background color hover of the search page cards
+    card_hover: "#E3EDF6",
+    // Comment background color in search page
+    comment: "#e9f5fd",
   },
   // Border colors
   borderColor: {

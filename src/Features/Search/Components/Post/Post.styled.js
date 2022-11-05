@@ -95,6 +95,11 @@ export const ContainerPost = styled.div`
     display: flex;
     justify-content: space-between;
   }
+  @media (max-width: 420px) {
+    & .post-body {
+      flex-wrap: wrap;
+    }
+  }
   & .post-body-content {
     display: inline;
     position: relative;
@@ -142,6 +147,9 @@ export const ContainerPost = styled.div`
     padding-left: 8px;
     @media (max-width: 570px) {
       margin: auto;
+    }
+    @media (max-width: 420px) {
+      margin: 0;
     }
   }
   @media (min-width: 478px) {

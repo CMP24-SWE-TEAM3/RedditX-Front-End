@@ -1,4 +1,4 @@
-import PostItem from "./Post";
+import PostItem from "../Post/Post";
 import { ContainerPostsList } from "./PostsList.styled";
 /**
  * Component that contains the Postslist component and the PostslistItems.

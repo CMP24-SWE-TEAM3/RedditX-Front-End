@@ -57,6 +57,14 @@ const darkTheme = {
     lightMuted: "#272729",
     // The color of headers of the website
     header: "#1a1a1b",
+    // The button hover color of the search page
+    fill: "#2D2D2F",
+    // The button active color of the search page
+    active: "#272729",
+    // button background color hover of the search page cards
+    card_hover: "#353537",
+    // Comment background color in search page
+    comment: "#17232D",
   },
   // Border colors
   borderColor: {

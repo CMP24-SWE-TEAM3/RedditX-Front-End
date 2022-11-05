@@ -18,6 +18,11 @@ export const ContainerPosts = styled.div`
     display: flex;
     padding-top: 8px;
   }
+  @media (max-width: 500px) {
+    & .x {
+      flex-direction: column-reverse;
+    }
+  }
   & .x .side-cards {
     display: block;
 
@@ -25,9 +30,17 @@ export const ContainerPosts = styled.div`
     max-width: 312px;
     flex: 0 0 312px;
   }
+
   @media (max-width: 960px) {
     & .x .side-cards {
       display: none;
+    }
+  }
+  @media (max-width: 500px) {
+    & .x .side-cards {
+      max-width: 100%;
+      display: block;
+      margin-left: 0;
     }
   }
 `;
