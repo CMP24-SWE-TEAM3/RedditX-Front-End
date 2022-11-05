@@ -5,6 +5,7 @@ import Modal from "react-bootstrap/Modal"
 import {BsFillPersonFill} from "react-icons/bs";
 import {VscEye} from "react-icons/vsc";
 import {HiLockClosed} from "react-icons/hi";
+import {CgDanger} from "react-icons/cg";
 
 /**
  * Component that has been showed after clicking on create community button in home page .
@@ -29,7 +30,7 @@ const ModalCommunity = ({show, close}) => {
             </Modal.Header>
             <Modal.Body>
                 <h6>Name</h6>
-                <p>Community names including capitalization cannot be changed. <span> &#xe086;</span>
+                <p>Community names including capitalization cannot be changed. <span> <CgDanger/></span>
                 </p>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">

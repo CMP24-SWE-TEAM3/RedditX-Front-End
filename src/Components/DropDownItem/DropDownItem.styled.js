@@ -51,10 +51,21 @@ export const DropdownContainer = styled.div`
     padding: 8px 24px;
     position: relative;
     text-decoration: none;
+    flex-grow: 1;
+    font-size: 14px;
+    line-height: 18px;
+    margin-left: 8px;
+    max-width: 208px;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     :active {
       background-color: unset !important;
-
+    }
+    :hover{
+      background-color:${({theme}) => theme.lineColor.primary};
     }
   }
 
@@ -63,9 +74,14 @@ export const DropdownContainer = styled.div`
     border: 1px solid ${({theme}) => theme.color.secondary};
     color: ${({theme}) => theme.color.primary};
     height: 30px;
-    margin: 16px 16px 0;
+    margin: 8px 16px 16px ;
     outline: none;
     padding: 0 6px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    font-family: inherit;
+    //align-items:center;
     box-sizing: border-box;
     border-radius: 0;
     width: calc(100% - 32px);
@@ -76,24 +92,32 @@ export const DropdownContainer = styled.div`
     box-shadow: none;
   }
 
-  .dropdown-menu {
-    background-color: ${({theme}) => theme.background.post_background};
-    border: 1px solid white;
-    border-radius: 0 0 4px 4px;
-    box-sizing: border-box;
-    //transform: none !important;
-    margin-top: -1px;
-    height:482px;
-    //min-height: 100%;
-    overflow: hidden scroll;
-    position: fixed;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    top: 48px;
-    width: 270px;
+  // .dropdown-menu {
+  //   background-color: ${({theme}) => theme.background.post_background};
+  //   border: 1px solid white;
+  //   border-radius: 0 0 4px 4px;
+  //   box-sizing: border-box;
+  //   transform: none !important;
+  //   margin-top: -1px;
+  //   height:482px;
+  //   //min-height: 100%;
+  //   overflow: hidden scroll;
+  //   position: fixed;
+  //   display: flex;
+  //   -ms-flex-direction: column;
+  //   flex-direction: column;
+  //   left: 0;
+  //   bottom: 0;
+  //   right: 0;
+  //   top: 48px;
+  //   width: 270px;
+  // }
+  .dropdown-item-text{
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 16px;
+    text-transform: uppercase;
+    padding: 16px 24px 8px;
+    color: #878a8c;
   }
 `

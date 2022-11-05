@@ -90,8 +90,8 @@ export const Container = styled.div`
 
   // body of notification
   .popover-body {
-    height: 77px;
-    max-height: 77px;
+    //height: 77px;
+    max-height: 250px;
     background-color: ${({theme}) => theme.background.primary};
     overflow: hidden;
     overflow-y: auto;

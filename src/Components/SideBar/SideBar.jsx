@@ -1,10 +1,11 @@
 import React, {useState} from "react";
-import {OffcanvasBody} from "../DropDownButtonLeft/DropDownLeft.styled";
+import {OffcanvasBody} from "./SideBar.styled"
 import Offcanvas from "react-bootstrap/Offcanvas";
 import DropDownMenu from "Components/DropDownMenu/DropDownMenu";
 import {AiOutlineContainer} from "react-icons/ai";
 import {ButtonStyled} from "./SideBar.styled";
 import DropDownItem from "../DropDownItem/DropDownItem";
+import {GrFormPrevious} from "react-icons/gr";
 
 /**
  * Component that displays a sidebar which includes a dropdown menu in it
@@ -20,7 +21,10 @@ const SideBar = ({showButton,showSideBar,setShowSideBar}) => {
     return (
         <>
             {showButton && <ButtonStyled onClick={handleShow}>
-                <AiOutlineContainer/>
+                <div className={'open-side'}>
+                    <AiOutlineContainer/><GrFormPrevious/>
+                </div>
+
             </ButtonStyled>}
 
             <OffcanvasBody show={showSideBar} onHide={handleClose} className={'mt-5'} backdrop={false}>

@@ -6,11 +6,7 @@ import {AiFillHome} from 'react-icons/ai';
 import DropDownMenu from "Components/DropDownMenu/DropDownMenu";
 import CustomToggle from "Utils/CustomToggle/CustomToggle";
 import SideBar from "Components/SideBar/SideBar";
-import CustomMenu from "../../Utils/CustomMenu/CustomMenu";
-import {HiOutlinePlus, HiOutlineVideoCamera} from "react-icons/hi";
-import ico from "../../Assets/redditico.png";
-import {BsArrowUpRightCircle, BsBarChartFill, BsStar} from "react-icons/bs";
-import {IoMdNotificationsOutline} from "react-icons/io";
+import {GrFormDown} from "react-icons/gr";
 
 
 /**
@@ -21,26 +17,31 @@ import {IoMdNotificationsOutline} from "react-icons/io";
 
 const DropDownLeft = () => {
     const [show, setShow] = useState(false);
-    const handleToggle = () => {
+    const handleToggle = (e) => {
         if (!show && showSideBar)
             return;
         setShow(!show);
     };
+
     const [showSideBar, setShowSideBar] = useState(false);
     return (
 
         <DropDownLeftStyled>
-            <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components" onClick={handleToggle}>
+            <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components"
+                             onClick={handleToggle}>
                 <div className={'all-drop'}>
+                    <div className={'home-ico'}>
+
                         <span>
                             <AiFillHome/>
                         </span>
-                    <span>
+                        <span>
                             <h6>Home</h6>
                         </span>
-
+                    </div>
                     <SideBar showButton={show} showSideBar={showSideBar} setShowSideBar={setShowSideBar}/>
                 </div>
+                <span className={'down-form'}><GrFormDown/></span>
             </Dropdown.Toggle>
             {show && <DropDownMenu/>}
         </DropDownLeftStyled>

@@ -106,7 +106,7 @@ const NotificationButton = () => {
                                                 <i><BsThreeDots/></i>
                                             </button>
                                         </span>
-                                        <span className={'info-child'}>new message</span>
+                                        <span className={'info-child'}>{comment.message}</span>
                                     </span>
                                     </a>
 

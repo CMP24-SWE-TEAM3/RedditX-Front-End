@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Dropdown from 'react-bootstrap/Dropdown';
-import Offcanvas from 'react-bootstrap/Offcanvas';
 
 
 export const DropDownLeftStyled = styled(Dropdown)`
@@ -13,6 +12,10 @@ export const DropDownLeftStyled = styled(Dropdown)`
     @media only screen and (max-width: 990px) {
       display: none ;
     }
+  }
+
+  .home-ico {
+    position: relative;
   }
 
   height: 36px;
@@ -39,15 +42,18 @@ export const DropDownLeftStyled = styled(Dropdown)`
   .all-drop {
     border-radius: 4px 4px 0 0;
     border-color: ${({theme}) => theme.lineColor.primary};
+    display: flex;
   }
+
   a:hover {
     color: ${({theme}) => theme.color.primary};
   }
-  
 
-`
-// canvas styles
-export const OffcanvasBody = styled(Offcanvas)`
-  width: 270px !important;
-  position: absolute;
+  // down form ico
+  .down-form {
+    @media (max-width: 890px) {
+      display: none;
+    }
+  }
+
 `

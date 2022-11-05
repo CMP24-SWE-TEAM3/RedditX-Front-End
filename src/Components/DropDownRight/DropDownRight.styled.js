@@ -4,17 +4,25 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import {NavDropdown} from "react-bootstrap";
 
 export const Container = styled(NavDropdown)`
-  color: ${({theme}) => theme.color.primary};
-  background-color: ${({theme}) => theme.background.primary};
+  color: ${({theme}) => theme.color.primary} !important;
+  background-color: ${({theme}) => theme.background.primary} !important;
 
   .dropdown-toggle::after {
     vertical-align: 0.1em;
     color: #878a8c
   }
+
+  .accordion {
+    --bs-accordion-bg: ${({theme}) => theme.background.primary} !important;
+    --bs-accordion-active-bg: none;
+
+  }
+
   margin: 5px;
   display: flex;
   vertical-align: center;
-  .dropdown-toggle::after{
+
+  .dropdown-toggle::after {
     margin-left: 2.255em;
   }
 
@@ -23,7 +31,6 @@ export const Container = styled(NavDropdown)`
     //width:1rem; !important;
   }
 
-  color: ${({theme}) => theme.color.primary};
   white-space: break-spaces;
   padding: 0;
   max-width: 252px;
@@ -52,14 +59,15 @@ export const Container = styled(NavDropdown)`
     display: flex;
     flex-direction: row;
     height: 100%;
-    padding: 0.25rem 1rem;
+    padding: 0.25rem 0.6rem;
   }
 
   .accordion-button {
     padding: 5px;
-    font-size: 16px;
+    font-size: 14px;
     width: 100%;
-    height: 40px;
+    font-weight: 500;
+    height: 100%;
     white-space: nowrap;
     color: ${({theme}) => theme.color.primary};
 
@@ -71,7 +79,7 @@ export const Container = styled(NavDropdown)`
     }
 
     :hover {
-      background-color: ${({theme}) => theme.background.primary};
+      background-color: ${({theme}) => theme.background.primary} !important;
     }
   }
 
@@ -128,6 +136,8 @@ export const Container = styled(NavDropdown)`
 
   .dropdown-item {
     white-space: break-spaces;
+    font-weight: 500;
+    font-size: 14px;
     height: 40px;
     width: 100%;
 
@@ -152,6 +162,13 @@ export const Container = styled(NavDropdown)`
 
   @media only screen and (max-width: 1290px) {
     left: 20px;
+  }
+
+  .footer {
+    font-weight: 400;
+    line-height: 16px;
+    font-size: 14px;
+    margin-bottom: 25px;
   }
 
 `

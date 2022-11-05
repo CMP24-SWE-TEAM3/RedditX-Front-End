@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const StyledHeader = styled.header
     `
-      justify-content:space-between;
+      justify-content: space-between;
       //position: relative;
       top: 0;
       left: 0;
       width: 100%;
       height: 49px;
-      background-color: ${({theme})=>theme.background.primary};
+      background-color: ${({theme}) => theme.background.primary};
       color: white;
       display: flex;
       padding: 0 20px;
@@ -16,12 +16,14 @@ export const StyledHeader = styled.header
       @media (max-width: 969px) {
         position: fixed;
       }
-      .logged-out{
+
+      .logged-out {
         display: flex;
         justify-content: center;
         align-items: center;
       }
-      .search{
+
+      .search {
         display: flex;
         flex: 1;
       }

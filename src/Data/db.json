@@ -21,26 +21,31 @@
     {
       "id": "1",
       "name": "Hakka",
+      "message": "here we go again",
       "time": "2"
     },
     {
       "id": "2",
       "name": "Ahly",
+      "message": "faculty has joined today",
       "time": "3"
     },
     {
       "id": "3",
       "name": "React App",
+      "message": "mangaa is now available",
       "time": "1"
     },
     {
       "id": "4",
       "name": "facebook",
+      "message": "here we go again",
       "time": "9"
     },
     {
       "id": "5",
       "name": "twitter",
+      "message": "here we go again again",
       "time": "7"
     }
   ]
