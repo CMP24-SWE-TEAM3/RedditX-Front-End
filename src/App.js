@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 
 // Import Images
-// import logo from "./logo.svg";
+import logo from "./logo.svg";
 
 // Import styled components
-// import * as styles from "App.styled";
+import * as styles from "App.styled";
 
 // Import themes
 import darkTheme from "Theme/darkTheme";
@@ -20,6 +20,7 @@ import { CreatePost } from "Features/Post";
 
 // Import bootstrap
 import { Button } from "react-bootstrap";
+
 import Search from "Features/Search/Pages/Search/Search";
 
 import TestHome from "Features/Authentication/Pages/TestHome";
@@ -35,6 +36,9 @@ import ForgetPasswordPage from "Features/Authentication/Pages/ForgetPasswordPage
 // Import react router dom components
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+//Import Page
+import LeaderBoard from "./Features/Subreddit/Pages/Community Leaderboard/CommunityLeaderboard";
+import Index from "./Features/Subreddit/Pages/Index Page/IndexPage";
 /**
  * The main app of our application it handles routing
  *
@@ -59,8 +63,10 @@ function App() {
     <ThemeProvider theme={theme}>
       <Button onClick={handleToggleTheme}>Toggle theme</Button>
       <BrowserRouter>
-        {/* <CreatePost /> */}
-        <Search />
+        <CreatePost />
+        {/* <Search /> */}
+        {/* <LeaderBoard /> */}
+        {/* <Index /> */}
       </BrowserRouter>
       {/* <ForgetPasswordPage /> */}
     </ThemeProvider>

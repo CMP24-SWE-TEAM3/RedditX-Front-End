@@ -14,6 +14,8 @@ const darkTheme = {
     primary: "#d7dadc",
     // The secondary color of the website looks like primary in dark theme
     secondary: "#d7dadc",
+    // The blue color of Hovered Blue Buttons
+    btnHover: "#e3e5e7",
     // The color of the muted text on the website
     muted: "#7c7c7c",
     // The color of the links on the website
@@ -53,6 +55,8 @@ const darkTheme = {
     pink: "#fb133a",
     // The light muted color of the website
     lightMuted: "#272729",
+    // The color of headers of the website
+    header: "#1a1a1b",
   },
   // Border colors
   borderColor: {
@@ -85,6 +89,22 @@ const darkTheme = {
     hoverLight: "#3435364d",
     // Color of button when hover
     hoverBlue: "#cccccc",
+    //The border color of hover card
+    secondary: "#484848",
+  },
+  arrowColor: {
+    up: "#46D160",
+    down: "#EA2700",
+  },
+  btnColor: {
+    primary: "#d7dadc",
+    secondary: "#d7dadc",
+    backColor: "transparent",
+    text: "1a1a1b",
+  },
+  categoryColor: {
+    text: "#d7dadc",
+    hover: "#272729",
   },
 };
 

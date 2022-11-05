@@ -14,6 +14,8 @@ const lightTheme = {
     primary: "#1c1c1c",
     // The blue color of the website
     secondary: "#0079d3",
+    // The blue color of Hovered Blue Buttons
+    btnHover: "#3293db",
     // The color of the muted text on the website
     muted: "#7c7c7c",
     // The color of the links on the website
@@ -51,6 +53,8 @@ const lightTheme = {
     pink: "#fb133a",
     // The light muted color of the website
     lightMuted: "#f6f7f8",
+    // The color of headers of the website
+    header: "#f6f7f8",
   },
   // Border colors
   borderColor: {
@@ -83,6 +87,23 @@ const lightTheme = {
     hoverLight: "#0079d312",
     // Color of button when hover
     hoverBlue: "#0079d3e3",
+    //The border color of hover card
+    secondary: "#f0f0f0",
+  },
+  // The colors of the arrows in the leadboard
+  arrowColor: {
+    up: "#46D160",
+    down: "#EA2700",
+  },
+  btnColor: {
+    primary: "#0079d3",
+    secondary: "#0079d3",
+    backColor: "#fff",
+    text: "#fff",
+  },
+  categoryColor: {
+    text: "#1c1c1c",
+    hover: "#f6f7f8",
   },
 };
 
