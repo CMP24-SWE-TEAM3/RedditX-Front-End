@@ -22,6 +22,8 @@ const darkTheme = {
     orange: "#d93a00",
     // The pink color of the website
     pink: "#fb133a",
+    // Error (red) color
+    danger: "#ea0027",
   },
   // The colors of the backgrounds in the website
   background: {

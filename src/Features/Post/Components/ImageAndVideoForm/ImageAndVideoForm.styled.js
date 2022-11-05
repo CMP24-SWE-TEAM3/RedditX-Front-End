@@ -23,6 +23,7 @@ export const StyledImageAndVideoFrom = styled.div`
     height: auto;
     padding-right: 50px;
     overflow: hidden;
+    color: ${({ theme }) => theme.color.primary};
   }
 
   .title-group {

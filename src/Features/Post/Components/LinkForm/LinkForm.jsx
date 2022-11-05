@@ -77,7 +77,7 @@ const LinkForm = () => {
         </Form.Group>
         <PostFlagsWrapper />
         <SubmitButtons>
-          <SaveDraftButton variant="light">Save Draft</SaveDraftButton>
+          {/* <SaveDraftButton variant="light">Save Draft</SaveDraftButton> */}
           <PostButton>Post</PostButton>
         </SubmitButtons>
       </StyledLinkForm>

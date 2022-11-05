@@ -28,6 +28,10 @@ import { CiSearch } from "react-icons/ci";
 // Import images
 import Image from "Features/Post/Assets/Images/Post-guidelines.png";
 
+// Import api
+import axios from "API/axios";
+import useFetch from "Hooks/useFetch";
+
 /**
  *
  * @returns {React.Component} - ChooseCommunity component (The dropdown menu that contains the communities in the post form)
@@ -36,6 +40,19 @@ const ChooseCommunity = () => {
   // State to control the dropdown menu appearance
   const [showMenu, setShowMenu] = useState(false);
 
+  // Fetch communities
+  const [flairList, error, loading, reload] = useFetch({
+    axiosInstance: axios,
+    method: "GET",
+    url: "/subreddits/mine/subscriber?page=4&count=10&limit=50",
+    requestConfig: {
+      headers: {
+        "Content-Language": "en-US",
+      },
+    },
+  });
+  // console.log("flairList = ", flairList);
+  // console.log("error = ", error);
   return (
     <Container>
       <Dropdown show={showMenu}>

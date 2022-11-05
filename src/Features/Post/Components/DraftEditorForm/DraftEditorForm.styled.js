@@ -17,6 +17,7 @@ export const StyledDraftEditorForm = styled.div`
     resize: none;
     background-color: ${({ theme }) => theme.background.primary};
     caret-color: ${({ theme }) => theme.color.primary};
+    color: ${({ theme }) => theme.color.primary};
   }
 
   .title-input {

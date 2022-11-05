@@ -101,3 +101,48 @@ export const Flair = styled.span`
   word-break: normal;
   padding: 0 4px;
 `;
+
+export const FlairParagraph = styled.p`
+  font-size: 12px;
+`;
+
+export const EditFlair = styled.div`
+  font-size: 12px;
+  padding: 16px;
+
+  input {
+    max-width: 100%;
+    width: 100%;
+    outline: none;
+    color: ${({ theme }) => theme.color.primary};
+    border-radius: 4px;
+    border: 0.5px solid
+      ${({ theme, empty }) => (empty ? theme.color.danger : theme.color.muted)};
+    background-color: ${({ theme }) => theme.background.lightMuted};
+    padding: 10px;
+    font-size: 16px;
+    &:hover {
+      border: 1px solid ${({ theme }) => theme.color.primary};
+    }
+    &:focus-within {
+      border: 1px solid ${({ theme }) => theme.color.link};
+    }
+  }
+
+  .edit-flair {
+    font-weight: 500;
+    color: ${({ theme }) => theme.color.muted};
+  }
+
+  .remaining-text {
+    font-size: 12px;
+    color: ${({ theme }) => theme.color.muted};
+    margin: 5px 0 0 0;
+  }
+
+  .danger-remaining-text {
+    font-size: 12px;
+    color: ${({ theme }) => theme.color.danger};
+    margin: 5px 0 0 0;
+  }
+`;

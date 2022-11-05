@@ -20,12 +20,14 @@ export const StyledLinkForm = styled.div`
     overflow-wrap: break-word;
     word-break: break-all;
     resize: none;
+    color: ${({ theme }) => theme.color.primary};
   }
 
   .title-input {
     height: auto;
     padding-right: 50px;
     overflow: hidden;
+    color: ${({ theme }) => theme.color.primary};
   }
 
   .title-group {

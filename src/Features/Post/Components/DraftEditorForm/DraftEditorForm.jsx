@@ -17,6 +17,32 @@ import {
 
 // Import hooks
 import { useState, useRef } from "react";
+const flairs = [
+  {
+    id: "t7_63248d012f459a937e2684fd",
+    text: "Flair 1 text",
+    flairBackGroundColor: "rgb(70, 209, 96)",
+    flairTextColor: "rgb(255, 255, 255)",
+    modOnly: true,
+    allowUserEdits: true,
+  },
+  {
+    id: "t7_63248d012f459a937e1223123d",
+    text: "Flair 2 text",
+    flairBackGroundColor: "blue",
+    flairTextColor: "rgb(255, 255, 255)",
+    modOnly: true,
+    allowUserEdits: true,
+  },
+  {
+    id: "t1_632012f459a937e1223123d",
+    text: "Flair 3 text",
+    flairBackGroundColor: "red",
+    flairTextColor: "rgb(70, 209, 96)",
+    modOnly: true,
+    allowUserEdits: true,
+  },
+];
 
 /**
  * The form of draft editor in create post page (Draft editor tab)
@@ -26,6 +52,9 @@ import { useState, useRef } from "react";
 const DraftEditorForm = () => {
   // State for flair modal
   const [modalShow, setModalShow] = useState(false);
+
+  // State for flair
+  const [flairIndex, setFlairIndex] = useState(null);
 
   // State for title
   const [title, setTitle] = useState("");
@@ -56,9 +85,20 @@ const DraftEditorForm = () => {
       e.preventDefault();
     }
   };
+
+  const onModalHide = () => {
+    setModalShow(false);
+    setFlairIndex(null);
+  };
   return (
     <>
-      <FlairModal show={modalShow} onHide={() => setModalShow(false)} />
+      <FlairModal
+        show={modalShow}
+        onHide={onModalHide}
+        flairIndex={flairIndex}
+        setFlairIndex={setFlairIndex}
+        flairList={flairs}
+      />
       <StyledDraftEditorForm>
         <Form.Group className="title-group mb-3">
           <Form.Control
@@ -76,7 +116,7 @@ const DraftEditorForm = () => {
         <DraftEditor />
         <PostFlagsWrapper flairHandler={setModalShow} />
         <SubmitButtons>
-          <SaveDraftButton variant="light">Save Draft</SaveDraftButton>
+          {/* <SaveDraftButton variant="light">Save Draft</SaveDraftButton> */}
           <PostButton>Post</PostButton>
         </SubmitButtons>
       </StyledDraftEditorForm>
