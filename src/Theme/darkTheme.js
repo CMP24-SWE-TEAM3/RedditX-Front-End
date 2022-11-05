@@ -40,6 +40,8 @@ const darkTheme = {
     orHeaderColor: "#93908e",
     authParagraphColor: "#1a1a1b",
     signInWithFacebookColor: "#237df3",
+    // Error (red) color
+    danger: "#ea0027",
   },
   // The colors of the backgrounds in the website
   background: {
@@ -50,7 +52,7 @@ const darkTheme = {
     // The pink color of the website
     pink: "#fb133a",
     // The light muted color of the website
-    lightMuted: "#f6f7f8",
+    lightMuted: "#272729",
   },
   // Border colors
   borderColor: {
@@ -78,7 +80,11 @@ const darkTheme = {
   // The colors of the buttons in the website
   button: {
     // The color when hover on buttons on the website
-    muted: "#1a1a1b",
+    muted: "#3435364d",
+    // Color of button when hover
+    hoverLight: "#3435364d",
+    // Color of button when hover
+    hoverBlue: "#cccccc",
   },
 };
 

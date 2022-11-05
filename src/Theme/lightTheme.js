@@ -38,6 +38,8 @@ const lightTheme = {
     orHeaderColor: "#93908e",
     authParagraphColor: "#1a1a1b",
     signInWithFacebookColor: "#237df3",
+    // Error (red) color
+    danger: "#ea0027",
   },
   // The colors of the backgrounds in the website
   background: {
@@ -77,6 +79,10 @@ const lightTheme = {
   button: {
     // The color when hover on buttons on the website
     muted: "#f6f7f8",
+    // Color of button when hover
+    hoverLight: "#0079d312",
+    // Color of button when hover
+    hoverBlue: "#0079d3e3",
   },
 };
 

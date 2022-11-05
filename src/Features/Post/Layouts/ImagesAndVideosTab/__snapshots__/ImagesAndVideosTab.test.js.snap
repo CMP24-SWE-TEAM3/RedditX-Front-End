@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Images and VideosTab should render without crashing 1`] = `ShallowWrapper {}`;
+
+exports[`Images and videos tab should render without crashing 1`] = `ShallowWrapper {}`;

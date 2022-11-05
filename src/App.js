@@ -1,5 +1,4 @@
 // Import react and hooks
-import { BrowserRouter } from "react-router-dom";
 import React, { useState } from "react";
 
 // Import Images
@@ -16,6 +15,9 @@ import defaultTheme from "Theme/defaultTheme";
 // Import theme provider from styled components
 import { ThemeProvider } from "styled-components";
 
+// Import pages
+import { CreatePost } from "Features/Post";
+
 // Import bootstrap
 import { Button } from "react-bootstrap";
 import Search from "Features/Search/Pages/Search/Search";
@@ -29,6 +31,9 @@ import SignUpPage from "Features/Authentication/Pages/SignUpPage/SignUpPage";
 import ForgetUserNamePage from "Features/Authentication/Pages/ForgetUserNamePage/ForgetUserNamePage";
 
 import ForgetPasswordPage from "Features/Authentication/Pages/ForgetPasswordPage/ForgetPasswordPage";
+
+// Import react router dom components
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 /**
  * The main app of our application it handles routing
@@ -53,10 +58,11 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Button onClick={handleToggleTheme}>Toggle theme</Button>
-      {/* <BrowserRouter>
+      <BrowserRouter>
+        {/* <CreatePost /> */}
         <Search />
-      </BrowserRouter> */}
-      <ForgetPasswordPage />
+      </BrowserRouter>
+      {/* <ForgetPasswordPage /> */}
     </ThemeProvider>
   );
 }
