@@ -15,15 +15,12 @@ export const Container = styled.div`
   }
 
   & .item span {
-      //color: ${({theme}) => theme.color.primary};
-    color: #1c1c1c;
+    color: ${({theme}) => theme.color.primary};
     font-weight: 500;
-    text-align: right;
-    font-size: 14px;
     line-height: 18px;
   }
 
-  & .item .caret {
+  .item .caret {
     color: rgb(70 209 96);
     font-size: 20px;
     font-weight: 400;
@@ -32,7 +29,6 @@ export const Container = styled.div`
     vertical-align: middle;
     width: 20px;
     margin-left: 8px;
-
   }
 
   & .item {
@@ -44,6 +40,7 @@ export const Container = styled.div`
   }
 
   & .item img {
+    border: none;
     background-color: #205493;
     font-size: 36px;
     height: 36px;
@@ -126,9 +123,10 @@ export const Container = styled.div`
   }
 
   & button:hover {
-      background-color: ${({theme}) => theme.background.hover_background_button_blue};
+    background-color: ${({theme}) => theme.background.hover_background_button_blue};
   }
-  & .num{
+
+  & .num {
     color: ${({theme}) => theme.color.primary};
     text-align: right;
     min-width: 20px;

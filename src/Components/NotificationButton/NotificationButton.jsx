@@ -7,7 +7,7 @@ import Popover from 'react-bootstrap/Popover';
 import {Container} from "./NotificationButton.styled";
 import {BsThreeDots, BsClipboardCheck} from 'react-icons/bs';
 import {FiSettings} from 'react-icons/fi';
-import link from 'Assets/link.png';
+import link from 'Assets/images/link.png';
 import db from 'Data/db.json';
 
 /**

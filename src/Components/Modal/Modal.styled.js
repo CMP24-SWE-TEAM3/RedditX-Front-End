@@ -2,7 +2,9 @@ import styled from "styled-components";
 import Modal from "react-bootstrap/Modal";
 
 export const ModalStyled = styled(Modal)`
-
+  .btn-close:focus{
+    box-shadow: none;
+  }
 
   & .fade .modal-backdrop .show {
     background: rgb(28 28 28 / 90%);

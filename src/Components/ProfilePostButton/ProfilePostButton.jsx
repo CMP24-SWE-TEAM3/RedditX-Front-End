@@ -1,7 +1,7 @@
 // imports
 import React from 'react';
 import {ProfileButtonStyled, ProfileLogoStyled} from "./ProfilePostButton.styled";
-import Profile from "Assets/profile.ico";
+import Profile from "Assets/images/profile.ico";
 
 /**
  *  Component that displays the profile's avatar or profile image

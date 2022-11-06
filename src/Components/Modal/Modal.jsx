@@ -24,8 +24,8 @@ const ModalCommunity = ({show, close}) => {
         alert(`The Community name you entered was: ${communityName}`);
     }
     return (
-        <ModalStyled show={show}>
-            <Modal.Header closeButton>
+        <ModalStyled show={show} onHide={close}>
+            <Modal.Header  closeButton>
                 <Modal.Title>Create a community</Modal.Title>
             </Modal.Header>
             <Modal.Body>

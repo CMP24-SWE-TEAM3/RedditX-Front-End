@@ -1,7 +1,7 @@
 import React from 'react';
 import Dropdown from "react-bootstrap/Dropdown";
 import {HiOutlinePlus, HiOutlineVideoCamera} from "react-icons/hi";
-import ico from "Assets/redditico.png";
+import ico from "Assets/images/redditico.png";
 import {BsArrowUpRightCircle, BsBarChartFill, BsStar} from "react-icons/bs";
 import {AiFillHome} from "react-icons/ai";
 import {IoMdNotificationsOutline} from "react-icons/io";

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import cover from "Assets/background.png";
+import cover from "Assets/images/background.png";
 
 
 export const Container = styled.div`

@@ -1,6 +1,7 @@
 import {useState} from "react";
-import logo from "Assets/logo.png";
+import logo from "Assets/images/logo.png";
 import {Container} from "./CommunityCardItem.styled";
+import {GrFormUp} from "react-icons/gr";
 /**
  * Component that  shows the names of communities up-to-date.
  * @returns {Component.React}
@@ -34,7 +35,7 @@ const CommunityCardItem = ({community}) => {
             <a href="https://www.reddit.com/r/Steam/">
                 <div className="item">
                     <span className={'num'}>1</span>
-                    <span className='caret'>&#94;</span>
+                    <span className='caret'><GrFormUp/></span>
                     <img src={logo} alt=""/>
                     <div className="info">
                         <div className="info2">

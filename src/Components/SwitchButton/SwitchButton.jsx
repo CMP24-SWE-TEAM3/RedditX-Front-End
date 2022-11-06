@@ -1,6 +1,6 @@
 // imports
-import React from 'react';
-import BootstrapSwitchButton from 'bootstrap-switch-button-react'
+import React, {useState} from 'react';
+import {ReactSwitch} from "./SwitchButton.styled";
 
 /**
  * Component that toggles to on and off when the user clicks on a button
@@ -9,17 +9,22 @@ import BootstrapSwitchButton from 'bootstrap-switch-button-react'
  *
  * @returns {React.Component}
  */
-const SwitchButton = ({bool}) => {
+const SwitchButton = () => {
+    const [checked, setChecked] = useState(false);
+    const handleChange = nextChecked => {
+        setChecked(nextChecked);
+    };
+
     return (
-        <BootstrapSwitchButton
-            checked={bool}
-            size='xs'
-            onChange={(checked: boolean) => {
-                this.setState({isUserAdmin: checked})
-            }}
-        />
+        <label>
+            <ReactSwitch
+                onChange={handleChange}
+                checked={checked} checkedIcon={false} uncheckedIcon={false} disabled={false} onColor={"#0095dd"}
+            />
+        </label>
     );
 };
+
 
 export default SwitchButton;
 

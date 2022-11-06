@@ -1,6 +1,6 @@
 import React from 'react';
-import redditLogo from 'Assets/redditLogo.svg'
-import logo from 'Assets/logo.png'
+import redditLogo from 'Assets/images/redditLogo.svg'
+import logo from 'Assets/images/logo.png'
 import {StyledIcon, StyledLink, StyledTextLogo} from './Badge.styled'
 
 /**

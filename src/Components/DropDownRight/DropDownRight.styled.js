@@ -4,12 +4,18 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import {NavDropdown} from "react-bootstrap";
 
 export const Container = styled(NavDropdown)`
+  font-size: 20px;
+  font-weight: 500;
   color: ${({theme}) => theme.color.primary} !important;
   background-color: ${({theme}) => theme.background.primary} !important;
 
   .dropdown-toggle::after {
     vertical-align: 0.1em;
     color: #878a8c
+  }
+
+  .first-sec {
+    padding: 0 20px;
   }
 
   .accordion {
@@ -29,6 +35,7 @@ export const Container = styled(NavDropdown)`
 
   .accordion-button::after {
     //width:1rem; !important;
+    //background-image:unset;
   }
 
   white-space: break-spaces;
@@ -51,7 +58,7 @@ export const Container = styled(NavDropdown)`
     font-weight: 500;
     line-height: 18px;
     align-items: center;
-    font-size: 14px;
+    font-size: 16px;
     padding: 0 20px 0 0;
   }
 
@@ -59,15 +66,16 @@ export const Container = styled(NavDropdown)`
     display: flex;
     flex-direction: row;
     height: 100%;
-    padding: 0.25rem 0.6rem;
+    padding: 0.25rem 0.8rem;
   }
 
   .accordion-button {
     padding: 5px;
-    font-size: 14px;
+    font-size: 16px;
     width: 100%;
     font-weight: 500;
     height: 100%;
+    box-shadow: none;
     white-space: nowrap;
     color: ${({theme}) => theme.color.primary};
 
@@ -131,15 +139,45 @@ export const Container = styled(NavDropdown)`
   .dropdown-menu {
     //max-width: 100%;
     overflow: hidden scroll;
+    transform: translate3d(0px, 35px, 0px) !important;
     height: 578px;
+
+
+    .stuff {
+      font-weight: 500;
+      font-size: 14px;
+      padding-left: 5px;
+      color: ${({theme}) => theme.color.muted};
+    }
+
+    i {
+      font-weight: 500;
+      font-size: 20px;
+    }
+    
+    .switch-but{
+      position: absolute;
+      width: 100%;
+      height: fit-content;
+      right: -170px;
+      //padding-left: 30px;
+    }
   }
 
   .dropdown-item {
     white-space: break-spaces;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     height: 40px;
     width: 100%;
+
+    span {
+      flex: 0 0;
+      //font-size: 20px;
+      height: 20px;
+      min-width: 20px;
+      width: 20px;
+    }
 
     :active {
       background-color: unset !important;
@@ -168,7 +206,8 @@ export const Container = styled(NavDropdown)`
     font-weight: 400;
     line-height: 16px;
     font-size: 14px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+    padding: 12px 20px;
   }
 
 `
