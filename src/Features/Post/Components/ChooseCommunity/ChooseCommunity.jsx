@@ -40,8 +40,10 @@ const ChooseCommunity = () => {
   // State to control the dropdown menu appearance
   const [showMenu, setShowMenu] = useState(false);
 
+  // State to control the search input value
+  const [searchText, setSearchText] = useState("");
   // Fetch communities
-  const [flairList, error, loading, reload] = useFetch({
+  /*TODO: const*/ let [communityList, error, loading, reload] = useFetch({
     axiosInstance: axios,
     method: "GET",
     url: "/subreddits/mine/subscriber?page=4&count=10&limit=50",
@@ -51,7 +53,30 @@ const ChooseCommunity = () => {
       },
     },
   });
-  // console.log("flairList = ", flairList);
+  communityList = [
+    {
+      srIcon: Image,
+      communityID: "t5_imagepro",
+      description: "This is a community description",
+      name: "go 1",
+      category: "Gaming",
+    },
+    {
+      srIcon: Image,
+      communityID: "t5_imagepro1",
+      description: "This is a community description",
+      name: "Gaming 2",
+      category: "Gaming",
+    },
+    {
+      srIcon: Image,
+      communityID: "t5_imagepro2",
+      description: "This is a community description",
+      name: "Hello 3",
+      category: "Gaming",
+    },
+  ];
+  // console.log("communityList = ", communityList);
   // console.log("error = ", error);
   return (
     <Container>
@@ -65,6 +90,8 @@ const ChooseCommunity = () => {
             type="text"
             placeholder={showMenu ? "Search communities" : "Choose a community"}
             onClick={() => setShowMenu(true)}
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
           />
           <ArrowIcon>
             <IoIosArrowDown onClick={() => setShowMenu(!showMenu)} />
@@ -87,18 +114,19 @@ const ChooseCommunity = () => {
               <CreateButton variant="light">Create New</CreateButton>
             </CreateCommunity>
             <ItemsGroup>
-              <DropdownItem>
-                <UserImage src={Image} alt="post guidelines" />
-                r/Community
-              </DropdownItem>
-              <DropdownItem>
-                <UserImage src={Image} alt="post guidelines" />
-                r/Community
-              </DropdownItem>
-              <DropdownItem>
-                <UserImage src={Image} alt="post guidelines" />
-                r/Community
-              </DropdownItem>
+              {communityList
+                .filter(
+                  (community) =>
+                    community.name
+                      .toLowerCase()
+                      .search(searchText.toLowerCase()) !== -1
+                )
+                .map((community) => (
+                  <DropdownItem key={community.communityID}>
+                    <UserImage src={community.srIcon} alt={community.name} />
+                    {community.name}
+                  </DropdownItem>
+                ))}
             </ItemsGroup>
           </Menu>
         )}
