@@ -1,3 +1,4 @@
+import Tooltip from "react-bootstrap/Tooltip";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -5,7 +6,16 @@ export const Container = styled.div`
   margin-top: 16px;
   padding-top: 16px;
 `;
-
+export const StyledTooltip = styled(Tooltip)`
+  opacity: 1;
+  .tooltip-arrow::before,
+  .bs-tooltip-top .tooltip-arrow::before {
+    border-top-color: #0079d3;
+  }
+  div.tooltip-inner {
+    background-color: #0079d3;
+  }
+`;
 export const CommunityTopic = styled.div`
   font-size: 16px;
   font-weight: 500;
@@ -30,6 +40,9 @@ export const CommunityTopic = styled.div`
     font-weight: 400;
     height: 20px;
     line-height: 16px;
+  }
+  span.topic-icon:hover {
+    color: #0079d3;
   }
 `;
 
@@ -343,9 +356,35 @@ export const ItemContainer = styled.div`
   max-width: 245px;
 
   :hover {
-    background-color: rgba(26, 26, 27, 0.1);
+    background-color: ${({ focus }) =>
+      focus ? "#0079d3" : "rgba(26, 26, 27, 0.1)"};
+    color: ${({ focus }) => (focus ? "#fff" : "#0079d3")};
+  }
+
+  span.icon {
+    vertical-align: middle;
+    height: 5px;
+    width: 5px;
+    margin-left: 6px;
+    color: #878a8c;
+    line-height: 10px;
+    font-size: 14px;
+  }
+  span.icon:hover {
+    color: #fff;
   }
 `;
 export const TopicsBlockHandle = styled.div`
   position: relative;
+`;
+
+export const PlusSpan = styled.span`
+  font-family: Noto Sans, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  color: #0079d3;
+  cursor: pointer;
+  margin-bottom: 8px;
+  margin-right: 4px;
 `;

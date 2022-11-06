@@ -1,4 +1,6 @@
 import { useState } from "react";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import { FiEyeOff } from "react-icons/fi";
 import { HiOutlinePencil } from "react-icons/hi";
 import { TbCake } from "react-icons/tb";
@@ -100,20 +102,37 @@ const CommunityDate = () => {
           </ButtonsContainer>
         </InputContainer>
       )}
-      <BirthDay>
-        <div className="cake-day">
-          <span className="icon">
-            <TbCake />
-          </span>
-          <span className="text">Created date</span>
-        </div>
-      </BirthDay>
+      <OverlayTrigger
+        placement={"bottom"}
+        overlay={<Tooltip>16 days ago</Tooltip>}
+        delay="200"
+      >
+        <BirthDay>
+          <div className="cake-day">
+            <span className="icon">
+              <TbCake />
+            </span>
+
+            <span className="text">Created Oct 17, 2022</span>
+          </div>
+        </BirthDay>
+      </OverlayTrigger>
       {isPrivate && (
         <Private>
           <div className="container">
-            <span className="icon">
-              <FiEyeOff />
-            </span>
+            <OverlayTrigger
+              placement={"top"}
+              overlay={
+                <Tooltip>
+                  Only approved users can view and submit to this community
+                </Tooltip>
+              }
+              delay="200"
+            >
+              <span className="icon">
+                <FiEyeOff />
+              </span>
+            </OverlayTrigger>
             <span className="text">Private</span>
           </div>
         </Private>
