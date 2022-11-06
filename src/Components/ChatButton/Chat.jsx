@@ -2,6 +2,9 @@
 import React from 'react';
 import {BsChatDots} from 'react-icons/bs';
 import {GlobalButtonStyled} from "Components/Global/GlobalButton.styled"
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+import {RiCoinsLine} from "react-icons/ri";
 
 /**
  *  Component that displays a message box
@@ -10,9 +13,16 @@ import {GlobalButtonStyled} from "Components/Global/GlobalButton.styled"
  */
 const ChatButton = (props) => {
     return (
-        <GlobalButtonStyled onClick={props.onshow}>
-            <BsChatDots/>
-        </GlobalButtonStyled>
+
+        <OverlayTrigger
+            key={'bottom'}
+            placement={'bottom'}
+            overlay={
+                <Tooltip id={`tooltip-bottom`}>Chat</Tooltip>}>
+            <GlobalButtonStyled onClick={props.onshow}>
+                <BsChatDots/>
+            </GlobalButtonStyled>
+        </OverlayTrigger>
     );
 };
 

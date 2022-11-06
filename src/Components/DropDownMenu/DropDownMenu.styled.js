@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const DropDownMenuStyled = styled.div`
 
   .dropdown-menu {
-    background-color: ${({theme}) => theme.background.post_background};
+    background-color: ${({theme}) => theme.background.primary};
     border: 1px solid white;
     border-radius: 0 0 4px 4px;
     box-sizing: border-box;

@@ -48,6 +48,92 @@
       "message": "here we go again again",
       "time": "7"
     }
+  ],
+  "Communities": [
+    {
+      "id": "1",
+      "name": "announcements"
+    },
+    {
+      "id": "2",
+      "name": "Egypt"
+    },
+    {
+      "id": "3",
+      "name": "politics"
+    },
+    {
+      "id": "4",
+      "name": "reactjs"
+    },
+    {
+      "id": "5",
+      "name": "Futurology"
+    }
+  ],
+  "Feeds": [
+    {
+      "id": "6",
+      "name": "Home"
+    },
+    {
+      "id": "7",
+      "name": "Popular"
+    },
+    {
+      "id": "8",
+      "name": "All"
+    },
+    {
+      "id": "9",
+      "name": "Reddit Live"
+    }
+  ],
+  "OTHERS": [
+    {
+      "id": "10",
+      "name": "User Settings"
+    },
+    {
+      "id": "11",
+      "name": "Messages"
+    },
+    {
+      "id": "12",
+      "name": "Create Post"
+    },
+    {
+      "id": "13",
+      "name": "Top Communities"
+    },
+    {
+      "id": "14",
+      "name": "Notifications"
+    },
+    {
+      "id": "15",
+      "name": "Community Hubs"
+    },
+    {
+      "id": "16",
+      "name": "Coins"
+    },
+    {
+      "id": "17",
+      "name": "Premium"
+    },
+    {
+      "id": "18",
+      "name": "Avatar"
+    },
+    {
+      "id": "19",
+      "name": "Talk"
+    },
+    {
+      "id": "20",
+      " name": "Predictions"
+    }
   ]
 }
 

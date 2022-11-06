@@ -8,6 +8,7 @@ export const DropdownContainer = styled.div`
     vertical-align: middle;
   }
 
+
   .community {
     //padding: 8px 24px;
     position: relative;
@@ -40,7 +41,8 @@ export const DropdownContainer = styled.div`
 
   .feed {
     padding: 16px 24px 8px;
-    color: #878a8c;
+    //color: #878a8c;
+    color: ${({theme}) => theme.color.primary};
     font-size: 10px;
     font-weight: 500;
     line-height: 16px;
@@ -48,6 +50,7 @@ export const DropdownContainer = styled.div`
   }
 
   .dropdown-item {
+    color: ${({theme}) => theme.color.primary} !important;
     padding: 8px 24px;
     position: relative;
     text-decoration: none;

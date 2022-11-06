@@ -17,7 +17,7 @@ export const ButtonStyled = styled(Button)`
     box-shadow: none;
   }
   .open-side{
-    
+
   }
 
 `
@@ -25,8 +25,13 @@ export const ButtonStyled = styled(Button)`
 export const OffcanvasBody = styled(Offcanvas)`
   width: 270px !important;
   position: absolute;
+  background: ${({theme}) => theme.background.primary};
 
   .btn-close:focus {
     box-shadow: none !important;
+  }
+
+  .btn-close {
+    color: ${({theme}) => theme.color.primary} !important;
   }
 `

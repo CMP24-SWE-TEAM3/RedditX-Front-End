@@ -15,46 +15,46 @@ import {CgDanger} from "react-icons/cg";
  */
 
 const ModalCommunity = ({show, close}) => {
-    const [communityName, setCommunityName] = useState('');
-    const handlerChars = (event) => {
-        setCommunityName(event.target.value);
-    }
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        alert(`The Community name you entered was: ${communityName}`);
-    }
-    return (
-        <ModalStyled show={show} onHide={close}>
+        const [communityName, setCommunityName] = useState('');
+        const handlerChars = (event) => {
+            setCommunityName(event.target.value);
+        }
+        const handleSubmit = (event) => {
+            event.preventDefault();
+            alert(`The Community name you entered was: ${communityName}`);
+        }
+        return (
+            <ModalStyled show={show} onHide={close}>
             <Modal.Header  closeButton>
-                <Modal.Title>Create a community</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <h6>Name</h6>
-                <p>Community names including capitalization cannot be changed. <span> <CgDanger/></span>
-                </p>
-                <Form onSubmit={handleSubmit}>
-                    <Form.Group className="mb-3">
+                    <Modal.Title>Create a community</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <h6>Name</h6>
+                    <p>Community names including capitalization cannot be changed. <span> <CgDanger/></span>
+                    </p>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group className="mb-3">
                         <Form.Control value={communityName} onChange={handlerChars} aria-required type={'text'}
-                                      maxlength="21"/></Form.Group>
-                    <AlarmInput alarmValue={21 - communityName.length}> {21 - communityName.length} Characters
-                        remaining</AlarmInput>
+                                          maxlength="21"/></Form.Group>
+                        <AlarmInput alarmValue={21 - communityName.length}> {21 - communityName.length} Characters
+                            remaining</AlarmInput>
 
-                </Form>
-                <div className={'check-form'}>
-                    <h6 className={'mb-4'}>
-                        Community type
-                    </h6>
-                    <div className="form-check">
-                        <input className="form-check-input" type="radio" name="flexRadioDisabled"
-                               id="flexRadioDisabled"/>
-                        <div className={'full-content'}>
-                            <div className={'ico'}><BsFillPersonFill/></div>
-                            <label className="form-check-label">Public</label>
-                            <div className={'div-content'}>
-                                Anyone can view, post, and comment to this community
+                    </Form>
+                    <div className={'check-form'}>
+                        <h6 className={'mb-4'}>
+                            Community type
+                        </h6>
+                        <div className="form-check">
+                            <input className="form-check-input" type="radio" name="flexRadioDisabled"
+                                   id="flexRadioDisabled"/>
+                            <div className={'full-content'}>
+                                <div className={'ico'}><BsFillPersonFill/></div>
+                                <label className="form-check-label">Public</label>
+                                <div className={'div-content'}>
+                                    Anyone can view, post, and comment to this community
+                                </div>
+
                             </div>
-
-                        </div>
 
                         </div>
                         <div className="form-check">

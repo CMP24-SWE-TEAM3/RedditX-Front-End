@@ -4,7 +4,7 @@ export const AnchorToggle = styled.a`
   color: ${({theme}) => theme.color.primary};
   text-decoration: none;
   margin: 5px;
-  background-color: white;
+  background-color: ${({theme})=> theme.background.primary};
   display: flex;
   flex: 1 ;
   -webkit-flex: 1;

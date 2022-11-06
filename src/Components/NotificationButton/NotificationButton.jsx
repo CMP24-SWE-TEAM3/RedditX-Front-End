@@ -9,6 +9,8 @@ import {BsThreeDots, BsClipboardCheck} from 'react-icons/bs';
 import {FiSettings} from 'react-icons/fi';
 import link from 'Assets/images/link.png';
 import db from 'Data/db.json';
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 /**
  * Component that displays notifications about changes in the state of the application
@@ -52,10 +54,15 @@ const NotificationButton = () => {
 
     return (
         <Container ref={ref}>
-            <GlobalButtonStyled onClick={handleClick}>
-                <IoMdNotificationsOutline/>
-            </GlobalButtonStyled>
-
+            <OverlayTrigger
+                key={'bottom'}
+                placement={'bottom'}
+                overlay={
+                    <Tooltip id={`tooltip-bottom`}>Notification</Tooltip>}>
+                <GlobalButtonStyled onClick={handleClick}>
+                    <IoMdNotificationsOutline/>
+                </GlobalButtonStyled>
+            </OverlayTrigger>
             <Overlay
                 show={show}
                 target={target}
@@ -88,12 +95,12 @@ const NotificationButton = () => {
                             {db.comments.map(comment => {
                                 return (
                                     <i className={'content-i'}>
-                                    <a className={'content-a'}
-                                       href={'https://www.reddit.com/r/Eln2aa4yn/comments/yi1rd4/ccccc/'}>
+                                        <a className={'content-a'}
+                                           href={'https://www.reddit.com/r/Eln2aa4yn/comments/yi1rd4/ccccc/'}>
                                     <span className={'a-span'}>
                                      <img src={link} alt={'community-name'}/>
                                     </span>
-                                        <span className={'span-info'}>
+                                            <span className={'span-info'}>
                                         <span className={'child'}>
                                             <span className={'sub-child'}>
                                             <span className={'info'} key={comment.id}>
@@ -108,9 +115,9 @@ const NotificationButton = () => {
                                         </span>
                                         <span className={'info-child'}>{comment.message}</span>
                                     </span>
-                                    </a>
+                                        </a>
 
-                                </i>)
+                                    </i>)
                             })}
 
                         </div>

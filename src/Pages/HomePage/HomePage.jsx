@@ -14,7 +14,6 @@ import {ThemeProvider} from "styled-components";
 import ScrollButton from "Components/ScrollButton/ScrollButton";
 import darkTheme from "../../Theme/darkTheme";
 import {Button} from "react-bootstrap";
-import SwitchButton from "../../Components/SwitchButton/SwitchButton";
 
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.

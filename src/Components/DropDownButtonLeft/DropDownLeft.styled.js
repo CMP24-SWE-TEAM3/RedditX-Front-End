@@ -49,8 +49,15 @@ export const DropDownLeftStyled = styled(Dropdown)`
     color: ${({theme}) => theme.color.primary};
   }
 
+
   // down form ico
   .down-form {
+    svg {
+      polyline {
+        stroke: ${({theme}) => theme.color.primary} !important;
+      }
+    }
+
     @media (max-width: 890px) {
       display: none;
     }
