@@ -30,6 +30,7 @@ const useFetchFunction = () => {
         signal: ctrl.signal,
       });
       setResponse(res.data);
+      setError(null);
     } catch (err) {
       setError(err.message);
     } finally {

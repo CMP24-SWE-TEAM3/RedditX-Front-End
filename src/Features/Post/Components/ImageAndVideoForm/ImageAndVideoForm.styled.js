@@ -64,16 +64,25 @@ export const CancelButton = styled(Button)`
   }
 `;
 
-export const PostButton = styled(Button)`
-  color: ${({ theme }) => theme.background.primary};
-  background-color: ${({ theme }) => theme.color.secondary};
+export const PostButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: ${({ theme, disabled }) =>
+    disabled ? theme.background.muted : theme.background.primary};
+  background-color: ${({ theme, disabled }) =>
+    disabled ? theme.color.muted : theme.color.secondary};
   border-color: ${({ theme }) => theme.color.secondary};
   border-radius: 9999px;
   font-weight: bold;
   padding: 4px 16px;
+  border: none;
   &:hover {
-    color: ${({ theme }) => theme.background.primary};
+    color: ${({ theme, disabled }) =>
+      disabled ? theme.background.muted : theme.background.primary};
     border-color: ${({ theme }) => theme.color.secondary};
-    background-color: ${({ theme }) => theme.button.hoverBlue};
+    background-color: ${({ theme, disabled }) =>
+      disabled ? theme.color.muted : theme.button.hoverBlue};
   }
 `;

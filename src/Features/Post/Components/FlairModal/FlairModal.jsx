@@ -19,6 +19,8 @@ import {
   StyledModal,
   FlairParagraph,
   EditFlair,
+  ApplyButton,
+  CancelButton,
 } from "./FlairModal.styled";
 
 // Import icons
@@ -112,30 +114,42 @@ const FlairModal = ({
             </Form>
           )}
         </RadioContainer>
-        {flairIndex !== null && (
-          <EditFlair empty={flairEditText.length === 0}>
-            <span className="edit-flair">EDIT FLAIR</span>
-            <FlairParagraph>Allows text and up to 10 emojis</FlairParagraph>
-            <input
-              type="text"
-              value={flairEditText}
-              onChange={handleFlairEditText}
-            />
-            {flairEditText.length !== 0 && (
-              <p className="remaining-text">
-                {64 - flairEditText.length} characters remaining
-              </p>
-            )}
-            {flairEditText.length === 0 && (
-              <p className="danger-remaining-text">
-                Error: text or emoji is required
-              </p>
-            )}
-          </EditFlair>
-        )}
+        <EditFlair
+          empty={flairEditText.length === 0}
+          flairSelected={flairIndex !== null}
+        >
+          {flairIndex !== null && (
+            <>
+              <span className="edit-flair">EDIT FLAIR</span>
+              <FlairParagraph>Allows text and up to 10 emojis</FlairParagraph>
+              <input
+                type="text"
+                value={flairEditText}
+                onChange={handleFlairEditText}
+              />
+              {flairEditText.length !== 0 && (
+                <p className="remaining-text">
+                  {64 - flairEditText.length} characters remaining
+                </p>
+              )}
+              {flairEditText.length === 0 && (
+                <p className="danger-remaining-text">
+                  Error: text or emoji is required
+                </p>
+              )}
+            </>
+          )}
+        </EditFlair>
       </ModalBody>
       <ModalFooter>
-        <Button onClick={onHide}>Close</Button>
+        <CancelButton onClick={() => setFlairIndex(null)}>
+          Clear Flair
+        </CancelButton>
+        <ApplyButton
+          disabled={flairIndex === null || flairEditText.length === 0}
+        >
+          Apply
+        </ApplyButton>
       </ModalFooter>
     </StyledModal>
   );

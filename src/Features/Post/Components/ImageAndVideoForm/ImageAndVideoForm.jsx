@@ -17,6 +17,10 @@ import {
 // Import hooks
 import { useState, useRef } from "react";
 
+// Import contexts
+import { useSubmitDestination } from "Features/Post/Contexts/selectedDestination";
+import { useCreatePostTitle } from "Features/Post/Contexts/createPostTitle";
+
 /**
  * Image and video form component (The form that appears when you click on the image and video tab in main section)
  *
@@ -24,10 +28,13 @@ import { useState, useRef } from "react";
  */
 const ImageAndVideoForm = () => {
   // State for title
-  const [title, setTitle] = useState("");
+  const {createPostTitle, setCreatePostTitle} = useCreatePostTitle();
 
   // Ref for title
   const titleRef = useRef(null);
+
+  // Context for selected submit destination
+  const { submitDestination } = useSubmitDestination();
 
   /**
    * Handle title change
@@ -36,7 +43,7 @@ const ImageAndVideoForm = () => {
    */
   const handleTitleChange = (e) => {
     if (e.target.value.length <= 300) {
-      setTitle(e.target.value);
+      setCreatePostTitle(e.target.value);
       titleRef.current.style.height = titleRef.current.scrollHeight + "px";
     }
   };
@@ -60,19 +67,21 @@ const ImageAndVideoForm = () => {
             ref={titleRef}
             as="textarea"
             placeholder="Title"
-            value={title}
+            value={createPostTitle}
             onChange={handleTitleChange}
             onKeyDown={handleKeyDown}
             rows={1}
             className="title-input"
           />
-          <span>{title.length}/300</span>
+          <span>{createPostTitle.length}/300</span>
         </Form.Group>
         <DragAndDropFile />
         <PostFlagsWrapper />
         <SubmitButtons>
           <CancelButton variant="light">Cancel</CancelButton>
-          <PostButton>Post</PostButton>
+          <PostButton disabled={!submitDestination || !createPostTitle}>
+            Post
+          </PostButton>
         </SubmitButtons>
       </StyledImageAndVideoFrom>
       <PostFormFooter id={"ImageAndVideoForm"} />

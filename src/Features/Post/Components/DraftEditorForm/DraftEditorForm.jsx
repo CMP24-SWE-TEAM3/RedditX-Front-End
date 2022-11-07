@@ -23,6 +23,10 @@ import useFetch from "Hooks/useFetch";
 // Import hooks
 import { useState, useRef } from "react";
 
+// Import contexts
+import { useSubmitDestination } from "Features/Post/Contexts/selectedDestination";
+import { useCreatePostTitle } from "Features/Post/Contexts/createPostTitle";
+
 /**
  * The form of draft editor in create post page (Draft editor tab)
  *
@@ -36,10 +40,13 @@ const DraftEditorForm = () => {
   const [flairIndex, setFlairIndex] = useState(null);
 
   // State for title
-  const [title, setTitle] = useState("");
+  const {createPostTitle, setCreatePostTitle} = useCreatePostTitle();
 
   // Ref for title
   const titleRef = useRef(null);
+
+  // Context for selected submit destination
+  const { submitDestination } = useSubmitDestination();
 
   const [flairs, error, isLoading, reload] = useFetch({
     axiosInstance: axios,
@@ -58,7 +65,7 @@ const DraftEditorForm = () => {
    */
   const handleTitleChange = (e) => {
     if (e.target.value.length <= 300) {
-      setTitle(e.target.value);
+      setCreatePostTitle(e.target.value);
       titleRef.current.style.height = titleRef.current.scrollHeight + "px";
     }
   };
@@ -96,19 +103,21 @@ const DraftEditorForm = () => {
             ref={titleRef}
             as="textarea"
             placeholder="Title"
-            value={title}
+            value={createPostTitle}
             onChange={handleTitleChange}
             onKeyDown={handleKeyDown}
             rows={1}
             className="title-input"
           />
-          <span>{title.length}/300</span>
+          <span>{createPostTitle.length}/300</span>
         </Form.Group>
         <DraftEditor />
         <PostFlagsWrapper flairHandler={setModalShow} />
         <SubmitButtons>
           {/* <SaveDraftButton variant="light">Save Draft</SaveDraftButton> */}
-          <PostButton>Post</PostButton>
+          <PostButton disabled={!submitDestination || !createPostTitle}>
+            Post
+          </PostButton>
         </SubmitButtons>
       </StyledDraftEditorForm>
       <PostFormFooter id={"DraftEditorForm"} />
