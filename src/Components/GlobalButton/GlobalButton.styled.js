@@ -17,3 +17,9 @@ export const GlobalButtonStyled = styled.button
       
 
     `
+export const ButtonsGroupStyled = styled.div
+`
+  @media (max-width:790px){
+    display:none;
+  }
+`

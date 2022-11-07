@@ -1,7 +1,7 @@
 // imports
 import React, {useEffect, useState} from 'react';
 import {Container} from "./CreatePostSideBar.styled";
-import reddit from 'Assets/images/reddit.png'
+import reddit from 'Assets/Images/reddit.png'
 import ModalCommunity from 'Components/Modal/Modal';
 
 /**
