@@ -1,11 +1,20 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from "react";
 
-import FacebookLogin from "react-facebook-login";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import { useState, useEffect } from "react";
 
 import FormInput from "Features/Authentication/Components/FormInput/FormInput";
 import Button from "../../Components/Button/Button";
+
+import axios from "API/axios";
+
+import useFetchFunction from "Hooks/useFetchFunction";
+
+import {
+  signupWithGoogle,
+  signupWithFacebook,
+} from "Features/Authentication/Services/authApi";
 
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
@@ -56,11 +65,23 @@ const SignUpFirstScreen = ({
   formFields,
   setFormFields,
 }) => {
+  const auth = useAuth();
+
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
   /**
    * state to know what error message should be shown
    */
   const [errMsg, setErrMsg] = useState("");
   const { email } = formFields;
+
+  /**
+   * the error message from signup
+   */
+  const [signupErrorMsg, setSignupErrorMsg] = useState("");
+  /**
+   * state to set the error message from signup
+   */
+  const [showSignupErrorMsg, setShowSignupErrorMsg] = useState(false);
 
   /**
    * useEffect for email field to check if the email that the user entered is valid or not
@@ -74,6 +95,8 @@ const SignUpFirstScreen = ({
     }
 
     setValidEmail(USER_EMAIL.test(email));
+
+    setShowSignupErrorMsg(false);
   }, [email]);
 
   /**
@@ -142,11 +165,62 @@ const SignUpFirstScreen = ({
 
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
+    // const user2 = await signupWithGoogle(
+    //   user.accessToken,
+    //   setSignupErrorMsg,
+    //   setShowSignupErrorMsg
+    // );
+
+    // if (user2 !== false) {
+    //   auth.login(user2);
+    // }
+
+    dataFetch({
+      axiosInstance: axios,
+      method: "post",
+      url: "/signup",
+      requestConfig: {
+        data: {
+          type: "google",
+          googleOrFacebookToken: user.accessToken,
+        },
+      },
+    });
+
+    if (!error) {
+      //  setFinishedLoading(true);
+      auth.login(data);
+    }
   };
 
   const logFacebookUser = async () => {
     const { user } = await signInWithFacebookPopup();
-    //console.log(user);
+    // const user2 = await signupWithFacebook(
+    //   user.accessToken,
+    //   setSignupErrorMsg,
+    //   setShowSignupErrorMsg
+    // );
+
+    // if (user2 !== false) {
+    //   auth.login(user2);
+    // }
+
+    dataFetch({
+      axiosInstance: axios,
+      method: "post",
+      url: "/signup",
+      requestConfig: {
+        data: {
+          type: "facebook",
+          googleOrFacebookToken: user.accessToken,
+        },
+      },
+    });
+
+    if (!error) {
+      // setFinishedLoading(true);
+      auth.login(data);
+    }
   };
 
   return (
@@ -202,24 +276,17 @@ const SignUpFirstScreen = ({
                 {errMsg}
               </ErrorParagraph>
 
-              <ButtonsContainer>
-                {/** Show an enabled button if the email is valid */}
-                {validEmail && (
-                  <Button
-                    valid={validEmail}
-                    type="button"
-                    onClick={() => checkEmail(email)}
-                  >
-                    Continue
-                  </Button>
-                )}
+              {error && <ErrorParagraph valid={!error}>{error}</ErrorParagraph>}
 
-                {/** Show an disabled button if the email is not valid */}
-                {!validEmail && (
-                  <Button disabled valid={validEmail} type="button">
-                    Continue
-                  </Button>
-                )}
+              <ButtonsContainer>
+                <Button
+                  disabled={!validEmail}
+                  valid={validEmail}
+                  type="button"
+                  onClick={() => checkEmail(email)}
+                >
+                  Continue
+                </Button>
               </ButtonsContainer>
             </form>
           </AuthContainerDiv>

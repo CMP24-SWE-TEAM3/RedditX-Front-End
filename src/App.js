@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Import react and hooks
 import React, { useState } from "react";
 
@@ -26,7 +27,11 @@ import SignUpPage from "Features/Authentication/Pages/SignUpPage/SignUpPage";
 
 import ForgetUserNamePage from "Features/Authentication/Pages/ForgetUserNamePage/ForgetUserNamePage";
 
+import NewPasswordPage from "Features/Authentication/Pages/NewPasswordPage/NewPasswordPage";
+
 import ForgetPasswordPage from "Features/Authentication/Pages/ForgetPasswordPage/ForgetPasswordPage";
+
+import { AuthProvider } from "Features/Authentication/Contexts/Authentication";
 
 /**
  * The main app of our application it handles routing
@@ -50,7 +55,9 @@ function App() {
   };
   return (
     <ThemeProvider theme={theme}>
-      <SignUpPage />
+      <AuthProvider>
+        <TestHome />
+      </AuthProvider>
     </ThemeProvider>
   );
 }

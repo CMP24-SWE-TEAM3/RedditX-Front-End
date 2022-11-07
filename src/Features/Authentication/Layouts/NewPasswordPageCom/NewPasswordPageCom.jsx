@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 
 import { SiReddit } from "react-icons/si";
@@ -10,7 +11,9 @@ import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/Lo
 
 import Checked from "Features/Authentication/Components/Checked/Checked";
 
-import { forgetPasswordApi } from "Features/Authentication/Services/authApi";
+import { resetForgottenPassword } from "Features/Authentication/Services/authApi";
+
+import { useParams } from "react-router-dom";
 
 import axios from "API/axios";
 
@@ -24,16 +27,13 @@ import {
   AuthHeader,
   Forget,
   RedditIcon,
-} from "./ForgetPassword.styled";
+} from "./NewPasswordPageCom.styled";
 
-const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
-
-const USER_EMAIL =
-  /[a-zA-Z0-9._-]{3,}@[a-zA-Z0-9._-]{3,}[.]{1}[a-zA-Z0-9._-]{2,}/;
+const PWD_REGEX = /^[A-z0-9-_]{8,20}$/;
 
 const defaultFormFields = {
-  userName: "",
-  email: "",
+  confirmPassword: "",
+  password: "",
 };
 
 /**
@@ -41,14 +41,10 @@ const defaultFormFields = {
  * @returns {React.Component}  ForgetPassword component that is used in forget password page
  */
 
-const ForgetPassword = () => {
+const NewPasswordPageCom = () => {
+  const { token } = useParams();
+
   const [data, error, isLoading, dataFetch] = useFetchFunction();
-
-  /**
-   * state to know if the email is valid or not to control what to show to the user
-   */
-  const [validEmail, setValidEmail] = useState(false);
-
   /**
    * state to handel any change the user make in the input fields
    */
@@ -56,10 +52,13 @@ const ForgetPassword = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
 
   /**
-   * state to know if the userName is valid or not to control what to show to the user
+   * state to know if the password is valid or not to control what to show to the user
    */
-
-  const [validName, setValidName] = useState(false);
+  const [validPassword, setValidPassword] = useState(false);
+  /**
+   * state to know if the password is valid or not to control what to show to the user
+   */
+  const [validConfirmPassword, setValidConfirmPassword] = useState(false);
 
   /**
    * state to know if the user focused on input field at least one time
@@ -77,9 +76,9 @@ const ForgetPassword = () => {
    */
   const [wantSubmit, setWantSubmit] = useState(false);
 
-  // /**
-  //  * state to know what error message should be shown
-  //  */
+  /**
+   * state to know what error message should be shown
+   */
   // const [isLoading, setIsLoading] = useState(false);
 
   /**
@@ -97,30 +96,25 @@ const ForgetPassword = () => {
   const [showForgetPasswordErrorMsg, setShowForgetPasswordErrorMsg] =
     useState(false);
 
-  /**
-   * state to know if the email sent or not
-   */
-  const [emailSent, setEmailSent] = useState(false);
-
-  const { userName, email } = formFields;
+  const { password, confirmPassword } = formFields;
 
   /**
    * useEffect for email field to check if the email that the user entered is valid or not
    */
 
   useEffect(() => {
-    setValidEmail(USER_EMAIL.test(email));
-    setShowForgetPasswordErrorMsg(false);
-  }, [email]);
-
-  /**
-   * useEffect for userName field to check if the userName that the user entered is valid or not
-   */
+    setValidPassword(PWD_REGEX.test(password));
+    setValidConfirmPassword(
+      password === confirmPassword && PWD_REGEX.test(confirmPassword)
+    );
+  }, [password]);
 
   useEffect(() => {
-    setValidName(USER_REGEX.test(userName));
-    setShowForgetPasswordErrorMsg(false);
-  }, [userName]);
+    setValidPassword(PWD_REGEX.test(password));
+    setValidConfirmPassword(
+      password === confirmPassword && PWD_REGEX.test(confirmPassword)
+    );
+  }, [confirmPassword]);
 
   /**
    * Function to handle the submit of the form of forget password
@@ -129,35 +123,35 @@ const ForgetPassword = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (wantSubmit) {
-      //setIsLoading(true);
+      // setIsLoading(true);
 
-      // const response = await forgetPasswordApi(
-      //   email,
-      //   userName,
+      // const response = await resetForgottenPassword(
+      //   password,
+      //   confirmPassword,
+      //   token,
       //   setForgetPasswordErrorMsg,
       //   setShowForgetPasswordErrorMsg
       // );
 
       // if (response) {
-      //   setEmailSent(true);
       //   setFinishedLoading(true);
       // }
+
+      const apiUrl = "/login/reset-forgotten-password/" + token;
 
       dataFetch({
         axiosInstance: axios,
         method: "post",
-        url: "/login/forget",
+        url: apiUrl,
         requestConfig: {
           data: {
-            email: email,
-            username: userName,
-            operation: false,
+            newPassword: password,
+            confirmedNewPassword: confirmPassword,
           },
         },
       });
 
       if (!error) {
-        setEmailSent(true);
         setFinishedLoading(true);
       }
 
@@ -174,11 +168,13 @@ const ForgetPassword = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    if (name === "userName") {
-      setValidName(USER_REGEX.test(userName));
+    if (name === "password") {
+      setValidPassword(PWD_REGEX.test(password));
     }
-    if (name === "email") {
-      setValidEmail(USER_EMAIL.test(email));
+    if (name === "confirmPassword") {
+      setValidConfirmPassword(
+        confirmPassword === password && PWD_REGEX.test(confirmPassword)
+      );
     }
     setFormFields({ ...formFields, [name]: value });
   };
@@ -191,31 +187,29 @@ const ForgetPassword = () => {
         </RedditIcon>
         <AuthHeader>Reset your password</AuthHeader>
         <AuthParagraph>
-          Tell us the username and email address associated with your Reddit
-          account, and we’ll send you an email with a link to reset your
-          password.
+          Choose a new password here, then log in to your account.
         </AuthParagraph>
 
         <br></br>
 
         <form onSubmit={handleSubmit}>
           <FormInputPageCom
-            valid={validName}
+            valid={validPassword}
             initialFocus={initialFocus}
             showIcon={true}
-            label="USERNAME"
-            type="text"
+            label="PASSWORD"
+            type="password"
             onChange={handleChange}
-            name="userName"
-            value={userName}
+            name="password"
+            value={password}
             onFocus={() => {
               setInitialFocus(false);
             }}
           />
 
-          {/* Show error message if the userName is not valid and the user made a focus on the it's input field */}
-          <ErrorParagraph valid={validName || initialFocus}>
-            Username must be between 3 and 20 characters
+          {/* Show error message if the password is not valid and the user made a focus on the it's input field */}
+          <ErrorParagraph valid={validPassword || initialFocus}>
+            Password must be at least 8 characters long
           </ErrorParagraph>
 
           {error && (
@@ -223,38 +217,39 @@ const ForgetPassword = () => {
               {error}
             </ErrorParagraph>
           )}
+
           <FormInputPageCom
-            label="EMAIL"
-            valid={validEmail}
+            label="VERIFY PASSWORD"
+            valid={validConfirmPassword}
             initialFocus={initialFocus2}
             showIcon={true}
-            type="email"
+            type="password"
             onChange={handleChange}
-            name="email"
-            value={email}
+            name="confirmPassword"
+            value={confirmPassword}
             onFocus={() => {
               setInitialFocus2(false);
             }}
           />
 
-          {/* Show error message if the email is not valid and the user made a focus on the it's input field */}
+          {/* Show error message if the confirm password is not valid and the user made a focus on the it's input field */}
 
-          <ErrorParagraph valid={validEmail || initialFocus2}>
-            not a valid email
+          <ErrorParagraph valid={validConfirmPassword || initialFocus2}>
+            Password must match
           </ErrorParagraph>
 
           <ButtonsContainer>
             {!isLoading && !finishedLoading && (
               <Button
                 page={true}
-                disabled={!validName || !validEmail}
-                valid={validName && validEmail}
+                disabled={!validPassword || !validConfirmPassword}
+                valid={validPassword && validConfirmPassword}
                 type="submit"
                 onClick={() => {
                   setWantSubmit(true);
                 }}
               >
-                RESET PASSWORD
+                SET PASSWORD
               </Button>
             )}
 
@@ -270,23 +265,12 @@ const ForgetPassword = () => {
             )}
           </ButtonsContainer>
           <br></br>
-          {emailSent && (
-            <ErrorParagraph
-              validColor={emailSent}
-              valid={!emailSent || initialFocus}
-            >
-              Thanks! If your Reddit username and email address match, you'll
-              get an email with a link to reset your password shortly.
-            </ErrorParagraph>
-          )}
-          <Forget>
-            <span onClick={() => {}}>FORGOT USERNAME?</span>{" "}
-          </Forget>
-          <br></br>
+
           <br></br>
           <Forget>
-            Don't have an email or need assistance logging <br /> in?
-            <button onClick={() => {}}>GET HELP</button>{" "}
+            Changing your password logs you out of all browsers on your
+            device(s). Checking this box also logs you out of all apps you have
+            authorized.
           </Forget>
           <br></br>
           <br></br>
@@ -300,4 +284,4 @@ const ForgetPassword = () => {
   );
 };
 
-export default ForgetPassword;
+export default NewPasswordPageCom;

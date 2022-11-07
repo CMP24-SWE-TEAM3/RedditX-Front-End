@@ -1,10 +1,13 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import { useEffect, useState } from "react";
 
 import { FaFacebookSquare } from "react-icons/fa";
 
-import FacebookLogin from "react-facebook-login";
+import axios from "API/axios";
+
+import useFetchFunction from "Hooks/useFetchFunction";
 
 import { FcGoogle } from "react-icons/fc";
 
@@ -17,6 +20,11 @@ import RandomUserName from "Features/Authentication/Utils/RandomUserName";
 
 import FormInputPageCom from "Features/Authentication/Components/FormInputPageCom/FormInputPageCom";
 import Button from "../../Components/Button/Button";
+
+import {
+  signupWithGoogle,
+  signupWithFacebook,
+} from "Features/Authentication/Services/authApi";
 
 import {
   LogInContainer,
@@ -80,7 +88,17 @@ const SignUpPageFirstScreen = ({
   setSug5,
 }) => {
   const { email } = formFields;
+  const auth = useAuth();
 
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
+  /**
+   * the error message from signup
+   */
+  const [signupErrorMsg, setSignupErrorMsg] = useState("");
+  /**
+   * state to set the error message from signup
+   */
+  const [showSignupErrorMsg, setShowSignupErrorMsg] = useState(false);
   /**
    * useEffect for email field to check if the email that the user entered is valid or not
    */
@@ -93,7 +111,7 @@ const SignUpPageFirstScreen = ({
     }
 
     setValidEmail(USER_EMAIL.test(email));
-
+    setShowSignupErrorMsg(false);
     setSug1(RandomUserName());
     setSug2(RandomUserName());
     setSug3(RandomUserName());
@@ -160,11 +178,62 @@ const SignUpPageFirstScreen = ({
 
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
+    // const user2 = await signupWithGoogle(
+    //   user.accessToken,
+    //   setSignupErrorMsg,
+    //   setShowSignupErrorMsg
+    // );
+
+    // if (user2 !== false) {
+    //   auth.login(user2);
+    // }
+
+    dataFetch({
+      axiosInstance: axios,
+      method: "post",
+      url: "/signup",
+      requestConfig: {
+        data: {
+          type: "google",
+          googleOrFacebookToken: user.accessToken,
+        },
+      },
+    });
+
+    if (!error) {
+      //  setFinishedLoading(true);
+      auth.login(data);
+    }
   };
 
   const logFacebookUser = async () => {
     const { user } = await signInWithFacebookPopup();
-    //console.log(user);
+    // const user2 = await signupWithFacebook(
+    //   user.accessToken,
+    //   setSignupErrorMsg,
+    //   setShowSignupErrorMsg
+    // );
+
+    // if (user2 !== false) {
+    //   auth.login(user2);
+    // }
+
+    dataFetch({
+      axiosInstance: axios,
+      method: "post",
+      url: "/signup",
+      requestConfig: {
+        data: {
+          type: "facebook",
+          googleOrFacebookToken: user.accessToken,
+        },
+      },
+    });
+
+    if (!error) {
+      // setFinishedLoading(true);
+      auth.login(data);
+    }
   };
 
   return (
@@ -221,27 +290,20 @@ const SignUpPageFirstScreen = ({
                       {errMsg}
                     </ErrorParagraph>
 
+                    {error && (
+                      <ErrorParagraph valid={!error}>{error}</ErrorParagraph>
+                    )}
+
                     <ButtonsContainer>
-                      {validEmail && (
-                        <Button
-                          valid={validEmail}
-                          page={true}
-                          type="button"
-                          onClick={() => checkEmail(email)}
-                        >
-                          Continue
-                        </Button>
-                      )}
-                      {!validEmail && (
-                        <Button
-                          page={true}
-                          disabled
-                          valid={validEmail}
-                          type="button"
-                        >
-                          Continue
-                        </Button>
-                      )}
+                      <Button
+                        disabled={!validEmail}
+                        valid={validEmail}
+                        page={true}
+                        type="button"
+                        onClick={() => checkEmail(email)}
+                      >
+                        Continue
+                      </Button>
                     </ButtonsContainer>
                     <br></br>
 

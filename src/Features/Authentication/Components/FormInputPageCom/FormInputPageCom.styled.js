@@ -8,7 +8,7 @@ const shrinkLabelStyles = css`
   transform: translateY(0);
   font-size: 8px;
 
-  width: 60px;
+  width: 130px;
   padding: 2px 0;
 
   span {
@@ -28,7 +28,7 @@ export const FormInputLabel = styled.label`
   transform: translateY(-50%);
   display: flex;
   justify-content: space-between;
-  width: 83px;
+  width: 130px;
   span {
     display: block !important;
   }
@@ -94,6 +94,7 @@ export const Group = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin: 10px 0;
   input[type="password"] {
     letter-spacing: 0.3em;
   }

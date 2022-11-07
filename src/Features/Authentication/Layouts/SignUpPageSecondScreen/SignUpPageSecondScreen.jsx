@@ -1,5 +1,8 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import { useEffect, useState } from "react";
 
 import { AiOutlineReload } from "react-icons/ai";
 
@@ -10,6 +13,19 @@ import FormInputPageCom from "Features/Authentication/Components/FormInputPageCo
 import Button from "../../Components/Button/Button";
 import PasswordStrength from "Features/Authentication/Components/PasswordStrength/PasswordStrength";
 import GetPasswordStrength from "Features/Authentication/Utils/GetPasswordStrenght";
+
+import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
+
+import Checked from "Features/Authentication/Components/Checked/Checked";
+
+import {
+  signupApi,
+  isUserNameAvailable,
+} from "Features/Authentication/Services/authApi";
+
+import axios from "API/axios";
+
+import useFetchFunction from "Hooks/useFetchFunction";
 
 import {
   Group,
@@ -24,8 +40,8 @@ import {
   ReCAPTCHAContainer,
 } from "./SignUpPageSecondScreen.styled";
 
-const USER_NAME = /^[A-z][A-z0-9-_]{3,20}$/;
-const PWD_REGEX = /^[A-z][A-z0-9-_]{8,20}$/;
+const USER_NAME = /^[A-z0-9-_]{3,20}$/;
+const PWD_REGEX = /^[A-z0-9-_]{8,20}$/;
 
 /**
  * SignUpPageSecondScreen component that is used in Signup page
@@ -89,10 +105,86 @@ const SignUpPageSecondScreen = ({
   setSug4,
   setSug5,
 }) => {
-  const { userName, password } = formFields;
+  const auth = useAuth();
+  const { email, userName, password } = formFields;
 
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
+
+  /**
+   * state to know what error message should be shown
+   */
+  // const [isLoading, setIsLoading] = useState(false);
+
+  /**
+   * state to know what error message should be shown
+   */
+  const [finishedLoading, setFinishedLoading] = useState(false);
+  /**
+   * state to if the user submitted the form or not
+   */
+  const [wantSubmit, setWantSubmit] = useState(false);
+
+  /**
+   * the error message from signup
+   */
+  const [signupErrorMsg, setSignupErrorMsg] = useState("");
+  /**
+   * state to set the error message from signup
+   */
+  const [showSignupErrorMsg, setShowSignupErrorMsg] = useState(false);
+  /**
+   * state to set the error message from signup
+   */
+  const [canReqAvailableUserName, setCanReqAvailableUserName] = useState(true);
+  /**
+   * state to set the error message from signup
+   */
+  const [availableUserName, setAvailableUserName] = useState(true);
+
+  /**
+   * Function to handle the submit of the form of signup
+   * @param {*} event
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (wantSubmit) {
+      //setIsLoading(true);
+      // const user = await signupApi(
+      //   email,
+      //   userName,
+      //   password,
+      //   setSignupErrorMsg,
+      //   setShowSignupErrorMsg
+      // );
+
+      // if (user !== false) {
+      //   setFinishedLoading(true);
+      //   auth.login(user);
+      // }
+
+      dataFetch({
+        axiosInstance: axios,
+        method: "post",
+        url: "/signup",
+        requestConfig: {
+          data: {
+            type: "bare email",
+            email: email,
+            username: userName,
+            password: password,
+          },
+        },
+      });
+
+      if (!error) {
+        setFinishedLoading(true);
+        auth.login(data);
+      }
+
+      setWantSubmit(false);
+
+      // setIsLoading(false);
+    }
   };
 
   /**
@@ -102,6 +194,35 @@ const SignUpPageSecondScreen = ({
     setErrMsg("Username must be between 3 and 20 characters");
 
     setValidUserName(USER_NAME.test(userName));
+
+    setValidUserName(USER_NAME.test(userName));
+    if (validUserName && canReqAvailableUserName) {
+      setCanReqAvailableUserName(false);
+
+      let searchUserName = "t2_" + userName;
+
+      dataFetch({
+        axiosInstance: axios,
+        method: "get",
+        url: "/api/username-available",
+
+        requestConfig: {
+          params: {
+            username: searchUserName,
+          },
+        },
+      });
+
+      if (!error) {
+        setAvailableUserName(true);
+      } else {
+        setAvailableUserName(false);
+      }
+
+      setCanReqAvailableUserName(true);
+    }
+
+    setShowSignupErrorMsg(false);
   }, [userName]);
 
   /**
@@ -112,16 +233,14 @@ const SignUpPageSecondScreen = ({
       setInitialFocus(false);
     }
     setValidPassword(PWD_REGEX.test(password));
+    setShowSignupErrorMsg(false);
   }, [password]);
 
-  const handleChange = (event) => {
+  const handleChange = async (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
     if (name === "password") {
       setPasswordStrength(GetPasswordStrength(password));
-    }
-    if (name === "userName") {
-      setValidUserName(USER_NAME.test(userName));
     }
   };
 
@@ -173,7 +292,7 @@ const SignUpPageSecondScreen = ({
               <div>
                 <Group secondScreen={secondScreen}>
                   <FormInputPageCom
-                    valid={validUserName}
+                    valid={validUserName && availableUserName}
                     initialFocus={initialFocus}
                     label="USERNAME"
                     type="text"
@@ -191,6 +310,23 @@ const SignUpPageSecondScreen = ({
                 <ErrorParagraph valid={validUserName || initialFocus}>
                   {errMsg}
                 </ErrorParagraph>
+
+                {error && (
+                  <ErrorParagraph valid={!error}>{error}</ErrorParagraph>
+                )}
+                {/* {!availableUserName && (
+                  <ErrorParagraph valid={availableUserName}>
+                    Username is taken
+                  </ErrorParagraph>
+                )} */}
+                {availableUserName && validUserName && (
+                  <ErrorParagraph
+                    validColor={availableUserName && validUserName}
+                    valid={!availableUserName}
+                  >
+                    Nice username!
+                  </ErrorParagraph>
+                )}
 
                 <Group secondScreen={secondScreen}>
                   <FormInputPageCom
@@ -241,6 +377,7 @@ const SignUpPageSecondScreen = ({
                   <p
                     onClick={() => {
                       changeUserName(sug1);
+                      setAvailableUserName(true);
                     }}
                   >
                     {sug1}
@@ -248,6 +385,7 @@ const SignUpPageSecondScreen = ({
                   <p
                     onClick={() => {
                       changeUserName(sug2);
+                      setAvailableUserName(true);
                     }}
                   >
                     {sug2}
@@ -255,6 +393,7 @@ const SignUpPageSecondScreen = ({
                   <p
                     onClick={() => {
                       changeUserName(sug3);
+                      setAvailableUserName(true);
                     }}
                   >
                     {sug3}
@@ -262,6 +401,7 @@ const SignUpPageSecondScreen = ({
                   <p
                     onClick={() => {
                       changeUserName(sug4);
+                      setAvailableUserName(true);
                     }}
                   >
                     {sug4}
@@ -269,6 +409,7 @@ const SignUpPageSecondScreen = ({
                   <p
                     onClick={() => {
                       changeUserName(sug5);
+                      setAvailableUserName(true);
                     }}
                   >
                     {sug5}
@@ -285,24 +426,35 @@ const SignUpPageSecondScreen = ({
                 BACK
               </BackButton>
               <ButtonsContainer>
-                {validUserName && validPassword && notRobot && (
+                { !finishedLoading && (
                   <Button
                     page={true}
-                    valid={validUserName && validPassword && notRobot}
-                    type="button"
-                    onClick={() => RandomUserName()}
+                    disabled={
+                      !validUserName ||
+                      !validPassword ||
+                      !notRobot 
+                    }
+                    valid={
+                      validUserName &&
+                      validPassword &&
+                      notRobot &&
+                      availableUserName
+                    }
+                    type="submit"
+                    onClick={() => setWantSubmit(true)}
                   >
                     SIGN UP
                   </Button>
                 )}
-                {(!validUserName || !validPassword || !notRobot) && (
-                  <Button
-                    page={true}
-                    disabled
-                    valid={validUserName && validPassword && notRobot}
-                    type="button"
-                  >
-                    SIGN UP
+
+                {/* {isLoading && !finishedLoading && availableUserName &&(
+                  <Button page={true} disabled valid={true} type="submit">
+                    <LoadingSpinner></LoadingSpinner>
+                  </Button>
+                )} */}
+                { finishedLoading && (
+                  <Button page={true} disabled valid={true} type="submit">
+                    <Checked></Checked>
                   </Button>
                 )}
               </ButtonsContainer>

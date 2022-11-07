@@ -35,6 +35,7 @@
     "eject": "react-scripts eject",
     "doc": "jsdoc -c jsdoc.json"
   },
+  
   "eslintConfig": {
     "extends": [
       "react-app",

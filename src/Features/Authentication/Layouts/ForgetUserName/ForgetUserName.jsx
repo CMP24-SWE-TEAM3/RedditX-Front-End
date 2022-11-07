@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 
 import { SiReddit } from "react-icons/si";
@@ -7,6 +8,16 @@ import ReCAPTCHA from "react-google-recaptcha";
 import FormInputPageCom from "Features/Authentication/Components/FormInputPageCom/FormInputPageCom";
 
 import Button from "Features/Authentication/Components/Button/Button";
+
+import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
+
+import Checked from "Features/Authentication/Components/Checked/Checked";
+
+import { forgetUserNameApi } from "Features/Authentication/Services/authApi";
+
+import axios from "API/axios";
+
+import useFetchFunction from "Hooks/useFetchFunction";
 
 import {
   AuthContainer,
@@ -32,6 +43,8 @@ const defaultFormFields = {
  */
 
 const ForgetUserName = () => {
+
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
   /**
    * state to know if the email is valid or not to control what to show to the user
    */
@@ -52,6 +65,35 @@ const ForgetUserName = () => {
    */
   const [initialFocus, setInitialFocus] = useState(true);
 
+  /**
+   * state to if the user submitted the form or not
+   */
+  const [wantSubmit, setWantSubmit] = useState(false);
+
+  /**
+   * state to know what error message should be shown
+   */
+  // const [isLoading, setIsLoading] = useState(false);
+
+  /**
+   * state to know what error message should be shown
+   */
+  const [finishedLoading, setFinishedLoading] = useState(false);
+
+  /**
+   * the error message from forget username
+   */
+  const [forgetUserNameErrorMsg, setForgetUserNameErrorMsg] = useState("");
+  /**
+   * state to set the error message from forget username
+   */
+  const [showForgetUserNameErrorMsg, setShowForgetUserNameErrorMsg] =
+    useState(false);
+  /**
+   * state to know if the email sent or not
+   */
+  const [emailSent, setEmailSent] = useState(false);
+
   const { email } = formFields;
 
   /**
@@ -68,6 +110,7 @@ const ForgetUserName = () => {
 
   useEffect(() => {
     setValidEmail(USER_EMAIL.test(email));
+    setShowForgetUserNameErrorMsg(false);
   }, [email]);
 
   /**
@@ -76,6 +119,42 @@ const ForgetUserName = () => {
    */
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (wantSubmit) {
+     // setIsLoading(true);
+
+
+      // const response = await forgetUserNameApi(
+      //   email,
+      //   setForgetUserNameErrorMsg,
+      //   setShowForgetUserNameErrorMsg
+      // );
+
+      // if (response) {
+      //   setEmailSent(true);
+      // }
+
+
+      dataFetch({
+        axiosInstance: axios,
+        method: "post",
+        url: "/login/forget",
+        requestConfig: {
+          data: {
+            email: email,
+            operation: true,
+          },
+        },
+      });
+
+      if (!error) {
+        setEmailSent(true);
+        setFinishedLoading(true);
+      }
+
+      setWantSubmit(false);
+
+     // setIsLoading(false);
+    }
   };
 
   /**
@@ -92,7 +171,6 @@ const ForgetUserName = () => {
 
     setFormFields({ ...formFields, [name]: value });
   };
-
 
   /**
    * Function to handle the captcha and set the state of notRobot to true
@@ -129,48 +207,61 @@ const ForgetUserName = () => {
           }}
         />
 
-         {/* Show error message if the email is not valid and the user made a focus on the it's input field */}
+        {/* Show error message if the email is not valid and the user made a focus on the it's input field */}
         <ErrorParagraph valid={validEmail || initialFocus}>
           Please fix your email to continue
         </ErrorParagraph>
+        {error && (
+          <ErrorParagraph valid={!error || initialFocus}>
+            {error}
+          </ErrorParagraph>
+        )}
+        
         <br></br>
         <ButtonsContainer>
-
-          {/** Show an enabled button if the email is valid and the user has passed the captcha*/}
-          {validEmail && notRobot && (
+          {!isLoading && !finishedLoading && (
             <Button
               page={true}
-              valid={validEmail}
-              type="button"
+              disabled={!validEmail || !notRobot}
+              valid={validEmail && notRobot}
+              type="submit"
               onClick={() => {
-                
+                setWantSubmit(true);
               }}
             >
               EMAIL ME
             </Button>
           )}
 
-          {/** Show an disabled button if the email is not valid or the user has not passed the captcha*/}
-          {(!validEmail || !notRobot) && (
-            <Button
-              page={true}
-              disabled
-              valid={validEmail && notRobot}
-              type="button"
-            >
-              EMAIL ME
+          {isLoading  && (
+            <Button page={true} disabled valid={true} type="submit">
+              <LoadingSpinner></LoadingSpinner>
+            </Button>
+          )}
+          {!isLoading && finishedLoading && (
+            <Button page={true} disabled valid={true} type="submit">
+              <Checked></Checked>
             </Button>
           )}
         </ButtonsContainer>
-       
-          <ReCAPTCHAContainer validEmail={validEmail}>
-            <ReCAPTCHA
-              sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-              onChange={recaptchaHandler}
-              grecaptcha={grecaptchaObject}
-            />
-          </ReCAPTCHAContainer>
-       
+
+        {emailSent && (
+          <ErrorParagraph
+            validColor={emailSent}
+            valid={!emailSent || initialFocus}
+          >
+            Thanks! If there are any Reddit accounts associated with that email
+            address, you'll get an email with your username(s) shortly.
+          </ErrorParagraph>
+        )}
+
+        <ReCAPTCHAContainer validEmail={validEmail}>
+          <ReCAPTCHA
+            sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+            onChange={recaptchaHandler}
+            grecaptcha={grecaptchaObject}
+          />
+        </ReCAPTCHAContainer>
 
         <Forget>
           Don't have an email or need assistance logging <br /> in?

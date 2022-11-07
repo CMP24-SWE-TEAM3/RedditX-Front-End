@@ -1,0 +1,36 @@
+{
+  "login": [
+    {
+      "type": "bare email",
+      "email": "mohamedromee12@gmail.com",
+      "password": "123456789",
+      "username": "mohamedromee",
+      "googleOrFacebookToken": "token",
+      "accessToken": "token",
+      "expireIn": "2000"
+    }
+  ],
+  "signup": [
+    {
+      "{\"type\":\"bare email\",\"email\":\"mohamedromee12@gmail.com\",\"username\":\"janelljanella_95\",\"password\":\"g123456789\"}": "",
+      "id": 1
+    },
+    {
+      "{\"type\":\"bare email\",\"email\":\"mohamedromee12@gmail.com\",\"username\":\"janelljanella_95\",\"password\":\"g123456789\"}": "",
+      "id": 2
+    },
+    {
+      "{\"type\":\"bare email\",\"email\":\"mohamedromee12@gmail.com\",\"username\":\"fleeta_785\",\"password\":\"123456789\"}": "",
+      "id": 3
+    },
+    {
+      "{\"type\":\"bare email\",\"email\":\"mohamedromee12@gmail.com\",\"username\":\"ggg\",\"password\":\"gfgfggggg\"}": "",
+      "id": 4
+    }
+  ],
+  "username-available": [
+    {
+      "username": "t2_mohamedromee"
+    }
+  ]
+}
