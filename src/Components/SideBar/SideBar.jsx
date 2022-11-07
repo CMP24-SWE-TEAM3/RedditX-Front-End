@@ -11,7 +11,7 @@ import {GrFormPrevious} from "react-icons/gr";
  * Component that displays a sidebar which includes a dropdown menu in it
  * @returns {React.Component}
  */
-const SideBar = ({showButton,showSideBar,setShowSideBar}) => {
+const SideBar = ({showButton, showSideBar, setShowSideBar}) => {
 
     const handleClose = () => setShowSideBar(false);
     const handleShow = () => {

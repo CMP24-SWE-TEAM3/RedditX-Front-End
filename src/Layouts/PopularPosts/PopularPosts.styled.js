@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   height: 58px;
-  left: auto;
+  //left: auto;
   border-radius: 4px;
-  position: relative;
+  //position: relative;
   background-color: ${({theme})=>theme.background.primary};
   @media only screen and (max-width: 961px) {
     width: 100%;

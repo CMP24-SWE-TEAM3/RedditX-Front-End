@@ -16,13 +16,17 @@ export const ButtonStyled = styled(Button)`
     color: ${({theme}) => theme.color.primary} !important;
     box-shadow: none;
   }
-  .open-side{
 
+  .open-side {
+    margin-left:180px;
   }
 
 `
 // canvas styles
 export const OffcanvasBody = styled(Offcanvas)`
+  .offcanvas-body {
+    overflow-y: scroll;
+  }
   width: 270px !important;
   position: absolute;
   background: ${({theme}) => theme.background.primary};

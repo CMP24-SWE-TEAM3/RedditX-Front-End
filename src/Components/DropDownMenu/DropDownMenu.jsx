@@ -1,6 +1,5 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import React from "react";
-import CustomMenu from "Utils/CustomMenu/CustomMenu";
 import DropDownItem from "Components/DropDownItem/DropDownItem";
 import {DropDownMenuStyled} from "./DropDownMenu.styled";
 

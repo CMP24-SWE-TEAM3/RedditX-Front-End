@@ -7,10 +7,8 @@ export const DropDownMenuStyled = styled.div`
     border: 1px solid white;
     border-radius: 0 0 4px 4px;
     box-sizing: border-box;
-    //transform: none !important;
     margin-top: -1px;
     height: 482px;
-    //min-height: 100%;
     overflow: hidden scroll;
     position: fixed;
     display: flex;
@@ -21,6 +19,10 @@ export const DropDownMenuStyled = styled.div`
     right: 0;
     top: 48px;
     width: 270px;
+    
+    ul {
+      padding-top: 10px;
+    }
   }
 
   .form-control {

@@ -9,7 +9,7 @@ export const AnchorToggle = styled.a`
   flex: 1 ;
   -webkit-flex: 1;
   -ms-flex: 1;
-  max-width: 15%;
+  //max-width: 15%;
   flex-direction: row;
   flex-wrap: wrap;
   align-content: space-around;

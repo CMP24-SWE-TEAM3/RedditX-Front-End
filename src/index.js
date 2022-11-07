@@ -17,11 +17,17 @@ import App from "App";
 import reportWebVitals from "reportWebVitals";
 import {AuthContextProvider} from "Contexts/auth-context";
 import HomePage from "Pages/HomePage/HomePage"
+import {BrowserRouter, Route,Routes} from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
         <AuthContextProvider>
-            <HomePage/>
+            <BrowserRouter>
+                <Routes>
+                <Route path="/" element={<HomePage/>}/>
+                </Routes>
+                {/*<HomePage/>*/}
+            </BrowserRouter>
         </AuthContextProvider>
     </React.StrictMode>
 );
