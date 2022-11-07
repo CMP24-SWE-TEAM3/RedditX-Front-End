@@ -1,6 +1,7 @@
 // imports
 import React from 'react';
 import {Container} from "./Footer.styled";
+import { Link } from 'react-router-dom';
 
 /**
  * Component that has a languages of different countries , privacy polices and content policies
@@ -13,24 +14,24 @@ const Footer = () => {
             <div className={'content'}>
                 <div className={'menu-1'}>
                     <div className={'sec'}>
-                        <a href={"https://www.redditinc.com/policies/user-agreement"}>User Agreement </a>
-                        <a href={"https://www.redditinc.com/policies/privacy-policy"}>Privacy Policy</a>
+                        <Link href={"https://www.redditinc.com/policies/user-agreement"}>User Agreement </Link>
+                        <Link href={"https://www.redditinc.com/policies/privacy-policy"}>Privacy Policy</Link>
                     </div>
                     <div className={'sec'}>
-                        <a href={"https://www.redditinc.com/policies/user-agreement"}>Content Policy </a>
-                        <a href={"https://www.redditinc.com/policies/privacy-policy"}>Moderator Code of Conduct</a>
+                        <Link href={"https://www.redditinc.com/policies/user-agreement"}>Content Policy </Link>
+                        <Link href={"https://www.redditinc.com/policies/privacy-policy"}>Moderator Code of Conduct</Link>
                     </div>
                 </div>
                 <div className={'menu-1'}>
                     <div className={'sec'}>
-                        <a href={"https://www.redditinc.com/policies/user-agreement"}>English </a>
-                        <a href={"https://www.redditinc.com/policies/privacy-policy"}>Français</a>
-                        <a href={"https://www.redditinc.com/policies/privacy-policy"}>Italiano</a>
+                        <Link href={"https://www.redditinc.com/policies/user-agreement"}>English </Link>
+                        <Link href={"https://www.redditinc.com/policies/privacy-policy"}>Français</Link>
+                        <Link href={"https://www.redditinc.com/policies/privacy-policy"}>Italiano</Link>
                     </div>
                     <div className={'sec'}>
-                        <a href={"https://www.redditinc.com/policies/privacy-policy"}>Deutsch</a>
-                        <a href={"https://www.redditinc.com/policies/user-agreement"}>Español</a>
-                        <a href={"https://www.redditinc.com/policies/privacy-policy"}>Português</a>
+                        <Link href={"https://www.redditinc.com/policies/privacy-policy"}>Deutsch</Link>
+                        <Link href={"https://www.redditinc.com/policies/user-agreement"}>Español</Link>
+                        <Link href={"https://www.redditinc.com/policies/privacy-policy"}>Português</Link>
                     </div>
                 </div>
                 <div className={'inc'}>

@@ -1,5 +1,6 @@
-import React from 'react';
-import redditLogo from 'Assets/Images/redditLogo.svg'
+// imports
+import blackLogo from 'Assets/Images/black-logo.svg'
+import whiteLogo from 'Assets/Images/white-logo.svg';
 import logo from 'Assets/Images/logo.png'
 import {StyledIcon, StyledLink, StyledTextLogo} from './Badge.styled'
 import {Link} from "react-router-dom";
@@ -9,13 +10,16 @@ import {Link} from "react-router-dom";
  * @returns {React.Component}
  *
  */
-const Badge = () => {
+const Badge = ({theme}) => {
+    let textLogo = whiteLogo;
+    if (theme.id === 'light')
+        textLogo = blackLogo;
     return (
         <StyledLink>
-            <a href={"#"} target={"_self"}>
+            <Link href={"https://www.google.com"}>
                 <StyledIcon src={logo} alt="logo of reddit"/>
-                <StyledTextLogo src={redditLogo} alt="Reddit Logo"/>
-            </a>
+                < StyledTextLogo src={textLogo} alt="Reddit Logo"/>
+            </Link>
         </StyledLink>
     );
 };

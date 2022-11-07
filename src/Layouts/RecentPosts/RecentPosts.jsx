@@ -1,8 +1,9 @@
 import React from 'react';
 import {Container} from "./RecentPosts.styled";
 import imagePost from "Assets/Images/cats.png";
-import db from "Data/db.json";
-import {Link, RouteProps} from "react-router-dom";
+import {Link} from "react-router-dom";
+import useFetch from "Hooks/useFetch";
+import axios from "API/axios";
 
 /**
  * Component that displays a list of recent posts from homepage
@@ -10,22 +11,35 @@ import {Link, RouteProps} from "react-router-dom";
  * @return {React.Component}
  */
 const RecentPosts = () => {
+
+    // Fetch Recent posts
+    const [recentPostList, error, loading, reload] = useFetch({
+        axiosInstance: axios,
+        method: "GET",
+        //  /api/random-category/
+        url: "http://localhost:5000/RecentPosts",
+        requestConfig: {
+            headers: {
+                "Content-Language": "en-US",
+            },
+        },
+    });
     return (
         <Container>
             <div>
                 <div className="head">
                     <div>Recent Posts</div>
                 </div>
-                {db.RecentPosts.map(recentPost => {
+                {!loading && recentPostList.map(recentPost => {
                     return (
                         <div className="content" key={recentPost.id}>
                             <div className="cover">
                                 <div className={'child-1'}>
-                                    <a href={"https://i.redd.it/kfjabyn5tdy91.png"}>
+                                    <Link href={"https://i.redd.it/kfjabyn5tdy91.png"}>
                                         <div className={'post-img'}>
-                                            <img src={imagePost}/>
+                                            <img src={imagePost} alt={'recent post img'}/>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
 

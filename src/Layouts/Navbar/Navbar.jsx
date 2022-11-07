@@ -21,7 +21,7 @@ import AuthContext from "Contexts/auth-context";
  *
  * @returns {Component.React}
  */
-const Navbar = (props) => {
+const Navbar = ({theme}) => {
     const ButtonHandler = () => {
         alert('Hello Reddit!');
     }
@@ -29,7 +29,7 @@ const Navbar = (props) => {
     return (
         <StyledHeader>
             <div className='search'>
-                <Badge/>
+                <Badge theme={theme}/>
                 <DropDownLeft Name={"Home"}/>
                 <SearchBar/>
             </div>

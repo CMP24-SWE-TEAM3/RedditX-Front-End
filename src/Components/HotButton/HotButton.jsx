@@ -14,7 +14,7 @@ const HotButton = () => {
             <Button>
                 <span><RiRocketLine/> </span>
                 <span className="word">
-                    Hot
+                    Best
                 </span>
             </Button>
 

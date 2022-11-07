@@ -30,7 +30,7 @@ const DropDownRightButton = ({Mode}) => {
     return (
         <Container title={<DropdownButtonIconStyled/>} id="basic-nav-dropdown">
             <NavDropdown.Item as={'title'} disabled={'disabled'}>
-                <i><CgProfile/></i>
+                <i className={'ico'}><CgProfile/></i>
                 <span className={'stuff'}>My Stuff</span>
             </NavDropdown.Item>
             <div className={'first-sec'}>
@@ -51,10 +51,14 @@ const DropDownRightButton = ({Mode}) => {
             <NavDropdown.Divider/>
 
             <NavDropdown.Item as={'title'} disabled={'disabled'}>
-                <i><GiSixEyes/></i>
+                <i className={'ico'}><GiSixEyes/></i>
                 <span className={'stuff'}>View Options</span>
             </NavDropdown.Item>
             <div className={'first-sec'}>
+                <NavDropdown.Item>
+                    <span>Mod Mode</span>
+                    <span className={'switch-but'}> <SwitchButton/></span>
+                </NavDropdown.Item>
                 <NavDropdown.Item>
                     <span>Dark Mode</span>
                     <span className={'switch-but'}> <SwitchButton/></span>
@@ -62,23 +66,23 @@ const DropDownRightButton = ({Mode}) => {
             </div>
             <NavDropdown.Divider/>
             <NavDropdown.Item>
-                <span><MdDoNotDisturbAlt/></span>
+                <span className={'ico'}><MdDoNotDisturbAlt/></span>
                 <span>Create Community</span>
             </NavDropdown.Item>
             <NavDropdown.Item>
-                <span><HiOutlineSpeakerphone/></span>
+                <span className={'ico'}><HiOutlineSpeakerphone/></span>
                 <span>Advertise on Reddit</span>
             </NavDropdown.Item>
             <NavDropdown.Item>
-                <span><BiCoinStack/></span>
+                <span className={'ico'}><BiCoinStack/></span>
                 <span>Coins</span>
             </NavDropdown.Item>
             <NavDropdown.Item><
-                span><SiCircle/></span>
+                span className={'ico'}><SiCircle/></span>
                 <span>Talk</span>
             </NavDropdown.Item>
             <NavDropdown.Item>
-                <span><BsXDiamond/></span>
+                <span className={'ico'}><BsXDiamond/></span>
                 <span>Premium</span>
             </NavDropdown.Item>
 
@@ -86,7 +90,7 @@ const DropDownRightButton = ({Mode}) => {
             <Accordion defaultActiveKey="1">
                 <Accordion.Item eventKey="0">
                     <Accordion.Header>
-                        <span><AiOutlineClockCircle/></span><
+                        <span className={'ico'}><AiOutlineClockCircle/></span><
                         span> Recent Communities</span>
                     </Accordion.Header>
 
@@ -101,7 +105,7 @@ const DropDownRightButton = ({Mode}) => {
 
             <Accordion defaultActiveKey="1">
                 <Accordion.Item eventKey="0">
-                    <Accordion.Header><span><RiMarkPenLine/></span>
+                    <Accordion.Header><span className={'ico'}><RiMarkPenLine/></span>
                         <span>Explore</span>
                     </Accordion.Header>
                     <Accordion.Body>
@@ -153,7 +157,7 @@ const DropDownRightButton = ({Mode}) => {
             <Accordion defaultActiveKey="1">
                 <Accordion.Item eventKey="7">
                     <Accordion.Header>
-                        <span><CiSettings/></span>
+                        <span className={'ico'}><CiSettings/></span>
                         <span> Settings</span>
                     </Accordion.Header>
                     <Accordion.Body>
@@ -163,16 +167,16 @@ const DropDownRightButton = ({Mode}) => {
                 </Accordion.Item>
             </Accordion>
             <NavDropdown.Item>
-                <span><HiOutlineSpeakerphone/></span>
+                <span className={'ico'}><HiOutlineSpeakerphone/></span>
                 <span>Advertise on Reddit</span>
             </NavDropdown.Item>
             <NavDropdown.Item>
-                <span><CiCircleQuestion/></span><span>
+                <span className={'ico'}><CiCircleQuestion/></span><span>
                 Help Center</span></NavDropdown.Item>
             <Accordion defaultActiveKey="1">
                 <Accordion.Item eventKey="8">
                     <Accordion.Header>
-                        <span><CgDanger/></span>
+                        <span className={'ico'}><CgDanger/></span>
                         <span>More</span>
                     </Accordion.Header>
                     <Accordion.Body>
@@ -188,7 +192,7 @@ const DropDownRightButton = ({Mode}) => {
             <Accordion defaultActiveKey="1">
                 <Accordion.Item eventKey="9">
                     <Accordion.Header>
-                        <span><VscListOrdered/></span>
+                        <span className={'ico'}><VscListOrdered/></span>
                         <span>Terms & Policies</span>
                     </Accordion.Header>
                     <Accordion.Body>
@@ -201,7 +205,7 @@ const DropDownRightButton = ({Mode}) => {
                 </Accordion.Item>
             </Accordion>
             <NavDropdown.Item onClick={LoginHandler}>
-                <span><CiLogin/></span>
+                <span className={'ico'}><CiLogin/></span>
                 <span>Sign Up or Log In</span>
             </NavDropdown.Item>
             <NavDropdown.Item className={'footer'} disabled={'disabled'}>

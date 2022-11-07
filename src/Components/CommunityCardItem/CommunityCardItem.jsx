@@ -2,6 +2,7 @@ import {useState} from "react";
 import logo from "Assets/Images/logo.png";
 import {Container} from "./CommunityCardItem.styled";
 import {GrFormUp} from "react-icons/gr";
+import { Link } from "react-router-dom";
 
 /**
  * Component that  shows the names of communities up-to-date.
@@ -33,7 +34,7 @@ const CommunityCardItem = ({community}) => {
 
     return (
         <Container>
-            <a href="https://www.reddit.com/r/Steam/">
+            <Link href="https://www.reddit.com/r/Steam/">
                 <div className="item">
                     <span className={'num'}>1</span>
                     <span className='caret'><GrFormUp/></span>
@@ -52,7 +53,7 @@ const CommunityCardItem = ({community}) => {
                         </button>
                     </div>
                 </div>
-            </a>
+            </Link>
         </Container>
     );
 };

@@ -85,7 +85,6 @@ export const Container = styled.div`
   }
 `
 export const MainContainer = styled.div`
-  z-index: 3;
   @media (max-width: 960px) {
     width: 100%;
   }

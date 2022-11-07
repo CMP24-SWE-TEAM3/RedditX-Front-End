@@ -11,6 +11,7 @@ import link from 'Assets/Images/link.png';
 import db from 'Data/db.json';
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import { Link } from 'react-router-dom';
 
 /**
  * Component that displays notifications about changes in the state of the application
@@ -90,17 +91,17 @@ const NotificationButton = () => {
                         </span>
                         <span className={'right-side'}>
                             <span className={'message'}>
-                                <a href={'https://www.reddit.com/message/messages'}>Messages </a>
+                                <Link href={'https://www.reddit.com/message/messages'}>Messages </Link>
                             </span>
 
                             <button className={'but'}>
                                 <i><BsClipboardCheck/></i>
                             </button>
-                            <a className={'setting'} href={"https://www.reddit.com/settings/notifications"}>
+                            <Link className={'setting'} href={"https://www.reddit.com/settings/notifications"}>
                                 <i>
                                 <FiSettings/>
                                 </i>
-                            </a>
+                            </Link>
                         </span>
                     </Popover.Header>
                     <Popover.Body>
@@ -109,7 +110,7 @@ const NotificationButton = () => {
                             {db.comments.map(comment => {
                                 return (
                                     <i className={'content-i'}>
-                                        <a className={'content-a'}
+                                        <Link className={'content-a'}
                                            href={'https://www.reddit.com/r/Eln2aa4yn/comments/yi1rd4/ccccc/'}>
                                     <span className={'a-span'}>
                                      <img src={link} alt={'community-name'}/>
@@ -129,7 +130,7 @@ const NotificationButton = () => {
                                         </span>
                                         <span className={'info-child'}>{comment.message}</span>
                                     </span>
-                                        </a>
+                                        </Link>
 
                                     </i>)
                             })}
@@ -138,7 +139,7 @@ const NotificationButton = () => {
                     </Popover.Body>
 
                     <footer>
-                        <a href={'https://www.reddit.com/notifications'}>See All</a>
+                        <Link href={'https://www.reddit.com/notifications'}>See All</Link>
                     </footer>
                 </Popover>
             </Overlay>

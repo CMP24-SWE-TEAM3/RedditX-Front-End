@@ -3,7 +3,7 @@ import React, {Component, useState} from 'react';
 import {Container, MainContainer} from "./HomePage.styled";
 import Navbar from "Layouts/Navbar/Navbar";
 import CreatePost from "Layouts/CreatePost/CreatePost";
-import TopCommunities from "Components/CommunityCard/CommunityCard";
+import TopCommunities from "Layouts/CommunityCard/CommunityCard";
 import PopularPosts from "Layouts/PopularPosts/PopularPosts";
 import CreatePostSideBar from "Layouts/CreatePostSideBar/CreatePostSideBar";
 import Footer from "Layouts/Footer/Footer";
@@ -14,8 +14,7 @@ import {ThemeProvider} from "styled-components";
 import ScrollButton from "Components/ScrollButton/ScrollButton";
 import darkTheme from "Theme/darkTheme";
 import {Button} from "react-bootstrap";
-import {Route,Routes} from "react-router-dom";
-import RecentPosts from "../../Layouts/RecentPosts/RecentPosts";
+import RecentPosts from "Layouts/RecentPosts/RecentPosts";
 
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
@@ -35,13 +34,10 @@ const HomePage = () => {
 
     return (
         <>
-            {/*<Routes>*/}
-            {/*<Route path="/" element={<HomePage/>}/>*/}
-            {/*</Routes>*/}
             <ThemeProvider theme={theme}>
                 <styles.AppContainer>
                     <styles.AppHeader>
-                        <Navbar/>
+                        <Navbar theme={theme}/>
                         <MainContainer>
                             {/*<SideBar/>*/}
                             <div className="main"/>

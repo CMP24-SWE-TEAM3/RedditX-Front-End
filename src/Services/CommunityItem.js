@@ -11,11 +11,7 @@ const RandomCommunities = () => {
             method: 'GET',
             url: 'http://localhost/5000/feeback',
             requestConfig: {
-                data: {
-                    userId: '1',
-                    title: 'axios',
-                    body: 'axios'
-                }
+                headers: { 'Content-Language': 'en-US' }
             }
         })
     }

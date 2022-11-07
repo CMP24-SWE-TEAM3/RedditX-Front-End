@@ -49,6 +49,7 @@ const ModalCommunity = ({show, close}) => {
                         <Form.Group className="mb-3">
                         <Form.Control value={communityName} onChange={handlerChars} aria-required type={'text'}
                                           maxlength="21"/></Form.Group>
+
                         <AlarmInput alarmValue={21 - communityName.length}> {21 - communityName.length} Characters
                             remaining</AlarmInput>
 
@@ -59,58 +60,58 @@ const ModalCommunity = ({show, close}) => {
                         </h6>
                         <div className="form-check">
                             <input className="form-check-input" type="radio" name="flexRadioDisabled"
-                                   id="flexRadioDisabled"/>
-                            <div className={'full-content'}>
+                                   id="flexRadioDisabled1"/>
+                            <label className={'full-content'} for={'flexRadioDisabled1'}>
                                 <div className={'ico'}><BsFillPersonFill/></div>
-                                <label className="form-check-label">Public</label>
+                                <label className="form-check-label" for={'flexRadioDisabled1'} >Public</label>
                                 <div className={'div-content'}>
                                     Anyone can view, post, and comment to this community
                                 </div>
 
-                            </div>
+                            </label>
 
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDisabled"
-                                   id="flexRadioCheckedDisabled"/>
-                            <div className={'full-content'}>
+                            <input className="form-check-input" type="radio" aria-label={'checked'} name="flexRadioDisabled"
+                                   id="flexRadioCheckedDisabled2"/>
+                            <label className={'full-content'} for={'flexRadioCheckedDisabled2'}>
                                 <div className={'ico'}>
                                     <VscEye/>
                                 </div>
-                                <label className="form-check-label">
+                                <label className="form-check-label" for={'flexRadioCheckedDisabled2'}>
                                     Restricted
                                 </label>
                                 <div className={'div-content'}>
                                     Anyone can view this community, but only approved users can post
                                 </div>
-                            </div>
+                            </label>
                         </div>
                         <div className="form-check">
                             <input className="form-check-input" type="radio" name="flexRadioDisabled"
-                                   id="flexRadioCheckedDisabled"/>
-                            <div className={'full-content'}>
+                                   id="flexRadioCheckedDisabled3"/>
+                            <label className={'full-content'} for={'flexRadioCheckedDisabled3'} >
                                 <div className={'ico'}>
                                     <HiLockClosed/>
                                 </div>
-                                <label className="form-check-label">Private
+                                <label className="form-check-label" for={'flexRadioCheckedDisabled3'} >Private
                                 </label>
                                 <div className={'div-content'}>
                                     Anyone can view this community, but only approved users can post
                                 </div>
-                            </div>
+                            </label>
                         </div>
                     </div>
                     <div>
                         <div className={'adult'}>
                             Adult content
                         </div>
-                        <div className="adult-check">
-                            <input className="form-check-input w-5vm" type="checkbox" value=""/>
+                        <label className="adult-check">
+                            <input className="form-check-input w-5vm" type="checkbox" id={'checkbox'} value=""/>
                             <span>NSFW</span>
-                            <label className="form-check-label" htmlFor="flexCheckCheckedDisabled">
+                            <label className="form-check-label" for={'checkbox'}>
                                 18+ year old community
                             </label>
-                        </div>
+                        </label>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>

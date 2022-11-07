@@ -1,6 +1,8 @@
 import {CommunityContainer} from "./CommunityCard.styled";
-import db from 'Data/db.json';
 import CommunityCardItem from "Components/CommunityCardItem/CommunityCardItem";
+import axios from "API/axios";
+import useFetch from "Hooks/useFetch";
+import {Link} from "react-router-dom";
 
 /**
  * Component that links each  of community card item.
@@ -9,17 +11,32 @@ import CommunityCardItem from "Components/CommunityCardItem/CommunityCardItem";
  * @returns {React.Component}
  */
 const TopCommunities = () => {
+
+    // Fetch communities
+    const [communityList, error, loading, reload] = useFetch({
+        axiosInstance: axios,
+        method: "GET",
+        //  /api/random-category/
+        url: "http://localhost:5000/feedback",
+        requestConfig: {
+            headers: {
+                "Content-Language": "en-US",
+            },
+        },
+    });
+    // console.log(communityList);
+    // console.log(reload)
     return (
         <CommunityContainer>
             <div className={'cover'}>
                 <h2>
-                    <a href={"https://www.reddit.com/subreddits/leaderboard/"}>Top
+                    <Link href={"https://www.reddit.com/subreddits/leaderboard/"}>Top
                         <span>&nbsp; Gaming &nbsp;</span>
                         Communities
-                    </a>
+                    </Link>
                 </h2>
             </div>
-            {db.feedback && db.feedback.map(community => {
+            {!loading && communityList.map(community => {
                 return (
                     <CommunityCardItem key={community.id} community={community.name}/>
                 )

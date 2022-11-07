@@ -48,7 +48,7 @@ export const Container = styled(DropdownButton)
         overflow: hidden;
         background-color: white;
         position: absolute;
-        z-index: 10;
+        // z-index: 10;
       }
 
     `

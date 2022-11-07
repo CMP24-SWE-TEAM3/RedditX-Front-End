@@ -35,6 +35,10 @@ export const Container = styled.div`
     display: flex;
     padding-top: 12px;
   }
+  h1,h2,h3,h4,h5,h6,p {
+    margin: 0;
+    padding: 0;
+  }
 
 
   // styles of link's image
@@ -50,7 +54,7 @@ export const Container = styled.div`
   // styles of first child element 
   .child-1 {
     border-radius: 4px;
-    flex: 1 1 0%;
+    flex: 1 1 0;
     height: 100%;
     width: 100%;
     overflow: hidden;
@@ -89,6 +93,7 @@ export const Container = styled.div`
       color: ${({theme}) => theme.color.primary};
       margin-bottom: 4px;
       max-height: 36px;
+      text-align: left;
       overflow: hidden;
       text-overflow: ellipsis;
     }
@@ -99,6 +104,8 @@ export const Container = styled.div`
   .details {
     display: flex;
     flex-direction: column;
+    text-align: left;
+    margin-top: -10px;
 
     span {
       font-size: 12px;

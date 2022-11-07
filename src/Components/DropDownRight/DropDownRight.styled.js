@@ -13,6 +13,9 @@ export const Container = styled(NavDropdown)`
     vertical-align: 0.1em;
     color: #878a8c
   }
+  .ico{
+    font-size:20px;
+  }
 
   .first-sec {
     padding: 0 20px;
@@ -74,7 +77,7 @@ export const Container = styled(NavDropdown)`
 
   .accordion-button {
     padding: 5px;
-    font-size: 16px;
+    font-size: 14px;
     width: 100%;
     font-weight: 500;
     height: 100%;
@@ -167,7 +170,7 @@ export const Container = styled(NavDropdown)`
   .dropdown-item {
     white-space: break-spaces;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     height: 40px;
     width: 100%;
 

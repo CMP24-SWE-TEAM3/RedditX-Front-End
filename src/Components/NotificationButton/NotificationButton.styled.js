@@ -14,7 +14,7 @@ export const Container = styled.div`
     overflow: unset;
     width: 375px;
     max-width: 375px;
-    z-index: 100;
+    // z-index: 100;
   }
 
   & .word {
