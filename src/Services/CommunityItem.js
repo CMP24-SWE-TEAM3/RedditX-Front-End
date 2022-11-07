@@ -1,10 +1,29 @@
-// getFetchUsers() {
-//     this.setState({
-//         loading: true
-//     }, () => {
-//         fetch("http://localhost:3000/posts").then(res => res.json()).then(result => this.setState({
-//             loading: false,
-//             users: result
-//         })).catch(console.log);
-//     });
-// }
+import axios from "API/axios"
+import useFetchFunction from "../Hooks/useFetchFunction";
+import {useEffect} from "react";
+
+const RandomCommunities = () => {
+    const [posts, error, loading, axiosFetch] = useFetchFunction();
+
+    const getData = () => {
+        axiosFetch({
+            axiosInstance: axios,
+            method: 'GET',
+            url: 'http://localhost/5000/feeback',
+            requestConfig: {
+                data: {
+                    userId: '1',
+                    title: 'axios',
+                    body: 'axios'
+                }
+            }
+        })
+    }
+    useEffect(() => {
+        return () => {
+            getData();
+        };
+    }, []);
+
+}
+export default RandomCommunities;

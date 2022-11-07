@@ -134,6 +134,29 @@
       "id": "20",
       "name": "Predictions"
     }
+  ],
+  "RecentPosts": [
+    {
+      "id": "1",
+      "description":"new news in CUFE",
+      "points": "10",
+      "comments": "4",
+      "hours": "7"
+    },
+    {
+      "id": "2",
+      "description":"new news in reddit",
+      "points": "9",
+      "comments": "2",
+      "hours": "11"
+    },
+    {
+      "id": "3",
+      "description":"announcements updated in reddit",
+      "points": "5",
+      "comments": "7",
+      "hours": "1"
+    }
   ]
 }
 

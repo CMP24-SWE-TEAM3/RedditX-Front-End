@@ -10,7 +10,15 @@ import {ReactSwitch} from "./SwitchButton.styled";
  * @returns {React.Component}
  */
 const SwitchButton = () => {
+    /**
+     * state for toggle button  state
+     */
     const [checked, setChecked] = useState(false);
+
+    /**
+     * function for toggle button state change event handler
+     * @param nextChecked
+     */
     const handleChange = nextChecked => {
         setChecked(nextChecked);
     };

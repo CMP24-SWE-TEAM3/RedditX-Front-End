@@ -7,13 +7,18 @@ import AuthContext from "Contexts/auth-context";
  * @returns {Component.React} returns a login button component
  */
 const LoginButton = () => {
+    /**
+     * ctx is the context  for the login button component that will be disappeared after the login button has been clicked
+     * to show navigation in authenticated state
+     *
+     * @type {{onLogin: function(), onLogout: function(), isLoggedIn: boolean}}
+     */
     const ctx = useContext(AuthContext);
-    const alertLoginButton = () => {
-        alert("You have been logged in!");
-    }
     return (
         <>
-            <LoginStyled  onClick={()=>{ctx.onLogin()}} variant="outline-primary rounded-pill h-4">Log In</LoginStyled>
+            <LoginStyled onClick={() => {
+                ctx.onLogin()
+            }} variant="outline-primary rounded-pill h-4">Log In</LoginStyled>
         </>
 
     );

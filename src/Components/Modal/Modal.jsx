@@ -15,11 +15,24 @@ import {CgDanger} from "react-icons/cg";
  */
 
 const ModalCommunity = ({show, close}) => {
+    /**
+     * state of the community which tracks string is shown in input filed in modal
+     */
         const [communityName, setCommunityName] = useState('');
-        const handlerChars = (event) => {
+
+    /**
+     * function that controls length of string in modal's inputForm
+     * @param event
+     */
+    const handlerChars = (event) => {
             setCommunityName(event.target.value);
         }
-        const handleSubmit = (event) => {
+
+    /**
+     * function that handle form after submitting modal's form
+     * @param event
+     */
+    const handleSubmit = (event) => {
             event.preventDefault();
             alert(`The Community name you entered was: ${communityName}`);
         }

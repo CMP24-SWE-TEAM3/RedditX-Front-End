@@ -18,8 +18,15 @@ import Tooltip from "react-bootstrap/Tooltip";
  * @returns {React.Component}
  */
 const NotificationButton = () => {
-    // state change
+
+    /**
+     * state of the notification button is changed  when the user clicks on the notification button
+     */
     const [show, setShow] = useState(false);
+
+    /**
+     * state to track if mouse clicks outside notification's button or not
+     */
     const [target, setTarget] = useState(null);
 
     // ref the event listener

@@ -9,6 +9,9 @@ import ModalCommunity from 'Components/Modal/Modal';
  * @returns {Component.React}
  */
 const CreatePostSideBar = () => {
+    /**
+     * function that controls showing modal
+     */
     const [show, setShow] = useState(false);
     return (
         <>

@@ -8,11 +8,16 @@ import {ButtonStyled} from './ScrollButton.styled';
  */
 const ScrollButton = () => {
 
+    /**
+     * state for the scroll button state to make sure is visible when scrolling or not
+     */
     const [visible, setVisible] = useState(false)
 
+    /**
+     * function to be called when the pixel position changes and get called by event listeners
+     */
     const toggleVisible = () => {
         const scrolled = document.documentElement.scrollTop;
-        // console.log(scrolled, visible)
         if (scrolled > 200) {
             setVisible(true)
         } else if (scrolled <= 200) {
