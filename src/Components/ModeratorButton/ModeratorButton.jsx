@@ -7,7 +7,7 @@ import {GrMailOption} from 'react-icons/gr';
 import {TbBoxModel2} from "react-icons/tb";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-import {GlobalButtonStyled} from "../Global/GlobalButton.styled";
+import {GlobalButtonStyled} from "../GlobalButton/GlobalButton.styled";
 import {BsChatDots} from "react-icons/bs";
 
 /**

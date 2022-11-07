@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+// import Components
+import React from "react";
 import {OffcanvasBody} from "./SideBar.styled"
 import Offcanvas from "react-bootstrap/Offcanvas";
-import DropDownMenu from "Components/DropDownMenu/DropDownMenu";
 import {AiOutlineContainer} from "react-icons/ai";
 import {ButtonStyled} from "./SideBar.styled";
 import DropDownItem from "../DropDownItem/DropDownItem";

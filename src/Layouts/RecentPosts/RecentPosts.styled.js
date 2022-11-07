@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ImageCovered from "Assets/Images/cats.png";
 
 export const Container = styled.div`
   // Container
@@ -11,24 +12,25 @@ export const Container = styled.div`
 
 
   // header styles
-  .header {
+  .head {
     font-size: 10px;
     font-weight: 700;
     letter-spacing: .5px;
     line-height: 12px;
+    text-align: initial;
     text-transform: uppercase;
     padding-bottom: 4px;
     color: ${({theme}) => theme.color.primary};
 
-    h2 {
+    div {
       display: inline;
     }
   }
 
   // styles of main content
   .content {
-    border-bottom: 2px solid ${({theme}) => theme.background.primary};
-    padding-bottom: 12px;
+    border-bottom: 2px solid #f6f7f8;
+    //padding-bottom: 12px;
     cursor: pointer;
     display: flex;
     padding-top: 12px;
@@ -44,24 +46,30 @@ export const Container = styled.div`
     margin-right: 7px;
     width: 65px;
   }
- // styles of first child element 
+
+  // styles of first child element 
   .child-1 {
     border-radius: 4px;
-    flex: 1;
+    flex: 1 1 0%;
     height: 100%;
     width: 100%;
     overflow: hidden;
     position: relative;
     vertical-align: bottom;
+
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
   }
 
   .post-img {
-    background-image: url(https://b.thumbs.redditmedia.com/3jGUS-4D8Fn3UsQf6gsFOMO_jTRG5xF8nu1r0M0m2ho.jpg);
+    background-image: url(${ImageCovered});
     border-color: #EDEFF1;
 
     img {
-      display: none;
-      height: 100%;
+      //display: none;
+      width: 40px;
     }
   }
 

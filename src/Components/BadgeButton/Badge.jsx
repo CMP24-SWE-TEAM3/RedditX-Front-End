@@ -1,7 +1,8 @@
 import React from 'react';
-import redditLogo from 'Assets/images/redditLogo.svg'
-import logo from 'Assets/images/logo.png'
+import redditLogo from 'Assets/Images/redditLogo.svg'
+import logo from 'Assets/Images/logo.png'
 import {StyledIcon, StyledLink, StyledTextLogo} from './Badge.styled'
+import {Link} from "react-router-dom";
 
 /**
  * Component that displays logos of reddit website

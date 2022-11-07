@@ -1,7 +1,7 @@
 // imports
 import React from 'react';
 import {BsChatDots} from 'react-icons/bs';
-import {GlobalButtonStyled} from "Components/Global/GlobalButton.styled"
+import {ButtonsGroupStyled, GlobalButtonStyled} from "Components/GlobalButton/GlobalButton.styled"
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import {RiCoinsLine} from "react-icons/ri";
@@ -13,16 +13,17 @@ import {RiCoinsLine} from "react-icons/ri";
  */
 const ChatButton = (props) => {
     return (
-
-        <OverlayTrigger
-            key={'bottom'}
-            placement={'bottom'}
-            overlay={
-                <Tooltip id={`tooltip-bottom`}>Chat</Tooltip>}>
-            <GlobalButtonStyled onClick={props.onshow}>
-                <BsChatDots/>
-            </GlobalButtonStyled>
-        </OverlayTrigger>
+        <ButtonsGroupStyled>
+            <OverlayTrigger
+                key={'bottom'}
+                placement={'bottom'}
+                overlay={
+                    <Tooltip id={`tooltip-bottom`}>Chat</Tooltip>}>
+                <GlobalButtonStyled onClick={props.onshow}>
+                    <BsChatDots/>
+                </GlobalButtonStyled>
+            </OverlayTrigger>
+        </ButtonsGroupStyled>
     );
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container} from "./Category.styled";
+import {Container} from "./CategoryButton.styled";
 import Dropdown from "react-bootstrap/Dropdown";
 import {MdOutlineStorage} from 'react-icons/md';
 import {BsCardText} from 'react-icons/bs';

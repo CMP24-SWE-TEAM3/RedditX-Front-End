@@ -1,32 +1,33 @@
 import {useState} from "react";
-import logo from "Assets/images/logo.png";
+import logo from "Assets/Images/logo.png";
 import {Container} from "./CommunityCardItem.styled";
 import {GrFormUp} from "react-icons/gr";
+
 /**
  * Component that  shows the names of communities up-to-date.
  * @returns {Component.React}
  */
 const CommunityCardItem = ({community}) => {
-    const [btnContent, setstate] = useState("Join");
+    const [btnContent, setBtnContent] = useState("Join");
 
-    function clickHandler(e) {
+    const clickHandler = (e) => {
         e.preventDefault();
         if (btnContent === "Join") {
-            setstate("Joined");
+            setBtnContent("Joined");
         } else {
-            setstate("Join");
+            setBtnContent("Join");
         }
     }
 
-    function mouseEnterHandler() {
+    const mouseEnterHandler = () => {
         if (btnContent === "Joined") {
-            setstate("Leave");
+            setBtnContent("Leave");
         }
     }
 
-    function MouseLeaveHandler() {
+    const MouseLeaveHandler = () => {
         if (btnContent === "Leave") {
-            setstate("Joined");
+            setBtnContent("Joined");
         }
     }
 

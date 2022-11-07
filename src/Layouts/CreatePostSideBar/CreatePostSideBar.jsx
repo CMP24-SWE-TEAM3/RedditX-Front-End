@@ -1,5 +1,5 @@
 // imports
-import React, {useEffect, useState} from 'react';
+import React, { useState} from 'react';
 import {Container} from "./CreatePostSideBar.styled";
 import reddit from 'Assets/Images/reddit.png'
 import ModalCommunity from 'Components/Modal/Modal';
@@ -10,7 +10,6 @@ import ModalCommunity from 'Components/Modal/Modal';
  */
 const CreatePostSideBar = () => {
     const [show, setShow] = useState(false);
-    useEffect(() => console.log('Open Model'), [show]);
     return (
         <>
             <Container>

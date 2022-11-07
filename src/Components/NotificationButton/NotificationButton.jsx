@@ -1,13 +1,13 @@
 // imports
 import {IoMdNotificationsOutline} from 'react-icons/io';
-import {GlobalButtonStyled} from "Components/Global/GlobalButton.styled";
+import {GlobalButtonStyled} from "Components/GlobalButton/GlobalButton.styled";
 import React, {useState, useRef, useEffect} from 'react';
 import Overlay from 'react-bootstrap/Overlay';
 import Popover from 'react-bootstrap/Popover';
 import {Container} from "./NotificationButton.styled";
 import {BsThreeDots, BsClipboardCheck} from 'react-icons/bs';
 import {FiSettings} from 'react-icons/fi';
-import link from 'Assets/images/link.png';
+import link from 'Assets/Images/link.png';
 import db from 'Data/db.json';
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
@@ -26,7 +26,10 @@ const NotificationButton = () => {
     const ref = useRef(null);
     const wrapperRef = useRef(null);
 
-
+    /**
+     * Function that is called when the state of the application changes (when clicks outside of notification's buttons)
+     * @param ref
+     */
     const useOutsideAlerter = (ref) => {
         useEffect(() => {
 
@@ -46,6 +49,10 @@ const NotificationButton = () => {
         }, [ref]);
     }
 
+    /**
+     * Function hand clicks  on the button notification
+     * @param event
+     */
     const handleClick = (event) => {
         setShow(!show);
         setTarget(event.target);

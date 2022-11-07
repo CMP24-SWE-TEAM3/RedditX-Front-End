@@ -1,7 +1,7 @@
 // imports
 import React from 'react';
 import {HiOutlinePlus} from 'react-icons/hi';
-import {GlobalButtonStyled} from "Components/Global/GlobalButton.styled";
+import {GlobalButtonStyled} from "Components/GlobalButton/GlobalButton.styled";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import web from 'Assets/images/banner-background.png';
+import web from 'Assets/Images/banner-background.png';
 
 export const CommunityContainer = styled.div`
   & .cover {

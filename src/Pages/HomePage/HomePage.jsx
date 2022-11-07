@@ -12,8 +12,10 @@ import lightTheme from "Theme/lightTheme";
 import defaultTheme from "Theme/defaultTheme";
 import {ThemeProvider} from "styled-components";
 import ScrollButton from "Components/ScrollButton/ScrollButton";
-import darkTheme from "../../Theme/darkTheme";
+import darkTheme from "Theme/darkTheme";
 import {Button} from "react-bootstrap";
+import {Route,Routes} from "react-router-dom";
+import RecentPosts from "../../Layouts/RecentPosts/RecentPosts";
 
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
@@ -32,46 +34,55 @@ const HomePage = () => {
     };
 
     return (
-
-        <ThemeProvider theme={theme}>
-            <styles.AppContainer>
-                <styles.AppHeader>
-                    <Navbar/>
-                    <MainContainer>
-                        {/*<SideBar/>*/}
-                        <div className="main"/>
-                        <Container>
-                            <div className={'content-posts'}>
-                                <CreatePost/>
-                                <PopularPosts/>
-                                <Button onClick={handleToggleTheme}>
-                                    Toggle theme
-                                </Button>
-                                {/*<div className={'posts'}>*/}
-                                {/*</div>*/}
-                            </div>
-                            <aside>
-                                <div className={'sidebar'}>
-                                    <TopCommunities/>
-
-                                    <div className={'create-community'}>
-                                        <CreatePostSideBar/>
-                                    </div>
-                                    <footer>
-                                        <div className={'child-footer'}>
-                                            <Footer/>
-                                        </div>
-                                        <div className={'scroll-but'}>
-                                            <ScrollButton/>
-                                        </div>
-                                    </footer>
+        <>
+            {/*<Routes>*/}
+            {/*<Route path="/" element={<HomePage/>}/>*/}
+            {/*</Routes>*/}
+            <ThemeProvider theme={theme}>
+                <styles.AppContainer>
+                    <styles.AppHeader>
+                        <Navbar/>
+                        <MainContainer>
+                            {/*<SideBar/>*/}
+                            <div className="main"/>
+                            <Container>
+                                <div className={'content-posts'}>
+                                    <CreatePost/>
+                                    <PopularPosts/>
+                                    <Button onClick={handleToggleTheme}>
+                                        Toggle theme
+                                    </Button>
+                                    {/*<div className={'posts'}>*/}
+                                    {/*</div>*/}
                                 </div>
-                            </aside>
-                        </Container>
-                    </MainContainer>
-                </styles.AppHeader>
-            </styles.AppContainer>
-        </ThemeProvider>
+                                <aside>
+                                    <div className={'sidebar'}>
+                                        <TopCommunities/>
+
+                                        <div className={'create-community'}>
+                                            <CreatePostSideBar/>
+                                        </div>
+                                        <div className={'recent-posts'}>
+                                            <div>
+                                            <RecentPosts/>
+                                            </div>
+                                        </div>
+                                        <footer>
+                                            <div className={'child-footer'}>
+                                                <Footer/>
+                                            </div>
+                                            <div className={'scroll-but'}>
+                                                <ScrollButton/>
+                                            </div>
+                                        </footer>
+                                    </div>
+                                </aside>
+                            </Container>
+                        </MainContainer>
+                    </styles.AppHeader>
+                </styles.AppContainer>
+            </ThemeProvider>
+        </>
     );
 };
 

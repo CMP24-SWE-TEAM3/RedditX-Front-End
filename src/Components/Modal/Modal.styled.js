@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Modal from "react-bootstrap/Modal";
 
 export const ModalStyled = styled(Modal)`
-  .btn-close:focus{
+  .btn-close:focus {
     box-shadow: none;
   }
 
@@ -69,16 +69,23 @@ export const ModalStyled = styled(Modal)`
     align-items: center;
   }
 
+  .adult-check {
+    align-items: center;
+    display: flex;
+  }
+
   & .adult-check span {
     font-size: 12px;
-    line-height: 16px;
+    line-height: 17px;
     display: inline-block;
     background-color: #ff585b;
+    font-weight: 500;
     border-radius: 2px;
+    height: 15px;
     padding: 0 4px;
     color: ${({theme}) => theme.background.primary} !important;
     margin: 0 4px 0 8px;
-    vertical-align: text-top;
+    //vertical-align: middle;
   }
 
   & .form-check-label {
@@ -95,7 +102,34 @@ export const ModalStyled = styled(Modal)`
   & .form-check {
     display: flex;
     margin-bottom: 16px;
-    //align-items: center;
+
+    .form-check-input {
+      width: 1em;
+      height: 1em;
+
+      :checked {
+        background-color: #0079d3;
+      }
+
+      :focus {
+        box-shadow: none;
+      }
+    }
+  }
+
+  .adult-check .form-check-input {
+    width: 1.3em;
+    height: 1.3em;
+    fill: #878a8c;
+
+    :focus {
+      //border: none;
+      box-shadow: none;
+    }
+
+    :checked {
+      background-color: #0079d3;
+    }
   }
 
   & .adult {
@@ -108,10 +142,6 @@ export const ModalStyled = styled(Modal)`
 
   & .modal-footer {
     background-color: ${({theme}) => theme.background.post_background};
-  }
-
-  & .adult-check {
-    display: flex;
   }
 
   & .close-but {
@@ -143,7 +173,7 @@ export const ModalStyled = styled(Modal)`
     font-family: Noto Sans, Arial, sans-serif;
     font-size: 14px;
     font-weight: 700;
-    border: none ;
+    border: none;
     border-radius: 999px;
     letter-spacing: unset;
     line-height: 17px;

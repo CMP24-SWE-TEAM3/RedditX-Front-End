@@ -1,18 +1,23 @@
 import React from 'react';
 import {Container} from "./RecentPosts.styled";
 import imagePost from "Assets/Images/cats.png";
+import {Link,RouteProps} from "react-router-dom";
 
 const RecentPosts = () => {
     return (
         <Container>
             <div>
-                <div className="header"><h2>Recent Posts</h2></div>
+                <div className="head">
+                    <div>Recent Posts</div>
+                </div>
                 <div className="content">
                     <div className="cover">
                         <div className={'child-1'}>
-                            <div className={'post-img'}>
-                                <img src={imagePost}/>
-                            </div>
+                            <a href={"https://i.redd.it/kfjabyn5tdy91.png"}>
+                                <div className={'post-img'}>
+                                    <img src={imagePost}/>
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <div className="description">
@@ -20,15 +25,17 @@ const RecentPosts = () => {
                             this place needs more cats
                         </p>
                         <div className='details'>
+                            <div>
                         <span>
                             57 points
                         </span>
-                            <span className={'dots'}>
+                                <span className={'dots'}>
                                 10 comments
                             </span>
-                            <span className={'dots'}>
+                                <span className={'dots'}>
                                 10h
                             </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -36,7 +43,6 @@ const RecentPosts = () => {
             <button className={'but'}>
                 Clear
             </button>
-
         </Container>
     );
 };

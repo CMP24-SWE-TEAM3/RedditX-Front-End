@@ -19,8 +19,11 @@ export const Container = styled(NavDropdown)`
   }
 
   .accordion {
-    --bs-accordion-bg: ${({theme}) => theme.background.primary} !important;
+    --bs-accordion-bg: ${({theme}) => theme.canvas.primary} !important;
     --bs-accordion-active-bg: none;
+    :hover {
+      background-color: #e9ecef !important;
+    }
 
   }
 
@@ -77,7 +80,7 @@ export const Container = styled(NavDropdown)`
     height: 100%;
     box-shadow: none;
     white-space: nowrap;
-    color: ${({theme}) => theme.color.primary};
+    //color: ${({theme}) => theme.canvas} !important;
 
 
     //text-align: center;
@@ -85,10 +88,7 @@ export const Container = styled(NavDropdown)`
     :focus {
       box-shadow: 0 0;
     }
-
-    :hover {
-      background-color: ${({theme}) => theme.background.primary} !important;
-    }
+    
   }
 
   & span {

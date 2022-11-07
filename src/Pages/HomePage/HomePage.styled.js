@@ -44,18 +44,25 @@ export const Container = styled.div`
     }
   }
 
-  & .sidebar {
+  .sidebar {
     display: flex;
     height: 100%;
     flex-direction: column;
     width: inherit;
   }
-
-  & .create-community {
+  
+  // create community styles
+  .create-community {
     margin-top: 16px;
     width: 312px;
   }
 
+  // recent posts styles
+  .recent-posts {
+    margin-top: 16px;
+    width: 312px;
+  }
+  
   // footer styles
   & footer {
     flex: 1 1 auto;
