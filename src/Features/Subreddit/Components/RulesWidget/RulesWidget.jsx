@@ -11,17 +11,38 @@ import {
   Title
 } from "./RulesWidget.styled";
 
+/**
+ * show rules of the community
+ *
+ * @returns {React.Component} CreatePost component
+ */
 const RulesWidget = () => {
+  //rules
   const rules = [
     { title: "t1", description: "d1" },
     { title: "t2", description: "d2" },
     { title: "t3", description: "" },
   ];
 
-  const Rule = (props) => {
+  /**
+   * 
+   * @param {number} index - order of rule
+   * @param {number} len - the number of rules
+   * @param {string} title - title of rule
+   * @param {string} description - description of rule 
+   * @returns {React.Component} CreatePost component
+   */
+  const Rule = ({ index, len, title, description }) => {
+    //to toggle the dropdown of description
     const [toggle, setToggle] = useState(true);
-    const desc = props.description.length === 0 ? false : true;
-    const last = props.index === props.len ? true : false;
+    //to check if will put description or not
+    const desc = description.length === 0 ? false : true;
+    //check the last rule so not adding line after it
+    const last = index === len ? true : false;
+
+    /**
+     * onClick rule handler 
+     */
     function toggleHandler() {
       setToggle((prev) => !prev);
     }
@@ -29,8 +50,8 @@ const RulesWidget = () => {
     return (
       <RuleContainer onClick={toggleHandler} last={last} desc={desc}>
         <RuleFex>
-          <Number>{props.index + "."}</Number>
-          <Title>{props.title}</Title>
+          <Number>{index + "."}</Number>
+          <Title>{title}</Title>
           <Arrow>
             {desc && toggle && (
               <span className="icon">
@@ -47,7 +68,7 @@ const RulesWidget = () => {
         {desc && !toggle && (
           <Description>
             <div>
-              <p>{props.description}</p>
+              <p>{description}</p>
             </div>
           </Description>
         )}

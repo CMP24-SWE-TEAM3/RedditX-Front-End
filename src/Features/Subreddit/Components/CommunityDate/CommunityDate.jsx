@@ -19,50 +19,93 @@ import {
   SaveButton
 } from "./CommunityDate.styled";
 
+/**
+ * 
+ * @returns {React.Component} CreatePost component
+ */
 const CommunityDate = () => {
-  const [description, setDescription] = useState("hiiiiiiii");
+  const [description, setDescription] = useState("hi");
   const [inputFocus, setInputFocus] = useState(false);
   const [dummyDescription, setDummyDescription] = useState(description);
   const [modalShow, setModalShow] = useState(false);
   let isPrivate = true;
 
+  /**
+   * onchange set value of input text
+   * 
+   * @param {event} e 
+   */
   function inputHandler(e) {
     setDescription(e.target.value);
   }
+
+  /**
+   * handler when click to add description
+   */
   function AddDescriptionHandler() {
+    //set inputFocus true to show input text
     setInputFocus(true);
   }
+
+  /**
+   * handler when blur from the input text of description
+   * 
+   * @param {event} event 
+   */
   function blurInputHandler(event) {
+    //if the click outside the container of input
     if (!event.currentTarget.contains(event.relatedTarget)) {
+      // if there is a change in the description and doesn't save or cancel
       if (dummyDescription !== description) {
+        //show modal
         setModalShow(true);
+        // hide input
       } else setInputFocus(false);
     }
   }
+
+  /**
+   * onClick cancel handler
+   */
   function cancelHandler() {
     setDescription(dummyDescription);
     setInputFocus(false);
   }
+
+  /**
+   * onClick save handler
+   */
   function saveHandler() {
     setDummyDescription(description);
     setInputFocus(false);
   }
 
+  /**
+   * onClick discard on modal handler
+   */
   function discardHandler() {
     setDescription(dummyDescription);
     setInputFocus(false);
     setModalShow(false);
   }
 
+  /**
+   * onClick save on modal handler
+   */
   function saveModalHandler() {
     setDummyDescription(description);
     setInputFocus(false);
     setModalShow(false);
   }
 
-  const Description = (props) => {
+  /**
+   * 
+   * @param {function} onClick - handle when click on description 
+   * @returns {React.Component} CreatePost component
+   */
+  const Description = ({onClick}) => {
     return (
-      <DescriptionContainer onClick={props.onClick}>
+      <DescriptionContainer onClick={onClick}>
         <DescriptionInnerContainer>
           <DescriptionContent>
             {description}

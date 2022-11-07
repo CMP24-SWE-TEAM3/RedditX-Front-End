@@ -1,9 +1,13 @@
-import { useState } from "react";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { Container, Members, Online } from "./OnlineMembers.styled";
-
-const OnlineMember = () => {
+/**
+ * component that show number of members 
+ * and number of online members
+ * 
+ * @returns {React.Component} CreatePost component
+ */
+const OnlineMembers = () => {
   let members = 3;
   let onlineMembers = 5;
   return (
@@ -34,4 +38,4 @@ const OnlineMember = () => {
   );
 };
 
-export default OnlineMember;
+export default OnlineMembers;

@@ -19,7 +19,7 @@ export const Members = styled.div`
 
   p {
     font-weight: 400;
-    color: #7c7c7c;
+    color: ${({ theme }) => theme.color.muted};
     font-size: 12px;
     line-height: 16px;
     display: inline-block;
@@ -43,7 +43,7 @@ export const Online = styled.div`
 
   p {
     font-weight: 400;
-    color: #7c7c7c;
+    color: ${({ theme }) => theme.color.muted};
     font-size: 12px;
     line-height: 16px;
     display: inline-block;

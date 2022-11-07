@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.background.primary};
   color: #1a1a1b;
   fill: #1a1a1b;
-  border: 1px solid #ccc;
+  border: 1px solid ${({theme})=>theme.borderColor.secondary};
   border-radius: 4px;
   overflow: visible;
   word-wrap: break-word;

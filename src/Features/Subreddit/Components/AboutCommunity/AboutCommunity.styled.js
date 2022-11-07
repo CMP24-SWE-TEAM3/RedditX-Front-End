@@ -6,11 +6,10 @@ export const AboutCommunityContainer = styled.div`
   letter-spacing: 0.5px;
   line-height: 12px;
   text-transform: uppercase;
-  background-color: #0079d3;
+  background-color: ${({theme})=>theme.color.secondary};
   border-radius: 3px 3px 0 0;
-  color: #fff;
+  color: ${({theme})=>theme.background.primary};
   display: flex;
-  fill: #fff;
   padding: 0 12px 12px;
 `;
 
@@ -34,10 +33,10 @@ export const ModTools = styled.div`
   padding-top: 10px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  color: #fff;
+  color: ${({theme})=>theme.background.primary};;
 
   a.mod-tools {
-    color: #fff;
+    color: ${({theme})=>theme.background.primary};;
     border-radius: 2px;
     display: inline-block;
     padding: 4px;

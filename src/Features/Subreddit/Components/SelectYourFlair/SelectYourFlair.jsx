@@ -22,12 +22,21 @@ import {
   Title,
   XButton
 } from "./SelectYourFlair.styled";
-
+/**
+ * 
+ * @param {boolean} modalShow - boolean to show or hide modal
+ * @param {function} hide - handler on click on X button
+ * @param {function} onApply - handler when click apply for changes
+ * @returns {React.Component} CreatePost component
+ */
 const SelectYourFlair = ({modalShow, hide, onApply}) => {
+  // selected flair from radio buttons 
   const [selectedFlair, setSelectedFlair] = useState({});
+  //text on search
   const [searchValue, setSearchValue] = useState("");
   // const [check, setCheck] = useState(false);
 
+  //flair list
   const searchList = [
     {
       text: "lie",
@@ -51,10 +60,20 @@ const SelectYourFlair = ({modalShow, hide, onApply}) => {
     },
   ];
 
+  /**
+   * onchange of input text of search bar handler
+   * 
+   * @param {Event} e - event 
+   */
   function searchHandler(e) {
     setSearchValue(e.target.value);
   }
 
+  /**
+   * handler when select a flair
+   * 
+   * @param {Event} e -event
+   */
   function selectFlairHandler(e) {
     // setCheck(true);
     setSelectedFlair({
@@ -65,19 +84,31 @@ const SelectYourFlair = ({modalShow, hide, onApply}) => {
     });
   }
 
+  /**
+   * handler when change text of selected flair
+   * 
+   * @param {Event} e -event
+   */
   function changeSelectedFlairTextHandler(e) {
     setSelectedFlair((prev) => ({ ...prev, text: e.target.value }));
   }
 
+  /**
+   * handler when click discard
+   */
   function CLearHandler() {
     setSelectedFlair({});
     // setCheck(false);
   }
 
+  /**
+   * handler when click apply
+   */
   function applyHandler(){
     onApply(selectedFlair)
   }
 
+  //filtered flairs for search
   const filteredList = searchList.filter((flair) => {
     return flair.text.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1;
   });

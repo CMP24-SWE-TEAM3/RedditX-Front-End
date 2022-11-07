@@ -18,23 +18,42 @@ import {
   UserFlairContainer
 } from "./UserFlairPreview.styled";
 
-const UserFlairPreview = (props) => {
+/**
+ * component that preview your subreddit flair
+ * 
+ * @returns {React.Component} CreatePost component
+ */
+const UserFlairPreview = () => {
   // const flair = { text: "", backgroundColor: "", color: "" };
   const [flair, setFlair] = useState({
-    text: "hii",
+    text: "hi",
     color: "white",
     backgroundColor: "#000",
   });
+  //state to show modal
   const [modalShow, setModalShow] = useState(false);
 
+  /**
+   * handler on click on pen handler
+   */
   function clickPenHandler() {
     setModalShow(true);
   }
-  function changeFlair(e) {
+  
+  /**
+   * handler when click save on flair modal that takes new flair selected 
+   * 
+   * @param {object} flair 
+   */
+  function changeFlair(flair) {
     setModalShow(false);
-    setFlair(e);
+    setFlair(flair);
   }
 
+  /**
+   * 
+   * @returns {React.Component} CreatePost component
+   */
   const Preview = () => {
     return (
       <PreviewContainer>

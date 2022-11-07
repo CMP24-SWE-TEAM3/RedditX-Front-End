@@ -7,7 +7,11 @@ import {
   ModTools,
   Text
 } from "./AboutCommunity.styled";
-
+/**
+ * header of Community Card
+ * 
+ * @returns {React.Component} CreatePost component
+ */
 const AboutCommunity = () => {
   let isMod = true;
 

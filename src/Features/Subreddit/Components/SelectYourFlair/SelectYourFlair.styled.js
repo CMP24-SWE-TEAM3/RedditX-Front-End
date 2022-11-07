@@ -64,7 +64,7 @@ export const FlairModal = styled(Modal)`
   }
 `;
 export const Title = styled.div`
-  color: #1c1c1c;
+  color: ${({ theme }) => theme.color.primary};
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
@@ -81,7 +81,7 @@ export const XButton = styled.button`
   text-decoration: underline;
   svg {
     font-size: 21px;
-    fill: #878a8c;
+    fill: ${({ theme }) => theme.borderColor.primary};
   }
 `;
 
@@ -121,11 +121,11 @@ export const SearchEditDiv = styled.div`
   display: flex;
   height: 380px;
   flex-flow: column nowrap;
-  border-bottom: 1px solid #edeff1;
+  border-bottom: 1px solid ${({ theme }) => theme.lineColor.primary};
 `;
 
 export const SearchDiv = styled.div`
-  background-color: #f6f7f8;
+  background-color: ${({ theme }) => theme.button.muted};
   flex: 1;
   overflow-y: auto;
   padding: 16px 0;
@@ -133,15 +133,15 @@ export const SearchDiv = styled.div`
 
 export const SearchComponent = styled.div`
   position: relative;
-  color: #878a8c;
+  color: ${({ theme }) => theme.borderColor.primary};
   margin: 0 16px 16px;
 
   input {
-    background-color: #fff;
+    background-color: ${({theme})=>theme.background.primary} ;
     border-radius: 4px;
     border: 1px solid;
     box-sizing: border-box;
-    color: #1c1c1c;
+    color: ${({ theme }) => theme.color.primary};
     height: 48px;
     padding: 0 16px 0 32px;
     width: 100%;
@@ -172,7 +172,7 @@ export const StyledForm = styled(Form)`
 `;
 
 export const EditDiv = styled.div`
-  background-color: #fff;
+  background-color: ${({theme})=>theme.background.primary};
   padding: 16px;
 `;
 
@@ -182,7 +182,7 @@ export const EditFlairTitle = styled.div`
   letter-spacing: 0.5px;
   line-height: 12px;
   text-transform: uppercase;
-  color: #7c7c7c;
+  color: ${({theme})=>theme.color.muted} ;
   margin-bottom: 8px;
 `;
 
@@ -191,7 +191,7 @@ export const AllowedText = styled.div`
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
-  color: var(--newRedditTheme-bodyText);
+  color: ${({theme})=>theme.color.primary};
   margin-bottom: 8px;
 `;
 
@@ -199,15 +199,15 @@ export const EditFlairText = styled.div`
   display: flex;
   align-items: center;
   position: relative;
-  border: 1px solid #edeff1;
-  background-color: #f6f7f8;
+  border: 1px solid ${({ theme }) => theme.lineColor.primary};
+  background-color: ${({ theme }) => theme.button.muted};
   border-radius: 4px;
-  color: #1c1c1c;
+  color: ${({ theme }) => theme.color.primary};
   :hover {
-    border-color: #878a8c;
+    border-color: ${({ theme }) => theme.borderColor.primary};
   }
   :focus-within {
-    border-color: #0079d3;
+    border-color: ${({theme})=>theme.color.secondary} ;
   }
 `;
 
@@ -226,7 +226,7 @@ export const CharRem = styled.div`
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
-  color: #878a8c;
+  color: ${({ theme }) => theme.borderColor.primary};
   margin: 6px 4px;
   display: flex;
   align-items: center;
@@ -237,12 +237,12 @@ export const ShowMyFlairDiv = styled.div`
   flex-direction: row;
   align-items: center;
   padding: 16px;
-  border-top: 1px solid #edeff1;
+  border-top: 1px solid ${({ theme }) => theme.lineColor.primary};
   label.form-check-label {
     font-size: 14px;
     font-weight: 500;
     line-height: 26px;
-    color: #1c1c1c;
+    color: ${({ theme }) => theme.color.primary};
   }
 
   input.form-check-input {

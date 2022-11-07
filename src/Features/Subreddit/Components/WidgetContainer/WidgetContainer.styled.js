@@ -6,17 +6,17 @@ export const MainContainer = styled.div`
 `;
 
 export const InnerContainer = styled.div`
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: ${({theme})=>theme.background.primary} ;
+  border: 1px solid ${({theme})=>theme.borderColor.secondary};
   border-radius: 4px;
   overflow: visible;
   word-wrap: break-word;
 `;
 
 export const HeaderContainer = styled.div`
-  background-color: #0078d3;
-  fill: #fff;
-  color: #fff;
+  background-color: ${({theme})=>theme.color.secondary};
+  fill: ${({theme})=>theme.background.primary};
+  color: ${({theme})=>theme.background.primary};
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.5px;

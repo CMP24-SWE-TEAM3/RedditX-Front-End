@@ -10,7 +10,13 @@ import {
   ViewModeratorsContainer
 } from "./ModeratorWidget.styled";
 
+/**
+ * moderator widget show all moderators
+ *
+ * @returns {React.Component} CreatePost component
+ */
 const ModeratorWidget = () => {
+  //list of moderators
   const Moderators = [
     {
       userName: "khaled",
@@ -30,6 +36,10 @@ const ModeratorWidget = () => {
     },
   ];
 
+  /**
+   *
+   * @returns {React.Component} CreatePost component
+   */
   const MessageMod = () => {
     return (
       <Message to="#">
@@ -40,32 +50,44 @@ const ModeratorWidget = () => {
       </Message>
     );
   };
-
-  const Moderator = (props) => {
-    const hasFlair = props.moderator.flair;
+  /**
+   * moderator component
+   * 
+   * @param {object} moderator 
+   * @returns {React.Component} CreatePost component
+   */
+  const Moderator = ({ moderator }) => {
+    const hasFlair = moderator.flair;
     return (
       <ModeratorContainer>
         <Link to="">
-          <User>{"r/" + props.moderator.userName}</User>
+          <User>{"r/" + moderator.userName}</User>
         </Link>
         {hasFlair && (
           <ModeratorFlair
             style={{
-              color: props.moderator.flair.color,
-              backgroundColor: props.moderator.flair.backgroundColor,
+              color: moderator.flair.color,
+              backgroundColor: moderator.flair.backgroundColor,
             }}
           >
-            {props.moderator.flair.text}
+            {moderator.flair.text}
           </ModeratorFlair>
         )}
       </ModeratorContainer>
     );
   };
 
+  /**
+   * view all moderators link
+   * 
+   * @returns {React.Component} CreatePost component
+   */
   const ViewAllModerators = () => {
     return (
       <ViewModeratorsContainer>
-        <ViewAllModeratorsLink to="#">View All Moderators</ViewAllModeratorsLink>
+        <ViewAllModeratorsLink to="#">
+          View All Moderators
+        </ViewAllModeratorsLink>
       </ViewModeratorsContainer>
     );
   };

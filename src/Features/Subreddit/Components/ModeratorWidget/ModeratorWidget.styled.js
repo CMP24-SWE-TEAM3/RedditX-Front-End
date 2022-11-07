@@ -9,8 +9,8 @@ export const Message = styled(Link)`
   justify-content: center;
   align-items: center;
   position: relative;
-  border: 1px solid #0079d3;
-  color: #0079d3;
+  border: 1px solid ${({ theme }) => theme.color.secondary};
+  color: ${({ theme }) => theme.color.secondary};
   font-family: "Noto Sans", Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -52,7 +52,7 @@ export const ModeratorContainer = styled.div`
 `;
 
 export const User = styled.div`
-  color: #0079d3;
+  color: ${({ theme }) => theme.color.secondary};
   display: inline-block;
   max-width: 100%;
 `;
@@ -75,7 +75,7 @@ export const ViewAllModeratorsLink = styled(Link)`
   letter-spacing: 0.5px;
   line-height: 24px;
   text-transform: uppercase;
-  color: #0079d3;
+  color: ${({ theme }) => theme.color.secondary};
   margin-left: auto;
   line-height: 16px;
 `;

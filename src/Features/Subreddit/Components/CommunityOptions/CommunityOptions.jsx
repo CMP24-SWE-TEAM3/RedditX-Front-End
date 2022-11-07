@@ -9,17 +9,30 @@ import {
   StyledForm
 } from "./CommunityOptions.styled";
 
+/**
+ * Dropdown community option component 
+ * 
+ * @returns {React.Component} CreatePost component
+ */
 const CommunityOptions = () => {
   const [down, setDown] = useState(true);
-  const [toggle, setToggel] = useState(true);
+  const [toggle, setToggle] = useState(true);
   function clickHandler() {
     setDown((prev) => !prev);
   }
 
+  /**
+   * handler when click switch
+   */
   function toggleHandler() {
-    setToggel((prev) => !prev);
+    setToggle((prev) => !prev);
   }
 
+  /**
+   * switch component
+   * 
+   * @returns {React.Component} CreatePost component
+   */
   function Switch() {
     return (
       <StyledForm>

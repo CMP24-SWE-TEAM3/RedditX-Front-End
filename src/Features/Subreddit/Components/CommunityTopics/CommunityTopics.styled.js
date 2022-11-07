@@ -2,7 +2,7 @@ import Tooltip from "react-bootstrap/Tooltip";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  border-top: 1px solid #edeff1;
+  border-top: 1px solid ${({ theme }) => theme.lineColor.primary};
   margin-top: 16px;
   padding-top: 16px;
 `;
@@ -10,10 +10,10 @@ export const StyledTooltip = styled(Tooltip)`
   opacity: 1;
   .tooltip-arrow::before,
   .bs-tooltip-top .tooltip-arrow::before {
-    border-top-color: #0079d3;
+    border-top-color: ${({ theme }) => theme.color.secondary};
   }
   div.tooltip-inner {
-    background-color: #0079d3;
+    background-color: ${({ theme }) => theme.color.secondary};
   }
 `;
 export const CommunityTopic = styled.div`
@@ -34,7 +34,7 @@ export const CommunityTopic = styled.div`
     transition: all 0.1s linear 0s;
     margin-bottom: 1px;
     margin-left: 4px;
-    color: #878a8c;
+    color: ${({ theme }) => theme.borderColor.primary};
     vertical-align: middle;
     font-size: 20px;
     font-weight: 400;
@@ -42,7 +42,7 @@ export const CommunityTopic = styled.div`
     line-height: 16px;
   }
   span.topic-icon:hover {
-    color: #0079d3;
+    color: ${({ theme }) => theme.color.secondary};
   }
 `;
 
@@ -57,7 +57,7 @@ export const AddTopicBtn = styled.button`
   font-weight: 500;
   background: none;
   border: none;
-  color: #0079d3;
+  color: ${({ theme }) => theme.color.secondary};
   align-items: center;
   border-radius: 4px;
   display: flex;
@@ -80,27 +80,28 @@ export const AddTopicBtn = styled.button`
 export const DropDown = styled.div`
   display: block; /*${(props) => (props.displayBlock ? "block" : "none")};*/
   max-height: 198px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.background.primary};
   border-radius: 4px;
   min-width: 100%;
   overflow: hidden;
   overflow-y: auto;
   position: absolute;
   z-index: 10;
-  color: #1c1c1c;
+  color: ${({ theme }) => theme.color.primary};
   box-shadow: 0 2px 4px 0 rgba(28, 28, 28, 0.2);
 
   button.active {
-    color: #0079d3;
+    color: ${({ theme }) => theme.color.secondary};
     :hover {
-      color: #fff;
-      background-color: #0079d3;
+      color: ${({ theme }) => theme.background.primary};
+      background-color: ${({ theme }) => theme.color.secondary};
       outline: none;
     }
   }
 `;
 export const DropDownBtn = styled.button`
-  color: #1c1c1c; /*${(props) => (props.selected ? "#0079d3" : "#1c1c1c")};*/
+  color: ${({ theme }) => theme.color.primary}; /*${(props) =>
+    props.selected ? "#0079d3" : "#1c1c1c"};*/
   width: 100%;
   font-size: 14px;
   font-weight: ${(props) => props.weight};
@@ -117,15 +118,15 @@ export const DropDownBtn = styled.button`
   justify-content: space-between;
 
   :hover {
-    color: #fff;
-    background-color: #0079d3;
+    color: ${({ theme }) => theme.background.primary};
+    background-color: ${({ theme }) => theme.color.secondary};
     outline: none;
   }
 
   span.icon {
     height: 16px;
     width: 16px;
-    color: #0079d3;
+    color: ${({ theme }) => theme.color.secondary};
     margin-left: auto;
     overflow: hidden;
   }
@@ -133,14 +134,14 @@ export const DropDownBtn = styled.button`
 
 export const AddSubTopicContainer = styled.div`
   border-radius: 4px;
-  border: 1px solid #edeff1;
+  border: 1px solid ${({ theme }) => theme.lineColor.primary};
 
   :focus-within {
-    border: 1px solid #0079d3;
+    border: 1px solid ${({ theme }) => theme.color.secondary};
   }
 
   :hover {
-    border: 1px solid #0079d3;
+    border: 1px solid ${({ theme }) => theme.color.secondary};
   }
 `;
 
@@ -152,10 +153,10 @@ export const AddSubTopic = styled.div`
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
-  background-color: #f6f7f8;
+  background-color: ${({ theme }) => theme.button.muted};
   border-radius: 12px;
   border: 1px solid transparent;
-  color: #0079d3;
+  color: ${({ theme }) => theme.color.secondary};
   cursor: pointer;
   display: inline-block;
   margin-bottom: 8px;
@@ -179,10 +180,10 @@ export const AddSubTopic = styled.div`
     font-size: 14px;
     font-weight: 400;
     line-height: 18px;
-    color: #0079d3;
+    color: ${({ theme }) => theme.color.secondary};
     cursor: pointer;
     text-align: center;
-    fill: #0079d3;
+    fill: ${({ theme }) => theme.color.secondary};
   }
 `;
 
@@ -202,7 +203,7 @@ export const InputSubTopicContainer = styled.div`
     font-size: 14px;
     font-weight: 500;
     line-height: 18px;
-    color: #1c1c1c;
+    color: ${({ theme }) => theme.color.primary};
     display: inline-block;
     background-color: transparent;
     margin: 2px 8px 10px 0;
@@ -226,9 +227,9 @@ export const SuggestedTopicsContainer = styled.div`
   border-top-width: 0;
   border-bottom-width: 0;
   box-shadow: 0 2px 4px 0 rgba(28, 28, 28, 0.2);
-  background-color: #fff;
-  border-color: #edeff1;
-  color: #1c1c1c;
+  background-color: ${({ theme }) => theme.background.primary};
+  border-color: ${({ theme }) => theme.lineColor.primary};
+  color: ${({ theme }) => theme.color.primary};
   z-index: 1;
 
   .suggested-container {
@@ -243,7 +244,7 @@ export const SuggestedTopicsContainer = styled.div`
     line-height: 12px;
     text-transform: uppercase;
     padding: 12px 16px;
-    color: #7c7c7c;
+    color: ${({ theme }) => theme.color.muted};
   }
 
   div.add {
@@ -257,11 +258,11 @@ export const SuggestedTopicsContainer = styled.div`
   }
 
   span {
-    color: #7c7c7c;
+    color: ${({ theme }) => theme.color.muted};
   }
 
   div.add:hover {
-    background-color: #0079d3;
+    background-color: ${({ theme }) => theme.color.secondary};
     color: white;
 
     span {
@@ -276,7 +277,7 @@ export const NumOfSubTopics = styled.div`
   line-height: 16px;
   display: flex;
   padding: 4px 6px;
-  color: #7c7c7c;
+  color: ${({ theme }) => theme.color.muted};
 `;
 
 export const NoSubTopics = styled.span`
@@ -296,7 +297,7 @@ export const Cancel = styled.span`
 `;
 
 export const Save = styled.span`
-  color: #0079d3;
+  color: ${({ theme }) => theme.color.secondary};
   font-size: 12px;
   font-weight: 700;
   line-height: 16px;
@@ -328,7 +329,7 @@ export const SubtopicsContainer = styled.div`
     font-size: 14px;
     font-weight: 500;
     line-height: 18px;
-    color: #1c1c1c;
+    color: ${({ theme }) => theme.color.primary};
     display: inline-block;
     background-color: transparent;
     margin: 2px 8px 10px 0;
@@ -343,10 +344,10 @@ export const ItemContainer = styled.div`
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
-  background-color: #f6f7f8;
+  background-color: ${({ theme }) => theme.button.muted};
   border-radius: 12px;
   border: 1px solid transparent;
-  color: #0079d3;
+  color: ${({ theme }) => theme.color.secondary};
   cursor: pointer;
   display: inline-block;
   margin-bottom: 8px;
@@ -356,9 +357,10 @@ export const ItemContainer = styled.div`
   max-width: 245px;
 
   :hover {
-    background-color: ${({ focus }) =>
-      focus ? "#0079d3" : "rgba(26, 26, 27, 0.1)"};
-    color: ${({ focus }) => (focus ? "#fff" : "#0079d3")};
+    background-color: ${({ focus, theme }) =>
+      focus ? theme.color.secondary : "rgba(26, 26, 27, 0.1)"};
+    color: ${({ focus, theme }) =>
+      focus ? theme.background.primary : theme.color.secondary};
   }
 
   span.icon {
@@ -366,12 +368,12 @@ export const ItemContainer = styled.div`
     height: 5px;
     width: 5px;
     margin-left: 6px;
-    color: #878a8c;
+    color: ${({ theme }) => theme.borderColor.primary};
     line-height: 10px;
     font-size: 14px;
   }
   span.icon:hover {
-    color: #fff;
+    color: ${({ theme }) => theme.background.primary};
   }
 `;
 export const TopicsBlockHandle = styled.div`
@@ -379,11 +381,11 @@ export const TopicsBlockHandle = styled.div`
 `;
 
 export const PlusSpan = styled.span`
-  font-family: Noto Sans, Arial, sans-serif;
+  font-family: "Noto Sans", Arial, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
-  color: #0079d3;
+  color: ${({ theme }) => theme.color.secondary};
   cursor: pointer;
   margin-bottom: 8px;
   margin-right: 4px;

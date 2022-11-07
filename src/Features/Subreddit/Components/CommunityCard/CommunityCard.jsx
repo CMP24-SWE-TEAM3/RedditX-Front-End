@@ -3,10 +3,14 @@ import AboutCommunity from "../AboutCommunity/AboutCommunity";
 import CommunityDate from "../CommunityDate/CommunityDate";
 import CommunityOptions from "../CommunityOptions/CommunityOptions";
 import CommunityTopics from "../CommunityTopics/CommunityTopics";
-import OnlineMember from "../OnlineMembers/OnlineMembers";
+import OnlineMembers from "../OnlineMembers/OnlineMembers";
 import UserFlairPreview from "../UserFlairPreview/UserFlairPreview";
 import { Container, Content, Separator } from "./CommunityCard.styled";
 
+/**
+ * 
+ * @returns {React.Component} CreatePost component
+ */
 const CommunityCard = () => {
   return (
     <Container>
@@ -14,7 +18,7 @@ const CommunityCard = () => {
       <Content>
         <CommunityDate />
         <Separator />
-        <OnlineMember />
+        <OnlineMembers />
         {true && <CommunityTopics />}
         <Separator />
         <UserFlairPreview />

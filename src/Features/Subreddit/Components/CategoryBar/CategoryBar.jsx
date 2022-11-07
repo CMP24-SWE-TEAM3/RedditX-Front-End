@@ -14,10 +14,20 @@ import {
   StyledDrop
 } from "./CategoryBar.styled";
 
+/**
+ * - Category bar to choose category of posts
+ * 
+ * @returns {React.Component} CreatePost component
+ */
 const CategoryBar = () => {
   const [selected, setSelected] = useState("hot");
   const [showRise, setShowRise] = useState(false);
 
+  /**
+   * - A dropdown nav elements
+   * 
+   * @returns {React.Component} CreatePost component
+   */
   function DropNav() {
     return (
       <StyledDrop>
@@ -113,6 +123,11 @@ const CategoryBar = () => {
     );
   }
 
+  /**
+   * - horizontal navbar
+   * 
+   * @returns {React.Component} CreatePost component
+   */
   const Nav = () => {
     return (
       <>

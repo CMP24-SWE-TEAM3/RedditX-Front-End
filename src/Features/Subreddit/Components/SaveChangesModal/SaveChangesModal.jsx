@@ -2,6 +2,12 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { StyledModal } from "./saveChangesModal.styled";
 
+/**
+ * modal appear when unsaved changes blured
+ * 
+ * @param {object} props 
+ * @returns {React.Component} CreatePost component
+ */
 const SaveChangesModal = (props) => {
   return (
     <StyledModal

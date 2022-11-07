@@ -1,28 +1,45 @@
 import { useState } from "react";
 import { StyledButton } from "./Button.styled";
 
-const Button = (props) => {
-  const [text, setText] = useState(props.isJoined ? "joined" : "join");
-  const onJoin = () => {
-    props.onJoin(text === "join" ? true : false);
+/**
+ * 
+ * @param {boolean} isJoined - boolean if joined community or not
+ * @param {function} onJoin - function receive state of joining
+ * @returns {React.Component} CreatePost component
+ */
+const Button = ({isJoined, onJoin}) => {
+  const [text, setText] = useState(isJoined ? "joined" : "join");
+
+  /**
+   * function handle click join button
+   */
+  const onClickJoin = () => {
+    onJoin(text === "join" ? true : false);
     setText((prev) => (prev === "join" ? "joined" : "join"));
   };
+
+  /**
+   * function handle text when hover button
+   */
   const onHover = () => {
-    if (props.isJoined) {
+    if (isJoined) {
       setText("leave");
     }
   };
 
+  /**
+   * function handle text when mouse out the button
+   */
   const onLeave = () => {
-    if (props.isJoined) {
+    if (isJoined) {
       setText("joined");
     }
   };
 
   return (
-    <StyledButton joined={props.isJoined}>
+    <StyledButton joined={isJoined}>
       <div className="width">
-        <button onClick={onJoin} onMouseOver={onHover} onMouseOut={onLeave}>
+        <button onClick={onClickJoin} onMouseOver={onHover} onMouseOut={onLeave}>
           {text}
         </button>
       </div>

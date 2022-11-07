@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { BsCheck } from "react-icons/bs";
@@ -17,8 +17,6 @@ import {
   Container,
   DropDown,
   DropDownBtn,
-  InputSubTopic,
-  InputSubTopicContainer,
   ItemContainer,
   NoSubTopics,
   NumOfSubTopics,
@@ -30,7 +28,11 @@ import {
   TopicsBlockHandle
 } from "./CommunityTopics.styled";
 
-const CommunityTopics = (props) => {
+/**
+ *
+ * @returns {React.Component} CreatePost component
+ */
+const CommunityTopics = () => {
   //state to handle the view of drop down of topics
   const [viewTopics, setViewTopics] = useState(false);
   //state that store the main topic of community
@@ -62,35 +64,60 @@ const CommunityTopics = (props) => {
 
   //useEffect();
 
-  //handler on change of the input form of subtopic
+  /**
+   * handler on change of the input form of subtopic
+   *
+   * @param {Event} event - event
+   */
   function subtopicHandler(event) {
     setSubtopic(event.target.value);
   }
-  //handler on click the topic item in the drop menu of topics
+
+  /**
+   * handler on click the topic item in the drop menu of topics
+   *
+   * @param {Event} event -event
+   */
   function DropItemHandler(event) {
     setTopic(event.target.innerText);
     //to hide drop menu
     setViewTopics(false);
   }
-  //on click the drop menu to to toggle show of drop menu
+
+  /**
+   * handler on click the drop menu to to toggle show of drop menu
+   */
   function viewHandler() {
     //toggle view of drop down menu
     setViewTopics((prev) => !prev);
   }
-  //handler on blur from the selection of topic hide drop down menu
+
+  /**
+   * handler on blur from the selection of topic hide drop down menu
+   *
+   * @param {Event} event -event
+   */
   function blurHandler(event) {
     //this if condition so if click on one from topics doesn't blur
     if (!event.currentTarget.contains(event.relatedTarget)) {
       setViewTopics(false);
     }
   }
-  //handler on click to add subtopic when there is no topics
+
+  /**
+   * handler on click to add subtopic when there is no topics
+   */
   function viewSubtopicInputHandler() {
     //view input to add subtopic
     // setViewSubtopicInput(true);
     setFocus(true);
   }
-  //handler on click item from subtopic drop down menu
+
+  /**
+   * handler on click item from subtopic drop down menu
+   *
+   * @param {Event} event - event
+   */
   function clickSubtopicHandler(event) {
     const index = subtopics.findIndex((element) => {
       return element.toLowerCase() === event.target.innerText.toLowerCase();
@@ -102,9 +129,15 @@ const CommunityTopics = (props) => {
       });
     }
     // setViewSubtopicInput(true);
+    setSubtopic("");
     setFocus(true);
   }
-  //handler on keydown check enter key to add topic
+
+  /**
+   * handler on keydown check enter key to add topic
+   *
+   * @param {Event} event - event
+   */
   function enterSubtopicHandler(event) {
     if (event.key === "Enter") {
       const index = subtopics.findIndex((element) => {
@@ -119,7 +152,10 @@ const CommunityTopics = (props) => {
       setFocus(true);
     }
   }
-  //handler on click cancel button to unsave changes
+
+  /**
+   * handler on click cancel button to discard changes
+   */
   function cancelHandler() {
     // dummySubtopics.forEach((element) => {
     //   setSubtopics((prev) => prev.filter((value) => value !== element));
@@ -129,14 +165,21 @@ const CommunityTopics = (props) => {
     setFocus(false);
     setModalShow(false);
   }
-  //handler on click save button to save changes
+
+  /**
+   * handler on click save button to save changes
+   */
   function saveHandler() {
     setFocus(false);
     setModalShow(false);
     setLastSubtopics(subtopics);
   }
 
-  //handler on blur from the container of input of subtopics
+  /**
+   * handler on blur from the container of input of subtopics
+   *
+   * @param {Event} event - event
+   */
   function blurFirstInputHandle(event) {
     if (!event.currentTarget.contains(event.relatedTarget)) {
       if (
@@ -144,17 +187,26 @@ const CommunityTopics = (props) => {
         JSON.stringify(lastSubtopics.sort())
       ) {
         setModalShow(true);
-      }
+      } else setFocus(false);
     }
   }
-  //handler foe model x button
+
+  /**
+   * handler for model x button
+   */
+  /*
   function hideHandler() {
     setModalShow(false);
     // setViewSubtopicInput(true);
     setFocus(true);
   }
+  */
 
-  //handler on click subtopic item
+  /**
+   * handler on click subtopic item
+   *
+   * @param {Event} e - event
+   */
   function clickSubtopicItemHandler(e) {
     if (focus) {
       setSubtopics((prev) =>
@@ -162,7 +214,12 @@ const CommunityTopics = (props) => {
       );
     }
   }
-  //handler on click "x" in subtopic item
+
+  /**
+   * handler on click "x" in subtopic item
+   *
+   * @param {Event} e - event
+   */
   function clickXHandler(e) {
     if (focus) {
       setSubtopics((prev) =>
@@ -173,6 +230,11 @@ const CommunityTopics = (props) => {
     }
   }
 
+  /**
+   * handler when click add in suggested dropdown
+   *
+   * @param {Event} e - event
+   */
   function clickAddHandler(e) {
     const add = e.target.innerText;
     const final = add.slice(4, add.length);
@@ -192,11 +254,17 @@ const CommunityTopics = (props) => {
   const filteredTopics = topics.filter((topic) => {
     return topic.topic.toLowerCase().indexOf(subtopic.toLowerCase()) !== -1;
   });
-  //drop down menu of blocks
-  const TopicsBlock = (props) => {
+
+  /**
+   * drop down menu of topics
+   *
+   * @param {Array<string>} data
+   * @returns {React.Component} CreatePost component
+   */
+  const TopicsBlock = ({ data }) => {
     return (
       <DropDown onBlur={blurHandler} tabIndex={0}>
-        {props.data.map((element) => {
+        {data.map((element) => {
           return (
             <DropDownItem
               text={element.topic}
@@ -209,7 +277,16 @@ const CommunityTopics = (props) => {
       </DropDown>
     );
   };
-  //drop down item
+
+  /**
+   * drop down item
+   *
+   * @param {string} text - text of topic/subtopic
+   * @param {string} selected - the selected topic/subtopic
+   * @param {function}  clickHandle - handler on click topic/subtopic
+   * @param {function} weight - font weight of text
+   * @returns {React.Component} CreatePost component
+   */
   const DropDownItem = ({ text, selected, clickHandle, weight }) => {
     return (
       <DropDownBtn
@@ -229,10 +306,17 @@ const CommunityTopics = (props) => {
   };
 
   //subtopic item
-  const SubtopicItem = (props) => {
+  /**
+   * subtopic item
+   *
+   * @param {string} text - subtopic text
+   * @param {function} onClick - function handle on click the item
+   * @returns {React.Component} CreatePost component
+   */
+  const SubtopicItem = ({ text, onClick }) => {
     return (
-      <ItemContainer focus={focus} onClick={props.onClick} tabIndex="0">
-        {props.text}
+      <ItemContainer focus={focus} onClick={onClick} tabIndex="0">
+        {text}
         {focus && (
           <span className="icon" tabIndex="0" onClick={clickXHandler}>
             <HiXMark />
@@ -241,8 +325,13 @@ const CommunityTopics = (props) => {
       </ItemContainer>
     );
   };
-  //container that contain subtopics and input for subtopic
-  const SubtopicsContent = (props) => {
+
+  /**
+   * container that contain subtopics and input for subtopic
+   *
+   * @returns {React.Component} CreatePost component
+   */
+  const SubtopicsContent = () => {
     return (
       <SubtopicsContainer
         onClick={() => {
@@ -286,7 +375,12 @@ const CommunityTopics = (props) => {
       </SubtopicsContainer>
     );
   };
-  //drop down of suggested subtopics
+
+  /**
+   * drop down of suggested subtopics
+   *
+   * @returns {React.Component} CreatePost component
+   */
   const SubtopicBlock = () => {
     return (
       <TopicsBlockHandle className="topics-block-handle">
