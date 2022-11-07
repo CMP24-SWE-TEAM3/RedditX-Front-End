@@ -6,6 +6,7 @@ import FlairModal from "Features/Post/Components/FlairModal/FlairModal";
 
 // Import bootstrap components
 import { Form } from "react-bootstrap";
+import Spinner from "react-bootstrap/Spinner";
 
 // Import styled components
 import {
@@ -15,34 +16,12 @@ import {
   SubmitButtons,
 } from "./DraftEditorForm.styled";
 
+// Import api
+import axios from "API/axios";
+import useFetch from "Hooks/useFetch";
+
 // Import hooks
 import { useState, useRef } from "react";
-const flairs = [
-  {
-    id: "t7_63248d012f459a937e2684fd",
-    text: "Flair 1 text",
-    flairBackGroundColor: "rgb(70, 209, 96)",
-    flairTextColor: "rgb(255, 255, 255)",
-    modOnly: true,
-    allowUserEdits: true,
-  },
-  {
-    id: "t7_63248d012f459a937e1223123d",
-    text: "Flair 2 text",
-    flairBackGroundColor: "blue",
-    flairTextColor: "rgb(255, 255, 255)",
-    modOnly: true,
-    allowUserEdits: true,
-  },
-  {
-    id: "t1_632012f459a937e1223123d",
-    text: "Flair 3 text",
-    flairBackGroundColor: "red",
-    flairTextColor: "rgb(70, 209, 96)",
-    modOnly: true,
-    allowUserEdits: true,
-  },
-];
 
 /**
  * The form of draft editor in create post page (Draft editor tab)
@@ -62,6 +41,16 @@ const DraftEditorForm = () => {
   // Ref for title
   const titleRef = useRef(null);
 
+  const [flairs, error, isLoading, reload] = useFetch({
+    axiosInstance: axios,
+    method: "GET",
+    url: "/flairs/",
+    requestConfig: {
+      headers: {
+        "Content-Language": "en-US",
+      },
+    },
+  });
   /**
    * Handle title change
    *
@@ -98,6 +87,8 @@ const DraftEditorForm = () => {
         flairIndex={flairIndex}
         setFlairIndex={setFlairIndex}
         flairList={flairs}
+        error={error}
+        isLoading={isLoading}
       />
       <StyledDraftEditorForm>
         <Form.Group className="title-group mb-3">

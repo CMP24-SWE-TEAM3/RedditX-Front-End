@@ -1,7 +1,7 @@
 // Import bootstrap components
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { Form } from "react-bootstrap";
+import { Form, Spinner } from "react-bootstrap";
 
 // Import styled components
 import {
@@ -27,7 +27,15 @@ import { CiSearch } from "react-icons/ci";
 // Import hooks
 import { useState } from "react";
 
-const FlairModal = ({ show, onHide, flairList, flairIndex, setFlairIndex }) => {
+const FlairModal = ({
+  show,
+  onHide,
+  flairList,
+  flairIndex,
+  setFlairIndex,
+  error,
+  isLoading,
+}) => {
   // State to store text of edited flair
   const [flairEditText, setFlairEditText] = useState("");
 
@@ -80,26 +88,29 @@ const FlairModal = ({ show, onHide, flairList, flairIndex, setFlairIndex }) => {
             <CiSearch size={25} />
             <SearchInput type="search" placeholder="Search for flair" />
           </SearchContainer>
-          <Form>
-            {flairList.map((flair, index) => (
-              <FormCheck type={"radio"} key={flair.id} id={flair.id}>
-                <Form.Check.Input type={"radio"} name="flair" id={flair.id} />
-                <FormCheckLabel
-                  onClick={() => {
-                    setFlairIndex(index);
-                    setFlairEditText(flairList[index].text);
-                  }}
-                >
-                  <Flair
-                    color={flair.flairTextColor}
-                    backgroundColor={flair.flairBackGroundColor}
+          {isLoading && <Spinner />}
+          {!isLoading && (
+            <Form>
+              {flairList.map((flair, index) => (
+                <FormCheck type={"radio"} key={flair.id} id={flair.id}>
+                  <Form.Check.Input type={"radio"} name="flair" id={flair.id} />
+                  <FormCheckLabel
+                    onClick={() => {
+                      setFlairIndex(index);
+                      setFlairEditText(flairList[index].text);
+                    }}
                   >
-                    {flair.text}
-                  </Flair>
-                </FormCheckLabel>
-              </FormCheck>
-            ))}
-          </Form>
+                    <Flair
+                      color={flair.flairTextColor}
+                      backgroundColor={flair.flairBackGroundColor}
+                    >
+                      {flair.text}
+                    </Flair>
+                  </FormCheckLabel>
+                </FormCheck>
+              ))}
+            </Form>
+          )}
         </RadioContainer>
         {flairIndex !== null && (
           <EditFlair empty={flairEditText.length === 0}>

@@ -181,6 +181,7 @@ const DraftEditor = () => {
    * @param {String} blockType - The type of block style to change to.
    */
   function toggleBlockType(blockType) {
+    focus();
     onChange(RichUtils.toggleBlockType(editorState, blockType));
   }
 
@@ -190,6 +191,7 @@ const DraftEditor = () => {
    * @param {String} inlineStyle - The type of inline style to change to.
    */
   function toggleInlineStyle(inlineStyle) {
+    focus();
     onChange(RichUtils.toggleInlineStyle(editorState, inlineStyle));
   }
 

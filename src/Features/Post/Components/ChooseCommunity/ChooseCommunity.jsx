@@ -43,39 +43,17 @@ const ChooseCommunity = () => {
   // State to control the search input value
   const [searchText, setSearchText] = useState("");
   // Fetch communities
-  /*TODO: const*/ let [communityList, error, loading, reload] = useFetch({
+  const [communityList, error, loading, reload] = useFetch({
     axiosInstance: axios,
     method: "GET",
-    url: "/subreddits/mine/subscriber?page=4&count=10&limit=50",
+    url: "/communities/",
     requestConfig: {
       headers: {
         "Content-Language": "en-US",
       },
     },
   });
-  communityList = [
-    {
-      srIcon: Image,
-      communityID: "t5_imagepro",
-      description: "This is a community description",
-      name: "go 1",
-      category: "Gaming",
-    },
-    {
-      srIcon: Image,
-      communityID: "t5_imagepro1",
-      description: "This is a community description",
-      name: "Gaming 2",
-      category: "Gaming",
-    },
-    {
-      srIcon: Image,
-      communityID: "t5_imagepro2",
-      description: "This is a community description",
-      name: "Hello 3",
-      category: "Gaming",
-    },
-  ];
+
   // console.log("communityList = ", communityList);
   // console.log("error = ", error);
   return (
