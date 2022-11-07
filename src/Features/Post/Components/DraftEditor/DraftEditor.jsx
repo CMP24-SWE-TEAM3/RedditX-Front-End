@@ -72,7 +72,6 @@ const Link = (props) => {
         href={url}
         onClick={(e) => {
           e.preventDefault();
-          console.log("hello");
         }}
       >
         {props.children}

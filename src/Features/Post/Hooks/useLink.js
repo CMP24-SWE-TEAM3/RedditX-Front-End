@@ -138,7 +138,6 @@ const useLink = (
    */
   const promptForLink = (e) => {
     e.preventDefault();
-    console.log(editorState);
     const selection = editorState.getSelection();
     if (!selection.isCollapsed()) {
       const contentState = editorState.getCurrentContent();
@@ -159,7 +158,6 @@ const useLink = (
       const start = selectionState.getStartOffset();
       const end = selectionState.getEndOffset();
       const selectedText = currentContentBlock.getText().slice(start, end);
-      console.log("selectedText", selectedText);
       setLinkUrlValue(url);
       setLinkTextValue(selectedText);
       setShowLinkURLInput(true);

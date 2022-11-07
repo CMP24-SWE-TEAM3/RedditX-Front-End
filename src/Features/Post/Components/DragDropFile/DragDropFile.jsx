@@ -87,11 +87,13 @@ function DragAndDropFile() {
           setSelectedImageId={setSelectedImageId}
         />
       </DragAndDropFrame>
-      <PreviewImage
-        selectedImageId={selectedImageId}
-        files={files}
-        isLoadingDone={isLoadingDone}
-      />
+      {files.length > 1 && (
+        <PreviewImage
+          selectedImageId={selectedImageId}
+          files={files}
+          isLoadingDone={isLoadingDone}
+        />
+      )}
     </div>
   );
 }
