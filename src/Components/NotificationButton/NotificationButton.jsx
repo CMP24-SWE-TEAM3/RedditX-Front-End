@@ -70,7 +70,7 @@ const NotificationButton = () => {
     return (
         <Container ref={ref}>
             <OverlayTrigger
-                key={Math.random()}
+                key={'bottom'}
                 placement={'bottom'}
                 overlay={
                     <Tooltip id={`tooltip-bottom`}>Notification</Tooltip>}>

@@ -7,7 +7,7 @@ import {AnchorToggle} from "./CustomToggle.styled";
  * @type {React.ForwardRefExoticComponent<React.PropsWithoutRef<{readonly onClick?: *, readonly children?: *}> & React.RefAttributes<unknown>>}
  */
 const CustomToggle = React.forwardRef(({children, onClick}, ref) => (
-    <AnchorToggle key={Math.random()}  href="" ref={ref} onClick={(e) => {
+    <AnchorToggle href="" ref={ref} onClick={(e) => {
         e.preventDefault();
         onClick(e)
     }}>{children}
