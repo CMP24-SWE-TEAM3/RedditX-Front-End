@@ -1,21 +1,21 @@
 import Header from "Features/Subreddit/Components/Index Header/Header";
-import IndexContainer from "Features/Subreddit/Components/Index Body/IndexContainer"
-import {IndexPageContainer, IndexPage} from './IndexPage.styled'
+import IndexContainer from "Features/Subreddit/Components/Index Body/IndexContainer";
+import { IndexPageContainer, StyledIndexPage } from "./IndexPage.styled";
 
 /**
  * Component that contains the whole Indexing Page
  *
  * @returns {React.Component}
  */
-function Index() {
+const IndexPage = () => {
   return (
     <IndexPageContainer>
-      <IndexPage>
+      <StyledIndexPage>
         <Header />
         <IndexContainer />
-      </IndexPage>
+      </StyledIndexPage>
     </IndexPageContainer>
   );
-}
+};
 
-export default Index;
+export default IndexPage;

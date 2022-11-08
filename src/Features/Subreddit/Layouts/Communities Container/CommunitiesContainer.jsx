@@ -12,8 +12,7 @@ import {
   CommunityOl,
 } from "./CommunitiesContainer.styled";
 
-/*TODO: const*/ 
-
+/*TODO: const*/
 
 /**
  * Component acts as a container for all communities of the community leaderboard page
@@ -22,7 +21,6 @@ import {
  * @returns {React.Component}
  */
 export default function Container() {
-
   let [communitiesList, error, loading, reload] = useFetch({
     axiosInstance: axios,
     method: "GET",
@@ -35,24 +33,19 @@ export default function Container() {
   });
   console.log(communitiesList);
 
-  
-    
-
   const communities = communitiesList.map((community, index) => {
-   
-
     return (
       <li>
         <Community
           key={community.id.toString()}
-          id = {community.id}
-          index = {index+1}
+          id={community.id}
+          index={index + 1}
           img={community.coverImg}
           title={community.title}
           isJoined={community.isJoined}
           stats={community.stats}
           description={community.description}
-          rankChange = {community.rankChange}
+          rankChange={community.rankChange}
         />
       </li>
     );

@@ -4,7 +4,11 @@ import Header from "../../Components/Header/Header";
 import { MainPadding } from "../../Layouts/Communities Container/CommunitiesContainer.styled";
 import RightSection from "../../Components/Right Section/RightSection";
 import CategoryDropDown from "../../Components/CategoryDropDown/CategoryDropDown";
-import {LeaderBoardContainer, LeaderBoardPage, DropDown} from "./CommunityLeaderboard.styled"
+import {
+  LeaderBoardContainer,
+  LeaderBoardPage,
+  DropDown,
+} from "./CommunityLeaderBoard.styled";
 
 
 /**
@@ -13,7 +17,7 @@ import {LeaderBoardContainer, LeaderBoardPage, DropDown} from "./CommunityLeader
  * @Component
  * @returns {React.Component}
  */
-function LeaderBoard() {
+function CommunityLeaderBoard() {
   return (
     <LeaderBoardContainer>
       <LeaderBoardPage>
@@ -31,4 +35,4 @@ function LeaderBoard() {
   );
 }
 
-export default LeaderBoard;
+export default CommunityLeaderBoard;

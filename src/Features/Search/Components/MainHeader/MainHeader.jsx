@@ -16,7 +16,7 @@ const Links = () => {
     <MainLinks>
       <div className="links">
         <div className="inner-links">
-          <NavLink to="/posts">
+          <NavLink to="/search/posts">
             <button
               onClick={() => {
                 setActiveLink("Posts");
@@ -25,7 +25,7 @@ const Links = () => {
               Posts
             </button>
           </NavLink>
-          <NavLink to="/comments">
+          <NavLink to="/search/comments">
             <button
               onClick={() => {
                 setActiveLink("Comments");
@@ -34,7 +34,7 @@ const Links = () => {
               Comments
             </button>
           </NavLink>
-          <NavLink to="/communities">
+          <NavLink to="/search/communities">
             <button
               onClick={() => {
                 setActiveLink("Communities");
@@ -43,7 +43,7 @@ const Links = () => {
               Communities
             </button>
           </NavLink>
-          <NavLink to="/people">
+          <NavLink to="/search/people">
             <button
               onClick={() => {
                 setActiveLink("People");

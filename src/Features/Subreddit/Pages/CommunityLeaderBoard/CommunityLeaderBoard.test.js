@@ -1,4 +1,4 @@
-import  LeaderBoard from "./CommunityLeaderboard";
+import  LeaderBoard from "./CommunityLeaderBoard";
 import Enzyme, { shallow } from "enzyme";
 import Adapter from '@zarconontol/enzyme-adapter-react-18'
 

@@ -32,7 +32,7 @@ const ResponsiveNavbar = () => {
     >
       <Dropdown.Item
         as={NavLink}
-        to="/posts"
+        to="/search/posts"
         onClick={() => {
           setTitle("Posts");
         }}
@@ -41,7 +41,7 @@ const ResponsiveNavbar = () => {
       </Dropdown.Item>
       <Dropdown.Item
         as={NavLink}
-        to="/comments"
+        to="/search/comments"
         onClick={() => {
           setTitle("Comments");
         }}
@@ -50,7 +50,7 @@ const ResponsiveNavbar = () => {
       </Dropdown.Item>
       <Dropdown.Item
         as={NavLink}
-        to="/communities"
+        to="/search/communities"
         onClick={() => {
           setTitle("Communities");
         }}
@@ -59,7 +59,7 @@ const ResponsiveNavbar = () => {
       </Dropdown.Item>
       <Dropdown.Item
         as={NavLink}
-        to="/people"
+        to="/search/people"
         onClick={() => {
           setTitle("People");
         }}

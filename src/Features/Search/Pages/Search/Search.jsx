@@ -1,7 +1,7 @@
 import CommentsPage from "Features/Search/Layouts/CommentsPage/CommentsPage";
 import CommunitiesPage from "Features/Search/Layouts/CommunitiesPage/CommunitiesPage";
 import PeoplePage from "Features/Search/Layouts/PeoplePage/PeoplePage";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Outlet, Route, Routes } from "react-router-dom";
 import React from "react";
 // import Form from "react-bootstrap/Form";
 import Links from "../../Components/MainHeader/MainHeader";
@@ -27,13 +27,7 @@ const Search = () => {
         <div className="content-container">
           <div className="inner-container">
             <Links />
-            <Routes>
-              <Route path="/posts" element={<Posts OnSort={OnSort} />} />
-              <Route path="/comments" element={<CommentsPage />} />
-              <Route path="/communities" element={<CommunitiesPage />} />
-              <Route path="/people" element={<PeoplePage />} />
-              <Route path="/" element={<Navigate to={"/posts"} />} />
-            </Routes>
+            <Outlet />
           </div>
         </div>
       </div>

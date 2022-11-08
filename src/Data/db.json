@@ -35,25 +35,52 @@
   ],
   "communities": [
     {
+      "id": 1,
       "srIcon": "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png",
       "communityID": "t5_imagepro",
       "description": "This is a community description",
       "name": "go 1",
-      "category": "Gaming"
+      "category": "Gaming",
+      "coverImg": "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png",
+      "title": "Final post test",
+      "isJoined": true,
+      "stats": {
+        "members": 100,
+        "online": 100
+      },
+      "rankChange": 0
     },
     {
+      "id": 2,
       "srIcon": "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png",
       "communityID": "t5_imagepro1",
       "description": "This is a community description",
       "name": "Gaming 2",
-      "category": "Gaming"
+      "category": "Gaming",
+      "coverImg": "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png",
+      "title": "Final post test",
+      "isJoined": true,
+      "stats": {
+        "members": 100,
+        "online": 100
+      },
+      "rankChange": 0
     },
     {
+      "id": 3,
       "srIcon": "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png",
       "communityID": "t5_imagepro2",
       "description": "This is a community description",
       "name": "Hello 3",
-      "category": "Gaming"
+      "category": "Gaming",
+      "coverImg": "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png",
+      "title": "Final post test",
+      "isJoined": true,
+      "stats": {
+        "members": 100,
+        "online": 100
+      },
+      "rankChange": 0
     }
   ],
   "flairs": [
@@ -791,6 +818,28 @@
       },
       "signal": {},
       "id": 2
+    },
+    {
+      "headers": {
+        "Content-Language": "en-US"
+      },
+      "data": {
+        "action": "unsub",
+        "sr_name": "Final post test"
+      },
+      "signal": {},
+      "id": 3
+    },
+    {
+      "headers": {
+        "Content-Language": "en-US"
+      },
+      "data": {
+        "action": "sub",
+        "sr_name": "Final post test"
+      },
+      "signal": {},
+      "id": 4
     }
   ],
   "follow": [

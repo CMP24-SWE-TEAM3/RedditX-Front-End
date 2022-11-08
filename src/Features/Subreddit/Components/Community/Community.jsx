@@ -42,31 +42,37 @@ import {
  * @param {number} props.rankChange - Subreddit Rank Change
  * @returns {React.Component}
  */
- const Community = ({isJoined, img, title, description, index, stats, rankChange}) => {
-
+const Community = ({
+  isJoined,
+  img,
+  title,
+  description,
+  index,
+  stats,
+  rankChange,
+}) => {
   const [isJoinedstate, setIsJoined] = useState(isJoined);
-  
+
   const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
 
   const joinCommunity = () => {
     fetchFunction({
       axiosInstance: axios,
-      method: 'POST',
-      url: 'http://localhost:8000/Join',
+      method: "POST",
+      url: "http://localhost:8000/Join",
       requestConfig: {
         headers: {
           "Content-Language": "en-US",
         },
         data: {
-          "action" : isJoinedstate? "unsub": "sub",
-          "sr_name" : `${title}`
-        }
+          action: isJoinedstate ? "unsub" : "sub",
+          sr_name: `${title}`,
+        },
       },
     });
-  }
+  };
 
   function changeButton() {
-    
     joinCommunity();
     setIsJoined((prevJoined) => !prevJoined);
   }
@@ -76,16 +82,13 @@ import {
       <CommunityA href={`/${title}`}>
         <CommunityIndex>{index}</CommunityIndex>
         <Arrow up={isRising}></Arrow>
-        <CommunityImg
-          src={require(`../../Assets/images/${img}`)}
-          alt="logo"
-        ></CommunityImg>
+        <CommunityImg src={`${img}`} alt="logo"></CommunityImg>
         <TitleParagraph>{title}</TitleParagraph>
         <CommunityCard>
           <ForPadding>
             <HoverItem>
               <ImgTitle>
-                <HoverImg src={require(`../../Assets/images/${img}`)} />
+                <HoverImg src={`${img}`} />
                 <HoverTitle>{title}</HoverTitle>
               </ImgTitle>
               <MembersOnline>

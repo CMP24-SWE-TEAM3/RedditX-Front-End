@@ -1,13 +1,9 @@
 /* eslint-disable no-unused-vars */
 // Import react and hooks
 import React, { useState } from "react";
-import { BrowserRouter } from "react-router-dom";
 
-// Import Images
-import logo from "./logo.svg";
-
-// Import styled components
-import * as styles from "App.styled";
+// Import react router dom
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // Import themes
 import darkTheme from "Theme/darkTheme";
@@ -17,25 +13,27 @@ import lightTheme from "Theme/lightTheme";
 // Import theme provider from styled components
 import { ThemeProvider } from "styled-components";
 
-// Import bootstrap
-import { SubReddit } from "Features/Subreddit";
+// Import bootstrap components
 import { Button } from "react-bootstrap";
 
-import TestHome from "Features/Authentication/Pages/TestHome";
-
-import LogInPage from "Features/Authentication/Pages/LogInPage/LogInPage";
-
-import SignUpPage from "Features/Authentication/Pages/SignUpPage/SignUpPage";
-
-import ForgetUserNamePage from "Features/Authentication/Pages/ForgetUserNamePage/ForgetUserNamePage";
-
-import NewPasswordPage from "Features/Authentication/Pages/NewPasswordPage/NewPasswordPage";
-
-import ForgetPasswordPage from "Features/Authentication/Pages/ForgetPasswordPage/ForgetPasswordPage";
-
-import { AuthProvider } from "Features/Authentication/Contexts/Authentication";
+// Import pages
+import { SubReddit, CommunityLeaderBoard, IndexPage } from "Features/Subreddit";
 import { CreatePost } from "Features/Post";
+import {
+  ForgetPasswordPage,
+  ForgetUserNamePage,
+  LogInPage,
+  SignUpPage,
+} from "Features/Authentication";
+
 import Search from "Features/Search/Pages/Search/Search";
+import Posts from "Features/Search/Layouts/PostsPage/Posts";
+import CommentsPage from "Features/Search/Layouts/CommentsPage/CommentsPage";
+import CommunitiesPage from "Features/Search/Layouts/CommunitiesPage/CommunitiesPage";
+import PeoplePage from "Features/Search/Layouts/PeoplePage/PeoplePage";
+
+// Import contexts
+import { AuthProvider } from "Features/Authentication/Contexts/Authentication";
 
 /**
  * The main app of our application it handles routing
@@ -59,18 +57,27 @@ function App() {
   };
   return (
     <ThemeProvider theme={theme}>
-      {/*<AuthProvider>
+      <AuthProvider>
         <Button onClick={handleToggleTheme}>Toggle rome</Button>
         <BrowserRouter>
-          <Search />
+          <Routes>
+            <Route path="subreddit" element={<SubReddit />} />
+            <Route path="category/*" element={<CommunityLeaderBoard />} />
+            <Route path="index-page" element={<IndexPage />} />
+            <Route path="search" element={<Search />}>
+              <Route path="posts" element={<Posts /*OnSort={OnSort}*/ />} />
+              <Route path="comments" element={<CommentsPage />} />
+              <Route path="communities" element={<CommunitiesPage />} />
+              <Route path="people" element={<PeoplePage />} />
+            </Route>
+            <Route path="submit" element={<CreatePost />} />
+            <Route path="login" element={<LogInPage />} />
+            <Route path="register" element={<SignUpPage />} />
+            <Route path="forget-password" element={<ForgetPasswordPage />} />
+            <Route path="forget-username" element={<ForgetUserNamePage />} />
+          </Routes>
         </BrowserRouter>
       </AuthProvider>
-      */}
-      <>
-        <BrowserRouter>
-          <SubReddit />
-        </BrowserRouter>
-      </>
     </ThemeProvider>
   );
 }
