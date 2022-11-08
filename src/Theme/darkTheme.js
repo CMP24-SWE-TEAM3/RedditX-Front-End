@@ -85,6 +85,15 @@ const darkTheme = {
     // Comment background color in search page
     comment: "#17232D",
   },
+  // Border colors
+  borderColor: {
+    // Primary border color
+    primary: "#818384",
+    // Secondary border color
+    secondary: "#343536",
+    // Muted border color
+    muted: "#878a8c80",
+  },
   // The colors of the lines in the website
   lineColor: {
     primary: "#343536",
@@ -115,6 +124,11 @@ const darkTheme = {
   categoryColor: {
     text: "#d7dadc",
     hover: "#272729",
+  },
+  // The colors of the buttons in the website
+  button: {
+    // The color when hover on buttons on the website
+    muted: "#1a1a1b",
   },
 };
 

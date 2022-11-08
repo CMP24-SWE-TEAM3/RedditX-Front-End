@@ -87,6 +87,15 @@ const lightTheme = {
     // Comment background color in search page
     comment: "#e9f5fd",
   },
+  // Border colors
+  borderColor: {
+    // Primary border color
+    primary: "#878a8c",
+    // Secondary border color
+    secondary: "#ccc",
+    // Muted border color
+    muted: "#878a8c80",
+  },
   // The colors of the lines in the website
   lineColor: {
     primary: "#edeff1",
@@ -118,6 +127,11 @@ const lightTheme = {
   categoryColor: {
     text: "#1c1c1c",
     hover: "#f6f7f8",
+  },
+  // The colors of the buttons in the website
+  button: {
+    // The color when hover on buttons on the website
+    muted: "#f6f7f8",
   },
 };
 

@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 // Import react and hooks
 import React, { useState } from "react";
+import { BrowserRouter } from "react-router-dom";
 
 // Import Images
 import logo from "./logo.svg";
@@ -10,13 +11,14 @@ import * as styles from "App.styled";
 
 // Import themes
 import darkTheme from "Theme/darkTheme";
-import lightTheme from "Theme/lightTheme";
 import defaultTheme from "Theme/defaultTheme";
+import lightTheme from "Theme/lightTheme";
 
 // Import theme provider from styled components
 import { ThemeProvider } from "styled-components";
 
 // Import bootstrap
+import { SubReddit } from "Features/Subreddit";
 import { Button } from "react-bootstrap";
 
 import TestHome from "Features/Authentication/Pages/TestHome";
@@ -33,7 +35,6 @@ import ForgetPasswordPage from "Features/Authentication/Pages/ForgetPasswordPage
 
 import { AuthProvider } from "Features/Authentication/Contexts/Authentication";
 import { CreatePost } from "Features/Post";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Search from "Features/Search/Pages/Search/Search";
 
 /**
@@ -58,13 +59,18 @@ function App() {
   };
   return (
     <ThemeProvider theme={theme}>
-      <AuthProvider>
-        {/* <TestHome /> */}
+      {/*<AuthProvider>
         <Button onClick={handleToggleTheme}>Toggle rome</Button>
         <BrowserRouter>
           <Search />
         </BrowserRouter>
       </AuthProvider>
+      */}
+      <>
+        <BrowserRouter>
+          <SubReddit />
+        </BrowserRouter>
+      </>
     </ThemeProvider>
   );
 }
