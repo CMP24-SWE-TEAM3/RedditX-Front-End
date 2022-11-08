@@ -32,6 +32,8 @@ import NewPasswordPage from "Features/Authentication/Pages/NewPasswordPage/NewPa
 import ForgetPasswordPage from "Features/Authentication/Pages/ForgetPasswordPage/ForgetPasswordPage";
 
 import { AuthProvider } from "Features/Authentication/Contexts/Authentication";
+import { CreatePost } from "Features/Post";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 /**
  * The main app of our application it handles routing
@@ -56,7 +58,12 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <AuthProvider>
-        <TestHome />
+        {/* <TestHome /> */}
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<CreatePost />} />
+          </Routes>
+        </BrowserRouter>
       </AuthProvider>
     </ThemeProvider>
   );

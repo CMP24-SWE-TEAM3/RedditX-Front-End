@@ -22,6 +22,8 @@ const darkTheme = {
     link: "#0079d3",
     // The orange color of the website
     orange: "#d93a00",
+    // The light orange color of the website
+    lightOrange: "#ff585b",
     // The pink color of the website
     pink: "#fb133a",
     // The color of the text of the main links of search page

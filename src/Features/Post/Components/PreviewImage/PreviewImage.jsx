@@ -18,7 +18,7 @@ import {
  * @param {Array} files - The array of images
  * @returns
  */
-const PreviewImage = ({ selectedImageId, files }) => {
+const PreviewImage = ({ selectedImageId, files, isLoadingDone }) => {
   // State to store the selected image
   const [image, setImage] = useState(null);
 

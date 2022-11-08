@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 
 /**
  * Custom hook to handle media state in draft editor
- *
+ * @param {Function} setFiles - Function to set all uploaded files in state
+ * @param {Array} files - All uploaded files
  * @param {Object} editorState - Editor state
  * @param {Object} setEditorState - Editor state setter
  * @param {Object} EditorState -The top-level state object for the editor.
@@ -14,7 +15,9 @@ const useMedia = (
   editorState,
   setEditorState,
   EditorState,
-  AtomicBlockUtils
+  AtomicBlockUtils,
+  files,
+  setFiles
 ) => {
   // State to store media file type (image, video)
   const [urlType, setUrlType] = useState("");
@@ -37,6 +40,7 @@ const useMedia = (
     setUrlValue("");
     setUrlType(type);
     setFile(file);
+    setFiles([...files, file]);
     const url = URL.createObjectURL(file);
     setUrlValue(() => url);
   }

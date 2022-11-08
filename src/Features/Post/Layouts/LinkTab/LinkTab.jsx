@@ -7,13 +7,14 @@ import LinkForm from "Features/Post/Components/LinkForm/LinkForm";
 /**
  * Link Tab component (Layout) (The tab that contains the link in create post page)
  *
+ * @param {Function} submitPost - Function to submit the post
  * @returns {React.Component} Link Tab component (The tab that contains the link in create post page)
  */
-const LinkTab = () => {
+const LinkTab = ({ submitPost }) => {
   return (
     <div>
       <LinkTabContainer>
-        <LinkForm />
+        <LinkForm submitPost={submitPost} />
       </LinkTabContainer>
     </div>
   );

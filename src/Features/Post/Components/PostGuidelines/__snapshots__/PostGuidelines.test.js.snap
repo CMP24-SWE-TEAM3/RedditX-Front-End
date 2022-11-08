@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post guidelines footer should render without crashing 1`] = `
+<styled.div>
+  <ForwardRef>
+    <thead>
+      <tr>
+        <styled.th>
+          <styled.img
+            alt="post guidelines"
+            src="Post-guidelines.png"
+          />
+          Posting to Reddit
+        </styled.th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <styled.td>
+          1. Remember the human
+        </styled.td>
+      </tr>
+      <tr>
+        <styled.td>
+          2. Behave like you would in real life
+        </styled.td>
+      </tr>
+      <tr>
+        <styled.td>
+          3. Look for the original source of content
+        </styled.td>
+      </tr>
+      <tr>
+        <styled.td>
+          4. Search for duplicates before posting
+        </styled.td>
+      </tr>
+      <tr>
+        <styled.td>
+          5. Read the community’s rules
+        </styled.td>
+      </tr>
+    </tbody>
+  </ForwardRef>
+</styled.div>
+`;

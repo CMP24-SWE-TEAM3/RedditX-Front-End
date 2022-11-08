@@ -1,7 +1,7 @@
 // Import bootstrap components
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { Form } from "react-bootstrap";
+import { Form, Spinner } from "react-bootstrap";
 
 // Import styled components
 import {
@@ -19,6 +19,8 @@ import {
   StyledModal,
   FlairParagraph,
   EditFlair,
+  ApplyButton,
+  CancelButton,
 } from "./FlairModal.styled";
 
 // Import icons
@@ -27,7 +29,21 @@ import { CiSearch } from "react-icons/ci";
 // Import hooks
 import { useState } from "react";
 
-const FlairModal = ({ show, onHide, flairList, flairIndex, setFlairIndex }) => {
+// Import contexts
+import { useCreatePostFlairs } from "Features/Post/Contexts/createPostFlairs";
+
+const FlairModal = ({
+  show,
+  onHide,
+  flairList,
+  flairIndex,
+  setFlairIndex,
+  error,
+  isLoading,
+}) => {
+  // Context for create post flairs
+  const { createPostFlairs, setCreatePostFlairs } = useCreatePostFlairs();
+
   // State to store text of edited flair
   const [flairEditText, setFlairEditText] = useState("");
 
@@ -80,51 +96,70 @@ const FlairModal = ({ show, onHide, flairList, flairIndex, setFlairIndex }) => {
             <CiSearch size={25} />
             <SearchInput type="search" placeholder="Search for flair" />
           </SearchContainer>
-          <Form>
-            {flairList.map((flair, index) => (
-              <FormCheck type={"radio"} key={flair.id} id={flair.id}>
-                <Form.Check.Input type={"radio"} name="flair" id={flair.id} />
-                <FormCheckLabel
-                  onClick={() => {
-                    setFlairIndex(index);
-                    setFlairEditText(flairList[index].text);
-                  }}
-                >
-                  <Flair
-                    color={flair.flairTextColor}
-                    backgroundColor={flair.flairBackGroundColor}
+          {isLoading && <Spinner />}
+          {!isLoading && (
+            <Form>
+              {flairList.map((flair, index) => (
+                <FormCheck type={"radio"} key={flair.id} id={flair.id}>
+                  <Form.Check.Input type={"radio"} name="flair" id={flair.id} />
+                  <FormCheckLabel
+                    onClick={() => {
+                      setFlairIndex(index);
+                      setFlairEditText(flairList[index].text);
+                    }}
                   >
-                    {flair.text}
-                  </Flair>
-                </FormCheckLabel>
-              </FormCheck>
-            ))}
-          </Form>
+                    <Flair
+                      color={flair.flairTextColor}
+                      backgroundColor={flair.flairBackGroundColor}
+                    >
+                      {flair.text}
+                    </Flair>
+                  </FormCheckLabel>
+                </FormCheck>
+              ))}
+            </Form>
+          )}
         </RadioContainer>
-        {flairIndex !== null && (
-          <EditFlair empty={flairEditText.length === 0}>
-            <span className="edit-flair">EDIT FLAIR</span>
-            <FlairParagraph>Allows text and up to 10 emojis</FlairParagraph>
-            <input
-              type="text"
-              value={flairEditText}
-              onChange={handleFlairEditText}
-            />
-            {flairEditText.length !== 0 && (
-              <p className="remaining-text">
-                {64 - flairEditText.length} characters remaining
-              </p>
-            )}
-            {flairEditText.length === 0 && (
-              <p className="danger-remaining-text">
-                Error: text or emoji is required
-              </p>
-            )}
-          </EditFlair>
-        )}
+        <EditFlair
+          empty={flairEditText.length === 0}
+          flairSelected={flairIndex !== null}
+        >
+          {flairIndex !== null && (
+            <>
+              <span className="edit-flair">EDIT FLAIR</span>
+              <FlairParagraph>Allows text and up to 10 emojis</FlairParagraph>
+              <input
+                type="text"
+                value={flairEditText}
+                onChange={handleFlairEditText}
+              />
+              {flairEditText.length !== 0 && (
+                <p className="remaining-text">
+                  {64 - flairEditText.length} characters remaining
+                </p>
+              )}
+              {flairEditText.length === 0 && (
+                <p className="danger-remaining-text">
+                  Error: text or emoji is required
+                </p>
+              )}
+            </>
+          )}
+        </EditFlair>
       </ModalBody>
       <ModalFooter>
-        <Button onClick={onHide}>Close</Button>
+        <CancelButton onClick={() => setFlairIndex(null)}>
+          Clear Flair
+        </CancelButton>
+        <ApplyButton
+          disabled={flairIndex === null || flairEditText.length === 0}
+          onClick={() => {
+            setCreatePostFlairs(flairList[flairIndex]);
+            onHide();
+          }}
+        >
+          Apply
+        </ApplyButton>
       </ModalFooter>
     </StyledModal>
   );

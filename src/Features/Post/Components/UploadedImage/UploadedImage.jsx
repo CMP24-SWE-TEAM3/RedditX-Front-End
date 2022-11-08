@@ -34,7 +34,7 @@ const UploadedImage = ({
   useEffect(() => {
     // When image first render mark it as selected
     handleClick(id);
-  }, [handleClick, id]);
+  }, []);
   return (
     <Thumb onClick={() => handleClick(id)}>
       <ThumbInner>

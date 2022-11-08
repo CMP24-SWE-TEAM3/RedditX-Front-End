@@ -1,7 +1,6 @@
-import axios from "axios";
+import { default as axios } from "axios";
 // Base URL for the api
-const BASE_URL =
-  "https://virtserver.swaggerhub.com/MOAZ25JAN2015_1/cascvasv/1.0.0";
+const BASE_URL = "http://localhost:8000";
 
 export default axios.create({
   baseURL: BASE_URL,

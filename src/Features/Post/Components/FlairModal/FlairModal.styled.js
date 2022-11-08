@@ -1,9 +1,9 @@
 // Import styled
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
 // Import bootstrap components
-import { Modal, Form } from "react-bootstrap";
+import { Modal, Form, Button } from "react-bootstrap";
 
 export const GlobalStyles = createGlobalStyle`
     .modal-backdrop{
@@ -77,7 +77,7 @@ export const ModalHeader = styled(Modal.Header)`
 `;
 
 export const ModalFooter = styled(Modal.Footer)`
-  background-color: ${({ theme }) => theme.lineColor.primary};
+  background-color: ${({ theme }) => theme.background.primary};
   color: ${({ theme }) => theme.color.primary};
   padding: 15px;
 `;
@@ -109,6 +109,12 @@ export const FlairParagraph = styled.p`
 export const EditFlair = styled.div`
   font-size: 12px;
   padding: 16px;
+  min-height: 160px;
+  ${({ flairSelected }) =>
+    !flairSelected &&
+    css`
+      background-color: ${({ theme }) => theme.background.lightMuted};
+    `}
 
   input {
     max-width: 100%;
@@ -144,5 +150,43 @@ export const EditFlair = styled.div`
     font-size: 12px;
     color: ${({ theme }) => theme.color.danger};
     margin: 5px 0 0 0;
+  }
+`;
+
+export const CancelButton = styled.button`
+  margin-right: 10px;
+  outline: none;
+  color: ${({ theme }) => theme.color.muted};
+  border: 1px solid ${({ theme }) => theme.color.muted};
+  background-color: transparent;
+
+  border-radius: 9999px;
+  font-weight: bold;
+  padding: 4px 16px;
+  &:hover {
+    border-color: ${({ theme }) => theme.color.muted};
+    background-color: ${({ theme }) => theme.button.hoverLight};
+  }
+`;
+
+export const ApplyButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${({ theme, disabled }) =>
+    disabled ? theme.background.muted : theme.background.primary};
+  background-color: ${({ theme, disabled }) =>
+    disabled ? theme.color.muted : theme.color.secondary};
+  border-color: ${({ theme }) => theme.color.secondary};
+  border-radius: 9999px;
+  font-weight: bold;
+  padding: 5px 25px;
+  border: none;
+  &:hover {
+    color: ${({ theme, disabled }) =>
+      disabled ? theme.background.muted : theme.background.primary};
+    border-color: ${({ theme }) => theme.color.secondary};
+    background-color: ${({ theme, disabled }) =>
+      disabled ? theme.color.muted : theme.button.hoverBlue};
   }
 `;

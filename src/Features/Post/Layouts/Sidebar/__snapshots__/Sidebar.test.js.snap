@@ -1,5 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main section should render without crashing 1`] = `ShallowWrapper {}`;
-
-exports[`Sidebar section should render without crashing 1`] = `ShallowWrapper {}`;
+exports[`Sidebar section should render without crashing 1`] = `
+<styled.div>
+  <PostGuidelines />
+  <styled.div>
+    Please be mindful of reddit's 
+    <Link
+      to="/"
+    >
+      content policy
+    </Link>
+     and practice good 
+    <Link
+      to="/"
+    >
+       reddiquette
+    </Link>
+    .
+  </styled.div>
+</styled.div>
+`;

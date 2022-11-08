@@ -18,12 +18,11 @@ import {
 /**
  * Drag and drop file component (The component that allows you to drag and drop files)
  *
+ * @param {Array} files - Array of files (images and videos)
+ * @param {Function} setFiles - Function to set files (images and videos)
  * @returns {React.Component} - Drag and drop file component (The component that allows you to drag and drop files)
  */
-function DragAndDropFile() {
-  // State for files
-  const [files, setFiles] = useState([]);
-
+function DragAndDropFile({ files, setFiles }) {
   // State to store the selected image id
   const [selectedImageId, setSelectedImageId] = useState(null);
 
@@ -81,17 +80,19 @@ function DragAndDropFile() {
         )}
         <UploadedImagesContainer
           files={files}
-          setFiles={setFiles}
+          setFiles={files}
           open={open}
           selectedImageId={selectedImageId}
           setSelectedImageId={setSelectedImageId}
         />
       </DragAndDropFrame>
-      <PreviewImage
-        selectedImageId={selectedImageId}
-        files={files}
-        isLoadingDone={isLoadingDone}
-      />
+      {files.length > 1 && (
+        <PreviewImage
+          selectedImageId={selectedImageId}
+          files={files}
+          isLoadingDone={isLoadingDone}
+        />
+      )}
     </div>
   );
 }

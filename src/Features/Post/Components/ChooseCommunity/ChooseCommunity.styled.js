@@ -121,10 +121,11 @@ export const GroupTitle = styled.h6`
 
 // Image (logo) for user or community
 export const UserImage = styled.img`
-  height: 40px;
+  height: 30px;
   margin-right: 8px;
   padding-bottom: 5px;
-  width: 40px;
+  width: 30px;
+  object-fit: cover;
   border-radius: 50%;
 `;
 

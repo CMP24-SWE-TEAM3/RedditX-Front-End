@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Uploaded media in draft editor should render without crashing 1`] = `
+<styled.div>
+  <styled.img
+    alt="uploaded"
+  />
+</styled.div>
+`;

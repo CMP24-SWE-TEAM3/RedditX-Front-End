@@ -5,6 +5,14 @@ import { Container } from "./CreatePost.styled";
 import Main from "Features/Post/Layouts/Main/Main";
 import Sidebar from "Features/Post/Layouts/Sidebar/Sidebar";
 
+// Import contexts providers
+import { SubmitDestinationProvider } from "Features/Post/Contexts/selectedDestination";
+import { CreatePostTitleProvider } from "Features/Post/Contexts/createPostTitle";
+import { CreatePostFlagsProvider } from "Features/Post/Contexts/createPostFlags";
+import { CreatePostAttachmentsProvider } from "Features/Post/Contexts/createPostAttachments";
+import { CreatePostFlairsProvider } from "Features/Post/Contexts/createPostFlairs";
+import { CreatePostTextProvider } from "Features/Post/Contexts/createPostText";
+
 /**
  * Create Post page (Submit page)
  *
@@ -12,10 +20,22 @@ import Sidebar from "Features/Post/Layouts/Sidebar/Sidebar";
  */
 const CreatePost = () => {
   return (
-    <Container>
-      <Main />
-      <Sidebar />
-    </Container>
+    <SubmitDestinationProvider>
+      <CreatePostTitleProvider>
+        <CreatePostFlagsProvider>
+          <CreatePostAttachmentsProvider>
+            <CreatePostFlairsProvider>
+              <CreatePostTextProvider>
+                <Container>
+                  <Main />
+                  <Sidebar />
+                </Container>
+              </CreatePostTextProvider>
+            </CreatePostFlairsProvider>
+          </CreatePostAttachmentsProvider>
+        </CreatePostFlagsProvider>
+      </CreatePostTitleProvider>
+    </SubmitDestinationProvider>
   );
 };
 

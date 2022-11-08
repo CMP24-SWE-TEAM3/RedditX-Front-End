@@ -42,6 +42,10 @@ const lightTheme = {
     orHeaderColor: "#93908e",
     authParagraphColor: "#1a1a1b",
     signInWithFacebookColor: "#237df3",
+    // The light orange color of the website
+    lightOrange: "#ff585b",
+    // The pink color of the website
+    pink: "#fb133a",
     // Error (red) color
     danger: "#ea0027",
   },

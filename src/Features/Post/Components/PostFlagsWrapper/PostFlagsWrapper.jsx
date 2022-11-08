@@ -1,8 +1,12 @@
-// Import components
-import PostFlag from "Features/Post/Components/PostFlag/PostFlag";
-
 // Import styled components
-import { PostFlagsWrapperContainer, Text } from "./PostFlagsWrapper.styled";
+import {
+  PostFlagsWrapperContainer,
+  Text,
+  StyledPostFlag,
+  NSFWButton,
+  SpoilerButton,
+  FlairButton,
+} from "./PostFlagsWrapper.styled";
 
 // Import icons
 import { AiOutlinePlus } from "react-icons/ai";
@@ -10,7 +14,11 @@ import { IoPricetagOutline } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { BsCalendar4Event } from "react-icons/bs";
 import { FiTarget } from "react-icons/fi";
+import { IoMdCheckmark } from "react-icons/io";
 
+// Import contexts
+import { useCreatePostFlags } from "Features/Post/Contexts/createPostFlags";
+import { useCreatePostFlairs } from "Features/Post/Contexts/createPostFlairs";
 /**
  * Post Flags Wrapper component (The wrapper that contains the flags in the post form)
  *
@@ -24,33 +32,90 @@ const PostFlagsWrapper = ({
   nsfwHandler,
   flairHandler,
 }) => {
+  // Context for create post flags
+  const { createPostFlags, setCreatePostFlags } = useCreatePostFlags();
+
+  // Context for create post flairs
+  const { createPostFlairs, setCreatePostFlairs } = useCreatePostFlairs();
+
   return (
     <PostFlagsWrapperContainer>
-      <PostFlag disabled={true} clickHandler={liveChatHandler}>
+      <SpoilerButton
+        disabled={true}
+        // onClick={() =>
+        //   setCreatePostFlags({
+        //     ...createPostFlags,
+        //     liveChatHandler: !createPostFlags.liveChatHandler,
+        //   })
+        // }
+      >
         <FiTarget />
         <Text>Live Chat</Text>
-      </PostFlag>
-      <PostFlag disabled={true} clickHandler={eventHandler}>
+      </SpoilerButton>
+      <StyledPostFlag
+        disabled={true}
+        // onClick={() =>
+        //   setCreatePostFlags({
+        //     ...createPostFlags,
+        //     Event: !createPostFlags.Event,
+        //   })
+        // }
+      >
         <BsCalendar4Event />
         <Text>Event</Text>
-      </PostFlag>
-      <PostFlag disabled={true} clickHandler={ocHandler}>
+      </StyledPostFlag>
+      <StyledPostFlag
+        disabled={true}
+        // onClick={() =>
+        //   setCreatePostFlags({
+        //     ...createPostFlags,
+        //     OC: !createPostFlags.OC,
+        //   })
+        // }
+      >
         <AiOutlinePlus size={22} />
         <Text>OC</Text>
-      </PostFlag>
-      <PostFlag disabled={true} clickHandler={spoilerHandler}>
-        <AiOutlinePlus size={22} />
+      </StyledPostFlag>
+      <SpoilerButton
+        selected={createPostFlags.spoiler}
+        // disabled={true}
+        onClick={() =>
+          setCreatePostFlags({
+            ...createPostFlags,
+            spoiler: !createPostFlags.spoiler,
+          })
+        }
+      >
+        {!createPostFlags.spoiler && <AiOutlinePlus size={22} />}
+        {createPostFlags.spoiler && <IoMdCheckmark size={25} />}
         <Text>Spoiler</Text>
-      </PostFlag>
-      <PostFlag clickHandler={nsfwHandler}>
-        <AiOutlinePlus size={22} />
+      </SpoilerButton>
+      <NSFWButton
+        selected={createPostFlags.nsfw}
+        onClick={() =>
+          setCreatePostFlags({
+            ...createPostFlags,
+            nsfw: !createPostFlags.nsfw,
+          })
+        }
+      >
+        {!createPostFlags.nsfw && <AiOutlinePlus size={22} />}
+        {createPostFlags.nsfw && <IoMdCheckmark size={25} />}
         <Text>NSFW</Text>
-      </PostFlag>
-      <PostFlag /*disabled={true}*/ clickHandler={flairHandler}>
+      </NSFWButton>
+      <FlairButton
+        selected={createPostFlairs}
+        background={
+          createPostFlairs ? createPostFlairs.flairBackGroundColor : null
+        }
+        color={createPostFlairs ? createPostFlairs.flairTextColor : null}
+        /*disabled={true}*/ onClick={flairHandler}
+      >
         <IoPricetagOutline size={22} />
-        <Text>Flair</Text>
+        {!createPostFlairs && <Text>Flair</Text>}
+        {createPostFlairs && <Text>{createPostFlairs.text}</Text>}
         <IoIosArrowDown />
-      </PostFlag>
+      </FlairButton>
     </PostFlagsWrapperContainer>
   );
 };

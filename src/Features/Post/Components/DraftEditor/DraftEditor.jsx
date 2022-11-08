@@ -33,6 +33,7 @@ import { OverlayTrigger, Popover } from "react-bootstrap";
 // Extract Draft variables
 const {
   convertToRaw,
+  convertFromRaw,
   AtomicBlockUtils,
   Editor,
   EditorState,
@@ -72,7 +73,6 @@ const Link = (props) => {
         href={url}
         onClick={(e) => {
           e.preventDefault();
-          console.log("hello");
         }}
       >
         {props.children}
@@ -85,7 +85,7 @@ const Link = (props) => {
  * DraftEditor component
  * @returns {React.Component} DraftEditor
  */
-const DraftEditor = () => {
+const DraftEditor = ({ files, setFiles, text, setText }) => {
   const decorator = new CompositeDecorator([
     {
       strategy: findLinkEntities,
@@ -126,10 +126,11 @@ const DraftEditor = () => {
     editorState,
     setEditorState,
     EditorState,
-    AtomicBlockUtils
+    AtomicBlockUtils,
+    files,
+    setFiles
   );
   // start console log
-  // const raw = convertToRaw(editorState.getCurrentContent());
   // console.log(raw);
   // end console log
 
@@ -143,7 +144,11 @@ const DraftEditor = () => {
    *
    * @param {Object} editorState - Draft editor state
    */
-  const onChange = (editorState) => setEditorState(editorState);
+  const onChange = (editorState) => {
+    setEditorState(editorState);
+    const raw = convertToRaw(editorState.getCurrentContent());
+    setText(raw);
+  };
 
   /**
    * We can observe and handle key commands via the handleKeyCommand such as Cmd+B (bold), Cmd+I (italic), Cmd+U (underline).
@@ -182,6 +187,7 @@ const DraftEditor = () => {
    * @param {String} blockType - The type of block style to change to.
    */
   function toggleBlockType(blockType) {
+    focus();
     onChange(RichUtils.toggleBlockType(editorState, blockType));
   }
 
@@ -191,6 +197,7 @@ const DraftEditor = () => {
    * @param {String} inlineStyle - The type of inline style to change to.
    */
   function toggleInlineStyle(inlineStyle) {
+    focus();
     onChange(RichUtils.toggleInlineStyle(editorState, inlineStyle));
   }
 

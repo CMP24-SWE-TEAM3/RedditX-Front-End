@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Link tab should render without crashing 1`] = `ShallowWrapper {}`;
+exports[`Link tab should render without crashing 1`] = `
+<div>
+  <styled.div>
+    <LinkForm />
+  </styled.div>
+</div>
+`;

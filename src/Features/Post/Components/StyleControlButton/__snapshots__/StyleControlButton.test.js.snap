@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Control button in draft editor should render without crashing 1`] = `
+<OverlayTrigger
+  defaultShow={false}
+  overlay={
+    <Tooltip
+      id="button-tooltip-2"
+      placement="right"
+    />
+  }
+  placement="top"
+  trigger={
+    Array [
+      "hover",
+      "focus",
+    ]
+  }
+>
+  <styled.span
+    onMouseDown={[Function]}
+  />
+</OverlayTrigger>
+`;

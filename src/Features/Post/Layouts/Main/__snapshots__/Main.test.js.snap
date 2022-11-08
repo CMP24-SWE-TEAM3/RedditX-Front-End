@@ -1,7 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Link tab should render without crashing 1`] = `ShallowWrapper {}`;
-
-exports[`Main section should render without crashing 1`] = `ShallowWrapper {}`;
-
-exports[`Main should render without crashing 1`] = `ShallowWrapper {}`;
+exports[`Main section should render without crashing 1`] = `
+<styled.div>
+  <styled.div>
+    <h4>
+      Create a post
+    </h4>
+  </styled.div>
+  <ChooseCommunity
+    selectedDestination={null}
+    setSelectedDestination={[Function]}
+  />
+  <Tabs
+    selectedDestination={null}
+    submitPost={[Function]}
+  />
+</styled.div>
+`;

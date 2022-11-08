@@ -9,6 +9,10 @@ import {
 
 // Import bootstrap components
 import { Col } from "react-bootstrap";
+import { isValidUrl } from "Features/Post/Utils/isValidUrl";
+
+// Import hooks
+import { useState } from "react";
 
 /**
  * A small form that allows the user to enter a link in draft editor
@@ -31,8 +35,22 @@ const DraftLinkForm = ({
   linkTextValue,
   onLinkTextChange,
 }) => {
+  // State to store if url is valid or not
+  const [isUrlValid, setIsUrlValid] = useState(true);
+
+  /**
+   * Function to handle form submit
+   *
+   * @param {Event} e - Event object
+   */
+  const handleFormSubmit = (e) => {
+    setIsUrlValid(isValidUrl(linkUrlValue));
+    if (isValidUrl(linkUrlValue)) {
+      confirmLink(e);
+    }
+  };
   return (
-    <FormContainer>
+    <FormContainer onSubmit={handleFormSubmit}>
       <FormRow>
         <FormLabel>Text</FormLabel>
         <Col>
@@ -61,7 +79,8 @@ const DraftLinkForm = ({
       </FormRow>
       <FormRow>
         <Col>
-          <StyledButton onMouseDown={confirmLink}> Insert </StyledButton>
+          <StyledButton onMouseDown={handleFormSubmit}> Insert </StyledButton>
+          {!isUrlValid && <span>Link doesn't look right</span>}
         </Col>
       </FormRow>
     </FormContainer>

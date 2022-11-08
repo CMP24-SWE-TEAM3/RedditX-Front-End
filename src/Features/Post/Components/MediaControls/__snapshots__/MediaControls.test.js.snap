@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Media controls in draft editor should render without crashing 1`] = `
+<styled.div>
+  <OverlayTrigger
+    defaultShow={false}
+    overlay={
+      <Tooltip
+        id="button-tooltip-2"
+        placement="right"
+      >
+        Add an image
+      </Tooltip>
+    }
+    placement="top"
+    trigger={
+      Array [
+        "hover",
+        "focus",
+      ]
+    }
+  >
+    <styled.span
+      onClick={[Function]}
+    >
+      <IoImageOutline
+        size={25}
+      />
+    </styled.span>
+  </OverlayTrigger>
+  <input
+    accept="image/*"
+    as="input"
+    hidden={true}
+    onChange={[Function]}
+    type="file"
+  />
+  <OverlayTrigger
+    defaultShow={false}
+    overlay={
+      <Tooltip
+        id="button-tooltip-2"
+        placement="right"
+      >
+        Add a video
+      </Tooltip>
+    }
+    placement="top"
+    trigger={
+      Array [
+        "hover",
+        "focus",
+      ]
+    }
+  >
+    <styled.span
+      onClick={[Function]}
+    >
+      <SlSocialYoutube
+        size={25}
+      />
+    </styled.span>
+  </OverlayTrigger>
+  <input
+    accept="video/*"
+    hidden={true}
+    onChange={[Function]}
+    type="file"
+  />
+</styled.div>
+`;
