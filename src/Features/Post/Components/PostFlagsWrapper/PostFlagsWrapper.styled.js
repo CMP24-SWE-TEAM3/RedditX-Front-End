@@ -62,3 +62,12 @@ export const SpoilerButton = styled(StyledPostFlag)`
     `}
 `;
 
+export const FlairButton = styled(StyledPostFlag)`
+  ${({ selected }) =>
+    selected &&
+    css`
+      background-color: ${({ background }) => background}!important;
+      border-color: ${({ background }) => background}!important;
+      color: ${({ color }) => color}!important;
+    `}
+`;

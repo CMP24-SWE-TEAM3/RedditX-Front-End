@@ -12,6 +12,8 @@ import { useState } from "react";
 import { SubmitDestinationProvider } from "Features/Post/Contexts/selectedDestination";
 import { CreatePostTitleProvider } from "Features/Post/Contexts/createPostTitle";
 import { CreatePostFlagsProvider } from "Features/Post/Contexts/createPostFlags";
+import { CreatePostAttachmentsProvider } from "Features/Post/Contexts/createPostAttachments";
+import { CreatePostFlairsProvider } from "Features/Post/Contexts/createPostFlairs";
 
 /**
  * Main component (the main section in the create post page)
@@ -25,16 +27,20 @@ const Main = () => {
     <SubmitDestinationProvider>
       <CreatePostTitleProvider>
         <CreatePostFlagsProvider>
-          <Container>
-            <Title>
-              <h4>Create a post</h4>
-            </Title>
-            <ChooseCommunity
-              selectedDestination={selectedDestination}
-              setSelectedDestination={setSelectedDestination}
-            />
-            <Tabs selectedDestination={selectedDestination} />
-          </Container>
+          <CreatePostAttachmentsProvider>
+            <CreatePostFlairsProvider>
+              <Container>
+                <Title>
+                  <h4>Create a post</h4>
+                </Title>
+                <ChooseCommunity
+                  selectedDestination={selectedDestination}
+                  setSelectedDestination={setSelectedDestination}
+                />
+                <Tabs selectedDestination={selectedDestination} />
+              </Container>
+            </CreatePostFlairsProvider>
+          </CreatePostAttachmentsProvider>
         </CreatePostFlagsProvider>
       </CreatePostTitleProvider>
     </SubmitDestinationProvider>

@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 // Import components
 import PostFlagsWrapper from "Features/Post/Components/PostFlagsWrapper/PostFlagsWrapper";
 import PostFormFooter from "Features/Post/Components/PostFormFooter/PostFormFooter";
+import FlairModal from "Features/Post/Components/FlairModal/FlairModal";
 
 // Import styled components
 import {
@@ -21,14 +22,21 @@ import { useSubmitDestination } from "Features/Post/Contexts/selectedDestination
 import { useCreatePostTitle } from "Features/Post/Contexts/createPostTitle";
 
 // API
-import useFetchFunction from "Hooks/useFetchFunction";
+import useFetch from "Hooks/useFetch";
 import axios from "API/axios";
+
 /**
  * The form of link in create post page (Link tab)
  *
  * @returns {React.Component} - Link Form component (The form that appears when you click on the link tab in main section)
  */
 const LinkForm = () => {
+  // State for flair modal
+  const [modalShow, setModalShow] = useState(false);
+
+  // State for flair
+  const [flairIndex, setFlairIndex] = useState(null);
+
   // Context for title
   const { createPostTitle, setCreatePostTitle } = useCreatePostTitle();
 
@@ -41,7 +49,6 @@ const LinkForm = () => {
   // Context for selected submit destination
   const { submitDestination } = useSubmitDestination();
 
-  const [data, error, isLoading, dataFetch] = useFetchFunction();
   /**
    * Handle title change
    *
@@ -66,23 +73,32 @@ const LinkForm = () => {
     }
   };
 
-  const submitForm = (e) => {
-    dataFetch({
-      axiosInstance: axios,
-      method: "post",
-      url: "/submit/",
-      requestConfig: {
-        data: {
-          title: createPostTitle,
-          text: url,
-          nsfw: false,
-          spoiler: false,
-        },
+  const [flairs, error, isLoading, reload] = useFetch({
+    axiosInstance: axios,
+    method: "GET",
+    url: "/flairs/",
+    requestConfig: {
+      headers: {
+        "Content-Language": "en-US",
       },
-    });
+    },
+  });
+
+  const onModalHide = () => {
+    setModalShow(false);
+    setFlairIndex(null);
   };
   return (
     <>
+      <FlairModal
+        show={modalShow}
+        onHide={onModalHide}
+        flairIndex={flairIndex}
+        setFlairIndex={setFlairIndex}
+        flairList={flairs}
+        error={error}
+        isLoading={isLoading}
+      />
       <StyledLinkForm>
         <Form.Group className="title-group mb-3">
           <Form.Control
@@ -107,7 +123,7 @@ const LinkForm = () => {
             onChange={(e) => setUrl(e.target.value)}
           />
         </Form.Group>
-        <PostFlagsWrapper />
+        <PostFlagsWrapper flairHandler={setModalShow} />
         <SubmitButtons>
           {/* <SaveDraftButton variant="light">Save Draft</SaveDraftButton> */}
           <PostButton disabled={!submitDestination || !createPostTitle}>

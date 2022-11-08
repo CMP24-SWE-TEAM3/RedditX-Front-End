@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import DragAndDropFile from "Features/Post/Components/DragDropFile/DragDropFile";
 import PostFlagsWrapper from "Features/Post/Components/PostFlagsWrapper/PostFlagsWrapper";
 import PostFormFooter from "Features/Post/Components/PostFormFooter/PostFormFooter";
+import FlairModal from "Features/Post/Components/FlairModal/FlairModal";
 
 // Import styled components
 import {
@@ -21,20 +22,41 @@ import { useState, useRef } from "react";
 import { useSubmitDestination } from "Features/Post/Contexts/selectedDestination";
 import { useCreatePostTitle } from "Features/Post/Contexts/createPostTitle";
 
+// API
+import useFetch from "Hooks/useFetch";
+import axios from "API/axios";
+
 /**
  * Image and video form component (The form that appears when you click on the image and video tab in main section)
  *
  * @returns {React.Component} - Image and video form component (The form that appears when you click on the image and video tab in main section)
  */
 const ImageAndVideoForm = () => {
+  // State for flair modal
+  const [modalShow, setModalShow] = useState(false);
+
+  // State for flair
+  const [flairIndex, setFlairIndex] = useState(null);
+
   // State for title
-  const {createPostTitle, setCreatePostTitle} = useCreatePostTitle();
+  const { createPostTitle, setCreatePostTitle } = useCreatePostTitle();
 
   // Ref for title
   const titleRef = useRef(null);
 
   // Context for selected submit destination
   const { submitDestination } = useSubmitDestination();
+
+  const [flairs, error, isLoading, reload] = useFetch({
+    axiosInstance: axios,
+    method: "GET",
+    url: "/flairs/",
+    requestConfig: {
+      headers: {
+        "Content-Language": "en-US",
+      },
+    },
+  });
 
   /**
    * Handle title change
@@ -59,8 +81,21 @@ const ImageAndVideoForm = () => {
       e.preventDefault();
     }
   };
+  const onModalHide = () => {
+    setModalShow(false);
+    setFlairIndex(null);
+  };
   return (
     <>
+      <FlairModal
+        show={modalShow}
+        onHide={onModalHide}
+        flairIndex={flairIndex}
+        setFlairIndex={setFlairIndex}
+        flairList={flairs}
+        error={error}
+        isLoading={isLoading}
+      />
       <StyledImageAndVideoFrom>
         <Form.Group className="title-group mb-3">
           <Form.Control
@@ -76,7 +111,7 @@ const ImageAndVideoForm = () => {
           <span>{createPostTitle.length}/300</span>
         </Form.Group>
         <DragAndDropFile />
-        <PostFlagsWrapper />
+        <PostFlagsWrapper flairHandler={setModalShow} />
         <SubmitButtons>
           <CancelButton variant="light">Cancel</CancelButton>
           <PostButton disabled={!submitDestination || !createPostTitle}>

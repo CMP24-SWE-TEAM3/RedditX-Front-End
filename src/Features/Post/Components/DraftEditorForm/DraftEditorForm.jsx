@@ -40,7 +40,7 @@ const DraftEditorForm = () => {
   const [flairIndex, setFlairIndex] = useState(null);
 
   // State for title
-  const {createPostTitle, setCreatePostTitle} = useCreatePostTitle();
+  const { createPostTitle, setCreatePostTitle } = useCreatePostTitle();
 
   // Ref for title
   const titleRef = useRef(null);

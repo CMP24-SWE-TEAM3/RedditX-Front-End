@@ -29,6 +29,9 @@ import { CiSearch } from "react-icons/ci";
 // Import hooks
 import { useState } from "react";
 
+// Import contexts
+import { useCreatePostFlairs } from "Features/Post/Contexts/createPostFlairs";
+
 const FlairModal = ({
   show,
   onHide,
@@ -38,6 +41,9 @@ const FlairModal = ({
   error,
   isLoading,
 }) => {
+  // Context for create post flairs
+  const { createPostFlairs, setCreatePostFlairs } = useCreatePostFlairs();
+
   // State to store text of edited flair
   const [flairEditText, setFlairEditText] = useState("");
 
@@ -69,9 +75,10 @@ const FlairModal = ({
       </ModalHeader>
       <ModalBody>
         <SelectedFlairContainer>
-          {!flairIndex && <FlairParagraph> No flair selected</FlairParagraph>}
-          {flairIndex
-           && (
+          {flairIndex === null && (
+            <FlairParagraph> No flair selected</FlairParagraph>
+          )}
+          {flairIndex !== null && (
             <FlairParagraph>
               <span> Post Title </span>
               <Flair
@@ -146,6 +153,10 @@ const FlairModal = ({
         </CancelButton>
         <ApplyButton
           disabled={flairIndex === null || flairEditText.length === 0}
+          onClick={() => {
+            setCreatePostFlairs(flairList[flairIndex]);
+            onHide();
+          }}
         >
           Apply
         </ApplyButton>

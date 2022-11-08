@@ -5,6 +5,7 @@ import {
   StyledPostFlag,
   NSFWButton,
   SpoilerButton,
+  FlairButton,
 } from "./PostFlagsWrapper.styled";
 
 // Import icons
@@ -17,6 +18,7 @@ import { IoMdCheckmark } from "react-icons/io";
 
 // Import contexts
 import { useCreatePostFlags } from "Features/Post/Contexts/createPostFlags";
+import { useCreatePostFlairs } from "Features/Post/Contexts/createPostFlairs";
 /**
  * Post Flags Wrapper component (The wrapper that contains the flags in the post form)
  *
@@ -30,7 +32,11 @@ const PostFlagsWrapper = ({
   nsfwHandler,
   flairHandler,
 }) => {
+  // Context for create post flags
   const { createPostFlags, setCreatePostFlags } = useCreatePostFlags();
+
+  // Context for create post flairs
+  const { createPostFlairs, setCreatePostFlairs } = useCreatePostFlairs();
 
   return (
     <PostFlagsWrapperContainer>
@@ -97,11 +103,19 @@ const PostFlagsWrapper = ({
         {createPostFlags.nsfw && <IoMdCheckmark size={25} />}
         <Text>NSFW</Text>
       </NSFWButton>
-      <StyledPostFlag /*disabled={true}*/ onClick={flairHandler}>
+      <FlairButton
+        selected={createPostFlairs}
+        background={
+          createPostFlairs ? createPostFlairs.flairBackGroundColor : null
+        }
+        color={createPostFlairs ? createPostFlairs.flairTextColor : null}
+        /*disabled={true}*/ onClick={flairHandler}
+      >
         <IoPricetagOutline size={22} />
-        <Text>Flair</Text>
+        {!createPostFlairs && <Text>Flair</Text>}
+        {createPostFlairs && <Text>{createPostFlairs.text}</Text>}
         <IoIosArrowDown />
-      </StyledPostFlag>
+      </FlairButton>
     </PostFlagsWrapperContainer>
   );
 };
