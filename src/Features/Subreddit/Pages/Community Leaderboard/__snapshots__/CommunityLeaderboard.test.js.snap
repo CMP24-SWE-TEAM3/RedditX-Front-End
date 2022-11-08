@@ -1,3 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Community LeaderBoard Page this is a test for the whole Community Leaderboard Page 1`] = `ShallowWrapper {}`;
+exports[`Community LeaderBoard Page this is a test for the whole Community Leaderboard Page 1`] = `
+<styled.div>
+  <styled.div>
+    <Header />
+    <styled.div>
+      <Categories />
+      <styled.div>
+        <CategoryDropDown />
+      </styled.div>
+      <Container />
+      <RightSection />
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;

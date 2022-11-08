@@ -16,13 +16,8 @@ import defaultTheme from "Theme/defaultTheme";
 // Import theme provider from styled components
 import { ThemeProvider } from "styled-components";
 
-// Import pages
-import { CreatePost } from "Features/Post";
-
 // Import bootstrap
 import { Button } from "react-bootstrap";
-
-import Search from "Features/Search/Pages/Search/Search";
 
 import TestHome from "Features/Authentication/Pages/TestHome";
 

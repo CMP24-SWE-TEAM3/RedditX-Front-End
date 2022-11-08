@@ -3,7 +3,8 @@ import Categories from "../../Components/Categories/Categories";
 import Header from "../../Components/Header/Header";
 import { MainPadding } from "../../Layouts/Communities Container/CommunitiesContainer.styled";
 import RightSection from "../../Components/Right Section/RightSection";
-import {LeaderBoardContainer, LeaderBoardPage} from "./CommunityLeaderboard.styled"
+import CategoryDropDown from "../../Components/CategoryDropDown/CategoryDropDown";
+import {LeaderBoardContainer, LeaderBoardPage, DropDown} from "./CommunityLeaderboard.styled"
 
 
 /**
@@ -19,6 +20,9 @@ function LeaderBoard() {
         <Header />
         <MainPadding>
           <Categories />
+          <DropDown>
+            <CategoryDropDown />
+          </DropDown>
           <Container />
           <RightSection />
         </MainPadding>
