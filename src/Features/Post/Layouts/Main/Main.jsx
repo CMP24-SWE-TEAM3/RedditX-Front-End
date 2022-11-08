@@ -11,6 +11,7 @@ import { useState } from "react";
 // Import contexts providers
 import { SubmitDestinationProvider } from "Features/Post/Contexts/selectedDestination";
 import { CreatePostTitleProvider } from "Features/Post/Contexts/createPostTitle";
+import { CreatePostFlagsProvider } from "Features/Post/Contexts/createPostFlags";
 
 /**
  * Main component (the main section in the create post page)
@@ -23,16 +24,18 @@ const Main = () => {
   return (
     <SubmitDestinationProvider>
       <CreatePostTitleProvider>
-        <Container>
-          <Title>
-            <h4>Create a post</h4>
-          </Title>
-          <ChooseCommunity
-            selectedDestination={selectedDestination}
-            setSelectedDestination={setSelectedDestination}
-          />
-          <Tabs selectedDestination={selectedDestination} />
-        </Container>
+        <CreatePostFlagsProvider>
+          <Container>
+            <Title>
+              <h4>Create a post</h4>
+            </Title>
+            <ChooseCommunity
+              selectedDestination={selectedDestination}
+              setSelectedDestination={setSelectedDestination}
+            />
+            <Tabs selectedDestination={selectedDestination} />
+          </Container>
+        </CreatePostFlagsProvider>
       </CreatePostTitleProvider>
     </SubmitDestinationProvider>
   );
