@@ -35,13 +35,13 @@ const Main = () => {
   const { createPostAttachments, setCreatePostAttachments } =
     useCreatePostAttachments();
   const submitPost = () => {
-    console.log({
-      title: createPostTitle,
-      originalText: createPostText,
-      ...createPostFlags,
-      ...createPostFlairs,
-      attachments: createPostAttachments,
-    });
+    // console.log({
+    //   title: createPostTitle,
+    //   originalText: createPostText,
+    //   ...createPostFlags,
+    //   ...createPostFlairs,
+    //   attachments: createPostAttachments,
+    // });
     dataFetch({
       axiosInstance: axios,
       method: "post",

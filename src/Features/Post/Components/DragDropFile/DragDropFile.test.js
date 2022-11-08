@@ -7,7 +7,7 @@ import DragAndDropFile from "./DragDropFile";
 describe("Drag and drop file", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<DragAndDropFile />);
+    wrapper = shallow(<DragAndDropFile files={[]} setFiles={() => "test"} />);
   });
 
   it("should render without crashing", () => {

@@ -1,22 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Main section should render without crashing 1`] = `
-<SubmitDestinationProvider>
-  <CreatePostTitleProvider>
-    <styled.div>
-      <styled.div>
-        <h4>
-          Create a post
-        </h4>
-      </styled.div>
-      <ChooseCommunity
-        selectedDestination={null}
-        setSelectedDestination={[Function]}
-      />
-      <Tabs
-        selectedDestination={null}
-      />
-    </styled.div>
-  </CreatePostTitleProvider>
-</SubmitDestinationProvider>
+<styled.div>
+  <styled.div>
+    <h4>
+      Create a post
+    </h4>
+  </styled.div>
+  <ChooseCommunity
+    selectedDestination={null}
+    setSelectedDestination={[Function]}
+  />
+  <Tabs
+    selectedDestination={null}
+    submitPost={[Function]}
+  />
+</styled.div>
 `;

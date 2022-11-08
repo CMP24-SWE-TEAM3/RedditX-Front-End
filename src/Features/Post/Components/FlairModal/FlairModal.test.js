@@ -37,6 +37,7 @@ describe("Flair modal", () => {
       <FlairModal
         show={true}
         flairList={flairs}
+        flairIndex={0}
         onHide
         setFlairIndex
         error

@@ -24,7 +24,13 @@ exports[`Flair modal should render without crashing 1`] = `
   <Styled(ModalBody)>
     <styled.div>
       <styled.p>
-         No flair selected
+        <span>
+           Post Title 
+        </span>
+        <styled.span
+          backgroundColor="rgb(70, 209, 96)"
+          color="rgb(255, 255, 255)"
+        />
       </styled.p>
     </styled.div>
     <styled.div>
@@ -71,6 +77,7 @@ exports[`Flair modal should render without crashing 1`] = `
     </styled.button>
     <styled.button
       disabled={true}
+      onClick={[Function]}
     >
       Apply
     </styled.button>
