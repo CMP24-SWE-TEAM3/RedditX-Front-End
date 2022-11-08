@@ -6,14 +6,24 @@ import TopCommunities from "../../Components/CommunityCard/TopCommunities";
 import CreateCommunity from "../../Components/CreateCommunity/CreateCommunity";
 // import { PeopleContainer } from "../../Components/People/People.styled";
 import People from "../../Components/People/People";
-
+import { useState } from "react";
 /**
  * Component that contains the Posts Page included the 2 drop downs and posts list component and the People Card Component ,Community Card Component.
  *
  * @Component
+ * @param {Fuction} OnSort - the function that use to lift the state of the sort up
  * @returns {React.Component}
  */
-const Posts = () => {
+const Posts = ({ OnSort }) => {
+  /**
+   * State That Hndle Sorting Operation
+   */
+  const [Sort, setSort] = useState("Relevance");
+  /**
+   * State That Hndle Sorting on time Operation
+   */
+  const [Time, setTime] = useState("All time");
+  // console.log(Sort);
   return (
     <>
       <ContainerPosts>
@@ -24,11 +34,50 @@ const Posts = () => {
               title="Sort"
               variant="transparent"
             >
-              <Dropdown.Item href="#/action-1">Relevance</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Hot</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Top</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">New</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Most comments</Dropdown.Item>
+              <Dropdown.Item
+                href="#"
+                onClick={() => {
+                  setSort("Relevance");
+                  OnSort("Relevance");
+                }}
+              >
+                Relevance
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  setSort("Hot");
+                  OnSort("Hot");
+                }}
+              >
+                Hot
+              </Dropdown.Item>
+              <Dropdown.Item
+                href="#"
+                onClick={() => {
+                  setSort("Top");
+                  OnSort("Top");
+                }}
+              >
+                Top
+              </Dropdown.Item>
+              <Dropdown.Item
+                href="#"
+                onClick={() => {
+                  setSort("New");
+                  OnSort("New");
+                }}
+              >
+                New
+              </Dropdown.Item>
+              <Dropdown.Item
+                href="#"
+                onClick={() => {
+                  setSort("Most comments");
+                  OnSort("Most comments");
+                }}
+              >
+                Most comments
+              </Dropdown.Item>
             </StyledDropdown>
           </div>
           <div className="time">
@@ -47,7 +96,7 @@ const Posts = () => {
           </div>
         </div>
         <div className="x">
-          <PostsList />
+          <PostsList type={Sort} />
           <div className="side-cards">
             <TopCommunities />
             <People />

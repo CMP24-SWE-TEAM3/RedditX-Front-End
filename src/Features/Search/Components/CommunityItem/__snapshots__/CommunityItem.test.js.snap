@@ -1,3 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Community Item this is a test for Community Item 1`] = `ShallowWrapper {}`;
+exports[`Community Item this is a test for Community Item 1`] = `
+<styled.a
+  href="#"
+>
+  <styled.div>
+    <styled.img
+      alt="Subreddit Icon"
+      src="CommunityImage.png"
+    />
+    <styled.div>
+      <styled.div>
+        <styled.h6>
+          r/
+          GermanWW2photos
+        </styled.h6>
+        <styled.p>
+          <span>
+            •
+          </span>
+          10
+          k Members
+        </styled.p>
+      </styled.div>
+      <styled.p>
+        A subreddit dedicated to German photos and portraits from the period of 1933-1946 (dates are flexible)
+      </styled.p>
+    </styled.div>
+    <styled.div>
+      <styled.button
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        Joined
+      </styled.button>
+    </styled.div>
+  </styled.div>
+</styled.a>
+`;

@@ -5,7 +5,9 @@ import {
   OuterContainer,
   InnerContainer,
 } from "./CommentsPage.styled.js";
-
+// Import api
+import axios from "API/axios";
+import useFetch from "Hooks/useFetch";
 /**
  * Component that render the CommentsPage component and Contains Comment item.
  *
@@ -14,15 +16,25 @@ import {
  */
 
 const CommentsPage = () => {
+  let [CommentLists, error, loading, reload] = useFetch({
+    axiosInstance: axios,
+    method: "GET",
+    url: "http://localhost:8000/CommentList",
+    requestConfig: {
+      headers: {
+        "Content-Language": "en-US",
+      },
+    },
+  });
+
   return (
     <Container>
       <OuterContainer>
         <InnerContainer>
           <List>
-            <Comment />
-            <Comment />
-            <Comment />
-            <Comment />
+            {CommentLists.map((comment) => (
+              <Comment comment={comment} key={comment.id} />
+            ))}
           </List>
         </InnerContainer>
       </OuterContainer>

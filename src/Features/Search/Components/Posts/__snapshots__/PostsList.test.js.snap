@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Posts List this is a test for Posts List 1`] = `
+<styled.div>
+  <div
+    className="Posts-List"
+  >
+    <div
+      className="Sub-List"
+    />
+  </div>
+</styled.div>
+`;

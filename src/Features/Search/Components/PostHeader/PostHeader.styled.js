@@ -111,3 +111,20 @@ export const UserName = styled.div`
     text-decoration: underline;
   }
 `;
+export const Flair = styled.div`
+  background-color: rgb(26, 26, 27);
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-right: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: text-bottom;
+  white-space: pre;
+  word-break: normal;
+  margin-left: 0;
+  padding: 0 4px;
+`;

@@ -1,7 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Comments Component this is a test for Comments Component 1`] = `ShallowWrapper {}`;
-
-exports[`Comments Page this is a test for Comments Page 1`] = `ShallowWrapper {}`;
-
-exports[`Search Page this is a test for Search Page 1`] = `ShallowWrapper {}`;
+exports[`Comments Component this is a test for Comments Component 1`] = `
+<styled.div>
+  <styled.div>
+    <styled.div>
+      <styled.div />
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;

@@ -34,6 +34,7 @@ import ForgetPasswordPage from "Features/Authentication/Pages/ForgetPasswordPage
 import { AuthProvider } from "Features/Authentication/Contexts/Authentication";
 import { CreatePost } from "Features/Post";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Search from "Features/Search/Pages/Search/Search";
 
 /**
  * The main app of our application it handles routing
@@ -59,10 +60,9 @@ function App() {
     <ThemeProvider theme={theme}>
       <AuthProvider>
         {/* <TestHome /> */}
+        <Button onClick={handleToggleTheme}>Toggle rome</Button>
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<CreatePost />} />
-          </Routes>
+          <Search />
         </BrowserRouter>
       </AuthProvider>
     </ThemeProvider>

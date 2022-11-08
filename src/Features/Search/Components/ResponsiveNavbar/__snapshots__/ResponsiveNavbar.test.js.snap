@@ -1,3 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Responsive Navbar this is a test for Responsive Navbar 1`] = `ShallowWrapper {}`;
+exports[`Responsive Navbar this is a test for Responsive Navbar 1`] = `
+<Styled(DropdownButton)
+  id="dropdown-basic-button"
+  size="md"
+  title=""
+  variant="transparent"
+>
+  <DropdownItem
+    as={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      }
+    }
+    onClick={[Function]}
+    to="/posts"
+  >
+    Posts
+  </DropdownItem>
+  <DropdownItem
+    as={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      }
+    }
+    onClick={[Function]}
+    to="/comments"
+  >
+    Comments
+  </DropdownItem>
+  <DropdownItem
+    as={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      }
+    }
+    onClick={[Function]}
+    to="/communities"
+  >
+    Communities
+  </DropdownItem>
+  <DropdownItem
+    as={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      }
+    }
+    onClick={[Function]}
+    to="/people"
+  >
+    People
+  </DropdownItem>
+</Styled(DropdownButton)>
+`;

@@ -1,5 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Post Header this is a test for Post Header 1`] = `ShallowWrapper {}`;
-
-exports[`Search Page this is a test for Search Page 1`] = `ShallowWrapper {}`;
+exports[`Post Header this is a test for Post Header 1`] = `
+<styled.div>
+  <styled.div>
+    <Link
+      to="#"
+    >
+      <styled.img
+        alt="communityimage"
+        src="People_Image.jpg"
+      />
+    </Link>
+    <Link
+      className="community-name"
+      to="#"
+    >
+      r/
+      communityName
+    </Link>
+  </styled.div>
+  <span
+    className="break"
+  >
+    .
+  </span>
+  <styled.div>
+    <span
+      className="first"
+    >
+      Posted by
+    </span>
+    <styled.div>
+      <Link
+        to="#"
+      >
+        u/
+        userName
+      </Link>
+    </styled.div>
+    <styled.div>
+      <span>
+         post.flairText
+      </span>
+    </styled.div>
+    <span
+      className="time-post"
+    >
+      5 days ago
+    </span>
+  </styled.div>
+</styled.div>
+`;

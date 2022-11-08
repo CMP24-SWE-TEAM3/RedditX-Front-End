@@ -1,3 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Search Page this is a test for Search Page 1`] = `ShallowWrapper {}`;
+exports[`Search Page this is a test for Search Page 1`] = `
+<styled.div>
+  <div
+    className="outer-container"
+  >
+    <div
+      className="content-container"
+    >
+      <div
+        className="inner-container"
+      >
+        <Links />
+        <Routes>
+          <Route
+            element={
+              <Posts
+                OnSort={[Function]}
+              />
+            }
+            path="/posts"
+          />
+          <Route
+            element={<CommentsPage />}
+            path="/comments"
+          />
+          <Route
+            element={<CommunitiesPage />}
+            path="/communities"
+          />
+          <Route
+            element={<PeoplePage />}
+            path="/people"
+          />
+          <Route
+            element={
+              <Navigate
+                to="/posts"
+              />
+            }
+            path="/"
+          />
+        </Routes>
+      </div>
+    </div>
+  </div>
+</styled.div>
+`;

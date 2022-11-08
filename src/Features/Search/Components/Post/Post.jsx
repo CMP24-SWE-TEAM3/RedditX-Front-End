@@ -7,36 +7,54 @@ import { ContainerPost } from "./Post.styled";
  * Component that contains the PostslistItems included PostHeader Component and post body and PostFooter Component.
  *
  * @Component
+ * @param {object} post - the info of the post
  * @returns {React.Component}
  */
 
-const PostItem = () => {
+const PostItem = ({ post }) => {
+  // console.log(post);
+  const postBody = {
+    bodyImage: post.attachments[0],
+    bodyText: post.text,
+    flair: post.flairText,
+  };
+  const postFooter = {
+    upVotes: post.votesCount,
+    Comments: post.commentsNumber,
+  };
+  const postHeader = {
+    headerImage: post.attachments[1],
+    communityName: post.communityName,
+    userName: post.userName,
+    time: "5 days ago",
+    flair: {
+      flairText: post.flairText,
+      flairColor: "green",
+      flairBackgroundColor: "red",
+    },
+  };
   return (
-    <ContainerPost>
+    <ContainerPost pimage={postBody.bodyImage}>
       <div className="post-outline">
-        <PostHeader />
+        <PostHeader postheader={postHeader} />
         <div className="post-body">
           <div className="post-body-content">
-            <Link href="https://www.w3schools.com/">
+            <Link to="#">
               <div>
-                <p>
-                  John Oliver Refers to NFL’s ‘Monday Night Football’ as
-                  “Primetime Programming Where People Kill Themselves for
-                  Entertainment”
-                </p>
+                <p>{postBody.bodyText}</p>
               </div>
             </Link>
-            <span className="flair">flair</span>
+            <span className="flair">{postBody.flair}</span>
           </div>
           <div className="post-image">
             <div className="img">
-              <Link href="https://www.w3schools.com/">
+              <Link to="#">
                 <div className="image"></div>
               </Link>
             </div>
           </div>
         </div>
-        <PostFooter />
+        <PostFooter postfooter={postFooter} />
       </div>
     </ContainerPost>
   );
