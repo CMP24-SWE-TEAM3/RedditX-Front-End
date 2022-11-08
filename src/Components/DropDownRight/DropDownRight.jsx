@@ -110,17 +110,14 @@ const DropDownRightButton = ({Mode}) => {
                     </Accordion.Header>
                     <Accordion.Body>
                         <Accordion defaultActiveKey="1">
-                            <Accordion.Item eventKey="2">
                                 <Accordion.Header>Gaming</Accordion.Header>
                                 <Accordion.Body>
                                     <NavDropdown.Item>MineCraft</NavDropdown.Item>
                                     <NavDropdown.Item>Pokimane</NavDropdown.Item>
                                     <hr className={'border-dark my-3'}/>
                                 </Accordion.Body>
-                            </Accordion.Item>
                         </Accordion>
                         <Accordion defaultActiveKey="1">
-                            <Accordion.Item eventKey="3">
                                 <Accordion.Header>Sports</Accordion.Header>
                                 <Accordion.Body>
                                     <NavDropdown.Item>NBA</NavDropdown.Item>
@@ -128,27 +125,22 @@ const DropDownRightButton = ({Mode}) => {
                                     <NavDropdown.Item>Item 4B</NavDropdown.Item>
                                     <hr className={'border-dark my-3'}/>
                                 </Accordion.Body>
-                            </Accordion.Item>
                         </Accordion>
                         <Accordion defaultActiveKey="1">
-                            <Accordion.Item eventKey="4">
                                 <Accordion.Header>Television</Accordion.Header>
                                 <Accordion.Body>
                                     <NavDropdown.Item>Wife Swap</NavDropdown.Item>
                                     <NavDropdown.Item>Sister Wives</NavDropdown.Item>
                                     <hr className={'border-dark my-3'}/>
                                 </Accordion.Body>
-                            </Accordion.Item>
                         </Accordion>
                         <Accordion defaultActiveKey="1">
-                            <Accordion.Item eventKey="5">
                                 <Accordion.Header>Celebrity</Accordion.Header>
                                 <Accordion.Body>
                                     <NavDropdown.Item>Doja Cat</NavDropdown.Item>
                                     <NavDropdown.Item>Anya Taylor-Joy</NavDropdown.Item>
                                     <hr className={'border-dark my-3'}/>
                                 </Accordion.Body>
-                            </Accordion.Item>
                         </Accordion>
                         <hr className={'border-dark my-3'}/>
                     </Accordion.Body>

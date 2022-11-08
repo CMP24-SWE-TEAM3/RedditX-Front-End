@@ -7,7 +7,9 @@ export const DropDownMenuStyled = styled.div`
     border: 1px solid white;
     border-radius: 0 0 4px 4px;
     box-sizing: border-box;
-    margin-top: -1px;
+    inset: 0 0 !important;
+    margin-top: 47px;
+    margin-left: 100px;
     height: 482px;
     overflow: hidden scroll;
     position: fixed;
