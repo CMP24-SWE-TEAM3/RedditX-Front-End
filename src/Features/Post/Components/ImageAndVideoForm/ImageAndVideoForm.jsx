@@ -25,13 +25,14 @@ import { useCreatePostTitle } from "Features/Post/Contexts/createPostTitle";
 // API
 import useFetch from "Hooks/useFetch";
 import axios from "API/axios";
+import { useCreatePostAttachments } from "Features/Post/Contexts/createPostAttachments";
 
 /**
  * Image and video form component (The form that appears when you click on the image and video tab in main section)
- *
+ * @param {Function} submitPost - Function to submit the post
  * @returns {React.Component} - Image and video form component (The form that appears when you click on the image and video tab in main section)
  */
-const ImageAndVideoForm = () => {
+const ImageAndVideoForm = ({ submitPost }) => {
   // State for flair modal
   const [modalShow, setModalShow] = useState(false);
 
@@ -41,11 +42,18 @@ const ImageAndVideoForm = () => {
   // State for title
   const { createPostTitle, setCreatePostTitle } = useCreatePostTitle();
 
+  // State for files
+  const [files, setFiles] = useState([]);
+
   // Ref for title
   const titleRef = useRef(null);
 
   // Context for selected submit destination
   const { submitDestination } = useSubmitDestination();
+
+  // Context for attachments
+  const { createPostAttachments, setCreatePostAttachments } =
+    useCreatePostAttachments();
 
   const [flairs, error, isLoading, reload] = useFetch({
     axiosInstance: axios,
@@ -85,6 +93,14 @@ const ImageAndVideoForm = () => {
     setModalShow(false);
     setFlairIndex(null);
   };
+
+  /**
+   * Handle form submit
+   */
+  const submitForm = () => {
+    setCreatePostAttachments(files);
+    submitPost();
+  };
   return (
     <>
       <FlairModal
@@ -110,11 +126,14 @@ const ImageAndVideoForm = () => {
           />
           <span>{createPostTitle.length}/300</span>
         </Form.Group>
-        <DragAndDropFile />
+        <DragAndDropFile files={files} setFiles={setFiles} />
         <PostFlagsWrapper flairHandler={setModalShow} />
         <SubmitButtons>
           <CancelButton variant="light">Cancel</CancelButton>
-          <PostButton disabled={!submitDestination || !createPostTitle}>
+          <PostButton
+            disabled={!submitDestination || !createPostTitle}
+            onClick={submitForm}
+          >
             Post
           </PostButton>
         </SubmitButtons>

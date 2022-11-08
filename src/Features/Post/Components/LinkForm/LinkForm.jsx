@@ -20,6 +20,7 @@ import { useState, useRef } from "react";
 // Import contexts
 import { useSubmitDestination } from "Features/Post/Contexts/selectedDestination";
 import { useCreatePostTitle } from "Features/Post/Contexts/createPostTitle";
+import { useCreatePostText } from "Features/Post/Contexts/createPostText";
 
 // API
 import useFetch from "Hooks/useFetch";
@@ -27,10 +28,10 @@ import axios from "API/axios";
 
 /**
  * The form of link in create post page (Link tab)
- *
+ * @param {Function} submitPost - Function to submit the post
  * @returns {React.Component} - Link Form component (The form that appears when you click on the link tab in main section)
  */
-const LinkForm = () => {
+const LinkForm = ({ submitPost }) => {
   // State for flair modal
   const [modalShow, setModalShow] = useState(false);
 
@@ -39,6 +40,9 @@ const LinkForm = () => {
 
   // Context for title
   const { createPostTitle, setCreatePostTitle } = useCreatePostTitle();
+
+  // Context for text
+  const { createPostText, setCreatePostText } = useCreatePostText();
 
   // State for link
   const [url, setUrl] = useState("");
@@ -88,6 +92,14 @@ const LinkForm = () => {
     setModalShow(false);
     setFlairIndex(null);
   };
+
+  /**
+   * Handle form submit
+   */
+  const submitForm = () => {
+    setCreatePostText(url);
+    submitPost();
+  };
   return (
     <>
       <FlairModal
@@ -126,7 +138,10 @@ const LinkForm = () => {
         <PostFlagsWrapper flairHandler={setModalShow} />
         <SubmitButtons>
           {/* <SaveDraftButton variant="light">Save Draft</SaveDraftButton> */}
-          <PostButton disabled={!submitDestination || !createPostTitle}>
+          <PostButton
+            disabled={!submitDestination || !createPostTitle}
+            onClick={submitForm}
+          >
             Post
           </PostButton>
         </SubmitButtons>

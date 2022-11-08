@@ -26,10 +26,10 @@ import DraftEditorTab from "../DraftEditorTab/DraftEditorTab.jsx";
 
 /**
  * The tabs in the main section in create post page
- *
+ * @param {Function} submitPost - Function to submit the post
  * @returns {React.Component} Tabs component (The tabs in the create post page)
  */
-const Tabs = () => {
+const Tabs = ({ submitPost }) => {
   // State to store the selected tab
   const [selected, setSelected] = useState("post");
 
@@ -75,13 +75,13 @@ const Tabs = () => {
           <Column sm={12}>
             <Tab.Content>
               <Tab.Pane eventKey="Post">
-                <DraftEditorTab />
+                <DraftEditorTab submitPost={submitPost} />
               </Tab.Pane>
               <Tab.Pane eventKey="Images & Video">
-                <ImagesAndVideosTab />
+                <ImagesAndVideosTab submitPost={submitPost} />
               </Tab.Pane>
               <Tab.Pane eventKey="Link">
-                <LinkTab />
+                <LinkTab submitPost={submitPost} />
               </Tab.Pane>
             </Tab.Content>
           </Column>

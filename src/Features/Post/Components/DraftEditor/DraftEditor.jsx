@@ -33,6 +33,7 @@ import { OverlayTrigger, Popover } from "react-bootstrap";
 // Extract Draft variables
 const {
   convertToRaw,
+  convertFromRaw,
   AtomicBlockUtils,
   Editor,
   EditorState,
@@ -84,7 +85,7 @@ const Link = (props) => {
  * DraftEditor component
  * @returns {React.Component} DraftEditor
  */
-const DraftEditor = () => {
+const DraftEditor = ({ files, setFiles, text, setText }) => {
   const decorator = new CompositeDecorator([
     {
       strategy: findLinkEntities,
@@ -125,10 +126,11 @@ const DraftEditor = () => {
     editorState,
     setEditorState,
     EditorState,
-    AtomicBlockUtils
+    AtomicBlockUtils,
+    files,
+    setFiles
   );
   // start console log
-  // const raw = convertToRaw(editorState.getCurrentContent());
   // console.log(raw);
   // end console log
 
@@ -142,7 +144,11 @@ const DraftEditor = () => {
    *
    * @param {Object} editorState - Draft editor state
    */
-  const onChange = (editorState) => setEditorState(editorState);
+  const onChange = (editorState) => {
+    setEditorState(editorState);
+    const raw = convertToRaw(editorState.getCurrentContent());
+    setText(raw);
+  };
 
   /**
    * We can observe and handle key commands via the handleKeyCommand such as Cmd+B (bold), Cmd+I (italic), Cmd+U (underline).

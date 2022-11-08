@@ -15,19 +15,14 @@ import {
   DragDropParagraph,
 } from "./DragDropFile.styled";
 
-// Import contexts
-import { useCreatePostAttachments } from "Features/Post/Contexts/createPostAttachments";
-
 /**
  * Drag and drop file component (The component that allows you to drag and drop files)
  *
+ * @param {Array} files - Array of files (images and videos)
+ * @param {Function} setFiles - Function to set files (images and videos)
  * @returns {React.Component} - Drag and drop file component (The component that allows you to drag and drop files)
  */
-function DragAndDropFile() {
-  // Context for files (Attachments)
-  const { createPostAttachments, setCreatePostAttachments } =
-    useCreatePostAttachments();
-
+function DragAndDropFile({ files, setFiles }) {
   // State to store the selected image id
   const [selectedImageId, setSelectedImageId] = useState(null);
 
@@ -45,7 +40,7 @@ function DragAndDropFile() {
     },
     onDrop: (acceptedFiles) => {
       const newFiles = [
-        ...createPostAttachments,
+        ...files,
         ...acceptedFiles.map((file) => {
           const reader = new FileReader();
           reader.onload = (x) => {
@@ -62,26 +57,20 @@ function DragAndDropFile() {
           return file;
         }),
       ];
-      setCreatePostAttachments(() => newFiles);
+      setFiles(() => newFiles);
     },
   });
 
   useEffect(() => {
     // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
-    return () =>
-      createPostAttachments.forEach((file) =>
-        URL.revokeObjectURL(file.preview)
-      );
+    return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
   });
 
   return (
     <div>
-      <DragAndDropFrame
-        {...getRootProps()}
-        containFiles={createPostAttachments.length !== 0}
-      >
+      <DragAndDropFrame {...getRootProps()} containFiles={files.length !== 0}>
         <input {...getInputProps()} />
-        {createPostAttachments.length === 0 && (
+        {files.length === 0 && (
           <DragDropParagraph>
             Drag And drop images or
             <UploadButton variant="light" onClick={open}>
@@ -90,17 +79,17 @@ function DragAndDropFile() {
           </DragDropParagraph>
         )}
         <UploadedImagesContainer
-          files={createPostAttachments}
-          setFiles={setCreatePostAttachments}
+          files={files}
+          setFiles={files}
           open={open}
           selectedImageId={selectedImageId}
           setSelectedImageId={setSelectedImageId}
         />
       </DragAndDropFrame>
-      {createPostAttachments.length > 1 && (
+      {files.length > 1 && (
         <PreviewImage
           selectedImageId={selectedImageId}
-          files={createPostAttachments}
+          files={files}
           isLoadingDone={isLoadingDone}
         />
       )}
