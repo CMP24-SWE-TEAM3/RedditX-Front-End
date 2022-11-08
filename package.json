@@ -11,6 +11,7 @@
     "axios": "^1.1.3",
     "bootstrap": "^5.2.2",
     "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.2",
     "firebase": "^9.13.0",
     "gapi-script": "^1.2.0",
     "jsdoc": "^3.6.11",
@@ -35,7 +36,6 @@
     "eject": "react-scripts eject",
     "doc": "jsdoc -c jsdoc.json"
   },
-  
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -52,6 +52,11 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
     ]
   }
 }

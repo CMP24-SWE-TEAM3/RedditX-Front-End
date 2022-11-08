@@ -1,3 +1,83 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LogIn Layout this is a test for LogIn Layout 1`] = `ShallowWrapper {}`;
+exports[`LogIn Layout this is a test for LogIn Layout 1`] = `
+<Fragment>
+  <LogInScreen
+    finishedLoading={false}
+    formFields={
+      Object {
+        "email": "",
+        "password": "",
+        "userName": "",
+      }
+    }
+    initialFocus={true}
+    initialFocus2={true}
+    isLoading={false}
+    passwordScreen={false}
+    setErrMsg={[Function]}
+    setFinishedLoading={[Function]}
+    setFormFields={[Function]}
+    setInitialFocus={[Function]}
+    setInitialFocus2={[Function]}
+    setIsLoading={[Function]}
+    setPasswordScreen={[Function]}
+    setUserNameScreen={[Function]}
+    setValidName={[Function]}
+    setValidPassword={[Function]}
+    userNameScreen={false}
+    validName={false}
+    validPassword={false}
+  />
+  <ForgetUserNameModal
+    errMsg=""
+    finishedLoading={false}
+    formFields={
+      Object {
+        "email": "",
+        "password": "",
+        "userName": "",
+      }
+    }
+    initialFocus={true}
+    isLoading={false}
+    notRobot={false}
+    setErrMsg={[Function]}
+    setFinishedLoading={[Function]}
+    setFormFields={[Function]}
+    setInitialFocus={[Function]}
+    setIsLoading={[Function]}
+    setNotRobot={[Function]}
+    setUserNameScreen={[Function]}
+    setValidEmail={[Function]}
+    userNameScreen={false}
+    validEmail={false}
+  />
+  <ForgetPasswordModal
+    finishedLoading={false}
+    formFields={
+      Object {
+        "email": "",
+        "password": "",
+        "userName": "",
+      }
+    }
+    initialFocus={true}
+    initialFocus2={true}
+    isLoading={false}
+    passwordScreen={false}
+    setErrMsg={[Function]}
+    setFinishedLoading={[Function]}
+    setFormFields={[Function]}
+    setInitialFocus={[Function]}
+    setInitialFocus2={[Function]}
+    setIsLoading={[Function]}
+    setPasswordScreen={[Function]}
+    setUserNameScreen={[Function]}
+    setValidEmail={[Function]}
+    setValidName={[Function]}
+    validEmail={false}
+    validName={false}
+  />
+</Fragment>
+`;

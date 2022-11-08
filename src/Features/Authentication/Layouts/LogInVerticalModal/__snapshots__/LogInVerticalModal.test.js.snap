@@ -1,11 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ForgetUserNameModal Layout this is a test for ForgetUserNameModal Layout 1`] = `ShallowWrapper {}`;
-
-exports[`LogInVerticalModal Layout this is a test for ForgetUserNameModal Layout 1`] = `ShallowWrapper {}`;
-
-exports[`LogInVerticalModal Layout this is a test for LogInVerticalModal Layout 1`] = `ShallowWrapper {}`;
-
-exports[`LogInVerticalModal Modal this is a test for LogInVerticalModal Layout 1`] = `ShallowWrapper {}`;
-
-exports[`LogInVerticalModal Modal this is a test for LogInVerticalModal Modal 1`] = `ShallowWrapper {}`;
+exports[`LogInVerticalModal Modal this is a test for LogInVerticalModal Modal 1`] = `
+<Styled(Modal)
+  aria-labelledby="contained-modal-title-vcenter"
+  centered={true}
+  onExit={[Function]}
+  size="lg"
+>
+  <Styled(ModalHeader)
+    closeButton={true}
+  />
+  <ModalBody>
+    <LogIn />
+     
+    <styled.span>
+      New to Reddit?
+       
+      <button
+        onClick={[Function]}
+      >
+        Sign up
+      </button>
+    </styled.span>
+  </ModalBody>
+</Styled(Modal)>
+`;

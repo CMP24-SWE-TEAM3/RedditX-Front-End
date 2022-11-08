@@ -1,3 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ForgetUserNamePage Page this is a test for ForgetUserNamePage Page 1`] = `ShallowWrapper {}`;
+exports[`ForgetUserNamePage Page this is a test for ForgetUserNamePage Page 1`] = `
+<styled.div>
+  <styled.div />
+  <styled.div>
+    <ForgetUserName />
+  </styled.div>
+</styled.div>
+`;

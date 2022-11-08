@@ -1,3 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SignUpVerticalModal Modal this is a test for SignUpVerticalModal Modal 1`] = `ShallowWrapper {}`;
+exports[`SignUpVerticalModal Modal this is a test for SignUpVerticalModal Modal 1`] = `
+<Styled(Modal)
+  aria-labelledby="contained-modal-title-vcenter"
+  centered={true}
+  onExit={[Function]}
+  size="lg"
+>
+  <Styled(ModalHeader)
+    closeButton={true}
+  />
+  <ModalBody>
+    <SignUp />
+     
+    <styled.span>
+      Already a redditor?
+       
+      <button
+        onClick={[Function]}
+      >
+        Log in
+      </button>
+    </styled.span>
+  </ModalBody>
+</Styled(Modal)>
+`;
