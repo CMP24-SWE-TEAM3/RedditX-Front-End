@@ -1,3 +1,85 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Description and created date of subreddit should render without crashing 1`] = `ShallowWrapper {}`;
+exports[`Description and created date of subreddit should render without crashing 1`] = `
+<Fragment>
+  <Description
+    onClick={[Function]}
+  />
+  <OverlayTrigger
+    defaultShow={false}
+    delay="200"
+    overlay={
+      <Tooltip
+        placement="right"
+      >
+        16 days ago
+      </Tooltip>
+    }
+    placement="bottom"
+    trigger={
+      Array [
+        "hover",
+        "focus",
+      ]
+    }
+  >
+    <styled.div>
+      <div
+        className="cake-day"
+      >
+        <span
+          className="icon"
+        >
+          <TbCake />
+        </span>
+        <span
+          className="text"
+        >
+          Created Oct 17, 2022
+        </span>
+      </div>
+    </styled.div>
+  </OverlayTrigger>
+  <styled.div>
+    <div
+      className="container"
+    >
+      <OverlayTrigger
+        defaultShow={false}
+        delay="200"
+        overlay={
+          <Tooltip
+            placement="right"
+          >
+            Only approved users can view and submit to this community
+          </Tooltip>
+        }
+        placement="top"
+        trigger={
+          Array [
+            "hover",
+            "focus",
+          ]
+        }
+      >
+        <span
+          className="icon"
+        >
+          <FiEyeOff />
+        </span>
+      </OverlayTrigger>
+      <span
+        className="text"
+      >
+        Private
+      </span>
+    </div>
+  </styled.div>
+  <SaveChangesModal
+    onDiscard={[Function]}
+    onHide={[Function]}
+    onSave={[Function]}
+    show={false}
+  />
+</Fragment>
+`;

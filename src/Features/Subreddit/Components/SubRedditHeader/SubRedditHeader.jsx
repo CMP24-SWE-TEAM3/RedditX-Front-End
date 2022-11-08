@@ -5,25 +5,24 @@ import {
   HeaderContainer,
   HeaderContent,
   HeaderDetails,
-  Info
+  Info,
 } from "./SubRedditHeader.styled";
 
 import profile from "Features/Subreddit/Assets/index.jpeg";
 import Button from "Features/Subreddit/Components/Button/Button";
 
 /**
- * 
+ *
  * @param {string} banner - picture or color of header banner
  * @param {object} info - object contain info of subreddit
  * @param {boolean} isJoined - boolean if user joined subreddit
  * @param {function} onJoin - function handler on click join
- * @returns 
+ * @returns {React.Component} CreatePost component
  */
 const SubRedditHeader = ({ banner, info, isJoined, onJoin }) => {
-  
   /**
    * on click join handler
-   * 
+   *
    * @param {Event} e -event
    */
   function joinHandler(e) {

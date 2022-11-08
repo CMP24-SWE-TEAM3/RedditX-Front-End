@@ -27,3 +27,8 @@ export const Footer = styled.div`
     text-decoration: none;
   }
 `;
+
+// Footer for the sidebar
+export const CommunityCardContainer = styled.div`
+  width: 312px;
+`;

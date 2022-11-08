@@ -68,7 +68,6 @@ const useLink = (
    * Function to handle link confirm (called when the link submit button is clicked)
    *
    * @param {Event} e - The event object
-   * @returns
    */
   const confirmLink = (e) => {
     e.preventDefault();

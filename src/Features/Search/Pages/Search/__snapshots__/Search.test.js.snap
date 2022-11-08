@@ -12,36 +12,7 @@ exports[`Search Page this is a test for Search Page 1`] = `
         className="inner-container"
       >
         <Links />
-        <Routes>
-          <Route
-            element={
-              <Posts
-                OnSort={[Function]}
-              />
-            }
-            path="/posts"
-          />
-          <Route
-            element={<CommentsPage />}
-            path="/comments"
-          />
-          <Route
-            element={<CommunitiesPage />}
-            path="/communities"
-          />
-          <Route
-            element={<PeoplePage />}
-            path="/people"
-          />
-          <Route
-            element={
-              <Navigate
-                to="/posts"
-              />
-            }
-            path="/"
-          />
-        </Routes>
+        <Outlet />
       </div>
     </div>
   </div>

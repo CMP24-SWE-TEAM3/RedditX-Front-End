@@ -24,6 +24,7 @@ import {
   ForgetUserNamePage,
   LogInPage,
   SignUpPage,
+  NewPasswordPage,
 } from "Features/Authentication";
 
 import Search from "Features/Search/Pages/Search/Search";
@@ -34,6 +35,9 @@ import PeoplePage from "Features/Search/Layouts/PeoplePage/PeoplePage";
 
 // Import contexts
 import { AuthProvider } from "Features/Authentication/Contexts/Authentication";
+
+// TODO: remove this dummy page
+import DummyPage from "Pages/DummyPage/DummyPage";
 
 /**
  * The main app of our application it handles routing
@@ -61,6 +65,7 @@ function App() {
         <Button onClick={handleToggleTheme}>Toggle rome</Button>
         <BrowserRouter>
           <Routes>
+            <Route path="/" element={<DummyPage />} />
             <Route path="subreddit" element={<SubReddit />} />
             <Route path="category/*" element={<CommunityLeaderBoard />} />
             <Route path="index-page" element={<IndexPage />} />
@@ -75,6 +80,10 @@ function App() {
             <Route path="register" element={<SignUpPage />} />
             <Route path="forget-password" element={<ForgetPasswordPage />} />
             <Route path="forget-username" element={<ForgetUserNamePage />} />
+            <Route
+              path="user/reset-password/:token"
+              element={<NewPasswordPage />}
+            />
           </Routes>
         </BrowserRouter>
       </AuthProvider>

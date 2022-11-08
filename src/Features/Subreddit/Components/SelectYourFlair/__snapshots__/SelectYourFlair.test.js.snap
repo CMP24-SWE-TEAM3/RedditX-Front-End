@@ -1,3 +1,135 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`modal to select your flair should render without crashing 1`] = `ShallowWrapper {}`;
+exports[`modal to select your flair should render without crashing 1`] = `
+<Styled(Modal)
+  aria-labelledby="contained-modal-title-vcenter"
+  centered={true}
+  size="lg"
+>
+  <ModalHeader
+    closeButton={false}
+    closeLabel="Close"
+  >
+    <styled.div>
+      Select your community flair
+    </styled.div>
+    <styled.button>
+      <HiXMark />
+    </styled.button>
+  </ModalHeader>
+  <ModalBody>
+    <styled.div>
+      No flair selected
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        <styled.div>
+          <input
+            onChange={[Function]}
+            placeholder="Search for flair"
+            type="text"
+            value=""
+          />
+          <Styled(FaSearch) />
+        </styled.div>
+        <Styled(Form)
+          onChange={[Function]}
+        >
+          <FormCheck
+            label={
+              <styled.span
+                style={
+                  Object {
+                    "backgroundColor": "green",
+                    "color": "#fff",
+                  }
+                }
+              >
+                lie
+              </styled.span>
+            }
+            name="flair"
+            type="radio"
+          />
+          <FormCheck
+            label={
+              <styled.span
+                style={
+                  Object {
+                    "backgroundColor": "yellow",
+                    "color": "#fff",
+                  }
+                }
+              >
+                tie
+              </styled.span>
+            }
+            name="flair"
+            type="radio"
+          />
+          <FormCheck
+            label={
+              <styled.span
+                style={
+                  Object {
+                    "backgroundColor": "blue",
+                    "color": "#fff",
+                  }
+                }
+              >
+                bye
+              </styled.span>
+            }
+            name="flair"
+            type="radio"
+          />
+          <FormCheck
+            label={
+              <styled.span
+                style={
+                  Object {
+                    "backgroundColor": "black",
+                    "color": "#fff",
+                  }
+                }
+              >
+                hi
+              </styled.span>
+            }
+            name="flair"
+            type="radio"
+          />
+        </Styled(Form)>
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <Form>
+        <FormCheck
+          label="Show my user flair on this community"
+          type="checkbox"
+        />
+      </Form>
+    </styled.div>
+  </ModalBody>
+  <ModalFooter>
+    <Button
+      active={false}
+      className="discard"
+      disabled={false}
+      onClick={[Function]}
+      variant="primary"
+    >
+      Clear Flair
+    </Button>
+    <Button
+      active={false}
+      className="save"
+      disabled={false}
+      onClick={[Function]}
+      variant="primary"
+    >
+      Apply
+    </Button>
+  </ModalFooter>
+</Styled(Modal)>
+`;

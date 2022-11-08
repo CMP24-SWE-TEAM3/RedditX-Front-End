@@ -13,7 +13,7 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
  * and "Connect accounts to share your post"
  *
  * @param {String} id - The id of the form group
- * @returns
+ * @returns {React.Component} PostFormFooter component
  */
 const PostFormFooter = ({ id }) => {
   return (

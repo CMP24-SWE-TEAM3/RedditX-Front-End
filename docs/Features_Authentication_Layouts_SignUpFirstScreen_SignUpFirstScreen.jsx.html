@@ -26,17 +26,31 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from "react";
-import jwt_decode from "jwt-decode";
+            <pre class="prettyprint source linenums"><code>/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 
-import FacebookLogin from "react-facebook-login";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import { useState, useEffect } from "react";
 
 import FormInput from "Features/Authentication/Components/FormInput/FormInput";
 import Button from "../../Components/Button/Button";
 
+import axios from "API/axios";
 
+import useFetchFunction from "Hooks/useFetchFunction";
 
+import {
+  signupWithGoogle,
+  signupWithFacebook,
+} from "Features/Authentication/Services/authApi";
+
+import { FcGoogle } from "react-icons/fc";
+import { BsFacebook } from "react-icons/bs";
+
+import {
+  signInWithGooglePopup,
+  signInWithFacebookPopup,
+} from "Features/Authentication/Utils/Firebase";
 
 import {
   ButtonsContainer,
@@ -53,8 +67,6 @@ import { AuthContainer, AuthContainerDiv } from "./SignUpFirstScreen.styled";
 
 const USER_EMAIL =
   /[a-zA-Z0-9._-]{3,}@[a-zA-Z0-9._-]{3,}[.]{1}[a-zA-Z0-9._-]{2,}/;
-
-
 
 /**
  * SignUpFirstScreen component that is used in Signup Component
@@ -79,15 +91,25 @@ const SignUpFirstScreen = ({
   setInitialFocus,
   changeUserName,
   formFields,
-  setFormFields
+  setFormFields,
 }) => {
- 
+  const auth = useAuth();
 
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
   /**
    * state to know what error message should be shown
    */
   const [errMsg, setErrMsg] = useState("");
   const { email } = formFields;
+
+  /**
+   * the error message from signup
+   */
+  const [signupErrorMsg, setSignupErrorMsg] = useState("");
+  /**
+   * state to set the error message from signup
+   */
+  const [showSignupErrorMsg, setShowSignupErrorMsg] = useState(false);
 
   /**
    * useEffect for email field to check if the email that the user entered is valid or not
@@ -98,10 +120,11 @@ const SignUpFirstScreen = ({
       setErrMsg("Not a valid email address");
     } else if (email.length === 0) {
       setErrMsg("Please enter an email address to continue");
-      // console.log(errMsg);
     }
 
     setValidEmail(USER_EMAIL.test(email));
+
+    setShowSignupErrorMsg(false);
   }, [email]);
 
   /**
@@ -113,7 +136,7 @@ const SignUpFirstScreen = ({
   };
 
   /**
-   * Function to handle any change on the input field of the login form (check if the userName or the email or the password is valid or not)
+   * Function to handle any change on the input field of the signup form (check if the userName or the email or the password is valid or not)
    * @param {*} event
    */
   const handleChange = (event) => {
@@ -130,10 +153,7 @@ const SignUpFirstScreen = ({
    * Function to handle the response coming from sign in with google
    * @param {*} response
    */
-  const handleCallbackResponse = (response) => {
-    let userObject = jwt_decode(response.credential);
-    console.log(userObject);
-  };
+  const handleCallbackResponse = (response) => {};
 
   /**
    * Function to check email by sending request to the api and make sure that the email is good to show the second screen after that
@@ -169,8 +189,66 @@ const SignUpFirstScreen = ({
    * Function to handle the response coming from sign in with facebook
    * @param {*} response
    */
-  const responseFacebook = (response) => {
-    console.log(response);
+  const responseFacebook = (response) => {};
+
+  const logGoogleUser = async () => {
+    const { user } = await signInWithGooglePopup();
+    // const user2 = await signupWithGoogle(
+    //   user.accessToken,
+    //   setSignupErrorMsg,
+    //   setShowSignupErrorMsg
+    // );
+
+    // if (user2 !== false) {
+    //   auth.login(user2);
+    // }
+
+    dataFetch({
+      axiosInstance: axios,
+      method: "post",
+      url: "/signup",
+      requestConfig: {
+        data: {
+          type: "google",
+          googleOrFacebookToken: user.accessToken,
+        },
+      },
+    });
+
+    if (!error) {
+      //  setFinishedLoading(true);
+      auth.login(data);
+    }
+  };
+
+  const logFacebookUser = async () => {
+    const { user } = await signInWithFacebookPopup();
+    // const user2 = await signupWithFacebook(
+    //   user.accessToken,
+    //   setSignupErrorMsg,
+    //   setShowSignupErrorMsg
+    // );
+
+    // if (user2 !== false) {
+    //   auth.login(user2);
+    // }
+
+    dataFetch({
+      axiosInstance: axios,
+      method: "post",
+      url: "/signup",
+      requestConfig: {
+        data: {
+          type: "facebook",
+          googleOrFacebookToken: user.accessToken,
+        },
+      },
+    });
+
+    if (!error) {
+      // setFinishedLoading(true);
+      auth.login(data);
+    }
   };
 
   return (
@@ -185,18 +263,20 @@ const SignUpFirstScreen = ({
               &lt;Privacy>Privacy Policy&lt;/Privacy>.
             &lt;/AuthParagraph>
             &lt;SignInWithGoogle>
-              &lt;div id="signInDiv">&lt;/div>
+              {/* &lt;div id="signInDiv">&lt;/div> */}
+              &lt;button onClick={() => logGoogleUser()}>
+                &lt;FcGoogle size={22} />
+                &lt;span> Continue With Google&lt;/span>
+              &lt;/button>
             &lt;/SignInWithGoogle>
 
             &lt;SignInWithFacebook>
-              &lt;FacebookLogin
-                appId="648981979946188"
-                autoLoad={false}
-                fields="name,email,picture"
-                callback={responseFacebook}
-                cssClass="my-facebook-button-class"
-                icon="fa-facebook"
-              />
+              &lt;SignInWithFacebook>
+                &lt;button onClick={() => logFacebookUser()}>
+                  &lt;BsFacebook size={22} />
+                  &lt;span> Continue With Facebook&lt;/span>
+                &lt;/button>
+              &lt;/SignInWithFacebook>
             &lt;/SignInWithFacebook>
 
             &lt;OrHeader>
@@ -224,24 +304,17 @@ const SignUpFirstScreen = ({
                 {errMsg}
               &lt;/ErrorParagraph>
 
-              &lt;ButtonsContainer>
-                {/** Show an enabled button if the email is valid */}
-                {validEmail &amp;&amp; (
-                  &lt;Button
-                    valid={validEmail}
-                    type="button"
-                    onClick={() => checkEmail(email)}
-                  >
-                    Continue
-                  &lt;/Button>
-                )}
+              {error &amp;&amp; &lt;ErrorParagraph valid={!error}>{error}&lt;/ErrorParagraph>}
 
-                {/** Show an disabled button if the email is not valid */}
-                {!validEmail &amp;&amp; (
-                  &lt;Button disabled valid={validEmail} type="button">
-                    Continue
-                  &lt;/Button>
-                )}
+              &lt;ButtonsContainer>
+                &lt;Button
+                  disabled={!validEmail}
+                  valid={validEmail}
+                  type="button"
+                  onClick={() => checkEmail(email)}
+                >
+                  Continue
+                &lt;/Button>
               &lt;/ButtonsContainer>
             &lt;/form>
           &lt;/AuthContainerDiv>
@@ -262,13 +335,13 @@ export default SignUpFirstScreen;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#Button">Button</a></li><li><a href="global.html#darkTheme">darkTheme</a></li><li><a href="global.html#defaultTheme">defaultTheme</a></li><li><a href="global.html#ForgetPassword">ForgetPassword</a></li><li><a href="global.html#ForgetPasswordModal">ForgetPasswordModal</a></li><li><a href="global.html#ForgetPasswordPage">ForgetPasswordPage</a></li><li><a href="global.html#ForgetUserName">ForgetUserName</a></li><li><a href="global.html#ForgetUserNameModal">ForgetUserNameModal</a></li><li><a href="global.html#ForgetUserNamePage">ForgetUserNamePage</a></li><li><a href="global.html#FormInput">FormInput</a></li><li><a href="global.html#FormInputPageCom">FormInputPageCom</a></li><li><a href="global.html#GetPasswordStrength">GetPasswordStrength</a></li><li><a href="global.html#lightTheme">lightTheme</a></li><li><a href="global.html#LogIn">LogIn</a></li><li><a href="global.html#LogInPage">LogInPage</a></li><li><a href="global.html#LogInPageCom">LogInPageCom</a></li><li><a href="global.html#LogInScreen">LogInScreen</a></li><li><a href="global.html#LogInVerticalModal">LogInVerticalModal</a></li><li><a href="global.html#PasswordStrength">PasswordStrength</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#SignUpFirstScreen">SignUpFirstScreen</a></li><li><a href="global.html#SignUpPageFirstScreen">SignUpPageFirstScreen</a></li><li><a href="global.html#SignUpSecondScreen">SignUpSecondScreen</a></li><li><a href="global.html#SignUpVerticalModal">SignUpVerticalModal</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AboutCommunity">AboutCommunity</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#AuthProvider">AuthProvider</a></li><li><a href="global.html#BlockStyleControls">BlockStyleControls</a></li><li><a href="global.html#BodyContent">BodyContent</a></li><li><a href="global.html#Button">Button</a></li><li><a href="global.html#CategoryBar">CategoryBar</a></li><li><a href="global.html#CategoryDropDown">CategoryDropDown</a></li><li><a href="global.html#Checked">Checked</a></li><li><a href="global.html#ChooseCommunity">ChooseCommunity</a></li><li><a href="global.html#Comment">Comment</a></li><li><a href="global.html#CommentBody">CommentBody</a></li><li><a href="global.html#CommentsPage">CommentsPage</a></li><li><a href="global.html#CommunitiesPage">CommunitiesPage</a></li><li><a href="global.html#Community">Community</a></li><li><a href="global.html#CommunityCard">CommunityCard</a></li><li><a href="global.html#CommunityCardItem">CommunityCardItem</a></li><li><a href="global.html#CommunityDate">CommunityDate</a></li><li><a href="global.html#CommunityItem">CommunityItem</a></li><li><a href="global.html#CommunityLeaderBoard">CommunityLeaderBoard</a></li><li><a href="global.html#CommunityOptions">CommunityOptions</a></li><li><a href="global.html#CommunityTopics">CommunityTopics</a></li><li><a href="global.html#CreateCommunity">CreateCommunity</a></li><li><a href="global.html#CreatePost">CreatePost</a></li><li><a href="global.html#CreatePostAttachmentsProvider">CreatePostAttachmentsProvider</a></li><li><a href="global.html#CreatePostFlagsProvider">CreatePostFlagsProvider</a></li><li><a href="global.html#CreatePostFlairsProvider">CreatePostFlairsProvider</a></li><li><a href="global.html#CreatePostTextProvider">CreatePostTextProvider</a></li><li><a href="global.html#CreatePostTitleProvider">CreatePostTitleProvider</a></li><li><a href="global.html#darkTheme">darkTheme</a></li><li><a href="global.html#defaultTheme">defaultTheme</a></li><li><a href="global.html#DraftEditor">DraftEditor</a></li><li><a href="global.html#DraftEditorForm">DraftEditorForm</a></li><li><a href="global.html#DraftEditorTab">DraftEditorTab</a></li><li><a href="global.html#DraftLinkForm">DraftLinkForm</a></li><li><a href="global.html#DragAndDropFile">DragAndDropFile</a></li><li><a href="global.html#ForgetPassword">ForgetPassword</a></li><li><a href="global.html#forgetPasswordApi">forgetPasswordApi</a></li><li><a href="global.html#ForgetPasswordModal">ForgetPasswordModal</a></li><li><a href="global.html#ForgetPasswordPage">ForgetPasswordPage</a></li><li><a href="global.html#ForgetUserName">ForgetUserName</a></li><li><a href="global.html#forgetUserNameApi">forgetUserNameApi</a></li><li><a href="global.html#ForgetUserNameModal">ForgetUserNameModal</a></li><li><a href="global.html#ForgetUserNamePage">ForgetUserNamePage</a></li><li><a href="global.html#FormInput">FormInput</a></li><li><a href="global.html#FormInputPageCom">FormInputPageCom</a></li><li><a href="global.html#GetPasswordStrength">GetPasswordStrength</a></li><li><a href="global.html#ImageAndVideoForm">ImageAndVideoForm</a></li><li><a href="global.html#ImagesAndVideosTab">ImagesAndVideosTab</a></li><li><a href="global.html#IndexPage">IndexPage</a></li><li><a href="global.html#InlineStyleControls">InlineStyleControls</a></li><li><a href="global.html#isUserNameAvailable">isUserNameAvailable</a></li><li><a href="global.html#isValidUrl">isValidUrl</a></li><li><a href="global.html#lightTheme">lightTheme</a></li><li><a href="global.html#LinkControls">LinkControls</a></li><li><a href="global.html#LinkForm">LinkForm</a></li><li><a href="global.html#Links">Links</a></li><li><a href="global.html#LinkTab">LinkTab</a></li><li><a href="global.html#LoadingSpinner">LoadingSpinner</a></li><li><a href="global.html#LogIn">LogIn</a></li><li><a href="global.html#loginApi">loginApi</a></li><li><a href="global.html#LogInPage">LogInPage</a></li><li><a href="global.html#LogInPageCom">LogInPageCom</a></li><li><a href="global.html#LogInScreen">LogInScreen</a></li><li><a href="global.html#LogInVerticalModal">LogInVerticalModal</a></li><li><a href="global.html#loginWithFacebook">loginWithFacebook</a></li><li><a href="global.html#loginWithGoogle">loginWithGoogle</a></li><li><a href="global.html#Main">Main</a></li><li><a href="global.html#Media">Media</a></li><li><a href="global.html#MediaControls">MediaControls</a></li><li><a href="global.html#ModeratorWidget">ModeratorWidget</a></li><li><a href="global.html#NewPasswordPage">NewPasswordPage</a></li><li><a href="global.html#NewPasswordPageCom">NewPasswordPageCom</a></li><li><a href="global.html#OnlineMembers">OnlineMembers</a></li><li><a href="global.html#PasswordStrength">PasswordStrength</a></li><li><a href="global.html#People">People</a></li><li><a href="global.html#PeopleCardItem">PeopleCardItem</a></li><li><a href="global.html#PeopleItem">PeopleItem</a></li><li><a href="global.html#PeoplePage">PeoplePage</a></li><li><a href="global.html#PostFlag">PostFlag</a></li><li><a href="global.html#PostFlagsWrapper">PostFlagsWrapper</a></li><li><a href="global.html#PostFooter">PostFooter</a></li><li><a href="global.html#PostFormFooter">PostFormFooter</a></li><li><a href="global.html#PostGuidelines">PostGuidelines</a></li><li><a href="global.html#PostHeader">PostHeader</a></li><li><a href="global.html#PostItem">PostItem</a></li><li><a href="global.html#Posts">Posts</a></li><li><a href="global.html#PostsList">PostsList</a></li><li><a href="global.html#PreviewImage">PreviewImage</a></li><li><a href="global.html#resetForgottenPassword">resetForgottenPassword</a></li><li><a href="global.html#ResponsiveNavbar">ResponsiveNavbar</a></li><li><a href="global.html#RulesWidget">RulesWidget</a></li><li><a href="global.html#SafeSearch">SafeSearch</a></li><li><a href="global.html#SaveChangesModal">SaveChangesModal</a></li><li><a href="global.html#Search">Search</a></li><li><a href="global.html#SelectYourFlair">SelectYourFlair</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#signupApi">signupApi</a></li><li><a href="global.html#SignUpFirstScreen">SignUpFirstScreen</a></li><li><a href="global.html#SignUpPageFirstScreen">SignUpPageFirstScreen</a></li><li><a href="global.html#SignUpPageSecondScreen">SignUpPageSecondScreen</a></li><li><a href="global.html#SignUpSecondScreen">SignUpSecondScreen</a></li><li><a href="global.html#SignUpVerticalModal">SignUpVerticalModal</a></li><li><a href="global.html#signupWithFacebook">signupWithFacebook</a></li><li><a href="global.html#signupWithGoogle">signupWithGoogle</a></li><li><a href="global.html#StyleControlButton">StyleControlButton</a></li><li><a href="global.html#SubmitDestinationProvider">SubmitDestinationProvider</a></li><li><a href="global.html#SubReddit">SubReddit</a></li><li><a href="global.html#SubRedditBody">SubRedditBody</a></li><li><a href="global.html#SubRedditHeader">SubRedditHeader</a></li><li><a href="global.html#SubRedditSideBar">SubRedditSideBar</a></li><li><a href="global.html#Tabs">Tabs</a></li><li><a href="global.html#TopCommunities">TopCommunities</a></li><li><a href="global.html#UploadedImage">UploadedImage</a></li><li><a href="global.html#UploadedImagesContainer">UploadedImagesContainer</a></li><li><a href="global.html#UploadedMedia">UploadedMedia</a></li><li><a href="global.html#useAuth">useAuth</a></li><li><a href="global.html#useCreatePostAttachments">useCreatePostAttachments</a></li><li><a href="global.html#useCreatePostFlags">useCreatePostFlags</a></li><li><a href="global.html#useCreatePostFlairs">useCreatePostFlairs</a></li><li><a href="global.html#useCreatePostText">useCreatePostText</a></li><li><a href="global.html#useCreatePostTitle">useCreatePostTitle</a></li><li><a href="global.html#useFetch">useFetch</a></li><li><a href="global.html#useFetchFunction">useFetchFunction</a></li><li><a href="global.html#useLink">useLink</a></li><li><a href="global.html#useLocalStorage">useLocalStorage</a></li><li><a href="global.html#useMedia">useMedia</a></li><li><a href="global.html#UserFlairPreview">UserFlairPreview</a></li><li><a href="global.html#useSubmitDestination">useSubmitDestination</a></li><li><a href="global.html#WidgetContainer">WidgetContainer</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Fri Oct 28 2022 11:22:02 GMT+0200 (Eastern European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Tue Nov 08 2022 09:39:48 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -253,7 +253,7 @@ const NewPasswordPageCom = () => {
               </Button>
             )}
 
-            {isLoading  && (
+            {isLoading && (
               <Button page={true} disabled valid={true} type="submit">
                 <LoadingSpinner></LoadingSpinner>
               </Button>

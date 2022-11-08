@@ -1,3 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`moderator widget show all moderators should render without crashing 1`] = `ShallowWrapper {}`;
+exports[`moderator widget show all moderators should render without crashing 1`] = `
+<WidgetContainer
+  headerText="Moderators"
+>
+  <MessageMod />
+  <Moderator
+    moderator={
+      Object {
+        "flair": Object {
+          "backgroundColor": "#000",
+          "color": "white",
+          "text": "hi",
+        },
+        "userName": "khaled",
+      }
+    }
+  />
+  <Moderator
+    moderator={
+      Object {
+        "flair": Object {
+          "backgroundColor": "rgb(0, 166, 165)",
+          "color": "white",
+          "text": "gamed",
+        },
+        "userName": "hamza",
+      }
+    }
+  />
+  <Moderator
+    moderator={
+      Object {
+        "flair": Object {},
+        "userName": "hassan",
+      }
+    }
+  />
+  <ViewAllModerators />
+</WidgetContainer>
+`;

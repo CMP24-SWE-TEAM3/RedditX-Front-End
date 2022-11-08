@@ -16,7 +16,7 @@ import {
  *
  * @param {Number} selectedImageId - The id of the selected image
  * @param {Array} files - The array of images
- * @returns
+ * @returns {React.Component} PreviewImage component
  */
 const PreviewImage = ({ selectedImageId, files, isLoadingDone }) => {
   // State to store the selected image

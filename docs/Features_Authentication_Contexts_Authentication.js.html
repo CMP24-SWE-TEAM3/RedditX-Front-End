@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Features/Authentication/Contexts/Authentication.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Features/Authentication/Contexts/Authentication.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { createContext, useContext } from "react";
+
+import useLocalStorage from "./useLocalStorage";
+
+/* Creating a context object. */
+const AuthContext = createContext(null);
+
+/**
+ * The AuthProvider is a function that takes in a child component and returns a context provider that
+ * has a value of an object with the following properties: user, login, logout, getToken,
+ * getExpirationDate, isLoggedIn, getFullName.
+ * @returns The AuthContext.Provider is being returned.
+ */
+export const AuthProvider = ({ children }) => {
+  // Local storage for user information
+  const [user, setUser] = useLocalStorage("user", "null");
+
+  /**
+   * The login function takes a user object as an argument, and then sets the user state to the
+   * stringified version of the user object.
+   * @param user - The user object that is returned from the login function.
+   */
+  const login = async (user) => {
+    setUser(JSON.stringify(user));
+  };
+
+  // Handle logout
+  const logout = () => {
+    localStorage.clear();
+    setUser(null);
+  };
+
+  // Return user's full name
+//   const getFullName = () => {
+//     return JSON.parse(user).fullName;
+//   };
+
+  // Return user's token
+  const getToken = () => {
+    return JSON.parse(user).accessToken;
+  };
+
+  // Return token's expiration date
+  const getExpirationDate = () => {
+    return JSON.parse(user).expiresIn;
+  };
+
+  // Is user logged in?
+  const isLoggedIn = () => {
+    return user !== "null";
+  };
+  return (
+    &lt;AuthContext.Provider
+      value={{
+        //user,
+        login,
+        logout,
+        getToken,
+        getExpirationDate,
+        isLoggedIn,
+        //getFullName,
+      }}
+    >
+      {children}
+    &lt;/AuthContext.Provider>
+  );
+};
+
+/**
+ * It returns the value of the AuthContext object.
+ * @returns The AuthContext object.
+ */
+export const useAuth = () => {
+  return useContext(AuthContext);
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AboutCommunity">AboutCommunity</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#AuthProvider">AuthProvider</a></li><li><a href="global.html#BlockStyleControls">BlockStyleControls</a></li><li><a href="global.html#BodyContent">BodyContent</a></li><li><a href="global.html#Button">Button</a></li><li><a href="global.html#CategoryBar">CategoryBar</a></li><li><a href="global.html#CategoryDropDown">CategoryDropDown</a></li><li><a href="global.html#Checked">Checked</a></li><li><a href="global.html#ChooseCommunity">ChooseCommunity</a></li><li><a href="global.html#Comment">Comment</a></li><li><a href="global.html#CommentBody">CommentBody</a></li><li><a href="global.html#CommentsPage">CommentsPage</a></li><li><a href="global.html#CommunitiesPage">CommunitiesPage</a></li><li><a href="global.html#Community">Community</a></li><li><a href="global.html#CommunityCard">CommunityCard</a></li><li><a href="global.html#CommunityCardItem">CommunityCardItem</a></li><li><a href="global.html#CommunityDate">CommunityDate</a></li><li><a href="global.html#CommunityItem">CommunityItem</a></li><li><a href="global.html#CommunityLeaderBoard">CommunityLeaderBoard</a></li><li><a href="global.html#CommunityOptions">CommunityOptions</a></li><li><a href="global.html#CommunityTopics">CommunityTopics</a></li><li><a href="global.html#CreateCommunity">CreateCommunity</a></li><li><a href="global.html#CreatePost">CreatePost</a></li><li><a href="global.html#CreatePostAttachmentsProvider">CreatePostAttachmentsProvider</a></li><li><a href="global.html#CreatePostFlagsProvider">CreatePostFlagsProvider</a></li><li><a href="global.html#CreatePostFlairsProvider">CreatePostFlairsProvider</a></li><li><a href="global.html#CreatePostTextProvider">CreatePostTextProvider</a></li><li><a href="global.html#CreatePostTitleProvider">CreatePostTitleProvider</a></li><li><a href="global.html#darkTheme">darkTheme</a></li><li><a href="global.html#defaultTheme">defaultTheme</a></li><li><a href="global.html#DraftEditor">DraftEditor</a></li><li><a href="global.html#DraftEditorForm">DraftEditorForm</a></li><li><a href="global.html#DraftEditorTab">DraftEditorTab</a></li><li><a href="global.html#DraftLinkForm">DraftLinkForm</a></li><li><a href="global.html#DragAndDropFile">DragAndDropFile</a></li><li><a href="global.html#ForgetPassword">ForgetPassword</a></li><li><a href="global.html#forgetPasswordApi">forgetPasswordApi</a></li><li><a href="global.html#ForgetPasswordModal">ForgetPasswordModal</a></li><li><a href="global.html#ForgetPasswordPage">ForgetPasswordPage</a></li><li><a href="global.html#ForgetUserName">ForgetUserName</a></li><li><a href="global.html#forgetUserNameApi">forgetUserNameApi</a></li><li><a href="global.html#ForgetUserNameModal">ForgetUserNameModal</a></li><li><a href="global.html#ForgetUserNamePage">ForgetUserNamePage</a></li><li><a href="global.html#FormInput">FormInput</a></li><li><a href="global.html#FormInputPageCom">FormInputPageCom</a></li><li><a href="global.html#GetPasswordStrength">GetPasswordStrength</a></li><li><a href="global.html#ImageAndVideoForm">ImageAndVideoForm</a></li><li><a href="global.html#ImagesAndVideosTab">ImagesAndVideosTab</a></li><li><a href="global.html#IndexPage">IndexPage</a></li><li><a href="global.html#InlineStyleControls">InlineStyleControls</a></li><li><a href="global.html#isUserNameAvailable">isUserNameAvailable</a></li><li><a href="global.html#isValidUrl">isValidUrl</a></li><li><a href="global.html#lightTheme">lightTheme</a></li><li><a href="global.html#LinkControls">LinkControls</a></li><li><a href="global.html#LinkForm">LinkForm</a></li><li><a href="global.html#Links">Links</a></li><li><a href="global.html#LinkTab">LinkTab</a></li><li><a href="global.html#LoadingSpinner">LoadingSpinner</a></li><li><a href="global.html#LogIn">LogIn</a></li><li><a href="global.html#loginApi">loginApi</a></li><li><a href="global.html#LogInPage">LogInPage</a></li><li><a href="global.html#LogInPageCom">LogInPageCom</a></li><li><a href="global.html#LogInScreen">LogInScreen</a></li><li><a href="global.html#LogInVerticalModal">LogInVerticalModal</a></li><li><a href="global.html#loginWithFacebook">loginWithFacebook</a></li><li><a href="global.html#loginWithGoogle">loginWithGoogle</a></li><li><a href="global.html#Main">Main</a></li><li><a href="global.html#Media">Media</a></li><li><a href="global.html#MediaControls">MediaControls</a></li><li><a href="global.html#ModeratorWidget">ModeratorWidget</a></li><li><a href="global.html#NewPasswordPage">NewPasswordPage</a></li><li><a href="global.html#NewPasswordPageCom">NewPasswordPageCom</a></li><li><a href="global.html#OnlineMembers">OnlineMembers</a></li><li><a href="global.html#PasswordStrength">PasswordStrength</a></li><li><a href="global.html#People">People</a></li><li><a href="global.html#PeopleCardItem">PeopleCardItem</a></li><li><a href="global.html#PeopleItem">PeopleItem</a></li><li><a href="global.html#PeoplePage">PeoplePage</a></li><li><a href="global.html#PostFlag">PostFlag</a></li><li><a href="global.html#PostFlagsWrapper">PostFlagsWrapper</a></li><li><a href="global.html#PostFooter">PostFooter</a></li><li><a href="global.html#PostFormFooter">PostFormFooter</a></li><li><a href="global.html#PostGuidelines">PostGuidelines</a></li><li><a href="global.html#PostHeader">PostHeader</a></li><li><a href="global.html#PostItem">PostItem</a></li><li><a href="global.html#Posts">Posts</a></li><li><a href="global.html#PostsList">PostsList</a></li><li><a href="global.html#PreviewImage">PreviewImage</a></li><li><a href="global.html#resetForgottenPassword">resetForgottenPassword</a></li><li><a href="global.html#ResponsiveNavbar">ResponsiveNavbar</a></li><li><a href="global.html#RulesWidget">RulesWidget</a></li><li><a href="global.html#SafeSearch">SafeSearch</a></li><li><a href="global.html#SaveChangesModal">SaveChangesModal</a></li><li><a href="global.html#Search">Search</a></li><li><a href="global.html#SelectYourFlair">SelectYourFlair</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#signupApi">signupApi</a></li><li><a href="global.html#SignUpFirstScreen">SignUpFirstScreen</a></li><li><a href="global.html#SignUpPageFirstScreen">SignUpPageFirstScreen</a></li><li><a href="global.html#SignUpPageSecondScreen">SignUpPageSecondScreen</a></li><li><a href="global.html#SignUpSecondScreen">SignUpSecondScreen</a></li><li><a href="global.html#SignUpVerticalModal">SignUpVerticalModal</a></li><li><a href="global.html#signupWithFacebook">signupWithFacebook</a></li><li><a href="global.html#signupWithGoogle">signupWithGoogle</a></li><li><a href="global.html#StyleControlButton">StyleControlButton</a></li><li><a href="global.html#SubmitDestinationProvider">SubmitDestinationProvider</a></li><li><a href="global.html#SubReddit">SubReddit</a></li><li><a href="global.html#SubRedditBody">SubRedditBody</a></li><li><a href="global.html#SubRedditHeader">SubRedditHeader</a></li><li><a href="global.html#SubRedditSideBar">SubRedditSideBar</a></li><li><a href="global.html#Tabs">Tabs</a></li><li><a href="global.html#TopCommunities">TopCommunities</a></li><li><a href="global.html#UploadedImage">UploadedImage</a></li><li><a href="global.html#UploadedImagesContainer">UploadedImagesContainer</a></li><li><a href="global.html#UploadedMedia">UploadedMedia</a></li><li><a href="global.html#useAuth">useAuth</a></li><li><a href="global.html#useCreatePostAttachments">useCreatePostAttachments</a></li><li><a href="global.html#useCreatePostFlags">useCreatePostFlags</a></li><li><a href="global.html#useCreatePostFlairs">useCreatePostFlairs</a></li><li><a href="global.html#useCreatePostText">useCreatePostText</a></li><li><a href="global.html#useCreatePostTitle">useCreatePostTitle</a></li><li><a href="global.html#useFetch">useFetch</a></li><li><a href="global.html#useFetchFunction">useFetchFunction</a></li><li><a href="global.html#useLink">useLink</a></li><li><a href="global.html#useLocalStorage">useLocalStorage</a></li><li><a href="global.html#useMedia">useMedia</a></li><li><a href="global.html#UserFlairPreview">UserFlairPreview</a></li><li><a href="global.html#useSubmitDestination">useSubmitDestination</a></li><li><a href="global.html#WidgetContainer">WidgetContainer</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Tue Nov 08 2022 09:39:48 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

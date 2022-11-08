@@ -1,3 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`modal to check unsaved changes should render without crashing 1`] = `ShallowWrapper {}`;
+exports[`modal to check unsaved changes should render without crashing 1`] = `
+<Styled(Modal)
+  aria-labelledby="contained-modal-title-vcenter"
+  centered={true}
+  size="lg"
+>
+  <ModalHeader
+    closeButton={true}
+    closeLabel="Close"
+  >
+    <ModalTitle
+      id="contained-modal-title-vcenter"
+    >
+      Save changes before leaving?
+    </ModalTitle>
+  </ModalHeader>
+  <ModalBody>
+    <p>
+      You have made some changes to your community, do you wish to leave this menu without saving?
+    </p>
+  </ModalBody>
+  <ModalFooter>
+    <Button
+      active={false}
+      className="discard"
+      disabled={false}
+      variant="primary"
+    >
+      Discard
+    </Button>
+    <Button
+      active={false}
+      className="save"
+      disabled={false}
+      variant="primary"
+    >
+      Save
+    </Button>
+  </ModalFooter>
+</Styled(Modal)>
+`;

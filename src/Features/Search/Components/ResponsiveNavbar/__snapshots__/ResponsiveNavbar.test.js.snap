@@ -15,7 +15,7 @@ exports[`Responsive Navbar this is a test for Responsive Navbar 1`] = `
       }
     }
     onClick={[Function]}
-    to="/posts"
+    to="/search/posts"
   >
     Posts
   </DropdownItem>
@@ -27,7 +27,7 @@ exports[`Responsive Navbar this is a test for Responsive Navbar 1`] = `
       }
     }
     onClick={[Function]}
-    to="/comments"
+    to="/search/comments"
   >
     Comments
   </DropdownItem>
@@ -39,7 +39,7 @@ exports[`Responsive Navbar this is a test for Responsive Navbar 1`] = `
       }
     }
     onClick={[Function]}
-    to="/communities"
+    to="/search/communities"
   >
     Communities
   </DropdownItem>
@@ -51,7 +51,7 @@ exports[`Responsive Navbar this is a test for Responsive Navbar 1`] = `
       }
     }
     onClick={[Function]}
-    to="/people"
+    to="/search/people"
   >
     People
   </DropdownItem>

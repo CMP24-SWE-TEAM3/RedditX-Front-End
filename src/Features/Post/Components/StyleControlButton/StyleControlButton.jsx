@@ -8,7 +8,7 @@ import { StyledButton } from "./StyleControlButton.styled";
 /**
  *
  * @param {*} param0
- * @returns
+ * @returns {React.Component} StyleControlButton component
  */
 const StyleControlButton = ({ style, onToggle, active, label, icon }) => {
   const onToggleHandler = (e) => {

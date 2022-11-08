@@ -9,7 +9,7 @@ exports[`People Main Header this is a test for Main Header 1`] = `
       className="inner-links"
     >
       <NavLink
-        to="/posts"
+        to="/search/posts"
       >
         <button
           onClick={[Function]}
@@ -18,7 +18,7 @@ exports[`People Main Header this is a test for Main Header 1`] = `
         </button>
       </NavLink>
       <NavLink
-        to="/comments"
+        to="/search/comments"
       >
         <button
           onClick={[Function]}
@@ -27,7 +27,7 @@ exports[`People Main Header this is a test for Main Header 1`] = `
         </button>
       </NavLink>
       <NavLink
-        to="/communities"
+        to="/search/communities"
       >
         <button
           onClick={[Function]}
@@ -36,7 +36,7 @@ exports[`People Main Header this is a test for Main Header 1`] = `
         </button>
       </NavLink>
       <NavLink
-        to="/people"
+        to="/search/people"
       >
         <button
           onClick={[Function]}
