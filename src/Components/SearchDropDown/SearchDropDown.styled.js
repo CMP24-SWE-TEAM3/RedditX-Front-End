@@ -5,7 +5,7 @@ export const SearchDropDownStyled = styled(DropdownMenu)
     `
       position: fixed;
       z-index: 100;
-      left: 423px;
+      left: 480px;
       top: 44.5px;
       width: 440px;
       overflow: auto;

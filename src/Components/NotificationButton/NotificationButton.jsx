@@ -70,7 +70,7 @@ const NotificationButton = () => {
     return (
         <Container ref={ref}>
             <OverlayTrigger
-                key={'bottom'}
+                key={Math.random()}
                 placement={'bottom'}
                 overlay={
                     <Tooltip id={`tooltip-bottom`}>Notification</Tooltip>}>
@@ -81,6 +81,7 @@ const NotificationButton = () => {
             <Overlay
                 show={show}
                 target={target}
+                key={Math.random()}
                 placement="bottom"
                 container={ref}
                 ref={wrapperRef}>
@@ -109,7 +110,7 @@ const NotificationButton = () => {
                         <div className={'content'}>
                             {db.comments.map(comment => {
                                 return (
-                                    <i className={'content-i'}>
+                                    <i className={'content-i'} key={Math.random()}>
                                         <Link className={'content-a'}
                                            href={'https://www.reddit.com/r/Eln2aa4yn/comments/yi1rd4/ccccc/'}>
                                     <span className={'a-span'}>

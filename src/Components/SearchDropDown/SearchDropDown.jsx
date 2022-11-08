@@ -4,12 +4,17 @@ import {SearchDropDownStyled} from "./SearchDropDown.styled";
 import {Link} from "react-router-dom";
 import {BsArrowUpRightCircle} from 'react-icons/bs';
 import {IoIosLink} from "react-icons/io";
-import useFetch from "../../Hooks/useFetch";
-import axios from "../../API/axios";
+import useFetch from "Hooks/useFetch";
+import axios from "API/axios";
 
+/**
+ * Component that displays a dropdown with a search bar inputForm
+ * @param show
+ * @return {React.Component}
+ */
 const SearchDropDown = ({show}) => {
 
-    // Fetch communities
+    // Fetch trending posts
     const [trendingPostList, error, loading, reload] = useFetch({
         axiosInstance: axios,
         method: "GET",
@@ -23,12 +28,12 @@ const SearchDropDown = ({show}) => {
     });
 
     return (
-        <SearchDropDownStyled show={show} rootCloseEvent={'click'} autoClose={true}>
+        <SearchDropDownStyled show={show} rootCloseEvent={'click'} key={Math.random()} autoClose={true}>
             <Dropdown.Header>trending today</Dropdown.Header>
             {!loading && trendingPostList.map(recentPost => {
                 return (
                     <>
-                        <Dropdown.Item eventKey={recentPost.id} disabled={false}>
+                        <Dropdown.Item key={Math.random()} eventKey={recentPost.id} disabled={false}>
                             <Link className={'content'}>
                                 <div>
                                     <div>
