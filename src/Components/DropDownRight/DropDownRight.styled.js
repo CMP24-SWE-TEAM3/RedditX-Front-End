@@ -30,7 +30,11 @@ export const Container = styled(NavDropdown)`
     :hover {
       background-color: #e9ecef !important;
     }
+    --bs-accordion-active-color: none;
 
+  }
+  .accordion-body {
+    padding: 0.25rem 0 0.25rem 1.7rem !important;
   }
 
   margin: 5px;
@@ -42,10 +46,7 @@ export const Container = styled(NavDropdown)`
   }
 
 
-  .accordion-button::after {
-    //width:1rem; !important;
-    //background-image:unset;
-  }
+  
 
   white-space: break-spaces;
   padding: 0;

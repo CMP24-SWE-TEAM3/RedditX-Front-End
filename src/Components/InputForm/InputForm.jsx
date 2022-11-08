@@ -1,8 +1,6 @@
 // imports
 import React, {useState} from 'react';
 import {StyledSearcherInput} from "./InputForm.styled";
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownMenu from "react-bootstrap/DropdownMenu";
 import SearchDropDown from "../SearchDropDown/SearchDropDown";
 
 /**
@@ -12,6 +10,9 @@ import SearchDropDown from "../SearchDropDown/SearchDropDown";
  */
 
 const InputForm = () => {
+    /**
+     * state of search field that show trending posts
+     */
     const [show, setsShow] = useState(false);
     const handleDropdown = () => {
         setsShow(!show);
@@ -19,7 +20,7 @@ const InputForm = () => {
     return (
         <>
             <StyledSearcherInput onClick={handleDropdown} type="text" placeholder={'Search Reddit'}/>
-            <SearchDropDown show={show}/>
+            {/*<SearchDropDown show={show}/>*/}
         </>
     );
 };

@@ -11,7 +11,7 @@ import link from 'Assets/Images/link.png';
 import db from 'Data/db.json';
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 /**
  * Component that displays notifications about changes in the state of the application
@@ -43,7 +43,8 @@ const NotificationButton = () => {
 
             //Close toast if clicked on outside of element
             const handleClickOutside = (event) => {
-                if (ref.current && !ref.current.contains(event.target)) {
+                const box = document.getElementById("notification-box");
+                if (ref.current && !ref.current.contains(event.target) && box!==event.target && !box.contains(event.target)) {
                     setShow(false);
                 }
             }
@@ -62,8 +63,9 @@ const NotificationButton = () => {
      * @param event
      */
     const handleClick = (event) => {
-        setShow(!show);
         setTarget(event.target);
+        setShow(!show);
+
     };
     useOutsideAlerter(wrapperRef);
 
@@ -74,7 +76,7 @@ const NotificationButton = () => {
                 placement={'bottom'}
                 overlay={
                     <Tooltip id={`tooltip-bottom`}>Notification</Tooltip>}>
-                <GlobalButtonStyled onClick={handleClick}>
+                <GlobalButtonStyled id={'notification-box'} onClick={handleClick}>
                     <IoMdNotificationsOutline/>
                 </GlobalButtonStyled>
             </OverlayTrigger>
@@ -112,7 +114,7 @@ const NotificationButton = () => {
                                 return (
                                     <i className={'content-i'} key={Math.random()}>
                                         <Link className={'content-a'}
-                                           href={'https://www.reddit.com/r/Eln2aa4yn/comments/yi1rd4/ccccc/'}>
+                                              href={'https://www.reddit.com/r/Eln2aa4yn/comments/yi1rd4/ccccc/'}>
                                     <span className={'a-span'}>
                                      <img src={link} alt={'community-name'}/>
                                     </span>

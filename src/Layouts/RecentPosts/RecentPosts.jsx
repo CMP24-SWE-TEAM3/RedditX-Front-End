@@ -55,7 +55,7 @@ const RecentPosts = () => {
                                         <span className={'dots'}>
                                 {recentPost.comments} comments
                             </span>
-                                        <span className={'dots'}>
+                                            <span className={'dots'}>
                                 {recentPost.hours}h
                             </span>
                                     </div>
