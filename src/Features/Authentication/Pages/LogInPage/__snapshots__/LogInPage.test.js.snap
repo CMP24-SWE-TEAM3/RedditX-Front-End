@@ -1,3 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LogInPage Page this is a test for LogInPage Page 1`] = `ShallowWrapper {}`;
+exports[`LogInPage Page this is a test for LogInPage Page 1`] = `
+<styled.div>
+  <styled.div />
+  <styled.div>
+    <LogInPageCom />
+  </styled.div>
+</styled.div>
+`;

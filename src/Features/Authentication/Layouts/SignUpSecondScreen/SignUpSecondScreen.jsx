@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect} from "react";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import { useState, useEffect } from "react";
 
 import { IoMdArrowBack } from "react-icons/io";
 import { TfiReload } from "react-icons/tfi";
@@ -12,6 +14,19 @@ import FormInput from "Features/Authentication/Components/FormInput/FormInput";
 import Button from "../../Components/Button/Button";
 import PasswordStrength from "Features/Authentication/Components/PasswordStrength/PasswordStrength";
 import GetPasswordStrength from "Features/Authentication/Utils/GetPasswordStrenght";
+
+import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
+
+import Checked from "Features/Authentication/Components/Checked/Checked";
+
+import axios from "API/axios";
+
+import useFetchFunction from "Hooks/useFetchFunction";
+
+import {
+  signupApi,
+  isUserNameAvailable,
+} from "Features/Authentication/Services/authApi";
 
 import {
   ButtonsContainer,
@@ -27,10 +42,8 @@ import {
   ReCAPTCHAContainer,
 } from "./SignUpSecondScreen.styled";
 
-const USER_NAME = /^[A-z][A-z0-9-_]{3,20}$/;
-const PWD_REGEX = /^[A-z][A-z0-9-_]{8,20}$/;
-
-
+const USER_NAME = /^[A-z0-9-_]{3,20}$/;
+const PWD_REGEX = /^[A-z0-9-_]{8,20}$/;
 
 /**
  * SignUpSecondScreen component that is used in Signup Component
@@ -67,15 +80,16 @@ const SignUpSecondScreen = ({
   passwordStrength,
   setPasswordStrength,
   formFields,
-  setFormFields
+  setFormFields,
 }) => {
- 
+  const auth = useAuth();
 
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
   /**
    * state to know what error message should be shown
    */
   const [errMsg, setErrMsg] = useState("");
-  const { userName, password } = formFields;
+  const { email, userName, password } = formFields;
 
   /**
    * some configurations for the captcha
@@ -85,7 +99,37 @@ const SignUpSecondScreen = ({
     useRecaptchaNet: true,
   };
 
- 
+  /**
+   * state to know what error message should be shown
+   */
+  // const [isLoading, setIsLoading] = useState(false);
+
+  /**
+   * state to know what error message should be shown
+   */
+  const [finishedLoading, setFinishedLoading] = useState(false);
+  /**
+   * state to if the user submitted the form or not
+   */
+  const [wantSubmit, setWantSubmit] = useState(false);
+
+  /**
+   * the error message from signup
+   */
+  const [signupErrorMsg, setSignupErrorMsg] = useState("");
+  /**
+   * state to set the error message from signup
+   */
+  const [showSignupErrorMsg, setShowSignupErrorMsg] = useState(false);
+
+  /**
+   * state to know if we can send request to check the useName or not
+   */
+  const [canReqAvailableUserName, setCanReqAvailableUserName] = useState(true);
+  /**
+   * state to set the availability of username
+   */
+  const [availableUserName, setAvailableUserName] = useState(false);
 
   /**
    * useEffect for userName field to check if the userName that the user entered is valid or not
@@ -95,6 +139,34 @@ const SignUpSecondScreen = ({
       setErrMsg("Username must be between 3 and 20 characters");
     }
     setValidUserName(USER_NAME.test(userName));
+    setShowSignupErrorMsg(false);
+
+    setValidUserName(USER_NAME.test(userName));
+    if (validUserName && canReqAvailableUserName) {
+      setCanReqAvailableUserName(false);
+
+      let searchUserName = "t2_" + userName;
+
+      dataFetch({
+        axiosInstance: axios,
+        method: "get",
+        url: "/api/username-available",
+
+        requestConfig: {
+          params: {
+            username: searchUserName,
+          },
+        },
+      });
+
+      if (!error) {
+        setAvailableUserName(true);
+      } else {
+        setAvailableUserName(false);
+      }
+
+      setCanReqAvailableUserName(true);
+    }
   }, [userName]);
 
   /**
@@ -105,6 +177,8 @@ const SignUpSecondScreen = ({
       setInitialFocus(false);
     }
     setValidPassword(PWD_REGEX.test(password));
+    setShowSignupErrorMsg(false);
+    setPasswordStrength(GetPasswordStrength(password));
   }, [password]);
 
   /**
@@ -113,21 +187,44 @@ const SignUpSecondScreen = ({
    */
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (wantSubmit) {
+     
+
+      dataFetch({
+        axiosInstance: axios,
+        method: "post",
+        url: "/signup",
+        requestConfig: {
+          data: {
+            type: "bare email",
+            email: email,
+            username: userName,
+            password: password,
+          },
+        },
+      });
+
+      if (!error) {
+        setFinishedLoading(true);
+        auth.login(data);
+      }
+      setWantSubmit(false);
+
+      // setIsLoading(false);
+    }
   };
 
   /**
    * Function to handle any change on the input field of the login form (check if the userName or the email or the password is valid or not)
    * @param {*} event
    */
-  const handleChange = (event) => {
+  const handleChange = async (event) => {
     const { name, value } = event.target;
+    setFormFields({ ...formFields, [name]: value });
     if (name === "password") {
       setPasswordStrength(GetPasswordStrength(password));
     }
-    if (name === "userName") {
-      setValidUserName(USER_NAME.test(userName));
-    }
-    setFormFields({ ...formFields, [name]: value });
+    
   };
 
   /**
@@ -135,7 +232,8 @@ const SignUpSecondScreen = ({
    */
   const changeUserName = () => {
     setFormFields({ ...formFields, userName: RandomUserName() });
-    setValidUserName(true);
+    //setAvailableUserName(true);
+    //setValidUserName(true);
   };
 
   /**
@@ -171,7 +269,7 @@ const SignUpSecondScreen = ({
           <form onSubmit={handleSubmit}>
             <Group>
               <FormInput
-                valid={validUserName}
+                valid={validUserName && availableUserName}
                 initialFocus={initialFocus}
                 label="Username"
                 type="text"
@@ -193,6 +291,23 @@ const SignUpSecondScreen = ({
             <ErrorParagraph valid={validUserName || initialFocus}>
               {errMsg}
             </ErrorParagraph>
+
+            {error && <ErrorParagraph valid={!error}>{error}</ErrorParagraph>}
+
+            {/* {!availableUserName && (
+              <ErrorParagraph valid={availableUserName}>
+                Username is taken
+              </ErrorParagraph>
+            )} */}
+
+            {availableUserName && validUserName && !error&&(
+              <ErrorParagraph
+                validColor={availableUserName && validUserName}
+                valid={!availableUserName}
+              >
+                Nice username!
+              </ErrorParagraph>
+            )}
 
             <Group>
               <FormInput
@@ -222,25 +337,36 @@ const SignUpSecondScreen = ({
               password should contain 8 to 20 characters
             </ErrorParagraph>
             <ButtonsContainer>
-              {/** Show an enabled button if the userName is valid and the password is valid and the user has passed the captcha*/}
-              {validUserName && validPassword && notRobot && (
+              { !finishedLoading && (
                 <Button
-                  valid={validUserName && validPassword && notRobot}
-                  type="button"
-                  onClick={() => RandomUserName()}
+                  disabled={
+                    !validUserName ||
+                    !validPassword ||
+                    !notRobot || !availableUserName
+                  }
+                  valid={
+                    validUserName &&
+                    validPassword &&
+                    notRobot &&
+                    availableUserName
+                  }
+                  type="submit"
+                  onClick={() => {
+                    setWantSubmit(true);
+                  }}
                 >
                   Continue
                 </Button>
               )}
 
-              {/** Show an disabled button if the userName is not valid or the password is not valid or the user has not passed the captcha*/}
-              {(!validUserName || !validPassword || !notRobot) && (
-                <Button
-                  disabled
-                  valid={validUserName && validPassword && notRobot}
-                  type="button"
-                >
-                  Continue
+              {/* {isLoading && !finishedLoading && (
+                <Button disabled valid={true} type="submit">
+                  <LoadingSpinner></LoadingSpinner>
+                </Button>
+              )} */}
+              { finishedLoading && (
+                <Button disabled valid={true} type="submit">
+                  <Checked></Checked>
                 </Button>
               )}
             </ButtonsContainer>

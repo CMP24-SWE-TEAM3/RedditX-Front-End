@@ -1,5 +1,72 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ForgetPasswordModal Layout this is a test for ForgetPasswordModal Layout 1`] = `ShallowWrapper {}`;
-
-exports[`ForgetUserNameModal Layout this is a test for ForgetUserNameModal Layout 1`] = `ShallowWrapper {}`;
+exports[`ForgetUserNameModal Layout this is a test for ForgetUserNameModal Layout 1`] = `
+<Fragment>
+  <styled.div
+    userNameScreen={true}
+  >
+    <br />
+    <br />
+    <br />
+    <styled.h2>
+      Recover your username
+    </styled.h2>
+    <styled.div>
+      Tell us the email address associated with your Reddit account, and we’ll send you an email with your username.
+    </styled.div>
+    <form
+      onSubmit={[Function]}
+    >
+      <FormInput
+        label="Email"
+        name="email"
+        onChange={[Function]}
+        onFocus={[Function]}
+        required={true}
+        showIcon={true}
+        type="email"
+        value=""
+      />
+      <styled.p>
+        Please enter an email address to continue
+      </styled.p>
+      <styled.div>
+        <Button
+          disabled={true}
+          onClick={[Function]}
+          type="submit"
+        >
+          Email me
+        </Button>
+      </styled.div>
+      <styled.div>
+        <AsyncScriptLoader(ReCAPTCHA)
+          onChange={[Function]}
+          sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+          size="normal"
+        />
+      </styled.div>
+      <styled.span>
+        Don't have an email or need assistance logging 
+        <br />
+         in?
+        <button
+          onClick={[Function]}
+        >
+          Get Help
+        </button>
+         
+      </styled.span>
+      <br />
+      <styled.span>
+        <button
+          onClick={[Function]}
+        >
+          Log in
+        </button>
+         
+      </styled.span>
+    </form>
+  </styled.div>
+</Fragment>
+`;

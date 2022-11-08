@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checked Component this is a test for Checked Component 1`] = `
+<styled.div>
+  <BsCheckLg
+    size={18}
+  />
+</styled.div>
+`;

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import FacebookLogin from "react-facebook-login";
 
@@ -8,10 +8,29 @@ import FormInput from "Features/Authentication/Components/FormInput/FormInput";
 
 import Button from "Features/Authentication/Components/Button/Button";
 
+import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
+
+import Checked from "Features/Authentication/Components/Checked/Checked";
+
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+
+import axios from "API/axios";
+
+import useFetchFunction from "Hooks/useFetchFunction";
+
+import {
+  loginApi,
+  loginWithGoogle,
+  loginWithFacebook,
+} from "Features/Authentication/Services/authApi";
+
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
 
-import { signInWithGooglePopup } from "Features/Authentication/Utils/Firebase";
+import {
+  signInWithGooglePopup,
+  signInWithFacebookPopup,
+} from "Features/Authentication/Utils/Firebase";
 
 import {
   AuthContainer,
@@ -27,8 +46,8 @@ import {
   AuthContainerDiv,
 } from "./LogInScreen.styled";
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,20}$/;
-const PWD_REGEX = /^[A-z][A-z0-9-_]{8,20}$/;
+const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
+const PWD_REGEX = /^[A-z0-9-_]{8,20}$/;
 
 /**
  * LoginScreen component that is used in Login Component
@@ -45,6 +64,10 @@ const PWD_REGEX = /^[A-z][A-z0-9-_]{8,20}$/;
  * @param {boolean} initialFocus Prop to know if the user made at least one focus on the input field or not
  * @param {Function} setInitialFocus Function to set the state of initialFocus
  * @param {Function} setErrMsg Function to set the error message
+ * @param {boolean} isLoading Prop to know if there is a loading operation or not
+ * @param {Function} setIsLoading Function to set the state of loading operation
+ * @param {boolean} finishedLoading Prop to know if the loading finished with true or not
+ * @param {Function} setFinishedLoading Function to set the state of finishedLoading
  * @returns {React.Component}  LoginScreen component that is used in Login Component
  */
 
@@ -65,7 +88,33 @@ const LogInScreen = ({
   setInitialFocus2,
   setErrMsg,
 }) => {
+  const auth = useAuth();
+
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
+
   const { userName, password } = formFields;
+
+  /**
+   * state to know what error message should be shown
+   */
+  // const [isLoading, setIsLoading] = useState(false);
+
+  /**
+   * state to know what error message should be shown
+   */
+  const [finishedLoading, setFinishedLoading] = useState(false);
+  /**
+   * state to if the user submitted the form or not
+   */
+  const [wantSubmit, setWantSubmit] = useState(false);
+  /**
+   * the error message from login
+   */
+  const [loginErrorMsg, setLoginErrorMsg] = useState("");
+  /**
+   * state to show the error message from login
+   */
+  const [showLoginErrorMsg, setShowLoginErrorMsg] = useState(false);
 
   /**
    * useEffect for userName field to check if the userName that the user entered is valid or not
@@ -75,6 +124,7 @@ const LogInScreen = ({
       setInitialFocus(false);
     }
     setValidName(USER_REGEX.test(userName));
+    setShowLoginErrorMsg(false);
   }, [userName]);
 
   /**
@@ -85,6 +135,7 @@ const LogInScreen = ({
       setInitialFocus(false);
     }
     setValidPassword(PWD_REGEX.test(password));
+    setShowLoginErrorMsg(false);
   }, [password]);
 
   /**
@@ -93,6 +144,45 @@ const LogInScreen = ({
    */
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (wantSubmit) {
+     // setIsLoading(true);
+
+      // const user = await loginApi(
+      //   userName,
+      //   password,
+      //   setLoginErrorMsg,
+      //   setShowLoginErrorMsg
+      // );
+
+      // if (user !== false) {
+      //   setFinishedLoading(true);
+      //   auth.login(user);
+      //    //console.log(user);
+      // }
+
+
+      dataFetch({
+        axiosInstance: axios,
+        method: "post",
+        url: "/login",
+        requestConfig: {
+          data: {
+            type: "bare email",
+            username: userName,
+            password: password,
+          },
+        },
+      });
+
+      if (!error) {
+        setFinishedLoading(true);
+        auth.login(data);
+      }
+      
+      setWantSubmit(false);
+
+     // setIsLoading(false);
+    }
   };
 
   /**
@@ -144,6 +234,61 @@ const LogInScreen = ({
 
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
+    // const user2 = await loginWithGoogle(
+    //   user.accessToken,
+    //   setLoginErrorMsg,
+    //   setShowLoginErrorMsg
+    // );
+
+    // if (user2 !== false) {
+    //   auth.login(user2);
+    // }
+
+    dataFetch({
+      axiosInstance: axios,
+      method: "post",
+      url: "/login",
+      requestConfig: {
+        data: {
+          type: "google",
+          googleOrFacebookToken: user.accessToken,
+        },
+      },
+    });
+
+    if (!error) {
+      setFinishedLoading(true);
+      auth.login(data);
+    }
+  };
+  const logFacebookUser = async () => {
+    const { user } = await signInWithFacebookPopup();
+    // const user2 = await loginWithFacebook(
+    //   user.accessToken,
+    //   setLoginErrorMsg,
+    //   setShowLoginErrorMsg
+    // );
+
+    // if (user2 !== false) {
+    //   auth.login(user2);
+    // }
+
+    dataFetch({
+      axiosInstance: axios,
+      method: "post",
+      url: "/login",
+      requestConfig: {
+        data: {
+          type: "facebook",
+          googleOrFacebookToken: user.accessToken,
+        },
+      },
+    });
+
+    if (!error) {
+      setFinishedLoading(true);
+      auth.login(data);
+    }
   };
 
   return (
@@ -166,15 +311,10 @@ const LogInScreen = ({
             </SignInWithGoogle>
 
             <SignInWithFacebook>
-              <FacebookLogin
-                appId="648981979946188"
-                autoLoad={false}
-                fields="name,email,picture"
-                callback={responseFacebook}
-                cssClass="my-facebook-button-class"
-                icon=<BsFacebook size={22} />
-                textButton="Continue With Facebook"
-              />
+              <button onClick={() => logFacebookUser()}>
+                <BsFacebook size={22} />
+                <span> Continue With Facebook</span>
+              </button>
             </SignInWithFacebook>
 
             <OrHeader>
@@ -197,9 +337,16 @@ const LogInScreen = ({
               />
 
               {/* Show error message if the userName is not valid and the user made a focus on the it's input field */}
-              <ErrorParagraph valid={validName || initialFocus}>
-                Username must be between 3 and 20 characters
-              </ErrorParagraph>
+              {!validName && !initialFocus && (
+                <ErrorParagraph valid={validName || initialFocus}>
+                  Username must be between 3 and 20 characters
+                </ErrorParagraph>
+              )}
+              {error && (
+                <ErrorParagraph valid={!error}>
+                  {error}
+                </ErrorParagraph>
+              )}
 
               <FormInput
                 label="Password"
@@ -219,10 +366,11 @@ const LogInScreen = ({
                 Forget your{" "}
                 <button
                   onClick={() => {
+                    // setIsLoading(false);
+                    setFinishedLoading(false);
                     setInitialFocus(true);
                     setUserNameScreen(true);
                     setPasswordScreen(false);
-
                     setErrMsg("Not a valid email address");
                   }}
                 >
@@ -231,10 +379,11 @@ const LogInScreen = ({
                 or{" "}
                 <button
                   onClick={() => {
+                    // setIsLoading(false);
+                    setFinishedLoading(false);
                     setInitialFocus(true);
                     setUserNameScreen(false);
                     setPasswordScreen(true);
-
                     setErrMsg("Not a valid email address");
                   }}
                 >
@@ -243,26 +392,26 @@ const LogInScreen = ({
               </Forget>
 
               <ButtonsContainer>
-                {/** Show an enabled button if the password and userName are valid */}
-                {validName && validPassword && (
+                {!isLoading && !finishedLoading && (
                   <Button
+                    disabled={!validName || !validPassword}
                     valid={validName && validPassword}
-                    type="button"
-                    onClick={() => {}}
+                    type="submit"
+                    onClick={() => {
+                      setWantSubmit(true);
+                    }}
                   >
                     Log In
                   </Button>
                 )}
-
-                {/** Show an disabled button if the password or userName are not valid */}
-
-                {(!validName || !validPassword) && (
-                  <Button
-                    disabled
-                    valid={validName && validPassword}
-                    type="button"
-                  >
-                    Log In
+                {isLoading  && (
+                  <Button disabled valid={true} type="submit">
+                    <LoadingSpinner></LoadingSpinner>
+                  </Button>
+                )}
+                {!isLoading && finishedLoading && (
+                  <Button disabled valid={true} type="submit">
+                    <Checked></Checked>
                   </Button>
                 )}
               </ButtonsContainer>

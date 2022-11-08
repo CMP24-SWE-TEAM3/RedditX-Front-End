@@ -1,9 +1,20 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import FormInput from "Features/Authentication/Components/FormInput/FormInput";
 
 import Button from "Features/Authentication/Components/Button/Button";
+
+import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
+
+import Checked from "Features/Authentication/Components/Checked/Checked";
+
+import { forgetPasswordApi } from "Features/Authentication/Services/authApi";
+
+import axios from "API/axios";
+
+import useFetchFunction from "Hooks/useFetchFunction";
 
 import {
   AuthContainer,
@@ -14,7 +25,7 @@ import {
   Forget,
 } from "./ForgetPasswordModal.styled";
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,20}$/;
+const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
 
 const USER_EMAIL =
   /[a-zA-Z0-9._-]{3,}@[a-zA-Z0-9._-]{3,}[.]{1}[a-zA-Z0-9._-]{2,}/;
@@ -33,6 +44,10 @@ const USER_EMAIL =
  * @param {boolean} initialFocus Prop to know if the user made at least one focus on the input field or not
  * @param {Function} setInitialFocus Function to set the state of initialFocus
  * @param {Function} setErrMsg Function to set the error message
+ * @param {boolean} isLoading Prop to know if there is a loading operation or not
+ * @param {Function} setIsLoading Function to set the state of loading operation
+ * @param {boolean} finishedLoading Prop to know if the loading finished with true or not
+ * @param {Function} setFinishedLoading Function to set the state of finishedLoading
  * @returns {React.Component}  ForgetPasswordModal component that is used in Login Component
  */
 
@@ -54,6 +69,39 @@ const ForgetPasswordModal = ({
 }) => {
   const { userName, email } = formFields;
 
+
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
+
+  /**
+   * state to know what error message should be shown
+   */
+  // const [isLoading, setIsLoading] = useState(false);
+
+  /**
+   * state to know what error message should be shown
+   */
+  const [finishedLoading, setFinishedLoading] = useState(false);
+
+  /**
+   * state to if the user submitted the form or not
+   */
+  const [wantSubmit, setWantSubmit] = useState(false);
+
+  /**
+   * the error message from forget Password
+   */
+  const [forgetPasswordErrorMsg, setForgetPasswordErrorMsg] = useState("");
+  /**
+   * state to set the error message from forget Password
+   */
+  const [showForgetPasswordErrorMsg, setShowForgetPasswordErrorMsg] =
+    useState(false);
+
+  /**
+   * state to know if the email sent or not
+   */
+  const [emailSent, setEmailSent] = useState(false);
+
   /**
    * useEffect for userName field to check if the userName that the user entered is valid or not
    */
@@ -62,6 +110,7 @@ const ForgetPasswordModal = ({
       setInitialFocus(false);
     }
     setValidName(USER_REGEX.test(userName));
+    setShowForgetPasswordErrorMsg(false);
   }, [userName]);
 
   /**
@@ -79,18 +128,58 @@ const ForgetPasswordModal = ({
       setErrMsg("Username must be between 3 and 20 characters");
     }
     setValidEmail(USER_EMAIL.test(email));
+    setShowForgetPasswordErrorMsg(false);
   }, [email]);
 
   /**
-   * Function to handle the submit of the form of login
+   * Function to handle the submit of the form of forgetPassword
    * @param {*} event
    */
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (wantSubmit) {
+      //setIsLoading(true);
+
+      // const response = await forgetPasswordApi(
+      //   email,
+      //   userName,
+      //   setForgetPasswordErrorMsg,
+      //   setShowForgetPasswordErrorMsg
+      // );
+
+      // if (response) {
+      //   setEmailSent(true);
+      //   setFinishedLoading(true);
+      // }
+
+
+      dataFetch({
+        axiosInstance: axios,
+        method: "post",
+        url: "/login/forget",
+        requestConfig: {
+          data: {
+            email: email,
+            username: userName,
+            operation: false,
+          },
+        },
+      });
+
+      if (!error) {
+        setEmailSent(true);
+        setFinishedLoading(true);
+      }
+
+
+      setWantSubmit(false);
+
+     // setIsLoading(false);
+    }
   };
 
   /**
-   * Function to handle any change on the input field of the login form (check if the userName or the email or the password is valid or not)
+   * Function to handle any change on the input field of the forgetPassword form (check if the userName or the email or the password is valid or not)
    * @param {*} event
    */
 
@@ -135,7 +224,13 @@ const ForgetPasswordModal = ({
             <ErrorParagraph valid={validName || initialFocus}>
               Username must be between 3 and 20 characters
             </ErrorParagraph>
-
+            {error && (
+              <ErrorParagraph
+                valid={!error || initialFocus}
+              >
+                {error}
+              </ErrorParagraph>
+            )}
             <FormInput
               label="Email"
               valid={validEmail}
@@ -169,26 +264,39 @@ const ForgetPasswordModal = ({
             </Forget>
 
             <ButtonsContainer>
-              {/** Show an enabled button if the email and userName are valid */}
-              {validName && validEmail && (
+              {!isLoading && !finishedLoading && (
                 <Button
+                  disabled={!validName || !validEmail}
                   valid={validName && validEmail}
-                  type="button"
-                  onClick={() => {}}
+                  type="submit"
+                  onClick={() => {
+                    setWantSubmit(true);
+                  }}
                 >
                   Reset password
                 </Button>
               )}
-
-              {/** Show an disabled button if the email or userName are not valid */}
-
-              {(!validName || !validEmail) && (
-                <Button disabled valid={validName && validEmail} type="button">
-                  Reset password
+              {isLoading  && (
+                <Button disabled valid={true} type="submit">
+                  <LoadingSpinner></LoadingSpinner>
+                </Button>
+              )}
+              {!isLoading && finishedLoading && (
+                <Button disabled valid={true} type="submit">
+                  <Checked></Checked>
                 </Button>
               )}
             </ButtonsContainer>
-
+            <br></br>
+            {emailSent && (
+              <ErrorParagraph
+                validColor={emailSent}
+                valid={!emailSent || initialFocus}
+              >
+                Thanks! If your Reddit username and email address match, you'll
+                get an email with a link to reset your password shortly.
+              </ErrorParagraph>
+            )}
             <Forget>
               Don't have an email or need assistance logging <br /> in?
               <button onClick={() => {}}>Get Help</button>{" "}
@@ -198,6 +306,8 @@ const ForgetPasswordModal = ({
               {/* Want to login? */}
               <button
                 onClick={() => {
+                  setFinishedLoading(false);
+                  // setIsLoading(false);
                   setInitialFocus(true);
                   setUserNameScreen(false);
                   setPasswordScreen(false);

@@ -1,15 +1,32 @@
 /* eslint-disable no-unused-vars */
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useState, useEffect } from "react";
 
 import FacebookLogin from "react-facebook-login";
 
 import FormInputPageCom from "Features/Authentication/Components/FormInputPageCom/FormInputPageCom";
 import Button from "Features/Authentication/Components/Button/Button";
+import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
+
+import Checked from "Features/Authentication/Components/Checked/Checked";
+
+import axios from "API/axios";
+
+import useFetchFunction from "Hooks/useFetchFunction";
+
+import {
+  loginApi,
+  loginWithGoogle,
+  loginWithFacebook,
+} from "Features/Authentication/Services/authApi";
 
 import { FaFacebookSquare } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
-import { signInWithGooglePopup } from "Features/Authentication/Utils/Firebase";
+import {
+  signInWithGooglePopup,
+  signInWithFacebookPopup,
+} from "Features/Authentication/Utils/Firebase";
 
 import {
   AuthContainer,
@@ -25,8 +42,8 @@ import {
   AuthContainerDiv,
 } from "./LogInPageCom.styled";
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,20}$/;
-const PWD_REGEX = /^[A-z][A-z0-9-_]{8,20}$/;
+const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
+const PWD_REGEX = /^[A-z0-9-_]{8,20}$/;
 
 const defaultFormFields = {
   userName: "",
@@ -38,6 +55,9 @@ const defaultFormFields = {
  * @returns {React.Component}  LoginPageCom component that is used in Login page
  */
 const LogInPageCom = () => {
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
+
+  const auth = useAuth();
   /**
    * state to handel any change the user make in the input fields
    */
@@ -61,6 +81,30 @@ const LogInPageCom = () => {
    * state to know if the user focused on input field at least one time
    */
   const [initialFocus2, setInitialFocus2] = useState(true);
+
+  /**
+   * state to know what error message should be shown
+   */
+  // const [isLoading, setIsLoading] = useState(false);
+
+  /**
+   * state to know what error message should be shown
+   */
+  const [finishedLoading, setFinishedLoading] = useState(false);
+  /**
+   * state to if the user submitted the form or not
+   */
+  const [wantSubmit, setWantSubmit] = useState(false);
+
+  /**
+   * state to if the user submitted the form or not
+   */
+  const [loginErrorMsg, setLoginErrorMsg] = useState("");
+  /**
+   * state to if the user submitted the form or not
+   */
+  const [showLoginErrorMsg, setShowLoginErrorMsg] = useState(false);
+
   const { userName, password } = formFields;
 
   /**
@@ -71,6 +115,7 @@ const LogInPageCom = () => {
       setInitialFocus(false);
     }
     setValidName(USER_REGEX.test(userName));
+    setShowLoginErrorMsg(false);
   }, [userName]);
 
   /**
@@ -81,6 +126,7 @@ const LogInPageCom = () => {
       setInitialFocus(false);
     }
     setValidPassword(PWD_REGEX.test(password));
+    setShowLoginErrorMsg(false);
   }, [password]);
 
   /**
@@ -89,6 +135,44 @@ const LogInPageCom = () => {
    */
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (wantSubmit) {
+      //setIsLoading(true);
+
+      // const user = await loginApi(
+      //   userName,
+      //   password,
+      //   setLoginErrorMsg,
+      //   setShowLoginErrorMsg
+      // );
+
+      // if (user !== false) {
+      //   setFinishedLoading(true);
+      //   auth.login(user);
+
+      // }
+
+      dataFetch({
+        axiosInstance: axios,
+        method: "post",
+        url: "/login",
+        requestConfig: {
+          data: {
+            type: "bare email",
+            username: userName,
+            password: password,
+          },
+        },
+      });
+
+      if (!error) {
+        setFinishedLoading(true);
+        auth.login(data);
+      }
+
+      setWantSubmit(false);
+
+      // setIsLoading(false);
+    }
   };
 
   /**
@@ -140,6 +224,62 @@ const LogInPageCom = () => {
 
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
+
+    // const user2 = await loginWithGoogle(
+    //   user.accessToken,
+    //   setLoginErrorMsg,
+    //   setShowLoginErrorMsg
+    // );
+
+    dataFetch({
+      axiosInstance: axios,
+      method: "post",
+      url: "/login",
+      requestConfig: {
+        data: {
+          type: "google",
+          googleOrFacebookToken: user.accessToken,
+        },
+      },
+    });
+
+    if (!error) {
+      setFinishedLoading(true);
+      auth.login(data);
+    }
+
+    // if (user2 !== false) {
+    //   auth.login(user2);
+    // }
+  };
+  const logFacebookUser = async () => {
+    const { user } = await signInWithFacebookPopup();
+    // const user2 = await loginWithFacebook(
+    //   user.accessToken,
+    //   setLoginErrorMsg,
+    //   setShowLoginErrorMsg
+    // );
+
+    // if (user2 !== false) {
+    //   auth.login(user2);
+    // }
+
+    dataFetch({
+      axiosInstance: axios,
+      method: "post",
+      url: "/login",
+      requestConfig: {
+        data: {
+          type: "facebook",
+          googleOrFacebookToken: user.accessToken,
+        },
+      },
+    });
+
+    if (!error) {
+      setFinishedLoading(true);
+      auth.login(data);
+    }
   };
 
   return (
@@ -161,15 +301,10 @@ const LogInPageCom = () => {
             </SignInWithGoogle>
 
             <SignInWithFacebook>
-              <FacebookLogin
-                appId="648981979946188"
-                autoLoad={false}
-                fields="name,email,picture"
-                callback={responseFacebook}
-                cssClass="my-facebook-button-class"
-                icon=<FaFacebookSquare />
-                textButton="CONTINUE WITH FACEBOOK"
-              />
+              <button onClick={() => logFacebookUser()}>
+                <FaFacebookSquare size={22} />
+                <span> CONTINUE WITH FACEBOOK</span>
+              </button>
             </SignInWithFacebook>
 
             <OrHeader>
@@ -191,10 +326,13 @@ const LogInPageCom = () => {
                 }}
               />
 
-              {/* Show error message if the userName if not valid and the user made a focus on the it's input field */}
-              <ErrorParagraph valid={validName || initialFocus}>
-                Username must be between 3 and 20 characters
-              </ErrorParagraph>
+              {/* Show error message if the userName is not valid and the user made a focus on the it's input field */}
+              {!validName && !initialFocus && (
+                <ErrorParagraph valid={validName || initialFocus}>
+                  Username must be between 3 and 20 characters
+                </ErrorParagraph>
+              )}
+              {error && <ErrorParagraph valid={!error}>{error}</ErrorParagraph>}
 
               <FormInputPageCom
                 label="PASSWORD"
@@ -211,22 +349,28 @@ const LogInPageCom = () => {
               />
 
               <ButtonsContainer>
-                {/** Show an enabled button if the password and userName are valid */}
-                {validName && validPassword && (
+                {!isLoading && !finishedLoading && (
                   <Button
                     page={true}
-                    valid={validName}
-                    type="button"
-                    onClick={() => {}}
+                    disabled={!validName || !validPassword}
+                    valid={validName && validPassword}
+                    type="submit"
+                    onClick={() => {
+                      setWantSubmit(true);
+                    }}
                   >
                     LOG IN
                   </Button>
                 )}
 
-                {/** Show an disabled button if the password or userName are not valid */}
-                {(!validName || !validPassword) && (
-                  <Button page={true} disabled valid={validName} type="button">
-                    LOG IN
+                {isLoading  && (
+                  <Button page={true} disabled valid={true} type="submit">
+                    <LoadingSpinner></LoadingSpinner>
+                  </Button>
+                )}
+                {!isLoading && finishedLoading && (
+                  <Button page={true} disabled valid={true} type="submit">
+                    <Checked></Checked>
                   </Button>
                 )}
               </ButtonsContainer>

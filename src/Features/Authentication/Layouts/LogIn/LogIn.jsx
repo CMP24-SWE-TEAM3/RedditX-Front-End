@@ -73,6 +73,16 @@ const LogIn = () => {
    */
   const [errMsg, setErrMsg] = useState("");
 
+  /**
+   * state to know what error message should be shown
+   */
+  const [isLoading, setIsLoading] = useState(false);
+
+  /**
+   * state to know what error message should be shown
+   */
+  const [finishedLoading, setFinishedLoading] = useState(false);
+
   
 
  
@@ -97,6 +107,10 @@ const LogIn = () => {
           userNameScreen={userNameScreen}
           validName={validName}
           validPassword={validPassword}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+          finishedLoading={finishedLoading}
+          setFinishedLoading={setFinishedLoading}
         />
       }
 
@@ -116,6 +130,10 @@ const LogIn = () => {
           setValidEmail={setValidEmail}
           userNameScreen={userNameScreen}
           validEmail={validEmail}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+          finishedLoading={finishedLoading}
+          setFinishedLoading={setFinishedLoading}
         />
       }
 
@@ -137,6 +155,10 @@ const LogIn = () => {
           setValidName={setValidName}
           validEmail={validEmail}
           validName={validName}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+          finishedLoading={finishedLoading}
+          setFinishedLoading={setFinishedLoading}
         />
       }
     </>

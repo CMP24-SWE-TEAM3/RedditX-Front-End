@@ -39,6 +39,7 @@ const useFetch = ({ axiosInstance, method, url, requestConfig = {} }) => {
           signal: controller.signal,
         });
         setResponse(res.data);
+        setError(null);
       } catch (err) {
         setError(err.message);
       } finally {

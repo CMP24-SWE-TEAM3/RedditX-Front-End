@@ -1,3 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SignUpPage Page this is a test for SignUpPage Page 1`] = `ShallowWrapper {}`;
+exports[`SignUpPage Page this is a test for SignUpPage Page 1`] = `
+<Fragment>
+  <SignUpPageFirstScreen
+    errMsg="not a valid email address"
+    formFields={
+      Object {
+        "email": "",
+        "password": "",
+        "userName": "",
+      }
+    }
+    initialFocus={true}
+    secondScreen={false}
+    setErrMsg={[Function]}
+    setFormFields={[Function]}
+    setInitialFocus={[Function]}
+    setSecondScreen={[Function]}
+    setSug1={[Function]}
+    setSug2={[Function]}
+    setSug3={[Function]}
+    setSug4={[Function]}
+    setSug5={[Function]}
+    setValidEmail={[Function]}
+    setValidUserName={[Function]}
+    validEmail={false}
+  />
+  <SignUpPageSecondScreen
+    errMsg="not a valid username"
+    formFields={
+      Object {
+        "email": "",
+        "password": "",
+        "userName": "",
+      }
+    }
+    initialFocus={true}
+    initialFocus2={true}
+    notRobot={false}
+    secondScreen={false}
+    setErrMsg={[Function]}
+    setFormFields={[Function]}
+    setInitialFocus={[Function]}
+    setInitialFocus2={[Function]}
+    setNotRobot={[Function]}
+    setPasswordStrength={[Function]}
+    setSecondScreen={[Function]}
+    setSug1={[Function]}
+    setSug2={[Function]}
+    setSug3={[Function]}
+    setSug4={[Function]}
+    setSug5={[Function]}
+    setValidPassword={[Function]}
+    setValidUserName={[Function]}
+    sug1=""
+    sug2=""
+    sug3=""
+    sug4=""
+    sug5=""
+    validPassword={false}
+    validUserName={false}
+  />
+</Fragment>
+`;

@@ -1,3 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SignUp Layout this is a test for SignUp Layout 1`] = `ShallowWrapper {}`;
+exports[`SignUp Layout this is a test for SignUp Layout 1`] = `
+<Fragment>
+  <SignUpFirstScreen
+    changeUserName={[Function]}
+    formFields={
+      Object {
+        "email": "",
+        "password": "",
+        "userName": "",
+      }
+    }
+    initialFocus={true}
+    secondScreen={false}
+    setFormFields={[Function]}
+    setInitialFocus={[Function]}
+    setSecondScreen={[Function]}
+    setValidEmail={[Function]}
+    validEmail={false}
+  />
+  <SignUpSecondScreen
+    formFields={
+      Object {
+        "email": "",
+        "password": "",
+        "userName": "",
+      }
+    }
+    initialFocus={true}
+    initialFocus2={true}
+    notRobot={false}
+    secondScreen={false}
+    setFormFields={[Function]}
+    setInitialFocus={[Function]}
+    setInitialFocus2={[Function]}
+    setNotRobot={[Function]}
+    setPasswordStrength={[Function]}
+    setSecondScreen={[Function]}
+    setValidPassword={[Function]}
+    setValidUserName={[Function]}
+    validPassword={false}
+    validUserName={false}
+  />
+</Fragment>
+`;

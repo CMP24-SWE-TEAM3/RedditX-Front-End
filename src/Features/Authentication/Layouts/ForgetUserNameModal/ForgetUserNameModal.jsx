@@ -1,10 +1,21 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
 import FormInput from "Features/Authentication/Components/FormInput/FormInput";
 
 import Button from "Features/Authentication/Components/Button/Button";
+
+import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
+
+import Checked from "Features/Authentication/Components/Checked/Checked";
+
+import { forgetUserNameApi } from "Features/Authentication/Services/authApi";
+
+import axios from "API/axios";
+
+import useFetchFunction from "Hooks/useFetchFunction";
 
 import {
   AuthContainer,
@@ -33,6 +44,10 @@ const USER_EMAIL =
  * @param {Function} setInitialFocus Function to set the state of initialFocus
  * @param {String} errMsg The error message that appear under the input field
  * @param {Function} setErrMsg Function to set the error message
+ * @param {boolean} isLoading Prop to know if there is a loading operation or not
+ * @param {Function} setIsLoading Function to set the state of loading operation
+ * @param {boolean} finishedLoading Prop to know if the loading finished with true or not
+ * @param {Function} setFinishedLoading Function to set the state of finishedLoading
  * @returns {React.Component}  ForgetUserNameModal component that is used in Login Component
  */
 
@@ -51,6 +66,38 @@ const ForgetUserNameModal = ({
   setErrMsg,
 }) => {
   const { email } = formFields;
+
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
+
+  /**
+   * state to know what error message should be shown
+   */
+  // const [isLoading, setIsLoading] = useState(false);
+
+  /**
+   * state to know what error message should be shown
+   */
+  const [finishedLoading, setFinishedLoading] = useState(false);
+
+  /**
+   * state to if the user submitted the form or not
+   */
+  const [wantSubmit, setWantSubmit] = useState(false);
+
+  /**
+   * the error message from forget username
+   */
+  const [forgetUserNameErrorMsg, setForgetUserNameErrorMsg] = useState("");
+  /**
+   * state to set the error message from forget username
+   */
+  const [showForgetUserNameErrorMsg, setShowForgetUserNameErrorMsg] =
+    useState(false);
+
+  /**
+   * state to know if the email sent or not
+   */
+  const [emailSent, setEmailSent] = useState(false);
 
   /**
    * some configurations for the captcha
@@ -71,18 +118,55 @@ const ForgetUserNameModal = ({
       setErrMsg("Please enter an email address to continue");
     }
     setValidEmail(USER_EMAIL.test(email));
+    setShowForgetUserNameErrorMsg(false);
   }, [email]);
 
   /**
-   * Function to handle the submit of the form of login
+   * Function to handle the submit of the form of forgetUserName
    * @param {*} event
    */
   const handleSubmit = async (event) => {
     event.preventDefault();
-  };
+    if (wantSubmit) {
+     // setIsLoading(true);
 
+
+
+      // const response = await forgetUserNameApi(
+      //   email,
+      //   setForgetUserNameErrorMsg,
+      //   setShowForgetUserNameErrorMsg
+      // );
+
+      // if (response) {
+      //   setEmailSent(true);
+      // }
+
+
+      dataFetch({
+        axiosInstance: axios,
+        method: "post",
+        url: "/login/forget",
+        requestConfig: {
+          data: {
+            email: email,
+            operation: true,
+          },
+        },
+      });
+
+      if (!error) {
+        setEmailSent(true);
+        setFinishedLoading(true);
+      }
+
+      setWantSubmit(false);
+
+     // setIsLoading(false);
+    }
+  };
   /**
-   * Function to handle any change on the input field of the login form (check if the userName or the email or the password is valid or not)
+   * Function to handle any change on the input field of the forgetUserName form (check if the userName or the email or the password is valid or not)
    * @param {*} event
    */
 
@@ -134,23 +218,53 @@ const ForgetUserNameModal = ({
 
             {/* Show error message if the email is not valid and the user made a focus on the it's input field */}
             <ErrorParagraph valid={validEmail || initialFocus}>
-              {errMsg}
+              {/* {errMsg} */}
+              Please enter an email address to continue
             </ErrorParagraph>
+
+            {error && (
+              <ErrorParagraph
+                valid={!error || initialFocus}
+              >
+                {error}
+              </ErrorParagraph>
+            )}
+
             <ButtonsContainer>
-              {/** Show an enabled button if the email is valid and the user has passed the captcha*/}
-              {validEmail && notRobot && (
-                <Button valid={validEmail} type="button" onClick={() => {}}>
+              {!isLoading && !finishedLoading && (
+                <Button
+                  disabled={!validEmail || !notRobot}
+                  valid={validEmail && notRobot}
+                  type="submit"
+                  onClick={() => {
+                    setWantSubmit(true);
+                  }}
+                >
                   Email me
                 </Button>
               )}
-
-              {/** Show an disabled button if the email is not valid or the user has not passed the captcha*/}
-              {(!validEmail || !notRobot) && (
-                <Button disabled valid={validEmail && notRobot} type="button">
-                  Email me
+              {isLoading  && (
+                <Button disabled valid={true} type="submit">
+                  <LoadingSpinner></LoadingSpinner>
+                </Button>
+              )}
+              {!isLoading && finishedLoading && (
+                <Button disabled valid={true} type="submit">
+                  <Checked></Checked>
                 </Button>
               )}
             </ButtonsContainer>
+
+            {emailSent && !error&&(
+              <ErrorParagraph
+                validColor={emailSent}
+                valid={!emailSent || initialFocus}
+              >
+                Thanks! If there are any Reddit accounts associated with that
+                email address, you'll get an email with your username(s)
+                shortly.
+              </ErrorParagraph>
+            )}
             <ReCAPTCHAContainer validEmail={validEmail}>
               <ReCAPTCHA
                 sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
@@ -168,6 +282,8 @@ const ForgetUserNameModal = ({
               {/* Want to login? */}
               <button
                 onClick={() => {
+                  setFinishedLoading(false);
+                  // setIsLoading(false);
                   setInitialFocus(true);
                   setUserNameScreen(false);
                 }}

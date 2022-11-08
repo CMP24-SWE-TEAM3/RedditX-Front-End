@@ -101,8 +101,9 @@ export const ButtonsContainer = styled.div`
   justify-content: space-between;
 `;
 export const ErrorParagraph = styled.p`
-  color: ${({ theme }) => theme.color.errorColor};
-  margin-top: ${(p) => (p.valid ? "-30px" : "0")};
+  
+  margin-top: ${(p) => (p.valid ? "-35px" : "0")};
+  color: ${(p) => (p.validColor ? ({ theme }) => theme.color.blueValid : ({ theme }) => theme.color.errorColor)};
   font-size: 12px;
   transition: all 0.2s ease-in-out;
   padding: 0 0 0 20px;

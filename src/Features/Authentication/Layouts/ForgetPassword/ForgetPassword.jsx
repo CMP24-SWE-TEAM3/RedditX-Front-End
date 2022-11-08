@@ -1,9 +1,20 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 
 import { SiReddit } from "react-icons/si";
 
 import FormInputPageCom from "Features/Authentication/Components/FormInputPageCom/FormInputPageCom";
 import Button from "Features/Authentication/Components/Button/Button";
+
+import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
+
+import Checked from "Features/Authentication/Components/Checked/Checked";
+
+import { forgetPasswordApi } from "Features/Authentication/Services/authApi";
+
+import axios from "API/axios";
+
+import useFetchFunction from "Hooks/useFetchFunction";
 
 import {
   AuthContainer,
@@ -15,14 +26,14 @@ import {
   RedditIcon,
 } from "./ForgetPassword.styled";
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,20}$/;
+const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
 
 const USER_EMAIL =
   /[a-zA-Z0-9._-]{3,}@[a-zA-Z0-9._-]{3,}[.]{1}[a-zA-Z0-9._-]{2,}/;
 
 const defaultFormFields = {
   userName: "",
-  password: "",
+  email: "",
 };
 
 /**
@@ -31,6 +42,8 @@ const defaultFormFields = {
  */
 
 const ForgetPassword = () => {
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
+
   /**
    * state to know if the email is valid or not to control what to show to the user
    */
@@ -58,7 +71,37 @@ const ForgetPassword = () => {
    */
 
   const [initialFocus2, setInitialFocus2] = useState(true);
-  
+
+  /**
+   * state to if the user submitted the form or not
+   */
+  const [wantSubmit, setWantSubmit] = useState(false);
+
+  // /**
+  //  * state to know what error message should be shown
+  //  */
+  // const [isLoading, setIsLoading] = useState(false);
+
+  /**
+   * state to know what error message should be shown
+   */
+  const [finishedLoading, setFinishedLoading] = useState(false);
+
+  /**
+   * the error message from forget Password
+   */
+  const [forgetPasswordErrorMsg, setForgetPasswordErrorMsg] = useState("");
+  /**
+   * state to set the error message from forget Password
+   */
+  const [showForgetPasswordErrorMsg, setShowForgetPasswordErrorMsg] =
+    useState(false);
+
+  /**
+   * state to know if the email sent or not
+   */
+  const [emailSent, setEmailSent] = useState(false);
+
   const { userName, email } = formFields;
 
   /**
@@ -67,6 +110,7 @@ const ForgetPassword = () => {
 
   useEffect(() => {
     setValidEmail(USER_EMAIL.test(email));
+    setShowForgetPasswordErrorMsg(false);
   }, [email]);
 
   /**
@@ -75,6 +119,7 @@ const ForgetPassword = () => {
 
   useEffect(() => {
     setValidName(USER_REGEX.test(userName));
+    setShowForgetPasswordErrorMsg(false);
   }, [userName]);
 
   /**
@@ -83,6 +128,43 @@ const ForgetPassword = () => {
    */
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (wantSubmit) {
+      //setIsLoading(true);
+
+      // const response = await forgetPasswordApi(
+      //   email,
+      //   userName,
+      //   setForgetPasswordErrorMsg,
+      //   setShowForgetPasswordErrorMsg
+      // );
+
+      // if (response) {
+      //   setEmailSent(true);
+      //   setFinishedLoading(true);
+      // }
+
+      dataFetch({
+        axiosInstance: axios,
+        method: "post",
+        url: "/login/forget",
+        requestConfig: {
+          data: {
+            email: email,
+            username: userName,
+            operation: false,
+          },
+        },
+      });
+
+      if (!error) {
+        setEmailSent(true);
+        setFinishedLoading(true);
+      }
+
+      setWantSubmit(false);
+
+      // setIsLoading(false);
+    }
   };
 
   /**
@@ -136,6 +218,11 @@ const ForgetPassword = () => {
             Username must be between 3 and 20 characters
           </ErrorParagraph>
 
+          {error && (
+            <ErrorParagraph valid={!error || initialFocus}>
+              {error}
+            </ErrorParagraph>
+          )}
           <FormInputPageCom
             label="EMAIL"
             valid={validEmail}
@@ -157,32 +244,41 @@ const ForgetPassword = () => {
           </ErrorParagraph>
 
           <ButtonsContainer>
-            {/** Show an enabled button if the email and userName are valid */}
-            {validName && validEmail && (
+            {!isLoading && !finishedLoading && (
               <Button
                 page={true}
+                disabled={!validName || !validEmail}
                 valid={validName && validEmail}
-                type="button"
-                onClick={() => {}}
+                type="submit"
+                onClick={() => {
+                  setWantSubmit(true);
+                }}
               >
                 RESET PASSWORD
               </Button>
             )}
 
-            {/** Show an disabled button if the email or userName are not valid */}
-
-            {(!validName || !validEmail) && (
-              <Button
-                page={true}
-                disabled
-                valid={validName && validEmail}
-                type="button"
-              >
-                RESET PASSWORD
+            {isLoading  && (
+              <Button page={true} disabled valid={true} type="submit">
+                <LoadingSpinner></LoadingSpinner>
+              </Button>
+            )}
+            {!isLoading && finishedLoading && (
+              <Button page={true} disabled valid={true} type="submit">
+                <Checked></Checked>
               </Button>
             )}
           </ButtonsContainer>
           <br></br>
+          {emailSent && (
+            <ErrorParagraph
+              validColor={emailSent}
+              valid={!emailSent || initialFocus}
+            >
+              Thanks! If your Reddit username and email address match, you'll
+              get an email with a link to reset your password shortly.
+            </ErrorParagraph>
+          )}
           <Forget>
             <span onClick={() => {}}>FORGOT USERNAME?</span>{" "}
           </Forget>

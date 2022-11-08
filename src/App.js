@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Import react and hooks
 import React, { useState } from "react";
 
@@ -31,14 +32,12 @@ import SignUpPage from "Features/Authentication/Pages/SignUpPage/SignUpPage";
 
 import ForgetUserNamePage from "Features/Authentication/Pages/ForgetUserNamePage/ForgetUserNamePage";
 
+import NewPasswordPage from "Features/Authentication/Pages/NewPasswordPage/NewPasswordPage";
+
 import ForgetPasswordPage from "Features/Authentication/Pages/ForgetPasswordPage/ForgetPasswordPage";
 
-// Import react router dom components
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "Features/Authentication/Contexts/Authentication";
 
-//Import Page
-import LeaderBoard from "./Features/Subreddit/Pages/Community Leaderboard/CommunityLeaderboard";
-import Index from "./Features/Subreddit/Pages/Index Page/IndexPage";
 /**
  * The main app of our application it handles routing
  *
@@ -61,14 +60,9 @@ function App() {
   };
   return (
     <ThemeProvider theme={theme}>
-      <Button onClick={handleToggleTheme}>Toggle theme</Button>
-      <BrowserRouter>
-        <CreatePost />
-        {/* <Search /> */}
-        {/* <LeaderBoard /> */}
-        {/* <Index /> */}
-      </BrowserRouter>
-      {/* <ForgetPasswordPage /> */}
+      <AuthProvider>
+        <TestHome />
+      </AuthProvider>
     </ThemeProvider>
   );
 }

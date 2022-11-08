@@ -1,17 +1,28 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
+
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useState, useEffect } from "react";
-
-
-import FacebookLogin from "react-facebook-login";
 
 import FormInput from "Features/Authentication/Components/FormInput/FormInput";
 import Button from "../../Components/Button/Button";
 
+import axios from "API/axios";
+
+import useFetchFunction from "Hooks/useFetchFunction";
+
+import {
+  signupWithGoogle,
+  signupWithFacebook,
+} from "Features/Authentication/Services/authApi";
+
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
 
-import { signInWithGooglePopup } from "Features/Authentication/Utils/Firebase";
+import {
+  signInWithGooglePopup,
+  signInWithFacebookPopup,
+} from "Features/Authentication/Utils/Firebase";
 
 import {
   ButtonsContainer,
@@ -54,11 +65,23 @@ const SignUpFirstScreen = ({
   formFields,
   setFormFields,
 }) => {
+  const auth = useAuth();
+
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
   /**
    * state to know what error message should be shown
    */
   const [errMsg, setErrMsg] = useState("");
   const { email } = formFields;
+
+  /**
+   * the error message from signup
+   */
+  const [signupErrorMsg, setSignupErrorMsg] = useState("");
+  /**
+   * state to set the error message from signup
+   */
+  const [showSignupErrorMsg, setShowSignupErrorMsg] = useState(false);
 
   /**
    * useEffect for email field to check if the email that the user entered is valid or not
@@ -72,6 +95,8 @@ const SignUpFirstScreen = ({
     }
 
     setValidEmail(USER_EMAIL.test(email));
+
+    setShowSignupErrorMsg(false);
   }, [email]);
 
   /**
@@ -100,9 +125,7 @@ const SignUpFirstScreen = ({
    * Function to handle the response coming from sign in with google
    * @param {*} response
    */
-  const handleCallbackResponse = (response) => {
-    
-  };
+  const handleCallbackResponse = (response) => {};
 
   /**
    * Function to check email by sending request to the api and make sure that the email is good to show the second screen after that
@@ -138,13 +161,66 @@ const SignUpFirstScreen = ({
    * Function to handle the response coming from sign in with facebook
    * @param {*} response
    */
-  const responseFacebook = (response) => {
-    
-  };
+  const responseFacebook = (response) => {};
 
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
-    
+    // const user2 = await signupWithGoogle(
+    //   user.accessToken,
+    //   setSignupErrorMsg,
+    //   setShowSignupErrorMsg
+    // );
+
+    // if (user2 !== false) {
+    //   auth.login(user2);
+    // }
+
+    dataFetch({
+      axiosInstance: axios,
+      method: "post",
+      url: "/signup",
+      requestConfig: {
+        data: {
+          type: "google",
+          googleOrFacebookToken: user.accessToken,
+        },
+      },
+    });
+
+    if (!error) {
+      //  setFinishedLoading(true);
+      auth.login(data);
+    }
+  };
+
+  const logFacebookUser = async () => {
+    const { user } = await signInWithFacebookPopup();
+    // const user2 = await signupWithFacebook(
+    //   user.accessToken,
+    //   setSignupErrorMsg,
+    //   setShowSignupErrorMsg
+    // );
+
+    // if (user2 !== false) {
+    //   auth.login(user2);
+    // }
+
+    dataFetch({
+      axiosInstance: axios,
+      method: "post",
+      url: "/signup",
+      requestConfig: {
+        data: {
+          type: "facebook",
+          googleOrFacebookToken: user.accessToken,
+        },
+      },
+    });
+
+    if (!error) {
+      // setFinishedLoading(true);
+      auth.login(data);
+    }
   };
 
   return (
@@ -167,15 +243,12 @@ const SignUpFirstScreen = ({
             </SignInWithGoogle>
 
             <SignInWithFacebook>
-              <FacebookLogin
-                appId="648981979946188"
-                autoLoad={false}
-                fields="name,email,picture"
-                callback={responseFacebook}
-                cssClass="my-facebook-button-class"
-                icon=<BsFacebook size={22} />
-                textButton="Continue With Facebook"
-              />
+              <SignInWithFacebook>
+                <button onClick={() => logFacebookUser()}>
+                  <BsFacebook size={22} />
+                  <span> Continue With Facebook</span>
+                </button>
+              </SignInWithFacebook>
             </SignInWithFacebook>
 
             <OrHeader>
@@ -203,24 +276,17 @@ const SignUpFirstScreen = ({
                 {errMsg}
               </ErrorParagraph>
 
-              <ButtonsContainer>
-                {/** Show an enabled button if the email is valid */}
-                {validEmail && (
-                  <Button
-                    valid={validEmail}
-                    type="button"
-                    onClick={() => checkEmail(email)}
-                  >
-                    Continue
-                  </Button>
-                )}
+              {error && <ErrorParagraph valid={!error}>{error}</ErrorParagraph>}
 
-                {/** Show an disabled button if the email is not valid */}
-                {!validEmail && (
-                  <Button disabled valid={validEmail} type="button">
-                    Continue
-                  </Button>
-                )}
+              <ButtonsContainer>
+                <Button
+                  disabled={!validEmail}
+                  valid={validEmail}
+                  type="button"
+                  onClick={() => checkEmail(email)}
+                >
+                  Continue
+                </Button>
               </ButtonsContainer>
             </form>
           </AuthContainerDiv>
