@@ -1,3 +1,4 @@
+import TestHome from "Features/Authentication/Pages/TestHome";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
@@ -76,6 +77,21 @@ const DummyPage = () => {
       >
         New Password
       </Button>
+      <Button
+        variant="warning"
+        className="m-5"
+        onClick={() => navigate("user/reset-password/token")}
+      >
+        New Password
+      </Button>
+      <Button
+        variant="warning"
+        className="m-5"
+        onClick={() => navigate("user/reset-password/token")}
+      >
+        New Password
+      </Button>
+      <TestHome />
     </div>
   );
 };
