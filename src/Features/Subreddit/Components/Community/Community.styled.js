@@ -8,26 +8,14 @@ export const Arrow = styled(FaAngleUp)`
   transform: ${({ up }) => (up ? "none" : "rotate(180deg)")};
 `;
 
-export const ArrowUP = styled(FaAngleUp)`
-  position: absolute;
-  left: 52px;
-  color: ${({ theme }) => theme.arrow.up};
-`;
-
-export const ArrowDown = styled(FaAngleUp)`
-  position: absolute;
-  left: 52px;
-  color: ${({ theme }) => theme.arrow.up};
-  transform: rotate(180deg);
-`;
-
 export const CommunityItem = styled.div`
   text-decoration: none;
   position: relative;
-  height: 64px;
+  min-height: 64px;
   padding: 0 24px;
   display: flex;
   align-items: center;
+  
 
   /*Can be put in another container to fix media queries for this part*/
   // justify-content: space-between;
@@ -151,6 +139,7 @@ export const CommunityCard = styled.div`
   z-index: 1;
   left: 70px;
   top: 42px;
+  
 
   &:hover {
     display: inline-block;
@@ -189,6 +178,11 @@ export const HoverTitle = styled.a`
   align-items: center;
   color: ${({ theme }) => theme.color.primary};
   display: flex;
+  text-decoration: none;
+
+  &:hover {
+    color: ${({ theme }) => theme.color.primary};
+  }
 `;
 
 export const MembersOnline = styled.div`

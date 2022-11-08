@@ -22,6 +22,8 @@ const lightTheme = {
     link: "#0079d3",
     // The orange color of the website
     orange: "#d93a00",
+    // The color of the text of the main links of search page
+    titleText_of_link: "#1A1A1B",
   },
   // The colors of the backgrounds in the website
   background: {
@@ -33,6 +35,10 @@ const lightTheme = {
     pink: "#fb133a",
     // The color of headers of the website
     header: "#f6f7f8",
+    // The button hover color of the search page
+    fill: "#f6f7f878",
+    // The button active color of the search page
+    active: "#F6F7F8",
   },
   // The colors of the lines in the website
   lineColor: {

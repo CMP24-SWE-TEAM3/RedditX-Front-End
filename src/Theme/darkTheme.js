@@ -24,6 +24,8 @@ const darkTheme = {
     orange: "#d93a00",
     // The pink color of the website
     pink: "#fb133a",
+    // The color of the text of the main links of search page
+    titleText_of_link: "#D7DADC",
   },
   // The colors of the backgrounds in the website
   background: {
@@ -33,6 +35,10 @@ const darkTheme = {
     muted: "#7c7c7c3d",
     // The color of headers of the website
     header: "#1a1a1b",
+    // The button hover color of the search page
+    fill: "#2D2D2F",
+    // The button active color of the search page
+    active: "#272729",
   },
   // The colors of the lines in the website
   lineColor: {

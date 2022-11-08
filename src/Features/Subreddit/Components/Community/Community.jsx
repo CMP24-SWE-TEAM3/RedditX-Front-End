@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "API/axios";
+import useFetch from "Hooks/useFetch";
+import useFetchFunction from "Hooks/useFetchFunction";
 
 import {
   CommunityItem,
@@ -39,53 +42,76 @@ import {
  * @param {number} props.rankChange - Subreddit Rank Change
  * @returns {React.Component}
  */
-export default function Community(props) {
-  const [isJoined, setIsJoined] = useState(props.isJoined);
+ const Community = ({isJoined, img, title, description, index, stats, rankChange}) => {
+
+  const [isJoinedstate, setIsJoined] = useState(isJoined);
+  
+  const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
+
+  const joinCommunity = () => {
+    fetchFunction({
+      axiosInstance: axios,
+      method: 'POST',
+      url: 'http://localhost:8000/Join',
+      requestConfig: {
+        headers: {
+          "Content-Language": "en-US",
+        },
+        data: {
+          "action" : isJoinedstate? "unsub": "sub",
+          "sr_name" : `${title}`
+        }
+      },
+    });
+  }
 
   function changeButton() {
+    
+    joinCommunity();
     setIsJoined((prevJoined) => !prevJoined);
   }
-  const isRising = props.isJoined;
+  const isRising = isJoinedstate;
   return (
     <CommunityItem>
-      <CommunityA href={`/${({title})=>title}`}>
-        <CommunityIndex>{props.index}</CommunityIndex>
+      <CommunityA href={`/${title}`}>
+        <CommunityIndex>{index}</CommunityIndex>
         <Arrow up={isRising}></Arrow>
         <CommunityImg
-          src={require(`../../Assets/images/${props.img}`)}
+          src={require(`../../Assets/images/${img}`)}
           alt="logo"
         ></CommunityImg>
-        <TitleParagraph>{props.title}</TitleParagraph>
+        <TitleParagraph>{title}</TitleParagraph>
         <CommunityCard>
           <ForPadding>
             <HoverItem>
               <ImgTitle>
-                <HoverImg src={require(`../../Assets/images/${props.img}`)} />
-                <HoverTitle>{props.title}</HoverTitle>
+                <HoverImg src={require(`../../Assets/images/${img}`)} />
+                <HoverTitle>{title}</HoverTitle>
               </ImgTitle>
               <MembersOnline>
                 <Members>
-                  <HoverH4>{props.stats.members}</HoverH4>
+                  <HoverH4>{stats.members}</HoverH4>
                   <HoverP>Members</HoverP>
                 </Members>
                 <Online>
-                  <HoverH4>{props.stats.online}</HoverH4>
+                  <HoverH4>{stats.online}</HoverH4>
                   <HoverP>Online</HoverP>
                 </Online>
               </MembersOnline>
-              <HoverDescription>{props.description}</HoverDescription>
+              <HoverDescription>{description}</HoverDescription>
               <HoverButton>View Community</HoverButton>
             </HoverItem>
           </ForPadding>
         </CommunityCard>
       </CommunityA>
       <button
-        className={isJoined ? "joined-btn" : "join-btn"}
+        className={isJoinedstate ? "joined-btn" : "join-btn"}
         onClick={changeButton}
       >
-        <span>{isJoined ? "Joined" : "Join"}</span>
+        <span>{isJoinedstate ? "Joined" : "Join"}</span>
       </button>
-      <CommunityRankChange>{props.rankChange}</CommunityRankChange>
+      <CommunityRankChange>{rankChange}</CommunityRankChange>
     </CommunityItem>
   );
-}
+};
+export default Community;

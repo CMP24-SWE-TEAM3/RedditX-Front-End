@@ -1,3 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Community Leaderboard Main Header this is a test for Main Header 1`] = `ShallowWrapper {}`;
+exports[`Community Leaderboard Main Header this is a test for Main Header 1`] = `
+<styled.div>
+  <styled.div>
+    <styled.h3>
+      Today's Top Growing Communities
+    </styled.h3>
+    <styled.p>
+      Browse Reddit's top growing communities. Find the top communities in your favorite category.
+    </styled.p>
+  </styled.div>
+</styled.div>
+`;

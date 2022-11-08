@@ -1,5 +1,8 @@
 import Community from "../../Components/Community/Community";
 import data from "../../Services/data";
+import axios from "API/axios";
+import useFetch from "Hooks/useFetch";
+
 import {
   CommunityContainer,
   AllCommunities,
@@ -9,6 +12,8 @@ import {
   CommunityOl,
 } from "./CommunitiesContainer.styled";
 
+/*TODO: const*/ 
+
 
 /**
  * Component acts as a container for all communities of the community leaderboard page
@@ -17,11 +22,30 @@ import {
  * @returns {React.Component}
  */
 export default function Container() {
-  const communities = data.map((community, index) => {
+
+  let [communitiesList, error, loading, reload] = useFetch({
+    axiosInstance: axios,
+    method: "GET",
+    url: "http://localhost:8000/communities",
+    requestConfig: {
+      headers: {
+        "Content-Language": "en-US",
+      },
+    },
+  });
+  console.log(communitiesList);
+
+  
+    
+
+  const communities = communitiesList.map((community, index) => {
+   
+
     return (
       <li>
         <Community
           key={community.id.toString()}
+          id = {community.id}
           index = {index+1}
           img={community.coverImg}
           title={community.title}

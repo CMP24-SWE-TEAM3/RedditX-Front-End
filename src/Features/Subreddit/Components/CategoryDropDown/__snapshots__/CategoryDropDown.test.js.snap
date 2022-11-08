@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Categories Drop Down this is a test for Drop Down Categories Component 1`] = `
+<Styled(DropdownButton)
+  id="dropdown-basic-button"
+  size="md"
+  title="Categories"
+  variant="transparent"
+>
+  <DropdownItem
+    as={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      }
+    }
+    key="1"
+    onClick={[Function]}
+    to="/category/All Communities"
+  >
+    All Communities
+  </DropdownItem>
+  <DropdownItem
+    as={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      }
+    }
+    key="2"
+    onClick={[Function]}
+    to="/category/Near You"
+  >
+    Near You
+  </DropdownItem>
+  <DropdownItem
+    as={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      }
+    }
+    key="3"
+    onClick={[Function]}
+    to="/category/Gaming"
+  >
+    Gaming
+  </DropdownItem>
+  <DropdownItem
+    as={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      }
+    }
+    key="4"
+    onClick={[Function]}
+    to="/category/Sports"
+  >
+    Sports
+  </DropdownItem>
+  <DropdownItem
+    as={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      }
+    }
+    key="5"
+    onClick={[Function]}
+    to="/category/News"
+  >
+    News
+  </DropdownItem>
+  <DropdownItem
+    as={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      }
+    }
+    key="6"
+    onClick={[Function]}
+    to="/category/Tv"
+  >
+    Tv
+  </DropdownItem>
+  <DropdownItem
+    as={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      }
+    }
+    key="7"
+    onClick={[Function]}
+    to="/category/Books"
+  >
+    Books
+  </DropdownItem>
+</Styled(DropdownButton)>
+`;

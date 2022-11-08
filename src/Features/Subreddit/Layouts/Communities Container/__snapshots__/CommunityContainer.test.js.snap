@@ -1,3 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Community Leaderboard Community Container this is a test for Community Container 1`] = `ShallowWrapper {}`;
+exports[`Community Leaderboard Community Container this is a test for Community Container 1`] = `
+<styled.div>
+  <styled.div>
+    <styled.div>
+      <styled.h3>
+         Today's Top Growing Communities
+      </styled.h3>
+      <styled.span>
+        Rank Change
+      </styled.span>
+    </styled.div>
+    <styled.ol />
+  </styled.div>
+</styled.div>
+`;

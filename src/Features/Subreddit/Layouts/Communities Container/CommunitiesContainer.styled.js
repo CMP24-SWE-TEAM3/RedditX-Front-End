@@ -8,7 +8,10 @@ export const MainPadding = styled.div`
   display: flex;
   flex-wrap: nowrap;
   @media screen and (max-width: 640px) {
-    padding: 0;
+    padding: 20px 0;
+  }
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
   }
 `;
 
@@ -27,9 +30,6 @@ export const AllCommunities = styled.div`
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   width: 100%;
-  @media screen and (max-width: 640px) {
-    margin: 0;
-  }
 `;
 
 export const CommunityHeader = styled.div`
@@ -39,7 +39,8 @@ export const CommunityHeader = styled.div`
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   display: flex;
-  height: 40px;
+  min-height: 40px;
+  overflow-wrap: break-word;
   position: sticky;
   justify-content: space-between;
   padding: 0 16px;

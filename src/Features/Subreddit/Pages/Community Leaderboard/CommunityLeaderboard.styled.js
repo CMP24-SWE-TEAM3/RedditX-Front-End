@@ -12,3 +12,13 @@ export const LeaderBoardPage = styled.div`
     display: flex;
     flex-wrap: wrap; 
 `;
+
+export const DropDown = styled.div`
+    text-align: center;
+    margin: 10px;
+    display: none;
+  
+  @media (max-width: 700px) {
+    display: block;
+  }
+`;
