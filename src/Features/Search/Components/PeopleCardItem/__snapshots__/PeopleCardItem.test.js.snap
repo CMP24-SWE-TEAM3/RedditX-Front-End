@@ -1,7 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Comments Page this is a test for Comments Page 1`] = `ShallowWrapper {}`;
-
-exports[`People Card Item this is a test for Comments Page 1`] = `ShallowWrapper {}`;
-
-exports[`People Card Item this is a test for People Card Item 1`] = `ShallowWrapper {}`;
+exports[`People Card Item this is a test for People Card Item 1`] = `
+<styled.div>
+  <Link
+    to="#"
+  >
+    <div
+      className="item"
+    >
+      <img
+        alt="userImage"
+        src="People_Image.jpg"
+      />
+      <div
+        className="info"
+      >
+        <div
+          className="info2"
+        >
+          <h6>
+            u/Abdo
+          </h6>
+          <p>
+            10
+            m Members
+          </p>
+        </div>
+      </div>
+      <div
+        className="button"
+      >
+        <button
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Following
+        </button>
+      </div>
+    </div>
+  </Link>
+</styled.div>
+`;

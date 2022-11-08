@@ -178,7 +178,7 @@ export const ContainerPost = styled.div`
     text-decoration: inherit;
   }
   & .post-image .img a .image {
-    background-image: url(https://b.thumbs.redditmedia.com/uZL7ZnkEs4PmMcP_kJ5fSqGRBMKJ1hvjIpYaiT1OhHM.jpg);
+    background-image: url(${(props) => props.pimage});
     border-color: #0079d3;
     transition: filter 0.5s;
     height: 98px;

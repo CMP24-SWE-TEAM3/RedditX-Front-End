@@ -1,5 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Create Community this is a test for Create Community 1`] = `ShallowWrapper {}`;
-
-exports[`People Card Item this is a test for People Card Item 1`] = `ShallowWrapper {}`;
+exports[`Create Community this is a test for Create Community 1`] = `
+<styled.div>
+  <div
+    className="create"
+  >
+    <div
+      className="content"
+    >
+      <img
+        alt=""
+        className="first"
+        src="search-results-community-banner.png"
+      />
+      <img
+        alt=""
+        className="second"
+        src="snoo-thinking.png"
+      />
+      <div
+        className="txt"
+      >
+        Have an idea for a new community?
+      </div>
+    </div>
+    <div
+      className="btn-create"
+    >
+      <button>
+        Create Community
+      </button>
+    </div>
+  </div>
+</styled.div>
+`;

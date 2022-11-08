@@ -1,5 +1,54 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`People Card Item this is a test for People Card Item 1`] = `ShallowWrapper {}`;
-
-exports[`People Main Header this is a test for Main Header 1`] = `ShallowWrapper {}`;
+exports[`People Main Header this is a test for Main Header 1`] = `
+<styled.div>
+  <div
+    className="links"
+  >
+    <div
+      className="inner-links"
+    >
+      <NavLink
+        to="/posts"
+      >
+        <button
+          onClick={[Function]}
+        >
+          Posts
+        </button>
+      </NavLink>
+      <NavLink
+        to="/comments"
+      >
+        <button
+          onClick={[Function]}
+        >
+          Comments
+        </button>
+      </NavLink>
+      <NavLink
+        to="/communities"
+      >
+        <button
+          onClick={[Function]}
+        >
+          Communities
+        </button>
+      </NavLink>
+      <NavLink
+        to="/people"
+      >
+        <button
+          onClick={[Function]}
+        >
+          People
+        </button>
+      </NavLink>
+    </div>
+    <ResponsiveNavbar
+      act="posts"
+    />
+    <SafeSearch />
+  </div>
+</styled.div>
+`;

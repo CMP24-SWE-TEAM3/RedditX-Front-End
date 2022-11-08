@@ -1,5 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Safe Search this is a test for Safe Search 1`] = `ShallowWrapper {}`;
-
-exports[`Search Page this is a test for Search Page 1`] = `ShallowWrapper {}`;
+exports[`Safe Search this is a test for Safe Search 1`] = `
+<styled.div>
+  <div
+    className="safe-search-inner"
+  >
+    <label
+      htmlFor="SafeSearch"
+    >
+      Safe Search
+    </label>
+    <Styled(Form)>
+      <FormCheck
+        id="custom-switch"
+        label=""
+        type="switch"
+      />
+    </Styled(Form)>
+  </div>
+</styled.div>
+`;

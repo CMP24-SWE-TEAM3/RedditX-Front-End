@@ -1,5 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Comment this is a test for Comment 1`] = `ShallowWrapper {}`;
-
-exports[`Top Communities this is a test for Top Communities 1`] = `ShallowWrapper {}`;
+exports[`Comment this is a test for Comment 1`] = `
+<styled.div>
+  <styled.div>
+    <PostHeader
+      postheader={
+        Object {
+          "communityName": "WallStreetRiches",
+          "flair": Object {
+            "flairBackgroundColor": "red",
+            "flairColor": "green",
+            "flairText": "go",
+          },
+          "headerImage": "People_Image.jpg",
+          "time": "5 days ago",
+          "userName": "t2_North-Situation4034",
+        }
+      }
+    />
+    <CommentBody />
+    <PostFooter />
+  </styled.div>
+</styled.div>
+`;

@@ -6,32 +6,47 @@ import {
   CommunityImage,
   PostedBy,
   UserName,
+  Flair,
 } from "./PostHeader.styled";
 
 /**
  * Component that contains the Post Header element.
  *
  * @Component
+ * @param {object} postheader - the info of post header
  * @returns {React.Component}
  */
-const PostHeader = () => {
+const PostHeader = ({ postheader }) => {
   return (
     <PostHeaderStyle>
       <CommunityInfo>
-        <Link to="https://www.w3schools.com/ ">
-          <CommunityImage src={CommImage} alt="communityimage" />
+        <Link to="#">
+          <CommunityImage
+            src={require(`../../Assets/${postheader.headerImage}`)}
+            alt="communityimage"
+          />
         </Link>
-        <Link to="https://www.w3schools.com/" className="community-name">
-          r/WallStreetRiches
+        <Link to="#" className="community-name">
+          r/{postheader.communityName}
+          {/* r/WallStreetRiches */}
         </Link>
       </CommunityInfo>
       <span className="break">.</span>
       <PostedBy>
         <span className="first">Posted by</span>
         <UserName>
-          <Link to="https://www.w3schools.com/">u/Old_Salamander_7479</Link>
+          <Link to="#">
+            u/{postheader.userName}
+            {/* u/Old_Salamander_7479 */}
+          </Link>
         </UserName>
-        <span className="time-post">5 days ago</span>
+        <Flair>
+          <span>
+            {postheader.flair.flairText}
+            {/* ali */}
+          </span>
+        </Flair>
+        <span className="time-post">{postheader.time}</span>
       </PostedBy>
     </PostHeaderStyle>
   );

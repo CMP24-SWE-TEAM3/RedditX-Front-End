@@ -29,7 +29,7 @@ const CommentBody = () => {
   return (
     <Container>
       <FirstText>
-        <Link to="https://www.w3schools.com/">
+        <Link to="#">
           <FirstTextStyle>
             [WP] They tell you the warmachines aren't sentient, being kind to
             them does nothing. But at the same time, it seems funny to you that
@@ -41,7 +41,7 @@ const CommentBody = () => {
       <InnerBody>
         <InnerBodyLayout>
           <ImageAlign>
-            <Link to="https://www.w3schools.com/">
+            <Link to="#">
               <div>
                 <CommentImage src={CommentUserImage} alt="Comment User Image" />
               </div>
@@ -52,7 +52,7 @@ const CommentBody = () => {
               <BodyContentHeaderLayout>
                 <CommentUserName>
                   <div>
-                    <Link to="https://www.w3schools.com/">Robysto7</Link>
+                    <Link to="#">Robysto7</Link>
                   </div>
                 </CommentUserName>
                 <span className="break">·</span>
@@ -76,7 +76,7 @@ const CommentBody = () => {
         </InnerBodyLayout>
         <PostFooter />
       </InnerBody>
-      <GoThread href="http://">Go to thread</GoThread>
+      <GoThread href="#">Go to thread</GoThread>
     </Container>
   );
 };

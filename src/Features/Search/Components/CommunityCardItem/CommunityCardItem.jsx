@@ -1,29 +1,110 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../Assets/download.jpg";
+// import logo from "../../Assets/download.jpg";
 import { Container } from "./CommunityCardItem.styled";
+// Import api
+import axios from "API/axios";
+import useFetchFunction from "Hooks/useFetchFunction";
 /**
  * Component that contains the CommunityCardItem and manage the state of the button join.
  *
  * @Component
+ * @param {String} communityIcon - The image of the CommunityCardItem
+ * @param {String} communityID - The ID of the CommunityCardItem
+ * @param {String} communityDescription - The Description of the CommunityCardItem
+ * @param {number} membersCount - The membersCount of the CommunityCardItem
+ * @param {String} communityName - The name of the CommunityCardItem
  * @returns {React.Component}
  */
-const CommunityCardItem = () => {
-  const [btnContent, setBtnContent] = useState("Join");
+const CommunityCardItem = ({
+  communityIcon,
+  communityID,
+  communityDescription,
+  communityName,
+  membersCount,
+}) => {
+  const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
+  const [isJoinedstate, setisJoined] = useState(false);
+  const joinCommunity = (btnState) => {
+    fetchFunction({
+      axiosInstance: axios,
+      method: "POST",
+      url: "http://localhost:8000/Join",
+      requestConfig: {
+        headers: {
+          "Content-Language": "en-US",
+        },
+        data: {
+          action: !btnState ? "unsub" : "sub",
+          sr_name: `${communityName}`,
+        },
+      },
+    });
+  };
+  ////////////////////////////////////////////////////////
+  // Communities Subscriptions
+  // let [CommunitiesSub, errorsub, loadingsub, reloadsub] = useFetch({
+  //   axiosInstance: axios,
+  //   method: "GET",
+  //   url: "/subreddits/mine/subscriber?page=4&count=10&limit=50",
+  //   requestConfig: {
+  //     headers: {
+  //       "Content-Language": "en-US",
+  //     },
+  //   },
+  // });
+
+  // Communities Subscriptions
+  let CommunitiesSub2 = [
+    { id: "1" },
+    { id: "2" },
+    { id: "t5_imagepro" },
+    { id: "t5_imagepro2" },
+  ];
+  // is the user subscriber to this community
+  let IS = CommunitiesSub2.find(function (element) {
+    if (element.id === communityID) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  // the initialState of operations of join
+  const initialState = `${IS ? "Joined" : "Join"}`;
+  ////////////////////////////////////////////////////////
+  // State to set button Content
+  const [btnContent, setBtnContent] = useState(initialState);
 
   /**
    * it is the function that handle the state of the button when click on it.
    *
    * @param {Object} e it is an object which i can preventDefault and not redirect to the link
    */
-  function clickHandler(e) {
+  // function clickHandler(e) {
+  //   e.preventDefault();
+  //   if (btnContent === "Join") {
+  //     setBtnContent("Joined");
+  //   } else {
+  //     setBtnContent("Join");
+  //   }
+  // }
+  const clickHandler = (e) => {
     e.preventDefault();
     if (btnContent === "Join") {
       setBtnContent("Joined");
+      setisJoined(true);
     } else {
       setBtnContent("Join");
+      setisJoined(false);
     }
-  }
+    let btnState;
+    if (btnContent === "Join") {
+      btnState = true;
+    } else {
+      btnState = false;
+    }
+    joinCommunity(btnState);
+  };
   /**
    * it is the function that handle the state of the button when mouseEnter on it.
    *
@@ -44,13 +125,13 @@ const CommunityCardItem = () => {
   }
   return (
     <Container>
-      <Link href="https://www.reddit.com/">
+      <Link href="#">
         <div className="item">
-          <img src={logo} alt="" />
+          <img src={require(`../../Assets/${communityIcon}`)} alt="" />
           <div className="info">
             <div className="info2">
-              <h6>r/politics</h6>
-              <p>8.2m Members</p>
+              <h6>r/{communityName}</h6>
+              <p>{membersCount}m Members</p>
             </div>
           </div>
           <div className="button">

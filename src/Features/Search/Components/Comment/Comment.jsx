@@ -9,13 +9,13 @@ import { Container, Layout } from "./Comment.styled";
  * @Component
  * @returns {React.Component}
  */
-const Comment = () => {
+const Comment = ({ comment }) => {
   return (
     <Container>
       <Layout>
-        <PostHeader />
+        <PostHeader postheader={comment.postHeader} />
         <CommentBody />
-        <PostFooter />
+        <PostFooter upVotes={comment.upVotes} />
       </Layout>
     </Container>
   );

@@ -14,6 +14,13 @@ import { Container } from "./Search.styled";
  * @returns {React.Component}
  */
 const Search = () => {
+  /**
+   * Function take the SortItem And Handle it
+   * @param {String} SortItem
+   */
+  function OnSort(SortItem) {
+    console.log(SortItem);
+  }
   return (
     <Container>
       <div className="outer-container">
@@ -21,7 +28,7 @@ const Search = () => {
           <div className="inner-container">
             <Links />
             <Routes>
-              <Route path="/posts" element={<Posts />} />
+              <Route path="/posts" element={<Posts OnSort={OnSort} />} />
               <Route path="/comments" element={<CommentsPage />} />
               <Route path="/communities" element={<CommunitiesPage />} />
               <Route path="/people" element={<PeoplePage />} />
