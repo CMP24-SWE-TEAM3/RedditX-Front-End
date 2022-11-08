@@ -21,7 +21,5 @@ export const LinkButtonStyled = styled.button
       &:hover {
         background: ${({theme}) => theme.background.post_background};
       }
-
-      position: relative;
       color: ${({theme}) => theme.color.primary};
     `

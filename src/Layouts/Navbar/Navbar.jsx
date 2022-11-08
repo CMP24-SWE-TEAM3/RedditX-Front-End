@@ -6,7 +6,7 @@ import PopularButton from "Components/PopularButton/PopularButton"
 import CoinButton from "Components/CoinButton/CoinButton";
 import ModeratorButton from "Components/ModeratorButton/ModeratorButton";
 import CreatePostButton from "Components/CreatePostButton/CreatePostButton"
-import ChatButton from "Components/ChatButton/Chat";
+import ChatButton from "Components/ChatButton/ChatButton";
 import NotificationButton from "Components/NotificationButton/NotificationButton";
 import AdvertiseButton from "Components/AdvertiseButton/AdvertiseButton";
 import DropDownRightButton from "Components/DropDownRight/DropDownRight";

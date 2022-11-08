@@ -4,6 +4,9 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import {NavDropdown} from "react-bootstrap";
 
 export const Container = styled(NavDropdown)`
+  @media (max-width:450px){
+    display: none;
+  }
   font-size: 20px;
   font-weight: 500;
   color: ${({theme}) => theme.color.primary} !important;

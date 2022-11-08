@@ -15,40 +15,41 @@ import {CgDanger} from "react-icons/cg";
  */
 
 const ModalCommunity = ({show, close}) => {
-    /**
-     * state of the community which tracks string is shown in input filed in modal
-     */
+        /**
+         * state of the community which tracks string is shown in input filed in modal
+         */
         const [communityName, setCommunityName] = useState('');
 
-    /**
-     * function that controls length of string in modal's inputForm
-     * @param event
-     */
-    const handlerChars = (event) => {
+        /**
+         * function that controls length of string in modal's inputForm
+         * @param event
+         */
+        const handlerChars = (event) => {
             setCommunityName(event.target.value);
         }
 
-    /**
-     * function that handle form after submitting modal's form
-     * @param event
-     */
-    const handleSubmit = (event) => {
+        /**
+         * function that handle form after submitting modal's form
+         * @param event
+         */
+        const handleSubmit = (event) => {
             event.preventDefault();
             alert(`The Community name you entered was: ${communityName}`);
         }
         return (
             <ModalStyled show={show} onHide={close}>
-            <Modal.Header  closeButton>
+                <Modal.Header closeButton>
                     <Modal.Title>Create a community</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <h6>Name</h6>
                     <p>Community names including capitalization cannot be changed. <span> <CgDanger/></span>
                     </p>
-                    <Form onSubmit={handleSubmit}>
+                    <Form id={'my-form'} method={'get'} onSubmit={handleSubmit}>
                         <Form.Group className="mb-3">
-                        <Form.Control value={communityName} onChange={handlerChars} aria-required type={'text'}
-                                          maxlength="21"/></Form.Group>
+                            <Form.Control value={communityName} onChange={handlerChars} aria-required type={'text'}
+                                          maxlength="21"/>
+                        </Form.Group>
 
                         <AlarmInput alarmValue={21 - communityName.length}> {21 - communityName.length} Characters
                             remaining</AlarmInput>
@@ -63,7 +64,7 @@ const ModalCommunity = ({show, close}) => {
                                    id="flexRadioDisabled1"/>
                             <label className={'full-content'} for={'flexRadioDisabled1'}>
                                 <div className={'ico'}><BsFillPersonFill/></div>
-                                <label className="form-check-label" for={'flexRadioDisabled1'} >Public</label>
+                                <label className="form-check-label" for={'flexRadioDisabled1'}>Public</label>
                                 <div className={'div-content'}>
                                     Anyone can view, post, and comment to this community
                                 </div>
@@ -89,11 +90,11 @@ const ModalCommunity = ({show, close}) => {
                         <div className="form-check">
                             <input className="form-check-input" type="radio" name="flexRadioDisabled"
                                    id="flexRadioCheckedDisabled3"/>
-                            <label className={'full-content'} for={'flexRadioCheckedDisabled3'} >
+                            <label className={'full-content'} for={'flexRadioCheckedDisabled3'}>
                                 <div className={'ico'}>
                                     <HiLockClosed/>
                                 </div>
-                                <label className="form-check-label" for={'flexRadioCheckedDisabled3'} >Private
+                                <label className="form-check-label" for={'flexRadioCheckedDisabled3'}>Private
                                 </label>
                                 <div className={'div-content'}>
                                     Anyone can view this community, but only approved users can post
@@ -118,7 +119,7 @@ const ModalCommunity = ({show, close}) => {
                     <button className={'close-but'} onClick={close}>
                         Close
                     </button>
-                    <button className={'create-but'} onClick={close}>
+                    <button type={'submit'} className={'create-but'} form={'my-form'}>
                         Create Community
                     </button>
                 </Modal.Footer>

@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const StyledHeader = styled.header
     `
       justify-content: space-between;
-      //position: relative;
+      position: sticky;
+      z-index: 99999;
       top: 0;
       left: 0;
       width: 100%;
@@ -33,4 +34,7 @@ export const StyledSeperator = styled.div
       border-left: 1px solid silver;
       height: 75%;
       margin-left: 8px;
+      @media(max-width: 790px){
+        display: none;
+      }
     `

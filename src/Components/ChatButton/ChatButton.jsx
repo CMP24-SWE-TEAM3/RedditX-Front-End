@@ -4,7 +4,6 @@ import {BsChatDots} from 'react-icons/bs';
 import {ButtonsGroupStyled, GlobalButtonStyled} from "Components/GlobalButton/GlobalButton.styled"
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-import {RiCoinsLine} from "react-icons/ri";
 
 /**
  *  Component that displays a message box
@@ -13,7 +12,7 @@ import {RiCoinsLine} from "react-icons/ri";
  */
 const ChatButton = (props) => {
     return (
-        <ButtonsGroupStyled>
+
             <OverlayTrigger
                 key={'bottom'}
                 placement={'bottom'}
@@ -23,7 +22,6 @@ const ChatButton = (props) => {
                     <BsChatDots/>
                 </GlobalButtonStyled>
             </OverlayTrigger>
-        </ButtonsGroupStyled>
     );
 };
 

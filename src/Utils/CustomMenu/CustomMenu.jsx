@@ -1,8 +1,6 @@
 // imports
 import React, {useState} from "react";
-import Offcanvas from "react-bootstrap/Offcanvas";
 import Form from "react-bootstrap/Form";
-import {CanvasHeader} from "./CustomMenu.styled";
 
 /**
  * Function that helps dropdown functionality
@@ -30,7 +28,7 @@ const CustomMenu = React.forwardRef(
                 />
                 <ul className="list-unstyled">
                     {React.Children.toArray(children).filter(
-                        (child) => !value || child.props.children.toLowerCase().startsWith(value),
+                        ((child) => !value.toLowerCase() || child.props.children.toLowerCase().startsWith(value.toLowerCase())),
                     )}
                 </ul>
             </div>

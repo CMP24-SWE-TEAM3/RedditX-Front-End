@@ -138,24 +138,54 @@
   "RecentPosts": [
     {
       "id": "1",
-      "description":"new news in CUFE",
+      "description": "new news in CUFE",
       "points": "10",
       "comments": "4",
       "hours": "7"
     },
     {
       "id": "2",
-      "description":"new news in reddit",
+      "description": "new news in reddit",
       "points": "9",
       "comments": "2",
       "hours": "11"
     },
     {
       "id": "3",
-      "description":"announcements updated in reddit",
+      "description": "announcements updated in reddit",
       "points": "5",
       "comments": "7",
       "hours": "1"
+    }
+  ],
+  "TrendingPosts": [
+    {
+      "id": "1",
+      "title": "Yevgeny Prigozhin",
+      "description": "'Putin's chef' Yevgeny Prigozhin admits interfering in U.S. elections",
+      "category": "worldnews",
+      "cover": "https://styles.redditmedia.com/t5_2qh13/styles/communityIcon_pldiwqvsyns91.png?width=256&s=1e3f0453042ba59e08945b2beab03f408a4135e4"
+    },
+    {
+      "id": "2",
+      "title": "Swing State Mail Ballots",
+      "description": "Republicans sue to disqualify thousands of mail ballots in swing states",
+      "category": "news",
+      "cover":"https://styles.redditmedia.com/t5_2qh3l/styles/communityIcon_fmygcobc22z81.png?width=256&s=20360f000285c26be3d504fdb0cc8e6d6d58289c"
+    },
+    {
+      "id": "3",
+      "title": "Liverpool Club For Sale",
+      "description": "FSG puts Liverpool up for sale",
+      "category": "soccer",
+      "cover":"https://styles.redditmedia.com/t5_2qi58/styles/communityIcon_fihq6rzyq7q91.png?width=256&s=3497aeefc618e652e94ba8b3e6b3318e213d0b55"
+    },
+    {
+      "id": "4",
+      "title": "H3H3 Productions",
+      "description": "Ethan Kline H3H3 banned for impersonating Elon Musk and praising the N-Word",
+      "category": "JoeRogan",
+      "cover":"https://styles.redditmedia.com/t5_2s4tv/styles/communityIcon_0ko72ea2dqu51.png?width=256&s=51dd34bcfb1e1b1ee7064b8bb8be14e40c15c6a5"
     }
   ]
 }

@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const AdvertiseButtonStyled = styled.button`
+  @media (max-width:450px){
+    display: none;
+  }
   width: 110.34px;
   margin-left: 8px;
   margin-right: 8px;

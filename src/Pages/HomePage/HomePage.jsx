@@ -39,7 +39,6 @@ const HomePage = () => {
                     <styles.AppHeader>
                         <Navbar theme={theme}/>
                         <MainContainer>
-                            {/*<SideBar/>*/}
                             <div className="main"/>
                             <Container>
                                 <div className={'content-posts'}>

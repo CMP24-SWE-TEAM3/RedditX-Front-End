@@ -18,7 +18,7 @@ export const ButtonStyled = styled(Button)`
   }
 
   .open-side {
-    margin-left:180px;
+    margin-left:175px;
   }
 
 `

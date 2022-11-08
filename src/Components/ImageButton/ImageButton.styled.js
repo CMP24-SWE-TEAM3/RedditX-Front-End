@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const ImageButtonStyled = styled.button
     `
       border-radius: 4px;
-      position: relative;
       background-color: ${({theme}) => theme.background.primary};
       color: ${({theme}) => theme.color.primary};
       border: 1px solid ${({theme}) => theme.background.primary};

@@ -1,20 +1,19 @@
 // imports
 import React from 'react';
 import {Button} from "./HotButton.styled";
-import {RiRocketLine} from 'react-icons/ri';
 
 /**
  * Component that displays a list of posts on the homepage categorized as hot posts
  *
  * @returns {React.Component}
  */
-const HotButton = () => {
+const HotButton = ({ico,name}) => {
     return (
         <div>
             <Button>
-                <span><RiRocketLine/> </span>
+                <span>{ico} </span>
                 <span className="word">
-                    Best
+                    {name}
                 </span>
             </Button>
 
