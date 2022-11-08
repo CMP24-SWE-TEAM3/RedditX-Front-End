@@ -69,10 +69,9 @@ const FlairModal = ({
       </ModalHeader>
       <ModalBody>
         <SelectedFlairContainer>
-          {flairIndex === null && (
-            <FlairParagraph> No flair selected</FlairParagraph>
-          )}
-          {flairIndex !== null && (
+          {!flairIndex && <FlairParagraph> No flair selected</FlairParagraph>}
+          {flairIndex
+           && (
             <FlairParagraph>
               <span> Post Title </span>
               <Flair

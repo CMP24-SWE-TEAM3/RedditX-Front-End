@@ -1,4 +1,4 @@
-import axios from "axios";
+import { default as axios } from "axios";
 // Base URL for the api
 const BASE_URL = "http://localhost:8000";
 

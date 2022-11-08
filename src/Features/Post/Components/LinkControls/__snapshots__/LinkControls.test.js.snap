@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link controls of draft editor should render without crashing 1`] = `
+<styled.div>
+  <OverlayTrigger
+    defaultShow={false}
+    overlay={
+      <Tooltip
+        id="button-tooltip-2"
+        placement="right"
+      >
+        Link
+      </Tooltip>
+    }
+    placement="top"
+    trigger={
+      Array [
+        "hover",
+        "focus",
+      ]
+    }
+  >
+    <styled.span>
+      <BsLink45Deg
+        size={25}
+      />
+    </styled.span>
+  </OverlayTrigger>
+</styled.div>
+`;

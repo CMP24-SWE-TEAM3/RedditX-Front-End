@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post form footer should render without crashing 1`] = `
+<styled.div>
+  <FormGroup
+    className="mb-3"
+  >
+    <FormCheck
+      label="Send me post reply notifications"
+      type="checkbox"
+    />
+  </FormGroup>
+  <Link
+    to="/"
+  >
+    Connect accounts to share your post
+  </Link>
+  <AiOutlineInfoCircle
+    size={20}
+  />
+</styled.div>
+`;

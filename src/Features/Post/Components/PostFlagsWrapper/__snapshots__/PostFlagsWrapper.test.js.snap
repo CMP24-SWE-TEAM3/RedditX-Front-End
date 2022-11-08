@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post flag wrapper should render without crashing 1`] = `
+<styled.div>
+  <PostFlag
+    disabled={true}
+  >
+    <FiTarget />
+    <styled.span>
+      Live Chat
+    </styled.span>
+  </PostFlag>
+  <PostFlag
+    disabled={true}
+  >
+    <BsCalendar4Event />
+    <styled.span>
+      Event
+    </styled.span>
+  </PostFlag>
+  <PostFlag
+    disabled={true}
+  >
+    <AiOutlinePlus
+      size={22}
+    />
+    <styled.span>
+      OC
+    </styled.span>
+  </PostFlag>
+  <PostFlag
+    disabled={true}
+  >
+    <AiOutlinePlus
+      size={22}
+    />
+    <styled.span>
+      Spoiler
+    </styled.span>
+  </PostFlag>
+  <PostFlag>
+    <AiOutlinePlus
+      size={22}
+    />
+    <styled.span>
+      NSFW
+    </styled.span>
+  </PostFlag>
+  <PostFlag>
+    <IoPricetagOutline
+      size={22}
+    />
+    <styled.span>
+      Flair
+    </styled.span>
+    <IoIosArrowDown />
+  </PostFlag>
+</styled.div>
+`;
