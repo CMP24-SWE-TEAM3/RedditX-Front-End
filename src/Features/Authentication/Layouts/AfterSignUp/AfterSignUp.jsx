@@ -21,17 +21,17 @@ const AfterSignUp = () => {
   const [interests, setInterests] = useState([]);
 
   /**
-   * state to know the interests of the user
+   * state to know what screen should be shown (if true then show gender screen)
    */
   const [genderScreen, setGenderScreen] = useState(true);
 
   /**
-   * state to know the interests of the user
+   *  state to know what screen should be shown (if true then show interests screen)
    */
   const [interestsScreen, setInterestsScreen] = useState(false);
 
   /**
-   * state to know the interests of the user
+   * state to know what screen should be shown (if true then show photo upload screen)
    */
   const [photoUploadScreen, setPhotoUploadScreen] = useState(false);
 

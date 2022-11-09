@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AfterSignUpModal Component this is a test for AfterSignUpModal Component 1`] = `
+<Styled(Modal)
+  aria-labelledby="contained-modal-title-vcenter"
+  centered={true}
+  size="lg"
+>
+  <ModalBody>
+    <AfterSignUp />
+  </ModalBody>
+</Styled(Modal)>
+`;
