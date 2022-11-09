@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import ReCAPTCHA from "react-google-recaptcha";
 
-const fontFamily = "'IBM Plex Sans', sans-serif;";
+const fontFamily = "'IBM Plex Sans', sans-serif";
 const transition = "400ms ease all";
 
 export const AuthContainer = styled.div`

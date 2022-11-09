@@ -273,6 +273,8 @@ const LogInScreen = ({
     //   auth.login(user2);
     // }
 
+    //console.log(user.accessToken);
+
     dataFetch({
       axiosInstance: axios,
       method: "post",
