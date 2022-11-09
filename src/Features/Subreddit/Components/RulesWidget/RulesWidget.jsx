@@ -8,13 +8,13 @@ import {
   Number,
   RuleContainer,
   RuleFex,
-  Title
+  Title,
 } from "./RulesWidget.styled";
 
 /**
  * show rules of the community
  *
- * @returns {React.Component} CreatePost component
+ * @returns {React.Component}
  */
 const RulesWidget = () => {
   //rules
@@ -25,12 +25,12 @@ const RulesWidget = () => {
   ];
 
   /**
-   * 
+   *
    * @param {number} index - order of rule
    * @param {number} len - the number of rules
    * @param {string} title - title of rule
-   * @param {string} description - description of rule 
-   * @returns {React.Component} CreatePost component
+   * @param {string} description - description of rule
+   * @returns {React.Component} Rule component
    */
   const Rule = ({ index, len, title, description }) => {
     //to toggle the dropdown of description
@@ -41,7 +41,7 @@ const RulesWidget = () => {
     const last = index === len ? true : false;
 
     /**
-     * onClick rule handler 
+     * onClick rule handler
      */
     function toggleHandler() {
       setToggle((prev) => !prev);
@@ -81,6 +81,7 @@ const RulesWidget = () => {
       {rules.map((rule, i) => {
         return (
           <Rule
+            key={i}
             index={i + 1}
             len={rules.length}
             title={rule.title}

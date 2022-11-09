@@ -5,12 +5,12 @@ import {
   AboutCommunityContainer,
   Dots,
   ModTools,
-  Text
+  Text,
 } from "./AboutCommunity.styled";
 /**
  * header of Community Card
- * 
- * @returns {React.Component} CreatePost component
+ *
+ * @returns {React.Component}
  */
 const AboutCommunity = () => {
   let isMod = true;

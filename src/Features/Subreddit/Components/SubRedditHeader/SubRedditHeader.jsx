@@ -1,5 +1,5 @@
-import axios from "API/axios";
-import useFetch from "Hooks/useFetch";
+// import axios from "API/axios";
+// import useFetch from "Hooks/useFetch";
 import {
   Banner,
   HeaderContainer,
@@ -13,8 +13,8 @@ import Button from "Features/Subreddit/Components/Button/Button";
 
 /**
  * 
- * @param {string} banner - picture or color of header banner
- * @param {object} info - object contain info of subreddit
+ * @param {Object} banner - picture or color of header banner
+ * @param {Object} info - object contain info of subreddit
  * @param {boolean} isJoined - boolean if user joined subreddit
  * @param {function} onJoin - function handler on click join
  * @returns 
@@ -30,21 +30,21 @@ const SubRedditHeader = ({ banner, info, isJoined, onJoin }) => {
     onJoin(e);
   }
 
-  let [replay, error, loading, reload] = useFetch({
-    axiosInstance: axios,
-    method: "POST",
-    url: "/api/subscribe",
-    requestConfig: {
-      data: {
-        action: `${isJoined ? "sub" : "unsub"}`,
-        sr_name: `${info.name}`,
-      },
-      // headers: {
-      //   "Content-Language": "en-US",
-      // },
-    },
-  });
-  console.log(replay);
+  // let [replay, error, loading, reload] = useFetch({
+  //   axiosInstance: axios,
+  //   method: "POST",
+  //   url: "/api/subscribe",
+  //   requestConfig: {
+  //     data: {
+  //       action: `${isJoined ? "sub" : "unsub"}`,
+  //       sr_name: `${info.name}`,
+  //     },
+  //     // headers: {
+  //     //   "Content-Language": "en-US",
+  //     // },
+  //   },
+  // });
+  // console.log(replay);
 
   return (
     <HeaderContainer>

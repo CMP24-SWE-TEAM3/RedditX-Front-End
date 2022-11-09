@@ -1,3 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header of Community card should render without crashing 1`] = `ShallowWrapper {}`;
+exports[`Header of Community card should render without crashing 1`] = `
+<styled.div>
+  <styled.div>
+    <h2>
+      About Community
+    </h2>
+  </styled.div>
+  <styled.div>
+    <Link
+      className="mod-tools"
+    >
+      <span>
+        <BsShield />
+      </span>
+      Mod Tools
+    </Link>
+    <styled.button>
+      <span>
+        <BsThreeDots />
+      </span>
+    </styled.button>
+  </styled.div>
+</styled.div>
+`;

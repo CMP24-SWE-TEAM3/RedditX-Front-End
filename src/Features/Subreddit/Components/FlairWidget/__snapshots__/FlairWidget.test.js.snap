@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Show post flairs should render without crashing 1`] = `
+<WidgetContainer
+  headerText="Filter by flair"
+>
+  <styled.div
+    style={
+      Object {
+        "maxHeight": "129px",
+      }
+    }
+  >
+    <styled.ul>
+      <styled.li
+        key="0"
+      >
+        <Styled(Link)
+          style={
+            Object {
+              "backgroundColor": "green",
+              "color": "#fff",
+            }
+          }
+          to="#"
+        >
+          No problem
+        </Styled(Link)>
+      </styled.li>
+      <styled.li
+        key="1"
+      >
+        <Styled(Link)
+          style={
+            Object {
+              "backgroundColor": "yellow",
+              "color": "#fff",
+            }
+          }
+          to="#"
+        >
+          fundamentals
+        </Styled(Link)>
+      </styled.li>
+      <styled.li
+        key="2"
+      >
+        <Styled(Link)
+          style={
+            Object {
+              "backgroundColor": "blue",
+              "color": "#fff",
+            }
+          }
+          to="#"
+        >
+          its fine
+        </Styled(Link)>
+      </styled.li>
+      <styled.li
+        key="3"
+      >
+        <Styled(Link)
+          style={
+            Object {
+              "backgroundColor": "black",
+              "color": "#fff",
+            }
+          }
+          to="#"
+        >
+          bye bye
+        </Styled(Link)>
+      </styled.li>
+      <styled.li
+        key="4"
+      >
+        <Styled(Link)
+          style={
+            Object {
+              "backgroundColor": "cyan",
+              "color": "black",
+            }
+          }
+          to="#"
+        >
+          search
+        </Styled(Link)>
+      </styled.li>
+      <styled.li
+        key="5"
+      >
+        <Styled(Link)
+          style={
+            Object {
+              "backgroundColor": "white",
+              "color": "#000",
+            }
+          }
+          to="#"
+        >
+          good morning
+        </Styled(Link)>
+      </styled.li>
+      <styled.li
+        key="6"
+      >
+        <Styled(Link)
+          style={
+            Object {
+              "backgroundColor": "green",
+              "color": "#000",
+            }
+          }
+          to="#"
+        >
+          How are you
+        </Styled(Link)>
+      </styled.li>
+      <styled.li
+        key="7"
+      >
+        <Styled(Link)
+          style={
+            Object {
+              "backgroundColor": "#cc8b00",
+              "color": "#000",
+            }
+          }
+          to="#"
+        >
+          lets talk
+        </Styled(Link)>
+      </styled.li>
+      <styled.li
+        key="8"
+      >
+        <Styled(Link)
+          style={
+            Object {
+              "backgroundColor": "red",
+              "color": "#fff",
+            }
+          }
+          to="#"
+        >
+          Announcement
+        </Styled(Link)>
+      </styled.li>
+    </styled.ul>
+  </styled.div>
+</WidgetContainer>
+`;

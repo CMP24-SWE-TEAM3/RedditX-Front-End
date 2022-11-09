@@ -1,3 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`container for widgets this is a test for Community Container 1`] = `ShallowWrapper {}`;
+exports[`container for widgets this is a test for Community Container 1`] = `
+<styled.div>
+  <styled.div>
+    <Header
+      text="header"
+    />
+    <styled.div />
+  </styled.div>
+</styled.div>
+`;

@@ -5,7 +5,7 @@ import { StyledButton } from "./Button.styled";
  * 
  * @param {boolean} isJoined - boolean if joined community or not
  * @param {function} onJoin - function receive state of joining
- * @returns {React.Component} CreatePost component
+ * @returns {React.Component} Join button
  */
 const Button = ({isJoined, onJoin}) => {
   const [text, setText] = useState(isJoined ? "joined" : "join");

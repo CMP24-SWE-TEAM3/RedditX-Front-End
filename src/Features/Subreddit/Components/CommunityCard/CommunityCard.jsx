@@ -8,8 +8,9 @@ import UserFlairPreview from "../UserFlairPreview/UserFlairPreview";
 import { Container, Content, Separator } from "./CommunityCard.styled";
 
 /**
+ * Community Card 
  * 
- * @returns {React.Component} CreatePost component
+ * @returns {React.Component} 
  */
 const CommunityCard = () => {
   return (

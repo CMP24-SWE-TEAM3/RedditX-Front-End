@@ -1,3 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`sidebar of subreddit should render without crashing 1`] = `ShallowWrapper {}`;
+exports[`sidebar of subreddit should render without crashing 1`] = `
+<styled.div>
+  <styled.div>
+    <CommunityCard />
+    <RulesWidget />
+    <FlairWidget />
+    <ModeratorWidget />
+  </styled.div>
+</styled.div>
+`;

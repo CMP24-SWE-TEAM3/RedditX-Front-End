@@ -5,7 +5,7 @@ import { Container, Members, Online } from "./OnlineMembers.styled";
  * component that show number of members 
  * and number of online members
  * 
- * @returns {React.Component} CreatePost component
+ * @returns {React.Component} 
  */
 const OnlineMembers = () => {
   let members = 3;

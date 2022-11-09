@@ -33,7 +33,7 @@ export const Message = styled(Link)`
     font-size: 20px;
     font-weight: 400;
     height: 20px;
-    line-height: 20px;
+    line-height: 17px;
     width: 20px;
     flex: 0 0 auto;
   }

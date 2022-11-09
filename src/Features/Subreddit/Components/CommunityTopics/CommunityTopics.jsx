@@ -25,12 +25,13 @@ import {
   StyledTooltip,
   SubtopicsContainer,
   SuggestedTopicsContainer,
-  TopicsBlockHandle
+  TopicsBlockHandle,
 } from "./CommunityTopics.styled";
 
 /**
+ * Community topic and subtopics
  *
- * @returns {React.Component} CreatePost component
+ * @returns {React.Component}
  */
 const CommunityTopics = () => {
   //state to handle the view of drop down of topics
@@ -85,7 +86,7 @@ const CommunityTopics = () => {
   }
 
   /**
-   * handler on click the drop menu to to toggle show of drop menu
+   * handler on click the drop menu to toggle show of drop menu
    */
   function viewHandler() {
     //toggle view of drop down menu
@@ -259,14 +260,15 @@ const CommunityTopics = () => {
    * drop down menu of topics
    *
    * @param {Array<string>} data
-   * @returns {React.Component} CreatePost component
+   * @returns {React.Component} 
    */
   const TopicsBlock = ({ data }) => {
     return (
       <DropDown onBlur={blurHandler} tabIndex={0}>
-        {data.map((element) => {
+        {data.map((element, i) => {
           return (
             <DropDownItem
+              key={i}
               text={element.topic}
               selected={topic}
               clickHandle={DropItemHandler}
@@ -285,7 +287,7 @@ const CommunityTopics = () => {
    * @param {string} selected - the selected topic/subtopic
    * @param {function}  clickHandle - handler on click topic/subtopic
    * @param {function} weight - font weight of text
-   * @returns {React.Component} CreatePost component
+   * @returns {React.Component}
    */
   const DropDownItem = ({ text, selected, clickHandle, weight }) => {
     return (
@@ -311,7 +313,7 @@ const CommunityTopics = () => {
    *
    * @param {string} text - subtopic text
    * @param {function} onClick - function handle on click the item
-   * @returns {React.Component} CreatePost component
+   * @returns {React.Component}
    */
   const SubtopicItem = ({ text, onClick }) => {
     return (
@@ -329,7 +331,7 @@ const CommunityTopics = () => {
   /**
    * container that contain subtopics and input for subtopic
    *
-   * @returns {React.Component} CreatePost component
+   * @returns {React.Component}
    */
   const SubtopicsContent = () => {
     return (
@@ -342,16 +344,24 @@ const CommunityTopics = () => {
         tabIndex="0"
       >
         {focus &&
-          subtopics.map((topic) => {
+          subtopics.map((topic, i) => {
             return (
-              <SubtopicItem text={topic} onClick={clickSubtopicItemHandler} />
+              <SubtopicItem
+                key={i}
+                text={topic}
+                onClick={clickSubtopicItemHandler}
+              />
             );
           })}
         {!focus && (
           <>
-            {subtopics.slice(0, 4).map((topic) => {
+            {subtopics.slice(0, 4).map((topic, i) => {
               return (
-                <SubtopicItem text={topic} onClick={clickSubtopicItemHandler} />
+                <SubtopicItem
+                  key={i}
+                  text={topic}
+                  onClick={clickSubtopicItemHandler}
+                />
               );
             })}
             {subtopics.length > 4 && (
@@ -379,7 +389,7 @@ const CommunityTopics = () => {
   /**
    * drop down of suggested subtopics
    *
-   * @returns {React.Component} CreatePost component
+   * @returns {React.Component}
    */
   const SubtopicBlock = () => {
     return (
@@ -387,9 +397,10 @@ const CommunityTopics = () => {
         <SuggestedTopicsContainer>
           <div className="suggested-container">
             {!filteredTopics && <h3>Suggested topics</h3>}
-            {filteredTopics.map((element) => {
+            {filteredTopics.map((element, i) => {
               return (
                 <DropDownItem
+                  key={i}
                   text={element.topic}
                   selected={""}
                   weight={400}
@@ -479,6 +490,7 @@ const CommunityTopics = () => {
         onDiscard={cancelHandler}
         onSave={saveHandler}
         onHide={() => setModalShow(false)}
+        showX={false}
       />
     </Container>
   );

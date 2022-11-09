@@ -16,12 +16,13 @@ import {
   DescriptionInnerContainer,
   InputContainer,
   Private,
-  SaveButton
+  SaveButton,
 } from "./CommunityDate.styled";
 
 /**
- * 
- * @returns {React.Component} CreatePost component
+ * Component contains created date and description
+ *
+ * @returns {React.Component}
  */
 const CommunityDate = () => {
   const [description, setDescription] = useState("hi");
@@ -32,8 +33,8 @@ const CommunityDate = () => {
 
   /**
    * onchange set value of input text
-   * 
-   * @param {event} e 
+   *
+   * @param {event} e
    */
   function inputHandler(e) {
     setDescription(e.target.value);
@@ -49,8 +50,8 @@ const CommunityDate = () => {
 
   /**
    * handler when blur from the input text of description
-   * 
-   * @param {event} event 
+   *
+   * @param {event} event
    */
   function blurInputHandler(event) {
     //if the click outside the container of input
@@ -99,11 +100,11 @@ const CommunityDate = () => {
   }
 
   /**
-   * 
-   * @param {function} onClick - handle when click on description 
-   * @returns {React.Component} CreatePost component
+   *
+   * @param {function} onClick - handle when click on description
+   * @returns {React.Component} description
    */
-  const Description = ({onClick}) => {
+  const Description = ({ onClick }) => {
     return (
       <DescriptionContainer onClick={onClick}>
         <DescriptionInnerContainer>
@@ -185,6 +186,7 @@ const CommunityDate = () => {
         onDiscard={discardHandler}
         onSave={saveModalHandler}
         onHide={() => setModalShow(false)}
+        showX={true}
       />
     </>
   );

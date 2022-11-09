@@ -1,0 +1,34 @@
+{
+    "Community": [
+        {
+          "communityId": "t1_54148d012f459b337e2382ce",
+          "name": "string",
+          "memberCount": 552,
+          "rank": 0,
+          "createdAt": "2022/02/15, 15:02:20",
+          "icon": "photo.jpg",
+          "banner": "photo.jpg",
+          "communityRules": {
+            "title": "string",
+            "textDescription": "This is a text!"
+          },
+          "FAQs": {
+            "question": "string",
+            "answer": "string"
+          },
+          "communityOptions": {
+            "privacyType": "string",
+            "region": "string",
+            "postType": "string",
+            "allowImgLinkUploads": true,
+            "suggestedCommentSort": "string",
+            "allowMultipleImagePerPost": true,
+            "welcomeMessage": true,
+            "NSFW": true,
+            "emailUserNameMention": true,
+            "optionsDescription": "string"
+          },
+          "communityDescription": "string"
+        }
+      ]
+}

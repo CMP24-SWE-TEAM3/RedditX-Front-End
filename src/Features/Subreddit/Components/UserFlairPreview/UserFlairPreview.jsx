@@ -21,7 +21,7 @@ import {
 /**
  * component that preview your subreddit flair
  * 
- * @returns {React.Component} CreatePost component
+ * @returns {React.Component}
  */
 const UserFlairPreview = () => {
   // const flair = { text: "", backgroundColor: "", color: "" };
@@ -51,8 +51,9 @@ const UserFlairPreview = () => {
   }
 
   /**
+   * component preview your flair in this subreddit
    * 
-   * @returns {React.Component} CreatePost component
+   * @returns {React.Component} 
    */
   const Preview = () => {
     return (

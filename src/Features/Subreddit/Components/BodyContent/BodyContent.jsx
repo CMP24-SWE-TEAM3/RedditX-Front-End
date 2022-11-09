@@ -3,16 +3,16 @@ import { Container } from "./BodyContent.styled";
 
 /**
  * the Body of Subreddit page
- * 
- * @returns {React.Component} CreatePost component
+ *
+ * @returns {React.Component}
  */
 const BodyContent = () => {
-  return ( 
+  return (
     <Container>
       <div className="create-post"></div>
       <CategoryBar />
     </Container>
-   );
-}
- 
+  );
+};
+
 export default BodyContent;

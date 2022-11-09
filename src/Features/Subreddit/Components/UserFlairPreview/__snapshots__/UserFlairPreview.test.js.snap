@@ -1,3 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`preview of selected flair should render without crashing 1`] = `ShallowWrapper {}`;
+exports[`preview of selected flair should render without crashing 1`] = `
+<styled.div>
+  <Styled(Link)
+    to="#"
+  >
+    Create Post
+  </Styled(Link)>
+  <styled.hr />
+  <Preview />
+  <SelectYourFlair
+    hide={[Function]}
+    modalShow={false}
+    onApply={[Function]}
+  />
+</styled.div>
+`;

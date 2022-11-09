@@ -20,17 +20,17 @@ import {
   ShowMyFlairDiv,
   StyledForm,
   Title,
-  XButton
+  XButton,
 } from "./SelectYourFlair.styled";
 /**
- * 
+ *
  * @param {boolean} modalShow - boolean to show or hide modal
  * @param {function} hide - handler on click on X button
  * @param {function} onApply - handler when click apply for changes
- * @returns {React.Component} CreatePost component
+ * @returns {React.Component}
  */
-const SelectYourFlair = ({modalShow, hide, onApply}) => {
-  // selected flair from radio buttons 
+const SelectYourFlair = ({ modalShow, hide, onApply }) => {
+  // selected flair from radio buttons
   const [selectedFlair, setSelectedFlair] = useState({});
   //text on search
   const [searchValue, setSearchValue] = useState("");
@@ -62,8 +62,8 @@ const SelectYourFlair = ({modalShow, hide, onApply}) => {
 
   /**
    * onchange of input text of search bar handler
-   * 
-   * @param {Event} e - event 
+   *
+   * @param {Event} e - event
    */
   function searchHandler(e) {
     setSearchValue(e.target.value);
@@ -71,7 +71,7 @@ const SelectYourFlair = ({modalShow, hide, onApply}) => {
 
   /**
    * handler when select a flair
-   * 
+   *
    * @param {Event} e -event
    */
   function selectFlairHandler(e) {
@@ -86,7 +86,7 @@ const SelectYourFlair = ({modalShow, hide, onApply}) => {
 
   /**
    * handler when change text of selected flair
-   * 
+   *
    * @param {Event} e -event
    */
   function changeSelectedFlairTextHandler(e) {
@@ -104,8 +104,8 @@ const SelectYourFlair = ({modalShow, hide, onApply}) => {
   /**
    * handler when click apply
    */
-  function applyHandler(){
-    onApply(selectedFlair)
+  function applyHandler() {
+    onApply(selectedFlair);
   }
 
   //filtered flairs for search
@@ -121,7 +121,7 @@ const SelectYourFlair = ({modalShow, hide, onApply}) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header >
+      <Modal.Header>
         <Title>Select your community flair</Title>
         <XButton onClick={hide}>
           <HiXMark />
@@ -160,10 +160,11 @@ const SelectYourFlair = ({modalShow, hide, onApply}) => {
               <SearchIcon />
             </SearchComponent>
 
-            <StyledForm onChange={selectFlairHandler} >
-              {filteredList.map((flair) => {
+            <StyledForm onChange={selectFlairHandler}>
+              {filteredList.map((flair, i) => {
                 return (
                   <Form.Check
+                    key={i}
                     type={"radio"}
                     name="flair"
                     label={
