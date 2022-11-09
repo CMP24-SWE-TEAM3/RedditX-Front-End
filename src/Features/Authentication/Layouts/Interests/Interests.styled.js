@@ -38,7 +38,7 @@ export const AuthParagraph = styled.div`
 `;
 
 export const Privacy = styled.span`
-  color: color: ${({ theme }) => theme.color.link};
+  color: ${({ theme }) => theme.color.link};
 `;
 
 export const RedditIcon = styled.div`

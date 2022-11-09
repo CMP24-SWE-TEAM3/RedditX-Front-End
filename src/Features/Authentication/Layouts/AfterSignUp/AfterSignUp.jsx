@@ -1,14 +1,15 @@
+// Import hooks
 import { useState } from "react";
 
+// Import modals
 import Gender from "../Gender/Gender";
-
 import Interests from "../Interests/Interests";
+import UploadPhoto from "../UploadPhoto/UploadPhoto";
 
 /**
  * AfterSignUp component that appear to the user after he signed up
  * @returns {React.Component}  Signup component that appear to the user after he signed up
  */
-
 const AfterSignUp = () => {
   /**
    * state to know the gender of the user
@@ -20,6 +21,10 @@ const AfterSignUp = () => {
    */
   const [interests, setInterests] = useState([]);
 
+  /**
+   * state to store user's uploaded profile photo
+   */
+  const [profilePhoto, setProfilePhoto] = useState(null);
   /**
    * state to know what screen should be shown (if true then show gender screen)
    */
@@ -35,6 +40,13 @@ const AfterSignUp = () => {
    */
   const [photoUploadScreen, setPhotoUploadScreen] = useState(false);
 
+  /**
+   * Function to submit the form
+   */
+  const submitForm = () => {
+    // TODO: submit the form
+    // profilePhoto, interests, gender
+  };
   return (
     <>
       {genderScreen && (
@@ -42,6 +54,7 @@ const AfterSignUp = () => {
           setGender={setGender}
           setGenderScreen={setGenderScreen}
           setInterestsScreen={setInterestsScreen}
+          setPhotoUploadScreen={setPhotoUploadScreen}
         />
       )}
 
@@ -51,17 +64,20 @@ const AfterSignUp = () => {
           interests={interests}
           setGenderScreen={setGenderScreen}
           setInterestsScreen={setInterestsScreen}
+          setPhotoUploadScreen={setPhotoUploadScreen}
         />
       )}
 
-      {/* {photoUploadScreen && (
-        <Interests
-          setInterests={setInterests}
-          interests={interests}
+      {photoUploadScreen && (
+        <UploadPhoto
+          setProfilePhoto={setProfilePhoto}
+          profilePhoto={profilePhoto}
           setGenderScreen={setGenderScreen}
           setInterestsScreen={setInterestsScreen}
+          setPhotoUploadScreen={setPhotoUploadScreen}
+          submitForm={submitForm}
         />
-      )} */}
+      )}
     </>
   );
 };

@@ -34,7 +34,7 @@ import {
   Upper,
   Skip,
   InterestsContainer,
-  GlobalStyles
+  GlobalStyles,
 } from "./Interests.styled";
 
 import InterestButton from "Features/Authentication/Components/InterestButton/InterestButton";
@@ -55,6 +55,7 @@ const Interests = ({
   setInterests,
   setGenderScreen,
   setInterestsScreen,
+  setPhotoUploadScreen,
 }) => {
   /**
    * state to know the interests greater than 3
@@ -77,18 +78,23 @@ const Interests = ({
     }
     setValid(temp.length > 2);
     setInterests(temp);
-    console.log(temp);
   };
 
+  const nextScreen = () => {
+    setGenderScreen(false);
+    setPhotoUploadScreen(true);
+    setInterestsScreen(false);
+  };
   return (
     <>
       {
-          <AuthContainer>
-            <GlobalStyles></GlobalStyles>
+        <AuthContainer>
+          <GlobalStyles></GlobalStyles>
           <Upper>
             <Skip
               onClick={() => {
                 setInterestsScreen(false);
+                setPhotoUploadScreen(false);
                 setGenderScreen(true);
               }}
             >
@@ -172,7 +178,7 @@ const Interests = ({
               Cars
             </InterestButton>
           </InterestsContainer>
-          <Button disabled={valid} valid={valid}>
+          <Button onClick={nextScreen} disabled={!valid} valid={valid}>
             Continue
           </Button>
         </AuthContainer>

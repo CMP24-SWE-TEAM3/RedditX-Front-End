@@ -27,6 +27,7 @@ const Gender = ({
   setGender,
   setGenderScreen,
   setInterestsScreen,
+  setPhotoUploadScreen,
 }) => {
   /**
    * Function to set the gender of the user and go to the next screen
@@ -36,6 +37,7 @@ const Gender = ({
     //console.log(gender);
     setGender(gender);
     setGenderScreen(false);
+    setPhotoUploadScreen(false);
     setInterestsScreen(true);
   };
 
