@@ -25,8 +25,7 @@ export const ButtonStyled = styled.button`
   background-color: ${({theme}) => theme.color.secondary};
   //width: 112px;
 
-  & :hover {
-    //background-color: ${({theme}) => theme.color.hover_background_button_blue};
-    background-color: red;
+  :hover, :active {
+    background-color: ${({theme}) => theme.background.hover_background_button_blue};
   }
 `

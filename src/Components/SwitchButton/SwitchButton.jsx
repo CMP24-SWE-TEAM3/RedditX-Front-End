@@ -1,6 +1,9 @@
 // imports
 import React, {useState} from 'react';
 import {ReactSwitch} from "./SwitchButton.styled";
+import defaultTheme from "Theme/defaultTheme";
+import lightTheme from "Theme/lightTheme";
+import darkTheme from "Theme/darkTheme";
 
 /**
  * Component that toggles to on and off when the user clicks on a button
@@ -9,7 +12,7 @@ import {ReactSwitch} from "./SwitchButton.styled";
  *
  * @returns {React.Component}
  */
-const SwitchButton = () => {
+const SwitchButton = ({toggle}) => {
     /**
      * state for toggle button  state
      */
@@ -21,13 +24,14 @@ const SwitchButton = () => {
      */
     const handleChange = nextChecked => {
         setChecked(nextChecked);
+        toggle();
     };
 
     return (
         <label>
             <ReactSwitch
                 onChange={handleChange}
-                checked={checked} checkedIcon={false} uncheckedIcon={false} disabled={false} onColor={"#0095dd"}
+                checked={checked} mode={checked}  checkedIcon={false} uncheckedIcon={false} disabled={false} onColor={"#0095dd"}
             />
         </label>
     );

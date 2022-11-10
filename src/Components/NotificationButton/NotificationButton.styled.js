@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background-color: ${({theme}) => theme.background.primary};
-  color: ${({theme}) => theme.color.primary};
+  color: ${({theme}) => theme.color.muted};
 
 
   .popover {

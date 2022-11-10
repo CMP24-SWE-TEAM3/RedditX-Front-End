@@ -13,7 +13,7 @@ export const GlobalButtonStyled = styled.button
         background: ${({theme}) => theme.background.post_background};
       }
 
-      color: ${({theme})=>theme.color.primary};
+      color: ${({theme})=>theme.color.muted};
       
 
     `

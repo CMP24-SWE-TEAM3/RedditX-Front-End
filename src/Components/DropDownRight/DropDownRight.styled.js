@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import {BsPerson} from 'react-icons/bs';
-import Dropdown from 'react-bootstrap/Dropdown';
 import {NavDropdown} from "react-bootstrap";
 
 export const Container = styled(NavDropdown)`
-  @media (max-width:450px){
+  @media (max-width: 450px) {
     display: none;
   }
   font-size: 20px;
@@ -16,8 +15,9 @@ export const Container = styled(NavDropdown)`
     vertical-align: 0.1em;
     color: #878a8c
   }
-  .ico{
-    font-size:20px;
+
+  .ico {
+    font-size: 20px;
   }
 
   .first-sec {
@@ -27,14 +27,24 @@ export const Container = styled(NavDropdown)`
   .accordion {
     --bs-accordion-bg: ${({theme}) => theme.canvas.primary} !important;
     --bs-accordion-active-bg: none;
+
     :hover {
-      background-color: #e9ecef !important;
+      //background-color: ${({theme})=>theme.background.muted} !important;
     }
+
     --bs-accordion-active-color: none;
 
   }
+  .child.accordion-body {
+    padding: 0.25rem 0 0.25rem 0.3rem !important;
+
+  }
+
   .accordion-body {
     padding: 0.25rem 0 0.25rem 1.7rem !important;
+    :hover{
+      background: none !important;
+    }
   }
 
   margin: 5px;
@@ -45,8 +55,6 @@ export const Container = styled(NavDropdown)`
     margin-left: 2.255em;
   }
 
-
-  
 
   white-space: break-spaces;
   padding: 0;
@@ -70,6 +78,9 @@ export const Container = styled(NavDropdown)`
     align-items: center;
     font-size: 16px;
     padding: 0 20px 0 0;
+    :hover{
+      background-color: ${({theme}) => theme.background.muted} !important;
+    }
   }
 
   .accordion-header {
@@ -87,24 +98,24 @@ export const Container = styled(NavDropdown)`
     height: 100%;
     box-shadow: none;
     white-space: nowrap;
-    //color: ${({theme}) => theme.canvas} !important;
-
+    color: ${({theme}) => theme.color.primary};
+    :hover{
+      background:none !important;
+    }
 
     //text-align: center;
-
     :focus {
       box-shadow: 0 0;
     }
-    
+
   }
 
   & span {
     padding: 3px;
-    //align-items: start;
   }
+  
 
   color: ${({theme}) => theme.color.muted};
-  //left:10%;
 
 
   .rs-dropdown-toggle.rs-btn {
@@ -114,8 +125,8 @@ export const Container = styled(NavDropdown)`
   }
 
   .rs-dropdown-toggle.rs-btn:hover {
-      //border-color: ${({theme}) => theme.background.primary} !important;
-    border-color: red !important;
+    border-color: ${({theme}) => theme.background.primary} !important;
+    //border-color: red !important;
     background-color: ${({theme}) => theme.background.primary} !important;
   }
 
@@ -148,6 +159,7 @@ export const Container = styled(NavDropdown)`
     overflow: hidden scroll;
     transform: translate3d(0px, 35px, 0px) !important;
     height: 578px;
+    background-color: ${({theme}) => theme.background.primary} !important;
 
 
     .stuff {
@@ -161,8 +173,8 @@ export const Container = styled(NavDropdown)`
       font-weight: 500;
       font-size: 20px;
     }
-    
-    .switch-but{
+
+    .switch-but {
       position: absolute;
       width: 100%;
       height: fit-content;
@@ -171,12 +183,35 @@ export const Container = styled(NavDropdown)`
     }
   }
 
+  .dropdown-item-text {
+    white-space: break-spaces;
+    font-weight: 500;
+    font-size: 14px;
+    height: 40px;
+    width: 100%;
+    padding-left:18px;
+
+    span {
+      color: ${({theme}) => theme.color.primary};
+    }
+
+    :hover {
+      background-color: ${({theme}) => theme.background.muted} !important;
+    }
+
+  }
+
   .dropdown-item {
     white-space: break-spaces;
     font-weight: 500;
     font-size: 14px;
     height: 40px;
     width: 100%;
+    color: ${({theme}) => theme.color.primary} !important;
+
+    :hover {
+      background-color: ${({theme}) => theme.background.muted} !important;
+    }
 
     span {
       flex: 0 0;
@@ -184,6 +219,8 @@ export const Container = styled(NavDropdown)`
       height: 20px;
       min-width: 20px;
       width: 20px;
+      color: ${({theme}) => theme.color.primary};
+
     }
 
     :active {
@@ -196,14 +233,9 @@ export const Container = styled(NavDropdown)`
     background-color: ${({theme}) => theme.background.post_background};
   }
 
-  & .rs-dropdown-item {
-    color: ${({theme}) => theme.color.primary};
-
-    :hover {
-      background-color: ${({theme}) => theme.background.muted};
-
-    }
-  }
+  // & .rs-dropdown-item, {
+    //   color: ${({theme}) => theme.color.primary};
+  // }
 
   @media only screen and (max-width: 1290px) {
     left: 20px;
@@ -215,6 +247,10 @@ export const Container = styled(NavDropdown)`
     font-size: 14px;
     margin-bottom: 20px;
     padding: 12px 20px;
+  }
+
+  .ico {
+    color: ${({theme}) => theme.color.muted} !important;
   }
 
 `

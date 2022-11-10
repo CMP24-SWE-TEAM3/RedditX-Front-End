@@ -1,5 +1,5 @@
 // imports
-import React, {Component, useState} from 'react';
+import React, {useState} from 'react';
 import {Container, MainContainer} from "./HomePage.styled";
 import Navbar from "Layouts/Navbar/Navbar";
 import CreatePost from "Layouts/CreatePost/CreatePost";
@@ -13,7 +13,6 @@ import defaultTheme from "Theme/defaultTheme";
 import {ThemeProvider} from "styled-components";
 import ScrollButton from "Components/ScrollButton/ScrollButton";
 import darkTheme from "Theme/darkTheme";
-import {Button} from "react-bootstrap";
 import RecentPosts from "Layouts/RecentPosts/RecentPosts";
 
 /**
@@ -37,16 +36,16 @@ const HomePage = () => {
             <ThemeProvider theme={theme}>
                 <styles.AppContainer>
                     <styles.AppHeader>
-                        <Navbar theme={theme}/>
+                        <Navbar toggleMode={handleToggleTheme} theme={theme}/>
                         <MainContainer>
                             <div className="main"/>
                             <Container>
                                 <div className={'content-posts'}>
                                     <CreatePost/>
                                     <PopularPosts/>
-                                    <Button onClick={handleToggleTheme}>
-                                        Toggle theme
-                                    </Button>
+                                    {/*<Button onClick={handleToggleTheme}>*/}
+                                    {/*    Toggle theme*/}
+                                    {/*</Button>*/}
                                     {/*<div className={'posts'}>*/}
                                     {/*</div>*/}
                                 </div>

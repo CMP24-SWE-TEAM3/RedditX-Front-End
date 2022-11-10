@@ -10,7 +10,8 @@ export const StyledIcon = styled.img`
 
 `
 export const StyledTextLogo = styled.img`
-  height: 18px;
+  //height: 18px;
+  background-size: cover;
   margin: 0 20px 0 0;
   width: 57px;
   //max-height: 32px;

@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
 export const AdvertiseButtonStyled = styled.button`
-  @media (max-width:450px){
+  @media (max-width: 420px) {
     display: none;
+  }
+  @media (max-width: 600px) {
+    width: fit-content;
   }
   width: 110.34px;
   margin-left: 8px;
@@ -17,8 +20,20 @@ export const AdvertiseButtonStyled = styled.button`
   color: ${({theme}) => theme.color.primary};
   background-color: ${({theme}) => theme.background.muted};
 
-  &:hover {
-    background-color: #d4d7d9
+  :hover {
+    background-color: ${({theme}) => theme.background.muted};
+  }
+
+  span {
+    padding: 3px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  span:last-child {
+    @media (max-width: 600px) {
+      display: none;
+    }
   }
 
 `

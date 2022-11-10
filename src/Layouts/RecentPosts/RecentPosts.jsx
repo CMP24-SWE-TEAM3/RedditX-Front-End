@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Container} from "./RecentPosts.styled";
 import imagePost from "Assets/Images/cats.png";
 import {Link} from "react-router-dom";
@@ -24,8 +24,18 @@ const RecentPosts = () => {
             },
         },
     });
+    /**
+     * state to handle show and delete of recent posts
+     */
+    const [showRecentPosts, setShowRecentPosts] = useState(true);
+    const deleteRecentPosts = () => {
+        //TODO: handle refreshing recent posts after reloading
+        recentPostList.splice(0, recentPostList.length);
+        setShowRecentPosts(false);
+    }
     return (
-        <Container>
+        <>
+            { showRecentPosts&&<Container>
             <div>
                 <div className="head">
                     <div>Recent Posts</div>
@@ -43,32 +53,33 @@ const RecentPosts = () => {
                                 </div>
                             </div>
 
-                            <div className="description">
-                                <p>
-                                    {recentPost.description}
-                                </p>
-                                <div className='details'>
-                                    <div>
+                                    <div className="description">
+                                        <p>
+                                            {recentPost.description}
+                                        </p>
+                                        <div className='details'>
+                                            <div>
                         <span>
                             {recentPost.points} points
                         </span>
-                                        <span className={'dots'}>
+                                                <span className={'dots'}>
                                 {recentPost.comments} comments
                             </span>
-                                            <span className={'dots'}>
+                                                <span className={'dots'}>
                                 {recentPost.hours}h
                             </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    )
-                })}
-            </div>
-            <button className={'but'}>
-                Clear
-            </button>
-        </Container>
+                            )
+                        })}
+                    </div>
+                    <button className={'but'} onClick={deleteRecentPosts}>
+                        Clear
+                    </button>
+                </Container>}
+        </>
     );
 };
 

@@ -21,7 +21,7 @@ import AuthContext from "Contexts/auth-context";
  *
  * @returns {Component.React}
  */
-const Navbar = ({theme}) => {
+const Navbar = ({theme,toggleMode}) => {
     const ButtonHandler = () => {
         alert('Hello Reddit!');
     }
@@ -51,7 +51,7 @@ const Navbar = ({theme}) => {
 
 
             {/*<DropFunc Name={"Profile"}/>*/}
-            <DropDownRightButton/>
+            <DropDownRightButton toggleMode={toggleMode}/>
         </StyledHeader>
     );
 };

@@ -2,27 +2,34 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
+  padding-top: 30px;
   max-width: 100%;
   width: 100%;
   box-sizing: border-box;
   flex-direction: row;
   justify-content: center;
   margin: 0 auto;
+  overflow-x: hidden;
 
-  @media (max-width: 960px) {
-    width: 100%;
-  }
-  @media (min-width: 640px) {
-    padding: 20px 24px;
-  }
+
+  //@media (min-width: 640px) {
+  //  padding: 20px 24px;
+  //  width:95%
+  //  
+  //}
 
   & .content-posts {
-    @media (min-width: 960px) {
-      width: 640px;
-      //width: 100%;
+    width: 100%;
+    min-width: 640px;
+
+    @media (max-width: 970px) {
+      width:95%;
+      padding-top:48px;
+
     }
-    @media (max-width: 960px) {
-      width: 100%;
+    @media(max-width:640px ){
+      width:100%;
+      min-width: 100%;
     }
   }
 

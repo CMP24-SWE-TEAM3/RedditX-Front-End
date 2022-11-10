@@ -1,5 +1,6 @@
 import React from 'react';
 import {AdvertiseButtonStyled} from "./AdvertiseButton.styled";
+import {HiOutlineSpeakerphone} from "react-icons/hi";
 
 /**
  * Component that shows  advertisements
@@ -9,7 +10,8 @@ import {AdvertiseButtonStyled} from "./AdvertiseButton.styled";
 const AdvertiseButton = () => {
     return (
         <AdvertiseButtonStyled>
-            Advertise
+            <span><HiOutlineSpeakerphone/></span>
+            <span>Advertise</span>
         </AdvertiseButtonStyled>
     );
 };

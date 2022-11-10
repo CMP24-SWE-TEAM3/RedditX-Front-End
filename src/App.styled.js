@@ -28,7 +28,7 @@ export const AppLogo = styled.img`
 
 export const AppHeader = styled.header`
   background-color: ${({ theme }) => theme.canvas};
-  min-height: 48vh;
+  //min-height: 48vh;
   position: relative;
   display: flex;
   flex-direction: column;

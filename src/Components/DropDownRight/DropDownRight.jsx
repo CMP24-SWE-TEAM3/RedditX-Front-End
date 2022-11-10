@@ -1,5 +1,5 @@
 // imports
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {BsCoin, BsXDiamond} from 'react-icons/bs';
 import {CiCircleQuestion, CiLogin, CiSettings} from 'react-icons/ci';
 import {DropdownButtonIconStyled, Container} from "./DropDownRight.styled";
@@ -22,7 +22,7 @@ import {MdDoNotDisturbAlt} from "react-icons/md";
  *
  * @returns {React.Component}
  */
-const DropDownRightButton = ({Mode}) => {
+const DropDownRightButton = ({toggleMode}) => {
     const LoginHandler = () => {
         alert('Login or Sign up Page')
     }
@@ -34,10 +34,10 @@ const DropDownRightButton = ({Mode}) => {
                 <span className={'stuff'}>My Stuff</span>
             </NavDropdown.Item>
             <div className={'first-sec'}>
-                <NavDropdown.Item>
+                <NavDropdown.ItemText>
                     <span>Online Status</span>
                     <span className={'switch-but'}> <SwitchButton/></span>
-                </NavDropdown.Item>
+                </NavDropdown.ItemText>
                 <NavDropdown.Item>
                     <span>Profile</span>
                 </NavDropdown.Item>
@@ -55,14 +55,14 @@ const DropDownRightButton = ({Mode}) => {
                 <span className={'stuff'}>View Options</span>
             </NavDropdown.Item>
             <div className={'first-sec'}>
-                <NavDropdown.Item>
+                <NavDropdown.ItemText>
                     <span>Mod Mode</span>
                     <span className={'switch-but'}> <SwitchButton/></span>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
+                </NavDropdown.ItemText>
+                <NavDropdown.ItemText>
                     <span>Dark Mode</span>
-                    <span className={'switch-but'}> <SwitchButton/></span>
-                </NavDropdown.Item>
+                    <span className={'switch-but'}> <SwitchButton toggle={toggleMode}/></span>
+                </NavDropdown.ItemText>
             </div>
             <NavDropdown.Divider/>
             <NavDropdown.Item>
@@ -111,7 +111,7 @@ const DropDownRightButton = ({Mode}) => {
                     <Accordion.Body>
                         <Accordion defaultActiveKey="1">
                                 <Accordion.Header>Gaming</Accordion.Header>
-                                <Accordion.Body>
+                                <Accordion.Body className={'child'}>
                                     <NavDropdown.Item>MineCraft</NavDropdown.Item>
                                     <NavDropdown.Item>Pokimane</NavDropdown.Item>
                                     <hr className={'border-dark my-3'}/>
@@ -119,7 +119,7 @@ const DropDownRightButton = ({Mode}) => {
                         </Accordion>
                         <Accordion defaultActiveKey="1">
                                 <Accordion.Header>Sports</Accordion.Header>
-                                <Accordion.Body>
+                                <Accordion.Body className={'child'}>
                                     <NavDropdown.Item>NBA</NavDropdown.Item>
                                     <NavDropdown.Item>NFL</NavDropdown.Item>
                                     <NavDropdown.Item>Item 4B</NavDropdown.Item>
@@ -128,7 +128,7 @@ const DropDownRightButton = ({Mode}) => {
                         </Accordion>
                         <Accordion defaultActiveKey="1">
                                 <Accordion.Header>Television</Accordion.Header>
-                                <Accordion.Body>
+                                <Accordion.Body className={'child'}>
                                     <NavDropdown.Item>Wife Swap</NavDropdown.Item>
                                     <NavDropdown.Item>Sister Wives</NavDropdown.Item>
                                     <hr className={'border-dark my-3'}/>
@@ -136,7 +136,7 @@ const DropDownRightButton = ({Mode}) => {
                         </Accordion>
                         <Accordion defaultActiveKey="1">
                                 <Accordion.Header>Celebrity</Accordion.Header>
-                                <Accordion.Body>
+                                <Accordion.Body className={'child'}>
                                     <NavDropdown.Item>Doja Cat</NavDropdown.Item>
                                     <NavDropdown.Item>Anya Taylor-Joy</NavDropdown.Item>
                                     <hr className={'border-dark my-3'}/>
@@ -153,7 +153,7 @@ const DropDownRightButton = ({Mode}) => {
                         <span> Settings</span>
                     </Accordion.Header>
                     <Accordion.Body>
-                        <NavDropdown.Item onClick={Mode}>Dark Mode</NavDropdown.Item>
+                        <NavDropdown.Item onClick={toggleMode}>Dark Mode</NavDropdown.Item>
                         <hr className={'border-dark my-3'}/>
                     </Accordion.Body>
                 </Accordion.Item>

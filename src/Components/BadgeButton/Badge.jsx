@@ -1,6 +1,6 @@
 // imports
-import blackLogo from 'Assets/Images/black-logo.svg'
-import whiteLogo from 'Assets/Images/white-logo.svg';
+import blackLogo from 'Assets/Images/black-logo.png'
+import whiteLogo from 'Assets/Images/white-logo.png';
 import logo from 'Assets/Images/logo.png'
 import {StyledIcon, StyledLink, StyledTextLogo} from './Badge.styled'
 import {Link} from "react-router-dom";
