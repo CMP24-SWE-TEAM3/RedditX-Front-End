@@ -78,6 +78,7 @@ const Interests = ({
     }
     setValid(temp.length > 2);
     setInterests(temp);
+    console.log(temp);
   };
 
   const nextScreen = () => {
@@ -111,74 +112,74 @@ const Interests = ({
             Pick 3 or more things you'd like to see in your home feed.
           </AuthParagraph>
           <InterestsContainer>
-            <InterestButton onClick={() => addInterest("Funny")}>
+            <InterestButton selected={interests.includes("Funny")} onClick={() => addInterest("Funny")}>
               <FaRegLaughBeam color="orange" />
               Funny
             </InterestButton>
-            <InterestButton onClick={() => addInterest("Jokes")}>
+            <InterestButton selected={interests.includes("Jokes")} onClick={() => addInterest("Jokes")}>
               <FaRegLaughSquint color="orange" />
               Jokes
             </InterestButton>
-            <InterestButton onClick={() => addInterest("Interesting")}>
+            <InterestButton selected={interests.includes("Interesting")} onClick={() => addInterest("Interesting")}>
               <FaGamepad color="red" />
               Interesting
             </InterestButton>
-            <InterestButton onClick={() => addInterest("Memes")}>
+            <InterestButton selected={interests.includes("Memes")} onClick={() => addInterest("Memes")}>
               <GiCardJoker color="purple" />
               Memes
             </InterestButton>
-            <InterestButton onClick={() => addInterest("Life hacks")}>
+            <InterestButton selected={interests.includes("Life hacks")} onClick={() => addInterest("Life hacks")}>
               <SiHackaday color="red" />
               Life hacks
             </InterestButton>
-            <InterestButton onClick={() => addInterest("Nature")}>
+            <InterestButton selected={interests.includes("Nature")} onClick={() => addInterest("Nature")}>
               <GiFruitTree color="green" /> Nature
             </InterestButton>
-            <InterestButton onClick={() => addInterest("History")}>
+            <InterestButton selected={interests.includes("History")} onClick={() => addInterest("History")}>
               <BiHistory color="blue" />
               History
             </InterestButton>
-            <InterestButton onClick={() => addInterest("Tech")}>
+            <InterestButton selected={interests.includes("Tech")} onClick={() => addInterest("Tech")}>
               <CiMobile3 color="#055160" /> Tech
             </InterestButton>
-            <InterestButton onClick={() => addInterest("Science")}>
+            <InterestButton selected={interests.includes("Science")} onClick={() => addInterest("Science")}>
               <MdScience color="orange" />
               Science
             </InterestButton>
-            <InterestButton onClick={() => addInterest("News")}>
+            <InterestButton selected={interests.includes("News")} onClick={() => addInterest("News")}>
               <HiNewspaper color={"gray"} /> News
             </InterestButton>
-            <InterestButton onClick={() => addInterest("Career")}>
+            <InterestButton selected={interests.includes("Career")} onClick={() => addInterest("Career")}>
               <BsFilePersonFill color="blue" /> Career
             </InterestButton>
-            <InterestButton onClick={() => addInterest("Books")}>
+            <InterestButton selected={interests.includes("Books")} onClick={() => addInterest("Books")}>
               <BsBookHalf color="brown" />
               Books
             </InterestButton>
-            <InterestButton onClick={() => addInterest("Programming")}>
+            <InterestButton selected={interests.includes("Programming")} onClick={() => addInterest("Programming")}>
               <MdComputer color="red" />
               Programming
             </InterestButton>
-            <InterestButton onClick={() => addInterest("Travel")}>
+            <InterestButton selected={interests.includes("Travel")} onClick={() => addInterest("Travel")}>
               <BsStrava color="green" />
               Travel
             </InterestButton>
-            <InterestButton onClick={() => addInterest("Fishing")}>
+            <InterestButton selected={interests.includes("Fishing")} onClick={() => addInterest("Fishing")}>
               <GiTropicalFish color="blue" />
               Fishing
             </InterestButton>
-            <InterestButton onClick={() => addInterest("Sports")}>
+            <InterestButton selected={interests.includes("Sports")} onClick={() => addInterest("Sports")}>
               <FaFootballBall color="brown" /> Sports
             </InterestButton>
-            <InterestButton onClick={() => addInterest("Fitness")}>
+            <InterestButton selected={interests.includes("Fitness")} onClick={() => addInterest("Fitness")}>
               <IoMdFitness color="black" /> Fitness
             </InterestButton>
-            <InterestButton onClick={() => addInterest("Cars")}>
+            <InterestButton selected={interests.includes("Cars")} onClick={() => addInterest("Cars")}>
               <AiFillCar color="red" />
               Cars
             </InterestButton>
           </InterestsContainer>
-          <Button onClick={nextScreen} disabled={!valid} valid={valid}>
+          <Button onClick={nextScreen} disabled={!(interests.length > 2)} valid={(interests.length > 2)}>
             Continue
           </Button>
         </AuthContainer>
