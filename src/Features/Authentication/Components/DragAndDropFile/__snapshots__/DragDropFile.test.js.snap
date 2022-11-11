@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drag and drop file should render without crashing 1`] = `
+<div>
+  <styled.div
+    containFiles={true}
+    onBlur={null}
+    onClick={[Function]}
+    onDragEnter={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]}
+    onFocus={null}
+    onKeyDown={null}
+    role="presentation"
+  >
+    <input
+      accept="image/*"
+      multiple={true}
+      onChange={[Function]}
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+      tabIndex={-1}
+      type="file"
+    />
+  </styled.div>
+</div>
+`;

@@ -6,6 +6,9 @@ import Gender from "../Gender/Gender";
 import Interests from "../Interests/Interests";
 import UploadPhoto from "../UploadPhoto/UploadPhoto";
 
+// Import styled components
+import { StyledSpinner } from "./AfterSignUp.styled";
+
 /**
  * AfterSignUp component that appear to the user after he signed up
  * @returns {React.Component}  Signup component that appear to the user after he signed up
@@ -41,11 +44,19 @@ const AfterSignUp = () => {
   const [photoUploadScreen, setPhotoUploadScreen] = useState(false);
 
   /**
+   *
+   */
+  const [loadingScreen, setLoadingScreen] = useState(false);
+  /**
    * Function to submit the form
    */
   const submitForm = () => {
     // TODO: submit the form
     // profilePhoto, interests, gender
+    setGenderScreen(false);
+    setInterestsScreen(false);
+    setPhotoUploadScreen(false);
+    setLoadingScreen(true);
   };
   return (
     <>
@@ -78,6 +89,7 @@ const AfterSignUp = () => {
           submitForm={submitForm}
         />
       )}
+      {loadingScreen && <StyledSpinner animation="border" />}
     </>
   );
 };

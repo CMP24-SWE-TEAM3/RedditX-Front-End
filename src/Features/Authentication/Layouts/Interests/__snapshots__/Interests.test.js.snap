@@ -30,6 +30,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
     <styled.div>
       <InterestButton
         onClick={[Function]}
+        selected={false}
       >
         <FaRegLaughBeam
           color="orange"
@@ -38,6 +39,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
       </InterestButton>
       <InterestButton
         onClick={[Function]}
+        selected={false}
       >
         <FaRegLaughSquint
           color="orange"
@@ -46,6 +48,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
       </InterestButton>
       <InterestButton
         onClick={[Function]}
+        selected={false}
       >
         <FaGamepad
           color="red"
@@ -54,6 +57,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
       </InterestButton>
       <InterestButton
         onClick={[Function]}
+        selected={false}
       >
         <GiCardJoker
           color="purple"
@@ -62,6 +66,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
       </InterestButton>
       <InterestButton
         onClick={[Function]}
+        selected={false}
       >
         <SiHackaday
           color="red"
@@ -70,6 +75,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
       </InterestButton>
       <InterestButton
         onClick={[Function]}
+        selected={false}
       >
         <GiFruitTree
           color="green"
@@ -78,6 +84,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
       </InterestButton>
       <InterestButton
         onClick={[Function]}
+        selected={false}
       >
         <BiHistory
           color="blue"
@@ -86,6 +93,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
       </InterestButton>
       <InterestButton
         onClick={[Function]}
+        selected={false}
       >
         <CiMobile3
           color="#055160"
@@ -94,6 +102,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
       </InterestButton>
       <InterestButton
         onClick={[Function]}
+        selected={false}
       >
         <MdScience
           color="orange"
@@ -102,6 +111,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
       </InterestButton>
       <InterestButton
         onClick={[Function]}
+        selected={false}
       >
         <HiNewspaper
           color="gray"
@@ -110,6 +120,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
       </InterestButton>
       <InterestButton
         onClick={[Function]}
+        selected={false}
       >
         <BsFilePersonFill
           color="blue"
@@ -118,6 +129,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
       </InterestButton>
       <InterestButton
         onClick={[Function]}
+        selected={false}
       >
         <BsBookHalf
           color="brown"
@@ -126,6 +138,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
       </InterestButton>
       <InterestButton
         onClick={[Function]}
+        selected={false}
       >
         <MdComputer
           color="red"
@@ -134,6 +147,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
       </InterestButton>
       <InterestButton
         onClick={[Function]}
+        selected={false}
       >
         <BsStrava
           color="green"
@@ -142,6 +156,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
       </InterestButton>
       <InterestButton
         onClick={[Function]}
+        selected={false}
       >
         <GiTropicalFish
           color="blue"
@@ -150,6 +165,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
       </InterestButton>
       <InterestButton
         onClick={[Function]}
+        selected={false}
       >
         <FaFootballBall
           color="brown"
@@ -158,6 +174,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
       </InterestButton>
       <InterestButton
         onClick={[Function]}
+        selected={false}
       >
         <IoMdFitness
           color="black"
@@ -166,6 +183,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
       </InterestButton>
       <InterestButton
         onClick={[Function]}
+        selected={false}
       >
         <AiFillCar
           color="red"
@@ -174,7 +192,8 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
       </InterestButton>
     </styled.div>
     <Button
-      disabled={false}
+      disabled={true}
+      onClick={[Function]}
       valid={false}
     >
       Continue

@@ -6,6 +6,7 @@ exports[`AfterSignUp Component this is a test for AfterSignUp Component 1`] = `
     setGender={[Function]}
     setGenderScreen={[Function]}
     setInterestsScreen={[Function]}
+    setPhotoUploadScreen={[Function]}
   />
 </Fragment>
 `;
