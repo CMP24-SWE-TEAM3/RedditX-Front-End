@@ -1,5 +1,4 @@
 // Import bootstrap components
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Form, Spinner } from "react-bootstrap";
 
@@ -40,6 +39,7 @@ const FlairModal = ({
   setFlairIndex,
   error,
   isLoading,
+  postOrUser,
 }) => {
   // Context for create post flairs
   const { createPostFlairs, setCreatePostFlairs } = useCreatePostFlairs();
@@ -47,6 +47,8 @@ const FlairModal = ({
   // State to store text of edited flair
   const [flairEditText, setFlairEditText] = useState("");
 
+  // State to store search text
+  const [searchText, setSearchText] = useState("");
   /**
    * Function to handle the change in flair text
    *
@@ -94,29 +96,42 @@ const FlairModal = ({
         <RadioContainer>
           <SearchContainer>
             <CiSearch size={25} />
-            <SearchInput type="search" placeholder="Search for flair" />
+            <SearchInput
+              type="search"
+              placeholder="Search for flair"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+            />
           </SearchContainer>
           {isLoading && <Spinner />}
           {!isLoading && (
             <Form>
-              {flairList.map((flair, index) => (
-                <FormCheck type={"radio"} key={flair.id} id={flair.id}>
-                  <Form.Check.Input type={"radio"} name="flair" id={flair.id} />
-                  <FormCheckLabel
-                    onClick={() => {
-                      setFlairIndex(index);
-                      setFlairEditText(flairList[index].text);
-                    }}
-                  >
-                    <Flair
-                      color={flair.flairTextColor}
-                      backgroundColor={flair.flairBackGroundColor}
+              {flairList
+                .filter((flair) =>
+                  flair.text.toLowerCase().includes(searchText.toLowerCase())
+                )
+                .map((flair, index) => (
+                  <FormCheck type={"radio"} key={flair.id} id={flair.id}>
+                    <Form.Check.Input
+                      type={"radio"}
+                      name="flair"
+                      id={flair.id}
+                    />
+                    <FormCheckLabel
+                      onClick={() => {
+                        setFlairIndex(index);
+                        setFlairEditText(flairList[index].text);
+                      }}
                     >
-                      {flair.text}
-                    </Flair>
-                  </FormCheckLabel>
-                </FormCheck>
-              ))}
+                      <Flair
+                        color={flair.flairTextColor}
+                        backgroundColor={flair.flairBackGroundColor}
+                      >
+                        {flair.text}
+                      </Flair>
+                    </FormCheckLabel>
+                  </FormCheck>
+                ))}
             </Form>
           )}
         </RadioContainer>
@@ -154,8 +169,10 @@ const FlairModal = ({
         <ApplyButton
           disabled={flairIndex === null || flairEditText.length === 0}
           onClick={() => {
-            setCreatePostFlairs(flairList[flairIndex]);
+            if (postOrUser === "post")
+              setCreatePostFlairs(flairList[flairIndex]);
             onHide();
+            flairList[flairIndex].text = flairEditText;
           }}
         >
           Apply

@@ -19,7 +19,7 @@ import {
 import { useState, useRef } from "react";
 
 // Import contexts
-import { useSubmitDestination } from "Features/Post/Contexts/selectedDestination";
+import { useSubmitDestination } from "Features/Post/Contexts/submitDestination";
 import { useCreatePostTitle } from "Features/Post/Contexts/createPostTitle";
 
 // API
@@ -111,6 +111,7 @@ const ImageAndVideoForm = ({ submitPost }) => {
         flairList={flairs}
         error={error}
         isLoading={isLoading}
+        postOrUser="post"
       />
       <StyledImageAndVideoFrom>
         <Form.Group className="title-group mb-3">

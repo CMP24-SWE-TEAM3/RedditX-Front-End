@@ -5,7 +5,7 @@ import React from "react";
 import ChooseCommunity from "./ChooseCommunity";
 
 // Import contexts providers
-import { SubmitDestinationProvider } from "Features/Post/Contexts/selectedDestination";
+import { SubmitDestinationProvider } from "Features/Post/Contexts/submitDestination";
 import { CreatePostTitleProvider } from "Features/Post/Contexts/createPostTitle";
 
 describe("Choose community", () => {

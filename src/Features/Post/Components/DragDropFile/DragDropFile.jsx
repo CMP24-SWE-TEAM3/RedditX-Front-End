@@ -80,7 +80,7 @@ function DragAndDropFile({ files, setFiles }) {
         )}
         <UploadedImagesContainer
           files={files}
-          setFiles={files}
+          setFiles={setFiles}
           open={open}
           selectedImageId={selectedImageId}
           setSelectedImageId={setSelectedImageId}

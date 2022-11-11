@@ -6,7 +6,7 @@ import Main from "Features/Post/Layouts/Main/Main";
 import Sidebar from "Features/Post/Layouts/Sidebar/Sidebar";
 
 // Import contexts providers
-import { SubmitDestinationProvider } from "Features/Post/Contexts/selectedDestination";
+import { SubmitDestinationProvider } from "Features/Post/Contexts/submitDestination";
 import { CreatePostTitleProvider } from "Features/Post/Contexts/createPostTitle";
 import { CreatePostFlagsProvider } from "Features/Post/Contexts/createPostFlags";
 import { CreatePostAttachmentsProvider } from "Features/Post/Contexts/createPostAttachments";

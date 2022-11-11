@@ -24,7 +24,7 @@ import useFetch from "Hooks/useFetch";
 import { useState, useRef } from "react";
 
 // Import contexts
-import { useSubmitDestination } from "Features/Post/Contexts/selectedDestination";
+import { useSubmitDestination } from "Features/Post/Contexts/submitDestination";
 import { useCreatePostTitle } from "Features/Post/Contexts/createPostTitle";
 import {
   createPostAttachmentsContext,
@@ -123,6 +123,7 @@ const DraftEditorForm = ({ submitPost }) => {
         flairList={flairs}
         error={error}
         isLoading={isLoading}
+        postOrUser="post"
       />
       <StyledDraftEditorForm>
         <Form.Group className="title-group mb-3">

@@ -34,7 +34,7 @@ import axios from "API/axios";
 import useFetch from "Hooks/useFetch";
 
 // Import contexts
-import { useSubmitDestination } from "Features/Post/Contexts/selectedDestination";
+import { useSubmitDestination } from "Features/Post/Contexts/submitDestination";
 
 /**
  *

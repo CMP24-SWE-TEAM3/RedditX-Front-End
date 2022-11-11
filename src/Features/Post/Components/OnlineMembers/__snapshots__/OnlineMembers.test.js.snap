@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`show members and online members should render without crashing 1`] = `
+<styled.div>
+  <styled.div>
+    <OverlayTrigger
+      defaultShow={false}
+      delay="200"
+      overlay={
+        <Tooltip
+          placement="right"
+        >
+          5 Members
+        </Tooltip>
+      }
+      placement="bottom"
+      trigger={
+        Array [
+          "hover",
+          "focus",
+        ]
+      }
+    >
+      <styled.div>
+        <div>
+          5
+        </div>
+        <p>
+          Members
+        </p>
+      </styled.div>
+    </OverlayTrigger>
+  </styled.div>
+  <styled.div>
+    <OverlayTrigger
+      defaultShow={false}
+      delay="200"
+      overlay={
+        <Tooltip
+          placement="right"
+        >
+          6 Online
+        </Tooltip>
+      }
+      placement="bottom"
+      trigger={
+        Array [
+          "hover",
+          "focus",
+        ]
+      }
+    >
+      <styled.div>
+        <div>
+          6
+        </div>
+        <p>
+          Online
+        </p>
+      </styled.div>
+    </OverlayTrigger>
+  </styled.div>
+</styled.div>
+`;

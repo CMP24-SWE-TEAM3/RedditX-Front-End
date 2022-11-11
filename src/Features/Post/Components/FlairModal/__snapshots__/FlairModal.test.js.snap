@@ -39,8 +39,10 @@ exports[`Flair modal should render without crashing 1`] = `
           size={25}
         />
         <styled.input
+          onChange={[Function]}
           placeholder="Search for flair"
           type="search"
+          value=""
         />
       </styled.div>
       <Spinner />

@@ -3,10 +3,11 @@ import styled from "styled-components";
 
 // Main container for the post guidelines component
 export const Container = styled.div`
+  margin-top: 15px;
   background-color: ${({ theme }) => theme.background.primary};
   padding: 12px;
   border-radius: 4px;
-  width: 360px;
+  width: 312px;
 
   tr {
     color: ${({ theme }) => theme.color.primary};
@@ -15,7 +16,7 @@ export const Container = styled.div`
 
 // Data item for the post guidelines table
 export const TableData = styled.td`
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
 `;
 
