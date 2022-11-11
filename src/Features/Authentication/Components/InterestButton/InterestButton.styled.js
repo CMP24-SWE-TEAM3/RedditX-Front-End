@@ -6,7 +6,7 @@ export const BaseButton = styled.button`
   line-height: 40px;
   background-color: ${(p) =>
     p.selected
-      ?  "#9c8282"
+      ? "#9c8282"
       : ({ theme }) => theme.color.mainInputBackgroundColor};
 
   border: none;
@@ -18,7 +18,7 @@ export const BaseButton = styled.button`
   font-weight: 700;
   letter-spacing: unset;
   border-radius: ${(p) => (p.page ? "5px" : "999px")};
-  color: black;
+  color: ${(p) => (p.selected ? "white" : "black")};
   height: 40px;
   padding: 0 16px;
   font-family: ${fontFamily};

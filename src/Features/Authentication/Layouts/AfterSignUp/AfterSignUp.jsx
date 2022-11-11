@@ -5,6 +5,7 @@ import { useState } from "react";
 import Gender from "../Gender/Gender";
 import Interests from "../Interests/Interests";
 import UploadPhoto from "../UploadPhoto/UploadPhoto";
+import AfterSignUpLoading from "../AfterSignUpLoading/AfterSignUpLoading";
 
 // Import styled components
 import { StyledSpinner } from "./AfterSignUp.styled";
@@ -89,7 +90,7 @@ const AfterSignUp = () => {
           submitForm={submitForm}
         />
       )}
-      {loadingScreen && <StyledSpinner animation="border" />}
+      {loadingScreen && <AfterSignUpLoading/>}
     </>
   );
 };
