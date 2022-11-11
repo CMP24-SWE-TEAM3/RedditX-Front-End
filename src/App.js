@@ -69,12 +69,7 @@ function App() {
             <Route path="subreddit" element={<SubReddit />} />
             <Route path="category/*" element={<CommunityLeaderBoard />} />
             <Route path="index-page" element={<IndexPage />} />
-            <Route path="search" element={<Search />}>
-              <Route path="posts" element={<Posts /*OnSort={OnSort}*/ />} />
-              <Route path="comments" element={<CommentsPage />} />
-              <Route path="communities" element={<CommunitiesPage />} />
-              <Route path="people" element={<PeoplePage />} />
-            </Route>
+            <Route path="search/*" element={<Search />}></Route>
             <Route path="submit" element={<CreatePost />} />
             <Route path="login" element={<LogInPage />} />
             <Route path="register" element={<SignUpPage />} />

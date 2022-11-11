@@ -52,7 +52,7 @@ const DummyPage = () => {
       <Button
         variant="secondary"
         className="m-5"
-        onClick={() => navigate("search/posts")}
+        onClick={() => navigate("search")}
       >
         search
       </Button>

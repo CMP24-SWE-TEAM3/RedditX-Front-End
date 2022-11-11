@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   BtnContainer,
   Button,
@@ -16,6 +16,7 @@ import {
 import axios from "API/axios";
 // import CommImage from "../../Assets/CommunityImage.png";
 import useFetchFunction from "Hooks/useFetchFunction";
+import useFetch from "Hooks/useFetch";
 
 /**
  * Component that render the Community item Elements.
@@ -26,6 +27,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
  * @param {String} communityDescription - The Description of the CommunityCardItem
  * @param {number} membersCount - The membersCount of the CommunityCardItem
  * @param {String} communityName - The name of the CommunityCardItem
+ * @param {object} isJoined - it is object indicating whether the user is joining this community
  * @returns {React.Component}
  */
 const CommunityItem = ({
@@ -34,6 +36,7 @@ const CommunityItem = ({
   membersCount,
   communityName,
   communityID,
+  isJoined,
 }) => {
   const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
   const [isJoinedstate, setisJoined] = useState(false);
@@ -54,27 +57,16 @@ const CommunityItem = ({
     });
   };
 
-  // // Communities Subscriptions
-  let CommunitiesSub2 = [
-    { id: "1" },
-    { id: "2" },
-    { id: "t5_imagepro" },
-    { id: "t5_imagepro2" },
-  ];
-  // is the user subscriber to this community
-  let IS = CommunitiesSub2.find(function (element) {
-    if (element.id === communityID) {
-      return true;
-    } else {
-      return false;
-    }
-  });
   // the initialState of operations of join
-
-  const initialState = `${IS ? "Joined" : "Join"}`;
-
+  const initialState = `${isJoined !== undefined ? "Joined" : "Join"}`;
   // the state of the buuton
-  const [btnContent, setBtnContent] = useState(initialState);
+  const [btnContent, setBtnContent] = useState(
+    isJoined !== undefined ? "Joined" : "Join"
+  );
+  // useEffect(() => {
+  //   setBtnContent(initialState);
+  // });
+  // console.log("first", btnContent);
   /**
    * it is the function that handle the state of the button when click on it.
    *
@@ -115,6 +107,7 @@ const CommunityItem = ({
       setBtnContent("Joined");
     }
   }
+  // console.log(CommunitiesSub2);
   return (
     <Container href="#">
       <Flex>

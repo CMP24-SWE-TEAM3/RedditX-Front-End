@@ -15,31 +15,24 @@ import useFetch from "Hooks/useFetch";
  * @returns {React.Component}
  */
 
-const CommentsPage = () => {
-  let [CommentLists, error, loading, reload] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "http://localhost:8000/CommentList",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
-
-  return (
-    <Container>
-      <OuterContainer>
-        <InnerContainer>
-          <List>
-            {CommentLists.map((comment) => (
-              <Comment comment={comment} key={comment.id} />
-            ))}
-          </List>
-        </InnerContainer>
-      </OuterContainer>
-    </Container>
-  );
+const CommentsPage = ({ CommentLists }) => {
+  if (CommentLists) {
+    return (
+      <Container>
+        <OuterContainer>
+          <InnerContainer>
+            <List>
+              {CommentLists.map((comment) => (
+                <Comment comment={comment} key={comment.id} />
+              ))}
+            </List>
+          </InnerContainer>
+        </OuterContainer>
+      </Container>
+    );
+  } else {
+    return <h1>load</h1>;
+  }
 };
 
 export default CommentsPage;

@@ -11,10 +11,20 @@ import { useState } from "react";
  * Component that contains the Posts Page included the 2 drop downs and posts list component and the People Card Component ,Community Card Component.
  *
  * @Component
- * @param {Fuction} OnSort - the function that use to lift the state of the sort up
+ * @param {object} PostList - contain all the posts
+ * @param {object} PeopleList - contain all the People
+ * @param {object} CommunityList - contain all the Communities
+ * @param {object} PeopleFollow - contain all the People that user following
+ * @param {object} CommunitiesSub2 - contain all the Communities that user subscribe
  * @returns {React.Component}
  */
-const Posts = ({ OnSort }) => {
+const Posts = ({
+  PostList,
+  PeopleList,
+  CommunityList,
+  PeopleFollow,
+  CommunitiesSub2,
+}) => {
   /**
    * State That Hndle Sorting Operation
    */
@@ -24,88 +34,88 @@ const Posts = ({ OnSort }) => {
    */
   const [Time, setTime] = useState("All time");
   // console.log(Sort);
-  return (
-    <>
-      <ContainerPosts>
-        <div className="subnav">
-          <div className="sort">
-            <StyledDropdown
-              id="dropdown-basic-button"
-              title="Sort"
-              variant="transparent"
-            >
-              <Dropdown.Item
-                href="#"
-                onClick={() => {
-                  setSort("Relevance");
-                  OnSort("Relevance");
-                }}
+  if (PostList) {
+    return (
+      <>
+        <ContainerPosts>
+          <div className="subnav">
+            <div className="sort">
+              <StyledDropdown
+                id="dropdown-basic-button"
+                title="Sort"
+                variant="transparent"
               >
-                Relevance
-              </Dropdown.Item>
-              <Dropdown.Item
-                onClick={() => {
-                  setSort("Hot");
-                  OnSort("Hot");
-                }}
+                <Dropdown.Item
+                  href="#"
+                  onClick={() => {
+                    setSort("Relevance");
+                  }}
+                >
+                  Relevance
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => {
+                    setSort("Hot");
+                  }}
+                >
+                  Hot
+                </Dropdown.Item>
+                <Dropdown.Item
+                  href="#"
+                  onClick={() => {
+                    setSort("Top");
+                  }}
+                >
+                  Top
+                </Dropdown.Item>
+                <Dropdown.Item
+                  href="#"
+                  onClick={() => {
+                    setSort("New");
+                  }}
+                >
+                  New
+                </Dropdown.Item>
+                <Dropdown.Item
+                  href="#"
+                  onClick={() => {
+                    setSort("Most comments");
+                  }}
+                >
+                  Most comments
+                </Dropdown.Item>
+              </StyledDropdown>
+            </div>
+            <div className="time">
+              <StyledDropdown
+                id="dropdown-basic-button"
+                title="time"
+                variant="transparent"
               >
-                Hot
-              </Dropdown.Item>
-              <Dropdown.Item
-                href="#"
-                onClick={() => {
-                  setSort("Top");
-                  OnSort("Top");
-                }}
-              >
-                Top
-              </Dropdown.Item>
-              <Dropdown.Item
-                href="#"
-                onClick={() => {
-                  setSort("New");
-                  OnSort("New");
-                }}
-              >
-                New
-              </Dropdown.Item>
-              <Dropdown.Item
-                href="#"
-                onClick={() => {
-                  setSort("Most comments");
-                  OnSort("Most comments");
-                }}
-              >
-                Most comments
-              </Dropdown.Item>
-            </StyledDropdown>
+                <Dropdown.Item href="#">All time</Dropdown.Item>
+                <Dropdown.Item href="#">Past Year</Dropdown.Item>
+                <Dropdown.Item href="#">Past Mounth</Dropdown.Item>
+                <Dropdown.Item href="#">Past week</Dropdown.Item>
+                <Dropdown.Item href="#">Most 24 Hours</Dropdown.Item>
+                <Dropdown.Item href="#">Most Hour</Dropdown.Item>
+              </StyledDropdown>
+            </div>
           </div>
-          <div className="time">
-            <StyledDropdown
-              id="dropdown-basic-button"
-              title="time"
-              variant="transparent"
-            >
-              <Dropdown.Item href="#/action-1">All time</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Past Year</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Past Mounth</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Past week</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Most 24 Hours</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Most Hour</Dropdown.Item>
-            </StyledDropdown>
+          <div className="x">
+            <PostsList type={Sort} PostList={PostList} />
+            <div className="side-cards">
+              <TopCommunities
+                CommunityList={CommunityList}
+                CommunitiesSub2={CommunitiesSub2}
+              />
+              <People PeopleList={PeopleList} PeopleFollow={PeopleFollow} />
+              <CreateCommunity />
+            </div>
           </div>
-        </div>
-        <div className="x">
-          <PostsList type={Sort} />
-          <div className="side-cards">
-            <TopCommunities />
-            <People />
-            <CreateCommunity />
-          </div>
-        </div>
-      </ContainerPosts>
-    </>
-  );
+        </ContainerPosts>
+      </>
+    );
+  }
 };
 
 export default Posts;

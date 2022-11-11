@@ -112,19 +112,25 @@ export const UserName = styled.div`
   }
 `;
 export const Flair = styled.div`
-  background-color: rgb(26, 26, 27);
-  color: rgb(255, 255, 255);
+  background: ${(props) => (props.nsfw ? "" : "black")};
+
+  /* color: rgb(255, 255, 255); */
+  color: ${(props) => (props.nsfw ? "red" : "white")};
+  border-color: ${(props) => (props.nsfw ? "red" : "white")};
+  border-style: solid;
+  border-width: 1px;
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;
   border-radius: 2px;
   display: inline-block;
   margin-right: 5px;
+  margin-left: 5px;
   overflow: hidden;
   text-overflow: ellipsis;
   vertical-align: text-bottom;
   white-space: pre;
   word-break: normal;
-  margin-left: 0;
+  /* margin-left: 0; */
   padding: 0 4px;
 `;

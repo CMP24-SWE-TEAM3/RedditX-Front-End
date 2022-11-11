@@ -5,28 +5,16 @@ import {
   OuterContainer,
   InnerContainer,
 } from "./PeoplePage.styled";
-import PeopleImage from "../../Assets/People_Image.jpg";
-// Import api
-import axios from "API/axios";
-import useFetch from "Hooks/useFetch";
 
 /**
  * Component that contains the PeoplePage .
  *
  * @Component
+ * @param {object} PeopleList -  contains the People
+ * @param {object} PeopleFollow -  contains the People you are following
  * @returns {React.Component}
  */
-const PeoplePage = () => {
-  /*TODO: const*/ let [PeopleList, error, loading, reload] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "http://localhost:8000/PeopleList",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
+const PeoplePage = ({ PeopleList, PeopleFollow }) => {
   return (
     <Container>
       <OuterContainer>
@@ -40,6 +28,9 @@ const PeoplePage = () => {
                 about={People.about}
                 totalKarmas={People.totalKarmas}
                 username={People.username}
+                isFollow={PeopleFollow.find((element) => {
+                  return element.id === People.userID;
+                })}
               />
             ))}
           </List>

@@ -47,6 +47,9 @@ const PostHeader = ({ postheader }) => {
           </span>
         </Flair>
         <span className="time-post">{postheader.time}</span>
+        <Flair nsfw={postheader.nsfw}>
+          {postheader.nsfw && <span>nsfw</span>}
+        </Flair>
       </PostedBy>
     </PostHeaderStyle>
   );

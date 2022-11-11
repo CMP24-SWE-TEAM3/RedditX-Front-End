@@ -9,12 +9,14 @@ import { Footer } from "./PostFooter.styled";
  */
 
 const PostFooter = ({ postfooter }) => {
-  return (
-    <Footer>
-      <span>1k upvotes</span>
-      <span>1.7k comments</span>
-    </Footer>
-  );
+  if (postfooter) {
+    return (
+      <Footer>
+        <span>{postfooter.upVotes}k upvotes</span>
+        <span>{postfooter.Comments}k comments</span>
+      </Footer>
+    );
+  }
 };
 
 export default PostFooter;

@@ -25,9 +25,17 @@ import useFetchFunction from "Hooks/useFetchFunction.js";
  * @param {String} about - The Description of the PeopleCardItem
  * @param {number} totalKarmas - The totalKarmas of the PeopleCardItem
  * @param {String} username - The name of the PeopleCardItem
+ * @param {object} isFollow -  it is object indicating whether the user is following this user
  * @returns {React.Component}
  */
-const PeopleItem = ({ avatar, userID, about, totalKarmas, username }) => {
+const PeopleItem = ({
+  avatar,
+  userID,
+  about,
+  totalKarmas,
+  username,
+  isFollow,
+}) => {
   const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
   const [isJoinedstate, setisJoined] = useState(false);
   const joinCommunity = (btnState) => {
@@ -46,27 +54,13 @@ const PeopleItem = ({ avatar, userID, about, totalKarmas, username }) => {
       },
     });
   };
-  // people Subscriptions
+  // // initialState for the following operations
+  // const initialState = `${isFollow !== undefined ? "Following" : "Follow"}`;
+  // the state of the buuton
+  const [btnContent, setBtnContent] = useState(
+    isFollow !== undefined ? "Following" : "Follow"
+  );
 
-  let PeopleSub2 = [
-    { id: "1" },
-    { id: "2" },
-    { id: "t5_imagepro" },
-    { id: "t5_imagepro2" },
-  ];
-  // // is the user subscriber to this one
-  let IS = PeopleSub2.find(function (element) {
-    if (element.id === userID) {
-      return true;
-    } else {
-      return false;
-    }
-  });
-  // the initialState of the following operations
-  const initialState = `${IS ? "Following" : "Follow"}`;
-  ////////////////////////////////////////////////////////
-  // the state of the following button
-  const [btnContent, setBtnContent] = useState(initialState);
   /**
    * it is the function that handle the state of the button when click on it.
    *
@@ -79,7 +73,6 @@ const PeopleItem = ({ avatar, userID, about, totalKarmas, username }) => {
     } else {
       setBtnContent("Follow");
     }
-    ///////////////////
     let btnState;
     if (btnContent === "Follow") {
       btnState = true;
@@ -87,7 +80,6 @@ const PeopleItem = ({ avatar, userID, about, totalKarmas, username }) => {
       btnState = false;
     }
     joinCommunity(btnState);
-    ////////////////
   }
   /**
    * it is the function that handle the state of the button when mouseEnter on it.

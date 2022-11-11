@@ -11,18 +11,19 @@ import { StyledDropdown } from "./ResponsiveNavbar.styled";
 const ResponsiveNavbar = () => {
   const pathname = window.location.pathname;
   const firstTwo = pathname.substring(1);
-  const secondTwo = firstTwo.charAt(0).toUpperCase() + firstTwo.slice(1);
+  const secondTwo = firstTwo.charAt(7).toUpperCase() + firstTwo.slice(8);
   const [Title, setTitle] = useState(secondTwo);
   // const [Title, setTitle] = useState(props.act);
 
   useEffect(() => {
     // console.log(props.act);
     const pathname = window.location.pathname;
+    console.log(pathname);
     const firstTwo = pathname.substring(1);
-    const secondTwo = firstTwo.charAt(0).toUpperCase() + firstTwo.slice(1);
+    const secondTwo = firstTwo.charAt(7).toUpperCase() + firstTwo.slice(8);
     setTitle(secondTwo);
     return () => {};
-  }, []);
+  }, [pathname]);
   return (
     <StyledDropdown
       id="dropdown-basic-button"

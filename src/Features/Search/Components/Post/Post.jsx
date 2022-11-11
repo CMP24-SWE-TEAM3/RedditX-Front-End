@@ -12,7 +12,6 @@ import { ContainerPost } from "./Post.styled";
  */
 
 const PostItem = ({ post }) => {
-  // console.log(post);
   const postBody = {
     bodyImage: post.attachments[0],
     bodyText: post.text,
@@ -32,6 +31,7 @@ const PostItem = ({ post }) => {
       flairColor: "green",
       flairBackgroundColor: "red",
     },
+    nsfw: post.nsfw,
   };
   return (
     <ContainerPost pimage={postBody.bodyImage}>

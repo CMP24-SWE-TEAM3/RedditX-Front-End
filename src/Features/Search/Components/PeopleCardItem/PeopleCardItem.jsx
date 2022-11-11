@@ -17,19 +17,14 @@ import useFetchFunction from "Hooks/useFetchFunction";
  * @param {String} username - The name of the PeopleCardItem
  * @returns {React.Component}
  */
-const PeopleCardItem = ({ avatar, userID, about, totalKarmas, username }) => {
-  ////////////////////////////////////////////////////////
-  // Communities Subscriptions
-  // let [PeopleSub, errorsub, loadingsub, reloadsub] = useFetch({
-  //   axiosInstance: axios,
-  //   method: "GET",
-  //   url: "/api/me/friendRequests",
-  //   requestConfig: {
-  //     headers: {
-  //       "Content-Language": "en-US",
-  //     },
-  //   },
-  // });
+const PeopleCardItem = ({
+  avatar,
+  userID,
+  about,
+  totalKarmas,
+  username,
+  isFollow,
+}) => {
   const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
   const [isJoinedstate, setisJoined] = useState(false);
   const joinCommunity = (btnState) => {
@@ -49,24 +44,15 @@ const PeopleCardItem = ({ avatar, userID, about, totalKarmas, username }) => {
     });
   };
   // People Subscriptions
-  let PeopleSub2 = [
-    { id: "1" },
-    { id: "2" },
-    { id: "t5_imagepro" },
-    { id: "t5_imagepro2" },
-  ];
+
   // find if the user following this one
-  let IS = PeopleSub2.find(function (element) {
-    if (element.id === userID) {
-      return true;
-    } else {
-      return false;
-    }
-  });
+
   // initialState for the following operations
-  const initialState = `${IS ? "Following" : "Follow"}`;
-  ////////////////////////////////////////////////////////
-  const [btnContent, setBtnContent] = useState(initialState);
+  const initialState = `${isFollow !== undefined ? "Following" : "Follow"}`;
+  // the state of the buuton
+  const [btnContent, setBtnContent] = useState(
+    isFollow !== undefined ? "Following" : "Follow"
+  );
 
   /**
    * it is the function that handle the state of the button when click on it.
@@ -114,11 +100,11 @@ const PeopleCardItem = ({ avatar, userID, about, totalKarmas, username }) => {
     <Container>
       <Link to="#">
         <div className="item">
-          <img src={avatar} alt="userImage" />
+          <img src={require(`../../Assets/${avatar}`)} alt="userImage" />
           <div className="info">
             <div className="info2">
               <h6>{username.slice(1)}</h6>
-              <p>{totalKarmas}m Members</p>
+              <p>{totalKarmas}m Karma</p>
             </div>
           </div>
           <div className="button">

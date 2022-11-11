@@ -14,6 +14,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
  * @param {String} communityDescription - The Description of the CommunityCardItem
  * @param {number} membersCount - The membersCount of the CommunityCardItem
  * @param {String} communityName - The name of the CommunityCardItem
+ * @param {object} isJoined - it is object indicating whether the user is joining this community
  * @returns {React.Component}
  */
 const CommunityCardItem = ({
@@ -22,6 +23,7 @@ const CommunityCardItem = ({
   communityDescription,
   communityName,
   membersCount,
+  isJoined,
 }) => {
   const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
   const [isJoinedstate, setisJoined] = useState(false);
@@ -41,53 +43,18 @@ const CommunityCardItem = ({
       },
     });
   };
-  ////////////////////////////////////////////////////////
-  // Communities Subscriptions
-  // let [CommunitiesSub, errorsub, loadingsub, reloadsub] = useFetch({
-  //   axiosInstance: axios,
-  //   method: "GET",
-  //   url: "/subreddits/mine/subscriber?page=4&count=10&limit=50",
-  //   requestConfig: {
-  //     headers: {
-  //       "Content-Language": "en-US",
-  //     },
-  //   },
-  // });
-
-  // Communities Subscriptions
-  let CommunitiesSub2 = [
-    { id: "1" },
-    { id: "2" },
-    { id: "t5_imagepro" },
-    { id: "t5_imagepro2" },
-  ];
-  // is the user subscriber to this community
-  let IS = CommunitiesSub2.find(function (element) {
-    if (element.id === communityID) {
-      return true;
-    } else {
-      return false;
-    }
-  });
-  // the initialState of operations of join
-  const initialState = `${IS ? "Joined" : "Join"}`;
-  ////////////////////////////////////////////////////////
-  // State to set button Content
-  const [btnContent, setBtnContent] = useState(initialState);
+  const initialState = `${isJoined !== undefined ? "Joined" : "Join"}`;
+  // the state of the buuton
+  const [btnContent, setBtnContent] = useState(
+    isJoined !== undefined ? "Joined" : "Join"
+  );
 
   /**
    * it is the function that handle the state of the button when click on it.
    *
    * @param {Object} e it is an object which i can preventDefault and not redirect to the link
    */
-  // function clickHandler(e) {
-  //   e.preventDefault();
-  //   if (btnContent === "Join") {
-  //     setBtnContent("Joined");
-  //   } else {
-  //     setBtnContent("Join");
-  //   }
-  // }
+
   const clickHandler = (e) => {
     e.preventDefault();
     if (btnContent === "Join") {
