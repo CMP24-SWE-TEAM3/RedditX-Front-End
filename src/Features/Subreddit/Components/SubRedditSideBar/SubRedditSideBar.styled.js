@@ -10,6 +10,14 @@ export const Container = styled.div`
   @media (max-width: 960px) {
     display: none;
   }
+
+  @media (max-width: 640px) {
+    display: flex;
+    flex:95%;
+    width: 95%;
+    margin: auto;
+    margin-bottom: 15px;
+  }
 `;
 
 export const InnerContainer = styled.div`
@@ -17,4 +25,7 @@ export const InnerContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  @media (max-width: 640px) {
+    width:100%;
+  }
 `;

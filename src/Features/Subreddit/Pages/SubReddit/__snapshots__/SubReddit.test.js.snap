@@ -1,27 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SubReddit page should render without crashing 1`] = `
-<styled.div>
-  <header>
-    Navbar
-  </header>
-  <styled.div>
-    <SubRedditHeader
-      banner={
-        Object {
-          "color": "#33a8ff",
-          "url": "Features/Subreddit/Assets/tree.jpg",
-        }
-      }
-      info={
-        Object {
-          "name": "Subreddit",
-        }
-      }
-      isJoined={false}
-      onJoin={[Function]}
-    />
-    <SubRedditBody />
-  </styled.div>
-</styled.div>
+<SubRedditProvider>
+  <SetSubReddit
+    comName="Community"
+  >
+    <styled.div>
+      <header>
+        Navbar
+      </header>
+      <styled.div>
+        <SubRedditHeader
+          banner={
+            Object {
+              "color": "#33a8ff",
+              "url": "Features/Subreddit/Assets/tree.jpg",
+            }
+          }
+          info={
+            Object {
+              "name": "Subreddit",
+            }
+          }
+          isJoined={false}
+          onJoin={[Function]}
+        />
+        <SubRedditBody />
+      </styled.div>
+    </styled.div>
+  </SetSubReddit>
+</SubRedditProvider>
 `;

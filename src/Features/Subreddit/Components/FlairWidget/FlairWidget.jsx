@@ -20,8 +20,10 @@ const FlairWidget = () => {
   // console.log(list);
 
   useEffect(() => {
-    setHeight(list.current.offsetHeight);
-  }, []);
+    setHeight(list.current.clientHeight);
+    // setHeight(list.current.offsetHeight);
+    // console.log(list);
+  });
 
   /**
    * handler on click show more

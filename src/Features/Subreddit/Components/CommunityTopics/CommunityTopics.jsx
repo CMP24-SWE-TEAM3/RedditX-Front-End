@@ -5,6 +5,7 @@ import { BsCheck } from "react-icons/bs";
 import { FaPlus } from "react-icons/fa";
 import { HiOutlinePencil } from "react-icons/hi";
 import { HiXMark } from "react-icons/hi2";
+import {MdOutlineClear} from "react-icons/md"
 import { RiArrowDownSLine } from "react-icons/ri";
 import SaveChangesModal from "../SaveChangesModal/SaveChangesModal";
 import {
@@ -321,7 +322,7 @@ const CommunityTopics = () => {
         {text}
         {focus && (
           <span className="icon" tabIndex="0" onClick={clickXHandler}>
-            <HiXMark />
+            <MdOutlineClear />
           </span>
         )}
       </ItemContainer>

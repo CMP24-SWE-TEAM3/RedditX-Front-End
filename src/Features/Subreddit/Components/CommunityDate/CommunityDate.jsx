@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
+import { useEffect, useRef, useState } from "react";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { FiEyeOff } from "react-icons/fi";
@@ -25,11 +26,17 @@ import {
  * @returns {React.Component}
  */
 const CommunityDate = () => {
-  const [description, setDescription] = useState("hi");
+  const [description, setDescription] = useState("");
   const [inputFocus, setInputFocus] = useState(false);
   const [dummyDescription, setDummyDescription] = useState(description);
   const [modalShow, setModalShow] = useState(false);
+  const textAreaRef = useRef();
   let isPrivate = true;
+
+  const {community} = useSubReddit();
+  useEffect(()=>{
+    setDescription(community[0].communityDescription)
+  },[community])
 
   /**
    * onchange set value of input text
@@ -38,6 +45,13 @@ const CommunityDate = () => {
    */
   function inputHandler(e) {
     setDescription(e.target.value);
+
+    e.target.style.height = "0px";
+    const scrollHeight = e.target.scrollHeight;
+
+    // We then set the height directly, outside of the render loop
+    // Trying to set this with state or a ref will product an incorrect value.
+    e.target.style.height = scrollHeight + "px";
   }
 
   /**
@@ -48,6 +62,16 @@ const CommunityDate = () => {
     setInputFocus(true);
   }
 
+  /**
+   * handler on focus to set cursor
+   *
+   * @param {Event} e - event
+   */
+  function setCursor(e) {
+    e.target.style.height = e.target.scrollHeight + "px";
+    const pos = description.length;
+    e.target.setSelectionRange(pos, pos);
+  }
   /**
    * handler when blur from the input text of description
    *
@@ -130,15 +154,18 @@ const CommunityDate = () => {
         <Description onClick={AddDescriptionHandler} />
       )}
       {inputFocus && (
-        <InputContainer onBlur={blurInputHandler}>
+        <InputContainer tabIndex="0" onBlur={blurInputHandler}>
           <textarea
+            ref={textAreaRef}
             value={description}
             placeholder="Tell Us about your community"
             onChange={inputHandler}
             autoFocus
+            onFocus={setCursor}
+            maxLength={500}
           ></textarea>
           <ButtonsContainer>
-            <CharContainer>
+            <CharContainer tabIndex="0">
               {500 - description.length + " Characters remaining"}
             </CharContainer>
             <CancelButton onClick={cancelHandler}>Cancel</CancelButton>

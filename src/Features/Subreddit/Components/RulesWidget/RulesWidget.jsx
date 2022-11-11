@@ -1,3 +1,4 @@
+import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
 import { useState } from "react";
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
 import WidgetContainer from "../WidgetContainer/WidgetContainer";
@@ -17,12 +18,15 @@ import {
  * @returns {React.Component}
  */
 const RulesWidget = () => {
+  const {community} = useSubReddit(); 
   //rules
-  const rules = [
-    { title: "t1", description: "d1" },
-    { title: "t2", description: "d2" },
-    { title: "t3", description: "" },
-  ];
+  // const rules = [
+  //   { title: "t1", description: "d1" },
+  //   { title: "t2", description: "d2" },
+  //   { title: "t3", description: "" },
+  // ];
+
+  const rules = community[0].communityRules;
 
   /**
    *
@@ -85,7 +89,7 @@ const RulesWidget = () => {
             index={i + 1}
             len={rules.length}
             title={rule.title}
-            description={rule.description}
+            description={rule.textDescription}
           />
         );
       })}

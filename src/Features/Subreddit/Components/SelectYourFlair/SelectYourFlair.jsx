@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import { HiXMark } from "react-icons/hi2";
+import {MdOutlineClear} from "react-icons/md"
 import {
   AllowedText,
   CharRem,
@@ -124,7 +124,7 @@ const SelectYourFlair = ({ modalShow, hide, onApply }) => {
       <Modal.Header>
         <Title>Select your community flair</Title>
         <XButton onClick={hide}>
-          <HiXMark />
+          <MdOutlineClear />
         </XButton>
       </Modal.Header>
       <Modal.Body>

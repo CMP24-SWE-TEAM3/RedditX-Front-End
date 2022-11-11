@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import {XButton, Title} from "Features/Subreddit/Components/SelectYourFlair/SelectYourFlair.styled";
-import { HiXMark } from "react-icons/hi2";
+import {MdOutlineClear} from "react-icons/md"
 import { StyledModal } from "./saveChangesModal.styled";
 
 /**
@@ -29,7 +29,7 @@ const SaveChangesModal = ({show, onDiscard, onSave,onHide,showX}) => {
         </Modal.Title> */}
         <Title>Save changes before leaving?</Title>
         {showX && <XButton onClick={onHide}>
-          <HiXMark />
+          <MdOutlineClear />
         </XButton>}
       </Modal.Header>
       <Modal.Body>

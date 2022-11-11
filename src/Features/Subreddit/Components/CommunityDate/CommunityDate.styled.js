@@ -130,6 +130,8 @@ export const InputContainer = styled.div`
     overflow: hidden;
     overflow-wrap: break-word;
     height: 21px;
+    display: flex;
+    /* max-height:200px; */
     resize: none;
     cursor: auto;
     color: ${({ theme }) => theme.color.primary};

@@ -17,7 +17,7 @@ exports[`modal to select your flair should render without crashing 1`] = `
     <styled.button
       onClick={[Function]}
     >
-      <HiXMark />
+      <MdOutlineClear />
     </styled.button>
   </ModalHeader>
   <ModalBody>
