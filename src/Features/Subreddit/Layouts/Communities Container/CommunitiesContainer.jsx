@@ -24,7 +24,7 @@ export default function Container() {
   let [communitiesList, error, loading, reload] = useFetch({
     axiosInstance: axios,
     method: "GET",
-    url: "http://localhost:8000/communities",
+    url: "http://localhost:8000/communities-leaderboard",
     requestConfig: {
       headers: {
         "Content-Language": "en-US",

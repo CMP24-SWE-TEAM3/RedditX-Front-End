@@ -82,13 +82,16 @@ const Community = ({
       <CommunityA href={`/${title}`}>
         <CommunityIndex>{index}</CommunityIndex>
         <Arrow up={isRising}></Arrow>
-        <CommunityImg src={`${img}`} alt="logo"></CommunityImg>
+        <CommunityImg
+          src={require(`../../Assets/images/${img}`)}
+          alt="logo"
+        ></CommunityImg>
         <TitleParagraph>{title}</TitleParagraph>
         <CommunityCard>
           <ForPadding>
             <HoverItem>
               <ImgTitle>
-                <HoverImg src={`${img}`} />
+                <HoverImg src={require(`../../Assets/images/${img}`)} />
                 <HoverTitle>{title}</HoverTitle>
               </ImgTitle>
               <MembersOnline>
