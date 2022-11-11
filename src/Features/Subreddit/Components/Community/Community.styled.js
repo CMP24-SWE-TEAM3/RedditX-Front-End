@@ -240,11 +240,11 @@ export const HoverP = styled.p`
 
 export const HoverButton = styled.button`
   position: relative;
-  transition: 0.3s;
   background-color: ${({ theme }) => theme.color.secondary};
   border: none;
   color: ${({ theme }) => theme.background.primary};
   fill: ${({ theme }) => theme.background.primary};
+  transition: 0.3;
   font-family: Noto Sans, Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;

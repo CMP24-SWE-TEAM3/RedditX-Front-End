@@ -3,8 +3,6 @@ import { FaAngleUp } from "react-icons/fa";
 
 export const Arrow = styled(FaAngleUp)`
   color: #46D160;
-  // position: absolute;
-  // left: 33px;
   margin-left: 8px;
 `;
 

@@ -1,5 +1,5 @@
 {
-  "communities": [
+  "communities--LeaderBoard": [
     {
       "id": 1,
       "title": "r/mildlyinteresting",
@@ -181,7 +181,10 @@
       "rankChange": 33
     }
   ],
-  "Subscribed": [
+  "Subscribed--LeaderBoard": [
+    {
+      "id": 1
+    },
     {
       "id": 3
     },
@@ -198,137 +201,37 @@
       "id": 15
     }
   ],
-  "Join": [
+  "Join--Leaderboard": [
     {
       "headers": {
         "Content-Language": "en-US"
       },
       "data": {
         "action": "sub",
-        "sr_name": "r/mildlyinteresting"
+        "sr_name": "r/space"
       },
       "signal": {},
       "id": 1
-    },
-    {
-      "headers": {
-        "Content-Language": "en-US"
-      },
-      "data": {
-        "action": "sub",
-        "sr_name": "r/space"
-      },
-      "signal": {},
-      "id": 2
-    },
-    {
-      "headers": {
-        "Content-Language": "en-US"
-      },
-      "data": {
-        "action": "unsub",
-        "sr_name": "r/funny"
-      },
-      "signal": {},
-      "id": 3
-    },
-    {
-      "headers": {
-        "Content-Language": "en-US"
-      },
-      "data": {
-        "action": "unsub",
-        "sr_name": "r/funny"
-      },
-      "signal": {},
-      "id": 4
-    },
-    {
-      "headers": {
-        "Content-Language": "en-US"
-      },
-      "data": {
-        "action": "unsub",
-        "sr_name": "r/funny"
-      },
-      "signal": {},
-      "id": 5
-    },
-    {
-      "headers": {
-        "Content-Language": "en-US"
-      },
-      "data": {
-        "action": "sub",
-        "sr_name": "r/funny"
-      },
-      "signal": {},
-      "id": 6
-    },
-    {
-      "headers": {
-        "Content-Language": "en-US"
-      },
-      "data": {
-        "action": "sub",
-        "sr_name": "r/space"
-      },
-      "signal": {},
-      "id": 7
-    },
-    {
-      "headers": {
-        "Content-Language": "en-US"
-      },
-      "data": {
-        "action": "unsub",
-        "sr_name": "r/funny"
-      },
-      "signal": {},
-      "id": 8
-    },
-    {
-      "headers": {
-        "Content-Language": "en-US"
-      },
-      "data": {
-        "action": "sub",
-        "sr_name": "r/space"
-      },
-      "signal": {},
-      "id": 9
-    },
-    {
-      "headers": {
-        "Content-Language": "en-US"
-      },
-      "data": {
-        "action": "sub",
-        "sr_name": "r/space"
-      },
-      "signal": {},
-      "id": 10
     }
   ],
-  
-  "feedback": [
+  "feedback--Leaderboard": [
     {
       "title": "r/funny",
       "id": "1",
       "name": "worldnews"
     },
     {
-      "title":"r/mildlyinteresting",
+      "title": "r/mildlyinteresting",
       "id": "2",
       "name": "notthenion"
     },
     {
-      "title":"r/space",
+      "title": "r/space",
       "id": "3",
       "name": "tech news"
     },
     {
-      "title":"r/spaceX",
+      "title": "r/spaceX",
       "id": "4",
       "name": "savedyouaclick"
     }

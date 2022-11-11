@@ -19,28 +19,13 @@ import {
  * Component acts as a container for all communities of the community leaderboard page
  *
  * @Component
+ * 
  * @returns {React.Component}
  */
-export default function Container() {
+export default function Container({com, subscribed}) {
 
-  let [communitiesList, error, loading, reload] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "http://localhost:8000/communities",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
-  console.log(communitiesList);
 
-  
-    
-
-  const communities = communitiesList.map((community, index) => {
-   
-
+  const communities = com.map((community, index) => {
     return (
       <li>
         <Community
@@ -49,7 +34,9 @@ export default function Container() {
           index = {index+1}
           img={community.coverImg}
           title={community.title}
-          isJoined={community.isJoined}
+          isJoined={subscribed.find((element) => {
+            return element.id === community.id;
+          })}
           stats={community.stats}
           description={community.description}
           rankChange = {community.rankChange}

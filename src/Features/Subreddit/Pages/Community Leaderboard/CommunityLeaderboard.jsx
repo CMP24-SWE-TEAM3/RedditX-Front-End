@@ -5,7 +5,8 @@ import { MainPadding } from "../../Layouts/Communities Container/CommunitiesCont
 import RightSection from "../../Layouts/Right Section/RightSection";
 import CategoryDropDown from "../../Components/CategoryDropDown/CategoryDropDown";
 import {LeaderBoardContainer, LeaderBoardPage, DropDown} from "./CommunityLeaderboard.styled"
-
+import axios from "API/axios";
+import useFetch from "Hooks/useFetch";
 
 /**
  * Component that contains the whole community leaderboard page
@@ -14,6 +15,40 @@ import {LeaderBoardContainer, LeaderBoardPage, DropDown} from "./CommunityLeader
  * @returns {React.Component}
  */
 function LeaderBoard() {
+
+  let [communitiesList, error, loading, reload] = useFetch({
+    axiosInstance: axios,
+    method: "GET",
+    url: "http://localhost:8000/communities--Leaderboard",
+    requestConfig: {
+      headers: {
+        "Content-Language": "en-US",
+      },
+    },
+  });
+
+  
+  let [
+    CommunitiesSub,
+    errorSubCommunities,
+    loadingSubCommunities,
+    reloadSubCommunities,
+  ] = useFetch({
+    axiosInstance: axios,
+    method: "GET",
+    url: "http://localhost:8000/Subscribed--Leaderboard",
+    requestConfig: {
+      headers: {
+        "Content-Language": "en-US",
+      },
+    },
+  });
+
+ const useEffect = ()=> {
+
+ }
+  
+
   return (
     <LeaderBoardContainer>
       <LeaderBoardPage>
@@ -23,7 +58,9 @@ function LeaderBoard() {
           <DropDown>
             <CategoryDropDown />
           </DropDown>
-          <Container />
+          <Container 
+          com = {communitiesList}
+          subscribed = {CommunitiesSub}/>
           <RightSection />
         </MainPadding>
       </LeaderBoardPage>

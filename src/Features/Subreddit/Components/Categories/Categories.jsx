@@ -11,7 +11,7 @@ import {
 
 /**
  * Component that contains the categories [left section] of the community leaderboard page
- *
+ * @Component
  * @returns {React.Component}
  */
 export default function Categories() {

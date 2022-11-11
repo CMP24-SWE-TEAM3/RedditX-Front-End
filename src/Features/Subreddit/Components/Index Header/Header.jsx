@@ -4,7 +4,7 @@ import { HeaderMarginDiv, HeaderDiv, HeaderH3, HeaderP, Letters, LettersContaine
 
 /**
  * Component that contains the header of the community leaderboard page
- *
+ * @Component
  * @returns {React.Component}
  */
 export default function Header() {

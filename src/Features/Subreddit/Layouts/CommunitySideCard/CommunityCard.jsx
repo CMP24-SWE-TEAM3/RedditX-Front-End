@@ -25,7 +25,7 @@ const TopCommunities = () => {
         axiosInstance: axios,
         method: "GET",
         //  /api/random-category/
-        url: "http://localhost:8000/feedback",
+        url: "http://localhost:8000/feedback--Leaderboard",
         requestConfig: {
             headers: {
                 "Content-Language": "en-US",

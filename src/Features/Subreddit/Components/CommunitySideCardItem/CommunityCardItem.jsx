@@ -6,10 +6,11 @@ Arrow,
 CommunityImg,
 TitleParagraph,
 } from "./CommunityCardItem.styled";
-import { FaAngleUp } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 /**
+ * @Component
+ * @param {string} title - Subreddit Title
+ * @param {number} index - Subreddit index among fetched data to index the list
  * Component that  shows the names of communities up-to-date.
  * @returns {Component.React}
  */
