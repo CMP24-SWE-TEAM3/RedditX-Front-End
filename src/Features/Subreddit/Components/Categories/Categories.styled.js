@@ -28,6 +28,7 @@ export const CategoryOl = CommunityOl;
 export const ShowMoreBtn = styled.button`
   background-color: ${({ theme }) => theme.background.primary};
   color: ${({ theme }) => theme.color.link};
+  transition: 0.3;
   width: 100%;
   position: relative;
   font-family: Noto Sans, Arial, sans-serif;
@@ -40,6 +41,7 @@ export const ShowMoreBtn = styled.button`
   min-width: 32px;
   padding: 4px 16px;
   border: 1px solid transparent;
+
   &:hover::after {
     content: "";
     position: absolute;
@@ -49,12 +51,14 @@ export const ShowMoreBtn = styled.button`
     height: 100%;
     border-radius: 9999px;
     background-color: ${({ theme }) => theme.color.primary};
+    transition: 0.3;
     opacity: 0.08;
   }
 `;
 
 export const Category = styled(NavLink)`
-background-color: ${({ theme }) => theme.background.primary};
+  background-color: ${({ theme }) => theme.background.primary};
+  transition: 0.3;
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;
@@ -75,10 +79,12 @@ background-color: ${({ theme }) => theme.background.primary};
   &.active {
     background-color: ${({ theme }) => theme.categoryColor.hover};
     color: ${({ theme }) => theme.categoryColor.text};
+    transition: 0.3;
   }
 
   &.active::before {
     background-color: ${({ theme }) => theme.color.secondary};
+    transition: 0.3;
     content: "";
     height: 100%;
     left: 0;

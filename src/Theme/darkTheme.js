@@ -26,6 +26,8 @@ const darkTheme = {
     pink: "#fb133a",
     // The color of the text of the main links of search page
     titleText_of_link: "#D7DADC",
+    // The primary color of the side Bar Header [Useful for Gradient]
+    sideBarHeader: "#fff",
   },
   // The colors of the backgrounds in the website
   background: {
@@ -39,12 +41,20 @@ const darkTheme = {
     fill: "#2D2D2F",
     // The button active color of the search page
     active: "#272729",
+    // hover_background_button_blue
+    hover_background_button_blue: "#d7dadc",
+    // color of post background
+    post_background: "#343536",
+    //Hovered Side Button
+    sideBtnHover: "#272729",
   },
   // The colors of the lines in the website
   lineColor: {
     primary: "#343536",
     //The border color of hover card
     secondary: "#484848",
+    // Post borderline Color Search Page
+    PostBorder: "#343536",
   },
   arrowColor: {
     up: "#46D160",
@@ -60,6 +70,9 @@ const darkTheme = {
     text: "#d7dadc",
     hover: "#272729",
   },
+  degree: {
+    gradient: 180,
+  }
 };
 
 export default darkTheme;

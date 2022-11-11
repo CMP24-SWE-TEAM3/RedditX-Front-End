@@ -22,6 +22,7 @@ export const FirstBlock = styled.div`
   color:  ${({theme})=>theme.color.primary};
   fill:  ${({theme})=>theme.color.primary};
   border: 1px solid ${({theme})=>theme.linecolor.sideBorder};
+  transition: 0.3s;
   border-radius: 4px;
   overflow: visible;
   overflow-wrap: break-word;
@@ -40,6 +41,7 @@ export const SecondBlockWithBrowse = styled.div`
 `;
 
 export const SecondBlock = styled.div`
+  transition: 0.3s; 
   background-color: ${({theme})=>theme.background.primary};
   color: ${({theme})=>theme.color.primary};
   fill:  ${({theme})=>theme.color.primary};
@@ -55,6 +57,7 @@ export const Browse = styled.div`
   color:  ${({theme})=>theme.color.primary};
   fill:  ${({theme})=>theme.color.primary};
   border: 1px solid ${({theme})=>theme.linecolor.sideBorder};
+  transition: 0.3s;
   border-radius: 4px;
   overflow: visible;
   overflow-wrap: break-word;
@@ -77,6 +80,7 @@ export const LettersContainer = styled.div`
 
 export const Letters = styled.a`
   color: ${({theme})=>theme.color.secondary};
+  transition: 0.3s;
   display: inline-block;
   margin-right: 8px;
   text-decoration: none;
@@ -84,6 +88,7 @@ export const Letters = styled.a`
 
   &:hover {
     color: ${({theme})=>theme.color.secondary};
+    transition: 0.3s;
     opacity: 0.7;
   }
 `;
@@ -115,6 +120,7 @@ export const BackTopBtn = styled(RightSectionBtns)`
   border: 1px solid ${({theme})=>theme.color.secondary};
   color: ${({theme})=>theme.background.primary};
   background-color: ${({theme})=>theme.color.secondary};
+  transition: 0.3s;
   cursor: pointer;
   text-decoration: none;
   scroll-behavior: smooth;

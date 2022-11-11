@@ -24,6 +24,8 @@ const lightTheme = {
     orange: "#d93a00",
     // The color of the text of the main links of search page
     titleText_of_link: "#1A1A1B",
+    // The color of the side Bar Header [Useful For Gradient]
+    sideBarHeader: "#fff",
   },
   // The colors of the backgrounds in the website
   background: {
@@ -39,12 +41,21 @@ const lightTheme = {
     fill: "#f6f7f878",
     // The button active color of the search page
     active: "#F6F7F8",
+    // hover_background_button_blue
+    hover_background_button_blue: "#1484d6",
+    // color of background of post
+    post_background: "#f6f7f8",
+    //Hovered Side Button
+    sideBtnHover: "#f5fafd",
+    
   },
   // The colors of the lines in the website
   lineColor: {
     primary: "#edeff1",
     //The border color of hover card
     secondary: "#f0f0f0",
+    // Post borderline Color Search Page
+    PostBorder: "#ccc",
   },
   // The colors of the arrows in the leadboard
   arrowColor: {
@@ -61,6 +72,10 @@ const lightTheme = {
     text: "#1c1c1c",
     hover: "#f6f7f8",
   },
+  //To change Linear Gradient Degree according to theme
+  degree: {
+    gradient: 0,
+  }
 };
 
 export default lightTheme;

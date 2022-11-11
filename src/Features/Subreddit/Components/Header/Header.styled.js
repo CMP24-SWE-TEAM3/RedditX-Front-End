@@ -6,7 +6,7 @@ export const HeaderMarginDiv = styled.div`
   justify-content: center;
   padding: 0;
   width: 100%;
-  
+  transition: 0.3s;
 `;
 
 
@@ -16,6 +16,7 @@ export const HeaderDiv = styled.div`
   width: 100%;
   max-width: 1200px;
   background-color: ${({theme})=>theme.background.primary};
+  transition: 0.3s;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,6 +27,7 @@ export const HeaderDiv = styled.div`
 `;
 export const HeaderH3 = styled.h3`
   color: ${({theme})=>theme.color.primary};
+  transition: 0.3s;
   padding-bottom: 6px;
   font-size: 22px;
   font-weight: 500;
@@ -38,5 +40,6 @@ export const HeaderP = styled.p`
   font-weight: 400;
   line-height: 16px;
   color: ${({theme})=>theme.color.muted};
+  transition: 0.3s;
   margin: 0;
 `;

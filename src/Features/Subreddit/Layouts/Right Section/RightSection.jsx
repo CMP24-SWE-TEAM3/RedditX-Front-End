@@ -1,4 +1,7 @@
-import React from "react";
+import React, {use} from "react";
+import TopCommunities from "../CommunitySideCard/CommunityCard"
+import axios from "API/axios";
+import useFetch from "Hooks/useFetch";
 import {
   RightSectionContainer,
   RightSectionStylingDiv,
@@ -14,6 +17,11 @@ import {
   BackTopBtn,
   LettersContainer,
 } from "./RightSection.styled";
+import { CommunityContainer } from "../CommunitySideCard/CommunityCard.styled";
+import { CommunityOl } from "../Communities Container/CommunitiesContainer.styled";
+import CommunityCardItem from "../../Components/CommunitySideCardItem/CommunityCardItem";
+import {Link} from 'react-router-dom';
+
 
 
 
@@ -24,11 +32,41 @@ import {
  * @returns {React.Component}
  */
 export default function RightSection() {
+  const [communityList, error, loading, reload] = useFetch({
+    axiosInstance: axios,
+    method: "GET",
+    //  /api/random-category/
+    url: "http://localhost:8000/feedback",
+    requestConfig: {
+        headers: {
+            "Content-Language": "en-US",
+        },
+    },
+});
+
+const com = communityList.map((community, index) => {
+    return (
+        <li>
+            <CommunityCardItem 
+            key={community.id}
+            title = {community.title} 
+            community={community.name} 
+            index = {index+1}/>
+        </li>
+    );
+});
+
   return (
     <RightSectionContainer>
       <RightSectionStylingDiv>
+        <FirstBlock>
+          <TopCommunities />
+        </FirstBlock>
         <RightSectionSticky>
           <SecondBlockWithBrowse>
+            <SecondBlock>
+              <TopCommunities />
+            </SecondBlock>
             <Browse>
               <BrowseH3>Browse Communities A-Z</BrowseH3>
               <LettersContainer>

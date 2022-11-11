@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const CommunityContainer = styled.div`
   background-color: ${({ theme }) => theme.background.primary};
+  transition: 0.3s;
   border-radius: 4px;
   display: flex;
   margin: 12px auto 64px;
@@ -28,11 +29,13 @@ export const CommunityH1 = styled.h1`
   line-height: 20px;
   margin-bottom: 16px;
   color: ${({ theme }) => theme.color.primary};
+  transition: 0.3s;
 `;
 
 
 export const ContentDiv = styled.div`
   border-top: solid ${({ theme }) => theme.lineColor.primary} 1px;
+  transition: 0.3s;
   display: flex;
   flex-wrap: wrap;
   margin: 16px -8px;
@@ -75,6 +78,7 @@ export const ContentA = styled.a`
   // text-overflow: ellipsis;
   text-decoration: none;
   color: ${({theme})=>theme.color.secondary};
+  transition: 0.3s;
 
   &:hover {
     color: ${({theme})=>theme.color.btnHover};

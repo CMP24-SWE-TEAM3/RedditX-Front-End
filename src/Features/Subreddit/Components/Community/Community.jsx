@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "API/axios";
-import useFetch from "Hooks/useFetch";
+import useFetch from "Hooks/useFetch"
 import useFetchFunction from "Hooks/useFetchFunction";
 
 import {
