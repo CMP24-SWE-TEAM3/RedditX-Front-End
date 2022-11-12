@@ -6,7 +6,7 @@ export const StyledIcon = styled.img`
   width: 32px;
   //min-height: 5px;
   //min-width: 5px;
-  
+
 
 `
 export const StyledTextLogo = styled.img`
@@ -16,19 +16,23 @@ export const StyledTextLogo = styled.img`
   width: 57px;
   //max-height: 32px;
   //max-width: 57px;
-  
+
   @media only screen and (max-width: 1200px) {
     width: 25%;
     display: none;
   }
 `
 export const StyledLink = styled.div`
- @media(max-width: 768px) {
-   margin: 0 20px 0 0;
-   width: 50%;
-   flex-direction:  column;
-  
-} 
+  @media (max-width: 768px) {
+    margin: 0 20px 0 0;
+    width: 50%;
+    flex-direction: column;
+  }
+
+  button {
+    border: none;
+    background:none;
+  }
 `
 // export const StyledHeader = styled.header
 //     `

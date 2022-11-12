@@ -87,7 +87,7 @@ const LogInScreen = ({
   initialFocus2,
   setInitialFocus,
   setInitialFocus2,
-  setErrMsg,
+  setErrMsg,setModalShowLogIn
 }) => {
   const auth = useAuth();
 
@@ -185,6 +185,7 @@ const LogInScreen = ({
         token: "token",
         expiresIn: 3600,
       });
+      setModalShowLogIn(false);
       navigate("/");
 
       setWantSubmit(false);

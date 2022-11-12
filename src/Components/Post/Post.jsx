@@ -1,18 +1,16 @@
 // imports
 import React from 'react';
 import {PostStyled} from "./Post.styled";
-
+import { useNavigate } from "react-router-dom";/**
 /**
  *  Component that displays a post with the specified input placeholder
  * @returns {React.Component}
  */
 
 const Post = () => {
-    const Boom = () => {
-        alert('re-direct to Create Post Page');
-    }
+        const navigate = useNavigate();
     return (
-        <PostStyled id={'create-post-container'} onClick={Boom} type="post" placeholder="Create Post"/>
+        <PostStyled id={'create-post-container'} onFocus={()=>(navigate("/submit"))} type="post" placeholder="Create Post"/>
 
     );
 };

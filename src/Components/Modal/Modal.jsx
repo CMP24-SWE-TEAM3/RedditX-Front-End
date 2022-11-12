@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useNavigate } from "react-router-dom";
 import {AlarmInput, ModalStyled} from "./Modal.styled";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal"
@@ -36,6 +37,7 @@ const ModalCommunity = ({show, close}) => {
             event.preventDefault();
             alert(`The Community name you entered was: ${communityName}`);
         }
+    const navigate = useNavigate();
         return (
             <ModalStyled show={show} onHide={close} id={'modal'}>
                 <Modal.Header closeButton>

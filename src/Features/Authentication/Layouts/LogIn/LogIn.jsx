@@ -22,7 +22,7 @@ const defaultFormFields = {
  * @returns {React.Component}  Login component that is used in Login modal
  */
 
-const LogIn = () => {
+const LogIn = ({setModalShowLogIn}) => {
   /**
    * state to know if the email is valid or not to control what to show to the user
    */
@@ -83,15 +83,16 @@ const LogIn = () => {
    */
   const [finishedLoading, setFinishedLoading] = useState(false);
 
-  
 
- 
- 
+
+
+
 
   return (
     <>
       {
         <LogInScreen
+            setModalShowLogIn={setModalShowLogIn}
           formFields={formFields}
           initialFocus={initialFocus}
           initialFocus2={initialFocus2}

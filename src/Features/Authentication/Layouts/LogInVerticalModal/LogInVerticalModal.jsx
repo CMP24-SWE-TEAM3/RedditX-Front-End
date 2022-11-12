@@ -47,7 +47,7 @@ const LogInVerticalModal = ({ ...props }) => {
         )}
         {!showSignUp && (
           <>
-            <LogIn />{" "}
+            <LogIn setModalShowLogIn={props.setModalShowLogIn} />{" "}
             <HaveAccount>
               New to Reddit?{" "}
               <button onClick={() => setShowSignUp(true)}>Sign up</button>

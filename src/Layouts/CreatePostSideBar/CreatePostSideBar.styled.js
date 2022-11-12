@@ -57,7 +57,7 @@ export const Container = styled.div`
   }
   
   & .sub-but2:hover {
-    background-color: ${({theme}) => theme.background.hover_background};
+    background-color: ${({theme}) => theme.background.post_background};
     color: ${({theme}) => theme.color.secondary};
   }
 

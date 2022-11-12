@@ -1,4 +1,5 @@
 import {CommunityContainer} from "./CommunityCard.styled";
+import { useNavigate } from "react-router-dom";
 import CommunityCardItem from "Components/CommunityCardItem/CommunityCardItem";
 import axios from "API/axios";
 import useFetch from "Hooks/useFetch";
@@ -24,6 +25,7 @@ const TopCommunities = () => {
             },
         },
     });
+    const navigate = useNavigate();
     return (
         <CommunityContainer>
             <div className={'cover'}>
@@ -43,7 +45,7 @@ const TopCommunities = () => {
                 )
             })}
 
-            <button className={'view-all'}>View All</button>
+            <button onClick={()=>navigate("/category/*")} className={'view-all'}>View All</button>
             <div className={'row-but'}>
                 <button className={'sub-but'}>New You</button>
                 <button className={'sub-but'}>Gaming</button>

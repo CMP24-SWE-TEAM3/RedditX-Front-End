@@ -22,7 +22,7 @@ var defaultFormFields = {
  * @returns {React.Component}  Signup component that is used in Signup modal
  */
 
-const SignUp = () => {
+const SignUp = ({setModalShowSignUp}) => {
   /**
    * state to handel any change the user make in the input fields
    */
@@ -96,6 +96,7 @@ const SignUp = () => {
 
       {
         <SignUpSecondScreen
+            setModalShowSignUp={setModalShowSignUp}
           initialFocus={initialFocus}
           initialFocus2={initialFocus2}
           notRobot={notRobot}

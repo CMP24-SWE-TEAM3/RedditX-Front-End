@@ -9,7 +9,10 @@ import Footer from "Layouts/Footer/Footer";
 import ScrollButton from "Components/ScrollButton/ScrollButton";
 import RecentPosts from "Layouts/RecentPosts/RecentPosts";
 import Navigation from "Layouts/Navigation/Navigation";
+import Navbar from "Layouts/Navbar/Navbar";
 import * as styles from "App.styled";
+import LogInVerticalModal from "Features/Authentication/Layouts/LogInVerticalModal/LogInVerticalModal";
+import SignUpVerticalModal from "../../Features/Authentication/Layouts/SignUpVerticalModal/SignUpVerticalModal";
 
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
@@ -18,15 +21,42 @@ import * as styles from "App.styled";
  */
 
 const HomePage = ({ handleToggleTheme, theme }) => {
+  const [modalShowSignUp, setModalShowSignUp] = React.useState(false);
+  const [modalShowLogIn, setModalShowLogIn] = React.useState(false);
+  const [modalAfterSignUp, setModalAfterSignUp] = React.useState(false);
+
   return (
     <>
       <styles.AppContainer>
         <styles.AppHeader>
-          <Navigation toggleMode={handleToggleTheme} theme={theme} />
-          {/*<Navbar toggleMode={handleToggleTheme} theme={theme}/>*/}
+          <Navigation
+            toggleMode={handleToggleTheme}
+            theme={theme}
+            modalShowLogIn={modalShowLogIn}
+            setModalShowLogIn={setModalShowLogIn}
+            modalShowSignUp={modalShowSignUp}
+            setModalShowSignUp={setModalShowSignUp}
+            modalAfterSignUp={modalAfterSignUp}
+            setModalAfterSignUp={setModalAfterSignUp}
+          />
+          {/* <Navbar
+            toggleMode={handleToggleTheme}
+            theme={theme}
+            modalShowLogIn={modalShowLogIn}
+            setModalShowLogIn={setModalShowLogIn}
+          /> */}
           <MainContainer>
             <div className="main" />
             <Container>
+              <LogInVerticalModal
+                show={modalShowLogIn}
+                onHide={() => setModalShowLogIn(false)}
+                setModalShowLogIn={setModalShowLogIn}/>
+              <SignUpVerticalModal
+                  show={modalShowSignUp}
+                  onHide={() => setModalShowSignUp(false)}
+                  setModalShowSignUp={setModalShowSignUp}
+              />
               <div className={"content-posts"}>
                 <CreatePost />
                 <PopularPosts />

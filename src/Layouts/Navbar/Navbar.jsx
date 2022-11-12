@@ -13,19 +13,20 @@ import DropDownRightButton from "Components/DropDownRight/DropDownRight";
 import DropDownLeft from "Components/DropDownButtonLeft/DropDownLeft";
 import SignUp from "Components/SignUp/SignUp";
 import LoginButton from "Components/LoginButton/LoginButton";
-import React, {useContext} from "react";
-import AuthContext from "Contexts/auth-context";
+import React from "react";
+// import AuthContext from "Contexts/auth-context";
+import  {useAuth}  from "Features/Authentication/Contexts/Authentication";
 
 /**
  * Component that  Main Links component in header  called navigation bar.
  *
  * @returns {Component.React}
  */
-const Navbar = ({theme,toggleMode}) => {
+const Navbar = ({theme,toggleMode,setModalShowLogIn,modalShowLogIn}) => {
     const ButtonHandler = () => {
         alert('Hello Reddit!');
     }
-    const ctx = useContext(AuthContext);
+    const ctx = useAuth();
     return (
         <StyledHeader>
             <div className='search'>
@@ -33,7 +34,7 @@ const Navbar = ({theme,toggleMode}) => {
                 <DropDownLeft/>
                 <SearchBar/>
             </div>
-            {ctx.isLoggedIn &&
+            {ctx.isLoggedIn() &&
                 (<>
                     <PopularButton onshow={ButtonHandler}/>
                     <CoinButton onshow={ButtonHandler}/>
@@ -44,9 +45,9 @@ const Navbar = ({theme,toggleMode}) => {
                     <CreatePostButton onshow={ButtonHandler}/>
                     <AdvertiseButton/></>)
             }
-            {!ctx.isLoggedIn && <div className={'logged-out'}>
+            {!ctx.isLoggedIn() && <div className={'logged-out'}>
                 <SignUp/>
-                <LoginButton/>
+                <LoginButton setModalShowLogIn={setModalShowLogIn}/>
             </div>}
 
 
