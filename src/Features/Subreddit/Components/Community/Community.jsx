@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "API/axios";
-import useFetch from "Hooks/useFetch";
+import useFetch from "Hooks/useFetch"
 import useFetchFunction from "Hooks/useFetchFunction";
 
 import {
@@ -30,36 +30,30 @@ import {
  * Component that contains the header of the community leaderboard page
  *
  * @Component
- * @param {Object} props - Community Data
- * @param {boolean} props.isJoined - Boolean showing whether the user joined that community or not
- * @param {string} props.img - Subreddit Image
- * @param {string} props.title - Subreddit Title
- * @param {string} props.description - Subreddit Description to show in hover box
- * @param {number} props.index - Subreddit index among fetched data to index the list
- * @param {object} props.stats - Object containing Subreddit Stats (online, and members)
- * @param {number} props.stats.members - Subreddit Member count
- * @param {number} props.stats.online - Subreddit online members count
- * @param {number} props.rankChange - Subreddit Rank Change
+ * @param {boolean} isJoined - Boolean showing whether the user joined that community or not
+ * @param {string} img - Subreddit Image
+ * @param {string} title - Subreddit Title
+ * @param {string} description - Subreddit Description to show in hover box
+ * @param {number} index - Subreddit index among fetched data to index the list
+ * @param {object} stats - Object containing Subreddit Stats (online, and members)
+ * @param {number} stats.members - Subreddit Member count
+ * @param {number} stats.online - Subreddit online members count
+ * @param {number} rankChange - Subreddit Rank Change
  * @returns {React.Component}
  */
-const Community = ({
-  isJoined,
-  img,
-  title,
-  description,
-  index,
-  stats,
-  rankChange,
-}) => {
-  const [isJoinedstate, setIsJoined] = useState(isJoined);
+ const Community = ({isJoined, img, title, description, index, stats, rankChange}) => {
 
+  const [isJoinedstate, setIsJoined] = useState(
+    isJoined !== undefined ? true : false
+  );
+  
   const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
 
   const joinCommunity = () => {
     fetchFunction({
       axiosInstance: axios,
-      method: "POST",
-      url: "http://localhost:8000/Join",
+      method: 'POST',
+      url: 'http://localhost:8000/Join--Leaderboard',
       requestConfig: {
         headers: {
           "Content-Language": "en-US",
@@ -72,6 +66,10 @@ const Community = ({
     });
   };
 
+  useEffect(() => {
+    setIsJoined(isJoined);
+  }, [isJoined]); 
+
   function changeButton() {
     joinCommunity();
     setIsJoined((prevJoined) => !prevJoined);
@@ -81,7 +79,7 @@ const Community = ({
     <CommunityItem>
       <CommunityA href={`/${title}`}>
         <CommunityIndex>{index}</CommunityIndex>
-        <Arrow up={isRising}></Arrow>
+        <Arrow up={isRising? "true": "false"}></Arrow>
         <CommunityImg
           src={require(`../../Assets/images/${img}`)}
           alt="logo"

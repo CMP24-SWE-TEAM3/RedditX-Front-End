@@ -12,7 +12,7 @@ import {
 
 /**
  * Component acts as a container for all communities of the Community Indexing Page
- *
+ * @Component
  * @returns {React.Component}
  */
 export default function IndexContainer() {

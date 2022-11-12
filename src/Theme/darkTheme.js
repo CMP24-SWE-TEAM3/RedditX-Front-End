@@ -46,6 +46,8 @@ const darkTheme = {
     signInWithFacebookColor: "#237df3",
     // Error (red) color
     danger: "#ea0027",
+    // The primary color of the side Bar Header [Useful for Gradient]
+    sideBarHeader: "#fff",
   },
   // The colors of the backgrounds in the website
   background: {
@@ -84,6 +86,12 @@ const darkTheme = {
     card_hover: "#353537",
     // Comment background color in search page
     comment: "#17232D",
+    // hover_background_button_blue
+    hover_background_button_blue: "#d7dadc",
+    // color of post background
+    post_background: "#343536",
+    //Hovered Side Button
+    sideBtnHover: "#272729",
   },
   // The colors of the lines in the website
   lineColor: {
@@ -101,6 +109,8 @@ const darkTheme = {
     hoverBlue: "#cccccc",
     //The border color of hover card
     secondary: "#484848",
+    // Post borderline Color Search Page
+    PostBorder: "#343536",
   },
   arrowColor: {
     up: "#46D160",
@@ -115,6 +125,9 @@ const darkTheme = {
   categoryColor: {
     text: "#d7dadc",
     hover: "#272729",
+  },
+  degree: {
+    gradient: 180,
   },
 };
 

@@ -18,31 +18,21 @@ import {
  * Component acts as a container for all communities of the community leaderboard page
  *
  * @Component
+ *
  * @returns {React.Component}
  */
-export default function Container() {
-  let [communitiesList, error, loading, reload] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "http://localhost:8000/communities-leaderboard",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
-  console.log(communitiesList);
-
-  const communities = communitiesList.map((community, index) => {
+export default function Container({ com, subscribed }) {
+  const communities = com.map((community, index) => {
     return (
-      <li>
+      <li key={community.id.toString()}>
         <Community
-          key={community.id.toString()}
           id={community.id}
           index={index + 1}
           img={community.coverImg}
           title={community.title}
-          isJoined={community.isJoined}
+          isJoined={subscribed.find((element) => {
+            return element.id === community.id;
+          })}
           stats={community.stats}
           description={community.description}
           rankChange={community.rankChange}

@@ -11,7 +11,7 @@ import {
 
 /**
  * Component that contains the categories [left section] of the community leaderboard page
- *
+ * @Component
  * @returns {React.Component}
  */
 export default function Categories() {
@@ -34,7 +34,7 @@ export default function Categories() {
 
   let CatergoryElement = currentCategory.map((element) => {
     return (
-      <li>
+      <li key = {element.id}>
         <Category
           to={`/category/${element.title.replace(/\s/g, '')}`}
         >

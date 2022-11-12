@@ -4,7 +4,7 @@ import { IndexPageContainer, StyledIndexPage } from "./IndexPage.styled";
 
 /**
  * Component that contains the whole Indexing Page
- *
+ * @Component
  * @returns {React.Component}
  */
 const IndexPage = () => {

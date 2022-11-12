@@ -4,11 +4,12 @@ import { FaAngleUp } from "react-icons/fa";
 export const Arrow = styled(FaAngleUp)`
   position: absolute;
   left: 52px;
-  color: ${({ up }) => (up ? "#46D160" : "#EA2700")};
-  transform: ${({ up }) => (up ? "none" : "rotate(180deg)")};
+  color: ${({ up }) => (up ==='true'? "#46D160" : "#EA2700")};
+  transform: ${({ up }) => (up ==='true'? "none" : "rotate(180deg)")};
 `;
 
 export const CommunityItem = styled.div`
+  transition: 0.3s;
   text-decoration: none;
   position: relative;
   min-height: 64px;
@@ -26,6 +27,7 @@ export const CommunityItem = styled.div`
 
   .join-btn {
     position: absolute;
+    transition: 0.3s;
     // left: 80.75%;
     right: 13%;
     font-size: 12px;
@@ -49,6 +51,7 @@ export const CommunityItem = styled.div`
 
   .joined-btn {
     position: absolute;
+    transition: 0.3s;
     // left: 80%;
     right: 13%;
     font-size: 12px;
@@ -83,6 +86,7 @@ export const CommunityA = styled.a`
 
 export const CommunityIndex = styled.span`
   color: ${({ theme }) => theme.color.primary};
+  transition: 0.3s;
   text-align: right;
   min-width: 20px;
   font-size: 14px;
@@ -107,6 +111,7 @@ export const CommunityImg = styled.img`
 
 export const TitleParagraph = styled.p`
   color: ${({ theme }) => theme.color.primary};
+  transition: 0.3s;
   font-weight: 500;
   margin-top: revert;
 
@@ -122,11 +127,13 @@ export const CommunityRankChange = styled.span`
   position: absolute;
   right: 4%;
   color: ${({ theme }) => theme.color.primary};
+  transition: 0.3s;
 `;
 
 export const CommunityCard = styled.div`
   display: none;
   position: absolute;
+  transition: 0.3s;
   max-width: 380px;
   min-width: 240px;
   padding: 5px;
@@ -195,6 +202,7 @@ export const MembersOnline = styled.div`
 export const Members = styled.div`
   flex: 1 0 auto;
   border-right: 1px solid ${({ theme }) => theme.lineColor.primary};
+  transition: 0.3s;
 `;
 
 export const Online = styled.div`
@@ -207,6 +215,7 @@ export const HoverDescription = styled.div`
   font-size: 12px;
   font-weight: 400;
   line-height: 20px;
+  transition: 0.3s;
   color: ${({ theme }) => theme.color.primary};
   overflow-wrap: break-word;
   padding: 8px 0;
@@ -218,6 +227,7 @@ export const HoverH4 = styled.h4`
   font-weight: 500;
   line-height: 20px;
   color: ${({ theme }) => theme.color.primary};
+  transition: 0.3s;
 `;
 
 export const HoverP = styled.p`
@@ -225,6 +235,7 @@ export const HoverP = styled.p`
   font-weight: 400;
   line-height: 20px;
   color: ${({ theme }) => theme.color.muted};
+  transition: 0.3s;
 `;
 
 export const HoverButton = styled.button`
@@ -233,6 +244,7 @@ export const HoverButton = styled.button`
   border: none;
   color: ${({ theme }) => theme.background.primary};
   fill: ${({ theme }) => theme.background.primary};
+  transition: 0.3;
   font-family: Noto Sans, Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
