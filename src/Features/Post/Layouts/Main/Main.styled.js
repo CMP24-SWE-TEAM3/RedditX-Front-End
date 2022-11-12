@@ -21,4 +21,7 @@ export const Title = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.lineColor.primary};
   height: fit-content;
   margin-top: 25px;
+  h4 {
+    font-size: 18px;
+  }
 `;

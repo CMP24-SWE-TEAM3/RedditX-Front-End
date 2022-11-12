@@ -41,6 +41,7 @@ const UploadedImage = ({
         <StyledUploadedImage
           thumbnail={isSelected && selectedImageId === id}
           selected={isSelected && selectedImageId === id}
+          as={file.type.toLowerCase().includes("video") ? "video" : "img"}
           src={file.src}
           // Revoke data uri after image is loaded
           onLoad={() => {

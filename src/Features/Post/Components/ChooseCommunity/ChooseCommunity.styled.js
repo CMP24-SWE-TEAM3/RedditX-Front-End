@@ -55,6 +55,7 @@ export const Input = styled.input`
   margin-right: auto;
   border: 0;
   font-weight: 500;
+  color: ${({ theme }) => theme.color.primary};
   background-color: ${({ theme }) => theme.background.primary};
   width: 100%;
   &:focus {

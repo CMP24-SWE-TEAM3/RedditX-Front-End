@@ -27,6 +27,13 @@ export const Image = styled.img`
   max-width: 100%;
 `;
 
+export const Video = styled.video`
+  object-fit: cover;
+  display: inline-block;
+  max-height: 100%;
+  max-width: 100%;
+`;
+
 export const LinkForm = styled(Form)`
   margin: 12px 12px 12px 0;
   width: 50%;

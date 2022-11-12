@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Uploaded images container should render without crashing 1`] = `
+<styled.aside>
+  <UploadedImage
+    deleteFile={[Function]}
+    file={
+      Object {
+        "name": "image",
+        "type": "image/png",
+        "uploadDate": "2020-10-10",
+      }
+    }
+    handleClick={[Function]}
+    id="image2020-10-10"
+    isSelected={false}
+    key="image2020-10-10"
+  />
+  <styled.button
+    variant="light"
+  >
+    <BsPlusLg />
+  </styled.button>
+</styled.aside>
+`;

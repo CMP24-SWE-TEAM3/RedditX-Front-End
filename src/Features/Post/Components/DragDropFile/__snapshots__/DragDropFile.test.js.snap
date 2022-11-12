@@ -40,7 +40,7 @@ exports[`Drag and drop file should render without crashing 1`] = `
       files={Array []}
       open={[Function]}
       selectedImageId={null}
-      setFiles={Array []}
+      setFiles={[Function]}
       setSelectedImageId={[Function]}
     />
   </styled.div>

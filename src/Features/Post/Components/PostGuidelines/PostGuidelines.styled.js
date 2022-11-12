@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 // Main container for the post guidelines component
 export const Container = styled.div`
+  margin-top: 15px;
   background-color: ${({ theme }) => theme.background.primary};
   padding: 12px;
   margin-top: 12px;

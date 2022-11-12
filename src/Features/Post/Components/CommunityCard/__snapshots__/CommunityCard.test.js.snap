@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the card of community should render without crashing 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "setSubmitDestination": [Function],
+      "submitDestination": null,
+    }
+  }
+>
+  <CommunityCard />
+</ContextProvider>
+`;

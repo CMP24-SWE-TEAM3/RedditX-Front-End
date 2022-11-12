@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`preview of selected flair should render without crashing 1`] = `
+<styled.div>
+  <Preview />
+  <FlairModal
+    error=""
+    flairIndex={null}
+    flairList={Array []}
+    isLoading={true}
+    onHide={[Function]}
+    postOrUser="user"
+    setFlairIndex={[Function]}
+    show={false}
+  />
+</styled.div>
+`;
