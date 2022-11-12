@@ -3,7 +3,6 @@ import { Container, Footer, CommunityCardContainer } from "./Sidebar.styled";
 
 // Import components
 import PostGuidelines from "Features/Post/Components/PostGuidelines/PostGuidelines";
-import { RulesWidget, CommunityCard } from "Features/Subreddit";
 
 // Import react router dom components
 import { Link } from "react-router-dom";
