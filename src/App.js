@@ -27,6 +27,7 @@ import {
   NewPasswordPage,
 } from "Features/Authentication";
 import Search from "Features/Search/Pages/Search/Search";
+import HomePage from "Pages/HomePage/HomePage";
 
 // Import contexts
 import { AuthProvider } from "Features/Authentication/Contexts/Authentication";
@@ -57,10 +58,17 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <AuthProvider>
-        <Button onClick={handleToggleTheme}>Toggle rome</Button>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<DummyPage />} />
+            <Route
+              path="/"
+              element={
+                <HomePage
+                  handleToggleTheme={handleToggleTheme}
+                  theme={theme.id}
+                />
+              }
+            />
             <Route path="subreddit" element={<SubReddit />} />
             <Route path="category/*" element={<CommunityLeaderBoard />} />
             <Route path="index-page" element={<IndexPage />} />
