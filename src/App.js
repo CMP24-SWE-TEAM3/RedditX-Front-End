@@ -31,7 +31,6 @@ import HomePage from "Pages/HomePage/HomePage";
 
 // Import contexts
 import { AuthProvider } from "Features/Authentication/Contexts/Authentication";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // TODO: remove this dummy page
 import DummyPage from "Pages/DummyPage/DummyPage";
