@@ -21,7 +21,7 @@ const StyleControlButton = ({ style, onToggle, active, label, icon }) => {
       placement="top"
       overlay={<Tooltip id="button-tooltip-2">{label}</Tooltip>}
     >
-      <StyledButton active={active} onMouseDown={onToggleHandler}>
+      <StyledButton id={label} active={active} onMouseDown={onToggleHandler}>
         {icon}
       </StyledButton>
     </OverlayTrigger>

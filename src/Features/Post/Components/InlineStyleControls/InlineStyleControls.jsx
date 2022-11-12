@@ -56,7 +56,6 @@ const InlineStyleControls = ({ editorState, onToggle }) => {
           onToggle={onToggle}
           style={type.style}
           icon={type.icon}
-          id={type.label}
         />
       ))}
     </StyledInlineControls>
