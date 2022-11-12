@@ -65,7 +65,7 @@ const ChooseCommunity = () => {
   return (
     <Container>
       <Dropdown show={showMenu}>
-        <Choose>
+        <Choose id="choose-community">
           {!showMenu && !submitDestination && <TbCircleDotted size={30} />}
           {showMenu && (
             <CiSearch size={30} onClick={() => setShowMenu(false)} />
@@ -78,6 +78,7 @@ const ChooseCommunity = () => {
           )}
           <Input
             type="text"
+            id="search-communities"
             placeholder={showMenu ? "Search communities" : "Choose a community"}
             onClick={() => setShowMenu(true)}
             value={searchText}
@@ -92,7 +93,7 @@ const ChooseCommunity = () => {
         </Choose>
 
         {showMenu && (
-          <Menu>
+          <Menu id="communities-drop-down">
             <GroupTitle>Your profile</GroupTitle>
             <ItemsGroup>
               <DropdownItem>

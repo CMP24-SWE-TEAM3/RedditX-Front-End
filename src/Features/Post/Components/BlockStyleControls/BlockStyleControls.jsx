@@ -64,6 +64,7 @@ const BlockStyleControls = ({ onToggle, editorState }) => {
           onToggle={onToggle}
           style={type.style}
           icon={type.icon}
+          id={type.label}
         />
       ))}
     </StyledBlockControls>

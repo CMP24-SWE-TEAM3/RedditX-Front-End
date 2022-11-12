@@ -39,6 +39,7 @@ const UploadedImage = ({
     <Thumb onClick={() => handleClick(id)}>
       <ThumbInner>
         <StyledUploadedImage
+          className="uploaded-image"
           thumbnail={isSelected && selectedImageId === id}
           selected={isSelected && selectedImageId === id}
           as={file.type.toLowerCase().includes("video") ? "video" : "img"}
@@ -49,7 +50,11 @@ const UploadedImage = ({
           }}
           alt="uploaded preview"
         />
-        <DeleteButton variant="danger" onClick={() => deleteFile(file)}>
+        <DeleteButton
+          className="delete-img-danger"
+          variant="danger"
+          onClick={() => deleteFile(file)}
+        >
           <ImCross size={20} />
         </DeleteButton>
       </ThumbInner>

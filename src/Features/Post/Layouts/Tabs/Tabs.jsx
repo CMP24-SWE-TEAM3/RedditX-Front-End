@@ -46,7 +46,11 @@ const Tabs = ({ submitPost }) => {
                 className="flex-fill"
                 onClick={() => setSelected("Post")}
               >
-                <NavLink eventKey="Post" selected={selected === "Post"}>
+                <NavLink
+                  id="post-tab"
+                  eventKey="Post"
+                  selected={selected === "Post"}
+                >
                   <ImFileText size={25} /> <span> Post </span>
                 </NavLink>
               </NavItem>
@@ -55,6 +59,7 @@ const Tabs = ({ submitPost }) => {
                 onClick={() => setSelected("Images & Video")}
               >
                 <NavLink
+                  id="image-tab"
                   eventKey="Images & Video"
                   selected={selected === "Images & Video"}
                 >
@@ -65,7 +70,11 @@ const Tabs = ({ submitPost }) => {
                 className="flex-fill"
                 onClick={() => setSelected("Link")}
               >
-                <NavLink eventKey="Link" selected={selected === "Link"}>
+                <NavLink
+                  id="link-tab"
+                  eventKey="Link"
+                  selected={selected === "Link"}
+                >
                   <BsLink45Deg size={30} />
                   <span> Link </span>
                 </NavLink>
