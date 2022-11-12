@@ -28,6 +28,8 @@ import {
   isUserNameAvailable,
 } from "Features/Authentication/Services/authApi";
 
+import { useNavigate } from "react-router-dom";
+
 import {
   ButtonsContainer,
   ErrorParagraph,
@@ -131,6 +133,7 @@ const SignUpSecondScreen = ({
    */
   const [availableUserName, setAvailableUserName] = useState(false);
 
+  const navigate = useNavigate();
   /**
    * useEffect for userName field to check if the userName that the user entered is valid or not
    */
@@ -206,6 +209,14 @@ const SignUpSecondScreen = ({
         setFinishedLoading(true);
         auth.login(data);
       }
+      // TODO: remove this
+      auth.login({
+        username: userName,
+        token: "token",
+        expiresIn: 3600,
+      });
+      navigate("/");
+
       setWantSubmit(false);
 
       // setIsLoading(false);
@@ -348,13 +359,16 @@ const SignUpSecondScreen = ({
             </Group>
 
             {/* Show error message if the password is not valid and the user made a focus on the it's input field */}
-            <ErrorParagraph id="passwordNotValidSignUpModal" valid={validPassword || initialFocus2}>
+            <ErrorParagraph
+              id="passwordNotValidSignUpModal"
+              valid={validPassword || initialFocus2}
+            >
               password should contain 8 to 20 characters
             </ErrorParagraph>
             <ButtonsContainer>
               {!finishedLoading && (
                 <Button
-                id="signUpButtonModal"
+                  id="signUpButtonModal"
                   disabled={
                     !validUserName ||
                     !validPassword ||

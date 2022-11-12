@@ -31,6 +31,7 @@ import {
   signInWithGooglePopup,
   signInWithFacebookPopup,
 } from "Features/Authentication/Utils/Firebase";
+import { useNavigate } from "react-router-dom";
 
 import {
   AuthContainer,
@@ -116,6 +117,7 @@ const LogInScreen = ({
    */
   const [showLoginErrorMsg, setShowLoginErrorMsg] = useState(false);
 
+  const navigate = useNavigate();
   /**
    * useEffect for userName field to check if the userName that the user entered is valid or not
    */
@@ -177,6 +179,13 @@ const LogInScreen = ({
         setFinishedLoading(true);
         auth.login(data);
       }
+      // TODO: remove this
+      auth.login({
+        username: userName,
+        token: "token",
+        expiresIn: 3600,
+      });
+      navigate("/");
 
       setWantSubmit(false);
 

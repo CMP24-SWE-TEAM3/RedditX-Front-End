@@ -15,7 +15,7 @@ import { forgetPasswordApi } from "Features/Authentication/Services/authApi";
 import axios from "API/axios";
 
 import useFetchFunction from "Hooks/useFetchFunction";
-
+import { useNavigate } from "react-router-dom";
 import {
   AuthContainer,
   ButtonsContainer,
@@ -96,7 +96,7 @@ const ForgetPassword = () => {
    */
   const [showForgetPasswordErrorMsg, setShowForgetPasswordErrorMsg] =
     useState(false);
-
+ const navigate = useNavigate();
   /**
    * state to know if the email sent or not
    */
@@ -284,7 +284,12 @@ const ForgetPassword = () => {
             </ErrorParagraph>
           )}
           <Forget>
-            <span id="forget-username-button" onClick={() => {}}>FORGOT USERNAME?</span>{" "}
+            <span
+              id="forget-username-button"
+              onClick={() => navigate("/forget-username")}
+            >
+              FORGOT USERNAME?
+            </span>{" "}
           </Forget>
           <br></br>
           <br></br>
@@ -295,8 +300,8 @@ const ForgetPassword = () => {
           <br></br>
           <br></br>
           <Forget>
-            <span onClick={() => {}}>LOG IN</span>{" "}
-            <span onClick={() => {}}>{" . "}SIGN UP</span>{" "}
+            <span onClick={() => navigate("/login")}>LOG IN</span>{" "}
+            <span onClick={() => navigate("/register")}>{" . "}SIGN UP</span>{" "}
           </Forget>
         </form>
       </AuthContainer>

@@ -27,6 +27,7 @@ import {
   signInWithGooglePopup,
   signInWithFacebookPopup,
 } from "Features/Authentication/Utils/Firebase";
+import { useNavigate } from "react-router-dom";
 
 import {
   AuthContainer,
@@ -107,6 +108,7 @@ const LogInPageCom = () => {
 
   const { userName, password } = formFields;
 
+  const navigate = useNavigate();
   /**
    * useEffect for userName field to check if the userName that the user entered is valid or not
    */
@@ -168,6 +170,13 @@ const LogInPageCom = () => {
         setFinishedLoading(true);
         auth.login(data);
       }
+      // TODO: remove this
+      auth.login({
+        username: userName,
+        token: "token",
+        expiresIn: 3600,
+      });
+      navigate("/");
 
       setWantSubmit(false);
 
@@ -337,7 +346,11 @@ const LogInPageCom = () => {
                   Username must be between 3 and 20 characters
                 </ErrorParagraph>
               )}
-              {error && <ErrorParagraph id="username-error" valid={!error}>{error}</ErrorParagraph>}
+              {error && (
+                <ErrorParagraph id="username-error" valid={!error}>
+                  {error}
+                </ErrorParagraph>
+              )}
 
               <FormInputPageCom
                 required
@@ -385,11 +398,17 @@ const LogInPageCom = () => {
 
               <Forget>
                 Forget your{" "}
-                <button id="forget-username" onClick={() => {}}>
+                <button
+                  id="forget-username"
+                  onClick={() => navigate("/forget-username")}
+                >
                   username
                 </button>{" "}
                 or{" "}
-                <button id="forget-password" onClick={() => {}}>
+                <button
+                  id="forget-password"
+                  onClick={() => navigate("/forget-password")}
+                >
                   password
                 </button>
               </Forget>
@@ -397,7 +416,10 @@ const LogInPageCom = () => {
               <br></br>
               <Forget>
                 New to Reddit?{" "}
-                <button id="signup-button" onClick={() => {}}>
+                <button
+                  id="signup-button"
+                  onClick={() => navigate("/register")}
+                >
                   SIGN UP
                 </button>
               </Forget>

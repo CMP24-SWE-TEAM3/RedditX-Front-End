@@ -32,6 +32,7 @@ import NewPasswordPage from "Features/Authentication/Pages/NewPasswordPage/NewPa
 import ForgetPasswordPage from "Features/Authentication/Pages/ForgetPasswordPage/ForgetPasswordPage";
 
 import { AuthProvider } from "Features/Authentication/Contexts/Authentication";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 /**
  * The main app of our application it handles routing
@@ -56,7 +57,15 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <AuthProvider>
-        <TestHome />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<TestHome />} />
+            <Route path="/login" element={<LogInPage />} />
+            <Route path="/register" element={<SignUpPage />} />
+            <Route path="/forget-username" element={<ForgetUserNamePage />} />
+            <Route path="/forget-password" element={<ForgetPasswordPage />} />
+          </Routes>
+        </BrowserRouter>
       </AuthProvider>
     </ThemeProvider>
   );

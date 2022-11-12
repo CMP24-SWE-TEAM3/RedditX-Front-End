@@ -26,6 +26,7 @@ import {
 import axios from "API/axios";
 
 import useFetchFunction from "Hooks/useFetchFunction";
+import { useNavigate } from 'react-router-dom';
 
 import {
   Group,
@@ -141,6 +142,7 @@ const SignUpPageSecondScreen = ({
    */
   const [availableUserName, setAvailableUserName] = useState(true);
 
+  const navigate = useNavigate();
   /**
    * Function to handle the submit of the form of signup
    * @param {*} event
@@ -180,6 +182,13 @@ const SignUpPageSecondScreen = ({
         setFinishedLoading(true);
         auth.login(data);
       }
+      // TODO: remove this
+      auth.login({
+        username: userName,
+        token: "token",
+        expiresIn: 3600,
+      });
+      navigate("/");
 
       setWantSubmit(false);
 
