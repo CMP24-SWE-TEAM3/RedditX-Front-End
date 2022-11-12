@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Description and created date of subreddit should render without crashing 1`] = `
+exports[`Component set community info should render without crashing 1`] = `
 <ContextProvider
   value={
     Object {
@@ -9,6 +9,6 @@ exports[`Description and created date of subreddit should render without crashin
     }
   }
 >
-  <CommunityDate />
+  <SetSubReddit />
 </ContextProvider>
 `;

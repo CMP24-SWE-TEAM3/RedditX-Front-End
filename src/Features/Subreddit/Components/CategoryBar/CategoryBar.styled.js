@@ -89,45 +89,6 @@ export const InnerContainer = styled.div`
   }
 `;
 
-export const Dots = styled.div`
-  @media (max-width: 675px) {
-    display: none;
-  }
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  box-sizing: border-box;
-
-  :hover {
-    background-color: ${({ theme }) => theme.button.muted};
-    border-radius: 20px;
-  }
-
-  div {
-    align-items: center;
-    border-radius: 4px;
-    display: flex;
-  }
-
-  button {
-    display: inline-block;
-    background-color: transparent;
-    border-radius: 20px;
-    outline: none;
-    padding: 5px;
-    border: 1px solid transparent;
-  }
-
-  span {
-    font-size: 20px;
-    font-weight: 400;
-    height: 10px;
-    line-height: 20px;
-    vertical-align: middle;
-    color: ${({ theme }) => theme.borderColor.primary};
-  }
-`;
-
 export const StyledDrop = styled(Dropdown)`
   display: none;
   @media (max-width: 675px) {
@@ -141,7 +102,7 @@ export const StyledDrop = styled(Dropdown)`
   padding: 6px 8px;
   background-color: ${({ theme }) => theme.button.muted};
 
-  button#dropdown-basic {
+  button.dropdown-toggle.btn.btn-primary {
     font-family: "Noto Sans", Arial, sans-serif;
     font-size: 14px;
     font-weight: 700;
@@ -202,6 +163,9 @@ export const StyledDrop = styled(Dropdown)`
     margin-left: -5px;
     min-width: 100px;
     padding: 0;
+    @media (max-width: 460px) {
+      flex-wrap: wrap;
+    }
     /*z-index: 10; */
   }
   div.dropdown-menu.show {
@@ -262,47 +226,114 @@ export const StyledDrop = styled(Dropdown)`
   }
 `;
 
-export const Rising = styled.div`
+export const DotsDropdown = styled(Dropdown)`
   @media (max-width: 675px) {
     display: none;
   }
-
-  border: 1px solid var(--newCommunityTheme-line);
+  /* border: 1px solid red; */
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  box-sizing: border-box;
+  position: relative;
   border-radius: 4px;
-  box-shadow: 0 2px 4px 0 rgba(28, 28, 28, 0.2);
-  color: ${({ theme }) => theme.color.primary};
-  overflow: hidden;
-  background-color: ${({ theme }) => theme.background.primary};
-  position: absolute;
-  z-index: 10;
-  min-width: 100px;
-  margin-left: -8px;
-  max-height: 300px;
-  left: 260px;
-  top: 346px;
 
-  a {
-    color: ${({ theme }) => theme.borderColor.primary};
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 18px;
-    max-height: 54px;
-    white-space: normal;
-    text-decoration: none;
-    padding: 8px;
-    text-transform: capitalize;
-    font-size: 14px;
-    font-weight: 500;
+  .dropdown-toggle::after {
+    content: none;
+  }
+
+  background-color: transparent;
+
+  button.btn-primary {
+    display: inline-block;
+    background-color: transparent;
+    border-radius: 20px;
+    outline: none;
+    padding: 5px;
+    border: 1px solid transparent;
 
     :hover {
-      background-color: #e9f5fd;
-      color: ${({ theme }) => theme.color.primary};
+      background-color: ${({ theme }) => theme.button.muted};
+      border-radius: 20px;
+    }
+
+    :focus-visible {
+      box-shadow: none;
+    }
+
+    :active {
+      background-color: transparent;
+      border: 1px solid transparent;
+    }
+
+    span {
+      font-size: 20px;
+      font-weight: 400;
+      height: 10px;
+      line-height: 20px;
+      vertical-align: middle;
+      color: ${({ theme }) => theme.borderColor.primary};
     }
   }
-  span.icon {
-    margin-right: 6px;
+
+  div.dropdown-menu {
+    border: 1px solid var(--newCommunityTheme-line);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgba(28, 28, 28, 0.2);
+    color: ${({ theme }) => theme.color.primary};
+    overflow: hidden;
+    background-color: ${({ theme }) => theme.background.primary};
+    min-width: 100px;
+    margin-left: -8px;
+    padding: 2px;
+
+    a {
+      color: ${({ theme }) => theme.borderColor.primary};
+      background-color: transparent;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 18px;
+      max-height: 54px;
+      white-space: normal;
+      text-decoration: none;
+      padding: 8px;
+      text-transform: capitalize;
+      font-size: 15px;
+      font-weight: 500;
+
+      :hover,
+      :focus {
+        background-color: #e9f5fd;
+        color: ${({ theme }) => theme.color.primary};
+      }
+    }
+    span.icon {
+      margin-right: 6px;
+    }
+    span.text {
+      display: inline-block;
+    }
   }
-  span.text {
-    display: inline-block;
+`;
+
+export const DateDiv = styled.div`
+  padding: 0;
+  margin: 0;
+  border: 0;
+  display: flex;
+
+  @media (max-width: 675px) {
+    display: none;
+  }
+`;
+
+export const DropDateDiv = styled.div`
+    padding: 0;
+  margin: 0;
+  border: 0;
+  display: none;
+
+  @media (max-width: 675px) {
+    display: flex;
   }
 `;

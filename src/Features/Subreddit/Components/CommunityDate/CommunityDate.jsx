@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
+import { useEffect, useRef, useState } from "react";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { FiEyeOff } from "react-icons/fi";
@@ -16,27 +17,41 @@ import {
   DescriptionInnerContainer,
   InputContainer,
   Private,
-  SaveButton
+  SaveButton,
 } from "./CommunityDate.styled";
 
 /**
- * 
- * @returns {React.Component} CreatePost component
+ * Component contains created date and description
+ *
+ * @returns {React.Component}
  */
 const CommunityDate = () => {
-  const [description, setDescription] = useState("hi");
+  const [description, setDescription] = useState("");
   const [inputFocus, setInputFocus] = useState(false);
   const [dummyDescription, setDummyDescription] = useState(description);
   const [modalShow, setModalShow] = useState(false);
+  const textAreaRef = useRef();
   let isPrivate = true;
+
+  const {community} = useSubReddit();
+  useEffect(()=>{
+    setDescription(community[0].communityDescription)
+  },[community])
 
   /**
    * onchange set value of input text
-   * 
-   * @param {event} e 
+   *
+   * @param {event} e
    */
   function inputHandler(e) {
     setDescription(e.target.value);
+
+    e.target.style.height = "0px";
+    const scrollHeight = e.target.scrollHeight;
+
+    // We then set the height directly, outside of the render loop
+    // Trying to set this with state or a ref will product an incorrect value.
+    e.target.style.height = scrollHeight + "px";
   }
 
   /**
@@ -48,9 +63,19 @@ const CommunityDate = () => {
   }
 
   /**
+   * handler on focus to set cursor
+   *
+   * @param {Event} e - event
+   */
+  function setCursor(e) {
+    e.target.style.height = e.target.scrollHeight + "px";
+    const pos = description.length;
+    e.target.setSelectionRange(pos, pos);
+  }
+  /**
    * handler when blur from the input text of description
-   * 
-   * @param {event} event 
+   *
+   * @param {event} event
    */
   function blurInputHandler(event) {
     //if the click outside the container of input
@@ -99,11 +124,11 @@ const CommunityDate = () => {
   }
 
   /**
-   * 
-   * @param {function} onClick - handle when click on description 
-   * @returns {React.Component} CreatePost component
+   *
+   * @param {function} onClick - handle when click on description
+   * @returns {React.Component} description
    */
-  const Description = ({onClick}) => {
+  const Description = ({ onClick }) => {
     return (
       <DescriptionContainer onClick={onClick}>
         <DescriptionInnerContainer>
@@ -129,19 +154,23 @@ const CommunityDate = () => {
         <Description onClick={AddDescriptionHandler} />
       )}
       {inputFocus && (
-        <InputContainer onBlur={blurInputHandler}>
+        <InputContainer tabIndex="0" onBlur={blurInputHandler}>
           <textarea
+            ref={textAreaRef}
             value={description}
             placeholder="Tell Us about your community"
             onChange={inputHandler}
             autoFocus
+            onFocus={setCursor}
+            maxLength={500}
+            className="textarea"
           ></textarea>
           <ButtonsContainer>
-            <CharContainer>
+            <CharContainer tabIndex="0">
               {500 - description.length + " Characters remaining"}
             </CharContainer>
-            <CancelButton onClick={cancelHandler}>Cancel</CancelButton>
-            <SaveButton onClick={saveHandler}>Save</SaveButton>
+            <CancelButton onClick={cancelHandler} className="cancel">Cancel</CancelButton>
+            <SaveButton onClick={saveHandler} className="save">Save</SaveButton>
           </ButtonsContainer>
         </InputContainer>
       )}
@@ -185,6 +214,7 @@ const CommunityDate = () => {
         onDiscard={discardHandler}
         onSave={saveModalHandler}
         onHide={() => setModalShow(false)}
+        showX={true}
       />
     </>
   );

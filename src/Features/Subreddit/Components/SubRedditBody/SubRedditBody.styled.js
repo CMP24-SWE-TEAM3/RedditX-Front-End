@@ -11,4 +11,9 @@ export const BodyContainer = styled.div`
   @media (max-width: 960px) {
     margin: 0;
   }
+
+  @media (max-width: 640px) {
+    flex-direction: column-reverse;
+    padding: 24px 0;
+  }
 `;

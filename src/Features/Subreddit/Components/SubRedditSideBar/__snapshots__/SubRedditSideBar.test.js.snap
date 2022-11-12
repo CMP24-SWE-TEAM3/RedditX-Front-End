@@ -5,6 +5,7 @@ exports[`sidebar of subreddit should render without crashing 1`] = `
   <styled.div>
     <CommunityCard />
     <RulesWidget />
+    <FlairWidget />
     <ModeratorWidget />
   </styled.div>
 </styled.div>

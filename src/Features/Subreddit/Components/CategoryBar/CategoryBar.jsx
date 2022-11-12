@@ -8,30 +8,67 @@ import { TiStarburstOutline } from "react-icons/ti";
 import { NavLink } from "react-router-dom";
 import {
   Container,
-  Dots,
+  DateDiv,
+  DotsDropdown,
+  DropDateDiv,
   InnerContainer,
-  Rising,
-  StyledDrop
+  StyledDrop,
 } from "./CategoryBar.styled";
 
 /**
  * - Category bar to choose category of posts
- * 
- * @returns {React.Component} CreatePost component
+ *
+ * @returns {React.Component}
  */
 const CategoryBar = () => {
   const [selected, setSelected] = useState("hot");
-  const [showRise, setShowRise] = useState(false);
+
+  /**
+   * 
+   * @returns {React.Component} drop down menu of date of top
+   */
+  const ChooseDate = () => {
+    return (
+      <StyledDrop style={{ display: "flex" }}>
+        <Dropdown.Toggle>
+          <span className="text">Today</span>
+          <span className="arrow">
+            <RiArrowDownSLine />
+          </span>
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          <Dropdown.Item as={NavLink} to="/now">
+            <span className="text">Now</span>
+          </Dropdown.Item>
+          <Dropdown.Item as={NavLink} to="#">
+            <span className="text">Today</span>
+          </Dropdown.Item>
+          <Dropdown.Item as={NavLink} to="#">
+            <span className="text">This Week</span>
+          </Dropdown.Item>
+          <Dropdown.Item as={NavLink} to="#">
+            <span className="text">This Month</span>
+          </Dropdown.Item>
+          <Dropdown.Item as={NavLink} to="#">
+            <span className="text">This Year</span>
+          </Dropdown.Item>
+          <Dropdown.Item as={NavLink} to="#">
+            <span className="text">All Time</span>
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </StyledDrop>
+    );
+  };
 
   /**
    * - A dropdown nav elements
-   * 
-   * @returns {React.Component} CreatePost component
+   *
+   * @returns {React.Component}
    */
-  function DropNav() {
+  const DropNav = () => {
     return (
       <StyledDrop>
-        <Dropdown.Toggle id="dropdown-basic">
+        <Dropdown.Toggle>
           {selected === "hot" && (
             <>
               <span className="icon">
@@ -72,7 +109,7 @@ const CategoryBar = () => {
         <Dropdown.Menu>
           <Dropdown.Item
             as={NavLink}
-            to="/hi"
+            to="/hot"
             onClick={() => {
               setSelected("hot");
             }}
@@ -96,7 +133,7 @@ const CategoryBar = () => {
           </Dropdown.Item>
           <Dropdown.Item
             as={NavLink}
-            to="/hi"
+            to="/top"
             onClick={() => {
               setSelected("top");
             }}
@@ -108,7 +145,7 @@ const CategoryBar = () => {
           </Dropdown.Item>
           <Dropdown.Item
             as={NavLink}
-            to="/hi"
+            to="/rising"
             onClick={() => {
               setSelected("rising");
             }}
@@ -121,12 +158,12 @@ const CategoryBar = () => {
         </Dropdown.Menu>
       </StyledDrop>
     );
-  }
+  };
 
   /**
    * - horizontal navbar
-   * 
-   * @returns {React.Component} CreatePost component
+   *
+   * @returns {React.Component}
    */
   const Nav = () => {
     return (
@@ -134,7 +171,7 @@ const CategoryBar = () => {
         <InnerContainer>
           <NavLink
             to="/hot"
-            className="icon"
+            className="icon hot"
             onClick={() => {
               setSelected("hot");
             }}
@@ -145,8 +182,8 @@ const CategoryBar = () => {
             <span className="fire-txt">Hot</span>
           </NavLink>
           <NavLink
-            to="/sleep"
-            className="icon"
+            to="/new"
+            className="icon new"
             onClick={() => {
               setSelected("new");
             }}
@@ -157,8 +194,8 @@ const CategoryBar = () => {
             <span className="fire-txt">New</span>
           </NavLink>
           <NavLink
-            to="/nap"
-            className="icon"
+            to="/top"
+            className="icon top"
             onClick={() => {
               setSelected("top");
             }}
@@ -169,38 +206,23 @@ const CategoryBar = () => {
             <span className="fire-txt">Top</span>
           </NavLink>
         </InnerContainer>
-        <Dots>
-          <div>
-            <button
-              onClick={() => {
-                setShowRise((prev) => !prev);
-              }}
-            >
-              <span>
-                <BsThreeDots />
-              </span>
-            </button>
-          </div>
-        </Dots>
-        {false && (
-          <Rising tabIndex="0">
-            <NavLink
-              autoFocus={showRise}
-              to="#"
-              onClick={() => {
-                setShowRise(false);
-              }}
-              onBlur={() => {
-                setShowRise(false);
-              }}
-            >
+        <DateDiv>{<ChooseDate />}</DateDiv>
+        <DotsDropdown>
+          <Dropdown.Toggle>
+            <span>
+              <BsThreeDots />
+            </span>
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item as={NavLink}>
               <span className="icon">
                 <HiTrendingUp />
               </span>
               <span className="text">Rising</span>
-            </NavLink>
-          </Rising>
-        )}
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </DotsDropdown>
       </>
     );
   };
@@ -209,6 +231,9 @@ const CategoryBar = () => {
     <Container>
       <Nav />
       <DropNav />
+      <DropDateDiv>
+        <ChooseDate />
+      </DropDateDiv>
     </Container>
   );
 };

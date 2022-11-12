@@ -1,4 +1,4 @@
-import { HiOutlineEnvelope } from "react-icons/hi2";
+import {BiEnvelope} from "react-icons/bi"
 import { Link } from "react-router-dom";
 import WidgetContainer from "../WidgetContainer/WidgetContainer";
 import {
@@ -7,13 +7,13 @@ import {
   ModeratorFlair,
   User,
   ViewAllModeratorsLink,
-  ViewModeratorsContainer
+  ViewModeratorsContainer,
 } from "./ModeratorWidget.styled";
 
 /**
  * moderator widget show all moderators
  *
- * @returns {React.Component} CreatePost component
+ * @returns {React.Component}
  */
 const ModeratorWidget = () => {
   //list of moderators
@@ -37,14 +37,15 @@ const ModeratorWidget = () => {
   ];
 
   /**
+   * Component to send message to moderators
    *
-   * @returns {React.Component} CreatePost component
+   * @returns {React.Component}
    */
   const MessageMod = () => {
     return (
       <Message to="#">
         <span className="icon">
-          <HiOutlineEnvelope />
+          <BiEnvelope />
         </span>
         Message the mods
       </Message>
@@ -52,16 +53,16 @@ const ModeratorWidget = () => {
   };
   /**
    * moderator component
-   * 
-   * @param {object} moderator 
-   * @returns {React.Component} CreatePost component
+   *
+   * @param {object} moderator
+   * @returns {React.Component}
    */
   const Moderator = ({ moderator }) => {
     const hasFlair = moderator.flair;
     return (
       <ModeratorContainer>
-        <Link to="">
-          <User>{"r/" + moderator.userName}</User>
+        <Link to="#">
+          <User>{"u/" + moderator.userName}</User>
         </Link>
         {hasFlair && (
           <ModeratorFlair
@@ -79,8 +80,8 @@ const ModeratorWidget = () => {
 
   /**
    * view all moderators link
-   * 
-   * @returns {React.Component} CreatePost component
+   *
+   * @returns {React.Component}
    */
   const ViewAllModerators = () => {
     return (
@@ -95,8 +96,8 @@ const ModeratorWidget = () => {
   return (
     <WidgetContainer headerText="Moderators">
       <MessageMod />
-      {Moderators.map((moderator) => {
-        return <Moderator moderator={moderator} />;
+      {Moderators.map((moderator, i) => {
+        return <Moderator key={i} moderator={moderator} />;
       })}
       <ViewAllModerators />
     </WidgetContainer>

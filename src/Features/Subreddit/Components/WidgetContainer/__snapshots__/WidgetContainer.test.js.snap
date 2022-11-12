@@ -3,7 +3,9 @@
 exports[`container for widgets this is a test for Community Container 1`] = `
 <styled.div>
   <styled.div>
-    <Header />
+    <Header
+      text="header"
+    />
     <styled.div />
   </styled.div>
 </styled.div>

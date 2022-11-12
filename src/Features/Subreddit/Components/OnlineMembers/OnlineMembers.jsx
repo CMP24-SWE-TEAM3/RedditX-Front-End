@@ -1,3 +1,4 @@
+import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { Container, Members, Online } from "./OnlineMembers.styled";
@@ -5,23 +6,24 @@ import { Container, Members, Online } from "./OnlineMembers.styled";
  * component that show number of members 
  * and number of online members
  * 
- * @returns {React.Component} CreatePost component
+ * @returns {React.Component} 
  */
 const OnlineMembers = () => {
-  let members = 3;
+  const {community} = useSubReddit();
+  let members = community[0].memberCount;
   let onlineMembers = 5;
   return (
     <Container>
-      <OverlayTrigger
+      {members && <OverlayTrigger
         placement={"bottom"}
         delay="200"
         overlay={<Tooltip>{`${members} Members`}</Tooltip>}
       >
-        <Members>
+        {<Members>
           <div>{members}</div>
           <p>Members</p>
-        </Members>
-      </OverlayTrigger>
+        </Members>}
+      </OverlayTrigger>}
       <OverlayTrigger
         placement={"bottom"}
         overlay={<Tooltip>{onlineMembers + " Online"}</Tooltip>}

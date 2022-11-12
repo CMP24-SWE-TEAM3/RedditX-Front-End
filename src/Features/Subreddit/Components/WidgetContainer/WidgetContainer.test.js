@@ -5,6 +5,12 @@ import WidgetContainer from "./WidgetContainer";
 Enzyme.configure({ adapter: new Adapter() });
 describe("container for widgets", () => {
   it("this is a test for Community Container", () => {
-    expect(shallow(<WidgetContainer />)).toMatchSnapshot();
+    expect(
+      shallow(
+        <WidgetContainer headerText="header">
+          <></>
+        </WidgetContainer>
+      )
+    ).toMatchSnapshot();
   });
 });

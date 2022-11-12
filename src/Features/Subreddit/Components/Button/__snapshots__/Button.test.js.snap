@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Join and Leave button should render without crashing 1`] = `
-<styled.div>
+<styled.div
+  joined={true}
+>
   <div
     className="width"
   >
@@ -10,7 +12,7 @@ exports[`Join and Leave button should render without crashing 1`] = `
       onMouseOut={[Function]}
       onMouseOver={[Function]}
     >
-      join
+      joined
     </button>
   </div>
 </styled.div>

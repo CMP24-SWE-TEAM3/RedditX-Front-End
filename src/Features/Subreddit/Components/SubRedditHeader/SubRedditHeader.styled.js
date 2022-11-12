@@ -16,6 +16,11 @@ export const HeaderContent = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.background.primary};
   height: 78px;
+  @media (max-width: 400px) {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+  }
 `;
 
 export const HeaderDetails = styled.div`
@@ -34,6 +39,13 @@ export const HeaderDetails = styled.div`
     align-items: flex-start;
     margin-bottom: 12px;
     margin-top: -14px;
+    @media (max-width: 400px) {
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
+    }
   }
 
   img {
@@ -44,6 +56,18 @@ export const HeaderDetails = styled.div`
     display: inline-block;
     height: 72px;
     width: 72px;
+
+    @media (max-width: 400px) {
+      height: 100px;
+      width: 100px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5px;
   }
 `;
 
@@ -61,6 +85,16 @@ export const Info = styled.div`
     display: inline-block;
     max-width: calc(100% - 96px);
     padding-right: 24px;
+
+    @media (max-width: 400px) {
+      padding: 0;
+      margin-bottom: 5px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
   }
 
   .title {
@@ -73,6 +107,11 @@ export const Info = styled.div`
     padding: 0 2px 4px 0;
     text-overflow: ellipsis;
     width: 100%;
+
+    @media (max-width: 400px) {
+      overflow: visible;
+      width: fit-content;
+    }
   }
 
   .subtitle {
@@ -80,5 +119,13 @@ export const Info = styled.div`
     font-weight: 500;
     line-height: 0;
     color: ${({ theme }) => theme.color.muted};
+  }
+
+  @media (max-width: 400px) {
+    flex-direction: column;
+    margin-top: 5px;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
   }
 `;

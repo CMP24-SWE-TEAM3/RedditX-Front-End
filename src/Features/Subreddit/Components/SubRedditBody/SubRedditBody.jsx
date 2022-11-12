@@ -4,7 +4,7 @@ import { BodyContainer } from "./SubRedditBody.styled";
 
 /**
  * 
- * @returns {React.Component} CreatePost component
+ * @returns {React.Component} Body of subreddit Component
  */
 const SubRedditBody = () => {
   return (

@@ -4,6 +4,7 @@ exports[`modal to select your flair should render without crashing 1`] = `
 <Styled(Modal)
   aria-labelledby="contained-modal-title-vcenter"
   centered={true}
+  show={true}
   size="lg"
 >
   <ModalHeader
@@ -13,8 +14,10 @@ exports[`modal to select your flair should render without crashing 1`] = `
     <styled.div>
       Select your community flair
     </styled.div>
-    <styled.button>
-      <HiXMark />
+    <styled.button
+      onClick={[Function]}
+    >
+      <MdOutlineClear />
     </styled.button>
   </ModalHeader>
   <ModalBody>
@@ -36,6 +39,7 @@ exports[`modal to select your flair should render without crashing 1`] = `
           onChange={[Function]}
         >
           <FormCheck
+            key="0"
             label={
               <styled.span
                 style={
@@ -52,6 +56,7 @@ exports[`modal to select your flair should render without crashing 1`] = `
             type="radio"
           />
           <FormCheck
+            key="1"
             label={
               <styled.span
                 style={
@@ -68,6 +73,7 @@ exports[`modal to select your flair should render without crashing 1`] = `
             type="radio"
           />
           <FormCheck
+            key="2"
             label={
               <styled.span
                 style={
@@ -84,6 +90,7 @@ exports[`modal to select your flair should render without crashing 1`] = `
             type="radio"
           />
           <FormCheck
+            key="3"
             label={
               <styled.span
                 style={

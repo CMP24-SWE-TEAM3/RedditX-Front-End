@@ -4,5 +4,8 @@ exports[`Category bar should render without crashing 1`] = `
 <styled.div>
   <Nav />
   <DropNav />
+  <styled.div>
+    <ChooseDate />
+  </styled.div>
 </styled.div>
 `;

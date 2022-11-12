@@ -4,17 +4,21 @@ exports[`modal to check unsaved changes should render without crashing 1`] = `
 <Styled(Modal)
   aria-labelledby="contained-modal-title-vcenter"
   centered={true}
+  show={true}
   size="lg"
 >
   <ModalHeader
-    closeButton={true}
+    closeButton={false}
     closeLabel="Close"
   >
-    <ModalTitle
-      id="contained-modal-title-vcenter"
-    >
+    <styled.div>
       Save changes before leaving?
-    </ModalTitle>
+    </styled.div>
+    <styled.button
+      onClick={[Function]}
+    >
+      <MdOutlineClear />
+    </styled.button>
   </ModalHeader>
   <ModalBody>
     <p>
@@ -26,6 +30,7 @@ exports[`modal to check unsaved changes should render without crashing 1`] = `
       active={false}
       className="discard"
       disabled={false}
+      onClick={[Function]}
       variant="primary"
     >
       Discard
@@ -34,6 +39,7 @@ exports[`modal to check unsaved changes should render without crashing 1`] = `
       active={false}
       className="save"
       disabled={false}
+      onClick={[Function]}
       variant="primary"
     >
       Save

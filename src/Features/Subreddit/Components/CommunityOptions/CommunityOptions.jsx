@@ -12,7 +12,7 @@ import {
 /**
  * Dropdown community option component 
  * 
- * @returns {React.Component} CreatePost component
+ * @returns {React.Component}
  */
 const CommunityOptions = () => {
   const [down, setDown] = useState(true);
@@ -31,7 +31,7 @@ const CommunityOptions = () => {
   /**
    * switch component
    * 
-   * @returns {React.Component} CreatePost component
+   * @returns {React.Component}
    */
   function Switch() {
     return (

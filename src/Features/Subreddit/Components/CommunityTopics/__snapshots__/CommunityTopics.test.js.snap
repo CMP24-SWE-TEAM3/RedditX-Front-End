@@ -53,6 +53,7 @@ exports[`Add topic and subtopic component should render without crashing 1`] = `
     onHide={[Function]}
     onSave={[Function]}
     show={false}
+    showX={false}
   />
 </styled.div>
 `;
