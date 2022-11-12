@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Uploaded images container should render without crashing 1`] = `
+<styled.aside>
+  <UploadedImage
+    deleteFile={[Function]}
+    file={
+      Object {
+        "name": "image",
+        "uploadDate": "2020-10-10",
+      }
+    }
+    id="image2020-10-10"
+    key="image2020-10-10"
+  />
+</styled.aside>
+`;

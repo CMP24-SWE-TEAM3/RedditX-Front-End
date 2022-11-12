@@ -26,12 +26,7 @@ import {
   SignUpPage,
   NewPasswordPage,
 } from "Features/Authentication";
-
 import Search from "Features/Search/Pages/Search/Search";
-import Posts from "Features/Search/Layouts/PostsPage/Posts";
-import CommentsPage from "Features/Search/Layouts/CommentsPage/CommentsPage";
-import CommunitiesPage from "Features/Search/Layouts/CommunitiesPage/CommunitiesPage";
-import PeoplePage from "Features/Search/Layouts/PeoplePage/PeoplePage";
 
 // Import contexts
 import { AuthProvider } from "Features/Authentication/Contexts/Authentication";

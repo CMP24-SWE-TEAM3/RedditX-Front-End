@@ -4,6 +4,8 @@ import React from "react";
 import SignUpVerticalModal from '../Layouts/SignUpVerticalModal/SignUpVerticalModal';
 import LogInVerticalModal from '../Layouts/LogInVerticalModal/LogInVerticalModal';
 
+import AfterSignUpModal from '../Layouts/AfterSignUpModal/AfterSignUpModal';
+
 export const toggle = () => {
     
 }
@@ -12,6 +14,7 @@ export const toggle = () => {
 const TestHome = () => {
     const [modalShowSignUp, setModalShowSignUp] = React.useState(false);
     const [modalShowLogIn, setModalShowLogIn] = React.useState(false);
+    const [modalAfterSignUp, setModalAfterSignUp] = React.useState(false);
 
   return (
     <>
@@ -24,6 +27,12 @@ const TestHome = () => {
       <Button variant="primary" onClick={() => setModalShowLogIn(true)}>
         Launch Login
       </Button>
+      <br></br>
+      <br></br>
+      <br></br>
+      <Button variant="primary" onClick={() => setModalAfterSignUp(true)}>
+        Launch After Signup
+      </Button>
 
       <SignUpVerticalModal
         show={modalShowSignUp}
@@ -32,6 +41,10 @@ const TestHome = () => {
       <LogInVerticalModal
         show={modalShowLogIn}
         onHide={() => setModalShowLogIn(false)}
+      />
+      <AfterSignUpModal
+        show={modalAfterSignUp}
+        onHide={() => setModalAfterSignUp(false)}
       />
     </>
   );

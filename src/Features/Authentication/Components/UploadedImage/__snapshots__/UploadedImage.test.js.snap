@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Uploaded images container should render without crashing 1`] = `
+<styled.div
+  onClick={[Function]}
+>
+  <styled.div>
+    <Styled(Image)
+      alt="uploaded preview"
+      onLoad={[Function]}
+      selected={true}
+      thumbnail={true}
+    />
+    <styled.button
+      onClick={[Function]}
+      variant="danger"
+    >
+      <ImCross
+        size={20}
+      />
+    </styled.button>
+  </styled.div>
+</styled.div>
+`;

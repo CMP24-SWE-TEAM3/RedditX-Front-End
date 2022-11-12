@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Gender Component this is a test for Gender Component 1`] = `
+<Fragment>
+  <styled.div>
+    <styled.div>
+      <styled.div>
+        <span>
+          <SiReddit
+            color="red"
+            size={60}
+          />
+        </span>
+      </styled.div>
+      <styled.span
+        onClick={[Function]}
+      >
+        Skip
+      </styled.span>
+    </styled.div>
+    <styled.h2>
+      About you
+    </styled.h2>
+    <styled.div>
+      Tell us about yourself to start building your home feed.
+    </styled.div>
+    <styled.div
+      identity={true}
+    >
+      How do you identify?
+    </styled.div>
+    <GenderButton
+      onClick={[Function]}
+    >
+      Woman
+    </GenderButton>
+    <GenderButton
+      onClick={[Function]}
+    >
+      Man
+    </GenderButton>
+  </styled.div>
+</Fragment>
+`;

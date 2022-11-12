@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AfterSignUp Component this is a test for AfterSignUp Component 1`] = `
+<Fragment>
+  <Gender
+    setGender={[Function]}
+    setGenderScreen={[Function]}
+    setInterestsScreen={[Function]}
+    setPhotoUploadScreen={[Function]}
+  />
+</Fragment>
+`;
