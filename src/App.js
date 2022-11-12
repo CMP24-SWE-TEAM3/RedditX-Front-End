@@ -56,7 +56,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <AuthProvider>
-        <TestHome />
+        <ForgetUserNamePage />
       </AuthProvider>
     </ThemeProvider>
   );
