@@ -1,9 +1,7 @@
 // imports
-import React, {useContext, useState} from 'react';
-import {BsCoin, BsXDiamond} from 'react-icons/bs';
+import {BsXDiamond} from 'react-icons/bs';
 import {CiCircleQuestion, CiLogin, CiSettings} from 'react-icons/ci';
 import {DropdownButtonIconStyled, Container} from "./DropDownRight.styled";
-import AuthContext from "Contexts/auth-context";
 import {Accordion, NavDropdown} from "react-bootstrap";
 import {BiCoinStack} from "react-icons/bi";
 import SwitchButton from "Components/SwitchButton/SwitchButton";
@@ -26,18 +24,17 @@ const DropDownRightButton = ({toggleMode}) => {
     const LoginHandler = () => {
         alert('Login or Sign up Page')
     }
-    const ctx = useContext(AuthContext);
     return (
-        <Container title={<DropdownButtonIconStyled/>} id="basic-nav-dropdown">
+        <Container autoClose="outside" title={<DropdownButtonIconStyled/>} id="basic-nav-dropdown">
             <NavDropdown.Item as={'title'} disabled={'disabled'}>
                 <i className={'ico'}><CgProfile/></i>
                 <span className={'stuff'}>My Stuff</span>
             </NavDropdown.Item>
             <div className={'first-sec'}>
-                <NavDropdown.ItemText>
+                <NavDropdown.Item>
                     <span>Online Status</span>
                     <span className={'switch-but'}> <SwitchButton/></span>
-                </NavDropdown.ItemText>
+                </NavDropdown.Item>
                 <NavDropdown.Item>
                     <span>Profile</span>
                 </NavDropdown.Item>
@@ -55,14 +52,14 @@ const DropDownRightButton = ({toggleMode}) => {
                 <span className={'stuff'}>View Options</span>
             </NavDropdown.Item>
             <div className={'first-sec'}>
-                <NavDropdown.ItemText>
+                <NavDropdown.Item>
                     <span>Mod Mode</span>
                     <span className={'switch-but'}> <SwitchButton/></span>
-                </NavDropdown.ItemText>
-                <NavDropdown.ItemText>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
                     <span>Dark Mode</span>
                     <span className={'switch-but'}> <SwitchButton toggle={toggleMode}/></span>
-                </NavDropdown.ItemText>
+                </NavDropdown.Item>
             </div>
             <NavDropdown.Divider/>
             <NavDropdown.Item>
@@ -110,37 +107,37 @@ const DropDownRightButton = ({toggleMode}) => {
                     </Accordion.Header>
                     <Accordion.Body>
                         <Accordion defaultActiveKey="1">
-                                <Accordion.Header>Gaming</Accordion.Header>
-                                <Accordion.Body className={'child'}>
-                                    <NavDropdown.Item>MineCraft</NavDropdown.Item>
-                                    <NavDropdown.Item>Pokimane</NavDropdown.Item>
-                                    <hr className={'border-dark my-3'}/>
-                                </Accordion.Body>
+                            <Accordion.Header>Gaming</Accordion.Header>
+                            <Accordion.Body className={'child'}>
+                                <NavDropdown.Item>MineCraft</NavDropdown.Item>
+                                <NavDropdown.Item>Pokimane</NavDropdown.Item>
+                                <hr className={'border-dark my-3'}/>
+                            </Accordion.Body>
                         </Accordion>
                         <Accordion defaultActiveKey="1">
-                                <Accordion.Header>Sports</Accordion.Header>
-                                <Accordion.Body className={'child'}>
-                                    <NavDropdown.Item>NBA</NavDropdown.Item>
-                                    <NavDropdown.Item>NFL</NavDropdown.Item>
-                                    <NavDropdown.Item>Item 4B</NavDropdown.Item>
-                                    <hr className={'border-dark my-3'}/>
-                                </Accordion.Body>
+                            <Accordion.Header>Sports</Accordion.Header>
+                            <Accordion.Body className={'child'}>
+                                <NavDropdown.Item>NBA</NavDropdown.Item>
+                                <NavDropdown.Item>NFL</NavDropdown.Item>
+                                <NavDropdown.Item>Item 4B</NavDropdown.Item>
+                                <hr className={'border-dark my-3'}/>
+                            </Accordion.Body>
                         </Accordion>
                         <Accordion defaultActiveKey="1">
-                                <Accordion.Header>Television</Accordion.Header>
-                                <Accordion.Body className={'child'}>
-                                    <NavDropdown.Item>Wife Swap</NavDropdown.Item>
-                                    <NavDropdown.Item>Sister Wives</NavDropdown.Item>
-                                    <hr className={'border-dark my-3'}/>
-                                </Accordion.Body>
+                            <Accordion.Header>Television</Accordion.Header>
+                            <Accordion.Body className={'child'}>
+                                <NavDropdown.Item>Wife Swap</NavDropdown.Item>
+                                <NavDropdown.Item>Sister Wives</NavDropdown.Item>
+                                <hr className={'border-dark my-3'}/>
+                            </Accordion.Body>
                         </Accordion>
                         <Accordion defaultActiveKey="1">
-                                <Accordion.Header>Celebrity</Accordion.Header>
-                                <Accordion.Body className={'child'}>
-                                    <NavDropdown.Item>Doja Cat</NavDropdown.Item>
-                                    <NavDropdown.Item>Anya Taylor-Joy</NavDropdown.Item>
-                                    <hr className={'border-dark my-3'}/>
-                                </Accordion.Body>
+                            <Accordion.Header>Celebrity</Accordion.Header>
+                            <Accordion.Body className={'child'}>
+                                <NavDropdown.Item>Doja Cat</NavDropdown.Item>
+                                <NavDropdown.Item>Anya Taylor-Joy</NavDropdown.Item>
+                                <hr className={'border-dark my-3'}/>
+                            </Accordion.Body>
                         </Accordion>
                         <hr className={'border-dark my-3'}/>
                     </Accordion.Body>
@@ -209,7 +206,3 @@ const DropDownRightButton = ({toggleMode}) => {
 };
 
 export default DropDownRightButton;
-
-
-//switch buttons
-//

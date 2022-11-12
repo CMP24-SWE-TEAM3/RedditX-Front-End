@@ -14,6 +14,12 @@ export const CommunityContainer = styled.div`
     position: relative
   }
 
+  .filter {
+    background: linear-gradient(0deg, rgba(0, 0, 0, .7) 0, transparent);
+    width: 100%;
+    height: 100%;;
+  }
+
   & .sub-but {
     position: relative;
     background-color: ${({theme}) => theme.background.post_background};
@@ -134,5 +140,5 @@ export const CommunityContainer = styled.div`
       background-color: ${({theme}) => theme.background.hover_background_button_blue};
     }
   }
-  
+
 `

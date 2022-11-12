@@ -16,6 +16,9 @@ export const DropDownLeftStyled = styled(Dropdown)`
 
   .home-ico {
     position: relative;
+    span:first-child{
+      padding-right: 10px;
+    }
   }
 
   height: 36px;
@@ -55,6 +58,7 @@ export const DropDownLeftStyled = styled(Dropdown)`
     svg {
       polyline {
         stroke: ${({theme}) => theme.color.primary} !important;
+        stroke-width:1;
       }
     }
 

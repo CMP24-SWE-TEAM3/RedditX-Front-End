@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: ${({theme}) => theme.background.primary};
+  //background-color: ${({theme}) => theme.background.primary};
   color: ${({theme}) => theme.color.muted};
 
 
@@ -64,7 +64,7 @@ export const Container = styled.div`
   }
 
   & button {
-    margin-left: 8px;
+    //margin-left: 8px;
     background: transparent;
     border: none;
     color: inherit;

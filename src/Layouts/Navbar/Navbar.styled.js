@@ -34,7 +34,7 @@ export const StyledSeperator = styled.div
       border-left: 1px solid silver;
       height: 75%;
       margin-left: 8px;
-      @media(max-width: 790px){
+      @media(max-width: 990px){
         display: none;
       }
     `

@@ -3,7 +3,6 @@ import React from 'react';
 import {MdOutlineRemoveModerator} from 'react-icons/md';
 import {ButtonModerator} from './ModeratorButton.styled';
 import Dropdown from "react-bootstrap/Dropdown";
-import {GrMailOption} from 'react-icons/gr';
 import {TbBoxModel2} from "react-icons/tb";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";

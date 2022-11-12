@@ -94,27 +94,6 @@ export const DropdownContainer = styled.div`
     border-color: ${({theme}) => theme.color.secondary} !important;
     box-shadow: none;
   }
-
-  // .dropdown-menu {
-  //   background-color: ${({theme}) => theme.background.post_background};
-  //   border: 1px solid white;
-  //   border-radius: 0 0 4px 4px;
-  //   box-sizing: border-box;
-  //   transform: none !important;
-  //   margin-top: -1px;
-  //   height:482px;
-  //   //min-height: 100%;
-  //   overflow: hidden scroll;
-  //   position: fixed;
-  //   display: flex;
-  //   -ms-flex-direction: column;
-  //   flex-direction: column;
-  //   left: 0;
-  //   bottom: 0;
-  //   right: 0;
-  //   top: 48px;
-  //   width: 270px;
-  // }
   .dropdown-item-text{
     font-size: 10px;
     font-weight: 500;

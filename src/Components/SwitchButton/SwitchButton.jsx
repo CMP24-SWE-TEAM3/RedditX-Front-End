@@ -1,9 +1,6 @@
 // imports
 import React, {useState} from 'react';
 import {ReactSwitch} from "./SwitchButton.styled";
-import defaultTheme from "Theme/defaultTheme";
-import lightTheme from "Theme/lightTheme";
-import darkTheme from "Theme/darkTheme";
 
 /**
  * Component that toggles to on and off when the user clicks on a button

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  
   & a {
     margin-bottom: 0;
       //border-bottom: thin solid ${({theme}) => theme.lineColor.PostBorder};
@@ -135,4 +136,4 @@ export const Container = styled.div`
     line-height: 18px;
     
   }
-`;
+`

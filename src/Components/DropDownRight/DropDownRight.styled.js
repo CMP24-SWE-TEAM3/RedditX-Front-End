@@ -3,14 +3,18 @@ import {BsPerson} from 'react-icons/bs';
 import {NavDropdown} from "react-bootstrap";
 
 export const Container = styled(NavDropdown)`
-  @media (max-width: 450px) {
-    display: none;
+  //@media (max-width: 450px) {
+  //  display: none;
+  //}
+  @media(max-width:990px){
+    max-width:fit-content;
+    width:fit-content;
   }
   font-size: 20px;
   font-weight: 500;
   color: ${({theme}) => theme.color.primary} !important;
-  background-color: ${({theme}) => theme.background.primary} !important;
-
+  //background-color: ${({theme}) => theme.background.primary} !important;
+  background: unset !important;
   .dropdown-toggle::after {
     vertical-align: 0.1em;
     color: #878a8c
@@ -160,7 +164,11 @@ export const Container = styled(NavDropdown)`
     transform: translate3d(0px, 35px, 0px) !important;
     height: 578px;
     background-color: ${({theme}) => theme.background.primary} !important;
-
+    left: -140px;
+    top: 10px;
+    @media (max-width:990px){
+      width:fit-content;
+    }
 
     .stuff {
       font-weight: 500;
@@ -212,6 +220,9 @@ export const Container = styled(NavDropdown)`
     :hover {
       background-color: ${({theme}) => theme.background.muted} !important;
     }
+    :focus{
+      background-color: unset !important;
+    }
 
     span {
       flex: 0 0;
@@ -238,7 +249,7 @@ export const Container = styled(NavDropdown)`
   // }
 
   @media only screen and (max-width: 1290px) {
-    left: 20px;
+    //left: 20px;
   }
 
   .footer {

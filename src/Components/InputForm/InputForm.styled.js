@@ -5,7 +5,7 @@ export const StyledSearcherInput = styled.input`
   background-color: ${({theme})=>theme.background.post_background};
   //background-color: #272729;
   //color: ${({theme})=>theme.lineColor.secondary};
-  color:#333;
+  color:${({theme})=>theme.color.primary};
   font-size: 14px;
   border: 1px solid ${({theme})=>theme.background.primary};
   width: 100%;
@@ -16,6 +16,7 @@ export const StyledSearcherInput = styled.input`
 
   &::placeholder {
     font-size: 14px;
+    color: ${({theme})=>theme.lineColor.secondary};
   }
 
   line-height: normal;

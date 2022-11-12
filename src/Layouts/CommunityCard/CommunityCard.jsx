@@ -24,21 +24,22 @@ const TopCommunities = () => {
             },
         },
     });
-    // console.log(communityList);
-    // console.log(reload)
     return (
         <CommunityContainer>
             <div className={'cover'}>
-                <h2>
-                    <Link href={"https://www.reddit.com/subreddits/leaderboard/"}>Top
-                        <span>&nbsp; Gaming &nbsp;</span>
-                        Communities
-                    </Link>
-                </h2>
+                <div className={'filter'}>
+
+                    <h2>
+                        <Link href={"https://www.reddit.com/subreddits/leaderboard/"}>Top
+                            <span>&nbsp;Gaming&nbsp;</span>
+                            Communities
+                        </Link>
+                    </h2>
+                </div>
             </div>
             {!loading && communityList.map(community => {
                 return (
-                    <CommunityCardItem key={community.id} community={community.name}/>
+                    <CommunityCardItem key={community.id} community={community.name} communityId={community.id}/>
                 )
             })}
 

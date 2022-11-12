@@ -5,7 +5,7 @@ export const GlobalButtonStyled = styled.button
       background: none;
       border: none;
       outline: none;
-      margin: 4px;
+      //margin: 4px;
       width: 38px;
       height: 38px;
 
@@ -19,7 +19,7 @@ export const GlobalButtonStyled = styled.button
     `
 export const ButtonsGroupStyled = styled.div
 `
-  @media (max-width:790px){
-    display:none;
-  }
+  //@media (max-width:790px){
+  //  display:none;
+  //}
 `

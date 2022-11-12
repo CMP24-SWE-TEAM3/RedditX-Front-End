@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const DropDownMenuStyled = styled.div`
-
+  position: absolute;
   .dropdown-menu {
     background-color: ${({theme}) => theme.background.primary};
     border: 1px solid white;
@@ -10,7 +10,7 @@ export const DropDownMenuStyled = styled.div`
     margin-top: -1px;
     height: 482px;
     overflow: hidden scroll;
-    position: fixed;
+    position: sticky;
     display: flex;
     -ms-flex-direction: column;
     flex-direction: column;

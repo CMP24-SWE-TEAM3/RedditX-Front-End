@@ -30,7 +30,7 @@ const Navbar = ({theme,toggleMode}) => {
         <StyledHeader>
             <div className='search'>
                 <Badge theme={theme}/>
-                <DropDownLeft Name={"Home"}/>
+                <DropDownLeft/>
                 <SearchBar/>
             </div>
             {ctx.isLoggedIn &&
@@ -50,7 +50,6 @@ const Navbar = ({theme,toggleMode}) => {
             </div>}
 
 
-            {/*<DropFunc Name={"Profile"}/>*/}
             <DropDownRightButton toggleMode={toggleMode}/>
         </StyledHeader>
     );

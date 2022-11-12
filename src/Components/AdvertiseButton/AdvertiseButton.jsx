@@ -11,7 +11,7 @@ const AdvertiseButton = () => {
     return (
         <AdvertiseButtonStyled>
             <span><HiOutlineSpeakerphone/></span>
-            <span>Advertise</span>
+            {/*<span>Advertise</span>*/}
         </AdvertiseButtonStyled>
     );
 };

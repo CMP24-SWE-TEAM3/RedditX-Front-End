@@ -20,7 +20,7 @@ const Badge = ({theme}) => {
                 <StyledIcon src={logo} alt="logo of reddit"/>
                 < StyledTextLogo src={textLogo} alt="Reddit Logo"/>
             </Link>
-        </StyledLink>
+         </StyledLink>
     );
 };
 export default Badge;

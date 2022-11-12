@@ -1,14 +1,14 @@
 import {useState} from "react";
 import logo from "Assets/Images/logo.png";
 import {Container} from "./CommunityCardItem.styled";
-import {GrFormUp} from "react-icons/gr";
 import { Link } from "react-router-dom";
+import {FaAngleUp,FaAngleDown} from "react-icons/fa";
 
 /**
  * Component that  shows the names of communities up-to-date.
  * @returns {Component.React}
  */
-const CommunityCardItem = ({community}) => {
+const CommunityCardItem = ({communityId,community}) => {
     const [btnContent, setBtnContent] = useState("Join");
 
     const clickHandler = (e) => {
@@ -36,8 +36,8 @@ const CommunityCardItem = ({community}) => {
         <Container>
             <Link href="https://www.reddit.com/r/Steam/">
                 <div className="item">
-                    <span className={'num'}>1</span>
-                    <span className='caret'><GrFormUp/></span>
+                    <span className={'num'}>{communityId}</span>
+                    <span className='caret'><FaAngleUp/></span>
                     <img src={logo} alt=""/>
                     <div className="info">
                         <div className="info2">

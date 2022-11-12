@@ -4,15 +4,18 @@ import Dropdown from "react-bootstrap/Dropdown";
 export const ButtonModerator = styled(Dropdown)`
   border: none;
   outline: none;
-  width: 38px;
+  //width: 38px;
   //height: 38px;
   margin: 0 8px;
   color:${({theme}) => theme.color.muted} !important;
-
-  &:hover {
-    background: ${({theme}) => theme.background.post_background};
+  @media(max-width: 768px) {
+    width: auto;
   }
 
+  :hover {
+    background: ${({theme}) => theme.background.post_background};
+  }
+  
   span {
     padding-right: 3px;
   }

@@ -1,15 +1,16 @@
 import styled from "styled-components";
 
 export const AdvertiseButtonStyled = styled.button`
-  @media (max-width: 420px) {
-    display: none;
-  }
+  //@media (max-width: 420px) {
+  //  display: none;
+  //}
   @media (max-width: 600px) {
     width: fit-content;
   }
-  width: 110.34px;
-  margin-left: 8px;
-  margin-right: 8px;
+  //width: 110.34px;
+  width: fit-content;
+  //margin-left: 8px;
+  //margin-right: 8px;
   height: 32px;
   border-radius: 50px;
   flex-direction: row;
@@ -31,8 +32,8 @@ export const AdvertiseButtonStyled = styled.button`
   }
 
   span:last-child {
-    @media (max-width: 600px) {
-      display: none;
+    @media (max-width: 770px) {
+      //display: none;
     }
   }
 

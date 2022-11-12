@@ -14,6 +14,7 @@ import {ThemeProvider} from "styled-components";
 import ScrollButton from "Components/ScrollButton/ScrollButton";
 import darkTheme from "Theme/darkTheme";
 import RecentPosts from "Layouts/RecentPosts/RecentPosts";
+import Navigation from "../../Layouts/Navigation/Navigation";
 
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
@@ -36,7 +37,8 @@ const HomePage = () => {
             <ThemeProvider theme={theme}>
                 <styles.AppContainer>
                     <styles.AppHeader>
-                        <Navbar toggleMode={handleToggleTheme} theme={theme}/>
+                        <Navigation toggleMode={handleToggleTheme} theme={theme}/>
+                        {/*<Navbar toggleMode={handleToggleTheme} theme={theme}/>*/}
                         <MainContainer>
                             <div className="main"/>
                             <Container>
