@@ -17,12 +17,12 @@ import * as styles from "App.styled";
  * @returns {React.Component} returns an instance of HomePage with a list of layouts created
  */
 
-const HomePage = ({ toggleMode, theme }) => {
+const HomePage = ({ handleToggleTheme, theme }) => {
   return (
     <>
       <styles.AppContainer>
         <styles.AppHeader>
-          <Navigation toggleMode={toggleMode} theme={theme} />
+          <Navigation toggleMode={handleToggleTheme} theme={theme} />
           {/*<Navbar toggleMode={handleToggleTheme} theme={theme}/>*/}
           <MainContainer>
             <div className="main" />

@@ -28,6 +28,8 @@ const darkTheme = {
     pink: "#fb133a",
     // The color of the text of the main links of search page
     titleText_of_link: "#D7DADC",
+    // color of paragraphs on the website
+    gray: "#818384",
 
     // Some colors for authentication part
     logInButtonColorHovered: "#dc4a14",
@@ -69,6 +71,12 @@ const darkTheme = {
     card_hover: "#353537",
     // Comment background color in search page
     comment: "#17232D",
+    // color of post background
+    post_background: "#343536",
+    // Search Bar Background
+    search_bar_background: "#272729",
+    // hover_background_button_blue
+    hover_background_button_blue: "#d7dadc",
   },
   // Border colors
   borderColor: {

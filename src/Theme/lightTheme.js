@@ -48,6 +48,8 @@ const lightTheme = {
     danger: "#ea0027",
     // The color of the side Bar Header [Useful For Gradient]
     sideBarHeader: "#fff",
+    // color of paragraphs on the website
+    gray: "#7c7c7c"
   },
   // The colors of the backgrounds in the website
   background: {
@@ -69,6 +71,14 @@ const lightTheme = {
     card_hover: "#E3EDF6",
     // Comment background color in search page
     comment: "#e9f5fd",
+    // color of background of post
+    post_background: "#f6f7f8",
+    // search bar background
+    search_bar_background: "#f6f7f8",
+    // hovering of buttons
+    hover_background: "#f5fafd",
+    // hover_background_button_blue
+    hover_background_button_blue: "#1484d6",
   },
   // Border colors
   borderColor: {

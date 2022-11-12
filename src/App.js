@@ -72,7 +72,7 @@ function App() {
             <Route path="subreddit" element={<SubReddit />} />
             <Route path="category/*" element={<CommunityLeaderBoard />} />
             <Route path="index-page" element={<IndexPage />} />
-            <Route path="search/*" element={<Search />}></Route>
+            <Route path="search/*" element={<Search/>}/>
             <Route path="submit" element={<CreatePost />} />
             <Route path="login" element={<LogInPage />} />
             <Route path="register" element={<SignUpPage />} />
