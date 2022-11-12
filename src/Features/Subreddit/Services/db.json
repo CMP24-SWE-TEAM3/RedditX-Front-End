@@ -208,10 +208,21 @@
       },
       "data": {
         "action": "sub",
-        "sr_name": "r/space"
+        "sr_name": "r/mildlyinteresting"
       },
       "signal": {},
       "id": 1
+    },
+    {
+      "headers": {
+        "Content-Language": "en-US"
+      },
+      "data": {
+        "action": "unsub",
+        "sr_name": "r/funny"
+      },
+      "signal": {},
+      "id": 2
     }
   ],
   "feedback--Leaderboard": [

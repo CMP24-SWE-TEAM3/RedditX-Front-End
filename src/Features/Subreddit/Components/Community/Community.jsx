@@ -80,7 +80,7 @@ import {
     <CommunityItem>
       <CommunityA href={`/${title}`}>
         <CommunityIndex>{index}</CommunityIndex>
-        <Arrow up={isRising}></Arrow>
+        <Arrow up={isRising? "true": "false"}></Arrow>
         <CommunityImg
           src={require(`../../Assets/images/${img}`)}
           alt="logo"

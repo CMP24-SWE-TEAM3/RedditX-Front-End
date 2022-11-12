@@ -34,7 +34,7 @@ export default function Categories() {
 
   let CatergoryElement = currentCategory.map((element) => {
     return (
-      <li>
+      <li key = {element.id}>
         <Category
           to={`/category/${element.title.replace(/\s/g, '')}`}
         >

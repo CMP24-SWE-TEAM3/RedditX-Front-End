@@ -45,7 +45,9 @@ function App() {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>   
-          <Button onClick={handleToggleTheme}>
+          <Button 
+          id = 'toggle-btn'
+          onClick={handleToggleTheme}>
             Toggle theme
           </Button>
         <LeaderBoard />

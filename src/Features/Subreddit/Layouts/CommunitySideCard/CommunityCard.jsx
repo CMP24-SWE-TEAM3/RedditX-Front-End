@@ -35,9 +35,8 @@ const TopCommunities = () => {
 
     const com = communityList.map((community, index) => {
         return (
-            <li>
-                <CommunityCardItem 
-                key={community.id}
+            <li key={community.id}>
+                <CommunityCardItem
                 title = {community.title} 
                 community={community.name} 
                 index = {index+1}/>

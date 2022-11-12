@@ -4,8 +4,8 @@ import { FaAngleUp } from "react-icons/fa";
 export const Arrow = styled(FaAngleUp)`
   position: absolute;
   left: 52px;
-  color: ${({ up }) => (up ? "#46D160" : "#EA2700")};
-  transform: ${({ up }) => (up ? "none" : "rotate(180deg)")};
+  color: ${({ up }) => (up ==='true'? "#46D160" : "#EA2700")};
+  transform: ${({ up }) => (up ==='true'? "none" : "rotate(180deg)")};
 `;
 
 export const CommunityItem = styled.div`

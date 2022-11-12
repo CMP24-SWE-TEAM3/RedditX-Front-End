@@ -27,9 +27,9 @@ export default function Container({com, subscribed}) {
 
   const communities = com.map((community, index) => {
     return (
-      <li>
+      <li key={community.id.toString()}>
         <Community
-          key={community.id.toString()}
+          
           id = {community.id}
           index = {index+1}
           img={community.coverImg}

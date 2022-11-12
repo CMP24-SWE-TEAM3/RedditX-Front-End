@@ -100,7 +100,7 @@ const com = communityList.map((community, index) => {
               </LettersContainer>
             </Browse>
             <BackTop>
-              <BackTopBtn href="#">Back to Top</BackTopBtn>
+              <BackTopBtn id="backTop-btn" href="#">Back to Top</BackTopBtn>
             </BackTop>
           </SecondBlockWithBrowse>
         </RightSectionSticky>
