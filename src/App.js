@@ -34,7 +34,9 @@ import { AuthProvider } from "Features/Authentication/Contexts/Authentication";
 
 // TODO: remove this dummy page
 import DummyPage from "Pages/DummyPage/DummyPage";
-
+import Navigation from "./Layouts/Navigation/Navigation";
+import LogInVerticalModal from "./Features/Authentication/Layouts/LogInVerticalModal/LogInVerticalModal";
+import SignUpVerticalModal from "./Features/Authentication/Layouts/SignUpVerticalModal/SignUpVerticalModal";
 /**
  * The main app of our application it handles routing
  *
@@ -55,10 +57,33 @@ function App() {
       setTheme({ ...defaultTheme, ...darkTheme });
     }
   };
+
+  const [modalShowSignUp, setModalShowSignUp] = React.useState(false);
+  const [modalShowLogIn, setModalShowLogIn] = React.useState(false);
+  const [modalAfterSignUp, setModalAfterSignUp] = React.useState(false);
   return (
     <ThemeProvider theme={theme}>
       <AuthProvider>
         <BrowserRouter>
+          <Navigation
+              toggleMode={handleToggleTheme}
+              theme={theme.id}
+              modalShowLogIn={modalShowLogIn}
+              setModalShowLogIn={setModalShowLogIn}
+              modalShowSignUp={modalShowSignUp}
+              setModalShowSignUp={setModalShowSignUp}
+              modalAfterSignUp={modalAfterSignUp}
+              setModalAfterSignUp={setModalAfterSignUp}
+          />
+          <LogInVerticalModal
+              show={modalShowLogIn}
+              onHide={() => setModalShowLogIn(false)}
+              setModalShowLogIn={setModalShowLogIn}/>
+          <SignUpVerticalModal
+              show={modalShowSignUp}
+              onHide={() => setModalShowSignUp(false)}
+              setModalShowSignUp={setModalShowSignUp}
+          />
           <Routes>
             <Route
               path="/"
