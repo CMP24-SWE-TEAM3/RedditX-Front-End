@@ -575,6 +575,16 @@
       },
       "signal": {},
       "id": 13
+    },
+    {
+      "data": {
+        "type": "bare email",
+        "email": "a.m.hamza156@gmail.com",
+        "username": "ice_224",
+        "password": "asdasd123"
+      },
+      "signal": {},
+      "id": 14
     }
   ],
   "username-available": [
@@ -1628,6 +1638,28 @@
       },
       "signal": {},
       "id": 77
+    },
+    {
+      "headers": {
+        "Content-Language": "en-US"
+      },
+      "data": {
+        "action": "unsub",
+        "sr_name": "GermanWW2photos"
+      },
+      "signal": {},
+      "id": 78
+    },
+    {
+      "headers": {
+        "Content-Language": "en-US"
+      },
+      "data": {
+        "action": "sub",
+        "sr_name": "GermanWW2photos"
+      },
+      "signal": {},
+      "id": 79
     }
   ],
   "communities": [
