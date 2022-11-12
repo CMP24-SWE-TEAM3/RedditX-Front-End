@@ -1,3 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Search Drop Down Component this is a test for Search Drop Down 1`] = `ShallowWrapper {}`;
+exports[`Search Drop Down Component this is a test for Search Drop Down 1`] = `
+<Styled(DropdownMenu)
+  autoClose={true}
+  key="0.704292907487998"
+  rootCloseEvent="click"
+>
+  <DropdownHeader
+    role="heading"
+  >
+    trending today
+  </DropdownHeader>
+</Styled(DropdownMenu)>
+`;

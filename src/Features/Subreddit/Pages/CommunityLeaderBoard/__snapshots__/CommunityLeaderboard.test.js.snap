@@ -9,7 +9,10 @@ exports[`Community LeaderBoard Page this is a test for the whole Community Leade
       <styled.div>
         <CategoryDropDown />
       </styled.div>
-      <Container />
+      <Container
+        com={Array []}
+        subscribed={Array []}
+      />
       <RightSection />
     </styled.div>
   </styled.div>

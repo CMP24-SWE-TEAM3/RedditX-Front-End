@@ -1,3 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Search Bar Component this is a test for Search 1`] = `ShallowWrapper {}`;
+exports[`Search Bar Component this is a test for Search 1`] = `
+<Fragment>
+  <styled.div>
+    <Styled(CiSearch) />
+    <InputForm />
+  </styled.div>
+</Fragment>
+`;

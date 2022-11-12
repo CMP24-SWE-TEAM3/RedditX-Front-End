@@ -1,3 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Create Post button Component this is a test for Create post button 1`] = `ShallowWrapper {}`;
+exports[`Create Post button Component this is a test for Create post button 1`] = `
+<Router
+  location={
+    Object {
+      "hash": "",
+      "key": "default",
+      "pathname": "/",
+      "search": "",
+      "state": null,
+    }
+  }
+  navigationType="POP"
+  navigator={
+    Object {
+      "action": "POP",
+      "createHref": [Function],
+      "go": [Function],
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "key": "default",
+        "pathname": "/",
+        "search": "",
+        "state": null,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <Routes>
+    <CreatePostButton />
+  </Routes>
+</Router>
+`;

@@ -1,105 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LogInScreen Layout this is a test for LogInScreen Layout 1`] = `
-<Fragment>
-  <styled.div>
-    <styled.span>
-      <styled.h2>
-        Log In
-      </styled.h2>
-      <styled.div>
-        By continuing, you agree are setting up a Reddit account and agree to our 
-        <styled.span>
-          User Agreement
-        </styled.span>
-         and
-         
-        <styled.span>
-          Privacy Policy
-        </styled.span>
-        .
-      </styled.div>
-      <styled.div>
-        <button
-          onClick={[Function]}
-        >
-          <FcGoogle
-            size={22}
-          />
-          <span>
-             Continue With Google
-          </span>
-        </button>
-      </styled.div>
-      <styled.div>
-        <button
-          onClick={[Function]}
-        >
-          <BsFacebook
-            size={22}
-          />
-          <span>
-             Continue With Facebook
-          </span>
-        </button>
-      </styled.div>
-      <styled.h2>
-        <span>
-          OR
-        </span>
-      </styled.h2>
-      <form
-        onSubmit={[Function]}
-      >
-        <FormInput
-          label="Username"
-          name="userName"
-          onChange={[Function]}
-          onFocus={[Function]}
-          showIcon={true}
-          type="text"
-          value=""
-        />
-        <styled.p>
-          Username must be between 3 and 20 characters
-        </styled.p>
-        <FormInput
-          label="Password"
-          name="password"
-          onChange={[Function]}
-          onFocus={[Function]}
-          showIcon={true}
-          type="password"
-          value=""
-        />
-        <styled.span>
-          Forget your
-           
-          <button
-            onClick={[Function]}
-          >
-            username
-          </button>
-           
-          or
-           
-          <button
-            onClick={[Function]}
-          >
-            password
-          </button>
-        </styled.span>
-        <styled.div>
-          <Button
-            disabled={true}
-            onClick={[Function]}
-            type="submit"
-          >
-            Log In
-          </Button>
-        </styled.div>
-      </form>
-    </styled.span>
-  </styled.div>
-</Fragment>
+<Router
+  location={
+    Object {
+      "hash": "",
+      "key": "default",
+      "pathname": "/",
+      "search": "",
+      "state": null,
+    }
+  }
+  navigationType="POP"
+  navigator={
+    Object {
+      "action": "POP",
+      "createHref": [Function],
+      "go": [Function],
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "key": "default",
+        "pathname": "/",
+        "search": "",
+        "state": null,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <Routes>
+    <LogInScreen
+      formFields={
+        Object {
+          "email": "",
+          "password": "",
+          "userName": "",
+        }
+      }
+    />
+  </Routes>
+</Router>
 `;

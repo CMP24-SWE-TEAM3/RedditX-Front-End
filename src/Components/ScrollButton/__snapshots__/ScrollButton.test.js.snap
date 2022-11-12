@@ -1,3 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Scroll this is a test for Scroll Button 1`] = `ShallowWrapper {}`;
+exports[`Scroll this is a test for Scroll Button 1`] = `
+<styled.button
+  id="back-to-top-button"
+  onClick={[Function]}
+  show={false}
+>
+  Back to Top
+</styled.button>
+`;

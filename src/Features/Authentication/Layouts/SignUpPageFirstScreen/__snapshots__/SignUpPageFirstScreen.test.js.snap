@@ -1,96 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SignUpPageFirstScreen Layout this is a test for SignUpPageFirstScreen Layout 1`] = `
-<Fragment>
-  <styled.div>
-    <styled.div>
-      <styled.div />
-      <styled.div>
-        <styled.div>
-          <styled.span>
-            <styled.h2>
-              Sign Up
-            </styled.h2>
-            <styled.div>
-              By continuing, you agree are setting up a Reddit account and agree to our 
-              <styled.span>
-                User Agreement
-              </styled.span>
-               and
-               
-              <styled.span>
-                Privacy Policy
-              </styled.span>
-              .
-            </styled.div>
-            <styled.div>
-              <button
-                onClick={[Function]}
-              >
-                <FcGoogle
-                  size={22}
-                />
-                <span>
-                   CONTINUE WITH GOOGLE
-                </span>
-              </button>
-            </styled.div>
-            <styled.div>
-              <button
-                onClick={[Function]}
-              >
-                <FaFacebookSquare
-                  size={22}
-                />
-                <span>
-                   CONTINUE WITH FACEBOOK
-                </span>
-              </button>
-            </styled.div>
-            <styled.h2>
-              <span>
-                OR
-              </span>
-            </styled.h2>
-            <form
-              onSubmit={[Function]}
-            >
-              <FormInputPageCom
-                label="EMAIL"
-                name="email"
-                onChange={[Function]}
-                onFocus={[Function]}
-                required={true}
-                showIcon={true}
-                type="email"
-                value=""
-              />
-              <styled.p />
-              <styled.div>
-                <Button
-                  disabled={true}
-                  onClick={[Function]}
-                  page={true}
-                  type="button"
-                >
-                  Continue
-                </Button>
-              </styled.div>
-              <br />
-              <styled.span>
-                Already a redditor?
-                 
-                <button
-                  onClick={[Function]}
-                >
-                  LOG IN
-                </button>
-              </styled.span>
-            </form>
-          </styled.span>
-        </styled.div>
-      </styled.div>
-    </styled.div>
-  </styled.div>
-</Fragment>
+<Router
+  location={
+    Object {
+      "hash": "",
+      "key": "default",
+      "pathname": "/",
+      "search": "",
+      "state": null,
+    }
+  }
+  navigationType="POP"
+  navigator={
+    Object {
+      "action": "POP",
+      "createHref": [Function],
+      "go": [Function],
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "key": "default",
+        "pathname": "/",
+        "search": "",
+        "state": null,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <Routes>
+    <SignUpPageFirstScreen
+      formFields={
+        Object {
+          "email": "",
+          "password": "",
+          "userName": "",
+        }
+      }
+    />
+  </Routes>
+</Router>
 `;

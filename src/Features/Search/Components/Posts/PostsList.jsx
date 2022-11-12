@@ -17,7 +17,7 @@ const PostsList = ({ type, PostList }) => {
     <ContainerPostsList>
       <div className="Posts-List">
         <div className="Sub-List">
-          {PostList.map((post) => (
+          {PostList?.map((post) => (
             <PostItem post={post} key={post.postID} />
           ))}
         </div>

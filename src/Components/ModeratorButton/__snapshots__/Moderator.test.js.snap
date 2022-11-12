@@ -1,3 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Moderator button Component this is a test for Moderator Component 1`] = `ShallowWrapper {}`;
+exports[`Moderator button Component this is a test for Moderator Component 1`] = `
+<Fragment>
+  <OverlayTrigger
+    defaultShow={false}
+    key="bottom"
+    overlay={
+      <Tooltip
+        id="tooltip-bottom"
+        placement="right"
+      >
+        Moderator
+      </Tooltip>
+    }
+    placement="bottom"
+    trigger={
+      Array [
+        "hover",
+        "focus",
+      ]
+    }
+  >
+    <Styled(Dropdown)
+      id="moderator-button"
+    >
+      <DropdownToggle
+        as={[Function]}
+        key="0.006880824850957312"
+      />
+      <DropdownMenu
+        flip={true}
+        id="moderator-menu"
+      >
+        <DropdownItem
+          href="#"
+          key="0.6097240744188936"
+        >
+          <span>
+            <TbBoxModel2 />
+          </span>
+           
+          <span>
+            Mod Queue
+          </span>
+        </DropdownItem>
+        <DropdownItem
+          href="#"
+          key="0.9388889584503877"
+        >
+          <span>
+            <FiMail />
+          </span>
+           
+          <span>
+            Modmail
+          </span>
+        </DropdownItem>
+      </DropdownMenu>
+    </Styled(Dropdown)>
+  </OverlayTrigger>
+</Fragment>
+`;

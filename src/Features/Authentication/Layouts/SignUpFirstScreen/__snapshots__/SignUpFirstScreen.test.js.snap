@@ -4,7 +4,9 @@ exports[`SignUpFirstScreen Layout this is a test for SignUpFirstScreen Layout 1`
 <Fragment>
   <styled.div>
     <styled.span>
-      <styled.h2>
+      <styled.h2
+        id="signUpContainerModal"
+      >
         Sign Up
       </styled.h2>
       <styled.div>
@@ -21,6 +23,7 @@ exports[`SignUpFirstScreen Layout this is a test for SignUpFirstScreen Layout 1`
       </styled.div>
       <styled.div>
         <button
+          id="contWithGoogleModal"
           onClick={[Function]}
         >
           <FcGoogle
@@ -34,6 +37,7 @@ exports[`SignUpFirstScreen Layout this is a test for SignUpFirstScreen Layout 1`
       <styled.div>
         <styled.div>
           <button
+            id="contWithFacebookModal"
             onClick={[Function]}
           >
             <BsFacebook
@@ -54,6 +58,7 @@ exports[`SignUpFirstScreen Layout this is a test for SignUpFirstScreen Layout 1`
         onSubmit={[Function]}
       >
         <FormInput
+          id="emailFieldModal"
           label="Email"
           name="email"
           onChange={[Function]}
@@ -63,10 +68,13 @@ exports[`SignUpFirstScreen Layout this is a test for SignUpFirstScreen Layout 1`
           type="email"
           value=""
         />
-        <styled.p />
+        <styled.p
+          id="errorNotValidEmailModal"
+        />
         <styled.div>
           <Button
             disabled={true}
+            id="continueButtonModal"
             onClick={[Function]}
             type="button"
           >

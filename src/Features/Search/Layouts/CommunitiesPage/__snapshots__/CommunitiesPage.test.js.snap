@@ -1,11 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Communities Page this is a test for Communities Page 1`] = `
-<styled.div>
-  <styled.div>
-    <styled.div>
-      <styled.div />
-    </styled.div>
-  </styled.div>
-</styled.div>
-`;
+exports[`Communities Page this is a test for Communities Page 1`] = `""`;

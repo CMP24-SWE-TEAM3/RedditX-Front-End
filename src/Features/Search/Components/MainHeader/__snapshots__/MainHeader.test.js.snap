@@ -45,9 +45,7 @@ exports[`People Main Header this is a test for Main Header 1`] = `
         </button>
       </NavLink>
     </div>
-    <ResponsiveNavbar
-      act="posts"
-    />
+    <ResponsiveNavbar />
     <SafeSearch />
   </div>
 </styled.div>

@@ -48,6 +48,7 @@ exports[`Post Header this is a test for Post Header 1`] = `
     >
       5 days ago
     </span>
+    <styled.div />
   </styled.div>
 </styled.div>
 `;

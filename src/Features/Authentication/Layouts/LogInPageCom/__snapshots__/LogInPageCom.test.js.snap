@@ -1,116 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LogInPageCom Layout this is a test for LogInPageCom Layout 1`] = `
-<Fragment>
-  <styled.div>
-    <styled.span>
-      <styled.h2>
-        Log In
-      </styled.h2>
-      <styled.div>
-        By continuing, you agree to our 
-        <styled.span>
-          User Agreement
-        </styled.span>
-         
-        and 
-        <styled.span>
-          Privacy Policy
-        </styled.span>
-        .
-      </styled.div>
-      <styled.div>
-        <button
-          onClick={[Function]}
-        >
-          <FcGoogle
-            size={22}
-          />
-          <span>
-             CONTINUE WITH GOOGLE
-          </span>
-        </button>
-      </styled.div>
-      <styled.div>
-        <button
-          onClick={[Function]}
-        >
-          <FaFacebookSquare
-            size={22}
-          />
-          <span>
-             CONTINUE WITH FACEBOOK
-          </span>
-        </button>
-      </styled.div>
-      <styled.h2>
-        <span>
-          OR
-        </span>
-      </styled.h2>
-      <form
-        onSubmit={[Function]}
-      >
-        <FormInputPageCom
-          initialFocus={true}
-          label="USERNAME"
-          name="userName"
-          onChange={[Function]}
-          onFocus={[Function]}
-          showIcon={true}
-          type="text"
-          valid={false}
-          value=""
-        />
-        <FormInputPageCom
-          initialFocus={true}
-          label="PASSWORD"
-          name="password"
-          onChange={[Function]}
-          onFocus={[Function]}
-          showIcon={true}
-          type="password"
-          valid={false}
-          value=""
-        />
-        <styled.div>
-          <Button
-            disabled={true}
-            onClick={[Function]}
-            page={true}
-            type="submit"
-            valid={false}
-          >
-            LOG IN
-          </Button>
-        </styled.div>
-        <styled.span>
-          Forget your 
-          <button
-            onClick={[Function]}
-          >
-            username
-          </button>
-           or
-           
-          <button
-            onClick={[Function]}
-          >
-            password
-          </button>
-        </styled.span>
-        <br />
-        <br />
-        <styled.span>
-          New to Reddit? 
-          <button
-            onClick={[Function]}
-          >
-            SIGN UP
-          </button>
-        </styled.span>
-      </form>
-    </styled.span>
-  </styled.div>
-</Fragment>
+<Router
+  location={
+    Object {
+      "hash": "",
+      "key": "default",
+      "pathname": "/",
+      "search": "",
+      "state": null,
+    }
+  }
+  navigationType="POP"
+  navigator={
+    Object {
+      "action": "POP",
+      "createHref": [Function],
+      "go": [Function],
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "key": "default",
+        "pathname": "/",
+        "search": "",
+        "state": null,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <Routes>
+    <LogInPageCom />
+  </Routes>
+</Router>
 `;

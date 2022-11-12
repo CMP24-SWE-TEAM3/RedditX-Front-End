@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AfterSignUpLoading Component this is a test for AfterSignUpLoading Component 1`] = `
+<Fragment>
+  <styled.div>
+    <styled.h2>
+      We're happy you're here!
+    </styled.h2>
+    <styled.div>
+      Your home feed is being created now...
+    </styled.div>
+    <LoadingSpinner />
+  </styled.div>
+</Fragment>
+`;

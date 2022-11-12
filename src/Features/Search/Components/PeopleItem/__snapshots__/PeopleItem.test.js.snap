@@ -11,7 +11,9 @@ exports[`People Item this is a test for People Item 1`] = `
     />
     <styled.div>
       <styled.div>
-        <styled.h6>
+        <styled.h6
+          className="user-name"
+        >
           u/Abdo
         </styled.h6>
         <styled.p>
@@ -28,11 +30,12 @@ exports[`People Item this is a test for People Item 1`] = `
     </styled.div>
     <styled.div>
       <styled.button
+        className="follow"
         onClick={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
-        Following
+        Follow
       </styled.button>
     </styled.div>
   </styled.div>

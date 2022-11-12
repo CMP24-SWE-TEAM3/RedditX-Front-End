@@ -3,7 +3,8 @@
 exports[`preview of selected flair should render without crashing 1`] = `
 <styled.div>
   <Styled(Link)
-    to="#"
+    className="create-post"
+    to="/submit/"
   >
     Create Post
   </Styled(Link)>

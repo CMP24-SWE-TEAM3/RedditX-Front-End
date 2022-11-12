@@ -2,10 +2,6 @@
 
 exports[`Sidebar section should render without crashing 1`] = `
 <styled.div>
-  <styled.div>
-    <CommunityCard />
-  </styled.div>
-  <RulesWidget />
   <PostGuidelines />
   <styled.div>
     Please be mindful of reddit's 

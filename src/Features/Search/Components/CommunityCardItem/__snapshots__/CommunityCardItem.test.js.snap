@@ -32,11 +32,12 @@ exports[`Community CardI tem this is a test for Community Card Item 1`] = `
         className="button"
       >
         <button
+          className="join"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          Joined
+          Join
         </button>
       </div>
     </div>

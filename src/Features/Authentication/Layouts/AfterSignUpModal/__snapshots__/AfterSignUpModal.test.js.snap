@@ -3,6 +3,7 @@
 exports[`AfterSignUpModal Component this is a test for AfterSignUpModal Component 1`] = `
 <Styled(Modal)
   aria-labelledby="contained-modal-title-vcenter"
+  backdrop="static"
   centered={true}
   size="lg"
 >

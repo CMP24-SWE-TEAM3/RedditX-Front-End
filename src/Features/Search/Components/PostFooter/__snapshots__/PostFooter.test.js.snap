@@ -1,12 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Post Footer this is a test for Post Footer 1`] = `
-<styled.div>
-  <span>
-    1k upvotes
-  </span>
-  <span>
-    1.7k comments
-  </span>
-</styled.div>
-`;
+exports[`Post Footer this is a test for Post Footer 1`] = `""`;

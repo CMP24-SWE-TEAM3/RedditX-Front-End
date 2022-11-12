@@ -11,7 +11,9 @@ exports[`Community Item this is a test for Community Item 1`] = `
     />
     <styled.div>
       <styled.div>
-        <styled.h6>
+        <styled.h6
+          className="community-name"
+        >
           r/
           GermanWW2photos
         </styled.h6>
@@ -29,11 +31,12 @@ exports[`Community Item this is a test for Community Item 1`] = `
     </styled.div>
     <styled.div>
       <styled.button
+        className="join"
         onClick={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
-        Joined
+        Join
       </styled.button>
     </styled.div>
   </styled.div>

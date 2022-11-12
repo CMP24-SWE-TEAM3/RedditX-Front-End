@@ -1,3 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Create Post Component this is a test for Create Post Component 1`] = `ShallowWrapper {}`;
+exports[`Create Post Component this is a test for Create Post Component 1`] = `
+<styled.div>
+  <ProfilePostButton />
+  <Post />
+  <ImageButton />
+  <LinkButton />
+</styled.div>
+`;

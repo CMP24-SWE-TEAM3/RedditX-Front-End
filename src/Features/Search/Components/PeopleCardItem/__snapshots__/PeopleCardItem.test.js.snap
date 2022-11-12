@@ -23,7 +23,7 @@ exports[`People Card Item this is a test for People Card Item 1`] = `
           </h6>
           <p>
             10
-            m Members
+            m Karma
           </p>
         </div>
       </div>
@@ -31,11 +31,12 @@ exports[`People Card Item this is a test for People Card Item 1`] = `
         className="button"
       >
         <button
+          className="follow"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          Following
+          Follow
         </button>
       </div>
     </div>

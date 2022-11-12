@@ -1,3 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Sign Up Component this is a test for Sign Up Button 1`] = `ShallowWrapper {}`;
+exports[`Sign Up Component this is a test for Sign Up Button 1`] = `
+<Styled(Button)
+  id="sign-up-button-from-HomePage"
+  onClick={[Function]}
+  variant="outline-primary rounded-pill h-4"
+>
+  Sign Up
+</Styled(Button)>
+`;

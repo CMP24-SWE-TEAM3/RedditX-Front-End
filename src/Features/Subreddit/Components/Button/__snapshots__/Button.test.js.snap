@@ -8,6 +8,7 @@ exports[`Join and Leave button should render without crashing 1`] = `
     className="width"
   >
     <button
+      className="join"
       onClick={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}

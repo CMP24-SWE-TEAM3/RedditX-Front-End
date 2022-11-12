@@ -4,152 +4,159 @@ exports[`Community Leaderboard RightSection this is a test for Right Section 1`]
 <styled.div>
   <styled.div>
     <styled.div>
+      <TopCommunities />
+    </styled.div>
+    <styled.div>
       <styled.div>
+        <styled.div>
+          <TopCommunities />
+        </styled.div>
         <styled.div>
           <styled.h3>
             Browse Communities A-Z
           </styled.h3>
           <styled.div>
-            <styled.a
-              href="#"
+            <Styled(NavLink)
+              to="/index-page"
             >
               a
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               b
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               c
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               d
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               e
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               f
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               g
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               h
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               i
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               j
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               k
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               l
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               m
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               n
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               o
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               p
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               q
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               r
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               s
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               t
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               u
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               v
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               w
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               x
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               y
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               z
-            </styled.a>
-            <styled.a
-              href="#"
+            </Styled(NavLink)>
+            <Styled(NavLink)
+              to="/index-page"
             >
               #
-            </styled.a>
+            </Styled(NavLink)>
           </styled.div>
         </styled.div>
         <styled.div>
           <Styled(styled.a)
             href="#"
+            id="backTop-btn"
           >
             Back to Top
           </Styled(styled.a)>

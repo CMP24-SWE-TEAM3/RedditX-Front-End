@@ -17,6 +17,7 @@ exports[`Post Component this is a test for Post Component 1`] = `
             "flairText": "Hero",
           },
           "headerImage": "People_Image.jpg",
+          "nsfw": true,
           "time": "5 days ago",
           "userName": "t2_North-Situation4034",
         }
@@ -32,7 +33,9 @@ exports[`Post Component this is a test for Post Component 1`] = `
           to="#"
         >
           <div>
-            <p>
+            <p
+              className="post-content"
+            >
                John Oliver Refers to NFL’s ‘Monday Night Football’ as“Primetime Programming Where People Kill Themselves forEntertainment” 
             </p>
           </div>

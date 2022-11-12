@@ -4,6 +4,7 @@ exports[`SignUpVerticalModal Modal this is a test for SignUpVerticalModal Modal 
 <Styled(Modal)
   aria-labelledby="contained-modal-title-vcenter"
   centered={true}
+  id="signUpModal"
   onExit={[Function]}
   size="lg"
 >
@@ -17,6 +18,7 @@ exports[`SignUpVerticalModal Modal this is a test for SignUpVerticalModal Modal 
       Already a redditor?
        
       <button
+        id="logInButtonFromSignupModal"
         onClick={[Function]}
       >
         Log in

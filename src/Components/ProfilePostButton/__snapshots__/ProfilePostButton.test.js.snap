@@ -1,3 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Profile Post button Component this is a test for Profile Post Button Component 1`] = `ShallowWrapper {}`;
+exports[`Profile Post button Component this is a test for Profile Post Button Component 1`] = `
+<styled.button>
+  <div
+    className="cap"
+  >
+    <div
+      className="cover"
+    >
+      <div
+        className="last"
+      />
+      <div
+        className="profile-container"
+      >
+        <styled.img
+          alt="Profile Picture"
+          src="profile.ico"
+        />
+      </div>
+    </div>
+  </div>
+</styled.button>
+`;

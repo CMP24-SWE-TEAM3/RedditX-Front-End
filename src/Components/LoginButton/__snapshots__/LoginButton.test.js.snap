@@ -1,3 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login Button Component this is a test for Login Button 1`] = `ShallowWrapper {}`;
+exports[`Login Button Component this is a test for Login Button 1`] = `
+<Fragment>
+  <Styled(Button)
+    id="login-button-from-HomePage"
+    onClick={[Function]}
+    variant="outline-primary rounded-pill h-4"
+  >
+    Log In
+  </Styled(Button)>
+</Fragment>
+`;

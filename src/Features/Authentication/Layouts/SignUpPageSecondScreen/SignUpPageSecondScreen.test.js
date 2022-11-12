@@ -1,6 +1,7 @@
 import { shallow } from "enzyme";
 
 import SignUpPageSecondScreen from "./SignUpPageSecondScreen";
+import { BrowserRouter, Routes } from "react-router-dom";
 
 
 const defaultFormFields = {
@@ -11,6 +12,14 @@ const defaultFormFields = {
 
 describe("SignUpPageSecondScreen Layout", () => {
   it("this is a test for SignUpPageSecondScreen Layout", () => {
-    expect(shallow(<SignUpPageSecondScreen formFields={defaultFormFields}/>)).toMatchSnapshot();
+    expect(
+      shallow(
+        <BrowserRouter>
+          <Routes>
+            <SignUpPageSecondScreen formFields={defaultFormFields} />
+          </Routes>
+        </BrowserRouter>
+      )
+    ).toMatchSnapshot();
   });
 });

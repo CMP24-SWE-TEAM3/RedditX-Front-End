@@ -1,3 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Side Bar Component this is a test for Side Bar 1`] = `ShallowWrapper {}`;
+exports[`Side Bar Component this is a test for Side Bar 1`] = `
+<Fragment>
+  <Styled(Offcanvas)
+    backdrop={false}
+    className="mt-5"
+    id="left-sidebar"
+    onHide={[Function]}
+  >
+    <OffcanvasBody>
+      <OffcanvasHeader
+        closeButton={true}
+        closeLabel="Close"
+      >
+        <OffcanvasTitle />
+      </OffcanvasHeader>
+      <DropDownItem />
+    </OffcanvasBody>
+  </Styled(Offcanvas)>
+</Fragment>
+`;

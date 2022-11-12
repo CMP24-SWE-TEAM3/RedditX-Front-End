@@ -6,9 +6,6 @@ exports[`SubReddit page should render without crashing 1`] = `
     comName="Community"
   >
     <styled.div>
-      <header>
-        Navbar
-      </header>
       <styled.div>
         <SubRedditHeader
           banner={

@@ -1,3 +1,148 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Drop Down Item Component this is a test for Drop Down Item Component 1`] = `ShallowWrapper {}`;
+exports[`Drop Down Item Component this is a test for Drop Down Item Component 1`] = `
+<styled.div
+  as={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "render": [Function],
+    }
+  }
+>
+  <DropdownItemText
+    as="title"
+  >
+    your communities
+  </DropdownItemText>
+  <DropdownItem
+    eventKey="1"
+    key="1"
+  >
+    r/announcements
+  </DropdownItem>
+  <DropdownItem
+    eventKey="2"
+    key="2"
+  >
+    r/Egypt
+  </DropdownItem>
+  <DropdownItem
+    eventKey="3"
+    key="3"
+  >
+    r/politics
+  </DropdownItem>
+  <DropdownItem
+    eventKey="4"
+    key="4"
+  >
+    r/reactjs
+  </DropdownItem>
+  <DropdownItem
+    eventKey="5"
+    key="5"
+  >
+    r/Futurology
+  </DropdownItem>
+  <DropdownItemText
+    as="title"
+  >
+    FEEDS
+  </DropdownItemText>
+  <DropdownItem
+    eventKey="6"
+    key="6"
+  >
+    Home
+  </DropdownItem>
+  <DropdownItem
+    eventKey="7"
+    key="7"
+  >
+    Popular
+  </DropdownItem>
+  <DropdownItem
+    eventKey="8"
+    key="8"
+  >
+    All
+  </DropdownItem>
+  <DropdownItem
+    eventKey="9"
+    key="9"
+  >
+    Reddit Live
+  </DropdownItem>
+  <DropdownItemText
+    as="title"
+  >
+    OTHERS
+  </DropdownItemText>
+  <DropdownItem
+    eventKey="10"
+    key="10"
+  >
+    User Settings
+  </DropdownItem>
+  <DropdownItem
+    eventKey="11"
+    key="11"
+  >
+    Messages
+  </DropdownItem>
+  <DropdownItem
+    eventKey="12"
+    key="12"
+  >
+    Create Post
+  </DropdownItem>
+  <DropdownItem
+    eventKey="13"
+    key="13"
+  >
+    Top Communities
+  </DropdownItem>
+  <DropdownItem
+    eventKey="14"
+    key="14"
+  >
+    Notifications
+  </DropdownItem>
+  <DropdownItem
+    eventKey="15"
+    key="15"
+  >
+    Community Hubs
+  </DropdownItem>
+  <DropdownItem
+    eventKey="16"
+    key="16"
+  >
+    Coins
+  </DropdownItem>
+  <DropdownItem
+    eventKey="17"
+    key="17"
+  >
+    Premium
+  </DropdownItem>
+  <DropdownItem
+    eventKey="18"
+    key="18"
+  >
+    Avatar
+  </DropdownItem>
+  <DropdownItem
+    eventKey="19"
+    key="19"
+  >
+    Talk
+  </DropdownItem>
+  <DropdownItem
+    eventKey="20"
+    key="20"
+  >
+    Predictions
+  </DropdownItem>
+</styled.div>
+`;

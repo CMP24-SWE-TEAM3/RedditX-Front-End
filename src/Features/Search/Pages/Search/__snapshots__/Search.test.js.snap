@@ -11,8 +11,58 @@ exports[`Search Page this is a test for Search Page 1`] = `
       <div
         className="inner-container"
       >
-        <Links />
-        <Outlet />
+        <Links
+          ActiveLink="posts"
+          setActiveLink={[Function]}
+        />
+        <Routes>
+          <Route
+            element={
+              <Posts
+                CommunitiesSub2={Array []}
+                CommunityList={Array []}
+                PeopleFollow={Array []}
+                PeopleList={Array []}
+                PostList={Array []}
+              />
+            }
+            path="posts"
+          />
+          <Route
+            element={
+              <CommentsPage
+                CommentLists={Array []}
+              />
+            }
+            path="comments"
+          />
+          <Route
+            element={
+              <CommunitiesPage
+                CommunitiesSub2={Array []}
+                CommunityList={Array []}
+              />
+            }
+            path="communities"
+          />
+          <Route
+            element={
+              <PeoplePage
+                PeopleFollow={Array []}
+                PeopleList={Array []}
+              />
+            }
+            path="people"
+          />
+          <Route
+            element={
+              <Navigate
+                to="/search/posts"
+              />
+            }
+            path="/search"
+          />
+        </Routes>
       </div>
     </div>
   </div>

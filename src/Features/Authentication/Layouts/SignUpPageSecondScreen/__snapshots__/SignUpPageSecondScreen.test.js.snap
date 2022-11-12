@@ -1,3 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SignUpPageSecondScreen Layout this is a test for SignUpPageSecondScreen Layout 1`] = `<Fragment />`;
+exports[`SignUpPageSecondScreen Layout this is a test for SignUpPageSecondScreen Layout 1`] = `
+<Router
+  location={
+    Object {
+      "hash": "",
+      "key": "default",
+      "pathname": "/",
+      "search": "",
+      "state": null,
+    }
+  }
+  navigationType="POP"
+  navigator={
+    Object {
+      "action": "POP",
+      "createHref": [Function],
+      "go": [Function],
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "key": "default",
+        "pathname": "/",
+        "search": "",
+        "state": null,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <Routes>
+    <SignUpPageSecondScreen
+      formFields={
+        Object {
+          "email": "",
+          "password": "",
+          "userName": "",
+        }
+      }
+    />
+  </Routes>
+</Router>
+`;

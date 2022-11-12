@@ -1,83 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SignUpSecondScreen Layout this is a test for SignUpSecondScreen Layout 1`] = `
-<Fragment>
-  <styled.div
-    secondScreen={true}
-  >
-    <styled.span
-      onClick={[Function]}
-    >
-      <IoMdArrowBack
-        size={20}
-      />
-    </styled.span>
-    <br />
-    <br />
-    <styled.h2>
-      Create your username and password
-    </styled.h2>
-    <styled.div>
-      Reddit is anonymous, so your username is what you’ll go by here. Choose wisely—because once you get a name, you can’t change it.
-    </styled.div>
-    <br />
-    <form
-      onSubmit={[Function]}
-    >
-      <styled.div>
-        <FormInput
-          label="Username"
-          name="userName"
-          onChange={[Function]}
-          onFocus={[Function]}
-          required={true}
-          type="text"
-          value=""
-        />
-        <span
-          onClick={[Function]}
-        >
-          <TfiReload
-            size={14}
-          />
-        </span>
-      </styled.div>
-      <styled.p />
-      <styled.div>
-        <FormInput
-          label="Password"
-          name="password"
-          onChange={[Function]}
-          onFocus={[Function]}
-          required={true}
-          type="password"
-          value=""
-        />
-        <span
-          onClick={[Function]}
-        >
-          <PasswordStrength />
-        </span>
-      </styled.div>
-      <styled.p>
-        password should contain 8 to 20 characters
-      </styled.p>
-      <styled.div>
-        <Button
-          disabled={true}
-          onClick={[Function]}
-          type="submit"
-        >
-          Continue
-        </Button>
-      </styled.div>
-    </form>
-    <styled.div>
-      <AsyncScriptLoader(ReCAPTCHA)
-        onChange={[Function]}
-        sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-      />
-    </styled.div>
-  </styled.div>
-</Fragment>
+<Router
+  location={
+    Object {
+      "hash": "",
+      "key": "default",
+      "pathname": "/",
+      "search": "",
+      "state": null,
+    }
+  }
+  navigationType="POP"
+  navigator={
+    Object {
+      "action": "POP",
+      "createHref": [Function],
+      "go": [Function],
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "key": "default",
+        "pathname": "/",
+        "search": "",
+        "state": null,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <Routes>
+    <SignUpSecondScreen
+      formFields={
+        Object {
+          "email": "",
+          "password": "",
+          "userName": "",
+        }
+      }
+    />
+  </Routes>
+</Router>
 `;

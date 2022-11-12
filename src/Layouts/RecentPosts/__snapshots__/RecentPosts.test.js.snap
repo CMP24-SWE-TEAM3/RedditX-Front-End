@@ -1,3 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Recent Posts Component this is a test for Recent Posts Component 1`] = `ShallowWrapper {}`;
+exports[`Recent Posts Component this is a test for Recent Posts Component 1`] = `
+<Fragment>
+  <styled.div
+    id="recent-post-container"
+  >
+    <div>
+      <div
+        className="head"
+      >
+        <div>
+          Recent Posts
+        </div>
+      </div>
+    </div>
+    <button
+      className="but"
+      id="recent-post-button"
+      onClick={[Function]}
+    >
+      Clear
+    </button>
+  </styled.div>
+</Fragment>
+`;
