@@ -31,6 +31,7 @@ import {
   signInWithGooglePopup,
   signInWithFacebookPopup,
 } from "Features/Authentication/Utils/Firebase";
+import { useNavigate } from "react-router-dom";
 
 import {
   AuthContainer,
@@ -116,6 +117,7 @@ const LogInScreen = ({
    */
   const [showLoginErrorMsg, setShowLoginErrorMsg] = useState(false);
 
+  const navigate = useNavigate();
   /**
    * useEffect for userName field to check if the userName that the user entered is valid or not
    */
@@ -145,7 +147,7 @@ const LogInScreen = ({
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (wantSubmit) {
-     // setIsLoading(true);
+      // setIsLoading(true);
 
       // const user = await loginApi(
       //   userName,
@@ -159,7 +161,6 @@ const LogInScreen = ({
       //   auth.login(user);
       //    //console.log(user);
       // }
-
 
       dataFetch({
         axiosInstance: axios,
@@ -178,10 +179,17 @@ const LogInScreen = ({
         setFinishedLoading(true);
         auth.login(data);
       }
-      
+      // TODO: remove this
+      auth.login({
+        username: userName,
+        token: "token",
+        expiresIn: 3600,
+      });
+      navigate("/");
+
       setWantSubmit(false);
 
-     // setIsLoading(false);
+      // setIsLoading(false);
     }
   };
 
@@ -296,7 +304,7 @@ const LogInScreen = ({
   return (
     <>
       {
-        <AuthContainer userNameScreen={userNameScreen}>
+        <AuthContainer id="login-modal" userNameScreen={userNameScreen}>
           <AuthContainerDiv userNameScreen={userNameScreen || passwordScreen}>
             <AuthHeader>Log In</AuthHeader>
             <AuthParagraph>
@@ -325,6 +333,7 @@ const LogInScreen = ({
 
             <form onSubmit={handleSubmit}>
               <FormInput
+                id="login-username"
                 valid={validName}
                 initialFocus={initialFocus}
                 showIcon={true}
@@ -340,17 +349,17 @@ const LogInScreen = ({
 
               {/* Show error message if the userName is not valid and the user made a focus on the it's input field */}
               {!validName && !initialFocus && (
-                <ErrorParagraph valid={validName || initialFocus}>
+                <ErrorParagraph
+                  id="username-error"
+                  valid={validName || initialFocus}
+                >
                   Username must be between 3 and 20 characters
                 </ErrorParagraph>
               )}
-              {error && (
-                <ErrorParagraph valid={!error}>
-                  {error}
-                </ErrorParagraph>
-              )}
+              {error && <ErrorParagraph valid={!error}>{error}</ErrorParagraph>}
 
               <FormInput
+                id="login-password"
                 label="Password"
                 valid={validPassword}
                 initialFocus={initialFocus2}
@@ -406,7 +415,7 @@ const LogInScreen = ({
                     Log In
                   </Button>
                 )}
-                {isLoading  && (
+                {isLoading && (
                   <Button disabled valid={true} type="submit">
                     <LoadingSpinner></LoadingSpinner>
                   </Button>

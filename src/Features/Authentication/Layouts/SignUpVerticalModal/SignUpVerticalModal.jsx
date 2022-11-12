@@ -24,6 +24,7 @@ const SignUpVerticalModal = ({ ...props }) => {
 
   return (
     <MyModal
+      id="signUpModal"
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
@@ -39,7 +40,12 @@ const SignUpVerticalModal = ({ ...props }) => {
             <SignUp />{" "}
             <HaveAccount>
               Already a redditor?{" "}
-              <button onClick={() => setShowLogIn(true)}>Log in</button>
+              <button
+                id="logInButtonFromSignupModal"
+                onClick={() => setShowLogIn(true)}
+              >
+                Log in
+              </button>
             </HaveAccount>
           </>
         )}
