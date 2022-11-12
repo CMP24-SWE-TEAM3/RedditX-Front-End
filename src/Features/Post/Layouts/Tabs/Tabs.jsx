@@ -43,23 +43,20 @@ const Tabs = ({ submitPost }) => {
               className="flex-row flex-nowrap justify-content-center text-center"
             >
               <NavItem
+                id="post-tab"
                 className="flex-fill"
                 onClick={() => setSelected("Post")}
               >
-                <NavLink
-                  id="post-tab"
-                  eventKey="Post"
-                  selected={selected === "Post"}
-                >
+                <NavLink eventKey="Post" selected={selected === "Post"}>
                   <ImFileText size={25} /> <span> Post </span>
                 </NavLink>
               </NavItem>
               <NavItem
                 className="flex-fill"
+                id="image-tab"
                 onClick={() => setSelected("Images & Video")}
               >
                 <NavLink
-                  id="image-tab"
                   eventKey="Images & Video"
                   selected={selected === "Images & Video"}
                 >
@@ -67,14 +64,11 @@ const Tabs = ({ submitPost }) => {
                 </NavLink>
               </NavItem>
               <NavItem
+                id="link-tab"
                 className="flex-fill"
                 onClick={() => setSelected("Link")}
               >
-                <NavLink
-                  id="link-tab"
-                  eventKey="Link"
-                  selected={selected === "Link"}
-                >
+                <NavLink eventKey="Link" selected={selected === "Link"}>
                   <BsLink45Deg size={30} />
                   <span> Link </span>
                 </NavLink>
