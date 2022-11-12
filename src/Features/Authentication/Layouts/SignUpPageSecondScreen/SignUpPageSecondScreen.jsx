@@ -233,6 +233,7 @@ const SignUpPageSecondScreen = ({
       setInitialFocus(false);
     }
     setValidPassword(PWD_REGEX.test(password));
+    setPasswordStrength(GetPasswordStrength(password));
     setShowSignupErrorMsg(false);
   }, [password]);
 
@@ -292,6 +293,7 @@ const SignUpPageSecondScreen = ({
               <div>
                 <Group secondScreen={secondScreen}>
                   <FormInputPageCom
+                    id="userNameFieldSignUp"
                     valid={validUserName && availableUserName}
                     initialFocus={initialFocus}
                     label="USERNAME"
@@ -307,7 +309,10 @@ const SignUpPageSecondScreen = ({
                   />
                 </Group>
 
-                <ErrorParagraph valid={validUserName || initialFocus}>
+                <ErrorParagraph
+                  id="userNameNotValidSignUp"
+                  valid={validUserName || initialFocus}
+                >
                   {errMsg}
                 </ErrorParagraph>
 
@@ -330,6 +335,7 @@ const SignUpPageSecondScreen = ({
 
                 <Group secondScreen={secondScreen}>
                   <FormInputPageCom
+                    id="passwordFieldSignUp"
                     valid={validPassword}
                     initialFocus={initialFocus2}
                     label="PASSWORD"
@@ -350,12 +356,16 @@ const SignUpPageSecondScreen = ({
                 </Group>
 
                 {/* Show error message if the password is not valid and the user made a focus on the it's input field */}
-                <ErrorParagraph valid={validPassword || initialFocus2}>
+                <ErrorParagraph
+                  id="passwordNotValidSignUp"
+                  valid={validPassword || initialFocus2}
+                >
                   password should contain 8 to 20 characters
                 </ErrorParagraph>
 
                 <ReCAPTCHAContainer validEmail={validUserName && validPassword}>
                   <ReCAPTCHA
+                    id="captchaButton"
                     sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
                     onChange={recaptchaHandler}
                     grecaptcha={grecaptchaObject}
@@ -366,6 +376,7 @@ const SignUpPageSecondScreen = ({
                 <div>
                   Here are some username suggestions{" "}
                   <Reload
+                    id="changeUserNameSuggestions"
                     onClick={() => {
                       newRandomUserNames();
                     }}
@@ -375,6 +386,7 @@ const SignUpPageSecondScreen = ({
                 </div>
                 <RandomContainer>
                   <p
+                    id="userNameSuggestion1"
                     onClick={() => {
                       changeUserName(sug1);
                       setAvailableUserName(true);
@@ -383,6 +395,7 @@ const SignUpPageSecondScreen = ({
                     {sug1}
                   </p>
                   <p
+                    id="userNameSuggestion2"
                     onClick={() => {
                       changeUserName(sug2);
                       setAvailableUserName(true);
@@ -391,6 +404,7 @@ const SignUpPageSecondScreen = ({
                     {sug2}
                   </p>
                   <p
+                    id="userNameSuggestion3"
                     onClick={() => {
                       changeUserName(sug3);
                       setAvailableUserName(true);
@@ -399,6 +413,7 @@ const SignUpPageSecondScreen = ({
                     {sug3}
                   </p>
                   <p
+                    id="userNameSuggestion4"
                     onClick={() => {
                       changeUserName(sug4);
                       setAvailableUserName(true);
@@ -407,6 +422,7 @@ const SignUpPageSecondScreen = ({
                     {sug4}
                   </p>
                   <p
+                    id="userNameSuggestion5"
                     onClick={() => {
                       changeUserName(sug5);
                       setAvailableUserName(true);
@@ -419,6 +435,7 @@ const SignUpPageSecondScreen = ({
             </MidDiv>
             <LastDiv>
               <BackButton
+                id="backInSignUpFirstScreen"
                 onClick={() => {
                   setSecondScreen(false);
                 }}
@@ -426,14 +443,11 @@ const SignUpPageSecondScreen = ({
                 BACK
               </BackButton>
               <ButtonsContainer>
-                { !finishedLoading && (
+                {!finishedLoading && (
                   <Button
+                    id="signUpButton"
                     page={true}
-                    disabled={
-                      !validUserName ||
-                      !validPassword ||
-                      !notRobot 
-                    }
+                    disabled={!validUserName || !validPassword || !notRobot}
                     valid={
                       validUserName &&
                       validPassword &&
@@ -452,7 +466,7 @@ const SignUpPageSecondScreen = ({
                     <LoadingSpinner></LoadingSpinner>
                   </Button>
                 )} */}
-                { finishedLoading && (
+                {finishedLoading && (
                   <Button page={true} disabled valid={true} type="submit">
                     <Checked></Checked>
                   </Button>

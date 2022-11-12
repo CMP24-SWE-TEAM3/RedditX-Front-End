@@ -228,7 +228,7 @@ const SignUpFirstScreen = ({
       {
         <AuthContainer secondScreen={secondScreen}>
           <AuthContainerDiv secondScreen={secondScreen}>
-            <AuthHeader>Sign Up</AuthHeader>
+            <AuthHeader id="signUpContainerModal">Sign Up</AuthHeader>
             <AuthParagraph>
               By continuing, you agree are setting up a Reddit account and agree
               to our <Privacy>User Agreement</Privacy> and{" "}
@@ -236,7 +236,7 @@ const SignUpFirstScreen = ({
             </AuthParagraph>
             <SignInWithGoogle>
               {/* <div id="signInDiv"></div> */}
-              <button onClick={() => logGoogleUser()}>
+              <button id="contWithGoogleModal" onClick={() => logGoogleUser()}>
                 <FcGoogle size={22} />
                 <span> Continue With Google</span>
               </button>
@@ -244,7 +244,10 @@ const SignUpFirstScreen = ({
 
             <SignInWithFacebook>
               <SignInWithFacebook>
-                <button onClick={() => logFacebookUser()}>
+                <button
+                  id="contWithFacebookModal"
+                  onClick={() => logFacebookUser()}
+                >
                   <BsFacebook size={22} />
                   <span> Continue With Facebook</span>
                 </button>
@@ -257,6 +260,7 @@ const SignUpFirstScreen = ({
 
             <form onSubmit={handleSubmit}>
               <FormInput
+                id="emailFieldModal"
                 valid={validEmail}
                 initialFocus={initialFocus}
                 showIcon={true}
@@ -272,14 +276,22 @@ const SignUpFirstScreen = ({
               />
 
               {/* Show error message if the email is not valid and the user made a focus on the it's input field */}
-              <ErrorParagraph valid={validEmail || initialFocus}>
+              <ErrorParagraph
+                id="errorNotValidEmailModal"
+                valid={validEmail || initialFocus}
+              >
                 {errMsg}
               </ErrorParagraph>
 
-              {error && <ErrorParagraph valid={!error}>{error}</ErrorParagraph>}
+              {error && (
+                <ErrorParagraph id="errorFromBackEndModal" valid={!error}>
+                  {error}
+                </ErrorParagraph>
+              )}
 
               <ButtonsContainer>
                 <Button
+                  id="continueButtonModal"
                   disabled={!validEmail}
                   valid={validEmail}
                   type="button"

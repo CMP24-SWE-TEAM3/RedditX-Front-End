@@ -185,7 +185,7 @@ const ForgetPassword = () => {
 
   return (
     <>
-      <AuthContainer>
+      <AuthContainer id="forget-password-container">
         <RedditIcon>
           <SiReddit size={60} color={"red"}></SiReddit>
         </RedditIcon>
@@ -200,6 +200,7 @@ const ForgetPassword = () => {
 
         <form onSubmit={handleSubmit}>
           <FormInputPageCom
+            id="username"
             valid={validName}
             initialFocus={initialFocus}
             showIcon={true}
@@ -214,7 +215,7 @@ const ForgetPassword = () => {
           />
 
           {/* Show error message if the userName is not valid and the user made a focus on the it's input field */}
-          <ErrorParagraph valid={validName || initialFocus}>
+          <ErrorParagraph id="username-error" valid={validName || initialFocus}>
             Username must be between 3 and 20 characters
           </ErrorParagraph>
 
@@ -224,6 +225,7 @@ const ForgetPassword = () => {
             </ErrorParagraph>
           )}
           <FormInputPageCom
+            id="email"
             label="EMAIL"
             valid={validEmail}
             initialFocus={initialFocus2}
@@ -239,13 +241,14 @@ const ForgetPassword = () => {
 
           {/* Show error message if the email is not valid and the user made a focus on the it's input field */}
 
-          <ErrorParagraph valid={validEmail || initialFocus2}>
+          <ErrorParagraph id="email-error" valid={validEmail || initialFocus2}>
             not a valid email
           </ErrorParagraph>
 
           <ButtonsContainer>
             {!isLoading && !finishedLoading && (
               <Button
+                id="reset"
                 page={true}
                 disabled={!validName || !validEmail}
                 valid={validName && validEmail}
@@ -258,7 +261,7 @@ const ForgetPassword = () => {
               </Button>
             )}
 
-            {isLoading  && (
+            {isLoading && (
               <Button page={true} disabled valid={true} type="submit">
                 <LoadingSpinner></LoadingSpinner>
               </Button>
@@ -272,6 +275,7 @@ const ForgetPassword = () => {
           <br></br>
           {emailSent && (
             <ErrorParagraph
+              id="success-alert"
               validColor={emailSent}
               valid={!emailSent || initialFocus}
             >
@@ -280,7 +284,7 @@ const ForgetPassword = () => {
             </ErrorParagraph>
           )}
           <Forget>
-            <span onClick={() => {}}>FORGOT USERNAME?</span>{" "}
+            <span id="forget-username-button" onClick={() => {}}>FORGOT USERNAME?</span>{" "}
           </Forget>
           <br></br>
           <br></br>

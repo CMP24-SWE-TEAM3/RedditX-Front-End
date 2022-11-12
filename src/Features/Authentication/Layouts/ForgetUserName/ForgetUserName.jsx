@@ -43,7 +43,6 @@ const defaultFormFields = {
  */
 
 const ForgetUserName = () => {
-
   const [data, error, isLoading, dataFetch] = useFetchFunction();
   /**
    * state to know if the email is valid or not to control what to show to the user
@@ -120,8 +119,7 @@ const ForgetUserName = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (wantSubmit) {
-     // setIsLoading(true);
-
+      // setIsLoading(true);
 
       // const response = await forgetUserNameApi(
       //   email,
@@ -132,7 +130,6 @@ const ForgetUserName = () => {
       // if (response) {
       //   setEmailSent(true);
       // }
-
 
       dataFetch({
         axiosInstance: axios,
@@ -153,7 +150,7 @@ const ForgetUserName = () => {
 
       setWantSubmit(false);
 
-     // setIsLoading(false);
+      // setIsLoading(false);
     }
   };
 
@@ -181,7 +178,7 @@ const ForgetUserName = () => {
   };
 
   return (
-    <AuthContainer>
+    <AuthContainer id="forget-username-container">
       <RedditIcon>
         <SiReddit size={60} color={"red"}></SiReddit>
       </RedditIcon>
@@ -193,6 +190,7 @@ const ForgetUserName = () => {
       <br></br>
       <form onSubmit={handleSubmit}>
         <FormInputPageCom
+          id="email"
           valid={validEmail}
           initialFocus={initialFocus}
           showIcon={true}
@@ -208,7 +206,7 @@ const ForgetUserName = () => {
         />
 
         {/* Show error message if the email is not valid and the user made a focus on the it's input field */}
-        <ErrorParagraph valid={validEmail || initialFocus}>
+        <ErrorParagraph id="email-error" valid={validEmail || initialFocus}>
           Please fix your email to continue
         </ErrorParagraph>
         {error && (
@@ -216,11 +214,12 @@ const ForgetUserName = () => {
             {error}
           </ErrorParagraph>
         )}
-        
+
         <br></br>
         <ButtonsContainer>
           {!isLoading && !finishedLoading && (
             <Button
+              id="reset-button"
               page={true}
               disabled={!validEmail || !notRobot}
               valid={validEmail && notRobot}
@@ -233,7 +232,7 @@ const ForgetUserName = () => {
             </Button>
           )}
 
-          {isLoading  && (
+          {isLoading && (
             <Button page={true} disabled valid={true} type="submit">
               <LoadingSpinner></LoadingSpinner>
             </Button>
@@ -247,6 +246,7 @@ const ForgetUserName = () => {
 
         {emailSent && (
           <ErrorParagraph
+            id="success-alert"
             validColor={emailSent}
             valid={!emailSent || initialFocus}
           >
@@ -271,8 +271,12 @@ const ForgetUserName = () => {
         <br></br>
         <Forget>
           {/* Want to login? */}
-          <span onClick={() => {}}>LOG IN</span>{" "}
-          <span onClick={() => {}}>{" . "}SIGN UP</span>{" "}
+          <span id="login-link" onClick={() => {}}>
+            LOG IN
+          </span>{" "}
+          <span id="signup-link" onClick={() => {}}>
+            {" . "}SIGN UP
+          </span>{" "}
         </Forget>
       </form>
     </AuthContainer>

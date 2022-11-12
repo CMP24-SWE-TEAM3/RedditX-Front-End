@@ -188,8 +188,6 @@ const SignUpSecondScreen = ({
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (wantSubmit) {
-     
-
       dataFetch({
         axiosInstance: axios,
         method: "post",
@@ -224,7 +222,6 @@ const SignUpSecondScreen = ({
     if (name === "password") {
       setPasswordStrength(GetPasswordStrength(password));
     }
-    
   };
 
   /**
@@ -249,6 +246,7 @@ const SignUpSecondScreen = ({
       {
         <AuthContainer secondScreen={!secondScreen}>
           <BackSpan
+            id="backInSignUpFirstScreenModal"
             onClick={() => {
               setSecondScreen(false);
             }}
@@ -258,7 +256,9 @@ const SignUpSecondScreen = ({
 
           <br></br>
           <br></br>
-          <AuthHeader>Create your username and password</AuthHeader>
+          <AuthHeader id="signUpSecondScreenTitleModal">
+            Create your username and password
+          </AuthHeader>
           <AuthParagraph>
             Reddit is anonymous, so your username is what you’ll go by here.
             Choose wisely—because once you get a name, you can’t change it.
@@ -269,6 +269,7 @@ const SignUpSecondScreen = ({
           <form onSubmit={handleSubmit}>
             <Group>
               <FormInput
+                id="userNameFieldSignUpModal"
                 valid={validUserName && availableUserName}
                 initialFocus={initialFocus}
                 label="Username"
@@ -281,18 +282,31 @@ const SignUpSecondScreen = ({
                   setInitialFocus(false);
                 }}
               />
-              <span onClick={() => changeUserName()}>
+              <span
+                id="changeUserNameSignUpModal"
+                onClick={() => changeUserName()}
+              >
                 <TfiReload size={14} />
               </span>
             </Group>
 
             {/* Show error message if the userName is not valid and the user made a focus on the it's input field */}
 
-            <ErrorParagraph valid={validUserName || initialFocus}>
+            <ErrorParagraph
+              id="userNameNotValidSignUpModal"
+              valid={validUserName || initialFocus}
+            >
               {errMsg}
             </ErrorParagraph>
 
-            {error && <ErrorParagraph valid={!error}>{error}</ErrorParagraph>}
+            {error && (
+              <ErrorParagraph
+                id="userNameErrorFromBackendSignUpModal"
+                valid={!error}
+              >
+                {error}
+              </ErrorParagraph>
+            )}
 
             {/* {!availableUserName && (
               <ErrorParagraph valid={availableUserName}>
@@ -300,7 +314,7 @@ const SignUpSecondScreen = ({
               </ErrorParagraph>
             )} */}
 
-            {availableUserName && validUserName && !error&&(
+            {availableUserName && validUserName && !error && (
               <ErrorParagraph
                 validColor={availableUserName && validUserName}
                 valid={!availableUserName}
@@ -311,6 +325,7 @@ const SignUpSecondScreen = ({
 
             <Group>
               <FormInput
+                id="passwordFieldSignUpModal"
                 valid={validPassword}
                 initialFocus={initialFocus2}
                 label="Password"
@@ -333,16 +348,18 @@ const SignUpSecondScreen = ({
             </Group>
 
             {/* Show error message if the password is not valid and the user made a focus on the it's input field */}
-            <ErrorParagraph valid={validPassword || initialFocus2}>
+            <ErrorParagraph id="passwordNotValidSignUpModal" valid={validPassword || initialFocus2}>
               password should contain 8 to 20 characters
             </ErrorParagraph>
             <ButtonsContainer>
-              { !finishedLoading && (
+              {!finishedLoading && (
                 <Button
+                id="signUpButtonModal"
                   disabled={
                     !validUserName ||
                     !validPassword ||
-                    !notRobot || !availableUserName
+                    !notRobot ||
+                    !availableUserName
                   }
                   valid={
                     validUserName &&
@@ -364,7 +381,7 @@ const SignUpSecondScreen = ({
                   <LoadingSpinner></LoadingSpinner>
                 </Button>
               )} */}
-              { finishedLoading && (
+              {finishedLoading && (
                 <Button disabled valid={true} type="submit">
                   <Checked></Checked>
                 </Button>
@@ -374,6 +391,7 @@ const SignUpSecondScreen = ({
 
           <ReCAPTCHAContainer validEmail={validUserName && validPassword}>
             <ReCAPTCHA
+              id="captchaButtonModal"
               sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
               onChange={recaptchaHandler}
               grecaptcha={grecaptchaObject}

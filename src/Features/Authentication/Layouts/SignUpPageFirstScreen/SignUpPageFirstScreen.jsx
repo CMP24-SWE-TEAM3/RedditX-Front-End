@@ -245,7 +245,7 @@ const SignUpPageFirstScreen = ({
             <LogInContainer>
               <AuthContainer secondScreen={secondScreen}>
                 <AuthContainerDiv secondScreen={secondScreen}>
-                  <AuthHeader>Sign Up</AuthHeader>
+                  <AuthHeader id="signUpContainer">Sign Up</AuthHeader>
                   <AuthParagraph>
                     By continuing, you agree are setting up a Reddit account and
                     agree to our <Privacy>User Agreement</Privacy> and{" "}
@@ -253,14 +253,14 @@ const SignUpPageFirstScreen = ({
                   </AuthParagraph>
                   <SignInWithGoogle>
                     {/* <div id="signInDiv"></div> */}
-                    <button onClick={() => logGoogleUser()}>
+                    <button id="contWithGoogle" onClick={() => logGoogleUser()}>
                       <FcGoogle size={22} />
                       <span> CONTINUE WITH GOOGLE</span>
                     </button>
                   </SignInWithGoogle>
 
                   <SignInWithFacebook>
-                    <button onClick={() => logFacebookUser()}>
+                    <button id="contWithFacebook" onClick={() => logFacebookUser()}>
                       <FaFacebookSquare size={22} />
                       <span> CONTINUE WITH FACEBOOK</span>
                     </button>
@@ -272,6 +272,7 @@ const SignUpPageFirstScreen = ({
 
                   <form onSubmit={handleSubmit}>
                     <FormInputPageCom
+                      id="emailField"
                       valid={validEmail}
                       initialFocus={initialFocus}
                       showIcon={true}
@@ -286,16 +287,17 @@ const SignUpPageFirstScreen = ({
                       }}
                     />
 
-                    <ErrorParagraph valid={validEmail || initialFocus}>
+                    <ErrorParagraph id="errorNotValidEmail" valid={validEmail || initialFocus}>
                       {errMsg}
                     </ErrorParagraph>
 
                     {error && (
-                      <ErrorParagraph valid={!error}>{error}</ErrorParagraph>
+                      <ErrorParagraph id="errorFromBackEnd" valid={!error}>{error}</ErrorParagraph>
                     )}
 
                     <ButtonsContainer>
                       <Button
+                        id="continueButton"
                         disabled={!validEmail}
                         valid={validEmail}
                         page={true}
@@ -309,7 +311,7 @@ const SignUpPageFirstScreen = ({
 
                     <Forget>
                       Already a redditor?{" "}
-                      <button onClick={() => {}}>LOG IN</button>
+                      <button id="logInButtonFromSignup" onClick={() => {}}>LOG IN</button>
                     </Forget>
                   </form>
                 </AuthContainerDiv>
