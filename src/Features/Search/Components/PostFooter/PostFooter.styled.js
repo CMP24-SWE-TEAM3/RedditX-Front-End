@@ -9,7 +9,8 @@ export const Footer = styled.div`
   line-height: 16px;
   color: ${({ theme }) => theme.color.muted};
   display: flex;
-  span {
+  span.comment,
+  span.upvote {
     display: block;
     margin-right: 12px;
   }

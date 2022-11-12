@@ -105,7 +105,7 @@ const PeopleItem = ({
         <Img src={require(`../../Assets/${avatar}`)} alt="People Icon" />
         <PeopleInfo>
           <PeopleMainInfo>
-            <PeopleTitle>{username.slice(1)}</PeopleTitle>
+            <PeopleTitle className="user-name">{username.slice(1)}</PeopleTitle>
             <PeopleKarma>
               <span>•</span>
               {totalKarmas}k Karma
@@ -118,6 +118,7 @@ const PeopleItem = ({
             onClick={clickHandler}
             onMouseEnter={mouseEnterHandler}
             onMouseLeave={MouseLeaveHandler}
+            className="follow"
           >
             {btnContent}
           </Button>

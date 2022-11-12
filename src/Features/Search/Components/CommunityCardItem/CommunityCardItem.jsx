@@ -106,6 +106,7 @@ const CommunityCardItem = ({
               onClick={clickHandler}
               onMouseEnter={mouseEnterHandler}
               onMouseLeave={MouseLeaveHandler}
+              className="join"
             >
               {btnContent}
             </button>

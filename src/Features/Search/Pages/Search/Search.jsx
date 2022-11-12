@@ -122,7 +122,11 @@ const Search = () => {
               <Route
                 path="posts"
                 element={
-                  PostList && (
+                  PostList &&
+                  PeopleFollow &&
+                  CommunitiesSub2 &&
+                  CommunityList &&
+                  PeopleList && (
                     <Posts
                       PostList={PostList}
                       CommunityList={CommunityList}
@@ -135,25 +139,37 @@ const Search = () => {
               />
               <Route
                 path="comments"
-                element={<CommentsPage CommentLists={CommentLists} />}
+                element={
+                  CommentLists && <CommentsPage CommentLists={CommentLists} />
+                }
               />
               <Route
                 path="communities"
                 element={
-                  <CommunitiesPage
-                    CommunityList={CommunityList}
-                    CommunitiesSub2={CommunitiesSub2}
-                  />
+                  CommunitiesSub2 &&
+                  CommunityList && (
+                    <CommunitiesPage
+                      CommunityList={CommunityList}
+                      CommunitiesSub2={CommunitiesSub2}
+                    />
+                  )
                 }
               />
               <Route
                 path="people"
                 element={
-                  <PeoplePage
-                    PeopleList={PeopleList}
-                    PeopleFollow={PeopleFollow}
-                  />
+                  PeopleFollow &&
+                  PeopleList && (
+                    <PeoplePage
+                      PeopleList={PeopleList}
+                      PeopleFollow={PeopleFollow}
+                    />
+                  )
                 }
+              />
+              <Route
+                path="/search"
+                element={<Navigate to={"/search/posts"} />}
               />
             </Routes>
           </div>

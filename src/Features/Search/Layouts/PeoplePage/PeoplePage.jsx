@@ -15,29 +15,31 @@ import {
  * @returns {React.Component}
  */
 const PeoplePage = ({ PeopleList, PeopleFollow }) => {
-  return (
-    <Container>
-      <OuterContainer>
-        <InnerContainer>
-          <List>
-            {PeopleList.map((People) => (
-              <PeopleItem
-                avatar={People.avatar}
-                key={People.userID}
-                userID={People.userID}
-                about={People.about}
-                totalKarmas={People.totalKarmas}
-                username={People.username}
-                isFollow={PeopleFollow.find((element) => {
-                  return element.id === People.userID;
-                })}
-              />
-            ))}
-          </List>
-        </InnerContainer>
-      </OuterContainer>
-    </Container>
-  );
+  if (PeopleList && PeopleFollow) {
+    return (
+      <Container>
+        <OuterContainer>
+          <InnerContainer>
+            <List>
+              {PeopleList.map((People) => (
+                <PeopleItem
+                  avatar={People.avatar}
+                  key={People.userID}
+                  userID={People.userID}
+                  about={People.about}
+                  totalKarmas={People.totalKarmas}
+                  username={People.username}
+                  isFollow={PeopleFollow.find((element) => {
+                    return element.id === People.userID;
+                  })}
+                />
+              ))}
+            </List>
+          </InnerContainer>
+        </OuterContainer>
+      </Container>
+    );
+  }
 };
 
 export default PeoplePage;

@@ -112,6 +112,7 @@ const PeopleCardItem = ({
               onClick={clickHandler}
               onMouseEnter={mouseEnterHandler}
               onMouseLeave={MouseLeaveHandler}
+              className="follow"
             >
               {btnContent}
             </button>

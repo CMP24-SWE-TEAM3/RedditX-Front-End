@@ -17,29 +17,31 @@ import useFetch from "Hooks/useFetch";
  */
 
 const CommunitiesPage = ({ CommunityList, CommunitiesSub2 }) => {
-  return (
-    <Container>
-      <OuterContainer>
-        <InnerContainer>
-          <List>
-            {CommunityList.map((Community) => (
-              <CommunityItem
-                communityIcon={Community.communityIcon}
-                key={Community.communityID}
-                communityID={Community.communityID}
-                communityDescription={Community.communityDescription}
-                membersCount={Community.membersCount}
-                communityName={Community.communityName}
-                isJoined={CommunitiesSub2.find((element) => {
-                  return element.id === Community.communityID;
-                })}
-              />
-            ))}
-          </List>
-        </InnerContainer>
-      </OuterContainer>
-    </Container>
-  );
+  if (CommunitiesSub2 && CommunityList) {
+    return (
+      <Container>
+        <OuterContainer>
+          <InnerContainer>
+            <List>
+              {CommunityList.map((Community) => (
+                <CommunityItem
+                  communityIcon={Community.communityIcon}
+                  key={Community.communityID}
+                  communityID={Community.communityID}
+                  communityDescription={Community.communityDescription}
+                  membersCount={Community.membersCount}
+                  communityName={Community.communityName}
+                  isJoined={CommunitiesSub2.find((element) => {
+                    return element.id === Community.communityID;
+                  })}
+                />
+              ))}
+            </List>
+          </InnerContainer>
+        </OuterContainer>
+      </Container>
+    );
+  }
 };
 
 export default CommunitiesPage;

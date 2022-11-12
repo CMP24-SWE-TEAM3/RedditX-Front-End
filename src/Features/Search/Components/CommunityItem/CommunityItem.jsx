@@ -63,9 +63,9 @@ const CommunityItem = ({
   const [btnContent, setBtnContent] = useState(
     isJoined !== undefined ? "Joined" : "Join"
   );
-  // useEffect(() => {
-  //   setBtnContent(initialState);
-  // });
+  useEffect(() => {
+    setBtnContent(initialState);
+  }, [initialState]);
   // console.log("first", btnContent);
   /**
    * it is the function that handle the state of the button when click on it.
@@ -117,7 +117,9 @@ const CommunityItem = ({
         />
         <CommunityInfo>
           <CommunityMainInfo>
-            <CommunityTitle>r/{communityName}</CommunityTitle>
+            <CommunityTitle className="community-name">
+              r/{communityName}
+            </CommunityTitle>
             <CommunityMembers>
               <span>•</span>
               {membersCount}k Members
@@ -130,6 +132,7 @@ const CommunityItem = ({
             onClick={clickHandler}
             onMouseEnter={mouseEnterHandler}
             onMouseLeave={MouseLeaveHandler}
+            className="join"
           >
             {btnContent}
           </Button>

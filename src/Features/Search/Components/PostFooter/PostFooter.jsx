@@ -12,8 +12,14 @@ const PostFooter = ({ postfooter }) => {
   if (postfooter) {
     return (
       <Footer>
-        <span>{postfooter.upVotes}k upvotes</span>
-        <span>{postfooter.Comments}k comments</span>
+        <span className="upvote">
+          {postfooter.upVotes}
+          <span className="upvote-units">k</span> upvotes
+        </span>
+        <span className="comment">
+          {postfooter.Comments}
+          <span className="comment-units">k</span> comments
+        </span>
       </Footer>
     );
   }

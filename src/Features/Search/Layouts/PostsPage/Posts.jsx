@@ -44,6 +44,7 @@ const Posts = ({
                 id="dropdown-basic-button"
                 title="Sort"
                 variant="transparent"
+                className="sort"
               >
                 <Dropdown.Item
                   href="#"
@@ -91,6 +92,7 @@ const Posts = ({
                 id="dropdown-basic-button"
                 title="time"
                 variant="transparent"
+                className="time"
               >
                 <Dropdown.Item href="#">All time</Dropdown.Item>
                 <Dropdown.Item href="#">Past Year</Dropdown.Item>

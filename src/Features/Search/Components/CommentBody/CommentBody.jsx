@@ -60,7 +60,7 @@ const CommentBody = ({ commentBody }) => {
               </BodyContentHeader>
               <BodyText>
                 <BodyTextStyle>
-                  <BodyTextStylePlace>
+                  <BodyTextStylePlace className="comment-content">
                     {commentBody.bodyContent}
                   </BodyTextStylePlace>
                 </BodyTextStyle>
