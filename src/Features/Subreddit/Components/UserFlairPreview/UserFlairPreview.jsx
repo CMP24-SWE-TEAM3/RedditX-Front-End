@@ -94,7 +94,7 @@ const UserFlairPreview = () => {
 
   return (
     <Container>
-      <CreatePost to="#">Create Post</CreatePost>
+      <CreatePost to="#" className="create-post">Create Post</CreatePost>
       {/* dynamic display cuz if there is no display */}
       {true && <Separator />}
       {true && <Preview />}

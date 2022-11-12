@@ -171,7 +171,7 @@ const CategoryBar = () => {
         <InnerContainer>
           <NavLink
             to="/hot"
-            className="icon"
+            className="icon hot"
             onClick={() => {
               setSelected("hot");
             }}
@@ -183,7 +183,7 @@ const CategoryBar = () => {
           </NavLink>
           <NavLink
             to="/new"
-            className="icon"
+            className="icon new"
             onClick={() => {
               setSelected("new");
             }}
@@ -195,7 +195,7 @@ const CategoryBar = () => {
           </NavLink>
           <NavLink
             to="/top"
-            className="icon"
+            className="icon top"
             onClick={() => {
               setSelected("top");
             }}

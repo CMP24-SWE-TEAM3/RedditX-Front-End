@@ -163,13 +163,14 @@ const CommunityDate = () => {
             autoFocus
             onFocus={setCursor}
             maxLength={500}
+            className="textarea"
           ></textarea>
           <ButtonsContainer>
             <CharContainer tabIndex="0">
               {500 - description.length + " Characters remaining"}
             </CharContainer>
-            <CancelButton onClick={cancelHandler}>Cancel</CancelButton>
-            <SaveButton onClick={saveHandler}>Save</SaveButton>
+            <CancelButton onClick={cancelHandler} className="cancel">Cancel</CancelButton>
+            <SaveButton onClick={saveHandler} className="save">Save</SaveButton>
           </ButtonsContainer>
         </InputContainer>
       )}

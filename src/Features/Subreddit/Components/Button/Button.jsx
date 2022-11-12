@@ -39,7 +39,7 @@ const Button = ({isJoined, onJoin}) => {
   return (
     <StyledButton joined={isJoined}>
       <div className="width">
-        <button onClick={onClickJoin} onMouseOver={onHover} onMouseOut={onLeave}>
+        <button onClick={onClickJoin} onMouseOver={onHover} onMouseOut={onLeave} className="join">
           {text}
         </button>
       </div>
