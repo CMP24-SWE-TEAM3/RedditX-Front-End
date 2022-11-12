@@ -6,6 +6,7 @@ CoverDiv,
 GradientDiv,
 LinkH2,
 } from "./CommunityCard.styled";
+import { useNavigate } from "react-router-dom";
 import { CommunityOl } from "../Communities Container/CommunitiesContainer.styled";
 import CommunityCardItem from "../../Components/CommunitySideCardItem/CommunityCardItem";
 import axios from "API/axios";
@@ -19,6 +20,13 @@ import {Link} from "react-router-dom";
  * @returns {React.Component}
  */
 const TopCommunities = () => {
+
+    const navigate = useNavigate();
+
+    const navigateToRandomCat = (categoryTitle) => {
+        // 👇️ navigate to /contacts
+        navigate(`/category/${categoryTitle}`);
+    };
 
     // Fetch communities
     const [communityList, error, loading, reload] = useFetch({
@@ -60,8 +68,8 @@ const TopCommunities = () => {
                   {com}
               </CommunityOl>
             <BtnDiv>
-                <ViewAllBtn>See All Gaming</ViewAllBtn>
-              </BtnDiv>
+                <ViewAllBtn onClick={()=>navigateToRandomCat('Gaming')}>See All Gaming</ViewAllBtn>
+            </BtnDiv>
         </CommunityContainer>
     );
 };

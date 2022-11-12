@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FaAngleUp } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 export const Arrow = styled(FaAngleUp)`
   position: absolute;
@@ -78,7 +79,7 @@ export const CommunityItem = styled.div`
   }
 `;
 
-export const CommunityA = styled.a`
+export const CommunityA = styled(NavLink)`
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -178,7 +179,7 @@ export const HoverImg = styled.img`
   width: 32px;
 `;
 
-export const HoverTitle = styled.a`
+export const HoverTitle = styled(NavLink)`
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;

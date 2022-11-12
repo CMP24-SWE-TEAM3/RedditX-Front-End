@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FaAngleUp } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 export const Arrow = styled(FaAngleUp)`
   color: #46D160;
@@ -22,7 +23,7 @@ export const Container = styled.div`
 `;
 
 
-export const CommunityA = styled.a`
+export const CommunityA = styled(NavLink)`
   display: flex;
   align-items: center;
   text-decoration: none;

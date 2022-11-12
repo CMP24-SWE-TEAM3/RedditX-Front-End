@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 export const RightSectionContainer = styled.div`
   display: none;
@@ -78,7 +79,7 @@ export const LettersContainer = styled.div`
   padding: 12px;
 `;
 
-export const Letters = styled.a`
+export const Letters = styled(NavLink)`
   color: ${({theme})=>theme.color.secondary};
   transition: 0.3s;
   display: inline-block;

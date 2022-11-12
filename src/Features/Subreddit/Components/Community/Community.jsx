@@ -77,7 +77,7 @@ import {
   const isRising = isJoinedstate;
   return (
     <CommunityItem>
-      <CommunityA href={`/${title}`}>
+      <CommunityA to={`/subreddit`}>
         <CommunityIndex>{index}</CommunityIndex>
         <Arrow up={isRising? "true": "false"}></Arrow>
         <CommunityImg
@@ -90,7 +90,7 @@ import {
             <HoverItem>
               <ImgTitle>
                 <HoverImg src={require(`../../Assets/images/${img}`)} />
-                <HoverTitle>{title}</HoverTitle>
+                <HoverTitle to={'/subreddit'}>{title}</HoverTitle>
               </ImgTitle>
               <MembersOnline>
                 <Members>

@@ -18,7 +18,7 @@ const CommunityCardItem = ({index, title}) => {
 
     return (
         <Container>
-            <CommunityA href={`/${title}`}>
+            <CommunityA to={`/subreddit`}>
                 <CommunityIndex>{index}</CommunityIndex>
                 <Arrow />
                  <CommunityImg
