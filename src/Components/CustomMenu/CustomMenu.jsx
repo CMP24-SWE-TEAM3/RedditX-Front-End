@@ -5,8 +5,6 @@ import Form from "react-bootstrap/Form";
 /**
  * Function that helps dropdown functionality
  *
- * @type {React.ForwardRefExoticComponent<React.PropsWithoutRef<{readonly "aria-labelledby"?: *, readonly children?: *, readonly style?: *, readonly className?: *}> & React.RefAttributes<unknown>>}
- *
  *  @return {React.Component}
  */
 

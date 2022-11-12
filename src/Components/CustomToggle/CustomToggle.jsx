@@ -4,7 +4,6 @@ import {AnchorToggle} from "./CustomToggle.styled";
 
 /**
  * Function that helps dropdown functionality
- * @type {React.ForwardRefExoticComponent<React.PropsWithoutRef<{readonly onClick?: *, readonly children?: *}> & React.RefAttributes<unknown>>}
  */
 const CustomToggle = React.forwardRef(({children, onClick}, ref) => (
     <AnchorToggle href="" ref={ref} onClick={(e) => {

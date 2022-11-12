@@ -17,7 +17,7 @@ const RecentPosts = () => {
         axiosInstance: axios,
         method: "GET",
         //  /api/random-category/
-        url: "http://localhost:5000/RecentPosts",
+        url: "RecentPosts",
         requestConfig: {
             headers: {
                 "Content-Language": "en-US",
@@ -35,7 +35,7 @@ const RecentPosts = () => {
     }
     return (
         <>
-            { showRecentPosts&&<Container>
+            { showRecentPosts&&<Container id={'recent-post-container'}>
             <div>
                 <div className="head">
                     <div>Recent Posts</div>
@@ -75,7 +75,7 @@ const RecentPosts = () => {
                             )
                         })}
                     </div>
-                    <button className={'but'} onClick={deleteRecentPosts}>
+                    <button id={'recent-post-button'} className={'but'} onClick={deleteRecentPosts}>
                         Clear
                     </button>
                 </Container>}

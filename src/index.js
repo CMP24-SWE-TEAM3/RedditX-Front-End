@@ -15,20 +15,10 @@ import App from "App";
 
 // Import reportWebVitals to measure the real life performance the app
 import reportWebVitals from "reportWebVitals";
-import {AuthContextProvider} from "Contexts/auth-context";
-import HomePage from "Pages/HomePage/HomePage"
-import {BrowserRouter, Route,Routes} from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
-        <AuthContextProvider>
-            <BrowserRouter>
-                <Routes>
-                <Route path="/" element={<HomePage/>}/>
-                </Routes>
-                {/*<HomePage/>*/}
-            </BrowserRouter>
-        </AuthContextProvider>
+        <App/>
     </React.StrictMode>
 );
 

@@ -16,7 +16,7 @@ const LoginButton = () => {
     const ctx = useContext(AuthContext);
     return (
         <>
-            <LoginStyled onClick={() => {
+            <LoginStyled id={'login-button-from-HomePage'} onClick={() => {
                 ctx.onLogin()
             }} variant="outline-primary rounded-pill h-4">Log In</LoginStyled>
         </>

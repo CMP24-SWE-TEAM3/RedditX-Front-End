@@ -21,13 +21,13 @@ const SideBar = ({showButton, showSideBar, setShowSideBar}) => {
     return (
         <>
             {showButton && <ButtonStyled onClick={handleShow}>
-                <div className={'open-side'}>
+                <div id={'side-bar-action'} className={'open-side'}>
                     <AiOutlineContainer/><GrFormPrevious/>
                 </div>
 
             </ButtonStyled>}
 
-            <OffcanvasBody show={showSideBar} onHide={handleClose} className={'mt-5'} backdrop={false}>
+            <OffcanvasBody id={'left-sidebar'} show={showSideBar} onHide={handleClose} className={'mt-5'} backdrop={false}>
                 <Offcanvas.Body>
                     <Offcanvas.Header closeButton>
                         <Offcanvas.Title/>

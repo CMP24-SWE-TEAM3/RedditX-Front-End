@@ -1,7 +1,7 @@
 import React from 'react';
 import Dropdown from "react-bootstrap/Dropdown";
 import {DropdownContainer} from "./DropDownItem.styled";
-import CustomMenu from "Utils/CustomMenu/CustomMenu";
+import CustomMenu from "Components/CustomMenu/CustomMenu";
 import db from "Data/db.json"
 
 /**

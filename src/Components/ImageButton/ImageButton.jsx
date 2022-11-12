@@ -10,7 +10,7 @@ import {RiImage2Line} from "react-icons/ri";
  */
 const ImageButton = () => {
     return (
-        <ImageButtonStyled>
+        <ImageButtonStyled id={'create-img-post'}>
             <i><RiImage2Line/> </i>
         </ImageButtonStyled>
     );

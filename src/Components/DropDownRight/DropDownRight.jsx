@@ -25,7 +25,7 @@ const DropDownRightButton = ({toggleMode}) => {
         alert('Login or Sign up Page')
     }
     return (
-        <Container autoClose="outside" title={<DropdownButtonIconStyled/>} id="basic-nav-dropdown">
+        <Container id={'right-drop-down'} autoClose="outside" title={<DropdownButtonIconStyled/>}>
             <NavDropdown.Item as={'title'} disabled={'disabled'}>
                 <i className={'ico'}><CgProfile/></i>
                 <span className={'stuff'}>My Stuff</span>
@@ -58,7 +58,7 @@ const DropDownRightButton = ({toggleMode}) => {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                     <span>Dark Mode</span>
-                    <span className={'switch-but'}> <SwitchButton toggle={toggleMode}/></span>
+                    <span className={'switch-but'}> <SwitchButton id={'dark-mode-button'} toggle={toggleMode}/></span>
                 </NavDropdown.Item>
             </div>
             <NavDropdown.Divider/>

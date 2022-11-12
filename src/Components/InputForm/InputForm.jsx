@@ -19,7 +19,7 @@ const InputForm = () => {
     }
     return (
         <>
-            <StyledSearcherInput onClick={handleDropdown} type="text" placeholder={'Search Reddit'}/>
+            <StyledSearcherInput id={'search-input'} onClick={handleDropdown} type="text" placeholder={'Search Reddit'}/>
             {/*<SearchDropDown show={show}/>*/}
         </>
     );

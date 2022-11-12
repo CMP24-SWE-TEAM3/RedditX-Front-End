@@ -4,7 +4,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import {DropDownLeftStyled} from "./DropDownLeft.styled";
 import {AiFillHome} from 'react-icons/ai';
 import DropDownMenu from "Components/DropDownMenu/DropDownMenu";
-import CustomToggle from "Utils/CustomToggle/CustomToggle";
+import CustomToggle from "Components/CustomToggle/CustomToggle";
 import SideBar from "Components/SideBar/SideBar";
 import {GrFormDown} from "react-icons/gr";
 
@@ -35,7 +35,7 @@ const DropDownLeft = () => {
     return (
 
         <DropDownLeftStyled>
-            <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components"
+            <Dropdown.Toggle as={CustomToggle} id="dropdown-home"
                              onClick={handleToggle}>
                 <div className={'all-drop'}>
                     <div className={'home-ico'}>

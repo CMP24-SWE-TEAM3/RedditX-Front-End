@@ -34,8 +34,8 @@ const CreatePostSideBar = () => {
                     </div>
                     <hr/>
                     <div className={'buts'}>
-                        <button className={'sub-but1'}>Create Post</button>
-                        <button onClick={() => setShow(true)} className={'sub-but2'}>Create Community</button>
+                        <button id={'create-post-button'}  className={'sub-but1'}>Create Post</button>
+                        <button id={'create-community-button'}  onClick={() => setShow(true)} className={'sub-but2'}>Create Community</button>
                     </div>
                 </div>
             </Container>

@@ -11,7 +11,7 @@ const LinkButton = () => {
         alert("Go to Create Post  Link");
     }
     return (
-        <LinkButtonStyled onClick={LinkButton}>
+        <LinkButtonStyled id={'create-link-post'} onClick={LinkButton}>
             <IconStyled/>
         </LinkButtonStyled>
     );

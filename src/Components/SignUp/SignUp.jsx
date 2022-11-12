@@ -11,7 +11,7 @@ const SignUp = () => {
         alert("Welcome on Board!");
     }
     return (
-        <SignUpStyled onClick={alertSignUp} variant="outline-primary rounded-pill h-4">Sign Up</SignUpStyled>
+        <SignUpStyled id={'sign-up-button-from-HomePage'} onClick={alertSignUp} variant="outline-primary rounded-pill h-4">Sign Up</SignUpStyled>
     );
 };
 

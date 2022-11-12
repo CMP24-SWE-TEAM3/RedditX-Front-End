@@ -35,7 +35,7 @@ const ScrollButton = () => {
     window.addEventListener('scroll', toggleVisible);
 
     return (
-        <ButtonStyled onClick={scrollToTop} show={visible}>Back to Top</ButtonStyled>
+        <ButtonStyled id={'back-to-top-button'} onClick={scrollToTop} show={visible}>Back to Top</ButtonStyled>
 
     );
 }

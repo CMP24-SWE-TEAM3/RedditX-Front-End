@@ -12,7 +12,7 @@ const Post = () => {
         alert('re-direct to Create Post Page');
     }
     return (
-        <PostStyled onClick={Boom} type="post" placeholder="Create Post"/>
+        <PostStyled id={'create-post-container'} onClick={Boom} type="post" placeholder="Create Post"/>
 
     );
 };

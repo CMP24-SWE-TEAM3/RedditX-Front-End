@@ -19,7 +19,7 @@ const SearchDropDown = ({show}) => {
         axiosInstance: axios,
         method: "GET",
         //  /api/random-category/
-        url: "http://localhost:5000/TrendingPosts",
+        url: "TrendingPosts",
         requestConfig: {
             headers: {
                 "Content-Language": "en-US",

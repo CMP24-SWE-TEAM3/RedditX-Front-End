@@ -17,6 +17,8 @@ import { ThemeProvider } from "styled-components";
 
 // Import bootstrap
 import { Button } from "react-bootstrap";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import HomePage from "./Pages/HomePage/HomePage";
 
 /**
  * The main app of our application it handles routing
@@ -42,6 +44,11 @@ function App() {
     <ThemeProvider theme={theme}>
       <styles.AppContainer>
         <styles.AppHeader>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<HomePage toggleMode={handleToggleTheme} theme={theme.id}/>}/>
+              </Routes>
+            </BrowserRouter>
           <styles.AppLogo src={logo} alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.

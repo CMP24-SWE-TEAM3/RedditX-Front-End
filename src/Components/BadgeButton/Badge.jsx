@@ -12,11 +12,11 @@ import {Link} from "react-router-dom";
  */
 const Badge = ({theme}) => {
     let textLogo = whiteLogo;
-    if (theme.id === 'light')
+    if (theme === 'light')
         textLogo = blackLogo;
     return (
         <StyledLink>
-            <Link href={"https://www.google.com"}>
+            <Link id={'home-page'} to={"/"}>
                 <StyledIcon src={logo} alt="logo of reddit"/>
                 < StyledTextLogo src={textLogo} alt="Reddit Logo"/>
             </Link>

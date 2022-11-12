@@ -37,7 +37,7 @@ const ModalCommunity = ({show, close}) => {
             alert(`The Community name you entered was: ${communityName}`);
         }
         return (
-            <ModalStyled show={show} onHide={close}>
+            <ModalStyled show={show} onHide={close} id={'modal'}>
                 <Modal.Header closeButton>
                     <Modal.Title>Create a community</Modal.Title>
                 </Modal.Header>
@@ -47,7 +47,7 @@ const ModalCommunity = ({show, close}) => {
                     </p>
                     <Form id={'my-form'} method={'get'} onSubmit={handleSubmit}>
                         <Form.Group className="mb-3">
-                            <Form.Control value={communityName} onChange={handlerChars} aria-required type={'text'}
+                            <Form.Control id={'text-input'} value={communityName} onChange={handlerChars} aria-required type={'text'}
                                           maxlength="21"/>
                         </Form.Group>
 
@@ -116,10 +116,10 @@ const ModalCommunity = ({show, close}) => {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <button className={'close-but'} onClick={close}>
+                    <button id={'close-button'} className={'close-but'} onClick={close}>
                         Close
                     </button>
-                    <button type={'submit'} className={'create-but'} form={'my-form'}>
+                    <button id={'create-community-form'} type={'submit'} className={'create-but'} form={'my-form'}>
                         Create Community
                     </button>
                 </Modal.Footer>
