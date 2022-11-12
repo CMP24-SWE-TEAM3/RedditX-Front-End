@@ -41,7 +41,12 @@ const PreviewImage = ({ selectedImageId, files, isLoadingDone }) => {
       {image && (
         <>
           <ImageContainer>
-            <Image src={image.src} alt="selected" />
+            <Image
+              as={image.type.toLowerCase().includes("video") ? "video" : "img"}
+              src={image.src}
+              controls={image.type.toLowerCase().includes("video")}
+              alt="selected"
+            />
           </ImageContainer>
           <LinkForm>
             <Form.Group className="title-group mb-3">
