@@ -30,7 +30,7 @@ const MediaControls = ({ addImage, addVideo }) => {
         overlay={<Tooltip id="button-tooltip-2">Add an image</Tooltip>}
       >
         <StyledButton
-          id="Add an image"
+          id="Add-an-image"
           onClick={() => imageRef.current.click()}
         >
           <IoImageOutline size={25} />
@@ -48,7 +48,7 @@ const MediaControls = ({ addImage, addVideo }) => {
         placement="top"
         overlay={<Tooltip id="button-tooltip-2">Add a video</Tooltip>}
       >
-        <StyledButton id="Add a video" onClick={() => videoRef.current.click()}>
+        <StyledButton id="Add-a-video" onClick={() => videoRef.current.click()}>
           <SlSocialYoutube size={25} />
         </StyledButton>
       </OverlayTrigger>
