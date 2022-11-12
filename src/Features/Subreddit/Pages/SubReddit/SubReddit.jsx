@@ -28,7 +28,7 @@ const SubReddit = () => {
     <SubRedditProvider>
       <SetSubReddit comName="Community">
         <SubRedditContainer>
-          <header>Navbar</header>
+          {/*<header>Navbar</header>*/}
           <InnerContainer>
             <SubRedditHeader
               banner={banner}

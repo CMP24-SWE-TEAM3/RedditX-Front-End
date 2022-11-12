@@ -41,7 +41,7 @@ const TopCommunities = () => {
             </div>
             {!loading && communityList.map(community => {
                 return (
-                    <CommunityCardItem key={community.id} community={community.name} communityId={community.id}/>
+                    <CommunityCardItem  key={community.id} community={community.name} communityId={community.id} onClick={()=>navigate("/subreddit")}/>
                 )
             })}
 

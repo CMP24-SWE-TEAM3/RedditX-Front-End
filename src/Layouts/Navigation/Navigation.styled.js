@@ -56,3 +56,19 @@ export const Span = styled.span`
     display: none;
   }
 `
+
+export const AppHeader = styled.header`
+  background-color: ${({ theme }) => theme.canvas};
+  //min-height: 48vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+`;
+
+export const AppContainer = styled.div`
+  text-align: center;
+`;
