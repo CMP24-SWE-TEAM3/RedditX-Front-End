@@ -19,7 +19,7 @@ const AfterSignUpModal = ({ ...props }) => {
       backdrop={"static"}
     >
       <Modal.Body>
-        <AfterSignUp />
+        <AfterSignUp setModalAfterSignUp={props.setModalAfterSignUp} />
       </Modal.Body>
     </MyModal>
   );

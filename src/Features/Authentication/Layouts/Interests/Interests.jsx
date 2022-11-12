@@ -78,7 +78,6 @@ const Interests = ({
     }
     setValid(temp.length > 2);
     setInterests(temp);
-    console.log(temp);
   };
 
   const nextScreen = () => {

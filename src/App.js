@@ -30,13 +30,17 @@ import Search from "Features/Search/Pages/Search/Search";
 import HomePage from "Pages/HomePage/HomePage";
 
 // Import contexts
-import { AuthProvider } from "Features/Authentication/Contexts/Authentication";
+import {
+  AuthProvider,
+  useAuth,
+} from "Features/Authentication/Contexts/Authentication";
 
 // TODO: remove this dummy page
-import DummyPage from "Pages/DummyPage/DummyPage";
 import Navigation from "./Layouts/Navigation/Navigation";
-import LogInVerticalModal from "./Features/Authentication/Layouts/LogInVerticalModal/LogInVerticalModal";
-import SignUpVerticalModal from "./Features/Authentication/Layouts/SignUpVerticalModal/SignUpVerticalModal";
+import LogInVerticalModal from "Features/Authentication/Layouts/LogInVerticalModal/LogInVerticalModal";
+import SignUpVerticalModal from "Features/Authentication/Layouts/SignUpVerticalModal/SignUpVerticalModal";
+import AfterSignUp from "Features/Authentication/Layouts/AfterSignUp/AfterSignUp";
+import AfterSignUpModal from "Features/Authentication/Layouts/AfterSignUpModal/AfterSignUpModal";
 /**
  * The main app of our application it handles routing
  *
@@ -61,44 +65,140 @@ function App() {
   const [modalShowSignUp, setModalShowSignUp] = React.useState(false);
   const [modalShowLogIn, setModalShowLogIn] = React.useState(false);
   const [modalAfterSignUp, setModalAfterSignUp] = React.useState(false);
+
+  const auth = useAuth();
   return (
     <ThemeProvider theme={theme}>
       <AuthProvider>
         <BrowserRouter>
-          <Navigation
-              toggleMode={handleToggleTheme}
-              theme={theme.id}
-              modalShowLogIn={modalShowLogIn}
-              setModalShowLogIn={setModalShowLogIn}
-              modalShowSignUp={modalShowSignUp}
-              setModalShowSignUp={setModalShowSignUp}
-              modalAfterSignUp={modalAfterSignUp}
-              setModalAfterSignUp={setModalAfterSignUp}
-          />
           <LogInVerticalModal
-              show={modalShowLogIn}
-              onHide={() => setModalShowLogIn(false)}
-              setModalShowLogIn={setModalShowLogIn}/>
+            show={modalShowLogIn}
+            onHide={() => setModalShowLogIn(false)}
+            setModalShowLogIn={setModalShowLogIn}
+          />
           <SignUpVerticalModal
-              show={modalShowSignUp}
-              onHide={() => setModalShowSignUp(false)}
-              setModalShowSignUp={setModalShowSignUp}
+            show={modalShowSignUp}
+            onHide={() => setModalShowSignUp(false)}
+            setModalShowSignUp={setModalShowSignUp}
+            setModalAfterSignUp={setModalAfterSignUp}
+          />
+          <AfterSignUpModal
+            show={modalAfterSignUp}
+            setModalAfterSignUp={setModalAfterSignUp}
+            onHide={() => setModalAfterSignUp(false)}
           />
           <Routes>
             <Route
               path="/"
               element={
-                <HomePage
-                  handleToggleTheme={handleToggleTheme}
-                  theme={theme.id}
-                />
+                <>
+                  <Navigation
+                    toggleMode={handleToggleTheme}
+                    theme={theme.id}
+                    modalShowLogIn={modalShowLogIn}
+                    setModalShowLogIn={setModalShowLogIn}
+                    modalShowSignUp={modalShowSignUp}
+                    setModalShowSignUp={setModalShowSignUp}
+                    modalAfterSignUp={modalAfterSignUp}
+                    setModalAfterSignUp={setModalAfterSignUp}
+                  />
+                  <HomePage
+                    handleToggleTheme={handleToggleTheme}
+                    theme={theme.id}
+                  />
+                </>
               }
             />
-            <Route path="subreddit" element={<SubReddit />} />
-            <Route path="category/*" element={<CommunityLeaderBoard />} />
-            <Route path="index-page" element={<IndexPage />} />
-            <Route path="search/*" element={<Search/>}/>
-            <Route path="submit" element={<CreatePost />} />
+            <Route
+              path="subreddit"
+              element={
+                <>
+                  <Navigation
+                    toggleMode={handleToggleTheme}
+                    theme={theme.id}
+                    modalShowLogIn={modalShowLogIn}
+                    setModalShowLogIn={setModalShowLogIn}
+                    modalShowSignUp={modalShowSignUp}
+                    setModalShowSignUp={setModalShowSignUp}
+                    modalAfterSignUp={modalAfterSignUp}
+                    setModalAfterSignUp={setModalAfterSignUp}
+                  />
+                  <SubReddit />
+                </>
+              }
+            />
+            <Route
+              path="category/*"
+              element={
+                <>
+                  <Navigation
+                    toggleMode={handleToggleTheme}
+                    theme={theme.id}
+                    modalShowLogIn={modalShowLogIn}
+                    setModalShowLogIn={setModalShowLogIn}
+                    modalShowSignUp={modalShowSignUp}
+                    setModalShowSignUp={setModalShowSignUp}
+                    modalAfterSignUp={modalAfterSignUp}
+                    setModalAfterSignUp={setModalAfterSignUp}
+                  />
+                  <CommunityLeaderBoard />
+                </>
+              }
+            />
+            <Route
+              path="index-page"
+              element={
+                <>
+                  <Navigation
+                    toggleMode={handleToggleTheme}
+                    theme={theme.id}
+                    modalShowLogIn={modalShowLogIn}
+                    setModalShowLogIn={setModalShowLogIn}
+                    modalShowSignUp={modalShowSignUp}
+                    setModalShowSignUp={setModalShowSignUp}
+                    modalAfterSignUp={modalAfterSignUp}
+                    setModalAfterSignUp={setModalAfterSignUp}
+                  />
+                  <IndexPage />
+                </>
+              }
+            />
+            <Route
+              path="search/*"
+              element={
+                <>
+                  <Navigation
+                    toggleMode={handleToggleTheme}
+                    theme={theme.id}
+                    modalShowLogIn={modalShowLogIn}
+                    setModalShowLogIn={setModalShowLogIn}
+                    modalShowSignUp={modalShowSignUp}
+                    setModalShowSignUp={setModalShowSignUp}
+                    modalAfterSignUp={modalAfterSignUp}
+                    setModalAfterSignUp={setModalAfterSignUp}
+                  />
+                  <Search />
+                </>
+              }
+            />
+            <Route
+              path="submit"
+              element={
+                <>
+                  <Navigation
+                    toggleMode={handleToggleTheme}
+                    theme={theme.id}
+                    modalShowLogIn={modalShowLogIn}
+                    setModalShowLogIn={setModalShowLogIn}
+                    modalShowSignUp={modalShowSignUp}
+                    setModalShowSignUp={setModalShowSignUp}
+                    modalAfterSignUp={modalAfterSignUp}
+                    setModalAfterSignUp={setModalAfterSignUp}
+                  />
+                  <CreatePost />
+                </>
+              }
+            />
             <Route path="login" element={<LogInPage />} />
             <Route path="register" element={<SignUpPage />} />
             <Route path="forget-password" element={<ForgetPasswordPage />} />

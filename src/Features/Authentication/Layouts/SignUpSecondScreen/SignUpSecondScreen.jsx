@@ -82,7 +82,9 @@ const SignUpSecondScreen = ({
   passwordStrength,
   setPasswordStrength,
   formFields,
-  setFormFields, setModalShowSignUp
+  setFormFields,
+  setModalShowSignUp,
+  setModalAfterSignUp,
 }) => {
   const auth = useAuth();
 
@@ -216,7 +218,8 @@ const SignUpSecondScreen = ({
         expiresIn: 3600,
       });
       setModalShowSignUp(false);
-      navigate("/");
+      setModalAfterSignUp(true);
+      // navigate("/");
 
       setWantSubmit(false);
 

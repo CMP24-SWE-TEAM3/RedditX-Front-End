@@ -22,7 +22,7 @@ var defaultFormFields = {
  * @returns {React.Component}  Signup component that is used in Signup modal
  */
 
-const SignUp = ({setModalShowSignUp}) => {
+const SignUp = ({ setModalShowSignUp, setModalAfterSignUp }) => {
   /**
    * state to handel any change the user make in the input fields
    */
@@ -67,7 +67,6 @@ const SignUp = ({setModalShowSignUp}) => {
    */
   const [initialFocus2, setInitialFocus2] = useState(true);
 
- 
   /**
    * Function to change userName shown in the userName textField by calling RandomUserName (function in utilities folder)
    */
@@ -75,8 +74,6 @@ const SignUp = ({setModalShowSignUp}) => {
     setFormFields({ ...formFields, userName: RandomUserName() });
     setValidUserName(true);
   };
-
- 
 
   return (
     <>
@@ -96,7 +93,7 @@ const SignUp = ({setModalShowSignUp}) => {
 
       {
         <SignUpSecondScreen
-            setModalShowSignUp={setModalShowSignUp}
+          setModalShowSignUp={setModalShowSignUp}
           initialFocus={initialFocus}
           initialFocus2={initialFocus2}
           notRobot={notRobot}
@@ -113,6 +110,7 @@ const SignUp = ({setModalShowSignUp}) => {
           validUserName={validUserName}
           setFormFields={setFormFields}
           formFields={formFields}
+          setModalAfterSignUp={setModalAfterSignUp}
         />
       }
     </>

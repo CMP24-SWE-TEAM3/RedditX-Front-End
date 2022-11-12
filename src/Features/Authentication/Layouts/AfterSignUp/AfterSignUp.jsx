@@ -14,7 +14,7 @@ import { StyledSpinner } from "./AfterSignUp.styled";
  * AfterSignUp component that appear to the user after he signed up
  * @returns {React.Component}  Signup component that appear to the user after he signed up
  */
-const AfterSignUp = () => {
+const AfterSignUp = ({ setModalAfterSignUp }) => {
   /**
    * state to know the gender of the user
    */
@@ -58,6 +58,9 @@ const AfterSignUp = () => {
     setInterestsScreen(false);
     setPhotoUploadScreen(false);
     setLoadingScreen(true);
+    setTimeout(() => {
+      setModalAfterSignUp(false);
+    }, 3000);
   };
   return (
     <>
@@ -90,7 +93,7 @@ const AfterSignUp = () => {
           submitForm={submitForm}
         />
       )}
-      {loadingScreen && <AfterSignUpLoading/>}
+      {loadingScreen && <AfterSignUpLoading />}
     </>
   );
 };
