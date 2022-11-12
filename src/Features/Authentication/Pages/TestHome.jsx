@@ -1,20 +1,18 @@
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 import React from "react";
 
-import SignUpVerticalModal from '../Layouts/SignUpVerticalModal/SignUpVerticalModal';
-import LogInVerticalModal from '../Layouts/LogInVerticalModal/LogInVerticalModal';
+import SignUpVerticalModal from "../Layouts/SignUpVerticalModal/SignUpVerticalModal";
+import LogInVerticalModal from "../Layouts/LogInVerticalModal/LogInVerticalModal";
 
-import AfterSignUpModal from '../Layouts/AfterSignUpModal/AfterSignUpModal';
+import AfterSignUpModal from "../Layouts/AfterSignUpModal/AfterSignUpModal";
+import { BrowserRouter, Routes } from "react-router-dom";
 
-export const toggle = () => {
-    
-}
-
+export const toggle = () => {};
 
 const TestHome = () => {
-    const [modalShowSignUp, setModalShowSignUp] = React.useState(false);
-    const [modalShowLogIn, setModalShowLogIn] = React.useState(false);
-    const [modalAfterSignUp, setModalAfterSignUp] = React.useState(false);
+  const [modalShowSignUp, setModalShowSignUp] = React.useState(false);
+  const [modalShowLogIn, setModalShowLogIn] = React.useState(false);
+  const [modalAfterSignUp, setModalAfterSignUp] = React.useState(false);
 
   return (
     <>
@@ -48,6 +46,6 @@ const TestHome = () => {
       />
     </>
   );
-}
+};
 
 export default TestHome;

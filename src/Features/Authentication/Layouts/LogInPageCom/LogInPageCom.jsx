@@ -27,6 +27,7 @@ import {
   signInWithGooglePopup,
   signInWithFacebookPopup,
 } from "Features/Authentication/Utils/Firebase";
+import { useNavigate } from "react-router-dom";
 
 import {
   AuthContainer,
@@ -107,6 +108,7 @@ const LogInPageCom = () => {
 
   const { userName, password } = formFields;
 
+  const navigate = useNavigate();
   /**
    * useEffect for userName field to check if the userName that the user entered is valid or not
    */
@@ -168,6 +170,13 @@ const LogInPageCom = () => {
         setFinishedLoading(true);
         auth.login(data);
       }
+      // TODO: remove this
+      auth.login({
+        username: userName,
+        token: "token",
+        expiresIn: 3600,
+      });
+      navigate("/");
 
       setWantSubmit(false);
 
@@ -313,6 +322,8 @@ const LogInPageCom = () => {
 
             <form onSubmit={handleSubmit}>
               <FormInputPageCom
+                required
+                id="login-username"
                 valid={validName}
                 initialFocus={initialFocus}
                 showIcon={true}
@@ -328,13 +339,22 @@ const LogInPageCom = () => {
 
               {/* Show error message if the userName is not valid and the user made a focus on the it's input field */}
               {!validName && !initialFocus && (
-                <ErrorParagraph valid={validName || initialFocus}>
+                <ErrorParagraph
+                  id="username-error"
+                  valid={validName || initialFocus}
+                >
                   Username must be between 3 and 20 characters
                 </ErrorParagraph>
               )}
-              {error && <ErrorParagraph valid={!error}>{error}</ErrorParagraph>}
+              {error && (
+                <ErrorParagraph id="username-error" valid={!error}>
+                  {error}
+                </ErrorParagraph>
+              )}
 
               <FormInputPageCom
+                required
+                id="login-password"
                 label="PASSWORD"
                 valid={validPassword}
                 initialFocus={initialFocus2}
@@ -351,6 +371,7 @@ const LogInPageCom = () => {
               <ButtonsContainer>
                 {!isLoading && !finishedLoading && (
                   <Button
+                    id="login-button"
                     page={true}
                     disabled={!validName || !validPassword}
                     valid={validName && validPassword}
@@ -363,7 +384,7 @@ const LogInPageCom = () => {
                   </Button>
                 )}
 
-                {isLoading  && (
+                {isLoading && (
                   <Button page={true} disabled valid={true} type="submit">
                     <LoadingSpinner></LoadingSpinner>
                   </Button>
@@ -376,13 +397,31 @@ const LogInPageCom = () => {
               </ButtonsContainer>
 
               <Forget>
-                Forget your <button onClick={() => {}}>username</button> or{" "}
-                <button onClick={() => {}}>password</button>
+                Forget your{" "}
+                <button
+                  id="forget-username"
+                  onClick={() => navigate("/forget-username")}
+                >
+                  username
+                </button>{" "}
+                or{" "}
+                <button
+                  id="forget-password"
+                  onClick={() => navigate("/forget-password")}
+                >
+                  password
+                </button>
               </Forget>
               <br></br>
               <br></br>
               <Forget>
-                New to Reddit? <button onClick={() => {}}>SIGN UP</button>
+                New to Reddit?{" "}
+                <button
+                  id="signup-button"
+                  onClick={() => navigate("/register")}
+                >
+                  SIGN UP
+                </button>
               </Forget>
             </form>
           </AuthContainerDiv>
