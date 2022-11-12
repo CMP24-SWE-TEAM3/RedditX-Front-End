@@ -20,7 +20,7 @@ import RandomUserName from "Features/Authentication/Utils/RandomUserName";
 
 import FormInputPageCom from "Features/Authentication/Components/FormInputPageCom/FormInputPageCom";
 import Button from "../../Components/Button/Button";
-
+import { useNavigate } from "react-router-dom";
 import {
   signupWithGoogle,
   signupWithFacebook,
@@ -99,6 +99,8 @@ const SignUpPageFirstScreen = ({
    * state to set the error message from signup
    */
   const [showSignupErrorMsg, setShowSignupErrorMsg] = useState(false);
+  const navigate = useNavigate();
+
   /**
    * useEffect for email field to check if the email that the user entered is valid or not
    */
@@ -260,7 +262,10 @@ const SignUpPageFirstScreen = ({
                   </SignInWithGoogle>
 
                   <SignInWithFacebook>
-                    <button id="contWithFacebook" onClick={() => logFacebookUser()}>
+                    <button
+                      id="contWithFacebook"
+                      onClick={() => logFacebookUser()}
+                    >
                       <FaFacebookSquare size={22} />
                       <span> CONTINUE WITH FACEBOOK</span>
                     </button>
@@ -287,12 +292,17 @@ const SignUpPageFirstScreen = ({
                       }}
                     />
 
-                    <ErrorParagraph id="errorNotValidEmail" valid={validEmail || initialFocus}>
+                    <ErrorParagraph
+                      id="errorNotValidEmail"
+                      valid={validEmail || initialFocus}
+                    >
                       {errMsg}
                     </ErrorParagraph>
 
                     {error && (
-                      <ErrorParagraph id="errorFromBackEnd" valid={!error}>{error}</ErrorParagraph>
+                      <ErrorParagraph id="errorFromBackEnd" valid={!error}>
+                        {error}
+                      </ErrorParagraph>
                     )}
 
                     <ButtonsContainer>
@@ -311,7 +321,12 @@ const SignUpPageFirstScreen = ({
 
                     <Forget>
                       Already a redditor?{" "}
-                      <button id="logInButtonFromSignup" onClick={() => {}}>LOG IN</button>
+                      <button
+                        id="logInButtonFromSignup"
+                        onClick={() => navigate("/login")}
+                      >
+                        LOG IN
+                      </button>
                     </Forget>
                   </form>
                 </AuthContainerDiv>

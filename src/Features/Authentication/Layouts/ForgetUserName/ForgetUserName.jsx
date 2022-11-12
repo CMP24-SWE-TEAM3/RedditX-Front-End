@@ -18,7 +18,7 @@ import { forgetUserNameApi } from "Features/Authentication/Services/authApi";
 import axios from "API/axios";
 
 import useFetchFunction from "Hooks/useFetchFunction";
-
+import { useNavigate } from "react-router-dom";
 import {
   AuthContainer,
   ButtonsContainer,
@@ -29,6 +29,7 @@ import {
   ReCAPTCHAContainer,
   RedditIcon,
 } from "./ForgetUserName.styled";
+import { Navigate } from "react-router-dom";
 
 const USER_EMAIL =
   /[a-zA-Z0-9._-]{3,}@[a-zA-Z0-9._-]{3,}[.]{1}[a-zA-Z0-9._-]{2,}/;
@@ -93,6 +94,7 @@ const ForgetUserName = () => {
    */
   const [emailSent, setEmailSent] = useState(false);
 
+  const navigate = useNavigate();
   const { email } = formFields;
 
   /**
@@ -271,10 +273,10 @@ const ForgetUserName = () => {
         <br></br>
         <Forget>
           {/* Want to login? */}
-          <span id="login-link" onClick={() => {}}>
+          <span onClick={() => navigate("/login")} id="login-link">
             LOG IN
           </span>{" "}
-          <span id="signup-link" onClick={() => {}}>
+          <span onClick={() => navigate("/register")} id="signup-link">
             {" . "}SIGN UP
           </span>{" "}
         </Forget>

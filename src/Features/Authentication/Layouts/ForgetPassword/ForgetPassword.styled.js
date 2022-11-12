@@ -41,13 +41,15 @@ export const ButtonsContainer = styled.div`
   width: 45%;
 `;
 export const ErrorParagraph = styled.p`
-color: ${(p) => (p.validColor ? ({ theme }) => theme.color.blueValid : ({ theme }) => theme.color.errorColor)};
+  color: ${(p) =>
+    p.validColor
+      ? ({ theme }) => theme.color.blueValid
+      : ({ theme }) => theme.color.errorColor};
   margin-top: ${(p) => (p.valid ? "-30px" : "0")};
   font-size: 12px;
   transition: all 0.2s ease-in-out;
   padding: 0 0 0 20px;
 
-  
   @media (max-width: 330px) {
     margin-top: ${(p) => (p.valid ? "-35px" : "0")};
   }
@@ -75,7 +77,9 @@ export const OrHeader = styled.h2`
 `;
 export const Forget = styled.span`
   font-size: 13px;
-
+  span {
+    cursor: pointer;
+  }
   span,
   button {
     padding: 0;
