@@ -70,9 +70,6 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <AuthProvider>
-<<<<<<< HEAD
-        <ForgetUserNamePage />
-=======
         <BrowserRouter>
           <LogInVerticalModal
             show={modalShowLogIn}
@@ -212,7 +209,6 @@ function App() {
             />
           </Routes>
         </BrowserRouter>
->>>>>>> 946a4d6ec27ca7da6351f1003058a1f5e921ba3e
       </AuthProvider>
     </ThemeProvider>
   );
