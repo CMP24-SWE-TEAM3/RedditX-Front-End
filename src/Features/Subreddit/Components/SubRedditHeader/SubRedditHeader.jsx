@@ -11,16 +11,16 @@ import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
 import { useEffect, useState } from "react";
 
 /**
+ * Component that has all the information about the subreddit.
  *
  * @param {Object} banner - picture or color of header banner
  * @param {Object} info - object contain info of subreddit
  * @param {boolean} isJoined - boolean if user joined subreddit
  * @param {function} onJoin - function handler on click join
- * @returns
+ * @returns {React.Component}
  */
 const SubRedditHeader = ({ banner, info, isJoined, onJoin }) => {
-
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
 
   /**
    * on click join handler
@@ -31,13 +31,12 @@ const SubRedditHeader = ({ banner, info, isJoined, onJoin }) => {
     onJoin(e);
   }
 
+  const { community } = useSubReddit();
 
-  const {community} = useSubReddit();
-
-  useEffect(()=>{
-   setName(community[0].name);
-   console.log(name);
-  },[community])
+  useEffect(() => {
+    setName(community[0].name);
+    console.log(name);
+  }, [community]);
 
   // let [replay, error, loading, reload] = useFetch({
   //   axiosInstance: axios,
@@ -62,18 +61,18 @@ const SubRedditHeader = ({ banner, info, isJoined, onJoin }) => {
     <HeaderContainer>
       <Banner banner={banner} />
       <HeaderContent>
-          <HeaderDetails>
-            <div className="content">
-              <img src={profile} alt="" />
-              <Info>
-                <div className="title-info">
-                  {name && <h1 className="title">{name}</h1>}
-                  {name && <h2 className="subtitle">{`r/${name}`}</h2>}
-                </div>
-                <Button isJoined={isJoined} onJoin={joinHandler} />
-              </Info>
-            </div>
-          </HeaderDetails>
+        <HeaderDetails>
+          <div className="content">
+            <img src={profile} alt="" />
+            <Info>
+              <div className="title-info">
+                {name && <h1 className="title">{name}</h1>}
+                {name && <h2 className="subtitle">{`r/${name}`}</h2>}
+              </div>
+              <Button isJoined={isJoined} onJoin={joinHandler} />
+            </Info>
+          </div>
+        </HeaderDetails>
       </HeaderContent>
     </HeaderContainer>
   );

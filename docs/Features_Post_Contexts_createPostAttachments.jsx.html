@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Features/Authentication/Layouts/ForgetPassword/ForgetPassword.jsx</title>
+    <title>JSDoc: Source: Features/Post/Contexts/createPostAttachments.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Features/Authentication/Layouts/ForgetPassword/ForgetPassword.jsx</h1>
+    <h1 class="page-title">Source: Features/Post/Contexts/createPostAttachments.jsx</h1>
 
     
 
@@ -26,318 +26,39 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/* eslint-disable no-unused-vars */
-import { useState, useEffect } from "react";
+            <pre class="prettyprint source linenums"><code>import { createContext, useContext, useState } from "react";
 
-import { SiReddit } from "react-icons/si";
-
-import FormInputPageCom from "Features/Authentication/Components/FormInputPageCom/FormInputPageCom";
-import Button from "Features/Authentication/Components/Button/Button";
-
-import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
-
-import Checked from "Features/Authentication/Components/Checked/Checked";
-
-import { forgetPasswordApi } from "Features/Authentication/Services/authApi";
-
-import axios from "API/axios";
-
-import useFetchFunction from "Hooks/useFetchFunction";
-import { useNavigate } from "react-router-dom";
-import {
-  AuthContainer,
-  ButtonsContainer,
-  ErrorParagraph,
-  AuthParagraph,
-  AuthHeader,
-  Forget,
-  RedditIcon,
-} from "./ForgetPassword.styled";
-
-const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
-
-const USER_EMAIL =
-  /[a-zA-Z0-9._-]{3,}@[a-zA-Z0-9._-]{3,}[.]{1}[a-zA-Z0-9._-]{2,}/;
-
-const defaultFormFields = {
-  userName: "",
-  email: "",
-};
+export const createPostAttachmentsContext = createContext({});
 
 /**
- * ForgetPassword component that is used in forget password page
- * @returns {React.Component}  ForgetPassword component that is used in forget password page
+ * Context for attachments of the post to be created
+ *
+ * @param {React.Component} children Who can access this context
+ * @returns {React.Component}
  */
-
-const ForgetPassword = () => {
-  const [data, error, isLoading, dataFetch] = useFetchFunction();
-
-  /**
-   * state to know if the email is valid or not to control what to show to the user
-   */
-  const [validEmail, setValidEmail] = useState(false);
-
-  /**
-   * state to handel any change the user make in the input fields
-   */
-
-  const [formFields, setFormFields] = useState(defaultFormFields);
-
-  /**
-   * state to know if the userName is valid or not to control what to show to the user
-   */
-
-  const [validName, setValidName] = useState(false);
-
-  /**
-   * state to know if the user focused on input field at least one time
-   */
-
-  const [initialFocus, setInitialFocus] = useState(true);
-  /**
-   * state to know if the user focused on input field at least one time
-   */
-
-  const [initialFocus2, setInitialFocus2] = useState(true);
-
-  /**
-   * state to if the user submitted the form or not
-   */
-  const [wantSubmit, setWantSubmit] = useState(false);
-
-  // /**
-  //  * state to know what error message should be shown
-  //  */
-  // const [isLoading, setIsLoading] = useState(false);
-
-  /**
-   * state to know what error message should be shown
-   */
-  const [finishedLoading, setFinishedLoading] = useState(false);
-
-  /**
-   * the error message from forget Password
-   */
-  const [forgetPasswordErrorMsg, setForgetPasswordErrorMsg] = useState("");
-  /**
-   * state to set the error message from forget Password
-   */
-  const [showForgetPasswordErrorMsg, setShowForgetPasswordErrorMsg] =
-    useState(false);
- const navigate = useNavigate();
-  /**
-   * state to know if the email sent or not
-   */
-  const [emailSent, setEmailSent] = useState(false);
-
-  const { userName, email } = formFields;
-
-  /**
-   * useEffect for email field to check if the email that the user entered is valid or not
-   */
-
-  useEffect(() => {
-    setValidEmail(USER_EMAIL.test(email));
-    setShowForgetPasswordErrorMsg(false);
-  }, [email]);
-
-  /**
-   * useEffect for userName field to check if the userName that the user entered is valid or not
-   */
-
-  useEffect(() => {
-    setValidName(USER_REGEX.test(userName));
-    setShowForgetPasswordErrorMsg(false);
-  }, [userName]);
-
-  /**
-   * Function to handle the submit of the form of forget password
-   * @param {*} event
-   */
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    if (wantSubmit) {
-      //setIsLoading(true);
-
-      // const response = await forgetPasswordApi(
-      //   email,
-      //   userName,
-      //   setForgetPasswordErrorMsg,
-      //   setShowForgetPasswordErrorMsg
-      // );
-
-      // if (response) {
-      //   setEmailSent(true);
-      //   setFinishedLoading(true);
-      // }
-
-      dataFetch({
-        axiosInstance: axios,
-        method: "post",
-        url: "/login/forget",
-        requestConfig: {
-          data: {
-            email: email,
-            username: userName,
-            operation: false,
-          },
-        },
-      });
-
-      if (!error) {
-        setEmailSent(true);
-        setFinishedLoading(true);
-      }
-
-      setWantSubmit(false);
-
-      // setIsLoading(false);
-    }
-  };
-
-  /**
-   * Function to handle any change on the input field of the forget password form (check if the userName or the email is valid or not)
-   * @param {*} event
-   */
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    if (name === "userName") {
-      setValidName(USER_REGEX.test(userName));
-    }
-    if (name === "email") {
-      setValidEmail(USER_EMAIL.test(email));
-    }
-    setFormFields({ ...formFields, [name]: value });
-  };
+export const CreatePostAttachmentsProvider = ({ children }) => {
+  // Context that is used to share attachments of the post to be created
+  const [createPostAttachments, setCreatePostAttachments] = useState([]);
 
   return (
-    &lt;>
-      &lt;AuthContainer id="forget-password-container">
-        &lt;RedditIcon>
-          &lt;SiReddit size={60} color={"red"}>&lt;/SiReddit>
-        &lt;/RedditIcon>
-        &lt;AuthHeader>Reset your password&lt;/AuthHeader>
-        &lt;AuthParagraph>
-          Tell us the username and email address associated with your Reddit
-          account, and we’ll send you an email with a link to reset your
-          password.
-        &lt;/AuthParagraph>
-
-        &lt;br>&lt;/br>
-
-        &lt;form onSubmit={handleSubmit}>
-          &lt;FormInputPageCom
-            id="username"
-            valid={validName}
-            initialFocus={initialFocus}
-            showIcon={true}
-            label="USERNAME"
-            type="text"
-            onChange={handleChange}
-            name="userName"
-            value={userName}
-            onFocus={() => {
-              setInitialFocus(false);
-            }}
-          />
-
-          {/* Show error message if the userName is not valid and the user made a focus on the it's input field */}
-          &lt;ErrorParagraph id="username-error" valid={validName || initialFocus}>
-            Username must be between 3 and 20 characters
-          &lt;/ErrorParagraph>
-
-          {error &amp;&amp; (
-            &lt;ErrorParagraph valid={!error || initialFocus}>
-              {error}
-            &lt;/ErrorParagraph>
-          )}
-          &lt;FormInputPageCom
-            id="email"
-            label="EMAIL"
-            valid={validEmail}
-            initialFocus={initialFocus2}
-            showIcon={true}
-            type="email"
-            onChange={handleChange}
-            name="email"
-            value={email}
-            onFocus={() => {
-              setInitialFocus2(false);
-            }}
-          />
-
-          {/* Show error message if the email is not valid and the user made a focus on the it's input field */}
-
-          &lt;ErrorParagraph id="email-error" valid={validEmail || initialFocus2}>
-            not a valid email
-          &lt;/ErrorParagraph>
-
-          &lt;ButtonsContainer>
-            {!isLoading &amp;&amp; !finishedLoading &amp;&amp; (
-              &lt;Button
-                id="reset"
-                page={true}
-                disabled={!validName || !validEmail}
-                valid={validName &amp;&amp; validEmail}
-                type="submit"
-                onClick={() => {
-                  setWantSubmit(true);
-                }}
-              >
-                RESET PASSWORD
-              &lt;/Button>
-            )}
-
-            {isLoading &amp;&amp; (
-              &lt;Button page={true} disabled valid={true} type="submit">
-                &lt;LoadingSpinner>&lt;/LoadingSpinner>
-              &lt;/Button>
-            )}
-            {!isLoading &amp;&amp; finishedLoading &amp;&amp; (
-              &lt;Button page={true} disabled valid={true} type="submit">
-                &lt;Checked>&lt;/Checked>
-              &lt;/Button>
-            )}
-          &lt;/ButtonsContainer>
-          &lt;br>&lt;/br>
-          {emailSent &amp;&amp; (
-            &lt;ErrorParagraph
-              id="success-alert"
-              validColor={emailSent}
-              valid={!emailSent || initialFocus}
-            >
-              Thanks! If your Reddit username and email address match, you'll
-              get an email with a link to reset your password shortly.
-            &lt;/ErrorParagraph>
-          )}
-          &lt;Forget>
-            &lt;span
-              id="forget-username-button"
-              onClick={() => navigate("/forget-username")}
-            >
-              FORGOT USERNAME?
-            &lt;/span>{" "}
-          &lt;/Forget>
-          &lt;br>&lt;/br>
-          &lt;br>&lt;/br>
-          &lt;Forget>
-            Don't have an email or need assistance logging &lt;br /> in?
-            &lt;button onClick={() => {}}>GET HELP&lt;/button>{" "}
-          &lt;/Forget>
-          &lt;br>&lt;/br>
-          &lt;br>&lt;/br>
-          &lt;Forget>
-            &lt;span onClick={() => navigate("/login")}>LOG IN&lt;/span>{" "}
-            &lt;span onClick={() => navigate("/register")}>{" . "}SIGN UP&lt;/span>{" "}
-          &lt;/Forget>
-        &lt;/form>
-      &lt;/AuthContainer>
-    &lt;/>
+    &lt;createPostAttachmentsContext.Provider
+      value={{
+        createPostAttachments,
+        setCreatePostAttachments,
+      }}
+    >
+      {children}
+    &lt;/createPostAttachmentsContext.Provider>
   );
 };
-
-export default ForgetPassword;
+/**
+ * Custom hook used to provide post attachments context
+ *
+ * @returns {React.Context}
+ */
+export const useCreatePostAttachments = () => {
+  return useContext(createPostAttachmentsContext);
+};
 </code></pre>
         </article>
     </section>
@@ -354,7 +75,7 @@ export default ForgetPassword;
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Tue Nov 15 2022 00:08:14 GMT+0200 (Eastern European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Mon Nov 14 2022 23:52:53 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -8,7 +8,7 @@ export const createPostFlairsContext = createContext({});
  * @param {React.Component} children Who can access this context
  * @returns {React.Component}
  */
-export const CreatePostFlairsProvider = ({ children }) => {
+const CreatePostFlairsProvider = ({ children }) => {
   // Context that is used to share flairs of the post to be created
   const [createPostFlairs, setCreatePostFlairs] = useState(null);
 
@@ -28,6 +28,8 @@ export const CreatePostFlairsProvider = ({ children }) => {
  *
  * @returns {React.Context}
  */
-export const useCreatePostFlairs = () => {
+const useCreatePostFlairs = () => {
   return useContext(createPostFlairsContext);
 };
+
+export { useCreatePostFlairs , CreatePostFlairsProvider };

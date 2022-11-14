@@ -8,7 +8,7 @@ export const submitDestinationContext = createContext({});
  * @param {React.Component} children Who can access this context
  * @returns {React.Component}
  */
-export const SubmitDestinationProvider = ({ children }) => {
+const SubmitDestinationProvider = ({ children }) => {
   // Context that is used to share project info between project and workspace
   const [submitDestination, setSubmitDestination] = useState(null);
 
@@ -28,6 +28,8 @@ export const SubmitDestinationProvider = ({ children }) => {
  *
  * @returns {React.Context}
  */
-export const useSubmitDestination = () => {
+const useSubmitDestination = () => {
   return useContext(submitDestinationContext);
 };
+
+export { SubmitDestinationProvider, useSubmitDestination };
