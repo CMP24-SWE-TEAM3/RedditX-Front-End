@@ -6,7 +6,7 @@ export const LoginStyled = styled(Button)`
   border: none !important;
   background-color: ${({theme})=>theme.color.secondary};
   width: 120px;
-  margin: 15px;
+  /* margin: 15px; */
   height: 32px;
   padding:0 10px;
   &:hover {

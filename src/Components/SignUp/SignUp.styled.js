@@ -8,7 +8,7 @@ export const SignUpStyled = styled(Button)`
   width: 118px;
   height: 32px;
   padding: 0 15px;
-  margin-left: 5%;
+  /* margin-left: 5%; */
   font-size: 14px;
 
   &:hover {

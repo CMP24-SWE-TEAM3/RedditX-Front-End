@@ -28,42 +28,49 @@ const SearchDropDown = ({show}) => {
     });
 
     return (
-        <SearchDropDownStyled show={show} rootCloseEvent={'click'} key={Math.random()} autoClose={true}>
+        <SearchDropDownStyled show={show} rootCloseEvent={'click'}  autoClose={true}>
             <Dropdown.Header>trending today</Dropdown.Header>
             {!loading && trendingPostList.map(recentPost => {
                 return (
-                    <>
-                        <Dropdown.Item key={Math.random()} eventKey={recentPost.id} disabled={false}>
-                            <Link className={'content'}>
-                                <div>
-                                    <div>
-                                        <div className={'header-name'}>
-                                            <span className={'arrow'}><BsArrowUpRightCircle/></span>
-                                            {recentPost.title}
-                                        </div>
-                                        <div className={'description'}>
-                                            {recentPost.description}
-                                        </div>
-                                    </div>
-                                    <footer>
-                                        <img
-                                            src={recentPost.cover}
-                                            alt={'img-category'}/>
-                                        <span>r/{recentPost.category} and more</span>
-                                    </footer>
-                                </div>
-                                <aside>
-                                    <div className={'link-side'}>
-                                        <div>
-                                            <span> <IoIosLink/></span>
-                                        </div>
-                                    </div>
-                                </aside>
-                            </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Divider/>
-                    </>
-                )
+                  <>
+                    <Dropdown.Item
+                      key={recentPost.id}
+                      eventKey={recentPost.id}
+                      disabled={false}
+                    >
+                      <Link className={"content"}>
+                        <div>
+                          <div>
+                            <div className={"header-name"}>
+                              <span className={"arrow"}>
+                                <BsArrowUpRightCircle />
+                              </span>
+                              {recentPost.title}
+                            </div>
+                            <div className={"description"}>
+                              {recentPost.description}
+                            </div>
+                          </div>
+                          <footer>
+                            <img src={recentPost.cover} alt={"img-category"} />
+                            <span>r/{recentPost.category} and more</span>
+                          </footer>
+                        </div>
+                        <aside>
+                          <div className={"link-side"}>
+                            <div>
+                              <span>
+                                {" "}
+                                <IoIosLink />
+                              </span>
+                            </div>
+                          </div>
+                        </aside>
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Divider />
+                  </>
+                );
 
             })}
         </SearchDropDownStyled>
