@@ -43,6 +43,7 @@ const Tabs = ({ submitPost }) => {
               className="flex-row flex-nowrap justify-content-center text-center"
             >
               <NavItem
+                id="post-tab"
                 className="flex-fill"
                 onClick={() => setSelected("Post")}
               >
@@ -52,6 +53,7 @@ const Tabs = ({ submitPost }) => {
               </NavItem>
               <NavItem
                 className="flex-fill"
+                id="image-tab"
                 onClick={() => setSelected("Images & Video")}
               >
                 <NavLink
@@ -62,6 +64,7 @@ const Tabs = ({ submitPost }) => {
                 </NavLink>
               </NavItem>
               <NavItem
+                id="link-tab"
                 className="flex-fill"
                 onClick={() => setSelected("Link")}
               >
