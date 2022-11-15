@@ -21,6 +21,7 @@ exports[`Media controls in draft editor should render without crashing 1`] = `
     }
   >
     <styled.span
+      id="Add-an-image"
       onClick={[Function]}
     >
       <IoImageOutline
@@ -54,6 +55,7 @@ exports[`Media controls in draft editor should render without crashing 1`] = `
     }
   >
     <styled.span
+      id="Add-a-video"
       onClick={[Function]}
     >
       <SlSocialYoutube

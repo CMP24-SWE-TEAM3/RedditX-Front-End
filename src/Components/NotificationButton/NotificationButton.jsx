@@ -83,7 +83,6 @@ const NotificationButton = () => {
             <Overlay
                 show={show}
                 target={target}
-                key={Math.random()}
                 placement="bottom"
                 container={ref}
                 ref={wrapperRef}>
@@ -112,7 +111,7 @@ const NotificationButton = () => {
                         <div className={'content'}>
                             {db.comments.map(comment => {
                                 return (
-                                    <i className={'content-i'} key={Math.random()}>
+                                    <i className={'content-i'}>
                                         <Link className={'content-a'}
                                               href={'https://www.reddit.com/r/Eln2aa4yn/comments/yi1rd4/ccccc/'}>
                                     <span className={'a-span'}>

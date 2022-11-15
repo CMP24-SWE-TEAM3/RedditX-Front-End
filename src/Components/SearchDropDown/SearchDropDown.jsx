@@ -28,12 +28,12 @@ const SearchDropDown = ({show}) => {
     });
 
     return (
-        <SearchDropDownStyled show={show} rootCloseEvent={'click'} key={Math.random()} autoClose={true}>
+        <SearchDropDownStyled show={show} rootCloseEvent={'click'} autoClose={true}>
             <Dropdown.Header>trending today</Dropdown.Header>
             {!loading && trendingPostList.map(recentPost => {
                 return (
                     <>
-                        <Dropdown.Item key={Math.random()} eventKey={recentPost.id} disabled={false}>
+                        <Dropdown.Item eventKey={recentPost.id} disabled={false}>
                             <Link className={'content'}>
                                 <div>
                                     <div>

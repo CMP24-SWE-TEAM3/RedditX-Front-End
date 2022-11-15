@@ -2175,6 +2175,37 @@
       },
       "signal": {},
       "id": 11
+    },
+    {
+      "data": {
+        "title": "Title new title",
+        "originalText": {
+          "blocks": [
+            {
+              "key": "c0cag",
+              "text": "Hleoo",
+              "type": "unstyled",
+              "depth": 0,
+              "inlineStyleRanges": [],
+              "entityRanges": [],
+              "data": {}
+            }
+          ],
+          "entityMap": {}
+        },
+        "NSFW": false,
+        "spoiler": true,
+        "nsfw": true,
+        "id": "t1_632012f459a937e1223123d",
+        "text": "Flair 3 text",
+        "flairBackGroundColor": "red",
+        "flairTextColor": "rgb(70, 209, 96)",
+        "modOnly": true,
+        "allowUserEdits": true,
+        "attachments": []
+      },
+      "signal": {},
+      "id": 12
     }
   ],
   "posts": [
