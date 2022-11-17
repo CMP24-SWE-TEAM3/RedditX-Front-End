@@ -44,6 +44,7 @@ const Tabs = ({ submitPost }) => {
             >
               <NavItem
                 id="post-tab"
+                data-testid="post-tab-btn"
                 className="flex-fill"
                 onClick={() => setSelected("Post")}
               >
@@ -54,6 +55,7 @@ const Tabs = ({ submitPost }) => {
               <NavItem
                 className="flex-fill"
                 id="image-tab"
+                data-testid="image-tab-btn"
                 onClick={() => setSelected("Images & Video")}
               >
                 <NavLink
@@ -66,6 +68,7 @@ const Tabs = ({ submitPost }) => {
               <NavItem
                 id="link-tab"
                 className="flex-fill"
+                data-testid="link-tab-btn"
                 onClick={() => setSelected("Link")}
               >
                 <NavLink eventKey="Link" selected={selected === "Link"}>
@@ -77,13 +80,13 @@ const Tabs = ({ submitPost }) => {
           </Column>
           <Column sm={12}>
             <Tab.Content>
-              <Tab.Pane eventKey="Post">
+              <Tab.Pane data-testid="post-tab" eventKey="Post">
                 <DraftEditorTab submitPost={submitPost} />
               </Tab.Pane>
-              <Tab.Pane eventKey="Images & Video">
+              <Tab.Pane data-testid="image-tab" eventKey="Images & Video">
                 <ImagesAndVideosTab submitPost={submitPost} />
               </Tab.Pane>
-              <Tab.Pane eventKey="Link">
+              <Tab.Pane data-testid="link-tab" eventKey="Link">
                 <LinkTab submitPost={submitPost} />
               </Tab.Pane>
             </Tab.Content>
