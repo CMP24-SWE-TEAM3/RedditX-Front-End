@@ -17,41 +17,19 @@ exports[`Search Page this is a test for Search Page 1`] = `
         />
         <Routes>
           <Route
-            element={
-              <Posts
-                CommunitiesSub2={Array []}
-                CommunityList={Array []}
-                PeopleFollow={Array []}
-                PeopleList={Array []}
-                PostList={Array []}
-              />
-            }
+            element={false}
             path="posts"
           />
           <Route
-            element={
-              <CommentsPage
-                CommentLists={Array []}
-              />
-            }
+            element={false}
             path="comments"
           />
           <Route
-            element={
-              <CommunitiesPage
-                CommunitiesSub2={Array []}
-                CommunityList={Array []}
-              />
-            }
+            element={false}
             path="communities"
           />
           <Route
-            element={
-              <PeoplePage
-                PeopleFollow={Array []}
-                PeopleList={Array []}
-              />
-            }
+            element={false}
             path="people"
           />
           <Route
