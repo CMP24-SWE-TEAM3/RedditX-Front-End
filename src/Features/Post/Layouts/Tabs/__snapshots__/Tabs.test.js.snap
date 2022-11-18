@@ -17,6 +17,7 @@ exports[`Tabs should render without crashing 1`] = `
         >
           <Styled(NavItem)
             className="flex-fill"
+            id="post-tab"
             onClick={[Function]}
           >
             <Styled(NavLink)
@@ -34,6 +35,7 @@ exports[`Tabs should render without crashing 1`] = `
           </Styled(NavItem)>
           <Styled(NavItem)
             className="flex-fill"
+            id="image-tab"
             onClick={[Function]}
           >
             <Styled(NavLink)
@@ -51,6 +53,7 @@ exports[`Tabs should render without crashing 1`] = `
           </Styled(NavItem)>
           <Styled(NavItem)
             className="flex-fill"
+            id="link-tab"
             onClick={[Function]}
           >
             <Styled(NavLink)

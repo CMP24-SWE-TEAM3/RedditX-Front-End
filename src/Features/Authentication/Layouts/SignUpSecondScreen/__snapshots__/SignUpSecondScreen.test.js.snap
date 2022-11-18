@@ -39,6 +39,19 @@ exports[`SignUpSecondScreen Layout this is a test for SignUpSecondScreen Layout 
           "userName": "",
         }
       }
+      setErrMsg={[MockFunction]}
+      setFormFields={[MockFunction]}
+      setInitialFocus={[MockFunction]}
+      setInitialFocus2={[MockFunction]}
+      setModalAfterSignUp={[MockFunction]}
+      setModalShowLogIn={[MockFunction]}
+      setModalShowSignUp={[MockFunction]}
+      setNotRobot={[MockFunction]}
+      setPasswordStrength={[MockFunction]}
+      setSecondScreen={[MockFunction]}
+      setUserNameScreen={[MockFunction]}
+      setValidPassword={[MockFunction]}
+      setValidUserName={[MockFunction]}
     />
   </Routes>
 </Router>

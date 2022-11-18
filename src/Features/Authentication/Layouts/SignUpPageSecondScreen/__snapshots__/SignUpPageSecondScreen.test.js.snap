@@ -30,16 +30,28 @@ exports[`SignUpPageSecondScreen Layout this is a test for SignUpPageSecondScreen
     }
   }
 >
-  <Routes>
-    <SignUpPageSecondScreen
-      formFields={
-        Object {
-          "email": "",
-          "password": "",
-          "userName": "",
-        }
+  <SignUpPageSecondScreen
+    formFields={
+      Object {
+        "email": "",
+        "password": "",
+        "userName": "",
       }
-    />
-  </Routes>
+    }
+    secondScreen={true}
+    setErrMsg={[MockFunction]}
+    setFormFields={[MockFunction]}
+    setInitialFocus={[MockFunction]}
+    setInitialFocus2={[MockFunction]}
+    setModalAfterSignUp={[MockFunction]}
+    setModalShowLogIn={[MockFunction]}
+    setModalShowSignUp={[MockFunction]}
+    setNotRobot={[MockFunction]}
+    setPasswordStrength={[MockFunction]}
+    setSecondScreen={[MockFunction]}
+    setUserNameScreen={[MockFunction]}
+    setValidPassword={[MockFunction]}
+    setValidUserName={[MockFunction]}
+  />
 </Router>
 `;

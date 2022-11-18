@@ -68,10 +68,15 @@ const ChooseCommunity = () => {
         <Choose id="choose-community">
           {!showMenu && !submitDestination && <TbCircleDotted size={30} />}
           {showMenu && (
-            <CiSearch size={30} onClick={() => setShowMenu(false)} />
+            <CiSearch
+              data-testid="search-icon"
+              size={30}
+              onClick={() => setShowMenu(false)}
+            />
           )}
           {!showMenu && submitDestination && (
             <UserImage
+              data-testid="user-image"
               src={submitDestination.srIcon}
               alt={submitDestination.name}
             />
@@ -79,6 +84,7 @@ const ChooseCommunity = () => {
           <Input
             type="text"
             id="search-communities"
+            data-testid="search-communities"
             placeholder={showMenu ? "Search communities" : "Choose a community"}
             onClick={() => setShowMenu(true)}
             value={searchText}
@@ -93,7 +99,7 @@ const ChooseCommunity = () => {
         </Choose>
 
         {showMenu && (
-          <Menu id="communities-drop-down">
+          <Menu data-testid="communities-drop-down" id="communities-drop-down">
             <GroupTitle>Your profile</GroupTitle>
             <ItemsGroup>
               <DropdownItem>

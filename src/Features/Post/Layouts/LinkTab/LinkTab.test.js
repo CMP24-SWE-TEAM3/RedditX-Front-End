@@ -1,16 +1,14 @@
-import { shallow } from "enzyme";
-import React from "react";
+import { render } from "@testing-library/react";
 
-// Import components
+import TestingComponent from "Features/Post/TestingComponent";
 import LinkTab from "./LinkTab";
 
 describe("Link tab", () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = shallow(<LinkTab />);
-  });
-
-  it("should render without crashing", () => {
-    expect(wrapper).toMatchSnapshot();
+  it("renders Link tab component", () => {
+    render(
+      <TestingComponent>
+        <LinkTab />
+      </TestingComponent>
+    );
   });
 });

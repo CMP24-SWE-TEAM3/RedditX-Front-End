@@ -26,7 +26,6 @@ exports[`Moderator button Component this is a test for Moderator Component 1`] =
     >
       <DropdownToggle
         as={[Function]}
-        key="0.006880824850957312"
       />
       <DropdownMenu
         flip={true}
@@ -34,7 +33,6 @@ exports[`Moderator button Component this is a test for Moderator Component 1`] =
       >
         <DropdownItem
           href="#"
-          key="0.6097240744188936"
         >
           <span>
             <TbBoxModel2 />
@@ -46,7 +44,6 @@ exports[`Moderator button Component this is a test for Moderator Component 1`] =
         </DropdownItem>
         <DropdownItem
           href="#"
-          key="0.9388889584503877"
         >
           <span>
             <FiMail />

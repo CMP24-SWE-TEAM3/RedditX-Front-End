@@ -8,9 +8,11 @@ exports[`Uploaded images container should render without crashing 1`] = `
     <Styled(Image)
       alt="uploaded preview"
       as="img"
+      className="uploaded-image"
       onLoad={[Function]}
     />
     <styled.button
+      className="delete-img-danger"
       onClick={[Function]}
       variant="danger"
     >

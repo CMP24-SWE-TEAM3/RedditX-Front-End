@@ -12,8 +12,6 @@ import Checked from "Features/Authentication/Components/Checked/Checked";
 
 import { forgetPasswordApi } from "Features/Authentication/Services/authApi";
 
-import axios from "API/axios";
-
 import useFetchFunction from "Hooks/useFetchFunction";
 
 import {
@@ -69,13 +67,7 @@ const ForgetPasswordModal = ({
 }) => {
   const { userName, email } = formFields;
 
-
   const [data, error, isLoading, dataFetch] = useFetchFunction();
-
-  /**
-   * state to know what error message should be shown
-   */
-  // const [isLoading, setIsLoading] = useState(false);
 
   /**
    * state to know what error message should be shown
@@ -86,16 +78,6 @@ const ForgetPasswordModal = ({
    * state to if the user submitted the form or not
    */
   const [wantSubmit, setWantSubmit] = useState(false);
-
-  /**
-   * the error message from forget Password
-   */
-  const [forgetPasswordErrorMsg, setForgetPasswordErrorMsg] = useState("");
-  /**
-   * state to set the error message from forget Password
-   */
-  const [showForgetPasswordErrorMsg, setShowForgetPasswordErrorMsg] =
-    useState(false);
 
   /**
    * state to know if the email sent or not
@@ -110,7 +92,6 @@ const ForgetPasswordModal = ({
       setInitialFocus(false);
     }
     setValidName(USER_REGEX.test(userName));
-    setShowForgetPasswordErrorMsg(false);
   }, [userName]);
 
   /**
@@ -118,7 +99,7 @@ const ForgetPasswordModal = ({
    */
   useEffect(() => {
     if (email.length > 0) {
-      setInitialFocus(false);
+      setInitialFocus2(false);
       setErrMsg("Not a valid email address");
     } else if (email.length === 0) {
       setErrMsg("Please enter an email address to continue");
@@ -128,7 +109,6 @@ const ForgetPasswordModal = ({
       setErrMsg("Username must be between 3 and 20 characters");
     }
     setValidEmail(USER_EMAIL.test(email));
-    setShowForgetPasswordErrorMsg(false);
   }, [email]);
 
   /**
@@ -138,43 +118,17 @@ const ForgetPasswordModal = ({
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (wantSubmit) {
-      //setIsLoading(true);
-
-      // const response = await forgetPasswordApi(
-      //   email,
-      //   userName,
-      //   setForgetPasswordErrorMsg,
-      //   setShowForgetPasswordErrorMsg
-      // );
-
-      // if (response) {
-      //   setEmailSent(true);
-      //   setFinishedLoading(true);
-      // }
-
-
-      dataFetch({
-        axiosInstance: axios,
-        method: "post",
-        url: "/login/forget",
-        requestConfig: {
-          data: {
-            email: email,
-            username: userName,
-            operation: false,
-          },
-        },
+      forgetPasswordApi(dataFetch, {
+        email: email,
+        username: userName,
+        operation: false,
       });
 
       if (!error) {
         setEmailSent(true);
         setFinishedLoading(true);
       }
-
-
       setWantSubmit(false);
-
-     // setIsLoading(false);
     }
   };
 
@@ -187,9 +141,11 @@ const ForgetPasswordModal = ({
     const { name, value } = event.target;
     if (name === "userName") {
       setValidName(USER_REGEX.test(userName));
+      setInitialFocus(false);
     }
     if (name === "email") {
       setValidEmail(USER_EMAIL.test(email));
+      setInitialFocus2(false);
     }
 
     setFormFields({ ...formFields, [name]: value });
@@ -207,6 +163,8 @@ const ForgetPasswordModal = ({
           </AuthParagraph>
           <form onSubmit={handleSubmit}>
             <FormInput
+              data-testid="username"
+              id="username"
               valid={validName}
               initialFocus={initialFocus}
               showIcon={true}
@@ -221,17 +179,23 @@ const ForgetPasswordModal = ({
             />
 
             {/* Show error message if the userName is not valid and the user made a focus on the it's input field */}
-            <ErrorParagraph valid={validName || initialFocus}>
+            <ErrorParagraph
+              data-testid="username-error"
+              id="userNameError"
+              valid={validName || initialFocus}
+            >
               Username must be between 3 and 20 characters
             </ErrorParagraph>
+
+
             {error && (
-              <ErrorParagraph
-                valid={!error || initialFocus}
-              >
+              <ErrorParagraph valid={!error || initialFocus}>
                 {error}
               </ErrorParagraph>
             )}
             <FormInput
+              data-testid="email"
+              id="email"
               label="Email"
               valid={validEmail}
               initialFocus={initialFocus2}
@@ -245,13 +209,18 @@ const ForgetPasswordModal = ({
               }}
             />
 
-            <ErrorParagraph valid={validEmail || initialFocus2}>
+            <ErrorParagraph
+              data-testid="email-error"
+              id="emailError"
+              valid={validEmail || initialFocus2}
+            >
               not a valid email address
             </ErrorParagraph>
 
             <Forget>
               Forget your{" "}
               <button
+                id="forgetUserName"
                 onClick={() => {
                   setInitialFocus(true);
                   setPasswordScreen(false);
@@ -276,7 +245,7 @@ const ForgetPasswordModal = ({
                   Reset password
                 </Button>
               )}
-              {isLoading  && (
+              {isLoading && (
                 <Button disabled valid={true} type="submit">
                   <LoadingSpinner></LoadingSpinner>
                 </Button>
@@ -305,6 +274,7 @@ const ForgetPasswordModal = ({
             <Forget>
               {/* Want to login? */}
               <button
+                id="wantLogIn"
                 onClick={() => {
                   setFinishedLoading(false);
                   // setIsLoading(false);

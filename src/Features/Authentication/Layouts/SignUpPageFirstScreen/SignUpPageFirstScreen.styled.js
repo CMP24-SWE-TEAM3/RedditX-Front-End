@@ -123,6 +123,7 @@ export const ButtonsContainer = styled.div`
 export const ErrorParagraph = styled.p`
   color: ${({ theme }) => theme.color.errorColor};
   margin-top: ${(p) => (p.valid ? "-30px" : "0")};
+  display: ${(p) => (p.valid ? "none" : "block")};
   font-size: 12px;
   transition: all 0.2s ease-in-out;
   padding: 0 0 0 20px;

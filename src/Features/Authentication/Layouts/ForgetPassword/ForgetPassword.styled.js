@@ -45,6 +45,7 @@ export const ErrorParagraph = styled.p`
     p.validColor
       ? ({ theme }) => theme.color.blueValid
       : ({ theme }) => theme.color.errorColor};
+  display: ${(p) => (p.valid ? "none" : "block")};    
   margin-top: ${(p) => (p.valid ? "-30px" : "0")};
   font-size: 12px;
   transition: all 0.2s ease-in-out;
@@ -52,6 +53,7 @@ export const ErrorParagraph = styled.p`
 
   @media (max-width: 330px) {
     margin-top: ${(p) => (p.valid ? "-35px" : "0")};
+    
   }
 `;
 
