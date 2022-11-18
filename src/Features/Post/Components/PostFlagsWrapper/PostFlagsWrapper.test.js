@@ -1,24 +1,28 @@
-import { shallow } from "enzyme";
-import { CreatePostFlagsProvider } from "Features/Post/Contexts/createPostFlags";
-import { CreatePostFlairsProvider } from "Features/Post/Contexts/createPostFlairs";
-import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import TestingComponent from "Features/Post/TestingComponent";
 
 // Import components
 import PostFlagsWrapper from "./PostFlagsWrapper";
 
+const mockFlairHandler = jest.fn();
+
 describe("Post flag wrapper", () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = shallow(
-      <CreatePostFlagsProvider>
-        <CreatePostFlairsProvider>
-          <PostFlagsWrapper />
-        </CreatePostFlairsProvider>
-      </CreatePostFlagsProvider>
+  it("should contain 6 buttons", async () => {
+    render(
+      <TestingComponent>
+        <PostFlagsWrapper flairHandler={mockFlairHandler} />
+      </TestingComponent>
     );
+    expect(screen.getAllByRole("button").length).toBe(6);
   });
 
-  it("should render without crashing", () => {
-    expect(wrapper).toMatchSnapshot();
+  it("should call flairHandler when flair button is clicked", () => {
+    render(
+      <TestingComponent>
+        <PostFlagsWrapper flairHandler={mockFlairHandler} />
+      </TestingComponent>
+    );
+    fireEvent.click(screen.getByTestId("flair-button"));
+    expect(mockFlairHandler).toHaveBeenCalledTimes(1);
   });
 });

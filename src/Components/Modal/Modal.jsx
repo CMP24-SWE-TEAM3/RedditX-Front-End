@@ -45,7 +45,7 @@ const ModalCommunity = ({show, close}) => {
                 </Modal.Header>
                 <Modal.Body>
                     <h6>Name</h6>
-                    <p>Community names including capitalization cannot be changed. <span> <CgDanger/></span>
+                    <p data-testid="modalID">Community names including capitalization cannot be changed. <span> <CgDanger/></span>
                     </p>
                     <Form id={'my-form'} method={'get'} onSubmit={handleSubmit}>
                         <Form.Group className="mb-3">

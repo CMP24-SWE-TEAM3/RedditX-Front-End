@@ -25,14 +25,15 @@ export const DropDownLeftStyled = styled(Dropdown)`
   left: 0;
   line-height: 34px;
   bottom: 0;
-  overflow: hidden;
-  padding-left: 40px;
-  padding-right: 56px;
+  width: 100%;
+  /* overflow: hidden; */
+  /* padding-left: 40px; */
+  /* padding-right: 56px; */
   position: relative;
   text-align: left;
   text-overflow: ellipsis;
   top: 0;
-  display: contents;
+  /* display: contents; */
   white-space: nowrap;
   background-color: ${({theme}) => theme.background.primary};
 
