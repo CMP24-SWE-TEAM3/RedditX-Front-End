@@ -1,6 +1,11 @@
 // imports
 import React from "react";
-import { Container, MainContainer,AppContainer,AppHeader } from "./HomePage.styled";
+import {
+  Container,
+  MainContainer,
+  AppContainer,
+  AppHeader,
+} from "./HomePage.styled";
 import CreatePost from "Layouts/CreatePost/CreatePost";
 import TopCommunities from "Layouts/CommunityCard/CommunityCard";
 import PopularPosts from "Layouts/PopularPosts/PopularPosts";
@@ -8,6 +13,7 @@ import CreatePostSideBar from "Layouts/CreatePostSideBar/CreatePostSideBar";
 import Footer from "Layouts/Footer/Footer";
 import ScrollButton from "Components/ScrollButton/ScrollButton";
 import RecentPosts from "Layouts/RecentPosts/RecentPosts";
+import DropTest from "temp";
 
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
@@ -15,27 +21,17 @@ import RecentPosts from "Layouts/RecentPosts/RecentPosts";
  * @returns {React.Component} returns an instance of HomePage with a list of layouts created
  */
 
-const HomePage = ({ handleToggleTheme, theme}) => {
-
+const HomePage = ({ handleToggleTheme, theme }) => {
   return (
     <>
       <AppContainer>
         <AppHeader>
-
-          {/* <Navbar
-            toggleMode={handleToggleTheme}
-            theme={theme}
-            modalShowLogIn={modalShowLogIn}
-            setModalShowLogIn={setModalShowLogIn}
-          /> */}
-          <MainContainer>
+          <MainContainer data-testid="home-page-id">
             <div className="main" />
             <Container>
               <div className={"content-posts"}>
                 <CreatePost />
                 <PopularPosts />
-                {/*<div className={'posts'}>*/}
-                {/*</div>*/}
               </div>
               <aside>
                 <div className={"sidebar"}>
