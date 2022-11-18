@@ -124,6 +124,7 @@ const ImageAndVideoForm = ({ submitPost }) => {
             onKeyDown={handleKeyDown}
             rows={1}
             className="title-input"
+            id="title"
           />
           <span>{createPostTitle.length}/300</span>
         </Form.Group>
@@ -134,6 +135,7 @@ const ImageAndVideoForm = ({ submitPost }) => {
           <PostButton
             disabled={!submitDestination || !createPostTitle}
             onClick={submitForm}
+            id="post"
           >
             Post
           </PostButton>

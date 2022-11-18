@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Moderator button Component this is a test for Moderator Component 1`] = `
+<Fragment>
+  <OverlayTrigger
+    defaultShow={false}
+    key="bottom"
+    overlay={
+      <Tooltip
+        id="tooltip-bottom"
+        placement="right"
+      >
+        Moderator
+      </Tooltip>
+    }
+    placement="bottom"
+    trigger={
+      Array [
+        "hover",
+        "focus",
+      ]
+    }
+  >
+    <Styled(Dropdown)
+      id="moderator-button"
+    >
+      <DropdownToggle
+        as={[Function]}
+      />
+      <DropdownMenu
+        flip={true}
+        id="moderator-menu"
+      >
+        <DropdownItem
+          href="#"
+        >
+          <span>
+            <TbBoxModel2 />
+          </span>
+           
+          <span>
+            Mod Queue
+          </span>
+        </DropdownItem>
+        <DropdownItem
+          href="#"
+        >
+          <span>
+            <FiMail />
+          </span>
+           
+          <span>
+            Modmail
+          </span>
+        </DropdownItem>
+      </DropdownMenu>
+    </Styled(Dropdown)>
+  </OverlayTrigger>
+</Fragment>
+`;

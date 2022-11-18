@@ -123,6 +123,7 @@ const LinkForm = ({ submitPost }) => {
             onKeyDown={handleKeyDown}
             rows={1}
             className="title-input"
+            id="title"
           />
           <span>{createPostTitle.length}/300</span>
         </Form.Group>
@@ -134,6 +135,7 @@ const LinkForm = ({ submitPost }) => {
             onKeyDown={handleKeyDown}
             value={url}
             onChange={(e) => setUrl(e.target.value)}
+            id="url"
           />
         </Form.Group>
         <PostFlagsWrapper flairHandler={setModalShow} />
@@ -142,6 +144,7 @@ const LinkForm = ({ submitPost }) => {
           <PostButton
             disabled={!submitDestination || !createPostTitle}
             onClick={submitForm}
+            id="post"
           >
             Post
           </PostButton>

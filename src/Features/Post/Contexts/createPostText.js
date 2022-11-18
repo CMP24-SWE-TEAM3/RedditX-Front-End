@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-export const createPostTextContext = createContext({});
+const createPostTextContext = createContext({});
 
 /**
  * Context for text of the post to be created
@@ -8,7 +8,7 @@ export const createPostTextContext = createContext({});
  * @param {React.Component} children Who can access this context
  * @returns {React.Component}
  */
-export const CreatePostTextProvider = ({ children }) => {
+const CreatePostTextProvider = ({ children }) => {
   // Context that is used to share text of the post to be created
   const [createPostText, setCreatePostText] = useState([]);
 
@@ -28,6 +28,8 @@ export const CreatePostTextProvider = ({ children }) => {
  *
  * @returns {React.Context}
  */
-export const useCreatePostText = () => {
+const useCreatePostText = () => {
   return useContext(createPostTextContext);
 };
+
+export { CreatePostTextProvider, useCreatePostText };

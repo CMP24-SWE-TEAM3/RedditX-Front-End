@@ -16,15 +16,7 @@ import {GrFormDown} from "react-icons/gr";
  */
 
 const DropDownLeft = () => {
-    /**
-     * @ function that controls to show and hide drop-down list
-     * @param {boolean,boolean}
-     */
     const [show, setShow] = useState(false);
-
-    /**
-     * @ function that handle toggleVisible of drop -down list and sidebar
-     */
     const handleToggle = () => {
         if (!show && showSideBar)
             return;

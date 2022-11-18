@@ -4,11 +4,10 @@ export const createPostFlagsContext = createContext({});
 
 /**
  * Context for flags of the post to be created
- *
  * @param {React.Component} children Who can access this context
  * @returns {React.Component}
  */
-export const CreatePostFlagsProvider = ({ children }) => {
+const CreatePostFlagsProvider = ({ children }) => {
   // Context that is used to share flags of the post to be created
   const [createPostFlags, setCreatePostFlags] = useState({
     NSFW: false,
@@ -31,6 +30,8 @@ export const CreatePostFlagsProvider = ({ children }) => {
  *
  * @returns {React.Context}
  */
-export const useCreatePostFlags = () => {
+const useCreatePostFlags = () => {
   return useContext(createPostFlagsContext);
 };
+
+export { CreatePostFlagsProvider, useCreatePostFlags };

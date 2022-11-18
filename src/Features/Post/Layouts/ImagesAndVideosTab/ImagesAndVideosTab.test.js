@@ -1,15 +1,14 @@
-import { shallow } from "enzyme";
+import { render } from "@testing-library/react";
 
-// Import components
+import TestingComponent from "Features/Post/TestingComponent";
 import ImagesAndVideosTab from "./ImagesAndVideosTab";
 
-describe("Images and videos tab", () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = shallow(<ImagesAndVideosTab />);
-  });
-
-  it("should render without crashing", () => {
-    expect(wrapper).toMatchSnapshot();
+describe("ImagesAndVideos tab", () => {
+  it("renders ImagesAndVideos tab component", () => {
+    render(
+      <TestingComponent>
+        <ImagesAndVideosTab />
+      </TestingComponent>
+    );
   });
 });
