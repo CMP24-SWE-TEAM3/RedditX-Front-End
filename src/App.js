@@ -41,6 +41,7 @@ import LogInVerticalModal from "Features/Authentication/Layouts/LogInVerticalMod
 import SignUpVerticalModal from "Features/Authentication/Layouts/SignUpVerticalModal/SignUpVerticalModal";
 import AfterSignUp from "Features/Authentication/Layouts/AfterSignUp/AfterSignUp";
 import AfterSignUpModal from "Features/Authentication/Layouts/AfterSignUpModal/AfterSignUpModal";
+import SettingsPage from "Features/settings/Pages/SettingsPage/SettingsPage";
 /**
  * The main app of our application it handles routing
  *
@@ -102,10 +103,11 @@ function App() {
                     modalAfterSignUp={modalAfterSignUp}
                     setModalAfterSignUp={setModalAfterSignUp}
                   />
-                  <HomePage
+                  {/* <HomePage
                     handleToggleTheme={handleToggleTheme}
                     theme={theme.id}
-                  />
+                  /> */}
+                  <SettingsPage />
                 </>
               }
             />
