@@ -40,16 +40,17 @@ const PostHeader = ({ postheader }) => {
             {/* u/Old_Salamander_7479 */}
           </Link>
         </UserName>
-        <Flair>
+        {/* <Flair>
           <span>
             {postheader.flair.flairText}
-            {/* ali */}
           </span>
-        </Flair>
+        </Flair> */}
         <span className="time-post">{postheader.time}</span>
-        <Flair nsfw={postheader.nsfw}>
-          {postheader.nsfw && <span>nsfw</span>}
-        </Flair>
+        {postheader.nsfw && (
+          <Flair nsfw={postheader.nsfw}>
+            {postheader.nsfw && <span>nsfw</span>}
+          </Flair>
+        )}
       </PostedBy>
     </PostHeaderStyle>
   );

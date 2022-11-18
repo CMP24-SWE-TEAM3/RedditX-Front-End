@@ -1660,6 +1660,39 @@
       },
       "signal": {},
       "id": 79
+    },
+    {
+      "headers": {
+        "Content-Language": "en-US"
+      },
+      "data": {
+        "action": "unsub",
+        "sr_name": "GermanWW2photos"
+      },
+      "signal": {},
+      "id": 80
+    },
+    {
+      "headers": {
+        "Content-Language": "en-US"
+      },
+      "data": {
+        "action": "unsub",
+        "sr_name": "politics"
+      },
+      "signal": {},
+      "id": 81
+    },
+    {
+      "headers": {
+        "Content-Language": "en-US"
+      },
+      "data": {
+        "action": "unsub",
+        "sr_name": "RealMadrid"
+      },
+      "signal": {},
+      "id": 82
     }
   ],
   "communities": [

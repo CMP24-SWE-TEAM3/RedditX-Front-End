@@ -17,13 +17,13 @@ import axios from "API/axios";
  * @returns {React.Component}
  */
 const Search = () => {
-  // /**
-  //  * Function take the SortItem And Handle it
-  //  * @param {String} SortItem
-  //  */
-  // function OnSort(SortItem) {
-  //   console.log(SortItem);
-  // }
+  /**
+   * Function take the SortItem And Handle it
+   * @param {String} SortItem
+   */
+  function OnSort(SortItem) {
+    console.log(SortItem);
+  }
   const [ActiveLink, setActiveLink] = useState("posts");
 
   // Fetch Posts
@@ -126,13 +126,19 @@ const Search = () => {
                   PeopleFollow &&
                   CommunitiesSub2 &&
                   CommunityList &&
-                  PeopleList && (
+                  PeopleList &&
+                  !loading &&
+                  !loadingCommunity &&
+                  !loadingSubCommunities &&
+                  !loadingSub &&
+                  !loadingPeople && (
                     <Posts
                       PostList={PostList}
                       CommunityList={CommunityList}
                       PeopleList={PeopleList}
                       PeopleFollow={PeopleFollow}
                       CommunitiesSub2={CommunitiesSub2}
+                      OnSort={OnSort}
                     />
                   )
                 }
@@ -140,14 +146,19 @@ const Search = () => {
               <Route
                 path="comments"
                 element={
-                  CommentLists && <CommentsPage CommentLists={CommentLists} />
+                  CommentLists &&
+                  !loadingComment && (
+                    <CommentsPage CommentLists={CommentLists} />
+                  )
                 }
               />
               <Route
                 path="communities"
                 element={
                   CommunitiesSub2 &&
-                  CommunityList && (
+                  CommunityList &&
+                  !loadingCommunity &&
+                  !loadingSubCommunities && (
                     <CommunitiesPage
                       CommunityList={CommunityList}
                       CommunitiesSub2={CommunitiesSub2}
@@ -159,7 +170,9 @@ const Search = () => {
                 path="people"
                 element={
                   PeopleFollow &&
-                  PeopleList && (
+                  PeopleList &&
+                  !loadingSub &&
+                  !loadingPeople && (
                     <PeoplePage
                       PeopleList={PeopleList}
                       PeopleFollow={PeopleFollow}

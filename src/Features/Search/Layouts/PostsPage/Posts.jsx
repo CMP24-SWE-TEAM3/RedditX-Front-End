@@ -16,6 +16,8 @@ import { useState } from "react";
  * @param {object} CommunityList - contain all the Communities
  * @param {object} PeopleFollow - contain all the People that user following
  * @param {object} CommunitiesSub2 - contain all the Communities that user subscribe
+ * @param {function} OnSort - Fuction delivered the sort type to the search component
+ *
  * @returns {React.Component}
  */
 const Posts = ({
@@ -24,6 +26,7 @@ const Posts = ({
   CommunityList,
   PeopleFollow,
   CommunitiesSub2,
+  OnSort,
 }) => {
   /**
    * State That Hndle Sorting Operation
@@ -33,7 +36,6 @@ const Posts = ({
    * State That Hndle Sorting on time Operation
    */
   const [Time, setTime] = useState("All time");
-  // console.log(Sort);
   if (PostList) {
     return (
       <>
@@ -50,6 +52,7 @@ const Posts = ({
                   href="#"
                   onClick={() => {
                     setSort("Relevance");
+                    OnSort("Relevance");
                   }}
                 >
                   Relevance
@@ -57,6 +60,7 @@ const Posts = ({
                 <Dropdown.Item
                   onClick={() => {
                     setSort("Hot");
+                    OnSort("Hot");
                   }}
                 >
                   Hot
@@ -65,6 +69,7 @@ const Posts = ({
                   href="#"
                   onClick={() => {
                     setSort("Top");
+                    OnSort("Top");
                   }}
                 >
                   Top
@@ -73,6 +78,7 @@ const Posts = ({
                   href="#"
                   onClick={() => {
                     setSort("New");
+                    OnSort("New");
                   }}
                 >
                   New
@@ -81,6 +87,7 @@ const Posts = ({
                   href="#"
                   onClick={() => {
                     setSort("Most comments");
+                    OnSort("Most Comments");
                   }}
                 >
                   Most comments

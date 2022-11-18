@@ -11,7 +11,7 @@ import CommunityCardItem from "../CommunityCardItem/CommunityCardItem";
  * @returns {React.Component}
  */
 const TopCommunities = ({ CommunityList, CommunitiesSub2 }) => {
-  console.log(CommunitiesSub2);
+  // console.log(CommunitiesSub2);
   if (CommunitiesSub2 && CommunityList) {
     return (
       <CommunityContainer>
