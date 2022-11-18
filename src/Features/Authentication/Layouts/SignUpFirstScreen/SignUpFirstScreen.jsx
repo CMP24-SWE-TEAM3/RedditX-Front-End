@@ -3,6 +3,7 @@
 
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import FormInput from "Features/Authentication/Components/FormInput/FormInput";
 import Button from "../../Components/Button/Button";
@@ -74,14 +75,7 @@ const SignUpFirstScreen = ({
   const [errMsg, setErrMsg] = useState("");
   const { email } = formFields;
 
-  /**
-   * the error message from signup
-   */
-  const [signupErrorMsg, setSignupErrorMsg] = useState("");
-  /**
-   * state to set the error message from signup
-   */
-  const [showSignupErrorMsg, setShowSignupErrorMsg] = useState(false);
+  const navigate = useNavigate();
 
   /**
    * useEffect for email field to check if the email that the user entered is valid or not
@@ -93,10 +87,7 @@ const SignUpFirstScreen = ({
     } else if (email.length === 0) {
       setErrMsg("Please enter an email address to continue");
     }
-
     setValidEmail(USER_EMAIL.test(email));
-
-    setShowSignupErrorMsg(false);
   }, [email]);
 
   /**
@@ -122,12 +113,6 @@ const SignUpFirstScreen = ({
   };
 
   /**
-   * Function to handle the response coming from sign in with google
-   * @param {*} response
-   */
-  const handleCallbackResponse = (response) => {};
-
-  /**
    * Function to check email by sending request to the api and make sure that the email is good to show the second screen after that
    * @param {string} mail The email that the user entered
    */
@@ -140,86 +125,38 @@ const SignUpFirstScreen = ({
   };
 
   /**
-   * Adding some configurations to the signIn with google feature
+   * Function to handle the sing in with google
    */
-  useEffect(() => {
-    /* global google */
-
-    google.accounts.id.initialize({
-      client_id:
-        "598360538255-siv9rljce260ek4mvdsu2fk63h3u1g3b.apps.googleusercontent.com",
-      callback: handleCallbackResponse,
-    });
-
-    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
-      theme: "outline",
-      size: "large",
-    });
-  }, []);
-
-  /**
-   * Function to handle the response coming from sign in with facebook
-   * @param {*} response
-   */
-  const responseFacebook = (response) => {};
-
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
-    // const user2 = await signupWithGoogle(
-    //   user.accessToken,
-    //   setSignupErrorMsg,
-    //   setShowSignupErrorMsg
-    // );
 
-    // if (user2 !== false) {
-    //   auth.login(user2);
-    // }
-
-    dataFetch({
-      axiosInstance: axios,
-      method: "post",
-      url: "/signup",
-      requestConfig: {
-        data: {
-          type: "google",
-          googleOrFacebookToken: user.accessToken,
-        },
-      },
+    signupWithGoogle(dataFetch, {
+      type: "google",
+      googleOrFacebookToken: user.accessToken,
     });
 
     if (!error) {
       //  setFinishedLoading(true);
       auth.login(data);
+      navigate("/");
     }
   };
 
+  /**
+   * Function to handle the sing in with facebook
+   */
   const logFacebookUser = async () => {
     const { user } = await signInWithFacebookPopup();
-    // const user2 = await signupWithFacebook(
-    //   user.accessToken,
-    //   setSignupErrorMsg,
-    //   setShowSignupErrorMsg
-    // );
 
-    // if (user2 !== false) {
-    //   auth.login(user2);
-    // }
-
-    dataFetch({
-      axiosInstance: axios,
-      method: "post",
-      url: "/signup",
-      requestConfig: {
-        data: {
-          type: "facebook",
-          googleOrFacebookToken: user.accessToken,
-        },
-      },
+    signupWithFacebook(dataFetch, {
+      type: "facebook",
+      googleOrFacebookToken: user.accessToken,
     });
 
     if (!error) {
-      // setFinishedLoading(true);
+      //  setFinishedLoading(true);
       auth.login(data);
+      navigate("/");
     }
   };
 
@@ -260,6 +197,7 @@ const SignUpFirstScreen = ({
 
             <form onSubmit={handleSubmit}>
               <FormInput
+                data-testid="email"
                 id="emailFieldModal"
                 valid={validEmail}
                 initialFocus={initialFocus}
@@ -277,6 +215,7 @@ const SignUpFirstScreen = ({
 
               {/* Show error message if the email is not valid and the user made a focus on the it's input field */}
               <ErrorParagraph
+                data-testid="email-error"
                 id="errorNotValidEmailModal"
                 valid={validEmail || initialFocus}
               >

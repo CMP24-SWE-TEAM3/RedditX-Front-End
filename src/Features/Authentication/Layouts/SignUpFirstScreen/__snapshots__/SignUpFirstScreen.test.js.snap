@@ -1,88 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SignUpFirstScreen Layout this is a test for SignUpFirstScreen Layout 1`] = `
-<Fragment>
-  <styled.div>
-    <styled.span>
-      <styled.h2
-        id="signUpContainerModal"
-      >
-        Sign Up
-      </styled.h2>
-      <styled.div>
-        By continuing, you agree are setting up a Reddit account and agree to our 
-        <styled.span>
-          User Agreement
-        </styled.span>
-         and
-         
-        <styled.span>
-          Privacy Policy
-        </styled.span>
-        .
-      </styled.div>
-      <styled.div>
-        <button
-          id="contWithGoogleModal"
-          onClick={[Function]}
-        >
-          <FcGoogle
-            size={22}
-          />
-          <span>
-             Continue With Google
-          </span>
-        </button>
-      </styled.div>
-      <styled.div>
-        <styled.div>
-          <button
-            id="contWithFacebookModal"
-            onClick={[Function]}
-          >
-            <BsFacebook
-              size={22}
-            />
-            <span>
-               Continue With Facebook
-            </span>
-          </button>
-        </styled.div>
-      </styled.div>
-      <styled.h2>
-        <span>
-          OR
-        </span>
-      </styled.h2>
-      <form
-        onSubmit={[Function]}
-      >
-        <FormInput
-          id="emailFieldModal"
-          label="Email"
-          name="email"
-          onChange={[Function]}
-          onFocus={[Function]}
-          required={true}
-          showIcon={true}
-          type="email"
-          value=""
-        />
-        <styled.p
-          id="errorNotValidEmailModal"
-        />
-        <styled.div>
-          <Button
-            disabled={true}
-            id="continueButtonModal"
-            onClick={[Function]}
-            type="button"
-          >
-            Continue
-          </Button>
-        </styled.div>
-      </form>
-    </styled.span>
-  </styled.div>
-</Fragment>
+<Router
+  location={
+    Object {
+      "hash": "",
+      "key": "default",
+      "pathname": "/",
+      "search": "",
+      "state": null,
+    }
+  }
+  navigationType="POP"
+  navigator={
+    Object {
+      "action": "POP",
+      "createHref": [Function],
+      "go": [Function],
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "key": "default",
+        "pathname": "/",
+        "search": "",
+        "state": null,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <SignUpFirstScreen
+    formFields={
+      Object {
+        "email": "",
+        "password": "",
+        "userName": "",
+      }
+    }
+  />
+</Router>
 `;

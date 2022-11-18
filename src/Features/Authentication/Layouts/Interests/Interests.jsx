@@ -91,7 +91,7 @@ const Interests = ({
         <AuthContainer>
           <GlobalStyles></GlobalStyles>
           <Upper>
-            <Skip
+            <Skip id="back"
               onClick={() => {
                 setInterestsScreen(false);
                 setPhotoUploadScreen(false);
@@ -111,7 +111,7 @@ const Interests = ({
             Pick 3 or more things you'd like to see in your home feed.
           </AuthParagraph>
           <InterestsContainer>
-            <InterestButton selected={interests.includes("Funny")} onClick={() => addInterest("Funny")}>
+            <InterestButton id="fun" selected={interests.includes("Funny")} onClick={() => addInterest("Funny")}>
               <FaRegLaughBeam color="orange" />
               Funny
             </InterestButton>
@@ -178,7 +178,7 @@ const Interests = ({
               Cars
             </InterestButton>
           </InterestsContainer>
-          <Button onClick={nextScreen} disabled={!(interests.length > 2)} valid={(interests.length > 2)}>
+          <Button id="cont" onClick={nextScreen} disabled={!(interests.length > 2)} valid={(interests.length > 2)}>
             Continue
           </Button>
         </AuthContainer>

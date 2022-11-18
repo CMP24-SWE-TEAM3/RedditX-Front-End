@@ -2,15 +2,11 @@
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useState, useEffect } from "react";
 
-import FacebookLogin from "react-facebook-login";
-
 import FormInputPageCom from "Features/Authentication/Components/FormInputPageCom/FormInputPageCom";
 import Button from "Features/Authentication/Components/Button/Button";
 import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
 
 import Checked from "Features/Authentication/Components/Checked/Checked";
-
-import axios from "API/axios";
 
 import useFetchFunction from "Hooks/useFetchFunction";
 
@@ -44,7 +40,7 @@ import {
 } from "./LogInPageCom.styled";
 
 const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
-const PWD_REGEX = /^[A-z0-9-_]{8,20}$/;
+const PWD_REGEX = /^[A-z0-9-_`~!@#$%^&*()_|+\-=?;:'",.<>]{8,20}$/;
 
 const defaultFormFields = {
   userName: "",
@@ -56,6 +52,9 @@ const defaultFormFields = {
  * @returns {React.Component}  LoginPageCom component that is used in Login page
  */
 const LogInPageCom = () => {
+  /**
+   * Custom hook
+   */
   const [data, error, isLoading, dataFetch] = useFetchFunction();
 
   const auth = useAuth();
@@ -86,25 +85,11 @@ const LogInPageCom = () => {
   /**
    * state to know what error message should be shown
    */
-  // const [isLoading, setIsLoading] = useState(false);
-
-  /**
-   * state to know what error message should be shown
-   */
   const [finishedLoading, setFinishedLoading] = useState(false);
   /**
    * state to if the user submitted the form or not
    */
   const [wantSubmit, setWantSubmit] = useState(false);
-
-  /**
-   * state to if the user submitted the form or not
-   */
-  const [loginErrorMsg, setLoginErrorMsg] = useState("");
-  /**
-   * state to if the user submitted the form or not
-   */
-  const [showLoginErrorMsg, setShowLoginErrorMsg] = useState(false);
 
   const { userName, password } = formFields;
 
@@ -117,7 +102,6 @@ const LogInPageCom = () => {
       setInitialFocus(false);
     }
     setValidName(USER_REGEX.test(userName));
-    setShowLoginErrorMsg(false);
   }, [userName]);
 
   /**
@@ -125,10 +109,9 @@ const LogInPageCom = () => {
    */
   useEffect(() => {
     if (password.length > 0) {
-      setInitialFocus(false);
+      setInitialFocus2(false);
     }
     setValidPassword(PWD_REGEX.test(password));
-    setShowLoginErrorMsg(false);
   }, [password]);
 
   /**
@@ -138,49 +121,19 @@ const LogInPageCom = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (wantSubmit) {
-      //setIsLoading(true);
-
-      // const user = await loginApi(
-      //   userName,
-      //   password,
-      //   setLoginErrorMsg,
-      //   setShowLoginErrorMsg
-      // );
-
-      // if (user !== false) {
-      //   setFinishedLoading(true);
-      //   auth.login(user);
-
-      // }
-
-      dataFetch({
-        axiosInstance: axios,
-        method: "post",
-        url: "/login",
-        requestConfig: {
-          data: {
-            type: "bare email",
-            username: userName,
-            password: password,
-          },
-        },
+      await loginApi(dataFetch, {
+        type: "bare email",
+        username: userName,
+        password: password,
       });
 
       if (!error) {
         setFinishedLoading(true);
         auth.login(data);
+        navigate("/");
       }
-      // TODO: remove this
-      auth.login({
-        username: userName,
-        token: "token",
-        expiresIn: 3600,
-      });
-      navigate("/");
 
       setWantSubmit(false);
-
-      // setIsLoading(false);
     }
   };
 
@@ -202,92 +155,38 @@ const LogInPageCom = () => {
   };
 
   /**
-   * Function to handle the response coming from sign in with google
-   * @param {*} response
+   * Function to handle the sing in with google
    */
-  const handleCallbackResponse = (response) => {};
-
-  /**
-   * Adding some configurations to the signIn with google feature
-   */
-  useEffect(() => {
-    /* global google */
-
-    google.accounts.id.initialize({
-      client_id:
-        "598360538255-siv9rljce260ek4mvdsu2fk63h3u1g3b.apps.googleusercontent.com",
-      callback: handleCallbackResponse,
-    });
-
-    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
-      theme: "outline",
-      size: "large",
-    });
-  }, []);
-
-  /**
-   * Function to handle the response coming from sign in with facebook
-   * @param {*} response
-   */
-  const responseFacebook = (response) => {};
-
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
 
-    // const user2 = await loginWithGoogle(
-    //   user.accessToken,
-    //   setLoginErrorMsg,
-    //   setShowLoginErrorMsg
-    // );
-
-    dataFetch({
-      axiosInstance: axios,
-      method: "post",
-      url: "/login",
-      requestConfig: {
-        data: {
-          type: "google",
-          googleOrFacebookToken: user.accessToken,
-        },
-      },
+    loginWithGoogle(dataFetch, {
+      type: "google",
+      googleOrFacebookToken: user.accessToken,
     });
 
     if (!error) {
       setFinishedLoading(true);
       auth.login(data);
+      navigate("/");
     }
-
-    // if (user2 !== false) {
-    //   auth.login(user2);
-    // }
   };
+
+  /**
+   * Function to handle sign in with facebook
+   */
   const logFacebookUser = async () => {
     const { user } = await signInWithFacebookPopup();
-    // const user2 = await loginWithFacebook(
-    //   user.accessToken,
-    //   setLoginErrorMsg,
-    //   setShowLoginErrorMsg
-    // );
 
-    // if (user2 !== false) {
-    //   auth.login(user2);
-    // }
-
-    dataFetch({
-      axiosInstance: axios,
-      method: "post",
-      url: "/login",
-      requestConfig: {
-        data: {
-          type: "facebook",
-          googleOrFacebookToken: user.accessToken,
-        },
-      },
+    loginWithFacebook(dataFetch, {
+      type: "facebook",
+      googleOrFacebookToken: user.accessToken,
     });
 
     if (!error) {
       setFinishedLoading(true);
       auth.login(data);
+      navigate("/");
     }
   };
 
@@ -322,7 +221,8 @@ const LogInPageCom = () => {
 
             <form onSubmit={handleSubmit}>
               <FormInputPageCom
-                required
+                // required
+                data-testid="username"
                 id="login-username"
                 valid={validName}
                 initialFocus={initialFocus}
@@ -338,14 +238,15 @@ const LogInPageCom = () => {
               />
 
               {/* Show error message if the userName is not valid and the user made a focus on the it's input field */}
-              {!validName && !initialFocus && (
+             
                 <ErrorParagraph
+                data-testid="username-error"
                   id="username-error"
                   valid={validName || initialFocus}
                 >
                   Username must be between 3 and 20 characters
                 </ErrorParagraph>
-              )}
+             
               {error && (
                 <ErrorParagraph id="username-error" valid={!error}>
                   {error}
@@ -353,7 +254,8 @@ const LogInPageCom = () => {
               )}
 
               <FormInputPageCom
-                required
+                //  required
+                data-testid="password"
                 id="login-password"
                 label="PASSWORD"
                 valid={validPassword}
@@ -400,14 +302,18 @@ const LogInPageCom = () => {
                 Forget your{" "}
                 <button
                   id="forget-username"
-                  onClick={() => navigate("/forget-username")}
+                  onClick={() => {
+                    navigate("/forget-username");
+                  }}
                 >
                   username
                 </button>{" "}
                 or{" "}
                 <button
                   id="forget-password"
-                  onClick={() => navigate("/forget-password")}
+                  onClick={() => {
+                    navigate("/forget-password");
+                  }}
                 >
                   password
                 </button>
@@ -418,7 +324,9 @@ const LogInPageCom = () => {
                 New to Reddit?{" "}
                 <button
                   id="signup-button"
-                  onClick={() => navigate("/register")}
+                  onClick={() => {
+                    navigate("/register");
+                  }}
                 >
                   SIGN UP
                 </button>

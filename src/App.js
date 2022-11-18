@@ -41,6 +41,7 @@ import LogInVerticalModal from "Features/Authentication/Layouts/LogInVerticalMod
 import SignUpVerticalModal from "Features/Authentication/Layouts/SignUpVerticalModal/SignUpVerticalModal";
 import AfterSignUp from "Features/Authentication/Layouts/AfterSignUp/AfterSignUp";
 import AfterSignUpModal from "Features/Authentication/Layouts/AfterSignUpModal/AfterSignUpModal";
+import LogInScreen from "Features/Authentication/Layouts/LogInScreen/LogInScreen";
 /**
  * The main app of our application it handles routing
  *

@@ -26,7 +26,7 @@ import {
 import axios from "API/axios";
 
 import useFetchFunction from "Hooks/useFetchFunction";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import {
   Group,
@@ -42,7 +42,7 @@ import {
 } from "./SignUpPageSecondScreen.styled";
 
 const USER_NAME = /^[A-z0-9-_]{3,20}$/;
-const PWD_REGEX = /^[A-z0-9-_]{8,20}$/;
+const PWD_REGEX = /^[A-z0-9-_`~!@#$%^&*()_|+\-=?;:'",.<>]{8,20}$/;
 
 /**
  * SignUpPageSecondScreen component that is used in Signup page
@@ -114,25 +114,12 @@ const SignUpPageSecondScreen = ({
   /**
    * state to know what error message should be shown
    */
-  // const [isLoading, setIsLoading] = useState(false);
-
-  /**
-   * state to know what error message should be shown
-   */
   const [finishedLoading, setFinishedLoading] = useState(false);
   /**
    * state to if the user submitted the form or not
    */
   const [wantSubmit, setWantSubmit] = useState(false);
 
-  /**
-   * the error message from signup
-   */
-  const [signupErrorMsg, setSignupErrorMsg] = useState("");
-  /**
-   * state to set the error message from signup
-   */
-  const [showSignupErrorMsg, setShowSignupErrorMsg] = useState(false);
   /**
    * state to set the error message from signup
    */
@@ -150,49 +137,20 @@ const SignUpPageSecondScreen = ({
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (wantSubmit) {
-      //setIsLoading(true);
-      // const user = await signupApi(
-      //   email,
-      //   userName,
-      //   password,
-      //   setSignupErrorMsg,
-      //   setShowSignupErrorMsg
-      // );
-
-      // if (user !== false) {
-      //   setFinishedLoading(true);
-      //   auth.login(user);
-      // }
-
-      dataFetch({
-        axiosInstance: axios,
-        method: "post",
-        url: "/signup",
-        requestConfig: {
-          data: {
-            type: "bare email",
-            email: email,
-            username: userName,
-            password: password,
-          },
-        },
+      signupApi(dataFetch, {
+        type: "bare email",
+        email: email,
+        username: userName,
+        password: password,
       });
 
       if (!error) {
         setFinishedLoading(true);
         auth.login(data);
+        navigate("/");
       }
-      // TODO: remove this
-      auth.login({
-        username: userName,
-        token: "token",
-        expiresIn: 3600,
-      });
-      navigate("/");
 
       setWantSubmit(false);
-
-      // setIsLoading(false);
     }
   };
 
@@ -208,19 +166,7 @@ const SignUpPageSecondScreen = ({
     if (validUserName && canReqAvailableUserName) {
       setCanReqAvailableUserName(false);
 
-      let searchUserName = "t2_" + userName;
-
-      dataFetch({
-        axiosInstance: axios,
-        method: "get",
-        url: "/api/username-available",
-
-        requestConfig: {
-          params: {
-            username: searchUserName,
-          },
-        },
-      });
+      isUserNameAvailable(dataFetch, userName);
 
       if (!error) {
         setAvailableUserName(true);
@@ -230,8 +176,6 @@ const SignUpPageSecondScreen = ({
 
       setCanReqAvailableUserName(true);
     }
-
-    setShowSignupErrorMsg(false);
   }, [userName]);
 
   /**
@@ -243,7 +187,6 @@ const SignUpPageSecondScreen = ({
     }
     setValidPassword(PWD_REGEX.test(password));
     setPasswordStrength(GetPasswordStrength(password));
-    setShowSignupErrorMsg(false);
   }, [password]);
 
   const handleChange = async (event) => {
@@ -302,6 +245,7 @@ const SignUpPageSecondScreen = ({
               <div>
                 <Group secondScreen={secondScreen}>
                   <FormInputPageCom
+                    data-testid="username"
                     id="userNameFieldSignUp"
                     valid={validUserName && availableUserName}
                     initialFocus={initialFocus}
@@ -319,6 +263,7 @@ const SignUpPageSecondScreen = ({
                 </Group>
 
                 <ErrorParagraph
+                  data-testid="username-error"
                   id="userNameNotValidSignUp"
                   valid={validUserName || initialFocus}
                 >
@@ -344,6 +289,7 @@ const SignUpPageSecondScreen = ({
 
                 <Group secondScreen={secondScreen}>
                   <FormInputPageCom
+                    data-testid="password"
                     id="passwordFieldSignUp"
                     valid={validPassword}
                     initialFocus={initialFocus2}
@@ -366,6 +312,7 @@ const SignUpPageSecondScreen = ({
 
                 {/* Show error message if the password is not valid and the user made a focus on the it's input field */}
                 <ErrorParagraph
+                  data-testid="password-error"
                   id="passwordNotValidSignUp"
                   valid={validPassword || initialFocus2}
                 >
