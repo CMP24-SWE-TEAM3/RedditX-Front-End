@@ -1,10 +1,11 @@
-import { render, screen, act, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import TestingComponent from "Features/Post/TestingComponent";
 
 // Import components
 import ChooseCommunity from "./ChooseCommunity";
+
 describe("Choose community", () => {
-  it("test search input show", () => {
+  it("test search input show", async () => {
     render(
       <TestingComponent>
         <ChooseCommunity />
@@ -16,7 +17,6 @@ describe("Choose community", () => {
     expect(dropDown).toBeNull();
     expect(inputCommunity.placeholder).toBe("Choose a community");
     expect(screen.queryByTestId("search-icon")).toBeNull();
-    inputCommunity.click();
   });
 
   it("test search input not show", async () => {
@@ -26,10 +26,7 @@ describe("Choose community", () => {
       </TestingComponent>
     );
     const inputCommunity = screen.getByTestId("search-communities");
-    inputCommunity.click();
-    await waitFor(() => {
-      expect(inputCommunity.placeholder).toBe("Search communities");
-    });
+    fireEvent.click(inputCommunity);
     let dropDown = screen.queryByTestId("communities-drop-down");
     dropDown = screen.queryByTestId("communities-drop-down");
     expect(dropDown).toBeInTheDocument();
