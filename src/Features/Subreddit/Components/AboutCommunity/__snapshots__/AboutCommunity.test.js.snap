@@ -10,6 +10,7 @@ exports[`Header of Community card should render without crashing 1`] = `
   <styled.div>
     <Link
       className="mod-tools"
+      to="#"
     >
       <span>
         <BsShield />

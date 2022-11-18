@@ -36,6 +36,7 @@ const CommunityDate = () => {
   const {community} = useSubReddit();
   useEffect(()=>{
     setDescription(community[0].communityDescription)
+    setDummyDescription(community[0].communityDescription)
   },[community])
 
   /**
@@ -130,7 +131,7 @@ const CommunityDate = () => {
    */
   const Description = ({ onClick }) => {
     return (
-      <DescriptionContainer onClick={onClick}>
+      <DescriptionContainer title="description-container" onClick={onClick}>
         <DescriptionInnerContainer>
           <DescriptionContent>
             {description}
