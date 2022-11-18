@@ -128,7 +128,7 @@ function App() {
               }
             />
             <Route
-              path="category/*"
+              path="category/:categoryType/*"
               element={
                 <>
                   <Navigation

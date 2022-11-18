@@ -27,7 +27,7 @@ export default function IndexContainer() {
     <CommunityContainer>
       <AllCommunities>
         <CommunityHeader>
-          <CommunityH1> Browse communities starting with 'A'</CommunityH1>
+          <CommunityH1>Browse communities starting with 'A'</CommunityH1>
         </CommunityHeader>
         <ContentDiv>{communities}</ContentDiv>
       </AllCommunities>
