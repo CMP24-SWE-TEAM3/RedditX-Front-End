@@ -104,6 +104,7 @@ const PostFlagsWrapper = ({
         <Text>NSFW</Text>
       </NSFWButton>
       <FlairButton
+        data-testid="flair-button"
         selected={createPostFlairs}
         background={
           createPostFlairs ? createPostFlairs.flairBackGroundColor : null
