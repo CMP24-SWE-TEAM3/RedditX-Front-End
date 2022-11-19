@@ -2,6 +2,17 @@
 // Import react and hooks
 import React, { useState } from "react";
 
+
+//////////////////////////////////////////////////////////////
+
+//Dummy imports
+
+import VotingBar from "Features/Post/Components/VotingBar/VotingBar";
+import PostShape from "Features/Post/Layouts/PostShape/PostShape";
+
+
+//////////////////////////////////////////////////////////////
+
 // Import react router dom
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -103,10 +114,11 @@ function App() {
                     modalAfterSignUp={modalAfterSignUp}
                     setModalAfterSignUp={setModalAfterSignUp}
                   />
-                  <HomePage
+                  {/* <HomePage
                     handleToggleTheme={handleToggleTheme}
                     theme={theme.id}
-                  />
+                  /> */}
+                  <PostShape></PostShape>
                 </>
               }
             />
