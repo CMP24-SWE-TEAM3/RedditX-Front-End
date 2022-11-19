@@ -38,17 +38,11 @@ exports[`Post Header this is a test for Post Header 1`] = `
         userName
       </Link>
     </styled.div>
-    <styled.div>
-      <span>
-         post.flairText
-      </span>
-    </styled.div>
     <span
       className="time-post"
     >
       5 days ago
     </span>
-    <styled.div />
   </styled.div>
 </styled.div>
 `;
