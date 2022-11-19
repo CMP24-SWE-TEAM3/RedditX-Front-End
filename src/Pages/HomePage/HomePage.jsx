@@ -8,7 +8,8 @@ import CreatePostSideBar from "Layouts/CreatePostSideBar/CreatePostSideBar";
 import Footer from "Layouts/Footer/Footer";
 import ScrollButton from "Components/ScrollButton/ScrollButton";
 import RecentPosts from "Layouts/RecentPosts/RecentPosts";
-
+import {useNavigate} from "react-router-dom";
+import {Button} from "react-bootstrap";
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
  *
@@ -16,7 +17,7 @@ import RecentPosts from "Layouts/RecentPosts/RecentPosts";
  */
 
 const HomePage = ({ handleToggleTheme, theme}) => {
-
+ const navigate = useNavigate();
   return (
     <>
       <AppContainer>
@@ -34,6 +35,7 @@ const HomePage = ({ handleToggleTheme, theme}) => {
               <div className={"content-posts"}>
                 <CreatePost />
                 <PopularPosts />
+                <Button onClick={()=>navigate("/Post")} variant="primary">Post</Button>
                 {/*<div className={'posts'}>*/}
                 {/*</div>*/}
               </div>

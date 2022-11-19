@@ -19,6 +19,7 @@ import { Button } from "react-bootstrap";
 // Import pages
 import { SubReddit, CommunityLeaderBoard, IndexPage } from "Features/Subreddit";
 import { CreatePost } from "Features/Post";
+import Post from "Features/Post/Pages/Post/Post";
 import {
   ForgetPasswordPage,
   ForgetUserNamePage,
@@ -34,9 +35,10 @@ import { AuthProvider } from "Features/Authentication/Contexts/Authentication";
 
 // TODO: remove this dummy page
 import DummyPage from "Pages/DummyPage/DummyPage";
-import Navigation from "./Layouts/Navigation/Navigation";
-import LogInVerticalModal from "./Features/Authentication/Layouts/LogInVerticalModal/LogInVerticalModal";
-import SignUpVerticalModal from "./Features/Authentication/Layouts/SignUpVerticalModal/SignUpVerticalModal";
+import Navigation from "Layouts/Navigation/Navigation";
+import LogInVerticalModal from "Features/Authentication/Layouts/LogInVerticalModal/LogInVerticalModal";
+import SignUpVerticalModal from "Features/Authentication/Layouts/SignUpVerticalModal/SignUpVerticalModal";
+
 /**
  * The main app of our application it handles routing
  *
@@ -107,6 +109,7 @@ function App() {
               path="user/reset-password/:token"
               element={<NewPasswordPage />}
             />
+            <Route path={"Post"} element={<Post/>}/>
           </Routes>
         </BrowserRouter>
       </AuthProvider>
