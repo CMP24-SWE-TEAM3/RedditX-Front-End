@@ -119,11 +119,11 @@ function App() {
                     modalAfterSignUp={modalAfterSignUp}
                     setModalAfterSignUp={setModalAfterSignUp}
                   />
-                  {/* <HomePage
+                  <HomePage
                     handleToggleTheme={handleToggleTheme}
                     theme={theme.id}
-                  /> */}
-                  <PostShape></PostShape>
+                  />
+                  {/* <PostShape></PostShape> */}
                 </>
               }
             />

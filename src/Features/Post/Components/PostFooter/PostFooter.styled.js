@@ -5,10 +5,11 @@ export const Container = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-  background-color: white;
+  background-color: ${({ theme }) => theme.background.primary};
   padding: 0 20px 20px;
   gap: 2%;
   max-width: 100%;
+  flex-wrap: wrap;
 `;
 export const Comment = styled.span`
   color: gray;

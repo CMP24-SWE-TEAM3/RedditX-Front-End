@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  background-color: #cccccc2b;
+  background-color: ${({ theme }) => theme.background.sideBarPost};
   padding: 5px;
   width: 7%;
   heigth: 100%;
@@ -16,14 +16,14 @@ export const Up = styled.button`
   background-color: transparent;
 
   svg {
-    color: ${(p) => (p.choosed ? "red" : "gray")};
+    color: ${(p) => (p.choosed ? ({ theme }) => theme.color.orange : "gray")};
   }
 
   &:hover {
     background-color: #e1e0e0 !important;
 
     svg {
-      color: red !important;
+      color: ${({ theme }) => theme.color.orange} !important;
     }
   }
 `;
@@ -33,20 +33,25 @@ export const Down = styled.button`
   background-color: transparent;
   color: gray;
   svg {
-    color: ${(p) => (p.choosed ? "#0000ff8a" : "gray")};
+    color: ${(p) => (p.choosed ? "#7193ff" : "gray")};
   }
 
   &:hover {
     background-color: #e1e0e0 !important;
 
     svg {
-      color: #0000ff8a !important;
+      color: #7193ff !important;
     }
   }
 `;
 
 export const Count = styled.div`
-  color: ${(p) => (p.up ? "red" : p.down ? "#0000ff8a" : "black")};
+  color: ${(p) =>
+    p.up
+      ? ({ theme }) => theme.color.orange
+      : p.down
+      ? "#7193ff"
+      : ({ theme }) => theme.color.primary};
   font-size: 13px;
   font-weight: 500;
 `;

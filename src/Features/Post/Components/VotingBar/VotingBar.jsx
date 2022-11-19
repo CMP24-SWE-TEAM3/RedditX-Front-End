@@ -12,7 +12,7 @@ import NumberAbbreviate from "number-abbreviate";
  * VotingBar Component that is in the side of Post Container
  * @returns {React.Component} VotingBar component
  */
-const VotingBar = ({number}) => {
+const VotingBar = ({ number }) => {
   /**
    * state to know if the email is valid or not to control what to show to the user
    */
@@ -21,26 +21,29 @@ const VotingBar = ({number}) => {
   const [count, setCount] = useState(number);
   const [countStr, setCountStr] = useState("");
 
-
   useEffect(() => {
-    setCountStr(NumberAbbreviate(count,2));
+    setCountStr(NumberAbbreviate(count, 2));
   }, [count]);
 
   return (
     <Container>
       <Up
         choosed={giveUp}
-        onClick={() =>
-          handleUp(giveUp, giveDown, count, setCount, setGiveUp, setGiveDown)
-        }
+        onClick={(event) => {
+          event.stopPropagation();
+          handleUp(giveUp, giveDown, count, setCount, setGiveUp, setGiveDown);
+        }}
       >
         <TbArrowBigTop size={22} />
       </Up>
-      <Count up={giveUp} down={giveDown}>{countStr}</Count>
+      <Count up={giveUp} down={giveDown}>
+        {countStr}
+      </Count>
       <Down
         choosed={giveDown}
-        onClick={() => {
-            handleDown(giveUp, giveDown, count, setCount, setGiveUp, setGiveDown)
+        onClick={(event) => {
+          event.stopPropagation();
+          handleDown(giveUp, giveDown, count, setCount, setGiveUp, setGiveDown);
         }}
       >
         <TbArrowBigDown size={22} />

@@ -10,6 +10,7 @@ import ScrollButton from "Components/ScrollButton/ScrollButton";
 import RecentPosts from "Layouts/RecentPosts/RecentPosts";
 import {useNavigate} from "react-router-dom";
 import {Button} from "react-bootstrap";
+import PostShape from "Features/Post/Layouts/PostShape/PostShape";
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
  *
@@ -21,8 +22,8 @@ const HomePage = ({ handleToggleTheme, theme}) => {
   return (
     <>
       <AppContainer>
+        
         <AppHeader>
-
           {/* <Navbar
             toggleMode={handleToggleTheme}
             theme={theme}
@@ -35,7 +36,11 @@ const HomePage = ({ handleToggleTheme, theme}) => {
               <div className={"content-posts"}>
                 <CreatePost />
                 <PopularPosts />
-                <Button onClick={()=>navigate("/Post")} variant="primary">Post</Button>
+                {/* <Button onClick={()=>navigate("/Post")} variant="primary">Post</Button> */}
+                <div onClick={()=>navigate("/Post")}>
+
+                <PostShape ></PostShape>
+                </div>
                 {/*<div className={'posts'}>*/}
                 {/*</div>*/}
               </div>

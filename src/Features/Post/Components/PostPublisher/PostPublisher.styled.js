@@ -7,7 +7,7 @@ export const Container = styled.div`
   align-items: center;
   max-height: 30px;
   padding: 20px 20px 0;
-  background-color: white;
+  background-color: ${({ theme }) => theme.background.primary};
   max-width: 100%;
 `;
 export const Photo = styled.div`
@@ -24,7 +24,7 @@ export const Community = styled(Link)`
   font-size: 14px;
   margin: 0 3px 0 0;
   cursor: pointer;
-  color: black;
+  color: ${({ theme }) => theme.color.primary};
   text-decoration: none;
 
   &:hover {
@@ -34,4 +34,5 @@ export const Community = styled(Link)`
 `;
 export const PublishBy = styled.div`
   font-size: 12px;
+  color: ${({ theme }) => theme.color.muted};
 `;

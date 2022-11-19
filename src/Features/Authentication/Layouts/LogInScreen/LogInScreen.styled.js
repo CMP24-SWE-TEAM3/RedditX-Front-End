@@ -19,7 +19,7 @@ export const AuthContainerDiv = styled.span`
 `;
 
 export const Privacy = styled.span`
-  color: color: ${({ theme }) => theme.color.link};
+  color: ${({ theme }) => theme.color.link};
 `;
 export const AuthHeader = styled.h2`
   font-family: ${fontFamily};

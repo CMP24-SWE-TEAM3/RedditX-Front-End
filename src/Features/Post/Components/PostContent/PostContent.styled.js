@@ -7,11 +7,13 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: column;
   padding: 20px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.background.primary};
   max-width: 100%;
 `;
 export const Paragraph = styled.div`
   width: 100%;
+  text-align: start;
+  color: ${({ theme }) => theme.color.primary};
 `;
 
 export const ImageContainer = styled.div`

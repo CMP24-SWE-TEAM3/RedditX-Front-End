@@ -79,6 +79,9 @@ const lightTheme = {
     hover_background: "#f5fafd",
     // hover_background_button_blue
     hover_background_button_blue: "#1484d6",
+
+    // side bar of the post
+    sideBarPost: "#f8f9fa",
   },
   // Border colors
   borderColor: {
