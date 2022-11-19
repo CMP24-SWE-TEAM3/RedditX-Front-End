@@ -37,7 +37,6 @@ exports[`Add topic and subtopic component should render without crashing 1`] = `
   >
     <styled.button
       onClick={[Function]}
-      title="add-topic"
     >
       <span>
         Add a Primary Topic

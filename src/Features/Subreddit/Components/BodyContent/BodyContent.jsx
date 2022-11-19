@@ -1,4 +1,3 @@
-import CreatePost from "Layouts/CreatePost/CreatePost";
 import CategoryBar from "../CategoryBar/CategoryBar";
 import { Container } from "./BodyContent.styled";
 
@@ -10,7 +9,7 @@ import { Container } from "./BodyContent.styled";
 const BodyContent = () => {
   return (
     <Container>
-      <CreatePost />
+      <div className="create-post"></div>
       <CategoryBar />
     </Container>
   );

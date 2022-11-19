@@ -20,17 +20,17 @@ export const CommunityItem = styled.div`
   
 
   /*Can be put in another container to fix media queries for this part*/
-  // justify-content: space-between;
+  justify-content: space-between;
   border-bottom: 1px solid ${({ theme }) => theme.lineColor.primary};
   font-size: 16px;
   font-weight: 300;
   line-height: 20px;
 
   .join-btn {
-    position: absolute;
+    // position: absolute;
     transition: 0.3s;
     // left: 80.75%;
-    right: 13%;
+    // right: 13%;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: unset;
@@ -51,10 +51,10 @@ export const CommunityItem = styled.div`
   }
 
   .joined-btn {
-    position: absolute;
+    // position: absolute;
     transition: 0.3s;
     // left: 80%;
-    right: 13%;
+    // right: 13%;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: unset;
@@ -257,4 +257,10 @@ export const HoverButton = styled.button`
   padding: 4px 16px;
   border-radius: 30px;
   width: 90%;
+`;
+
+export const HoverDiv = styled.div`
+  &:hover .hover-card{
+    display: inline-block;
+  }
 `;

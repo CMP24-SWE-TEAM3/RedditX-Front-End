@@ -2,7 +2,9 @@
 
 exports[`Content of Subreddit should render without crashing 1`] = `
 <styled.div>
-  <CreatePost />
+  <div
+    className="create-post"
+  />
   <CategoryBar />
 </styled.div>
 `;

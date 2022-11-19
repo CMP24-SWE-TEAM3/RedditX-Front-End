@@ -11,7 +11,11 @@ import {
 } from "./CommunityLeaderBoard.styled";
 import axios from "API/axios";
 import useFetch from "Hooks/useFetch";
-
+import useFetchFunction from "Hooks/useFetchFunction";
+import { DataContext } from "../../Services/DataContext";
+import data from "../../Services/data.json";
+import { useState } from "react";
+import { Route, Routes, useParams } from "react-router-dom";
 /**
  * Component that contains the whole community leaderboard page
  *
@@ -19,6 +23,8 @@ import useFetch from "Hooks/useFetch";
  * @returns {React.Component}
  */
 function CommunityLeaderBoard() {
+  const {categoryType} = useParams();
+  
   let [communitiesList, error, loading, reload] = useFetch({
     axiosInstance: axios,
     method: "GET",
@@ -29,6 +35,7 @@ function CommunityLeaderBoard() {
       },
     },
   });
+  
 
   let [
     CommunitiesSub,
@@ -46,19 +53,39 @@ function CommunityLeaderBoard() {
     },
   });
 
-  const useEffect = () => {};
-
+  const [category, setCategory] = useState(data);
+  const providedData = { category, setCategory };
   return (
     <LeaderBoardContainer>
       <LeaderBoardPage>
         <Header />
         <MainPadding>
+        <DataContext.Provider value={providedData}>
           <Categories />
           <DropDown>
             <CategoryDropDown />
           </DropDown>
-          <Container com={communitiesList} subscribed={CommunitiesSub} />
-          <RightSection />
+        </DataContext.Provider>
+        <Container com={communitiesList} subscribed={CommunitiesSub} />
+        <RightSection />
+        <Routes>
+
+          <Route
+           path="/category/:categoryType"
+           element={
+            <>
+              <DataContext.Provider value={providedData}>
+                <Categories />
+                <DropDown>
+                  <CategoryDropDown />
+                </DropDown>
+              </DataContext.Provider>
+              <Container com={communitiesList} subscribed={CommunitiesSub} />
+              <RightSection />
+            </>
+            } 
+          />
+        </Routes>
         </MainPadding>
       </LeaderBoardPage>
     </LeaderBoardContainer>
