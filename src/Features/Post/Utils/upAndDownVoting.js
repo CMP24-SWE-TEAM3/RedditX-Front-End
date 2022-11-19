@@ -1,6 +1,17 @@
-export const handleUp = (giveUp, count, setCount, setGiveUp, setGiveDown) => {
+export const handleUp = (
+  giveUp,
+  giveDown,
+  count,
+  setCount,
+  setGiveUp,
+  setGiveDown
+) => {
   if (!giveUp) {
-    setCount(count + 1);
+    if (giveDown) {
+      setCount(count + 2);
+    } else {
+      setCount(count + 1);
+    }
   } else {
     setCount(count - 1);
   }
@@ -8,9 +19,20 @@ export const handleUp = (giveUp, count, setCount, setGiveUp, setGiveDown) => {
   setGiveDown(false);
 };
 
-export const handleDown = (giveDown, count, setCount, setGiveUp, setGiveDown) => {
+export const handleDown = (
+  giveUp,
+  giveDown,
+  count,
+  setCount,
+  setGiveUp,
+  setGiveDown
+) => {
   if (!giveDown) {
-    setCount(count - 1);
+    if (giveUp) {
+      setCount(count - 2);
+    } else {
+      setCount(count - 1);
+    }
   } else {
     setCount(count + 1);
   }

@@ -6,7 +6,9 @@ export const Container = styled.div`
   justify-content: start;
   align-items: center;
   max-height: 30px;
-  padding: 3px;
+  padding: 20px 20px 0;
+  background-color: white;
+  max-width: 100%;
 `;
 export const Photo = styled.div`
   background-image: url(${(p) => p.url});

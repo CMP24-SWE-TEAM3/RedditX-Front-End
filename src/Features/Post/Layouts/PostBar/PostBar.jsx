@@ -1,5 +1,6 @@
 import PostPublisher from "Features/Post/Components/PostPublisher/PostPublisher";
-
+import PostContent from "Features/Post/Components/PostContent/PostContent";
+import PostFooter from "Features/Post/Components/PostFooter/PostFooter";
 
 import {Container} from "./PostBar.styled"
 
@@ -11,6 +12,8 @@ const PostBar = () => {
   return (
     <Container>
       <PostPublisher/>
+      <PostContent/>
+      <PostFooter/>
     </Container>
   );
 };

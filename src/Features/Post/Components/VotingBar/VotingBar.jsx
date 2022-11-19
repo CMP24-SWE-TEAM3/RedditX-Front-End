@@ -31,16 +31,16 @@ const VotingBar = ({number}) => {
       <Up
         choosed={giveUp}
         onClick={() =>
-          handleUp(giveUp, count, setCount, setGiveUp, setGiveDown)
+          handleUp(giveUp, giveDown, count, setCount, setGiveUp, setGiveDown)
         }
       >
         <TbArrowBigTop size={22} />
       </Up>
-      <Count>{countStr}</Count>
+      <Count up={giveUp} down={giveDown}>{countStr}</Count>
       <Down
         choosed={giveDown}
         onClick={() => {
-            handleDown(giveDown, count, setCount, setGiveUp, setGiveDown)
+            handleDown(giveUp, giveDown, count, setCount, setGiveUp, setGiveDown)
         }}
       >
         <TbArrowBigDown size={22} />
