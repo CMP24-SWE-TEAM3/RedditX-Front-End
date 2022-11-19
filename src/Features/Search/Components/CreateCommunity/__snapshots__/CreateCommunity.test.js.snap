@@ -27,10 +27,16 @@ exports[`Create Community this is a test for Create Community 1`] = `
     <div
       className="btn-create"
     >
-      <button>
+      <button
+        onClick={[Function]}
+      >
         Create Community
       </button>
     </div>
   </div>
+  <ModalCommunity
+    close={[Function]}
+    show={false}
+  />
 </styled.div>
 `;
