@@ -24,6 +24,7 @@ const SignUpVerticalModal = ({ ...props }) => {
 
   return (
     <MyModal
+      data-testid={"signupModalId"}  
       id="signUpModal"
       {...props}
       size="lg"

@@ -42,10 +42,14 @@ const PostItem = ({ post }) => {
             <div className="post-body-content">
               <Link to="#">
                 <div>
-                  <p className={"post-content"}>{postBody.bodyText}</p>
+                  <p className={"post-content"} title="postbody">
+                    {postBody.bodyText}
+                  </p>
                 </div>
               </Link>
-              <span className="flair">{postBody.flair}</span>
+              <span className="flair" title="postFlair">
+                {postBody.flair}
+              </span>
             </div>
             <div className="post-image">
               <div className="img">

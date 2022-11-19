@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  //background-color: ${({theme}) => theme.background.primary};
-  color: ${({theme}) => theme.color.muted};
+  color: ${({ theme }) => theme.color.muted};
 
 
   .popover {
-    background-color: ${({theme}) => theme.background.primary};
+    background-color: ${({ theme }) => theme.background.primary};
     border-radius: 4px;
     box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
     //margin-top: 8px;
@@ -34,7 +33,7 @@ export const Container = styled.div`
   }
 
   & .popover-header {
-    background-color: ${({theme}) => theme.background.primary};
+    background-color: ${({ theme }) => theme.background.primary};
     border-radius: 4px;
     display: flex;
     justify-content: space-between;
@@ -43,7 +42,7 @@ export const Container = styled.div`
   }
 
   & .message {
-    border-right: 1px solid ${({theme}) => theme.background.primary};
+    border-right: 1px solid ${({ theme }) => theme.background.primary};
     padding-right: 8px;
 
     a {
@@ -55,7 +54,7 @@ export const Container = styled.div`
       text-overflow: ellipsis;
       white-space: nowrap;
       font-weight: 600;
-      color: ${({theme}) => theme.color.gray};
+      color: ${({ theme }) => theme.color.gray};
 
       :hover {
         text-decoration: none !important;
@@ -74,7 +73,7 @@ export const Container = styled.div`
   }
 
   i {
-    color: ${({theme}) => theme.color.gray};
+    color: ${({ theme }) => theme.color.gray};
     font-size: 20px;
     font-weight: 400;
     height: 20px;
@@ -92,7 +91,7 @@ export const Container = styled.div`
   .popover-body {
     //height: 77px;
     max-height: 250px;
-    background-color: ${({theme}) => theme.background.primary};
+    background-color: ${({ theme }) => theme.background.primary};
     overflow: hidden;
     overflow-y: auto;
     padding: 0;
@@ -119,7 +118,7 @@ export const Container = styled.div`
       border-radius: 50%;
       height: 32px;
       width: 32px;
-      background-color: ${({theme}) => theme.background.hover_background};
+      background-color: ${({ theme }) => theme.background.hover_background};
       display: block;
       object-fit: cover;
     }
@@ -160,7 +159,7 @@ export const Container = styled.div`
     line-height: 21px;
     font-family: Noto Sans, Arial, sans-serif;
     font-weight: 400;
-    color: ${({theme}) => theme.color.primary};
+    color: ${({ theme }) => theme.color.primary};
   }
 
   .dot {
@@ -168,10 +167,10 @@ export const Container = styled.div`
     font-weight: 400;
     margin: 0 5px;
     line-height: 16px;
-    color: ${({theme}) => theme.color.gray};
+    color: ${({ theme }) => theme.color.gray};
 
     :hover {
-      background-color: ${({theme}) => theme.background.post_background};
+      background-color: ${({ theme }) => theme.background.post_background};
     }
   }
 
@@ -179,7 +178,7 @@ export const Container = styled.div`
     font-family: Noto Sans, Arial, sans-serif;
     font-size: 14px;
     font-weight: 400;
-    color: ${({theme}) => theme.color.gray};
+    color: ${({ theme }) => theme.color.gray};
     line-height: 19px;
   }
 
@@ -191,7 +190,7 @@ export const Container = styled.div`
     white-space: normal;
     -webkit-box-orient: vertical;
     font-size: 14px;
-    color: ${({theme}) => theme.color.gray};
+    color: ${({ theme }) => theme.color.gray};
     word-break: break-word;
     line-height: 18px;
     max-height: 54px;
@@ -201,7 +200,7 @@ export const Container = styled.div`
   // footer styles
   footer {
     align-items: center;
-    background-color: ${({theme}) => theme.background.post_background};
+    background-color: ${({ theme }) => theme.background.post_background};
     border-radius: 0 0 4px 4px;
     display: flex;
     height: 49px;

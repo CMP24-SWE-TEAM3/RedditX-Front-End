@@ -4,7 +4,9 @@ exports[`Home Page this is a test for Home Page 1`] = `
 <Fragment>
   <styled.div>
     <styled.header>
-      <styled.div>
+      <styled.div
+        data-testid="home-page-id"
+      >
         <div
           className="main"
         />

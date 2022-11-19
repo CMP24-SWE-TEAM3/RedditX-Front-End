@@ -26,6 +26,7 @@ const LogInVerticalModal = ({ ...props }) => {
 
   return (
     <MyModal
+      data-testid="loginModalId"
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"

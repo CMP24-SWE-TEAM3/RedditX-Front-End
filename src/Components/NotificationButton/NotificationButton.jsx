@@ -8,7 +8,6 @@ import { Container } from "./NotificationButton.styled";
 import { BsThreeDots, BsClipboardCheck } from "react-icons/bs";
 import { FiSettings } from "react-icons/fi";
 import link from "Assets/Images/link.png";
-import db from "Data/db.json";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { Link } from "react-router-dom";
@@ -73,7 +72,7 @@ const NotificationButton = () => {
   };
   useOutsideAlerter(wrapperRef);
 
-  // Fetch noitifcations
+  // Fetch notifications
   // Call useFetchFunction hook to handle states: loading, error, data
   // Loading: Boolean to tell if the request has been sent, or it's still loading
   // Error: Contains error message when the request is failed
@@ -89,7 +88,11 @@ const NotificationButton = () => {
         placement={"bottom"}
         overlay={<Tooltip id={`tooltip-bottom`}>Notification</Tooltip>}
       >
-        <GlobalButtonStyled id={"notification-box"} onClick={handleClick}>
+        <GlobalButtonStyled
+          data-testid="notificationButtonId"
+          id={"notification-box"}
+          onClick={handleClick}
+        >
           <IoMdNotificationsOutline />
         </GlobalButtonStyled>
       </OverlayTrigger>
@@ -125,12 +128,12 @@ const NotificationButton = () => {
               </Link>
             </span>
           </Popover.Header>
-          <Popover.Body>
+          <Popover.Body data-testid={'notificationListId'}>
             <div className={"pop"} />
             <div className={"content"}>
-              {notificationList.map((comment) => {
+              {notificationList.map((comment, index) => {
                 return (
-                  <i className={"content-i"}>
+                  <i className={"content-i"} key={index}>
                     <Link
                       className={"content-a"}
                       href={

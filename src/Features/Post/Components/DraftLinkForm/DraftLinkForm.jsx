@@ -9,7 +9,7 @@ import {
 
 // Import bootstrap components
 import { Col } from "react-bootstrap";
-import isValidUrl from "Features/Post/Utils/isValidUrl";
+import {isValidUrl} from "Features/Post/Utils/isValidUrl";
 
 // Import hooks
 import { useState } from "react";

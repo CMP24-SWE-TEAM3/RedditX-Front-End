@@ -1,8 +1,8 @@
 // imports
-import React from 'react';
-import {Container} from "./CreatePost.styled";
-import Post  from "Components/Post/Post";
-import ImageButton   from "Components/ImageButton/ImageButton";
+import React from "react";
+import { Container } from "./CreatePost.styled";
+import Post from "Components/Post/Post";
+import ImageButton from "Components/ImageButton/ImageButton";
 import LinkButton from "Components/LinkButton/LinkButton";
 import ProfilePostButton from "Components/ProfilePostButton/ProfilePostButton";
 /**
@@ -11,14 +11,14 @@ import ProfilePostButton from "Components/ProfilePostButton/ProfilePostButton";
  * @returns {React.Component}
  */
 const CreatePost = () => {
-    return (
-        <Container>
-            <ProfilePostButton/>
-            <Post/>
-            <ImageButton/>
-            <LinkButton/>
-        </Container>
-    );
+  return (
+    <Container >
+      <ProfilePostButton />
+      <Post />
+      <ImageButton />
+      <LinkButton />
+    </Container>
+  );
 };
 
 export default CreatePost;
