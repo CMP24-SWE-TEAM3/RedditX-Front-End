@@ -30,6 +30,7 @@ import { Button } from "react-bootstrap";
 // Import pages
 import { SubReddit, CommunityLeaderBoard, IndexPage } from "Features/Subreddit";
 import { CreatePost } from "Features/Post";
+import Post from "Features/Post/Pages/Post/Post";
 import {
   ForgetPasswordPage,
   ForgetUserNamePage,
@@ -47,12 +48,16 @@ import {
 } from "Features/Authentication/Contexts/Authentication";
 
 // TODO: remove this dummy page
-import Navigation from "./Layouts/Navigation/Navigation";
-import LogInVerticalModal from "Features/Authentication/Layouts/LogInVerticalModal/LogInVerticalModal";
-import SignUpVerticalModal from "Features/Authentication/Layouts/SignUpVerticalModal/SignUpVerticalModal";
+
+
 import AfterSignUp from "Features/Authentication/Layouts/AfterSignUp/AfterSignUp";
 import AfterSignUpModal from "Features/Authentication/Layouts/AfterSignUpModal/AfterSignUpModal";
 import LogInScreen from "Features/Authentication/Layouts/LogInScreen/LogInScreen";
+import DummyPage from "Pages/DummyPage/DummyPage";
+import Navigation from "Layouts/Navigation/Navigation";
+import LogInVerticalModal from "Features/Authentication/Layouts/LogInVerticalModal/LogInVerticalModal";
+import SignUpVerticalModal from "Features/Authentication/Layouts/SignUpVerticalModal/SignUpVerticalModal";
+
 /**
  * The main app of our application it handles routing
  *
@@ -114,11 +119,11 @@ function App() {
                     modalAfterSignUp={modalAfterSignUp}
                     setModalAfterSignUp={setModalAfterSignUp}
                   />
-                  {/* <HomePage
+                  <HomePage
                     handleToggleTheme={handleToggleTheme}
                     theme={theme.id}
-                  /> */}
-                  <PostShape></PostShape>
+                  />
+                  {/* <PostShape></PostShape> */}
                 </>
               }
             />
@@ -220,6 +225,7 @@ function App() {
               path="user/reset-password/:token"
               element={<NewPasswordPage />}
             />
+            <Route path={"Post"} element={<Post/>}/>
           </Routes>
         </BrowserRouter>
       </AuthProvider>
