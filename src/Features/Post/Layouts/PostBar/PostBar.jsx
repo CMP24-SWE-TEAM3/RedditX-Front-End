@@ -11,7 +11,7 @@ import {Container} from "./PostBar.styled"
 const PostBar = () => {
   return (
     <Container>
-      <PostPublisher/>
+      <PostPublisher fullPost={true}/>
       <PostContent/>
       <PostFooter/>
     </Container>

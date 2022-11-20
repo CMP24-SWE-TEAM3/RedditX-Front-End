@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
   max-height: 30px;
   padding: 20px 20px 0;
@@ -35,4 +35,22 @@ export const Community = styled(Link)`
 export const PublishBy = styled.div`
   font-size: 12px;
   color: ${({ theme }) => theme.color.muted};
+`;
+export const InfoContainer = styled.div`
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  max-height: 30px;
+  background-color: ${({ theme }) => theme.background.primary};
+  max-width: 100%;
+`;
+export const Follow = styled.div`
+  width: 20px;
+  height: 20px;
+  color: red;
+
+  svg {
+    color: ${(p) => (p.follow ? "red" : "gray")};
+    font-size: 22px;
+  }
 `;
