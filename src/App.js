@@ -2,14 +2,12 @@
 // Import react and hooks
 import React, { useState } from "react";
 
-
 //////////////////////////////////////////////////////////////
 
 //Dummy imports
 
 import VotingBar from "Features/Post/Components/VotingBar/VotingBar";
 import PostShape from "Features/Post/Layouts/PostShape/PostShape";
-
 
 //////////////////////////////////////////////////////////////
 
@@ -48,7 +46,6 @@ import {
 } from "Features/Authentication/Contexts/Authentication";
 
 // TODO: remove this dummy page
-
 
 import AfterSignUp from "Features/Authentication/Layouts/AfterSignUp/AfterSignUp";
 import AfterSignUpModal from "Features/Authentication/Layouts/AfterSignUpModal/AfterSignUpModal";
@@ -225,7 +222,24 @@ function App() {
               path="user/reset-password/:token"
               element={<NewPasswordPage />}
             />
-            <Route path={"Post"} element={<Post/>}/>
+            <Route
+              path="post"
+              element={
+                <>
+                  <Navigation
+                    toggleMode={handleToggleTheme}
+                    theme={theme.id}
+                    modalShowLogIn={modalShowLogIn}
+                    setModalShowLogIn={setModalShowLogIn}
+                    modalShowSignUp={modalShowSignUp}
+                    setModalShowSignUp={setModalShowSignUp}
+                    modalAfterSignUp={modalAfterSignUp}
+                    setModalAfterSignUp={setModalAfterSignUp}
+                  />
+                  <Post />
+                </>
+              }
+            />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
