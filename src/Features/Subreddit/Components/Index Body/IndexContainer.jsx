@@ -1,5 +1,5 @@
-import axios from "API/axios";
-import useFetch from "Hooks/useFetch";
+import useFetchFunction from "Hooks/useFetchFunction";
+import fetchIndexedCommunities from "Features/Subreddit/Services/fetchIndexedCommunities";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
@@ -43,16 +43,11 @@ export default function IndexContainer() {
     console.log(currLetter);
   }, [indexLetter])
 
-  let [communityIndex, error, loading, reload] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "http://localhost:8000/index--Leaderboard",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
+  const [communityIndex, error, loading, indexFetchFunction] = useFetchFunction();
+
+  useEffect(() => {
+    fetchIndexedCommunities(indexFetchFunction);
+  }, []); // Only re-run the effect if count changes
 
   const communities = communityIndex.map((community) => {
     return (
@@ -61,7 +56,7 @@ export default function IndexContainer() {
         </ContentItem>
     );
   });
-  return (
+  return !loading&& (
     <CommunityContainer>
       <AllCommunities>
         <CommunityHeader>

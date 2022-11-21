@@ -9,12 +9,12 @@ import {
   LeaderBoardPage,
   DropDown,
 } from "./CommunityLeaderBoard.styled";
-import axios from "API/axios";
-import useFetch from "Hooks/useFetch";
 import useFetchFunction from "Hooks/useFetchFunction";
+import fetchCommunities from "Features/Subreddit/Services/fetchCommunities";
+import fetchSubbedCommunities from "Features/Subreddit/Services/fetchSubbedCommunities";
 import { DataContext } from "../../Services/DataContext";
 import data from "../../Services/data.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes, useParams } from "react-router-dom";
 /**
  * Component that contains the whole community leaderboard page
@@ -25,33 +25,13 @@ import { Route, Routes, useParams } from "react-router-dom";
 function CommunityLeaderBoard() {
   const {categoryType} = useParams();
   
-  let [communitiesList, error, loading, reload] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "http://localhost:8000/communities--Leaderboard",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
-  
+  const [communitiesList, error, loading, fetchFunction] = useFetchFunction();
+  const [CommunitiesSub, errorSubCommunities, loadingSubCommunities, fetchSubCommunities ] = useFetchFunction();
+  useEffect(() => {
+    fetchCommunities(fetchFunction);
+    fetchSubbedCommunities(fetchSubCommunities);
+  }, []); // Only re-run the effect if count changes
 
-  let [
-    CommunitiesSub,
-    errorSubCommunities,
-    loadingSubCommunities,
-    reloadSubCommunities,
-  ] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "http://localhost:8000/Subscribed--Leaderboard",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
 
   const [category, setCategory] = useState(data);
   const providedData = { category, setCategory };
