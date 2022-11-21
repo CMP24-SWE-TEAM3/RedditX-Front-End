@@ -8,6 +8,10 @@ import {
 } from "./PostPublisher.styled";
 import Moment from "react-moment";
 
+import { makeFollow } from "Features/Post/Services/postActions";
+
+import useFetchFunction from "Hooks/useFetchFunction";
+
 import { useState } from "react";
 
 import { BsFillBellFill } from "react-icons/bs";
@@ -17,16 +21,30 @@ import { BsFillBellFill } from "react-icons/bs";
  * @returns {React.Component} PostPublisher component
  */
 const PostPublisher = ({ fullPost }) => {
+  /**
+   * Custom hook
+   */
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
+
   const url =
     "https://i.pinimg.com/originals/58/2d/96/582d96a1df2d94bb439af1594639ccfe.jpg";
   const communityName = "hello world ";
   const publisher = "mohamedromee";
   const date = "2022/011/15, 15:05:45";
 
+  const id = "5496783"; //test;
+
   const [follow, setFollow] = useState(false);
 
   const handleFollow = () => {
     setFollow(!follow);
+
+    const sentId = "t3_" + id;
+
+    makeFollow(dataFetch, {
+      linkID: sentId,
+      action: !follow,
+    });
   };
 
   return (
@@ -39,7 +57,8 @@ const PostPublisher = ({ fullPost }) => {
         </PublishBy>
       </InfoContainer>
       {fullPost && (
-        <Follow follow={follow}
+        <Follow
+          follow={follow}
           onClick={(event) => {
             event.stopPropagation();
             handleFollow();

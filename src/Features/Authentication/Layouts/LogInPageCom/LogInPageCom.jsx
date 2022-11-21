@@ -118,10 +118,10 @@ const LogInPageCom = () => {
    * Function to handle the submit of the form of login
    * @param {*} event
    */
-  const handleSubmit = async (event) => {
+  const handleSubmit =  (event) => {
     event.preventDefault();
     if (wantSubmit) {
-      await loginApi(dataFetch, {
+       loginApi(dataFetch, {
         type: "bare email",
         username: userName,
         password: password,
