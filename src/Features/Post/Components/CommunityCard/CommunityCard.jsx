@@ -29,7 +29,7 @@ const CommunityCard = () => {
       <Content>
         <CommunityDate />
         <Separator />
-        <OnlineMembers />
+        <OnlineMembers online={5} members={7} />
         <Separator />
         <UserFlairPreview />
         <CommunityOptions />

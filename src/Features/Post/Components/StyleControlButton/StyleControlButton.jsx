@@ -25,6 +25,7 @@ const StyleControlButton = ({ style, onToggle, active, label, icon }) => {
         id={label.replace(" ", "-")}
         active={active}
         onMouseDown={onToggleHandler}
+        data-testid="style-control-button"
       >
         {icon}
       </StyledButton>
