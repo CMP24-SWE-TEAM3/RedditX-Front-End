@@ -13,7 +13,7 @@ import CreatePostSideBar from "Layouts/CreatePostSideBar/CreatePostSideBar";
 import Footer from "Layouts/Footer/Footer";
 import ScrollButton from "Components/ScrollButton/ScrollButton";
 import RecentPosts from "Layouts/RecentPosts/RecentPosts";
-import DropTest from "temp";
+// import DropTest from "temp";
 
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
