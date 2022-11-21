@@ -6,6 +6,7 @@ import axios from "API/axios";
 // import useFetch from "Hooks/useFetch";
 import { Link } from "react-router-dom";
 import useFetchFunction from "Hooks/useFetchFunction";
+import followPeople from "Features/Search/Services/followPeople";
 /**
  * Component that contains the PeopleCardItem and manage the state of the button Follow.
  *
@@ -27,22 +28,7 @@ const PeopleCardItem = ({
 }) => {
   const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
   const [isJoinedstate, setisJoined] = useState(false);
-  const joinCommunity = (btnState) => {
-    fetchFunction({
-      axiosInstance: axios,
-      method: "POST",
-      url: "http://localhost:8000/follow",
-      requestConfig: {
-        headers: {
-          "Content-Language": "en-US",
-        },
-        data: {
-          action: btnState ? "Follow" : "unFollow",
-          userName: `${username.slice(1)}`,
-        },
-      },
-    });
-  };
+
   // People Subscriptions
 
   // find if the user following this one
@@ -73,7 +59,11 @@ const PeopleCardItem = ({
     } else {
       btnState = false;
     }
-    joinCommunity(btnState);
+    let dataObj = {
+      action: btnState ? "Follow" : "unFollow",
+      userName: `${username.slice(1)}`,
+    };
+    followPeople(fetchFunction, dataObj);
     ////////////////
   }
 

@@ -5,6 +5,7 @@ import { Container } from "./CommunityCardItem.styled";
 // Import api
 import axios from "API/axios";
 import useFetchFunction from "Hooks/useFetchFunction";
+import joinCommunity from "Features/Search/Services/joinCommunity";
 /**
  * Component that contains the CommunityCardItem and manage the state of the button join.
  *
@@ -27,22 +28,7 @@ const CommunityCardItem = ({
 }) => {
   const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
   const [isJoinedstate, setisJoined] = useState(false);
-  const joinCommunity = (btnState) => {
-    fetchFunction({
-      axiosInstance: axios,
-      method: "POST",
-      url: "http://localhost:8000/Join",
-      requestConfig: {
-        headers: {
-          "Content-Language": "en-US",
-        },
-        data: {
-          action: !btnState ? "unsub" : "sub",
-          sr_name: `${communityName}`,
-        },
-      },
-    });
-  };
+
   const initialState = `${isJoined !== undefined ? "Joined" : "Join"}`;
   // the state of the buuton
   const [btnContent, setBtnContent] = useState(
@@ -70,7 +56,11 @@ const CommunityCardItem = ({
     } else {
       btnState = false;
     }
-    joinCommunity(btnState);
+    let dataObj = {
+      action: !btnState ? "unsub" : "sub",
+      sr_name: `${communityName}`,
+    };
+    joinCommunity(fetchFunction, dataObj);
   };
   /**
    * it is the function that handle the state of the button when mouseEnter on it.

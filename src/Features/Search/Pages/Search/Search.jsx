@@ -7,9 +7,16 @@ import React from "react";
 import Links from "../../Components/MainHeader/MainHeader";
 import Posts from "../../Layouts/PostsPage/Posts";
 import { Container } from "./Search.styled";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useFetch from "Hooks/useFetch";
 import axios from "API/axios";
+import useFetchFunction from "Hooks/useFetchFunction";
+import fetchPosts from "Features/Search/Services/fetchPosts";
+import fetchComments from "Features/Search/Services/fetchComments";
+import fetchCommunities from "Features/Search/Services/fetchCommunities";
+import fetchPeople from "Features/Search/Services/fetchPeople";
+import fetchSubbcomm from "Features/Search/Services/fetchSubbcomm";
+import fetchPeopleFollowed from "Features/Search/Services/fetchPeopleFollowed";
 /**
  * Component that contains the Search Page and the Main Links component and routes for the four pages Posts page, Comments page, Community page and People page.
  *
@@ -27,69 +34,29 @@ const Search = () => {
   const [ActiveLink, setActiveLink] = useState("posts");
 
   // Fetch Posts
-  let [PostList, error, loading, reload] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "http://localhost:8000/posts",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
+  const [PostList, error, loading, fetch] = useFetchFunction();
+  useEffect(() => {
+    fetchPosts(fetch);
+  }, []); // Only re-run the effect if count changes
   // Fetch Posts
 
   // fetch Communities
-  let [CommunityList, errorCommunity, loadingCommunity, reloadCommunity] =
-    useFetch({
-      axiosInstance: axios,
-      method: "GET",
-      url: "http://localhost:8000/communityList",
-      requestConfig: {
-        headers: {
-          "Content-Language": "en-US",
-        },
-      },
-    });
+  let [CommunityList, errorCommunity, loadingCommunity, fetchCommunity] =
+    useFetchFunction();
+
   // fetch Communities
 
   // fetch Comments
-  let [CommentLists, errorComment, loadingComment, reloadComment] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "http://localhost:8000/CommentList",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
+  let [CommentLists, errorComment, loadingComment, fetchComment] =
+    useFetchFunction();
   // fetch Comments
 
   // fetch People
-  let [PeopleList, errorPeople, loadingPeople, reloadPeople] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "http://localhost:8000/PeopleList",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
+  let [PeopleList, errorPeople, loadingPeople, FB] = useFetchFunction();
   // fetch People
 
   // fetch people follow
-  let [PeopleFollow, errorSub, loadingSub, reloadSub] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "http://localhost:8000/PeopleFollow",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
+  let [PeopleFollow, errorSub, loadingSub, fetchSub] = useFetchFunction();
   // fetch people follow
 
   // fetch communities subscribe
@@ -99,19 +66,18 @@ const Search = () => {
     errorSubCommunities,
     loadingSubCommunities,
     reloadSubCommunities,
-  ] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "http://localhost:8000/CommunitiesSub2",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
+  ] = useFetchFunction();
 
   // fetch communities subscribe
 
+  useEffect(() => {
+    fetchPosts(fetch);
+    fetchComments(fetchComment);
+    fetchCommunities(fetchCommunity);
+    fetchPeople(FB);
+    fetchSubbcomm(reloadSubCommunities);
+    fetchPeopleFollowed(fetchSub);
+  }, []); // Only re-run the effect if count changes
   return (
     <Container>
       <div className="outer-container">
