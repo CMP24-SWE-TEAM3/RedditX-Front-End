@@ -23,14 +23,13 @@ const CommunityCard = () => {
   // Context for selected submit destination
   const { submitDestination, setSubmitDestination } = useSubmitDestination();
 
-  console.log(submitDestination);
   return (
     <Container>
       <CommunityBanner />
       <Content>
         <CommunityDate />
         <Separator />
-        <OnlineMembers />
+        <OnlineMembers online={5} members={7} />
         <Separator />
         <UserFlairPreview />
         <CommunityOptions />

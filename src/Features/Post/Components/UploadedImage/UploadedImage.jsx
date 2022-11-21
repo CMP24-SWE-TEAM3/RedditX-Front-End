@@ -51,6 +51,7 @@ const UploadedImage = ({
           alt="uploaded preview"
         />
         <DeleteButton
+          data-testid="delete-button"
           className="delete-img-danger"
           variant="danger"
           onClick={() => deleteFile(file)}

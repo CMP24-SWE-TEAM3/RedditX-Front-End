@@ -4,6 +4,7 @@ exports[`SignUpVerticalModal Modal this is a test for SignUpVerticalModal Modal 
 <Styled(Modal)
   aria-labelledby="contained-modal-title-vcenter"
   centered={true}
+  data-testid="signupModalId"
   id="signUpModal"
   onExit={[Function]}
   size="lg"

@@ -1,11 +1,9 @@
 import profile from "Features/Post/Assets/Images/Post-guidelines.png";
 import { useState } from "react";
 import { HiOutlinePencil } from "react-icons/hi";
-import { Separator } from "../CommunityCard/CommunityCard.styled";
 import FlairModal from "../FlairModal/FlairModal";
 import {
   Container,
-  CreatePost,
   DataContainer,
   Flair,
   FlairContainer,
@@ -40,16 +38,6 @@ const UserFlairPreview = () => {
     setModalShow(true);
   }
 
-  /**
-   * handler when click save on flair modal that takes new flair selected
-   *
-   * @param {object} flair
-   */
-  function changeFlair(index) {
-    setModalShow(false);
-    setFlairIndex(index);
-  }
-
   // Fetch flairs
   const [flairs, error, isLoading, reload] = useFetch({
     axiosInstance: axios,
@@ -61,8 +49,7 @@ const UserFlairPreview = () => {
       },
     },
   });
-  console.log(flairs);
-  console.log(flairIndex);
+
   /**
    *
    * @returns {React.Component} CreatePost component

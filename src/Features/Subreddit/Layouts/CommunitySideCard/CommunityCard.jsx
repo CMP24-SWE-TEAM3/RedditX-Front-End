@@ -20,7 +20,6 @@ import {Link} from "react-router-dom";
  * @returns {React.Component}
  */
 const TopCommunities = () => {
-
     const navigate = useNavigate();
 
     const navigateToRandomCat = (categoryTitle) => {

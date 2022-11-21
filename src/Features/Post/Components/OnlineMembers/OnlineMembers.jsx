@@ -15,17 +15,17 @@ import {
  *
  * @returns {React.Component} Online Members component
  */
-const OnlineMembers = () => {
+const OnlineMembers = ({ online, members }) => {
   return (
     <Container>
       <OnlineMembersContainer>
         <OverlayTrigger
           placement={"bottom"}
           delay="200"
-          overlay={<Tooltip>{`5 Members`}</Tooltip>}
+          overlay={<Tooltip>{`${members} Members`}</Tooltip>}
         >
           <Members>
-            <div>{5}</div>
+            <div>{members}</div>
             <p>Members</p>
           </Members>
         </OverlayTrigger>
@@ -33,11 +33,11 @@ const OnlineMembers = () => {
       <OnlineMembersContainer>
         <OverlayTrigger
           placement={"bottom"}
-          overlay={<Tooltip>{"6 Online"}</Tooltip>}
+          overlay={<Tooltip>{`${online} Online`}</Tooltip>}
           delay="200"
         >
           <Online>
-            <div>{6}</div>
+            <div>{online}</div>
             <p>Online</p>
           </Online>
         </OverlayTrigger>

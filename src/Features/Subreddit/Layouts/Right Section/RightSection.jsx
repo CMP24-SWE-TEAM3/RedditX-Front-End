@@ -70,33 +70,33 @@ const com = communityList.map((community, index) => {
             <Browse>
               <BrowseH3>Browse Communities A-Z</BrowseH3>
               <LettersContainer>
-                <Letters to = {'/index-page'}>a</Letters>
-                <Letters to = {'/index-page'}>b</Letters>
-                <Letters to = {'/index-page'}>c</Letters>
-                <Letters to = {'/index-page'}>d</Letters>
-                <Letters to = {'/index-page'}>e</Letters>
-                <Letters to = {'/index-page'}>f</Letters>
-                <Letters to = {'/index-page'}>g</Letters>
-                <Letters to = {'/index-page'}>h</Letters>
-                <Letters to = {'/index-page'}>i</Letters>
-                <Letters to = {'/index-page'}>j</Letters>
-                <Letters to = {'/index-page'}>k</Letters>
-                <Letters to = {'/index-page'}>l</Letters>
-                <Letters to = {'/index-page'}>m</Letters>
-                <Letters to = {'/index-page'}>n</Letters>
-                <Letters to = {'/index-page'}>o</Letters>
-                <Letters to = {'/index-page'}>p</Letters>
-                <Letters to = {'/index-page'}>q</Letters>
-                <Letters to = {'/index-page'}>r</Letters>
-                <Letters to = {'/index-page'}>s</Letters>
-                <Letters to = {'/index-page'}>t</Letters>
-                <Letters to = {'/index-page'}>u</Letters>
-                <Letters to = {'/index-page'}>v</Letters>
-                <Letters to = {'/index-page'}>w</Letters>
-                <Letters to = {'/index-page'}>x</Letters>
-                <Letters to = {'/index-page'}>y</Letters>
-                <Letters to = {'/index-page'}>z</Letters>
-                <Letters to = {'/index-page'}>#</Letters>
+                <Letters to = {'/index-page/A'}>a</Letters>
+                <Letters to = {'/index-page/B'}>b</Letters>
+                <Letters to = {'/index-page/C'}>c</Letters>
+                <Letters to = {'/index-page/D'}>d</Letters>
+                <Letters to = {'/index-page/E'}>e</Letters>
+                <Letters to = {'/index-page/F'}>f</Letters>
+                <Letters to = {'/index-page/G'}>g</Letters>
+                <Letters to = {'/index-page/H'}>h</Letters>
+                <Letters to = {'/index-page/I'}>i</Letters>
+                <Letters to = {'/index-page/J'}>j</Letters>
+                <Letters to = {'/index-page/K'}>k</Letters>
+                <Letters to = {'/index-page/L'}>l</Letters>
+                <Letters to = {'/index-page/M'}>m</Letters>
+                <Letters to = {'/index-page/N'}>n</Letters>
+                <Letters to = {'/index-page/O'}>o</Letters>
+                <Letters to = {'/index-page/P'}>p</Letters>
+                <Letters to = {'/index-page/Q'}>q</Letters>
+                <Letters to = {'/index-page/R'}>r</Letters>
+                <Letters to = {'/index-page/S'}>s</Letters>
+                <Letters to = {'/index-page/T'}>t</Letters>
+                <Letters to = {'/index-page/U'}>u</Letters>
+                <Letters to = {'/index-page/V'}>v</Letters>
+                <Letters to = {'/index-page/W'}>w</Letters>
+                <Letters to = {'/index-page/X'}>x</Letters>
+                <Letters to = {'/index-page/Y'}>y</Letters>
+                <Letters to = {'/index-page/Z'}>z</Letters>
+                <Letters to = {'/index-page/Non Literal'}>#</Letters>
               </LettersContainer>
             </Browse>
             <BackTop>

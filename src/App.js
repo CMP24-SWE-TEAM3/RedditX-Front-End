@@ -129,7 +129,7 @@ function App() {
               }
             />
             <Route
-              path="category/*"
+              path="category/:categoryType/*"
               element={
                 <>
                   <Navigation
@@ -147,7 +147,7 @@ function App() {
               }
             />
             <Route
-              path="index-page"
+              path="index-page/:indexLetter/*"
               element={
                 <>
                   <Navigation

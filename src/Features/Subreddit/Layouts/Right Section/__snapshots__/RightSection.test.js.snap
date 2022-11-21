@@ -17,137 +17,137 @@ exports[`Community Leaderboard RightSection this is a test for Right Section 1`]
           </styled.h3>
           <styled.div>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               a
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               b
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               c
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               d
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               e
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               f
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               g
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               h
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               i
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               j
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               k
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               l
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               m
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               n
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               o
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               p
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               q
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               r
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               s
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               t
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               u
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               v
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               w
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               x
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               y
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               z
             </Styled(NavLink)>
             <Styled(NavLink)
-              to="/index-page"
+              to="/index-page/*"
             >
               #
             </Styled(NavLink)>

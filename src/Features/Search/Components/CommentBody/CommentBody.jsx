@@ -16,7 +16,7 @@ import {
   Time,
   GoThread,
 } from "./CommentBody.styled";
-import Moment from "react-moment";
+// import Moment from "react-moment";
 import CommentUserImage from "../../Assets/People_Image.jpg";
 import PostFooter from "../PostFooter/PostFooter";
 import { Link } from "react-router-dom";

@@ -1,16 +1,16 @@
-import { shallow } from "enzyme";
-import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import TestingComponent from "Features/Post/TestingComponent";
 
 // Import components
 import UploadedMedia from "./UploadedMedia";
 
 describe("Uploaded media in draft editor", () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = shallow(<UploadedMedia />);
-  });
-
-  it("should render without crashing", () => {
-    expect(wrapper).toMatchSnapshot();
+  it("should be able to render image without crashing", () => {
+    render(
+      <TestingComponent>
+        <UploadedMedia type="img" src="test" controls={false} />
+      </TestingComponent>
+    );
+    expect(screen.getByRole("img")).toBeInTheDocument();
   });
 });
