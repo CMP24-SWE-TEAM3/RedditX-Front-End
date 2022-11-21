@@ -1,5 +1,4 @@
-import useFetchFunction from "Hooks/useFetchFunction";
-import fetchIndexedCommunities from "Features/Subreddit/Services/fetchIndexedCommunities";
+
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
@@ -18,7 +17,7 @@ import {
  * @Component
  * @returns {React.Component}
  */
- const IndexContainer = () => {
+ const IndexContainer = ({communityIndex}) => {
   const {indexLetter} = useParams();
   let initial = indexLetter;
 
@@ -43,11 +42,7 @@ import {
     console.log(currLetter);
   }, [indexLetter])
 
-  const [communityIndex, error, loading, indexFetchFunction] = useFetchFunction();
-
-  useEffect(() => {
-    fetchIndexedCommunities(indexFetchFunction);
-  }, []); // Only re-run the effect if count changes
+  
 
   const communities = communityIndex.map((community) => {
     return (
@@ -56,7 +51,7 @@ import {
         </ContentItem>
     );
   });
-  return !loading&& (
+  return (
     <CommunityContainer>
       <AllCommunities>
         <CommunityHeader>
