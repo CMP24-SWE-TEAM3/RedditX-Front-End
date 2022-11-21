@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VotingBar Component this is a test for VotingBar Component 1`] = `
+<styled.div>
+  <styled.button
+    choosed={false}
+    data-testid="up"
+    onClick={[Function]}
+  >
+    <TbArrowBigTop
+      size={22}
+    />
+  </styled.button>
+  <styled.div
+    data-testid="count"
+    down={false}
+    up={false}
+  />
+  <styled.button
+    choosed={false}
+    data-testid="down"
+    onClick={[Function]}
+  >
+    <TbArrowBigDown
+      size={22}
+    />
+  </styled.button>
+</styled.div>
+`;

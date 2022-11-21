@@ -47,7 +47,7 @@ export const InfoContainer = styled.div`
 export const Follow = styled.div`
   width: 20px;
   height: 20px;
-  color: red;
+  color: ${(p) => (p.follow ? "red" : "gray")};
 
   svg {
     color: ${(p) => (p.follow ? "red" : "gray")};

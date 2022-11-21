@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostContent Component this is a test for PostContent Component 1`] = `
+<styled.div>
+  <styled.div>
+    Chinese government reportedly helps the world's biggest iPhone-maker fill in labor shortages by recruiting Communist Party members and veterans
+  </styled.div>
+  <styled.div>
+    <img
+      alt=""
+      src="https://wallpapercave.com/wp/wp9247442.jpg"
+    />
+  </styled.div>
+</styled.div>
+`;

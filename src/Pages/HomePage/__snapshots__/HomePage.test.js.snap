@@ -1,54 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home Page this is a test for Home Page 1`] = `
-<Fragment>
-  <styled.div>
-    <styled.header>
-      <styled.div>
-        <div
-          className="main"
-        />
-        <styled.div>
-          <div
-            className="content-posts"
-          >
-            <CreatePost />
-            <PopularPost />
-          </div>
-          <aside>
-            <div
-              className="sidebar"
-            >
-              <TopCommunities />
-              <div
-                className="create-community"
-              >
-                <CreatePostSideBar />
-              </div>
-              <div
-                className="recent-posts"
-              >
-                <div>
-                  <RecentPosts />
-                </div>
-              </div>
-              <footer>
-                <div
-                  className="child-footer"
-                >
-                  <Footer />
-                </div>
-                <div
-                  className="scroll-but"
-                >
-                  <ScrollButton />
-                </div>
-              </footer>
-            </div>
-          </aside>
-        </styled.div>
-      </styled.div>
-    </styled.header>
-  </styled.div>
-</Fragment>
+<Router
+  location={
+    Object {
+      "hash": "",
+      "key": "default",
+      "pathname": "/",
+      "search": "",
+      "state": null,
+    }
+  }
+  navigationType="POP"
+  navigator={
+    Object {
+      "action": "POP",
+      "createHref": [Function],
+      "go": [Function],
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "key": "default",
+        "pathname": "/",
+        "search": "",
+        "state": null,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <HomePage />
+</Router>
 `;

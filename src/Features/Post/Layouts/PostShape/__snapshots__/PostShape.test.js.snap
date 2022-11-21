@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostShape Component this is a test for PostShape Component 1`] = `
+<styled.div>
+  <VotingBar
+    number={2004}
+  />
+  <PostBar />
+</styled.div>
+`;

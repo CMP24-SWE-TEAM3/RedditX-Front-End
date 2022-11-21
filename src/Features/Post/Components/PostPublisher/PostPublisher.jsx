@@ -58,6 +58,7 @@ const PostPublisher = ({ fullPost }) => {
       </InfoContainer>
       {fullPost && (
         <Follow
+          data-testid="makeFollow"
           follow={follow}
           onClick={(event) => {
             event.stopPropagation();

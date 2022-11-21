@@ -15,18 +15,17 @@ import useFetchFunction from "Hooks/useFetchFunction";
  * @returns {React.Component} VotingBar component
  */
 const VotingBar = ({ number }) => {
- 
   const [giveUp, setGiveUp] = useState(false);
   const [giveDown, setGiveDown] = useState(false);
   const [count, setCount] = useState(number);
   const [countStr, setCountStr] = useState("");
 
-  const id = "468452313";  // test id
+  const id = "468452313"; // test id
 
-   /**
+  /**
    * Custom hook
    */
-    const [data, error, isLoading, dataFetch] = useFetchFunction();
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
 
   useEffect(() => {
     setCountStr(NumberAbbreviate(count, 2));
@@ -35,22 +34,42 @@ const VotingBar = ({ number }) => {
   return (
     <Container>
       <Up
+        data-testid="up"
         choosed={giveUp}
         onClick={(event) => {
           event.stopPropagation();
-          handleUp(giveUp, giveDown, count, setCount, setGiveUp, setGiveDown, id, dataFetch);
+          handleUp(
+            giveUp,
+            giveDown,
+            count,
+            setCount,
+            setGiveUp,
+            setGiveDown,
+            id,
+            dataFetch
+          );
         }}
       >
         <TbArrowBigTop size={22} />
       </Up>
-      <Count up={giveUp} down={giveDown}>
+      <Count data-testid="count" up={giveUp} down={giveDown}>
         {countStr}
       </Count>
       <Down
+        data-testid="down"
         choosed={giveDown}
         onClick={(event) => {
           event.stopPropagation();
-          handleDown(giveUp, giveDown, count, setCount, setGiveUp, setGiveDown, id, dataFetch);
+          handleDown(
+            giveUp,
+            giveDown,
+            count,
+            setCount,
+            setGiveUp,
+            setGiveDown,
+            id,
+            dataFetch
+          );
         }}
       >
         <TbArrowBigDown size={22} />
