@@ -1,5 +1,5 @@
 import React, {use} from "react";
-import TopCommunities from "../CommunitySideCard/CommunityCard"
+import CommunitySideCard from "../CommunitySideCard/CommunityCard"
 import axios from "API/axios";
 import useFetch from "Hooks/useFetch";
 import {
@@ -31,7 +31,7 @@ import {Link} from 'react-router-dom';
  * @Component
  * @returns {React.Component}
  */
-export default function RightSection() {
+ const RightSection = () => {
   const [communityList, error, loading, reload] = useFetch({
     axiosInstance: axios,
     method: "GET",
@@ -60,12 +60,12 @@ const com = communityList.map((community, index) => {
     <RightSectionContainer>
       <RightSectionStylingDiv>
         <FirstBlock>
-          <TopCommunities />
+          <CommunitySideCard />
         </FirstBlock>
         <RightSectionSticky>
           <SecondBlockWithBrowse>
             <SecondBlock>
-              <TopCommunities />
+              <CommunitySideCard />
             </SecondBlock>
             <Browse>
               <BrowseH3>Browse Communities A-Z</BrowseH3>
@@ -108,3 +108,4 @@ const com = communityList.map((community, index) => {
     </RightSectionContainer>
   );
 }
+export default RightSection;

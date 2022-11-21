@@ -18,7 +18,7 @@ import {
  * @Component
  * @returns {React.Component}
  */
-export default function IndexContainer() {
+ const IndexContainer = () => {
   const {indexLetter} = useParams();
   let initial = indexLetter;
 
@@ -67,3 +67,5 @@ export default function IndexContainer() {
     </CommunityContainer>
   );
 }
+
+export default IndexContainer;

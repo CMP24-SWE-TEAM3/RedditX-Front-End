@@ -1,4 +1,4 @@
-import Header from "Features/Subreddit/Components/Index Header/Header";
+import IndexHeader from "Features/Subreddit/Components/Index Header/Header";
 import IndexContainer from "Features/Subreddit/Components/Index Body/IndexContainer";
 import { IndexPageContainer, StyledIndexPage } from "./IndexPage.styled";
 
@@ -11,7 +11,7 @@ const IndexPage = () => {
   return (
     <IndexPageContainer>
       <StyledIndexPage>
-        <Header />
+        <IndexHeader />
         <IndexContainer />
       </StyledIndexPage>
     </IndexPageContainer>

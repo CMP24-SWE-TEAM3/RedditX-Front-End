@@ -1,5 +1,11 @@
 import axios from "API/axios";
 
+
+/**
+ * Function to issue a Join Community POST Request
+ * @param {Function} dataFetch Coming from useFetchFunction custom hook
+ * @param {object} dataObject The Data to be Sent in the POST request
+ */
 const joinCommunity = (fetchFunction, dataObject) => {
     
     fetchFunction({

@@ -22,7 +22,7 @@ import {
  * @param {object} subscribed - array that contains all the subscribed communities
  * @returns {React.Component}
  */
-export default function Container({ com, subscribed }) {
+ const Container = ({ com, subscribed }) => {
   const {categoryType} = useParams();
   let initial = categoryType;
   if(categoryType==="All Communities") {
@@ -81,3 +81,5 @@ export default function Container({ com, subscribed }) {
     </CommunityContainer>
   );
 }
+
+export default Container;
