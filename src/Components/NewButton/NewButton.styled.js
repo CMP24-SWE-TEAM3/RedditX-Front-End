@@ -32,8 +32,7 @@ export const Button = styled.button`
 
   & .icon {
     color: #878a8c;
-    padding-bottom: 4px;
-    margin:-0.2em;
+    margin:0.12em;
   }
   @media (max-width: 1010px){
     display: none;

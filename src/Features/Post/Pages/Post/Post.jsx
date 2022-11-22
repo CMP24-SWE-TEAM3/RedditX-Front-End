@@ -6,20 +6,38 @@ import {
   UserName,
   UserNameContainer,
   CommentsContainer,
+  PostContent,
+  AsidePostChild,
+  AsidePost,
 } from "./Post.styled";
 import NavigationPost from "Features/Post/Components/NavigationPost/NavigationPost";
+import PostShape from "Features/Post/Layouts/PostShape/PostShape";
+import RulesWidget from "Features/Post/Components/RulesWidget/RulesWidget";
+import AboutPost from "Features/Post/Components/AboutPost/AboutPost";
+import ModeratorWidget from "Features/Post/Components/ModeratorWidget/ModeratorWidget";
+import ScrollButton from "Features/Post/Components/ScrollButton/ScrollButton";
+// import RelatedCommunities from "Features/Post/Components/RelatedCommunities/RelatedCommunities";
 import CommentDraftEditor from "Features/Post/Components/CommentDarftEditor/CommentDarftEditor";
 import { useState, useEffect } from "react";
 import Comment from "Features/Post/Components/Comment/Comment";
+import { useNavigate } from "react-router-dom";
+// import TopCommunities from "../../Components/TopCommunities/TopCommunities";
 
+/**
+ *
+ * Component that displays post with comments , likes displayed on show modal
+ * @param show
+ * @param setShow
+ * @return {React.Component}
+ */
 const Post = ({ show, setShow }) => {
   // State for files in drat editor
   const [files, setFiles] = useState([]);
-
+  const navigate = useNavigate();
   // State for text in draft editor
   const [text, setText] = useState("");
-
-  const handleClose = () => setShow(false);
+  // State for handle show of modal window
+  const [handleShowModal, setHandleShowModal] = useState(true);
 
   const comments = [
     {
@@ -70,32 +88,39 @@ const Post = ({ show, setShow }) => {
     },
   ];
   return (
-    <Container show={show} onHide={handleClose}>
-      <NavigationPost />
+    <Container show={handleShowModal} backdrop={"true"}>
+      <NavigationPost setHandleShowModal={setHandleShowModal} />
       <ModalBodyContainer>
-        Ipsum molestiae natus adipisci modi eligendi? Debitis amet quae unde
-        commodi aspernatur enim, consectetur. Cumque deleniti temporibus ipsam
-        atque a dolores quisquam quisquam adipisci possimus laboriosam.
-        Quibusdam facilis doloribus debitis! Sit quasi quod accusamus eos quod.
-        Ab quos consequuntur eaque quo rem! Mollitia reiciendis porro quo magni
-        incidunt dolore amet atque facilis ipsum deleniti rem!
+        <PostContent>
+          <PostShape />
+          <UserNameContainer>
+            Comment as <UserName>Abdelrahman_Hamza</UserName>
+          </UserNameContainer>
+          <DraftEditorContainer>
+            <CommentDraftEditor
+              files={files}
+              setFiles={setFiles}
+              text={text}
+              setText={setText}
+            />
+          </DraftEditorContainer>
+          <CommentsContainer>
+            {comments.map((comment) => (
+              <Comment comment={comment} />
+            ))}
+          </CommentsContainer>
+        </PostContent>
+        <AsidePost>
+          <AsidePostChild>
+            <AboutPost />
+            <RulesWidget />
+            {/*<RelatedCommunities/>*/}
+            {/*<TopCommunities/>*/}
+            <ModeratorWidget />
+            <ScrollButton />
+          </AsidePostChild>
+        </AsidePost>
       </ModalBodyContainer>
-      <UserNameContainer>
-        Comment as <UserName>Abdelrahman_Hamza</UserName>
-      </UserNameContainer>
-      <DraftEditorContainer>
-        <CommentDraftEditor
-          files={files}
-          setFiles={setFiles}
-          text={text}
-          setText={setText}
-        />
-      </DraftEditorContainer>
-      <CommentsContainer>
-        {comments.map((comment) => (
-          <Comment comment={comment} />
-        ))}
-      </CommentsContainer>
     </Container>
   );
 };

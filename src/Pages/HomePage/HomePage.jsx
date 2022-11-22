@@ -32,31 +32,16 @@ const HomePage = ({ handleToggleTheme, theme }) => {
     <>
       <AppContainer>
         <AppHeader>
-          {/* <Navbar
-            toggleMode={handleToggleTheme}
-            theme={theme}
-            modalShowLogIn={modalShowLogIn}
-            setModalShowLogIn={setModalShowLogIn}
-          /> */}
           <MainContainer>
             <div className="main" />
             <Container>
               <div className={"content-posts"}>
                 <CreatePost />
                 <PopularPosts />
-                {/* <Button onClick={()=>navigate("/Post")} variant="primary">Post</Button> */}
-                <div
-                  onClick={() => {
-                    setShowPost(true);
-                    console.log("first");
-                  }}
-                >
+                <div onClick={() => navigate("/Post")}>
                   <PostShape />
                 </div>
-                <Post show={showPost} setShow={setShowPost} />
-
-                {/*<div className={'posts'}>*/}
-                {/*</div>*/}
+                {/*<Post show={showPost} setShow={setShowPost} />*/}
               </div>
               <aside>
                 <div className={"sidebar"}>

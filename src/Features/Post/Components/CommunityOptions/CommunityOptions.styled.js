@@ -69,9 +69,9 @@ export const StyledForm = styled(Form)`
     height: 24px;
     /* margin-top: 0.25em;*/
   }
-  form-check-input:checked {
-    background-color: ${({ theme }) => theme.color.secondary};
-    border-color: ${({ theme }) => theme.color.secondary};
+  .form-check-input:checked {
+    background-color: red !important;
+    border: none !important;
   }
 
   input:focus {

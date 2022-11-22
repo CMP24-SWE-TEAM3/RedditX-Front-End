@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Community CardI tem this is a test for Community Card Item 1`] = `
+<styled.div>
+  <Link
+    href="#"
+  >
+    <div
+      className="item"
+    >
+      <img
+        alt=""
+        src="CommunityImage.png"
+      />
+      <div
+        className="info"
+      >
+        <div
+          className="info2"
+        >
+          <h6>
+            r/
+            GermanWW2photos
+          </h6>
+          <p>
+            10
+            m Members
+          </p>
+        </div>
+      </div>
+      <div
+        className="button"
+      >
+        <button
+          className="join"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Join
+        </button>
+      </div>
+    </div>
+  </Link>
+</styled.div>
+`;

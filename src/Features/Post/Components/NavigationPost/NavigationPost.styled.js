@@ -94,7 +94,6 @@ export const Rate = styled.div`
     font-weight: 700;
     pointer-events: none;
     word-break: normal;
-    padding-top: 8px;
   }
 `
 export const Arrow = styled.span
@@ -191,6 +190,8 @@ export const CloseButtonContainer = styled.div
       font-weight: 700;
       line-height: 16px;
     `
+
+// close button modal window
 export const CloseButton = styled.button
   `
       background: transparent;
@@ -223,3 +224,26 @@ export const CloseButton = styled.button
         margin-right: 4px;
       }
     `
+// up likes button
+export const Up = styled.button`
+  background-color: transparent;
+  color: grey;
+  border: none;
+
+  &:hover {
+    svg {
+      color: ${({ theme }) => theme.color.orange} !important;
+    }
+  }
+`;
+// down likes button
+export const Down = styled.button`
+  border: none;
+  background-color: transparent;
+  color: gray;
+  &:hover {
+    svg {
+      color: #7193ff !important;
+    }
+  }
+`;

@@ -8,6 +8,7 @@ export const Container = styled.div`
 
   & .buts {
     margin-top: 12px;
+    margin-bottom: 12px;
   }
 
   & .out-fav {
@@ -27,7 +28,7 @@ export const Container = styled.div`
     border: none;
     text-transform: unset;
     text-align: center;
-    width: 95%;
+    width: 100%;
     border-radius: 9999px;
     box-sizing: border-box;
     cursor: pointer;
@@ -50,10 +51,11 @@ export const Container = styled.div`
     line-height: 17px;
     text-transform: unset;
     text-align: center;
-    width: 95%;
+    width: 100%;
     border-radius: 9999px;
     box-sizing: border-box;
     cursor: pointer;
+    top:12px;
   }
   
   & .sub-but2:hover {
@@ -126,7 +128,7 @@ export const Container = styled.div`
   & hr {
     background-color: rgb(26 26 27 / 7%);
     height: 1px;
-    margin: 0;
+    margin: 16px 0;
   }
 
   @media (max-width: 960px) {
