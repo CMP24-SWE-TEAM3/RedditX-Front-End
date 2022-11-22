@@ -14,7 +14,7 @@ import {
 } from "./NavigationPost.styled";
 import { TbArrowBigTop, TbArrowBigDown } from "react-icons/tb";
 import { RiGalleryLine } from "react-icons/ri";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 
 /**
@@ -23,7 +23,6 @@ import { IoMdClose } from "react-icons/io";
  * @return {React.Component}
  */
 const NavigationPost = ({ setHandleShowModal }) => {
-  const navigate = useNavigate();
   const [count, setCount] = useState(0);
   const addCount = () => {
     let countTemp = count + 1;
@@ -69,7 +68,7 @@ const NavigationPost = ({ setHandleShowModal }) => {
           </FlairTitle>
         </div>
         {/*<CloseButtonContainer onClick={()=>setHandleShowModal(false)}>*/}
-        <CloseButtonContainer onClick={() => navigate(-1)}>
+        <CloseButtonContainer onClick={() => setHandleShowModal(false)}>
           <CloseButton>
             <i>
               <IoMdClose />

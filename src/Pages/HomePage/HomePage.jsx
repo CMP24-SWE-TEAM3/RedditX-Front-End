@@ -38,10 +38,10 @@ const HomePage = ({ handleToggleTheme, theme }) => {
               <div className={"content-posts"}>
                 <CreatePost />
                 <PopularPosts />
-                <div onClick={() => navigate("/Post")}>
+                <div onClick={() => setShowPost(true)}>
                   <PostShape />
                 </div>
-                {/*<Post show={showPost} setShow={setShowPost} />*/}
+                <Post show={showPost} setShow={setShowPost} />
               </div>
               <aside>
                 <div className={"sidebar"}>

@@ -33,11 +33,9 @@ import { useNavigate } from "react-router-dom";
 const Post = ({ show, setShow }) => {
   // State for files in drat editor
   const [files, setFiles] = useState([]);
-  const navigate = useNavigate();
   // State for text in draft editor
   const [text, setText] = useState("");
   // State for handle show of modal window
-  const [handleShowModal, setHandleShowModal] = useState(true);
 
   const comments = [
     {
@@ -88,8 +86,8 @@ const Post = ({ show, setShow }) => {
     },
   ];
   return (
-    <Container show={handleShowModal} backdrop={"true"}>
-      <NavigationPost setHandleShowModal={setHandleShowModal} />
+    <Container show={show} onHide={setShow} backdrop={"true"}>
+      <NavigationPost setHandleShowModal={setShow} />
       <ModalBodyContainer>
         <PostContent>
           <PostShape />

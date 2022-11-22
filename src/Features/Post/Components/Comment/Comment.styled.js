@@ -59,6 +59,7 @@ export const Username = styled.span`
 export const Controls = styled.div`
   display: flex;
   align-items: center;
+  color: ${({ theme }) => theme.color.muted};
   & > * {
     &:hover {
       cursor: pointer;

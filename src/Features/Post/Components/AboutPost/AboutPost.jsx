@@ -37,7 +37,7 @@ const AboutPost = () => {
         <Profile>
           <img src={profile} alt={profile} />
           <ProfileLink>
-            <Link to={"https://www.reddit.com/r/Egypt/"}>
+            <Link to={"/"}>
               <span>r/Egypt</span>
             </Link>
           </ProfileLink>
