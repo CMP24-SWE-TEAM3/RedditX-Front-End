@@ -93,6 +93,8 @@ const LogInPageCom = () => {
 
   const { userName, password } = formFields;
 
+  const [signupSubmit, setSignupSubmit] = useState(false);
+
   const navigate = useNavigate();
   /**
    * useEffect for userName field to check if the userName that the user entered is valid or not
@@ -126,18 +128,35 @@ const LogInPageCom = () => {
         username: "t2_"+userName,
         password: password,
       });
+      setSignupSubmit(true);
 
-      if (data.accessToken !== undefined) {
-        setFinishedLoading(true);
-        auth.login(data);
-        navigate("/");
-      }
+      // if (data.accessToken !== undefined) {
+      //   setFinishedLoading(true);
+      //   auth.login(data);
+      //   navigate("/");
+      // }
 
-      console.log("data : "+data);
+
+      //console.log("data : "+data);
 
       setWantSubmit(false);
     }
   };
+
+
+
+  useEffect(() => {
+    if (signupSubmit) {
+      setSignupSubmit(false);
+     // console.log("out useEffect", data);
+
+      if (!error && data.token) {
+        setFinishedLoading(true);
+        auth.login(data);
+        navigate("/");
+      }
+    }
+  }, [data]);
 
   /**
    * Function to handle any change on the input field of the login form (check if the userName or the email or the password is valid or not)
