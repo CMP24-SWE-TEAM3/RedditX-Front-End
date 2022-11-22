@@ -2,16 +2,16 @@ import axios from "API/axios";
 
 
 /**
- * Function to fetch Communities according to letter indexing
+ * Function to fetch Communities with Random Categories
  * @param {object} auth Context object coming from useAuth custom Hook
  * @param {Function} fetchFunction Coming from useFetchFunction custom hook
  */
-const fetchIndexedCommunities = (fetchFunction, auth) => {
+const fetchRandomCommunities = (fetchFunction, auth) => {
     
     fetchFunction({
       axiosInstance: axios,
       method: 'GET',
-      url: "http://localhost:8000/index--Leaderboard",
+      url: "http://localhost:8000/feedback--Leaderboard",
       requestConfig: {
         headers: {
           "Content-Language": "en-US",
@@ -21,4 +21,4 @@ const fetchIndexedCommunities = (fetchFunction, auth) => {
     });
 };
 
-export default fetchIndexedCommunities;
+export default fetchRandomCommunities;

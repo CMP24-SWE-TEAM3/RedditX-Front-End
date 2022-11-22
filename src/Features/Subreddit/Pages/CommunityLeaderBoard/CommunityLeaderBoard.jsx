@@ -10,11 +10,11 @@ import {
   DropDown,
 } from "./CommunityLeaderBoard.styled";
 import useFetchFunction from "Hooks/useFetchFunction";
-import fetchCommunities from "Features/Subreddit/Services/fetchCommunities";
 import fetchSubbedCommunities from "Features/Subreddit/Services/fetchSubbedCommunities";
 import { DataContext } from "../../Services/DataContext";
 import data from "../../Services/data.json";
 import { useEffect, useState } from "react";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { Route, Routes, useParams } from "react-router-dom";
 /**
  * Component that contains the whole community leaderboard page
@@ -23,21 +23,23 @@ import { Route, Routes, useParams } from "react-router-dom";
  * @returns {React.Component}
  */
 const CommunityLeaderBoard = () => {
-  const {categoryType} = useParams();
-  
-  const [communitiesList, error, loading, fetchFunction] = useFetchFunction();
   const [CommunitiesSub, errorSubCommunities, loadingSubCommunities, fetchSubCommunities ] = useFetchFunction();
+
+  const {categoryType} = useParams();
+  const auth = useAuth();
+  
   useEffect(() => {
-    fetchCommunities(fetchFunction);
-    fetchSubbedCommunities(fetchSubCommunities);
+    fetchSubbedCommunities(fetchSubCommunities, auth);
   }, []); // Only re-run the effect if count changes
+
 
 
   const [category, setCategory] = useState(data);
   const providedData = { category, setCategory };
   return (
     <LeaderBoardContainer>
-      <LeaderBoardPage>
+      {!loadingSubCommunities &&
+        <LeaderBoardPage>
         <Header />
         <MainPadding>
         <DataContext.Provider value={providedData}>
@@ -46,7 +48,7 @@ const CommunityLeaderBoard = () => {
             <CategoryDropDown />
           </DropDown>
         </DataContext.Provider>
-        <Container com={communitiesList} subscribed={CommunitiesSub} />
+        <Container  subscribed={CommunitiesSub} />
         <RightSection />
         <Routes>
 
@@ -60,7 +62,7 @@ const CommunityLeaderBoard = () => {
                   <CategoryDropDown />
                 </DropDown>
               </DataContext.Provider>
-              <Container com={communitiesList} subscribed={CommunitiesSub} />
+              <Container  subscribed={CommunitiesSub} />
               <RightSection />
             </>
             } 
@@ -68,6 +70,7 @@ const CommunityLeaderBoard = () => {
         </Routes>
         </MainPadding>
       </LeaderBoardPage>
+      }
     </LeaderBoardContainer>
   );
 }

@@ -1194,6 +1194,26 @@
       "title": "r/spaceX",
       "id": "4",
       "name": "savedyouaclick"
+    },
+    {
+      "title": "r/funny",
+      "id": "5",
+      "name": "worldnews"
+    },
+    {
+      "title": "r/mildlyinteresting",
+      "id": "6",
+      "name": "notthenion"
+    },
+    {
+      "title": "r/space",
+      "id": "7",
+      "name": "tech news"
+    },
+    {
+      "title": "r/spaceX",
+      "id": "8",
+      "name": "savedyouaclick"
     }
   ],
   "login": [

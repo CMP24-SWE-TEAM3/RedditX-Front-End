@@ -1,4 +1,4 @@
-import React, {use} from "react";
+import React from "react";
 import CommunitySideCard from "../CommunitySideCard/CommunityCard"
 import axios from "API/axios";
 import useFetch from "Hooks/useFetch";
@@ -21,8 +21,10 @@ import { CommunityContainer } from "../CommunitySideCard/CommunityCard.styled";
 import { CommunityOl } from "../Communities Container/CommunitiesContainer.styled";
 import CommunityCardItem from "../../Components/CommunitySideCardItem/CommunityCardItem";
 import {Link} from 'react-router-dom';
-
-
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useEffect } from "react";
+import fetchRandomCommunities from "Features/Subreddit/Services/fetchRandomCommunities";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 
 /**
@@ -32,40 +34,27 @@ import {Link} from 'react-router-dom';
  * @returns {React.Component}
  */
  const RightSection = () => {
-  const [communityList, error, loading, reload] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    //  /api/random-category/
-    url: "http://localhost:8000/feedback",
-    requestConfig: {
-        headers: {
-            "Content-Language": "en-US",
-        },
-    },
-});
+  const auth = useAuth();
 
-const com = communityList.map((community, index) => {
-    return (
-        <li>
-            <CommunityCardItem 
-            key={community.id}
-            title = {community.title} 
-            community={community.name} 
-            index = {index+1}/>
-        </li>
-    );
-});
+  // Fetch communities
+  const [communityList, error, loading, fetchFunction] = useFetchFunction();
+
+  useEffect(()=>{
+      fetchRandomCommunities(fetchFunction, auth);
+  },[])
+
+  
 
   return (
     <RightSectionContainer>
       <RightSectionStylingDiv>
         <FirstBlock>
-          <CommunitySideCard />
+          <CommunitySideCard communityList={communityList.slice(0,5)}/>
         </FirstBlock>
         <RightSectionSticky>
           <SecondBlockWithBrowse>
             <SecondBlock>
-              <CommunitySideCard />
+              <CommunitySideCard communityList={communityList.slice(0,5)}/>
             </SecondBlock>
             <Browse>
               <BrowseH3>Browse Communities A-Z</BrowseH3>
