@@ -1,5 +1,5 @@
 // Import hooks
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Import bootstrap components
 import Dropdown from "react-bootstrap/Dropdown";
@@ -29,12 +29,12 @@ import { CiSearch } from "react-icons/ci";
 // Import images
 import Image from "Features/Post/Assets/Images/Post-guidelines.png";
 
-// Import api
-import axios from "API/axios";
-import useFetch from "Hooks/useFetch";
-
 // Import contexts
 import { useSubmitDestination } from "Features/Post/Contexts/submitDestination";
+import useFetchFunction from "Hooks/useFetchFunction";
+
+// Import api services
+import getCommunitiesList from "Features/Post/Services/getCommunitiesList";
 
 /**
  *
@@ -51,16 +51,23 @@ const ChooseCommunity = () => {
   const { submitDestination, setSubmitDestination } = useSubmitDestination();
 
   // Fetch communities
-  const [communityList, error, isLoading, reload] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "/communities/",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
+  // const [communityList, error, isLoading, reload] = useFetch({
+  //   axiosInstance: axios,
+  //   method: "GET",
+  //   url: "/communities/",
+  //   requestConfig: {
+  //     headers: {
+  //       "Content-Language": "en-US",
+  //     },
+  //   },
+  // });
+
+  // Fetch communities
+  const [communityList, error, isLoading, fetchData] = useFetchFunction();
+
+  useEffect(() => {
+    getCommunitiesList(fetchData);
+  }, []);
 
   return (
     <Container>

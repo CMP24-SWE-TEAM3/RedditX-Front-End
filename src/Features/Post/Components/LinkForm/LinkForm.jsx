@@ -15,16 +15,16 @@ import {
 } from "./LinkForm.styled";
 
 // Import hooks
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 // Import contexts
 import { useSubmitDestination } from "Features/Post/Contexts/submitDestination";
 import { useCreatePostTitle } from "Features/Post/Contexts/createPostTitle";
 import { useCreatePostText } from "Features/Post/Contexts/createPostText";
 
-// API
-import useFetch from "Hooks/useFetch";
-import axios from "API/axios";
+// API services
+import getPostFlairs from "Features/Post/Services/getFlairs";
+import useFetchFunction from "Hooks/useFetchFunction";
 
 /**
  * The form of link in create post page (Link tab)
@@ -77,16 +77,21 @@ const LinkForm = ({ submitPost }) => {
     }
   };
 
-  const [flairs, error, isLoading, reload] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "/flairs/",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
+  // const [flairs, error, isLoading, reload] = useFetch({
+  //   axiosInstance: axios,
+  //   method: "GET",
+  //   url: "/flairs/",
+  //   requestConfig: {
+  //     headers: {
+  //       "Content-Language": "en-US",
+  //     },
+  //   },
+  // });
+  // Fetch flairs
+  const [flairs, error, isLoading, fetchData] = useFetchFunction();
+  useEffect(() => {
+    getPostFlairs(fetchData);
+  }, []);
 
   const onModalHide = () => {
     setModalShow(false);
