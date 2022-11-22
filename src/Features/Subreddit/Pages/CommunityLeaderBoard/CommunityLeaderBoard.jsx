@@ -37,7 +37,8 @@ const CommunityLeaderBoard = () => {
   const providedData = { category, setCategory };
   return (
     <LeaderBoardContainer>
-      <LeaderBoardPage>
+     {!loading && !loadingSubCommunities &&
+      (<LeaderBoardPage>
         <Header />
         <MainPadding>
         <DataContext.Provider value={providedData}>
@@ -67,7 +68,7 @@ const CommunityLeaderBoard = () => {
           />
         </Routes>
         </MainPadding>
-      </LeaderBoardPage>
+      </LeaderBoardPage>)}
     </LeaderBoardContainer>
   );
 }

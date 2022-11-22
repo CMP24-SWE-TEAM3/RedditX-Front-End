@@ -4,14 +4,15 @@ exports[`LogInVerticalModal Modal this is a test for LogInVerticalModal Modal 1`
 <Styled(Modal)
   aria-labelledby="contained-modal-title-vcenter"
   centered={true}
-  data-testid="loginModalId"
   onExit={[Function]}
   size="lg"
 >
   <Styled(ModalHeader)
     closeButton={true}
   />
-  <ModalBody>
+  <ModalBody
+    data-testid="loginModalId"
+  >
     <LogIn />
      
     <styled.span>
