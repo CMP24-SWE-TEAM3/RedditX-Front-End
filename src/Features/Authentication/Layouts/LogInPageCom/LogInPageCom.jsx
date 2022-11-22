@@ -163,7 +163,7 @@ const LogInPageCom = () => {
     const { user } = await signInWithGooglePopup();
 
     loginWithGoogle(dataFetch, {
-      type: "google",
+      type: "gmail",
       googleOrFacebookToken: user.accessToken,
     });
 

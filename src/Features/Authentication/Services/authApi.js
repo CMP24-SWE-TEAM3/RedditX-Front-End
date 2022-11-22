@@ -5,7 +5,7 @@ import axios from "API/axios";
  * @param {Function} dataFetch Coming from useFetchFunction custom hook
  * @param {Object} objectData Object that contains the data that will be sent to the api
  */
-export const loginApi =  (dataFetch, objectData) => {
+export const loginApi = (dataFetch, objectData) => {
   if (
     objectData.type !== undefined &&
     objectData.username !== undefined &&
@@ -17,13 +17,11 @@ export const loginApi =  (dataFetch, objectData) => {
       typeof objectData.password === "string"
     ) {
       console.log(objectData);
-       dataFetch({
+      dataFetch({
         axiosInstance: axios,
         method: "POST",
         url: "/api/auth/login",
-        requestConfig: {
-          data: objectData,
-        },
+        requestConfig: objectData,
       });
       return true;
     }
@@ -45,7 +43,7 @@ export const signupApi = (dataFetch, objectData) => {
     objectData.password !== undefined
   ) {
     if (
-       objectData.type === "bare email" &&
+      objectData.type === "bare email" &&
       typeof objectData.username === "string" &&
       typeof objectData.email === "string" &&
       typeof objectData.password === "string"
@@ -54,9 +52,7 @@ export const signupApi = (dataFetch, objectData) => {
         axiosInstance: axios,
         method: "post",
         url: "/api/auth/signup",
-        requestConfig: {
-          data: objectData,
-        },
+        requestConfig: objectData,
       });
       return true;
     }
@@ -77,16 +73,15 @@ export const loginWithGoogle = (dataFetch, objectData) => {
     objectData.googleOrFacebookToken !== undefined
   ) {
     if (
-      objectData.type === "google" &&
+      objectData.type === "gmail" &&
       typeof objectData.googleOrFacebookToken === "string"
     ) {
+     // console.log(objectData.googleOrFacebookToken);
       dataFetch({
         axiosInstance: axios,
         method: "post",
         url: "/api/auth/login",
-        requestConfig: {
-          data: objectData,
-        },
+        requestConfig: objectData,
       });
       return true;
     }
@@ -114,9 +109,7 @@ export const loginWithFacebook = (dataFetch, objectData) => {
         axiosInstance: axios,
         method: "post",
         url: "/api/auth/login",
-        requestConfig: {
-          data: objectData,
-        },
+        requestConfig: objectData,
       });
       return true;
     }
@@ -137,16 +130,14 @@ export const signupWithGoogle = (dataFetch, objectData) => {
     objectData.googleOrFacebookToken !== undefined
   ) {
     if (
-      objectData.type === "google" &&
+      objectData.type === "gmail" &&
       typeof objectData.googleOrFacebookToken === "string"
     ) {
       dataFetch({
         axiosInstance: axios,
         method: "post",
         url: "/api/auth/signup",
-        requestConfig: {
-          data: objectData,
-        },
+        requestConfig: objectData,
       });
       return true;
     }
@@ -174,9 +165,7 @@ export const signupWithFacebook = (dataFetch, objectData) => {
         axiosInstance: axios,
         method: "post",
         url: "/api/auth/signup",
-        requestConfig: {
-          data: objectData,
-        },
+        requestConfig: objectData,
       });
       return true;
     }
@@ -224,9 +213,7 @@ export const forgetUserNameApi = (dataFetch, objectData) => {
         axiosInstance: axios,
         method: "post",
         url: "/api/auth/forget",
-        requestConfig: {
-          data: objectData,
-        },
+        requestConfig: objectData,
       });
 
       return true;
@@ -257,9 +244,7 @@ export const forgetPasswordApi = (dataFetch, objectData) => {
         axiosInstance: axios,
         method: "post",
         url: "/api/auth/forget",
-        requestConfig: {
-          data: objectData,
-        },
+        requestConfig: objectData,
       });
 
       return true;
@@ -292,9 +277,7 @@ export const resetForgottenPassword = (dataFetch, myToken, objectData) => {
         axiosInstance: axios,
         method: "post",
         url: apiUrl,
-        requestConfig: {
-          data: objectData,
-        },
+        requestConfig: objectData,
       });
 
       return true;

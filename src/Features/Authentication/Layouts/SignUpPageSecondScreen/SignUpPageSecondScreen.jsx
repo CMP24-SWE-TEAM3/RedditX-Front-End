@@ -168,6 +168,10 @@ const SignUpPageSecondScreen = ({
 
       isUserNameAvailable(dataFetch, userName);
 
+      if (data.response === "Not Avaliable") {
+        setAvailableUserName(false);
+      }
+
       if (!error) {
         setAvailableUserName(true);
       } else {
@@ -271,7 +275,7 @@ const SignUpPageSecondScreen = ({
                 </ErrorParagraph>
 
                 {error && (
-                  <ErrorParagraph valid={!error}>{error}</ErrorParagraph>
+                  <ErrorParagraph valid={!error}>username is taken</ErrorParagraph>
                 )}
                 {/* {!availableUserName && (
                   <ErrorParagraph valid={availableUserName}>
