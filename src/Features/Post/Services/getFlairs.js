@@ -2,7 +2,7 @@
 import axios from "API/axios";
 
 /**
- * A service to handle community list retrieval (List of user's communities)
+ * A service to handle post flairs retrieval
  *
  * @param {Function} dataFetch - The function to make the request
  */
