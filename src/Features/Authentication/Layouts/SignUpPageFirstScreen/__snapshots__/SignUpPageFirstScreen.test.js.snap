@@ -30,16 +30,14 @@ exports[`SignUpPageFirstScreen Layout this is a test for SignUpPageFirstScreen L
     }
   }
 >
-  <Routes>
-    <SignUpPageFirstScreen
-      formFields={
-        Object {
-          "email": "",
-          "password": "",
-          "userName": "",
-        }
+  <SignUpPageFirstScreen
+    formFields={
+      Object {
+        "email": "",
+        "password": "",
+        "userName": "",
       }
-    />
-  </Routes>
+    }
+  />
 </Router>
 `;

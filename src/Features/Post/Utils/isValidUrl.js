@@ -17,4 +17,4 @@ const isValidUrl = (urlString) => {
   return pattern.test(urlString);
 };
 
-export default isValidUrl;
+export { isValidUrl };

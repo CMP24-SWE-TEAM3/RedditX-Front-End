@@ -12,8 +12,6 @@ import Checked from "Features/Authentication/Components/Checked/Checked";
 
 import { forgetPasswordApi } from "Features/Authentication/Services/authApi";
 
-import axios from "API/axios";
-
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useNavigate } from "react-router-dom";
 import {
@@ -77,26 +75,12 @@ const ForgetPassword = () => {
    */
   const [wantSubmit, setWantSubmit] = useState(false);
 
-  // /**
-  //  * state to know what error message should be shown
-  //  */
-  // const [isLoading, setIsLoading] = useState(false);
-
   /**
    * state to know what error message should be shown
    */
   const [finishedLoading, setFinishedLoading] = useState(false);
 
-  /**
-   * the error message from forget Password
-   */
-  const [forgetPasswordErrorMsg, setForgetPasswordErrorMsg] = useState("");
-  /**
-   * state to set the error message from forget Password
-   */
-  const [showForgetPasswordErrorMsg, setShowForgetPasswordErrorMsg] =
-    useState(false);
- const navigate = useNavigate();
+  const navigate = useNavigate();
   /**
    * state to know if the email sent or not
    */
@@ -110,7 +94,6 @@ const ForgetPassword = () => {
 
   useEffect(() => {
     setValidEmail(USER_EMAIL.test(email));
-    setShowForgetPasswordErrorMsg(false);
   }, [email]);
 
   /**
@@ -119,7 +102,6 @@ const ForgetPassword = () => {
 
   useEffect(() => {
     setValidName(USER_REGEX.test(userName));
-    setShowForgetPasswordErrorMsg(false);
   }, [userName]);
 
   /**
@@ -129,41 +111,17 @@ const ForgetPassword = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (wantSubmit) {
-      //setIsLoading(true);
-
-      // const response = await forgetPasswordApi(
-      //   email,
-      //   userName,
-      //   setForgetPasswordErrorMsg,
-      //   setShowForgetPasswordErrorMsg
-      // );
-
-      // if (response) {
-      //   setEmailSent(true);
-      //   setFinishedLoading(true);
-      // }
-
-      dataFetch({
-        axiosInstance: axios,
-        method: "post",
-        url: "/login/forget",
-        requestConfig: {
-          data: {
-            email: email,
-            username: userName,
-            operation: false,
-          },
-        },
+      forgetPasswordApi(dataFetch, {
+        email: email,
+        username: userName,
+        operation: false,
       });
 
       if (!error) {
         setEmailSent(true);
         setFinishedLoading(true);
       }
-
       setWantSubmit(false);
-
-      // setIsLoading(false);
     }
   };
 
@@ -200,6 +158,7 @@ const ForgetPassword = () => {
 
         <form onSubmit={handleSubmit}>
           <FormInputPageCom
+            data-testid="username"
             id="username"
             valid={validName}
             initialFocus={initialFocus}
@@ -215,9 +174,15 @@ const ForgetPassword = () => {
           />
 
           {/* Show error message if the userName is not valid and the user made a focus on the it's input field */}
-          <ErrorParagraph id="username-error" valid={validName || initialFocus}>
-            Username must be between 3 and 20 characters
-          </ErrorParagraph>
+         
+            <ErrorParagraph
+              data-testid="username-error"
+              id="username-error"
+              valid={validName || initialFocus}
+            >
+              Username must be between 3 and 20 characters
+            </ErrorParagraph>
+         
 
           {error && (
             <ErrorParagraph valid={!error || initialFocus}>
@@ -225,6 +190,7 @@ const ForgetPassword = () => {
             </ErrorParagraph>
           )}
           <FormInputPageCom
+            data-testid="email"
             id="email"
             label="EMAIL"
             valid={validEmail}
@@ -241,9 +207,15 @@ const ForgetPassword = () => {
 
           {/* Show error message if the email is not valid and the user made a focus on the it's input field */}
 
-          <ErrorParagraph id="email-error" valid={validEmail || initialFocus2}>
-            not a valid email
-          </ErrorParagraph>
+         
+            <ErrorParagraph
+              data-testid="email-error"
+              id="email-error"
+              valid={validEmail || initialFocus2}
+            >
+              not a valid email
+            </ErrorParagraph>
+         
 
           <ButtonsContainer>
             {!isLoading && !finishedLoading && (
@@ -300,7 +272,7 @@ const ForgetPassword = () => {
           <br></br>
           <br></br>
           <Forget>
-            <span onClick={() => navigate("/login")}>LOG IN</span>{" "}
+            <span data-testid="login" onClick={() => navigate("/login")}>LOG IN</span>{" "}
             <span onClick={() => navigate("/register")}>{" . "}SIGN UP</span>{" "}
           </Forget>
         </form>

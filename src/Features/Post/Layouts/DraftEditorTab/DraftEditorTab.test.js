@@ -1,15 +1,14 @@
-import { shallow } from "enzyme";
+import { render } from "@testing-library/react";
 
-// Import components
+import TestingComponent from "Features/Post/TestingComponent";
 import DraftEditorTab from "./DraftEditorTab";
 
-describe("Draft editor tab", () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = shallow(<DraftEditorTab />);
-  });
-
-  it("should render without crashing", () => {
-    expect(wrapper).toMatchSnapshot();
+describe("DraftEditor tab", () => {
+  it("renders DraftEditor tab component", () => {
+    render(
+      <TestingComponent>
+        <DraftEditorTab />
+      </TestingComponent>
+    );
   });
 });

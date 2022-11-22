@@ -20,14 +20,14 @@ const Sidebar = () => {
   return (
     <Container>
       {submitDestination && (
-        <>
+        <div data-testid = "community-data">
           <CommunityCard />
           <RulesWidget />
-        </>
+        </div>
       )}
       <PostGuidelines />
 
-      <Footer>
+      <Footer data-testid="footer">
         Please be mindful of reddit's <Link to="/">content policy</Link> and
         practice good <Link to="/"> reddiquette</Link>.
       </Footer>

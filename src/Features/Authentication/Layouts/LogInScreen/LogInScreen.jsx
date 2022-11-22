@@ -2,8 +2,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 
-import FacebookLogin from "react-facebook-login";
-
 import FormInput from "Features/Authentication/Components/FormInput/FormInput";
 
 import Button from "Features/Authentication/Components/Button/Button";
@@ -13,8 +11,6 @@ import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/Lo
 import Checked from "Features/Authentication/Components/Checked/Checked";
 
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
-
-import axios from "API/axios";
 
 import useFetchFunction from "Hooks/useFetchFunction";
 
@@ -48,7 +44,7 @@ import {
 } from "./LogInScreen.styled";
 
 const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
-const PWD_REGEX = /^[A-z0-9-_]{8,20}$/;
+const PWD_REGEX = /^[A-z0-9-_`~!@#$%^&*()_|+\-=?;:'",.<>]{8,20}$/;
 
 /**
  * LoginScreen component that is used in Login Component
@@ -87,7 +83,8 @@ const LogInScreen = ({
   initialFocus2,
   setInitialFocus,
   setInitialFocus2,
-  setErrMsg,setModalShowLogIn
+  setErrMsg,
+  setModalShowLogIn,
 }) => {
   const auth = useAuth();
 
@@ -98,24 +95,11 @@ const LogInScreen = ({
   /**
    * state to know what error message should be shown
    */
-  // const [isLoading, setIsLoading] = useState(false);
-
-  /**
-   * state to know what error message should be shown
-   */
   const [finishedLoading, setFinishedLoading] = useState(false);
   /**
    * state to if the user submitted the form or not
    */
   const [wantSubmit, setWantSubmit] = useState(false);
-  /**
-   * the error message from login
-   */
-  const [loginErrorMsg, setLoginErrorMsg] = useState("");
-  /**
-   * state to show the error message from login
-   */
-  const [showLoginErrorMsg, setShowLoginErrorMsg] = useState(false);
 
   const navigate = useNavigate();
   /**
@@ -126,7 +110,6 @@ const LogInScreen = ({
       setInitialFocus(false);
     }
     setValidName(USER_REGEX.test(userName));
-    setShowLoginErrorMsg(false);
   }, [userName]);
 
   /**
@@ -134,10 +117,9 @@ const LogInScreen = ({
    */
   useEffect(() => {
     if (password.length > 0) {
-      setInitialFocus(false);
+      setInitialFocus2(false);
     }
     setValidPassword(PWD_REGEX.test(password));
-    setShowLoginErrorMsg(false);
   }, [password]);
 
   /**
@@ -147,50 +129,20 @@ const LogInScreen = ({
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (wantSubmit) {
-      // setIsLoading(true);
-
-      // const user = await loginApi(
-      //   userName,
-      //   password,
-      //   setLoginErrorMsg,
-      //   setShowLoginErrorMsg
-      // );
-
-      // if (user !== false) {
-      //   setFinishedLoading(true);
-      //   auth.login(user);
-      //    //console.log(user);
-      // }
-
-      dataFetch({
-        axiosInstance: axios,
-        method: "post",
-        url: "/login",
-        requestConfig: {
-          data: {
-            type: "bare email",
-            username: userName,
-            password: password,
-          },
-        },
+      loginApi(dataFetch, {
+        type: "bare email",
+        username: "t2_"+userName,
+        password: password,
       });
 
       if (!error) {
         setFinishedLoading(true);
         auth.login(data);
+        setModalShowLogIn(false);
+        navigate("/");
       }
-      // TODO: remove this
-      auth.login({
-        username: userName,
-        token: "token",
-        expiresIn: 3600,
-      });
-      setModalShowLogIn(false);
-      navigate("/");
 
       setWantSubmit(false);
-
-      // setIsLoading(false);
     }
   };
 
@@ -203,102 +155,50 @@ const LogInScreen = ({
     const { name, value } = event.target;
     if (name === "userName") {
       setValidName(USER_REGEX.test(userName));
+      setInitialFocus(false);
     }
     if (name === "password") {
       setValidPassword(PWD_REGEX.test(password));
+      setInitialFocus2(false);
     }
     setFormFields({ ...formFields, [name]: value });
   };
 
   /**
-   * Function to handle the response coming from sign in with google
-   * @param {*} response
+   * Function to handle the sing in with google
    */
-  const handleCallbackResponse = (response) => {};
-
-  /**
-   * Adding some configurations to the signIn with google feature
-   */
-
-  useEffect(() => {
-    /* global google */
-
-    google.accounts.id.initialize({
-      client_id:
-        "598360538255-siv9rljce260ek4mvdsu2fk63h3u1g3b.apps.googleusercontent.com",
-      callback: handleCallbackResponse,
-    });
-
-    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
-      theme: "outline",
-      size: "large",
-    });
-  }, []);
-
-  /**
-   * Function to handle the response coming from sign in with facebook
-   * @param {*} response
-   */
-  const responseFacebook = (response) => {};
-
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
-    // const user2 = await loginWithGoogle(
-    //   user.accessToken,
-    //   setLoginErrorMsg,
-    //   setShowLoginErrorMsg
-    // );
 
-    // if (user2 !== false) {
-    //   auth.login(user2);
-    // }
-
-    dataFetch({
-      axiosInstance: axios,
-      method: "post",
-      url: "/login",
-      requestConfig: {
-        data: {
-          type: "google",
-          googleOrFacebookToken: user.accessToken,
-        },
-      },
+    loginWithGoogle(dataFetch, {
+      type: "google",
+      googleOrFacebookToken: user.accessToken,
     });
 
     if (!error) {
       setFinishedLoading(true);
       auth.login(data);
+      navigate("/");
     }
   };
+
+  /**
+   * Function to handle sign in with facebook
+   */
   const logFacebookUser = async () => {
     const { user } = await signInWithFacebookPopup();
-    // const user2 = await loginWithFacebook(
-    //   user.accessToken,
-    //   setLoginErrorMsg,
-    //   setShowLoginErrorMsg
-    // );
 
-    // if (user2 !== false) {
-    //   auth.login(user2);
-    // }
-
-    //console.log(user.accessToken);
-
-    dataFetch({
-      axiosInstance: axios,
-      method: "post",
-      url: "/login",
-      requestConfig: {
-        data: {
-          type: "facebook",
-          googleOrFacebookToken: user.accessToken,
-        },
-      },
+    loginWithFacebook(dataFetch, {
+      type: "facebook",
+      googleOrFacebookToken: user.accessToken,
     });
+
+    console.log("error : " + error);
 
     if (!error) {
       setFinishedLoading(true);
       auth.login(data);
+      navigate("/");
     }
   };
 
@@ -334,6 +234,7 @@ const LogInScreen = ({
 
             <form onSubmit={handleSubmit}>
               <FormInput
+                data-testid="username"
                 id="login-username"
                 valid={validName}
                 initialFocus={initialFocus}
@@ -349,17 +250,19 @@ const LogInScreen = ({
               />
 
               {/* Show error message if the userName is not valid and the user made a focus on the it's input field */}
-              {!validName && !initialFocus && (
-                <ErrorParagraph
-                  id="username-error"
-                  valid={validName || initialFocus}
-                >
-                  Username must be between 3 and 20 characters
-                </ErrorParagraph>
-              )}
+
+              <ErrorParagraph
+                data-testid="username-error"
+                id="username-error"
+                valid={validName || initialFocus}
+              >
+                Username must be between 3 and 20 characters
+              </ErrorParagraph>
+
               {error && <ErrorParagraph valid={!error}>{error}</ErrorParagraph>}
 
               <FormInput
+                data-testid="password"
                 id="login-password"
                 label="Password"
                 valid={validPassword}
@@ -377,6 +280,8 @@ const LogInScreen = ({
               <Forget>
                 Forget your{" "}
                 <button
+                  data-testid="forgetUserName"
+                  id="forgetUserName"
                   onClick={() => {
                     // setIsLoading(false);
                     setFinishedLoading(false);
@@ -390,6 +295,8 @@ const LogInScreen = ({
                 </button>{" "}
                 or{" "}
                 <button
+                  data-testid="forgetPassword"
+                  id="forgetPassword"
                   onClick={() => {
                     // setIsLoading(false);
                     setFinishedLoading(false);
