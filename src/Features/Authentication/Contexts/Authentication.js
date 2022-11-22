@@ -37,7 +37,7 @@ const AuthProvider = ({ children }) => {
 
   // Return user's token
   const getToken = () => {
-    return JSON.parse(user).accessToken;
+    return JSON.parse(user).token;
   };
 
   // Return token's expiration date
