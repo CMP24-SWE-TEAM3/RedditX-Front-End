@@ -1,6 +1,12 @@
-FROM node:10 AS builder
+FROM node:17-alpine AS builder
 
 WORKDIR /app
+
+COPY package.json .
+
+COPY package-lock.json .
+
+RUN npm install --legacy-peer-deps
 
 COPY . .
 
@@ -14,4 +20,6 @@ COPY --from=builder /app/build .
 
 EXPOSE 80
 
-CMD ["nginx"]
+STOPSIGNAL SIGQUIT
+
+CMD ["nginx", "-g", "daemon off;"]
