@@ -30,10 +30,10 @@ const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
-  // Return user's full name
-  //   const getFullName = () => {
-  //     return JSON.parse(user).fullName;
-  //   };
+  // Return user's username
+    const getUserName = () => {
+      return JSON.parse(user).username;
+    };
 
   // Return user's token
   const getToken = () => {
@@ -56,6 +56,7 @@ const AuthProvider = ({ children }) => {
         login,
         logout,
         getToken,
+        getUserName,
         getExpirationDate,
         isLoggedIn,
         //getFullName,

@@ -101,6 +101,9 @@ const LogInScreen = ({
    */
   const [wantSubmit, setWantSubmit] = useState(false);
 
+
+  const [signupSubmit, setSignupSubmit] = useState(false);
+
   const navigate = useNavigate();
   /**
    * useEffect for userName field to check if the userName that the user entered is valid or not
@@ -135,16 +138,33 @@ const LogInScreen = ({
         password: password,
       });
 
-      if (!error) {
+      setSignupSubmit(true);
+
+      // if (!error) {
+      //   setFinishedLoading(true);
+      //   auth.login(data);
+      //   setModalShowLogIn(false);
+      //   navigate("/");
+      // }
+
+      setWantSubmit(false);
+    }
+  };
+
+
+  useEffect(() => {
+    if (signupSubmit) {
+      setSignupSubmit(false);
+     // console.log("out useEffect", data);
+
+      if (!error && data.token) {
         setFinishedLoading(true);
         auth.login(data);
         setModalShowLogIn(false);
         navigate("/");
       }
-
-      setWantSubmit(false);
     }
-  };
+  }, [data]);
 
   /**
    * Function to handle any change on the input field of the login form (check if the userName or the email or the password is valid or not)

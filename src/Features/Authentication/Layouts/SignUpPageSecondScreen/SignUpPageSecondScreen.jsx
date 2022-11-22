@@ -193,12 +193,14 @@ const SignUpPageSecondScreen = ({
   useEffect(() => {
     if (signupSubmit) {
       setSignupSubmit(false);
-      console.log("out useEffect", data);
+     // console.log("out useEffect", data);
 
       if (!error && data.token) {
-        console.log("useEffect", data);
+       // console.log("useEffect", data);
         setFinishedLoading(true);
         auth.login(data);
+        // console.log(auth.getToken());
+        // console.log(auth.getUserName());
         navigate("/");
       }
     }
