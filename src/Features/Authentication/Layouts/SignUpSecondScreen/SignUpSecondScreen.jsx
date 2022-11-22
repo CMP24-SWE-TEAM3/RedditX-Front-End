@@ -121,6 +121,8 @@ const SignUpSecondScreen = ({
    */
   const [availableUserName, setAvailableUserName] = useState(false);
 
+  const [signupSubmit, setSignupSubmit] = useState(false);
+
   const navigate = useNavigate();
   /**
    * useEffect for userName field to check if the userName that the user entered is valid or not
@@ -135,17 +137,30 @@ const SignUpSecondScreen = ({
       setCanReqAvailableUserName(false);
 
       isUserNameAvailable(dataFetch, userName);
-
       if (!error) {
         setAvailableUserName(true);
       } else {
         setAvailableUserName(false);
       }
-
       setCanReqAvailableUserName(true);
     }
   }, [userName]);
 
+  useEffect(() => {
+    if (signupSubmit) {
+      setSignupSubmit(false);
+      console.log("out useEffect", data);
+
+      if (!error && data.token) {
+        console.log("useEffect", data);
+        setFinishedLoading(true);
+        auth.login(data);
+        navigate("/");
+        setModalShowSignUp(false);
+        setModalAfterSignUp(true);
+      }
+    }
+  }, [data]);
   /**
    * useEffect for password field to check if the userName that the user entered is valid or not
    */
@@ -170,17 +185,7 @@ const SignUpSecondScreen = ({
         username: userName,
         password: password,
       });
-
-      console.log("data : " + data);
-      console.log("error : " + error);
-
-      if (!error) {
-        setFinishedLoading(true);
-        auth.login(data);
-        navigate("/");
-        setModalShowSignUp(false);
-        setModalAfterSignUp(true);
-      }
+      setSignupSubmit(true);
 
       setWantSubmit(false);
     }

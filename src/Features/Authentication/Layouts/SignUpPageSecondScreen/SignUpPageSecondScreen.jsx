@@ -129,6 +129,8 @@ const SignUpPageSecondScreen = ({
    */
   const [availableUserName, setAvailableUserName] = useState(true);
 
+  const [signupSubmit, setSignupSubmit] = useState(false);
+
   const navigate = useNavigate();
   /**
    * Function to handle the submit of the form of signup
@@ -143,12 +145,7 @@ const SignUpPageSecondScreen = ({
         username: userName,
         password: password,
       });
-
-      if (!error) {
-        setFinishedLoading(true);
-        auth.login(data);
-        navigate("/");
-      }
+      setSignupSubmit(true);
 
       setWantSubmit(false);
     }
@@ -192,6 +189,20 @@ const SignUpPageSecondScreen = ({
     setValidPassword(PWD_REGEX.test(password));
     setPasswordStrength(GetPasswordStrength(password));
   }, [password]);
+
+  useEffect(() => {
+    if (signupSubmit) {
+      setSignupSubmit(false);
+      console.log("out useEffect", data);
+
+      if (!error && data.token) {
+        console.log("useEffect", data);
+        setFinishedLoading(true);
+        auth.login(data);
+        navigate("/");
+      }
+    }
+  }, [data]);
 
   const handleChange = async (event) => {
     const { name, value } = event.target;
@@ -275,7 +286,9 @@ const SignUpPageSecondScreen = ({
                 </ErrorParagraph>
 
                 {error && (
-                  <ErrorParagraph valid={!error}>username is taken</ErrorParagraph>
+                  <ErrorParagraph valid={!error}>
+                    username is taken
+                  </ErrorParagraph>
                 )}
                 {/* {!availableUserName && (
                   <ErrorParagraph valid={availableUserName}>
