@@ -1,4 +1,9 @@
 import axios from "API/axios";
+/**
+ * A service to handle Communities list retrieval
+ *
+ * @param {Function} fetchFunction - The function to make the request
+ */
 const fetchCommunities = (fetchFunction) => {
   fetchFunction({
     axiosInstance: axios,

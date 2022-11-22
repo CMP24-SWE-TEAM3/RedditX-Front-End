@@ -47,4 +47,14 @@ describe("People component", () => {
     const outputElement = screen.getByText("People");
     expect(outputElement).toBeInTheDocument();
   });
+  it("check that people are renders well", async () => {
+    render(
+      <TestingComponent>
+        <People PeopleList={PeopleList} PeopleFollow={PeopleFollow} />
+      </TestingComponent>
+    );
+
+    const listItemElements = await screen.findAllByTitle("people");
+    expect(listItemElements).not.toHaveLength(0);
+  });
 });

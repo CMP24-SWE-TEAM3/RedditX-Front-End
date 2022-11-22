@@ -60,4 +60,30 @@ describe("TopCommunities component", () => {
     const outputElement = screen.getByText("See more communities");
     expect(outputElement).toBeInTheDocument();
   });
+  it('renders "See More Communities" in Card', async () => {
+    render(
+      <TestingComponent>
+        <TopCommunities
+          CommunityList={communityList}
+          CommunitiesSub2={CommunitiesSub2}
+        />
+      </TestingComponent>
+    );
+    const outputElement = screen.getByText("See more communities");
+    expect(outputElement).toBeInTheDocument();
+  });
+
+  it("check that communities are renders well", async () => {
+    render(
+      <TestingComponent>
+        <TopCommunities
+          CommunityList={communityList}
+          CommunitiesSub2={CommunitiesSub2}
+        />
+      </TestingComponent>
+    );
+
+    const listItemElements = await screen.findAllByTitle("comm");
+    expect(listItemElements).not.toHaveLength(0);
+  });
 });

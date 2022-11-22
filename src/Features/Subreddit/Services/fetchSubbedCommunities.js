@@ -1,5 +1,10 @@
 import axios from "API/axios";
 
+
+/**
+ * Function to fetch Communities current user has subscribed to
+ * @param {Function} dataFetch Coming from useFetchFunction custom hook
+ */
 const fetchSubbedCommunities = (fetchFunction) => {
     
     fetchFunction({

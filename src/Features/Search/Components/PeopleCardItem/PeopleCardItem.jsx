@@ -87,7 +87,7 @@ const PeopleCardItem = ({
     }
   }
   return (
-    <Container>
+    <Container title="people">
       <Link to="#">
         <div className="item">
           <img src={require(`../../Assets/${avatar}`)} alt="userImage" />

@@ -16,7 +16,7 @@ import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
  * @param {Object} info - object contain info of subreddit
  * @param {boolean} isJoined - boolean if user joined subreddit
  * @param {function} onJoin - function handler on click join
- * @returns
+ * @returns {React.Component}
  */
 const SubRedditHeader = ({ banner, info, isJoined, onJoin }) => {
 

@@ -35,9 +35,9 @@ const Search = () => {
 
   // Fetch Posts
   const [PostList, error, loading, fetch] = useFetchFunction();
-  useEffect(() => {
-    fetchPosts(fetch);
-  }, []); // Only re-run the effect if count changes
+  // useEffect(() => {
+  //   fetchPosts(fetch);
+  // }, []); // Only re-run the effect if count changes
   // Fetch Posts
 
   // fetch Communities

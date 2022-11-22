@@ -1,5 +1,10 @@
 import axios from "API/axios";
 
+
+/**
+ * Function to fetch Communities according to letter indexing
+ * @param {Function} dataFetch Coming from useFetchFunction custom hook
+ */
 const fetchIndexedCommunities = (fetchFunction) => {
     
     fetchFunction({

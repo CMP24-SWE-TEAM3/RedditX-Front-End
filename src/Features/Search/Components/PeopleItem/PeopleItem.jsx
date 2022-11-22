@@ -90,7 +90,7 @@ const PeopleItem = ({
     }
   }
   return (
-    <Container href="#">
+    <Container href="#" title="people">
       <Flex>
         <Img src={require(`../../Assets/${avatar}`)} alt="People Icon" />
         <PeopleInfo>
