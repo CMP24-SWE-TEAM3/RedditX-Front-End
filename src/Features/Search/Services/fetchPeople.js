@@ -1,4 +1,9 @@
 import axios from "API/axios";
+/**
+ * A service to handle People list retrieval
+ *
+ * @param {Function} fetchFunction - The function to make the request
+ */
 const fetchPeople = (fetchFunction) => {
   fetchFunction({
     axiosInstance: axios,
