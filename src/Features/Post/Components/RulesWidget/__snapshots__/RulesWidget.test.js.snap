@@ -2,7 +2,7 @@
 
 exports[`widget show rules should render without crashing 1`] = `
 <WidgetContainer
-  headerText="r/Eln2aa4yn Rules"
+  headerText="r/Egypt Rules"
 >
   <Rule
     description="d1"

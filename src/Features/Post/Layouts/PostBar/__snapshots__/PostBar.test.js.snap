@@ -9,13 +9,3 @@ exports[`PostBar Component this is a test for PostBar Component 1`] = `
   <PostFooter />
 </styled.div>
 `;
-
-exports[`PostBar Component this is a test for PostFooter Component 1`] = `
-<styled.div>
-  <PostPublisher
-    fullPost={true}
-  />
-  <PostContent />
-  <PostFooter />
-</styled.div>
-`;

@@ -13,7 +13,7 @@ exports[`About Post should render without crashing 1`] = `
       />
       <styled.div>
         <Link
-          to="https://www.reddit.com/r/Egypt/"
+          to="/"
         >
           <span>
             r/Egypt
