@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const HeaderMarginDiv = styled.div`
@@ -29,25 +30,9 @@ export const LettersContainer = styled.div`
   line-height: 18px;
   cursor: default;
   margin: 8px 0 4px;
-
-  // a active {
-  //   color: ${({theme})=>theme.color.primary};
-  //   display: inline-block;
-  //   margin-right: 8px;
-  //   text-decoration: none;
-  //   text-transform: capitalize;
-  // }
-
-  // a single {
-  //   color: ${({theme})=>theme.color.secondary};
-  //   display: inline-block;
-  //   margin-right: 8px;
-  //   text-decoration: none;
-  //   text-transform: capitalize;
-  // }
 `;
 
-export const Letters = styled.a`
+export const Letters = styled(NavLink)`
   color: ${({theme})=>theme.color.secondary};
   display: inline-block;
   margin-right: 8px;
@@ -62,7 +47,7 @@ export const Letters = styled.a`
     color: ${({theme})=>theme.color.btnHover};
   }
 
-  &:focus {
+  &.active {
     color: ${({theme})=>theme.color.primary};
   }
 `;

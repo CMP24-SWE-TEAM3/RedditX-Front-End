@@ -1,5 +1,7 @@
 import { shallow } from "enzyme";
 import Comment from "./Comment";
+import { fireEvent, render, screen } from "@testing-library/react";
+import TestingComponent from "Features/Search/TestingComponent";
 const comment = {
   id: 1,
   postFooter: {
@@ -30,6 +32,10 @@ const comment = {
 
 describe("Comment", () => {
   it("this is a test for Comment", () => {
-    expect(shallow(<Comment comment={comment} key={1} />)).toMatchSnapshot();
+    <TestingComponent>
+      render(
+      <Comment comment={comment} key={1} />
+      );
+    </TestingComponent>;
   });
 });

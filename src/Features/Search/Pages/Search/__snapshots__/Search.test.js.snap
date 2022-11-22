@@ -21,6 +21,7 @@ exports[`Search Page this is a test for Search Page 1`] = `
               <Posts
                 CommunitiesSub2={Array []}
                 CommunityList={Array []}
+                OnSort={[Function]}
                 PeopleFollow={Array []}
                 PeopleList={Array []}
                 PostList={Array []}

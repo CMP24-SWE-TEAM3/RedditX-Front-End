@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Post flag should render without crashing 1`] = `
-<Styled(Button)
-  variant="light"
-/>
-`;

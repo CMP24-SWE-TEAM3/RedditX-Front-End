@@ -6,7 +6,7 @@ import {DropDownMenuStyled} from "./DropDownMenu.styled";
 const DropDownMenu = () => {
     return (
         <DropDownMenuStyled>
-            <Dropdown.Menu id={'drop-down-menu-home'} show={true}>
+            <Dropdown.Menu data-testId="dropDownMenuId" id={'drop-down-menu-home'} show={true}>
                 <DropDownItem/>
             </Dropdown.Menu>
         </DropDownMenuStyled>

@@ -26,10 +26,9 @@ export const Container = styled.div`
     font-size: 20px;
     font-weight: 400;
     height: 20px;
-    line-height: 20px;
     vertical-align: middle;
     width: 20px;
-    margin-left: 8px;
+    margin: 8px;
   }
 
   & .item {

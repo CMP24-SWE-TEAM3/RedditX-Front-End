@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const CommunityContainer = styled.div`
@@ -56,7 +57,7 @@ export const ContentDiv = styled.div`
 
 export const ContentItem = styled.div`
   width: 25%;
-
+  margin-bottom: 5px;
   @media screen and (max-width: 768px) {
     width: auto;
   }
@@ -66,7 +67,7 @@ export const ContentItem = styled.div`
   }
 `;
 
-export const ContentA = styled.a`
+export const ContentA = styled(NavLink)`
   // font-family: IBMPlexSans, sans-serif;
   font-size: 16px;
   font-weight: 400;

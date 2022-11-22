@@ -36,7 +36,7 @@ const CreatePostSideBar = () => {
                     <hr/>
                     <div className={'buts'}>
                         <button id={'create-post-button'} onClick={()=>navigate("/submit")}  className={'sub-but1'}>Create Post</button>
-                        <button id={'create-community-button'}  onClick={() => setShow(true)} className={'sub-but2'}>Create Community</button>
+                        <button id={'create-community-button'} data-testid="createModalID"  onClick={() => setShow(true)} className={'sub-but2'}>Create Community</button>
                     </div>
                 </div>
             </Container>

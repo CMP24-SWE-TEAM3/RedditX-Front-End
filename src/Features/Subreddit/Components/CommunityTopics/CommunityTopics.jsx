@@ -4,8 +4,7 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { BsCheck } from "react-icons/bs";
 import { FaPlus } from "react-icons/fa";
 import { HiOutlinePencil } from "react-icons/hi";
-import { HiXMark } from "react-icons/hi2";
-import {MdOutlineClear} from "react-icons/md"
+import { MdOutlineClear } from "react-icons/md";
 import { RiArrowDownSLine } from "react-icons/ri";
 import SaveChangesModal from "../SaveChangesModal/SaveChangesModal";
 import {
@@ -261,11 +260,11 @@ const CommunityTopics = () => {
    * drop down menu of topics
    *
    * @param {Array<string>} data
-   * @returns {React.Component} 
+   * @returns {React.Component}
    */
   const TopicsBlock = ({ data }) => {
     return (
-      <DropDown onBlur={blurHandler} tabIndex={0}>
+      <DropDown onBlur={blurHandler} tabIndex={0} title="topics-dropdown">
         {data.map((element, i) => {
           return (
             <DropDownItem
@@ -445,7 +444,7 @@ const CommunityTopics = () => {
 
       {/*button that you click to add a topic  */}
       <AddTopic onBlur={blurHandler}>
-        <AddTopicBtn onClick={viewHandler}>
+        <AddTopicBtn onClick={viewHandler} title="add-topic">
           <span>{topic || "Add a Primary Topic"}</span>
           <span className="icon">
             <RiArrowDownSLine />

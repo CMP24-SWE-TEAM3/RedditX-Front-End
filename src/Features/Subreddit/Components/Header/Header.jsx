@@ -7,7 +7,7 @@ import { HeaderMarginDiv, HeaderDiv, HeaderH3, HeaderP } from "./Header.styled";
  * @Component
  * @returns {React.Component}
  */
-export default function Header() {
+ const Header = () => {
   return (
 
     <HeaderMarginDiv>
@@ -21,3 +21,5 @@ export default function Header() {
     </HeaderMarginDiv>
   );
 }
+
+export default Header;

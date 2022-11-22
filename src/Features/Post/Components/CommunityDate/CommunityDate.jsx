@@ -37,11 +37,15 @@ const CommunityDate = () => {
           alt="community"
         />
         {submitDestination && (
-          <CommunityName>r/{submitDestination.name}</CommunityName>
+          <CommunityName data-testid="community-name">
+            r/{submitDestination.name}
+          </CommunityName>
         )}
       </Title>
       {submitDestination && (
-        <Description> {submitDestination.description}</Description>
+        <Description data-testid="community-description">
+          {submitDestination.description}
+        </Description>
       )}
       <OverlayTrigger
         placement={"bottom"}

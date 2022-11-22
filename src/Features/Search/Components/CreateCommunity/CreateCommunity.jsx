@@ -1,7 +1,8 @@
 import { ContainerCreateComm } from "./CreateCommunity.styled";
 import BackgroundImage from "../../Assets/search-results-community-banner.png";
 import logo from "../../Assets/snoo-thinking.png";
-
+import ModalCommunity from "Components/Modal/Modal";
+import { useState } from "react";
 /**
  * Component that contains the CreateCommunity component.
  *
@@ -9,6 +10,7 @@ import logo from "../../Assets/snoo-thinking.png";
  * @returns {React.Component}
  */
 const CreateCommunity = () => {
+  const [show, setShow] = useState(false);
   return (
     <ContainerCreateComm>
       <div className="create">
@@ -18,9 +20,10 @@ const CreateCommunity = () => {
           <div className="txt">Have an idea for a new community?</div>
         </div>
         <div className="btn-create">
-          <button>Create Community</button>
+          <button onClick={() => setShow(true)}>Create Community</button>
         </div>
       </div>
+      <ModalCommunity show={show} close={() => setShow(false)} />
     </ContainerCreateComm>
   );
 };

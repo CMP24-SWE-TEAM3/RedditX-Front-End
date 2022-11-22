@@ -69,7 +69,7 @@ const UploadedImagesContainer = ({
         />
       ))}
       {files.length !== 0 && (
-        <UploadIcon variant="light" onClick={open}>
+        <UploadIcon data-testid={"upload-icon"} variant="light" onClick={open}>
           <BsPlusLg />
         </UploadIcon>
       )}

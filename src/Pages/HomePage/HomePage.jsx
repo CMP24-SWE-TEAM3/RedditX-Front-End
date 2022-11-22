@@ -32,7 +32,7 @@ const HomePage = ({ handleToggleTheme, theme }) => {
     <>
       <AppContainer>
         <AppHeader>
-          <MainContainer>
+          <MainContainer data-testid="home-page-id">
             <div className="main" />
             <Container>
               <div className={"content-posts"}>

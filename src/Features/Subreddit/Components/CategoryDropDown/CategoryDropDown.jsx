@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import { NavLink } from "react-router-dom";
 import { StyledDropdown } from "./CategoryDropDown.styled";
+
 /**
- * Component that  Main Links component but in responsive form.
+ * Component that contains Categories but in responsive form.
  *
  * @Component
  * @returns {React.Component}

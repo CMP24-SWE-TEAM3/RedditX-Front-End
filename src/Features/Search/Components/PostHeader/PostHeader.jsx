@@ -26,30 +26,26 @@ const PostHeader = ({ postheader }) => {
             alt="communityimage"
           />
         </Link>
-        <Link to="#" className="community-name">
+        <Link to="#" className="community-name" title="commName">
           r/{postheader.communityName}
-          {/* r/WallStreetRiches */}
         </Link>
       </CommunityInfo>
       <span className="break">.</span>
       <PostedBy>
         <span className="first">Posted by</span>
         <UserName>
-          <Link to="#">
+          <Link to="#" title="userName">
             u/{postheader.userName}
             {/* u/Old_Salamander_7479 */}
           </Link>
         </UserName>
-        <Flair>
-          <span>
-            {postheader.flair.flairText}
-            {/* ali */}
-          </span>
-        </Flair>
+
         <span className="time-post">{postheader.time}</span>
-        <Flair nsfw={postheader.nsfw}>
-          {postheader.nsfw && <span>nsfw</span>}
-        </Flair>
+        {postheader.nsfw && (
+          <Flair nsfw={postheader.nsfw} title="flair">
+            {postheader.nsfw && <span>nsfw</span>}
+          </Flair>
+        )}
       </PostedBy>
     </PostHeaderStyle>
   );

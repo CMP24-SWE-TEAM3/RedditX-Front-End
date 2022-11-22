@@ -11,12 +11,11 @@ import CommunityCardItem from "../CommunityCardItem/CommunityCardItem";
  * @returns {React.Component}
  */
 const TopCommunities = ({ CommunityList, CommunitiesSub2 }) => {
-  console.log(CommunitiesSub2);
   if (CommunitiesSub2 && CommunityList) {
     return (
       <CommunityContainer>
         <p className="title">Communities</p>
-        {CommunityList.map((Community) => (
+        {CommunityList.slice(0, 5).map((Community) => (
           <CommunityCardItem
             communityIcon={Community.communityIcon}
             key={Community.communityID}

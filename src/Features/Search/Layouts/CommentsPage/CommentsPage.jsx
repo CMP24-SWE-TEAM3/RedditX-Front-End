@@ -10,8 +10,8 @@ import axios from "API/axios";
 import useFetch from "Hooks/useFetch";
 /**
  * Component that render the CommentsPage component and Contains Comment item.
- *
  * @Component
+ * @param {object} CommentLists - contain all the Comments
  * @returns {React.Component}
  */
 

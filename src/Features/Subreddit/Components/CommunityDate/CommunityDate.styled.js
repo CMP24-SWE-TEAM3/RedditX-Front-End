@@ -186,3 +186,12 @@ export const SaveButton = styled.button`
   align-self: flex-end;
   user-select: none;
 `;
+
+export const StaticDescriptionContainer = styled.div`
+margin-bottom: 8px;
+position: relative;
+color: ${({ theme }) => theme.color.primary}; 
+`;
+
+
+

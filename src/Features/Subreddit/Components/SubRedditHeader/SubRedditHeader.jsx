@@ -8,10 +8,9 @@ import {
 import profile from "Features/Subreddit/Assets/index.jpeg";
 import Button from "Features/Subreddit/Components/Button/Button";
 import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 /**
- * Component that has all the information about the subreddit.
  *
  * @param {Object} banner - picture or color of header banner
  * @param {Object} info - object contain info of subreddit
@@ -20,7 +19,8 @@ import { useEffect, useState } from "react";
  * @returns {React.Component}
  */
 const SubRedditHeader = ({ banner, info, isJoined, onJoin }) => {
-  const [name, setName] = useState("");
+
+  // const [name, setName] = useState('');
 
   /**
    * on click join handler
@@ -31,12 +31,13 @@ const SubRedditHeader = ({ banner, info, isJoined, onJoin }) => {
     onJoin(e);
   }
 
-  const { community } = useSubReddit();
 
-  useEffect(() => {
-    setName(community[0].name);
-    console.log(name);
-  }, [community]);
+  const {community} = useSubReddit();
+
+  // useEffect(()=>{
+  //  setName(community[0].name);
+  //  console.log(name);
+  // },[community])
 
   // let [replay, error, loading, reload] = useFetch({
   //   axiosInstance: axios,
@@ -61,18 +62,18 @@ const SubRedditHeader = ({ banner, info, isJoined, onJoin }) => {
     <HeaderContainer>
       <Banner banner={banner} />
       <HeaderContent>
-        <HeaderDetails>
-          <div className="content">
-            <img src={profile} alt="" />
-            <Info>
-              <div className="title-info">
-                {name && <h1 className="title">{name}</h1>}
-                {name && <h2 className="subtitle">{`r/${name}`}</h2>}
-              </div>
-              <Button isJoined={isJoined} onJoin={joinHandler} />
-            </Info>
-          </div>
-        </HeaderDetails>
+          <HeaderDetails>
+            <div className="content">
+              <img src={profile} alt="" />
+              <Info>
+                <div className="title-info">
+                  {community && community.length && community[0].name && <h1 className="title">{community[0].name}</h1>}
+                  {community && community.length && community[0].name && <h2 className="subtitle">{`r/${community[0].name}`}</h2>}
+                </div>
+                <Button isJoined={isJoined} onJoin={joinHandler} />
+              </Info>
+            </div>
+          </HeaderDetails>
       </HeaderContent>
     </HeaderContainer>
   );

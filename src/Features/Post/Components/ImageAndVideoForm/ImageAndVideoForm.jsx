@@ -22,10 +22,15 @@ import { useState, useRef } from "react";
 import { useSubmitDestination } from "Features/Post/Contexts/submitDestination";
 import { useCreatePostTitle } from "Features/Post/Contexts/createPostTitle";
 
-// API
-import useFetch from "Hooks/useFetch";
-import axios from "API/axios";
+// API services
+import getPostFlairs from "Features/Post/Services/getFlairs";
+import useFetchFunction from "Hooks/useFetchFunction";
+
+// Import contexts
 import { useCreatePostAttachments } from "Features/Post/Contexts/createPostAttachments";
+
+// Import hooks
+import { useEffect } from "react";
 
 /**
  * Image and video form component (The form that appears when you click on the image and video tab in main section)
@@ -55,17 +60,21 @@ const ImageAndVideoForm = ({ submitPost }) => {
   const { createPostAttachments, setCreatePostAttachments } =
     useCreatePostAttachments();
 
-  const [flairs, error, isLoading, reload] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "/flairs/",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
-
+  // const [flairs, error, isLoading, reload] = useFetch({
+  //   axiosInstance: axios,
+  //   method: "GET",
+  //   url: "/flairs/",
+  //   requestConfig: {
+  //     headers: {
+  //       "Content-Language": "en-US",
+  //     },
+  //   },
+  // });
+  // Fetch flairs
+  const [flairs, error, isLoading, fetchData] = useFetchFunction();
+  useEffect(() => {
+    getPostFlairs(fetchData);
+  }, []);
   /**
    * Handle title change
    *

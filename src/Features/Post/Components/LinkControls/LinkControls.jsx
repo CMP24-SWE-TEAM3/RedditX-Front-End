@@ -18,7 +18,7 @@ const LinkControls = ({ promptForLink }) => {
         placement="top"
         overlay={<Tooltip id="button-tooltip-2">Link</Tooltip>}
       >
-        <StyledButton onMouseDown={promptForLink}>
+        <StyledButton data-testid="link-btn" onMouseDown={promptForLink}>
           <BsLink45Deg size={25} />
         </StyledButton>
       </OverlayTrigger>
