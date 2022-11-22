@@ -163,9 +163,9 @@ const SignUpFirstScreen = ({
   return (
     <>
       {
-        <AuthContainer secondScreen={secondScreen}>
+        <AuthContainer data-testid={"signupModalId"} secondScreen={secondScreen}>
           <AuthContainerDiv secondScreen={secondScreen}>
-            <AuthHeader id="signUpContainerModal">Sign Up</AuthHeader>
+            <AuthHeader    id="signUpContainerModal">Sign Up</AuthHeader>
             <AuthParagraph>
               By continuing, you agree are setting up a Reddit account and agree
               to our <Privacy>User Agreement</Privacy> and{" "}

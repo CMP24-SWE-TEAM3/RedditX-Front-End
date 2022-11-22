@@ -10,7 +10,9 @@ exports[`Navigation Post should render without crashing 1`] = `
       className="content"
     >
       <styled.div>
-        <styled.button>
+        <styled.button
+          onClick={[Function]}
+        >
           <TbArrowBigTop
             size={26}
           />
@@ -18,9 +20,11 @@ exports[`Navigation Post should render without crashing 1`] = `
         <div
           className="score"
         >
-          53
+          0
         </div>
-        <styled.button>
+        <styled.button
+          onClick={[Function]}
+        >
           <TbArrowBigDown
             size={26}
           />

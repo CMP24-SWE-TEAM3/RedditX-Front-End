@@ -6,14 +6,16 @@ import axios from "API/axios";
  *
  * @param {Function} dataFetch - The function to make the request
  */
-const getCommunitiesList = async (fetchData) => {
+const getCommunitiesList = async (fetchData, auth) => {
+  // communities-summary in json server
   fetchData({
     axiosInstance: axios,
     method: "GET",
-    url: "/communities/",
+    url: "/api/r/mine/subscriber/",
     requestConfig: {
       headers: {
         "Content-Language": "en-US",
+        Authorization: `Bearer ${auth.getToken()}`,
       },
     },
   });

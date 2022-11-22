@@ -35,6 +35,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
 
 // Import api services
 import getCommunitiesList from "Features/Post/Services/getCommunitiesList";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 /**
  *
@@ -64,11 +65,11 @@ const ChooseCommunity = () => {
 
   // Fetch communities
   const [communityList, error, isLoading, fetchData] = useFetchFunction();
-
+  const auth = useAuth();
   useEffect(() => {
-    getCommunitiesList(fetchData);
+    getCommunitiesList(fetchData, auth);
   }, []);
-
+  console.log("communityList", communityList);
   return (
     <Container>
       <Dropdown show={showMenu}>
@@ -84,8 +85,8 @@ const ChooseCommunity = () => {
           {!showMenu && submitDestination && (
             <UserImage
               data-testid="user-image"
-              src={submitDestination.srIcon}
-              alt={submitDestination.name}
+              src={submitDestination.icon}
+              alt={submitDestination._id}
             />
           )}
           <Input
@@ -123,24 +124,24 @@ const ChooseCommunity = () => {
             {error && <Alert variant="danger">{error}</Alert>}
             {!isLoading && (
               <ItemsGroup>
-                {communityList
+                {communityList.communities
                   .filter(
                     (community) =>
-                      community.name
+                      community._id
                         .toLowerCase()
                         .search(searchText.toLowerCase()) !== -1
                   )
                   .map((community) => (
                     <DropdownItem
-                      key={community.communityID}
+                      key={community._id}
                       onClick={() => {
                         setSubmitDestination(community);
-                        setSearchText(community.name);
+                        setSearchText(community._id);
                         setShowMenu(false);
                       }}
                     >
-                      <UserImage src={community.srIcon} alt={community.name} />
-                      {community.name}
+                      <UserImage src={community.icon} alt={community._id} />
+                      {community._id}
                     </DropdownItem>
                   ))}
               </ItemsGroup>

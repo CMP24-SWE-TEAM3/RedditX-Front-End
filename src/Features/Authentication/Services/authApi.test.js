@@ -96,7 +96,7 @@ describe("Testing for authentication functions", () => {
   it("this is a test for loginWithGoogle", () => {
     expect(
       loginWithGoogle(dataFetch, {
-        type: "google",
+        type: "gmail",
         googleOrFacebookToken: "token",
       })
     ).toEqual(true);
@@ -166,7 +166,7 @@ describe("Testing for authentication functions", () => {
   it("this is a test for signUpWithGoogle", () => {
     expect(
       signupWithGoogle(dataFetch, {
-        type: "google",
+        type: "gmail",
         googleOrFacebookToken: "token",
       })
     ).toEqual(true);

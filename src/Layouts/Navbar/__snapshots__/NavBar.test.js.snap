@@ -6,6 +6,7 @@ exports[`Navbar Component this is a test for Navbar Component 1`] = `
     Object {
       "getExpirationDate": [Function],
       "getToken": [Function],
+      "getUserName": [Function],
       "isLoggedIn": [Function],
       "login": [Function],
       "logout": [Function],
