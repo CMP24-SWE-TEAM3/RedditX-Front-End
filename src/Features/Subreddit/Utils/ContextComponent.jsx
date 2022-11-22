@@ -1,7 +1,14 @@
 import { DataContext } from "../Services/DataContext";
 import data from "../Services/data.json";
-import { useState } from "react";
+import React, { useState } from "react";
 
+
+
+/**
+ * The ContextComponent function is a React component that provides the data context to the children of
+ * the component.
+ * @returns {React.Component}The data is being returned.
+ */
 const ContextComponent = ({ children }) => {
 
 const [category, setCategory] = useState(data);

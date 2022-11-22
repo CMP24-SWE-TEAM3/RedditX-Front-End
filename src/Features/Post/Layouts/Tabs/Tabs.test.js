@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import TestingComponent from "Features/Post/TestingComponent";
 
 // Import components
@@ -28,15 +28,13 @@ describe("Tabs", () => {
     const postTabButton = screen.getByTestId("post-tab-btn");
     const imagesTabButton = screen.getByTestId("image-tab-btn");
     const linkTabButton = screen.getByTestId("link-tab-btn");
-    postTabButton.click();
+    fireEvent.click(postTabButton);
     const postTab = screen.getByTestId("post-tab");
     expect(postTab).toBeInTheDocument();
-
-    imagesTabButton.click();
+    fireEvent.click(imagesTabButton);
     const imageTab = screen.getByTestId("image-tab");
     expect(imageTab).toBeInTheDocument();
-
-    linkTabButton.click();
+    fireEvent.click(linkTabButton);
     const linkTab = screen.getByTestId("link-tab");
     expect(linkTab).toBeInTheDocument();
   });

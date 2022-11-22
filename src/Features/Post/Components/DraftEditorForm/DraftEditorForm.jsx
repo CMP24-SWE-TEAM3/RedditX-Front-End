@@ -16,12 +16,12 @@ import {
   SubmitButtons,
 } from "./DraftEditorForm.styled";
 
-// Import api
-import axios from "API/axios";
-import useFetch from "Hooks/useFetch";
+// API services
+import getPostFlairs from "Features/Post/Services/getFlairs";
+import useFetchFunction from "Hooks/useFetchFunction";
 
 // Import hooks
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 // Import contexts
 import { useSubmitDestination } from "Features/Post/Contexts/submitDestination";
@@ -66,16 +66,21 @@ const DraftEditorForm = ({ submitPost }) => {
   // Context for selected submit destination
   const { submitDestination } = useSubmitDestination();
 
-  const [flairs, error, isLoading, reload] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "/flairs/",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
+  // const [flairs, error, isLoading, reload] = useFetch({
+  //   axiosInstance: axios,
+  //   method: "GET",
+  //   url: "/flairs/",
+  //   requestConfig: {
+  //     headers: {
+  //       "Content-Language": "en-US",
+  //     },
+  //   },
+  // });
+  // Fetch flairs
+  const [flairs, error, isLoading, fetchData] = useFetchFunction();
+  useEffect(() => {
+    getPostFlairs(fetchData);
+  }, []);
   /**
    * Handle title change
    *

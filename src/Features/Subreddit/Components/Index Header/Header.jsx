@@ -7,7 +7,7 @@ import { HeaderMarginDiv, HeaderDiv, HeaderH3, Letters, LettersContainer } from 
  * @Component
  * @returns {React.Component}
  */
-export default function Header() {
+ const IndexHeader = () => {
   const [items, setItems] = useState([]);
   
   
@@ -63,3 +63,5 @@ export default function Header() {
     </HeaderMarginDiv>
   );
 }
+
+export default IndexHeader;

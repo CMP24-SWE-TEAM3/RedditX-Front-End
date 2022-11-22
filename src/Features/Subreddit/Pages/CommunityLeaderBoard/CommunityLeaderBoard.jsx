@@ -22,7 +22,7 @@ import { Route, Routes, useParams } from "react-router-dom";
  * @Component
  * @returns {React.Component}
  */
-function CommunityLeaderBoard() {
+const CommunityLeaderBoard = () => {
   const {categoryType} = useParams();
   
   const [communitiesList, error, loading, fetchFunction] = useFetchFunction();

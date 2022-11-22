@@ -15,7 +15,7 @@ import {
  * @Component
  * @returns {React.Component}
  */
-export default function Categories() {
+ const Categories = () => {
   const [showMore, setShowMore] = useState(false);
   const { category, setCategory } = useContext(DataContext);
   const [categoryData, setCategoryData] = useState(category);
@@ -60,3 +60,4 @@ export default function Categories() {
     </AllCategories>
   );
 }
+export default Categories;
