@@ -14,7 +14,7 @@ const People = ({ PeopleList, PeopleFollow }) => {
     return (
       <PeopleContainer>
         <p className="title">People</p>
-        {PeopleList.map((People) => (
+        {PeopleList.slice(0, 5).map((People) => (
           <PeopleCardItem
             avatar={People.avatar}
             key={People.userID}

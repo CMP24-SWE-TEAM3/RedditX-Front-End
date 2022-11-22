@@ -35,7 +35,7 @@ const PostItem = ({ post }) => {
       nsfw: post.nsfw,
     };
     return (
-      <ContainerPost pimage={postBody.bodyImage}>
+      <ContainerPost pimage={postBody.bodyImage} title="post">
         <div className="post-outline">
           <PostHeader postheader={postHeader} />
           <div className="post-body">

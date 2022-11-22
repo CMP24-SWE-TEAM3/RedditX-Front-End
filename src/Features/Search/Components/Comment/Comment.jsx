@@ -13,7 +13,7 @@ import { Container, Layout } from "./Comment.styled";
 const Comment = ({ comment }) => {
   console.log(comment);
   return (
-    <Container>
+    <Container title="comment">
       <Layout>
         <PostHeader postheader={comment.postHeader} />
         <CommentBody commentBody={comment.commentBody} />

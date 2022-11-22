@@ -81,7 +81,7 @@ const CommunityCardItem = ({
     }
   }
   return (
-    <Container>
+    <Container title="comm">
       <Link href="#">
         <div className="item">
           <img src={require(`../../Assets/${communityIcon}`)} alt="" />
