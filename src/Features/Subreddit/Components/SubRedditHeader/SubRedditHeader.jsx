@@ -8,7 +8,7 @@ import {
 import profile from "Features/Subreddit/Assets/index.jpeg";
 import Button from "Features/Subreddit/Components/Button/Button";
 import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 /**
  *
@@ -20,7 +20,7 @@ import { useEffect, useState } from "react";
  */
 const SubRedditHeader = ({ banner, info, isJoined, onJoin }) => {
 
-  const [name, setName] = useState('');
+  // const [name, setName] = useState('');
 
   /**
    * on click join handler
@@ -34,10 +34,10 @@ const SubRedditHeader = ({ banner, info, isJoined, onJoin }) => {
 
   const {community} = useSubReddit();
 
-  useEffect(()=>{
-   setName(community[0].name);
-   console.log(name);
-  },[community])
+  // useEffect(()=>{
+  //  setName(community[0].name);
+  //  console.log(name);
+  // },[community])
 
   // let [replay, error, loading, reload] = useFetch({
   //   axiosInstance: axios,
@@ -67,8 +67,8 @@ const SubRedditHeader = ({ banner, info, isJoined, onJoin }) => {
               <img src={profile} alt="" />
               <Info>
                 <div className="title-info">
-                  {name && <h1 className="title">{name}</h1>}
-                  {name && <h2 className="subtitle">{`r/${name}`}</h2>}
+                  {community && community.length && community[0].name && <h1 className="title">{community[0].name}</h1>}
+                  {community && community.length && community[0].name && <h2 className="subtitle">{`r/${community[0].name}`}</h2>}
                 </div>
                 <Button isJoined={isJoined} onJoin={joinHandler} />
               </Info>
