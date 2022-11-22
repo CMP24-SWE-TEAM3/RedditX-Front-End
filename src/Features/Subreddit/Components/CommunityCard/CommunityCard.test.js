@@ -1,18 +1,19 @@
 // import Adapter from "@zarconontol/enzyme-adapter-react-18";
 // import Enzyme, { shallow } from "enzyme";
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import CommunityDate from "./CommunityDate";
-import { SubRedditProvider } from "Features/Subreddit/Contexts/SubRedditProvider";
+import CommunityCard from "./CommunityCard";
+import { render } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import defaultTheme from "Theme/defaultTheme";
 import lightTheme from "Theme/lightTheme";
+import { BrowserRouter as Router } from "react-router-dom";
 import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
+import { SubRedditProvider } from "Features/Subreddit/Contexts/SubRedditProvider";
 import { useEffect } from "react";
 
 const theme = { ...defaultTheme, ...lightTheme };
 
-const MockDesc = () => {
+// Enzyme.configure({ adapter: new Adapter() });
+const MockCard = () => {
   const { community, setCommunity } = useSubReddit();
   useEffect(() => {
     setCommunity([
@@ -62,58 +63,23 @@ const MockDesc = () => {
       },
     ]);
   }, []);
-  return <CommunityDate />;
+  return <CommunityCard />;
 };
 
-// Enzyme.configure({ adapter: new Adapter() });
-
-describe("Description and created date of subreddit", () => {
+describe("Content of Subreddit", () => {
   // it("should render without crashing", () => {
-  //   expect(
-  //     shallow(
-  //       <SubRedditProvider>
-  //         <CommunityDate />
-  //       </SubRedditProvider>
-  //     )
-  //   ).toMatchSnapshot();
+  //   expect(shallow(<BodyContent />)).toMatchSnapshot();
   // });
 
-  it("textarea should appear", () => {
-    //Arrange
+  it("should render Content of Subreddit without crashing", () => {
     render(
       <ThemeProvider theme={theme}>
-        <SubRedditProvider>
-          <CommunityDate />
-        </SubRedditProvider>
+        <Router>
+          <SubRedditProvider>
+            <MockCard />
+          </SubRedditProvider>
+        </Router>
       </ThemeProvider>
     );
-
-    //Act
-    const descriptionElement = screen.getByTitle("add-description");
-    userEvent.click(descriptionElement);
-
-    //Assert
-    const textAreaElement = screen.getByTitle("textarea");
-    expect(textAreaElement).toBeInTheDocument();
-  });
-
-
-  it("textarea should appear when there is description", () => {
-    //Arrange
-    render(
-      <ThemeProvider theme={theme}>
-        <SubRedditProvider>
-          <MockDesc />
-        </SubRedditProvider>
-      </ThemeProvider>
-    );
-
-    //Act
-    const descriptionElement = screen.getByTitle("description-container");
-    userEvent.click(descriptionElement);
-
-    //Assert
-    const textAreaElement = screen.getByTitle("textarea");
-    expect(textAreaElement).toBeInTheDocument();
   });
 });

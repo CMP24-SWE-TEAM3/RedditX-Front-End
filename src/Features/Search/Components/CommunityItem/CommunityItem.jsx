@@ -98,7 +98,7 @@ const CommunityItem = ({
   }
   // console.log(CommunitiesSub2);
   return (
-    <Container href="#">
+    <Container href="#" title="comm">
       <Flex>
         <Img
           src={require(`../../Assets/${communityIcon}`)}

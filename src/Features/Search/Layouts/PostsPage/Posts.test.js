@@ -1,7 +1,10 @@
-import { shallow } from "enzyme";
 import Posts from "./Posts";
-describe("Posts Page", () => {
-  it("this is a test for Posts Page", () => {
-    expect(shallow(<Posts />)).toMatchSnapshot();
-  });
+import { render, screen } from "@testing-library/react";
+import TestingComponent from "Features/Post/TestingComponent";
+it("this is a test FOR Posts", () => {
+  render(
+    <TestingComponent>
+      <Posts />
+    </TestingComponent>
+  );
 });

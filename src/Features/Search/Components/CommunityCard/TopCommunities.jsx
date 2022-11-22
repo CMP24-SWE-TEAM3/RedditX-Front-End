@@ -15,7 +15,7 @@ const TopCommunities = ({ CommunityList, CommunitiesSub2 }) => {
     return (
       <CommunityContainer>
         <p className="title">Communities</p>
-        {CommunityList.map((Community) => (
+        {CommunityList.slice(0, 5).map((Community) => (
           <CommunityCardItem
             communityIcon={Community.communityIcon}
             key={Community.communityID}
