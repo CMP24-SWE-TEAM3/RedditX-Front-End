@@ -131,7 +131,7 @@ const LogInScreen = ({
     if (wantSubmit) {
       loginApi(dataFetch, {
         type: "bare email",
-        username: userName,
+        username: "t2_"+userName,
         password: password,
       });
 
@@ -192,6 +192,8 @@ const LogInScreen = ({
       type: "facebook",
       googleOrFacebookToken: user.accessToken,
     });
+
+    console.log("error : " + error);
 
     if (!error) {
       setFinishedLoading(true);

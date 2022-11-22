@@ -171,6 +171,9 @@ const SignUpSecondScreen = ({
         password: password,
       });
 
+      console.log("data : " + data);
+      console.log("error : " + error);
+
       if (!error) {
         setFinishedLoading(true);
         auth.login(data);

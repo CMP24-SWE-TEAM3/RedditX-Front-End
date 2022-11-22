@@ -123,15 +123,17 @@ const LogInPageCom = () => {
     if (wantSubmit) {
        loginApi(dataFetch, {
         type: "bare email",
-        username: userName,
+        username: "t2_"+userName,
         password: password,
       });
 
-      if (!error) {
+      if (data.accessToken !== undefined) {
         setFinishedLoading(true);
         auth.login(data);
         navigate("/");
       }
+
+      console.log("data : "+data);
 
       setWantSubmit(false);
     }
@@ -164,6 +166,8 @@ const LogInPageCom = () => {
       type: "google",
       googleOrFacebookToken: user.accessToken,
     });
+
+    console.log("data from google : " + data);
 
     if (!error) {
       setFinishedLoading(true);
