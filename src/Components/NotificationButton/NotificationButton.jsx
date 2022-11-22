@@ -11,8 +11,8 @@ import link from "Assets/Images/link.png";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { Link } from "react-router-dom";
-import useFetch from "Hooks/useFetch";
 import pushNotifications from "Services/pushNotifications";
+import useFetchFunction from "Hooks/useFetchFunction";
 
 /**
  * Component that displays notifications about changes in the state of the application
@@ -77,9 +77,10 @@ const NotificationButton = () => {
   // Loading: Boolean to tell if the request has been sent, or it's still loading
   // Error: Contains error message when the request is failed
   // Data: the response data
-  const [notificationList, error, isLoading, reFetch] = useFetch(
-    pushNotifications()
-  );
+  const [notificationList, error, isLoading, dataFetch] = useFetchFunction();
+  useEffect(() => {
+    pushNotifications(dataFetch)
+  }, []);
 
   return (
     <Container ref={ref}>

@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import CommunityCardItem from "Components/CommunityCardItem/CommunityCardItem";
 import randomCategories from "Services/randomCategories";
 import { Link } from "react-router-dom";
-import useFetch from "Hooks/useFetch";
+import useFetchFunction from "Hooks/useFetchFunction";
+import {useEffect} from "react";
 
 /**
  * Component that links each  of community card item.
@@ -17,9 +18,11 @@ const TopCommunities = () => {
   // Loading: Boolean to tell if the request has been sent, or it's still loading
   // Error: Contains error message when the request is failed
   // Data: the response data
-  const [communityList, error, isLoading, reFetch] = useFetch(
-    randomCategories()
-  );
+  const [communityList, error, isLoading, dataFetch] =useFetchFunction();
+    useEffect(() => {
+         randomCategories(dataFetch)
+    }, []);
+
 
   const navigate = useNavigate();
   return (

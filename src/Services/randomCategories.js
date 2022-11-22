@@ -9,7 +9,7 @@ const randomCategories = () => {
     return ({
         axiosInstance: axios,
         method: "GET",
-        url: "/random-category/",
+        url: "/r/random-category/",
         requestConfig: {
             headers: {
                 "Content-Language": "en-US",
