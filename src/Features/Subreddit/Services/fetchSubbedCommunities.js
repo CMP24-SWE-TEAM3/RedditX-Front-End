@@ -1,11 +1,11 @@
 import axios from "API/axios";
 
-
 /**
  * Function to fetch Communities current user has subscribed to
- * @param {Function} dataFetch Coming from useFetchFunction custom hook
+ * @param {object} auth Context object coming from useAuth custom Hook
+ * @param {Function} fetchFunction Coming from useFetchFunction custom hook
  */
-const fetchSubbedCommunities = (fetchFunction) => {
+const fetchSubbedCommunities = (fetchFunction, auth) => {
     
     fetchFunction({
       axiosInstance: axios,
@@ -14,6 +14,7 @@ const fetchSubbedCommunities = (fetchFunction) => {
       requestConfig: {
         headers: {
           "Content-Language": "en-US",
+          Authorization: `Bearer ${auth.getToken()}`,
         },
       },
     });

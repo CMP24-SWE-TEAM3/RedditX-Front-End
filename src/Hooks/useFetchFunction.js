@@ -25,7 +25,9 @@ const useFetchFunction = () => {
       setLoading(true);
       const ctrl = new AbortController();
       setController(ctrl);
-      const res = await axiosInstance[method.toLowerCase()](url, {
+      const res = await axiosInstance({
+        method,
+        url,
         ...requestConfig,
         signal: ctrl.signal,
       });

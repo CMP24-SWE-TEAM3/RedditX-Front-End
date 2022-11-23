@@ -90,7 +90,7 @@ const Post = ({ show, setShow }) => {
       <NavigationPost setHandleShowModal={setShow} />
       <ModalBodyContainer>
         <PostContent>
-          <PostShape />
+          <PostShape fullPost={true}/>
           <UserNameContainer>
             Comment as <UserName>Abdelrahman_Hamza</UserName>
           </UserNameContainer>

@@ -25,6 +25,7 @@ import { useCreatePostText } from "Features/Post/Contexts/createPostText";
 // API services
 import getPostFlairs from "Features/Post/Services/getFlairs";
 import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 /**
  * The form of link in create post page (Link tab)
@@ -89,9 +90,12 @@ const LinkForm = ({ submitPost }) => {
   // });
   // Fetch flairs
   const [flairs, error, isLoading, fetchData] = useFetchFunction();
+  const auth = useAuth();
   useEffect(() => {
-    getPostFlairs(fetchData);
-  }, []);
+    console.log("submitDestination", submitDestination);
+    if (submitDestination) getPostFlairs(fetchData, submitDestination._id, auth);
+  }, [submitDestination]);
+  console.log("flairs", flairs);
 
   const onModalHide = () => {
     setModalShow(false);
@@ -147,7 +151,8 @@ const LinkForm = ({ submitPost }) => {
         <SubmitButtons>
           {/* <SaveDraftButton variant="light">Save Draft</SaveDraftButton> */}
           <PostButton
-            disabled={!submitDestination || !createPostTitle}
+            // disabled={!submitDestination || !createPostTitle}
+            disabled={!createPostTitle}
             onClick={submitForm}
             id="post"
           >

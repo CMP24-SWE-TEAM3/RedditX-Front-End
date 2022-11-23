@@ -18,9 +18,8 @@ export const giveVote = (dataFetch, objectData) => {
         axiosInstance: axios,
         method: "post",
         url: "/api/listing/vote",
-        requestConfig: {
-          data: objectData,
-        },
+        requestConfig:  objectData,
+        
       });
       return true;
     }
@@ -44,9 +43,8 @@ export const makeFollow = (dataFetch, objectData) => {
         axiosInstance: axios,
         method: "post",
         url: "/api/listing/follow-post",
-        requestConfig: {
-          data: objectData,
-        },
+        requestConfig:  objectData,
+       
       });
       return true;
     }

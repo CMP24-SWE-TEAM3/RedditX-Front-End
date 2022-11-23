@@ -19,26 +19,14 @@ import {Link} from "react-router-dom";
  * @Component
  * @returns {React.Component}
  */
-const CommunitySideCard = () => {
+const CommunitySideCard = ({communityList}) => {
     const navigate = useNavigate();
-
+    
     const navigateToRandomCat = (categoryTitle) => {
         // 👇️ navigate to /contacts
         navigate(`/category/${categoryTitle}`);
     };
 
-    // Fetch communities
-    const [communityList, error, loading, reload] = useFetch({
-        axiosInstance: axios,
-        method: "GET",
-        //  /api/random-category/
-        url: "http://localhost:8000/feedback--Leaderboard",
-        requestConfig: {
-            headers: {
-                "Content-Language": "en-US",
-            },
-        },
-    });
 
     const com = communityList.map((community, index) => {
         return (

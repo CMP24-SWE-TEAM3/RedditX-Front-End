@@ -3,18 +3,22 @@ import DropdownMenu from "react-bootstrap/DropdownMenu";
 
 export const SearchDropDownStyled = styled(DropdownMenu)
     `
-      position: fixed;
       z-index: 100;
-      left: 480px;
+      left: unset !important;
+      margin-left: 5px;
       top: 44.5px;
-      width: 440px;
+      width: 33.5%;
       overflow: auto;
       border-top-width: 0;
       border-radius: 0 0 4px 4px;
       box-sizing: border-box;
-      margin-top: -1px;
       max-height: 482px;
-      right: 0;
+      @media (max-width:1286px){
+        width:15.5%;
+      }
+      @media (max-width:992px){
+        display: none !important;
+      }
 
       .dropdown-header {
         font-size: 10px;
