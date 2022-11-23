@@ -6,7 +6,7 @@ import { BsArrowUpRightCircle } from "react-icons/bs";
 import { IoIosLink } from "react-icons/io";
 import trendingSearch from "Services/trendingSearch";
 import useFetchFunction from "Hooks/useFetchFunction";
-import {useEffect} from "react";
+import { useEffect } from "react";
 
 /**
  * Component that displays a dropdown with a search bar inputForm
@@ -16,12 +16,12 @@ import {useEffect} from "react";
 const SearchDropDown = ({ show }) => {
   // Fetch trending posts
   const [trendingPostList, error, loading, dataFetch] = useFetchFunction();
-    useEffect(() => {
-        trendingSearch(dataFetch)
-    }, []);
+  useEffect(() => {
+    trendingSearch(dataFetch);
+  }, []);
 
   return (
-    <SearchDropDownStyled show={show} autoClose={true}>
+    <SearchDropDownStyled show={show} autoClose={"outside"}>
       <Dropdown.Header>trending today</Dropdown.Header>
       {!loading &&
         trendingPostList.map((recentPost) => {

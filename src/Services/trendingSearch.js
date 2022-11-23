@@ -5,7 +5,7 @@ import axios from "API/axios";
  * {Function} This function is responsible for get data to show trending Search when clicked on search input element
  * @return {{requestConfig: {headers: {"Content-Language": string}}, axiosInstance: AxiosInstance, method: string, url: string}}
  */
-const trendingSearch = () => {
+const trendingSearch = dataFetch => {
     return ({
         axiosInstance: axios,
         method: "GET",

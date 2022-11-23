@@ -5,7 +5,7 @@ import axios from "API/axios";
  * {Function} This function is responsible for fetching the data to show  random categories cart
  * @return {{requestConfig: {headers: {"Content-Language": string}}, axiosInstance: AxiosInstance, method: string, url: string}}
  */
-const randomCategories = () => {
+const randomCategories = dataFetch => {
     return ({
         axiosInstance: axios,
         method: "GET",
