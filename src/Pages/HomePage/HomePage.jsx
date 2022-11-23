@@ -13,10 +13,9 @@ import CreatePostSideBar from "Layouts/CreatePostSideBar/CreatePostSideBar";
 import Footer from "Layouts/Footer/Footer";
 import ScrollButton from "Components/ScrollButton/ScrollButton";
 import RecentPosts from "Layouts/RecentPosts/RecentPosts";
-import { useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import PostShape from "Features/Post/Layouts/PostShape/PostShape";
 import Post from "Features/Post/Pages/Post/Post";
+
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
  *
@@ -24,7 +23,6 @@ import Post from "Features/Post/Pages/Post/Post";
  */
 
 const HomePage = ({ handleToggleTheme, theme }) => {
-  const navigate = useNavigate();
 
   const [showPost, setShowPost] = useState(false);
   console.log("first", showPost);

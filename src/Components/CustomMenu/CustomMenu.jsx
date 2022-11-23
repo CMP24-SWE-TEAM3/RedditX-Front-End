@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import Form from "react-bootstrap/Form";
 
 /**
- * Function that helps dropdown functionality
+ * Component that responsible for dropdown search input filtration
  *
  *  @return {React.Component}
  */

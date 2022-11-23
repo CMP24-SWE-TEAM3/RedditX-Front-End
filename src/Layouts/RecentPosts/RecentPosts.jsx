@@ -12,6 +12,8 @@ import axios from "API/axios";
  */
 const RecentPosts = () => {
 
+    //TODO: using caching recent posts after each clicked on a specific post instead of fetching data from server
+
     // Fetch Recent posts
     const [recentPostList, error, loading, reload] = useFetch({
         axiosInstance: axios,
@@ -29,7 +31,7 @@ const RecentPosts = () => {
      */
     const [showRecentPosts, setShowRecentPosts] = useState(true);
     const deleteRecentPosts = () => {
-        //TODO: handle refreshing recent posts after reloading
+        //TODO: handle refreshing recent posts after reloading (using useEffect instead of useState)
         recentPostList.splice(0, recentPostList.length);
         setShowRecentPosts(false);
     }

@@ -3,9 +3,6 @@ import {BsPerson} from 'react-icons/bs';
 import {NavDropdown} from "react-bootstrap";
 
 export const Container = styled(NavDropdown)`
-  //@media (max-width: 450px) {
-  //  display: none;
-  //}
   @media(max-width:990px){
     max-width:fit-content;
     width:fit-content;
@@ -13,7 +10,6 @@ export const Container = styled(NavDropdown)`
   font-size: 20px;
   font-weight: 500;
   color: ${({theme}) => theme.color.primary} !important;
-  //background-color: ${({theme}) => theme.background.primary} !important;
   background: unset !important;
   .dropdown-toggle::after {
     vertical-align: 0.1em;
@@ -130,7 +126,6 @@ export const Container = styled(NavDropdown)`
 
   .rs-dropdown-toggle.rs-btn:hover {
     border-color: ${({theme}) => theme.background.primary} !important;
-    //border-color: red !important;
     background-color: ${({theme}) => theme.background.primary} !important;
   }
 
@@ -159,7 +154,6 @@ export const Container = styled(NavDropdown)`
   }
 
   .dropdown-menu {
-    //max-width: 100%;
     overflow: hidden scroll;
     transform: translate3d(0px, 35px, 0px) !important;
     height: 578px;
@@ -187,7 +181,6 @@ export const Container = styled(NavDropdown)`
       width: 100%;
       height: fit-content;
       right: -170px;
-      //padding-left: 30px;
     }
   }
 
@@ -226,7 +219,6 @@ export const Container = styled(NavDropdown)`
 
     span {
       flex: 0 0;
-      //font-size: 20px;
       height: 20px;
       min-width: 20px;
       width: 20px;
@@ -243,10 +235,7 @@ export const Container = styled(NavDropdown)`
   :active {
     background-color: ${({theme}) => theme.background.post_background};
   }
-
-  // & .rs-dropdown-item, {
-    //   color: ${({theme}) => theme.color.primary};
-  // }
+  
 
   @media only screen and (max-width: 1290px) {
     //left: 20px;
