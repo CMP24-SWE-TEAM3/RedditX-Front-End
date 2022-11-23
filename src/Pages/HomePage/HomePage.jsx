@@ -23,51 +23,47 @@ import Post from "Features/Post/Pages/Post/Post";
  */
 
 const HomePage = ({ handleToggleTheme, theme }) => {
-
   const [showPost, setShowPost] = useState(false);
-  console.log("first", showPost);
   return (
-    <>
-      <AppContainer>
-        <AppHeader>
-          <MainContainer data-testid="home-page-id">
-            <div className="main" />
-            <Container>
-              <div className={"content-posts"}>
-                <CreatePost />
-                <PopularPosts />
-                <div onClick={() => setShowPost(true)}>
-                  <PostShape />
-                </div>
-                <Post show={showPost} setShow={setShowPost} />
+    <AppContainer>
+      <AppHeader>
+        <MainContainer data-testid="home-page-id">
+          <div className="main" />
+          <Container>
+            <div className={"content-posts"}>
+              <CreatePost />
+              <PopularPosts />
+              <div onClick={() => setShowPost(true)}>
+                <PostShape />
               </div>
-              <aside>
-                <div className={"sidebar"}>
-                  <TopCommunities />
+              <Post show={showPost} setShow={setShowPost} />
+            </div>
+            <aside>
+              <div className={"sidebar"}>
+                <TopCommunities />
 
-                  <div className={"create-community"}>
-                    <CreatePostSideBar />
-                  </div>
-                  <div className={"recent-posts"}>
-                    <div>
-                      <RecentPosts />
-                    </div>
-                  </div>
-                  <footer>
-                    <div className={"child-footer"}>
-                      <Footer />
-                    </div>
-                    <div className={"scroll-but"}>
-                      <ScrollButton />
-                    </div>
-                  </footer>
+                <div className={"create-community"}>
+                  <CreatePostSideBar />
                 </div>
-              </aside>
-            </Container>
-          </MainContainer>
-        </AppHeader>
-      </AppContainer>
-    </>
+                <div className={"recent-posts"}>
+                  <div>
+                    <RecentPosts />
+                  </div>
+                </div>
+                <footer>
+                  <div className={"child-footer"}>
+                    <Footer />
+                  </div>
+                  <div className={"scroll-but"}>
+                    <ScrollButton />
+                  </div>
+                </footer>
+              </div>
+            </aside>
+          </Container>
+        </MainContainer>
+      </AppHeader>
+    </AppContainer>
   );
 };
 

@@ -1,9 +1,10 @@
-import { CommunityContainer } from "./CommunityCard.styled";
+import { CommunityContainer,ViewAllBtn } from "./CommunityCard.styled";
 import { useNavigate } from "react-router-dom";
 import CommunityCardItem from "Components/CommunityCardItem/CommunityCardItem";
 import randomCategories from "Services/randomCategories";
 import { Link } from "react-router-dom";
 import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useEffect } from "react";
 
 /**
@@ -13,6 +14,8 @@ import { useEffect } from "react";
  * @returns {React.Component}
  */
 const TopCommunities = () => {
+  // authorization's user
+  const auth = useAuth();
   // Fetch communities
   // Call useFetchFunction hook to handle states: loading, error, data
   // Loading: Boolean to tell if the request has been sent, or it's still loading
@@ -20,7 +23,7 @@ const TopCommunities = () => {
   // Data: the response data
   const [communityList, error, isLoading, dataFetch] = useFetchFunction();
   useEffect(() => {
-    randomCategories(dataFetch);
+    randomCategories(dataFetch, auth);
   }, []);
 
   const navigate = useNavigate();
@@ -49,10 +52,12 @@ const TopCommunities = () => {
             />
           );
         })}
+      <ViewAllBtn>
+        <button onClick={() => navigate("/category/*")}>
+          View All
+        </button>
+      </ViewAllBtn>
 
-      <button onClick={() => navigate("/category/*")} className={"view-all"}>
-        View All
-      </button>
       <div className={"row-but"}>
         <button className={"sub-but"}>New You</button>
         <button className={"sub-but"}>Gaming</button>

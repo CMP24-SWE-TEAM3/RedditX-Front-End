@@ -6,6 +6,7 @@ import { BsArrowUpRightCircle } from "react-icons/bs";
 import { IoIosLink } from "react-icons/io";
 import trendingSearch from "Services/trendingSearch";
 import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useEffect } from "react";
 
 /**
@@ -14,10 +15,13 @@ import { useEffect } from "react";
  * @return {React.Component}
  */
 const SearchDropDown = ({ show }) => {
+  // authorization user
+  const auth = useAuth();
+
   // Fetch trending posts
   const [trendingPostList, error, loading, dataFetch] = useFetchFunction();
   useEffect(() => {
-    trendingSearch(dataFetch);
+    trendingSearch(dataFetch,auth);
   }, []);
 
   return (

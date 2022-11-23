@@ -13,6 +13,7 @@ import Tooltip from "react-bootstrap/Tooltip";
 import { Link } from "react-router-dom";
 import pushNotifications from "Services/pushNotifications";
 import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 /**
  * Component that displays notifications about changes in the state of the application
@@ -33,6 +34,9 @@ const NotificationButton = () => {
   // ref the event listener
   const ref = useRef(null);
   const wrapperRef = useRef(null);
+  // authorization user 
+  const auth = useAuth();
+
 
   /**
    * Function that is called when the state of the application changes (when clicks outside of notification's buttons)
@@ -79,7 +83,7 @@ const NotificationButton = () => {
   // Data: the response data
   const [notificationList, error, isLoading, dataFetch] = useFetchFunction();
   useEffect(() => {
-    pushNotifications(dataFetch)
+    pushNotifications(dataFetch,auth)
   }, []);
 
   return (

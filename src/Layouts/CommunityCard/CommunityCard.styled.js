@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import web from 'Assets/Images/banner-background.png';
+import web from "Assets/Images/banner-background.png";
 
 export const CommunityContainer = styled.div`
-  & .cover {
+  .cover {
     background-image: url(${web});
     color: black;
     height: 80px;
@@ -11,16 +11,16 @@ export const CommunityContainer = styled.div`
     background-repeat: no-repeat;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-    position: relative
+    position: relative;
   }
 
   .filter {
-    background: linear-gradient(0deg, rgba(0, 0, 0, .7) 0, transparent);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0, transparent);
     width: 100%;
-    height: 100%;;
+    height: 100%;
   }
 
-  & .sub-but {
+  .sub-but {
     position: relative;
     background-color: ${({ theme }) => theme.background.post_background};
     border: 1px solid transparent;
@@ -45,7 +45,7 @@ export const CommunityContainer = styled.div`
     }
   }
 
-  & .row-but {
+  .row-but {
     display: flex;
     flex-flow: row wrap;
     justify-content: start;
@@ -57,11 +57,9 @@ export const CommunityContainer = styled.div`
   border-radius: 4px;
   box-shadow: 0 2px 4px 0 rgb(0 0 0 / 6%);
   margin-bottom: 16px;
-
-  //max-width: 100%;
   width: 310px;
 
-  & .title {
+  .title {
     font-size: 16px;
     line-height: 20px;
     color: ${({ theme }) => theme.color.muted};
@@ -69,7 +67,7 @@ export const CommunityContainer = styled.div`
     font-weight: 500;
   }
 
-  & .more {
+  .more {
     font-size: 14px;
     line-height: 18px;
     color: ${({ theme }) => theme.color.link};
@@ -77,7 +75,7 @@ export const CommunityContainer = styled.div`
     font-weight: 500;
   }
 
-  & .more a {
+  .more a {
     font-weight: 500;
     text-decoration: none;
   }
@@ -99,7 +97,7 @@ export const CommunityContainer = styled.div`
     padding: 0;
   }
 
-  & h2 {
+  h2 {
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;
@@ -109,15 +107,19 @@ export const CommunityContainer = styled.div`
     position: absolute;
   }
 
-  & h2 a {
+  h2 a {
     color: ${({ theme }) => theme.background.primary};
   }
 
   @media (max-width: 960px) {
     display: none;
   }
+`;
 
-  & .view-all {
+export const ViewAllBtn = styled.div`
+  padding: 12px;
+
+  button {
     color: ${({ theme }) => theme.background.primary};
     border-color: ${({ theme }) => theme.color.secondary};
     background-color: ${({ theme }) => theme.color.secondary};
@@ -136,9 +138,10 @@ export const CommunityContainer = styled.div`
     min-width: 32px;
     margin-bottom: 10px;
 
-    :hover, :active {
-      background-color: ${({ theme }) => theme.background.hover_background_button_blue};
+    :hover,
+    :active {
+      background-color: ${({ theme }) =>
+        theme.background.hover_background_button_blue};
     }
   }
-
-`
+`;
