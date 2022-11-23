@@ -22,9 +22,9 @@ const TopCommunities = () => {
   // Error: Contains error message when the request is failed
   // Data: the response data
   const [communityList, error, isLoading, fetchData] = useFetchFunction();
-  useEffect(() => {
-    randomCategories(fetchData, auth);
-  }, []);
+  // useEffect(() => {
+  //   randomCategories(fetchData, auth);
+  // }, []);
 
   const navigate = useNavigate();
   return (

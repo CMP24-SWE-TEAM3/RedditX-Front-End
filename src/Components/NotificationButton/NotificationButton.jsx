@@ -81,10 +81,10 @@ const NotificationButton = () => {
   // Error: Contains error message when the request is failed
   // Data: the response data
   const [notificationList, error, isLoading, fetchData] = useFetchFunction();
-  useEffect(() => {
-    pushNotifications(fetchData, auth);
-  }, []);
-  console.log(notificationList);
+  // useEffect(() => {
+  //   pushNotifications(fetchData, auth);
+  // }, []);
+  // console.log(notificationList);
 
   return (
     <Container ref={ref}>

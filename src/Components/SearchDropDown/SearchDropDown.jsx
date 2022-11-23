@@ -20,9 +20,9 @@ const SearchDropDown = ({ show }) => {
 
   // Fetch trending posts
   const [trendingPostList, error, loading, fetchData] = useFetchFunction();
-  useEffect(() => {
-    trendingSearch(fetchData,auth);
-  }, []);
+  // useEffect(() => {
+  //   trendingSearch(fetchData,auth);
+  // }, []);
 
   return (
     <SearchDropDownStyled show={show} autoClose={"outside"}>
