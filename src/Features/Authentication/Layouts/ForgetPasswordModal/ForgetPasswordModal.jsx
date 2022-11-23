@@ -120,7 +120,7 @@ const ForgetPasswordModal = ({
     if (wantSubmit) {
       forgetPasswordApi(dataFetch, {
         email: email,
-        username: userName,
+        username: "t2_"+userName,
         operation: false,
       });
 
