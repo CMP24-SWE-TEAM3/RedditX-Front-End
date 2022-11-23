@@ -34,9 +34,8 @@ const NotificationButton = () => {
   // ref the event listener
   const ref = useRef(null);
   const wrapperRef = useRef(null);
-  // authorization user 
+  // authorization user
   const auth = useAuth();
-
 
   /**
    * Function that is called when the state of the application changes (when clicks outside of notification's buttons)
@@ -81,10 +80,11 @@ const NotificationButton = () => {
   // Loading: Boolean to tell if the request has been sent, or it's still loading
   // Error: Contains error message when the request is failed
   // Data: the response data
-  const [notificationList, error, isLoading, dataFetch] = useFetchFunction();
+  const [notificationList, error, isLoading, fetchData] = useFetchFunction();
   useEffect(() => {
-    pushNotifications(dataFetch,auth)
+    pushNotifications(fetchData, auth);
   }, []);
+  console.log(notificationList);
 
   return (
     <Container ref={ref}>
@@ -133,7 +133,7 @@ const NotificationButton = () => {
               </Link>
             </span>
           </Popover.Header>
-          <Popover.Body data-testid={'notificationListId'}>
+          <Popover.Body data-testid={"notificationListId"}>
             <div className={"pop"} />
             <div className={"content"}>
               {notificationList.map((comment, index) => {

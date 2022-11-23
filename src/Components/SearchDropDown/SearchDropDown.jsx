@@ -19,9 +19,9 @@ const SearchDropDown = ({ show }) => {
   const auth = useAuth();
 
   // Fetch trending posts
-  const [trendingPostList, error, loading, dataFetch] = useFetchFunction();
+  const [trendingPostList, error, loading, fetchData] = useFetchFunction();
   useEffect(() => {
-    trendingSearch(dataFetch,auth);
+    trendingSearch(fetchData,auth);
   }, []);
 
   return (

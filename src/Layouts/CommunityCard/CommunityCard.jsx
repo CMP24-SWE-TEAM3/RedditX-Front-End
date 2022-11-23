@@ -1,4 +1,4 @@
-import { CommunityContainer,ViewAllBtn } from "./CommunityCard.styled";
+import { CommunityContainer, ViewAllBtn } from "./CommunityCard.styled";
 import { useNavigate } from "react-router-dom";
 import CommunityCardItem from "Components/CommunityCardItem/CommunityCardItem";
 import randomCategories from "Services/randomCategories";
@@ -21,9 +21,9 @@ const TopCommunities = () => {
   // Loading: Boolean to tell if the request has been sent, or it's still loading
   // Error: Contains error message when the request is failed
   // Data: the response data
-  const [communityList, error, isLoading, dataFetch] = useFetchFunction();
+  const [communityList, error, isLoading, fetchData] = useFetchFunction();
   useEffect(() => {
-    randomCategories(dataFetch, auth);
+    randomCategories(fetchData, auth);
   }, []);
 
   const navigate = useNavigate();
@@ -53,9 +53,7 @@ const TopCommunities = () => {
           );
         })}
       <ViewAllBtn>
-        <button onClick={() => navigate("/category/*")}>
-          View All
-        </button>
+        <button onClick={() => navigate("/category/*")}>View All</button>
       </ViewAllBtn>
 
       <div className={"row-but"}>
