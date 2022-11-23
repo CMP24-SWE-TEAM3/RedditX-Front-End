@@ -97,21 +97,27 @@ const CommunityItem = ({
     }
   }
   // console.log(CommunitiesSub2);
+  var abbreviate = require("number-abbreviate");
   return (
     <Container href="#" title="comm">
       <Flex>
-        <Img
-          src={require(`../../Assets/${communityIcon}`)}
-          alt="Subreddit Icon"
-        />
+        {/* {communityIcon && (
+          <img src={require(`../../Assets/${communityIcon}`)} alt="" />
+        )} */}
+        {communityIcon && (
+          <Img
+            src={require(`../../Assets/${communityIcon}`)}
+            alt="Subreddit Icon"
+          />
+        )}
         <CommunityInfo>
           <CommunityMainInfo>
             <CommunityTitle className="community-name">
-              r/{communityName}
+              r/{communityName.substring(3)}
             </CommunityTitle>
             <CommunityMembers>
               <span>•</span>
-              {membersCount}k Members
+              {abbreviate(membersCount, 1)} Members
             </CommunityMembers>
           </CommunityMainInfo>
           <CommunityDescription>{communityDescription}</CommunityDescription>

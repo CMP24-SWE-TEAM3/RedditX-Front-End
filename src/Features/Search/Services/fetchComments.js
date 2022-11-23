@@ -4,14 +4,15 @@ import axios from "API/axios";
  *
  * @param {Function} fetchFunction - The function to make the request
  */
-const fetchComments = (fetchFunction) => {
+const fetchComments = (fetchFunction, auth) => {
   fetchFunction({
     axiosInstance: axios,
     method: "GET",
-    url: "http://localhost:8000/CommentList",
+    url: "/api/search/r?type=comment&q=xttexttex",
     requestConfig: {
       headers: {
         "Content-Language": "en-US",
+        Authorization: ` Bearer ${auth.getToken()}`,
       },
     },
   });

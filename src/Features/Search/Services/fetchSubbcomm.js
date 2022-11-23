@@ -4,7 +4,7 @@ import axios from "API/axios";
  *
  * @param {Function} fetchFunction - The function to make the request
  */
-const fetchSubbcomm = (fetchFunction) => {
+const fetchSubbcomm = (fetchFunction, auth) => {
   fetchFunction({
     axiosInstance: axios,
     method: "GET",
@@ -12,6 +12,7 @@ const fetchSubbcomm = (fetchFunction) => {
     requestConfig: {
       headers: {
         "Content-Language": "en-US",
+        // Authorization: ` Bearer ${auth.getToken()}`,
       },
     },
   });

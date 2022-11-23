@@ -17,22 +17,22 @@ import useFetch from "Hooks/useFetch";
  */
 
 const CommunitiesPage = ({ CommunityList, CommunitiesSub2 }) => {
-  if (CommunitiesSub2 && CommunityList) {
+  if (CommunityList.results) {
     return (
       <Container>
         <OuterContainer>
           <InnerContainer>
             <List>
-              {CommunityList.map((Community) => (
+              {CommunityList.results.map((Community) => (
                 <CommunityItem
-                  communityIcon={Community.communityIcon}
-                  key={Community.communityID}
-                  communityID={Community.communityID}
-                  communityDescription={Community.communityDescription}
-                  membersCount={Community.membersCount}
-                  communityName={Community.communityName}
+                  communityIcon={Community.icon}
+                  key={Community._id}
+                  communityID={Community._id}
+                  communityDescription={Community.description}
+                  membersCount={Community.membersCnt}
+                  communityName={Community._id}
                   isJoined={CommunitiesSub2.find((element) => {
-                    return element.id === Community.communityID;
+                    return element.id === Community._id;
                   })}
                 />
               ))}
