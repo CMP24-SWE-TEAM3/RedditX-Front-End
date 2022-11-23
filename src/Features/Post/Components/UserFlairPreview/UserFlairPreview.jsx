@@ -19,6 +19,7 @@ import {
 // API services
 import getPostFlairs from "Features/Post/Services/getFlairs";
 import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 /**
  * component that preview your subreddit flair
@@ -49,9 +50,10 @@ const UserFlairPreview = () => {
   //   },
   // });
   // Fetch flairs
+  const auth = useAuth();
   const [flairs, error, isLoading, fetchData] = useFetchFunction();
   useEffect(() => {
-    getPostFlairs(fetchData);
+    getPostFlairs(fetchData, auth);
   }, []);
 
   /**

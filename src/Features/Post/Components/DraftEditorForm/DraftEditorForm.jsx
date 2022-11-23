@@ -19,6 +19,7 @@ import {
 // API services
 import getPostFlairs from "Features/Post/Services/getFlairs";
 import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 // Import hooks
 import { useState, useRef, useEffect } from "react";
@@ -77,10 +78,14 @@ const DraftEditorForm = ({ submitPost }) => {
   //   },
   // });
   // Fetch flairs
+  const auth = useAuth();
   const [flairs, error, isLoading, fetchData] = useFetchFunction();
   useEffect(() => {
-    getPostFlairs(fetchData);
-  }, []);
+    console.log("submitDestination", submitDestination);
+    if (submitDestination)
+      getPostFlairs(fetchData, submitDestination._id, auth);
+  }, [submitDestination]);
+  console.log("flairs", flairs);
   /**
    * Handle title change
    *
@@ -155,7 +160,8 @@ const DraftEditorForm = ({ submitPost }) => {
         <SubmitButtons>
           {/* <SaveDraftButton variant="light">Save Draft</SaveDraftButton> */}
           <PostButton
-            disabled={!submitDestination || !createPostTitle}
+            // disabled={!submitDestination || !createPostTitle}
+            disabled={!createPostTitle}
             onClick={submitForm}
             id="post"
           >

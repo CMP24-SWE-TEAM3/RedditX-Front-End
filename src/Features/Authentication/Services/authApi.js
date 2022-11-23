@@ -21,7 +21,7 @@ export const loginApi = (dataFetch, objectData) => {
         axiosInstance: axios,
         method: "POST",
         url: "/api/auth/login",
-        requestConfig: objectData,
+        requestConfig: { data: objectData },
       });
       return true;
     }
@@ -52,7 +52,7 @@ export const signupApi = (dataFetch, objectData) => {
         axiosInstance: axios,
         method: "post",
         url: "/api/auth/signup",
-        requestConfig: objectData,
+        requestConfig: { data: objectData },
       });
       return true;
     }
@@ -76,12 +76,12 @@ export const loginWithGoogle = (dataFetch, objectData) => {
       objectData.type === "gmail" &&
       typeof objectData.googleOrFacebookToken === "string"
     ) {
-     // console.log(objectData.googleOrFacebookToken);
+      // console.log(objectData.googleOrFacebookToken);
       dataFetch({
         axiosInstance: axios,
         method: "post",
         url: "/api/auth/login",
-        requestConfig: objectData,
+        requestConfig: { data: objectData },
       });
       return true;
     }
@@ -109,7 +109,7 @@ export const loginWithFacebook = (dataFetch, objectData) => {
         axiosInstance: axios,
         method: "post",
         url: "/api/auth/login",
-        requestConfig: objectData,
+        requestConfig: { data: objectData },
       });
       return true;
     }
@@ -137,7 +137,7 @@ export const signupWithGoogle = (dataFetch, objectData) => {
         axiosInstance: axios,
         method: "post",
         url: "/api/auth/signup",
-        requestConfig: objectData,
+        requestConfig: { data: objectData },
       });
       return true;
     }
@@ -165,7 +165,7 @@ export const signupWithFacebook = (dataFetch, objectData) => {
         axiosInstance: axios,
         method: "post",
         url: "/api/auth/signup",
-        requestConfig: objectData,
+        requestConfig: { data: objectData },
       });
       return true;
     }
@@ -213,7 +213,7 @@ export const forgetUserNameApi = (dataFetch, objectData) => {
         axiosInstance: axios,
         method: "post",
         url: "/api/auth/forget",
-        requestConfig: objectData,
+        requestConfig: { data: objectData },
       });
 
       return true;
@@ -244,7 +244,7 @@ export const forgetPasswordApi = (dataFetch, objectData) => {
         axiosInstance: axios,
         method: "post",
         url: "/api/auth/forget",
-        requestConfig: objectData,
+        requestConfig: { data: objectData },
       });
 
       return true;
@@ -277,7 +277,7 @@ export const resetForgottenPassword = (dataFetch, myToken, objectData) => {
         axiosInstance: axios,
         method: "post",
         url: apiUrl,
-        requestConfig: objectData,
+        requestConfig: { data: objectData },
       });
 
       return true;

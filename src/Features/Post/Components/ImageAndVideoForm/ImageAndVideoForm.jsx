@@ -25,6 +25,7 @@ import { useCreatePostTitle } from "Features/Post/Contexts/createPostTitle";
 // API services
 import getPostFlairs from "Features/Post/Services/getFlairs";
 import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 // Import contexts
 import { useCreatePostAttachments } from "Features/Post/Contexts/createPostAttachments";
@@ -72,9 +73,12 @@ const ImageAndVideoForm = ({ submitPost }) => {
   // });
   // Fetch flairs
   const [flairs, error, isLoading, fetchData] = useFetchFunction();
+  const auth = useAuth();
   useEffect(() => {
-    getPostFlairs(fetchData);
-  }, []);
+    console.log("submitDestination", submitDestination);
+    if (submitDestination) getPostFlairs(fetchData, submitDestination._id, auth);
+  }, [submitDestination]);
+  console.log("flairs", flairs);
   /**
    * Handle title change
    *
@@ -142,7 +146,8 @@ const ImageAndVideoForm = ({ submitPost }) => {
         <SubmitButtons>
           <CancelButton variant="light">Cancel</CancelButton>
           <PostButton
-            disabled={!submitDestination || !createPostTitle}
+            // disabled={!submitDestination || !createPostTitle}
+            disabled={!createPostTitle}
             onClick={submitForm}
             id="post"
           >
