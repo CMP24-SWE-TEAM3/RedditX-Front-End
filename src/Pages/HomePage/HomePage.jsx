@@ -21,9 +21,37 @@ import Post from "Features/Post/Pages/Post/Post";
  *
  * @returns {React.Component} returns an instance of HomePage with a list of layouts created
  */
+let recentPost = [
+  {
+    id: "1",
+    description: "new news in CUFE",
+    points: "10",
+    comments: "4",
+    hours: "7",
+  },
+  {
+    id: "2",
+    description: "new news in reddit",
+    points: "9",
+    comments: "2",
+    hours: "11",
+  },
+  {
+    id: "3",
+    description: "announcements updated in reddit",
+    points: "5",
+    comments: "7",
+    hours: "1",
+  },
+];
 
-const HomePage = ({ handleToggleTheme, theme }) => {
+const HomePage = () => {
   const [showPost, setShowPost] = useState(false);
+  // TODO: replace dummy data with post data
+  // handle recent posts to append and delete from local storage
+  const handleRecentPosts = () => {
+    localStorage.setItem("RecentPosts", JSON.stringify(recentPost));
+  };
   return (
     <AppContainer>
       <AppHeader>
@@ -33,7 +61,12 @@ const HomePage = ({ handleToggleTheme, theme }) => {
             <div className={"content-posts"}>
               <CreatePost />
               <PopularPosts />
-              <div onClick={() => setShowPost(true)}>
+              <div
+                onClick={() => {
+                  setShowPost(true);
+                  handleRecentPosts();
+                }}
+              >
                 <PostShape />
               </div>
               <Post show={showPost} setShow={setShowPost} />

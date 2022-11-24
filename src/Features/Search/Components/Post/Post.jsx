@@ -13,29 +13,43 @@ import { ContainerPost } from "./Post.styled";
 
 const PostItem = ({ post }) => {
   if (post) {
+    // console.log(post);
     const postBody = {
       bodyImage: post.attachments[0],
       bodyText: post.text,
       flair: post.flairText,
+      flairColor: post.flairTextColor,
+      flairBackgroundColor: post.flairBackGround,
+      flairID: post.flairID,
     };
     const postFooter = {
       upVotes: post.votesCount,
-      Comments: post.commentsNumber,
+      Comments: post.insightCnt,
     };
     const postHeader = {
-      headerImage: post.attachments[1],
-      communityName: post.communityName,
-      userName: post.userName,
-      time: "5 days ago",
-      flair: {
-        flairText: post.flairText,
-        flairColor: "green",
-        flairBackgroundColor: "red",
-      },
+      headerImage: post.attachments[0],
+      communityName: post.communityID,
+      communityID: post.communityID,
+      userName: post.userID,
+      userID: post.userID,
+      time: post.createdAt,
+
       nsfw: post.nsfw,
     };
+    let images = post.attachments.length;
+    let isThereImage = true;
+    if (images === 0) {
+      isThereImage = false;
+    }
+
+    // console.log(isThereImage);
     return (
-      <ContainerPost pimage={postBody.bodyImage} title="post">
+      <ContainerPost
+        pimage={postBody.bodyImage}
+        flairColor={postBody.flairColor}
+        flairBackgroundColor={postBody.flairBackgroundColor}
+        title="post"
+      >
         <div className="post-outline">
           <PostHeader postheader={postHeader} />
           <div className="post-body">
@@ -51,13 +65,21 @@ const PostItem = ({ post }) => {
                 {postBody.flair}
               </span>
             </div>
-            <div className="post-image">
-              <div className="img">
-                <Link to="#">
-                  <div className="image"></div>
-                </Link>
+            {isThereImage && (
+              <div className="post-image">
+                <div className="img">
+                  <Link to="#">
+                    <div className="image">
+                      <img
+                        src={require(`../../Assets/CommunityImage.png`)}
+                        alt="userImage"
+                        className="image"
+                      />
+                    </div>
+                  </Link>
+                </div>
               </div>
-            </div>
+            )}
           </div>
           <PostFooter postfooter={postFooter} />
         </div>

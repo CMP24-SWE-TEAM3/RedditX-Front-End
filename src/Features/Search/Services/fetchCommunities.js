@@ -4,14 +4,16 @@ import axios from "API/axios";
  *
  * @param {Function} fetchFunction - The function to make the request
  */
-const fetchCommunities = (fetchFunction) => {
+
+const fetchCommunities = (fetchFunction, auth) => {
   fetchFunction({
     axiosInstance: axios,
     method: "GET",
-    url: "http://localhost:8000/communityList",
+    url: "/api/search/r?type=sr&q=image",
     requestConfig: {
       headers: {
         "Content-Language": "en-US",
+        Authorization: ` Bearer ${auth.getToken()}`,
       },
     },
   });

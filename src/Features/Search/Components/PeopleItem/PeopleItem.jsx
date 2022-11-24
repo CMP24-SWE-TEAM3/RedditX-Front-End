@@ -89,16 +89,21 @@ const PeopleItem = ({
       setBtnContent("Following");
     }
   }
+  var abbreviate = require("number-abbreviate");
   return (
     <Container href="#" title="people">
       <Flex>
-        <Img src={require(`../../Assets/${avatar}`)} alt="People Icon" />
+        {avatar && (
+          <Img src={require(`../../Assets/${avatar}`)} alt="People Icon" />
+        )}
         <PeopleInfo>
           <PeopleMainInfo>
-            <PeopleTitle className="user-name">{username.slice(1)}</PeopleTitle>
+            <PeopleTitle className="user-name">
+              {username.substring(3)}
+            </PeopleTitle>
             <PeopleKarma>
               <span>•</span>
-              {totalKarmas}k Karma
+              {abbreviate(totalKarmas, 1)} Karma
             </PeopleKarma>
           </PeopleMainInfo>
           <PeopleDescription>{about}</PeopleDescription>

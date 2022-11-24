@@ -18,7 +18,7 @@ const ResponsiveNavbar = () => {
   useEffect(() => {
     // console.log(props.act);
     const pathname = window.location.pathname;
-    console.log(pathname);
+    // console.log(pathname);
     const firstTwo = pathname.substring(1);
     const secondTwo = firstTwo.charAt(7).toUpperCase() + firstTwo.slice(8);
     setTitle(secondTwo);

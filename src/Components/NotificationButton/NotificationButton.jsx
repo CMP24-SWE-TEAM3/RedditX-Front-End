@@ -81,10 +81,9 @@ const NotificationButton = () => {
   // Error: Contains error message when the request is failed
   // Data: the response data
   const [notificationList, error, isLoading, fetchData] = useFetchFunction();
-  // useEffect(() => {
-  //   pushNotifications(fetchData, auth);
-  // }, []);
-  // console.log(notificationList);
+  useEffect(() => {
+    pushNotifications(fetchData, auth);
+  }, []);
 
   return (
     <Container ref={ref}>
@@ -136,39 +135,43 @@ const NotificationButton = () => {
           <Popover.Body data-testid={"notificationListId"}>
             <div className={"pop"} />
             <div className={"content"}>
-              {notificationList.map((comment, index) => {
-                return (
-                  <i className={"content-i"} key={index}>
-                    <Link
-                      className={"content-a"}
-                      href={
-                        "https://www.reddit.com/r/Eln2aa4yn/comments/yi1rd4/ccccc/"
-                      }
-                    >
-                      <span className={"a-span"}>
-                        <img src={link} alt={"community-name"} />
-                      </span>
-                      <span className={"span-info"}>
-                        <span className={"child"}>
-                          <span className={"sub-child"}>
-                            <span className={"info"} key={comment.id}>
-                              Now in {comment.name}
-                            </span>
-                            <span className={"dot"}>.</span>
-                            <span className={"time"}>{comment.time}h</span>
-                          </span>
-                          <button className={"dot"}>
-                            <i>
-                              <BsThreeDots />
-                            </i>
-                          </button>
+              {notificationList &&
+                notificationList.length != 0 &&
+                notificationList.notifications.map((comment, index) => {
+                  return (
+                    <i className={"content-i"} key={index}>
+                      <Link
+                        className={"content-a"}
+                        href={
+                          "https://www.reddit.com/r/Eln2aa4yn/comments/yi1rd4/ccccc/"
+                        }
+                      >
+                        <span className={"a-span"}>
+                          <img src={link} alt={"community-name"} />
                         </span>
-                        <span className={"info-child"}>{comment.message}</span>
-                      </span>
-                    </Link>
-                  </i>
-                );
-              })}
+                        <span className={"span-info"}>
+                          <span className={"child"}>
+                            <span className={"sub-child"}>
+                              <span className={"info"} key={comment._id}>
+                                Now {comment.title}
+                              </span>
+                              <span className={"dot"}>.</span>
+                              <span className={"time"}>
+                                {comment.createdAt}h
+                              </span>
+                            </span>
+                            <button className={"dot"}>
+                              <i>
+                                <BsThreeDots />
+                              </i>
+                            </button>
+                          </span>
+                          <span className={"info-child"}>{comment.text}</span>
+                        </span>
+                      </Link>
+                    </i>
+                  );
+                })}
             </div>
           </Popover.Body>
 

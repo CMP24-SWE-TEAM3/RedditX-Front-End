@@ -10,20 +10,21 @@ import { PeopleContainer } from "./People.styled";
  * @returns {React.Component}
  */
 const People = ({ PeopleList, PeopleFollow }) => {
-  if (PeopleList && PeopleFollow) {
+  if (PeopleList.results) {
+    console.log(PeopleList.results);
     return (
       <PeopleContainer>
         <p className="title">People</p>
-        {PeopleList.slice(0, 5).map((People) => (
+        {PeopleList.results.map((People) => (
           <PeopleCardItem
             avatar={People.avatar}
-            key={People.userID}
-            userID={People.userID}
+            key={People._id}
+            userID={People._id}
             about={People.about}
-            totalKarmas={People.totalKarmas}
-            username={People.username}
+            totalKarmas={People.karma}
+            username={People._id}
             isFollow={PeopleFollow.find((element) => {
-              return element.id === People.userID;
+              return element.id === People._id;
             })}
           />
         ))}

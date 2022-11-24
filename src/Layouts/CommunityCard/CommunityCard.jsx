@@ -22,9 +22,10 @@ const TopCommunities = () => {
   // Error: Contains error message when the request is failed
   // Data: the response data
   const [communityList, error, isLoading, fetchData] = useFetchFunction();
-  // useEffect(() => {
-  //   randomCategories(fetchData, auth);
-  // }, []);
+  useEffect(() => {
+    randomCategories(fetchData, auth);
+  }, []);
+  console.log(communityList);
 
   const navigate = useNavigate();
   return (
@@ -40,13 +41,14 @@ const TopCommunities = () => {
           </h2>
         </div>
       </div>
-      {!isLoading &&
-        communityList.map((community, index) => {
+      {communityList &&
+        communityList.length != 0 &&
+        communityList.communities.map((community, index) => {
           return (
             <CommunityCardItem
               key={community.id}
-              srIcon={community.srIcon}
-              community={community.name}
+              srIcon={community.icon}
+              community={community.description}
               communityId={index + 1}
               onClick={() => navigate("/subreddit")}
             />

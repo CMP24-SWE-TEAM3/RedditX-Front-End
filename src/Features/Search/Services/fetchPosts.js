@@ -4,14 +4,15 @@ import axios from "API/axios";
  *
  * @param {Function} fetchFunction - The function to make the request
  */
-const fetchPosts = (fetchFunction) => {
+const fetchPosts = (fetchFunction, auth) => {
   fetchFunction({
     axiosInstance: axios,
     method: "GET",
-    url: "http://localhost:8000/posts",
+    url: "/api/search/r?type=post&q=text",
     requestConfig: {
       headers: {
         "Content-Language": "en-US",
+        Authorization: ` Bearer ${auth.getToken()}`,
       },
     },
   });
