@@ -15,14 +15,10 @@ import PostShape from "Features/Post/Layouts/PostShape/PostShape";
 import RulesWidget from "Features/Post/Components/RulesWidget/RulesWidget";
 import AboutPost from "Features/Post/Components/AboutPost/AboutPost";
 import ModeratorWidget from "Features/Post/Components/ModeratorWidget/ModeratorWidget";
-import ScrollButton from "Features/Post/Components/ScrollButton/ScrollButton";
-// import RelatedCommunities from "Features/Post/Components/RelatedCommunities/RelatedCommunities";
+import RelatedCommunities from "Features/Post/Components/RelatedCommunities/RelatedCommunities";
 import CommentDraftEditor from "Features/Post/Components/CommentDarftEditor/CommentDarftEditor";
 import { useState, useEffect } from "react";
 import Comment from "Features/Post/Components/Comment/Comment";
-import { useNavigate } from "react-router-dom";
-// import TopCommunities from "../../Components/TopCommunities/TopCommunities";
-
 /**
  *
  * Component that displays post with comments , likes displayed on show modal
@@ -90,7 +86,7 @@ const Post = ({ show, setShow }) => {
       <NavigationPost setHandleShowModal={setShow} />
       <ModalBodyContainer>
         <PostContent>
-          <PostShape fullPost={true}/>
+          <PostShape fullPost={true} />
           <UserNameContainer>
             Comment as <UserName>Abdelrahman_Hamza</UserName>
           </UserNameContainer>
@@ -112,10 +108,8 @@ const Post = ({ show, setShow }) => {
           <AsidePostChild>
             <AboutPost />
             <RulesWidget />
-            {/*<RelatedCommunities/>*/}
-            {/*<TopCommunities/>*/}
+            <RelatedCommunities />
             <ModeratorWidget />
-            <ScrollButton />
           </AsidePostChild>
         </AsidePost>
       </ModalBodyContainer>
