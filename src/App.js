@@ -55,6 +55,7 @@ import Navigation from "Layouts/Navigation/Navigation";
 import LogInVerticalModal from "Features/Authentication/Layouts/LogInVerticalModal/LogInVerticalModal";
 import SignUpVerticalModal from "Features/Authentication/Layouts/SignUpVerticalModal/SignUpVerticalModal";
 import RequireAuth from "Features/Authentication/Contexts/RequireAuth";
+import NotFound from "Pages/NotFound/NotFound";
 
 /**
  * The main app of our application it handles routing
@@ -223,6 +224,7 @@ function App() {
               path="user/reset-password/:token"
               element={<NewPasswordPage />}
             />
+            <Route path="*" element={<NotFound />} />
             <Route
               path="post"
               element={
