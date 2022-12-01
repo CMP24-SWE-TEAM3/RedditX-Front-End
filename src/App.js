@@ -54,6 +54,7 @@ import DummyPage from "Pages/DummyPage/DummyPage";
 import Navigation from "Layouts/Navigation/Navigation";
 import LogInVerticalModal from "Features/Authentication/Layouts/LogInVerticalModal/LogInVerticalModal";
 import SignUpVerticalModal from "Features/Authentication/Layouts/SignUpVerticalModal/SignUpVerticalModal";
+import RequireAuth from "Features/Authentication/Contexts/RequireAuth";
 
 /**
  * The main app of our application it handles routing
@@ -127,7 +128,7 @@ function App() {
             <Route
               path="subreddit"
               element={
-                <>
+                <RequireAuth>
                   <Navigation
                     toggleMode={handleToggleTheme}
                     theme={theme.id}
@@ -139,13 +140,13 @@ function App() {
                     setModalAfterSignUp={setModalAfterSignUp}
                   />
                   <SubReddit />
-                </>
+                </RequireAuth>
               }
             />
             <Route
               path="category/:categoryType/*"
               element={
-                <>
+                <RequireAuth>
                   <Navigation
                     toggleMode={handleToggleTheme}
                     theme={theme.id}
@@ -157,13 +158,13 @@ function App() {
                     setModalAfterSignUp={setModalAfterSignUp}
                   />
                   <CommunityLeaderBoard />
-                </>
+                </RequireAuth>
               }
             />
             <Route
               path="index-page/:indexLetter/*"
               element={
-                <>
+                <RequireAuth>
                   <Navigation
                     toggleMode={handleToggleTheme}
                     theme={theme.id}
@@ -175,13 +176,13 @@ function App() {
                     setModalAfterSignUp={setModalAfterSignUp}
                   />
                   <IndexPage />
-                </>
+                </RequireAuth>
               }
             />
             <Route
               path="search/*"
               element={
-                <>
+                <RequireAuth>
                   <Navigation
                     toggleMode={handleToggleTheme}
                     theme={theme.id}
@@ -193,13 +194,13 @@ function App() {
                     setModalAfterSignUp={setModalAfterSignUp}
                   />
                   <Search />
-                </>
+                </RequireAuth>
               }
             />
             <Route
               path="submit"
               element={
-                <>
+                <RequireAuth>
                   <Navigation
                     toggleMode={handleToggleTheme}
                     theme={theme.id}
@@ -211,7 +212,7 @@ function App() {
                     setModalAfterSignUp={setModalAfterSignUp}
                   />
                   <CreatePost />
-                </>
+                </RequireAuth>
               }
             />
             <Route path="login" element={<LogInPage />} />

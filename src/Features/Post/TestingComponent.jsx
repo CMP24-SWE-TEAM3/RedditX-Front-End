@@ -24,15 +24,14 @@ import { useEffect } from "react";
 
 const AuthTesting = ({ children }) => {
   const auth = useAuth();
-  useEffect(() => {
-    auth.login({
-      expiresIn: 86400,
-      token:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbFR5cGUiOiJiYXJlIGVtYWlsIiwidXNlcm5hbWUiOiJ0Ml9ob21lIiwiaWF0IjoxNjY5OTI0MDEzLCJleHAiOjE2NzAzNTYwMTN9.FDa59vJi5gWy4dQVkEtgyCfm3Pp2BtHkPz0_AfNVKgY",
-      username: "t2_home",
-    });
-  }, []);
-
+  // useEffect(() => {
+  //   auth.login({
+  //     expiresIn: 86400,
+  //     token:
+  //       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbFR5cGUiOiJiYXJlIGVtYWlsIiwidXNlcm5hbWUiOiJ0Ml9ob21lIiwiaWF0IjoxNjY5OTI0MDEzLCJleHAiOjE2NzAzNTYwMTN9.FDa59vJi5gWy4dQVkEtgyCfm3Pp2BtHkPz0_AfNVKgY",
+  //     username: "t2_home",
+  //   });
+  // },[]);
   return (
     <BrowserRouter>
       <ThemeProvider theme={{ ...defaultTheme, ...lightTheme }}>
