@@ -1,14 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Drop Down Menu Component this is a test for Drop Down Menu 1`] = `
-<styled.div>
-  <DropdownMenu
-    data-testId="dropDownMenuId"
-    flip={true}
-    id="drop-down-menu-home"
-    show={true}
-  >
-    <DropDownItem />
-  </DropdownMenu>
-</styled.div>
+<Styled(DropdownMenu)
+  data-testid="dropDownMenuId"
+>
+  <DropDownItem />
+</Styled(DropdownMenu)>
 `;

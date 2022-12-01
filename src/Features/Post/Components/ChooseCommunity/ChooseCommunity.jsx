@@ -69,9 +69,7 @@ const ChooseCommunity = () => {
   useEffect(() => {
     getCommunitiesList(fetchData, auth);
   }, []);
-  useEffect(() => {
-    console.log("communityList", communityList);
-  }, [communityList]);
+
   console.log("communityList", communityList);
   return (
     <Container>

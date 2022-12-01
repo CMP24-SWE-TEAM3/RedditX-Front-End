@@ -1,8 +1,13 @@
-import Enzyme, { shallow } from "enzyme";
+import { render, screen, fireEvent } from "@testing-library/react";
+import TestingComponent from "Features/Post/TestingComponent";
 import CommunityOptions from "./CommunityOptions";
 
 describe("Community options drop down", () => {
   it("should render without crashing", () => {
-    expect(shallow(<CommunityOptions />)).toMatchSnapshot();
+    render(
+      <TestingComponent>
+        <CommunityOptions />
+      </TestingComponent>
+    );
   });
 });
