@@ -40,7 +40,7 @@ const CommunityCardItem = ({ communityId, community, srIcon }) => {
           <span className="caret">
             <FaAngleUp />
           </span>
-          <img src={logo} alt="" />
+          <img src={srIcon} alt="" />
           <div className="info">
             <div className="info2">
               <h6>r/{community}</h6>

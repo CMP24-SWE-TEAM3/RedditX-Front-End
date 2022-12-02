@@ -8,11 +8,11 @@ export const Container = styled.div`
   max-width: 100%;
   margin: 0 auto;
   border-radius: 5px;
-  cursor: pointer;
+  cursor: ${(p)=>!p.fullPost? "pointer" : "default" };
   border: 1px solid transparent;
 
   &:hover {
-    border-color: black !important;
+    border-color:${(p)=>!p.fullPost? "black !important" : "transparent"};
   }
 `;
 

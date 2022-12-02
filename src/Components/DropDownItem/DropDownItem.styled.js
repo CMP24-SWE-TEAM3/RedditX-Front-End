@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import {NavDropdown} from "react-bootstrap";
 
-export const DropdownContainer = styled.div`
+export const DropdownContainer = styled(NavDropdown)`
   .ico {
     height: 20px;
     width: 20px;
@@ -58,7 +59,6 @@ export const DropdownContainer = styled.div`
     font-size: 14px;
     line-height: 18px;
     margin-left: 8px;
-    max-width: 208px;
     overflow: hidden;
     text-align: left;
     text-overflow: ellipsis;
@@ -84,7 +84,6 @@ export const DropdownContainer = styled.div`
     font-weight: 400;
     line-height: 21px;
     font-family: inherit;
-    //align-items:center;
     box-sizing: border-box;
     border-radius: 0;
     width: calc(100% - 32px);

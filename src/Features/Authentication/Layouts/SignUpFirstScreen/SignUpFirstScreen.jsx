@@ -75,6 +75,8 @@ const SignUpFirstScreen = ({
   const [errMsg, setErrMsg] = useState("");
   const { email } = formFields;
 
+  const [signupSubmit, setSignupSubmit] = useState(false);
+
   const navigate = useNavigate();
 
   /**
@@ -89,6 +91,19 @@ const SignUpFirstScreen = ({
     }
     setValidEmail(USER_EMAIL.test(email));
   }, [email]);
+
+  useEffect(() => {
+    if (signupSubmit) {
+      setSignupSubmit(false);
+      // console.log("out useEffect", data);
+
+      if (!error && data.token) {
+        auth.login(data);
+
+        navigate("/");
+      }
+    }
+  }, [data]);
 
   /**
    * Function to handle the submit of the form of signup
@@ -131,15 +146,16 @@ const SignUpFirstScreen = ({
     const { user } = await signInWithGooglePopup();
 
     signupWithGoogle(dataFetch, {
-      type: "google",
+      type: "gmail",
       googleOrFacebookToken: user.accessToken,
     });
+    setSignupSubmit(true);
 
-    if (!error) {
-      //  setFinishedLoading(true);
-      auth.login(data);
-      navigate("/");
-    }
+    // if (!error) {
+      
+    //   auth.login(data);
+    //   navigate("/");
+    // }
   };
 
   /**
@@ -152,20 +168,24 @@ const SignUpFirstScreen = ({
       type: "facebook",
       googleOrFacebookToken: user.accessToken,
     });
+    setSignupSubmit(true);
 
-    if (!error) {
-      //  setFinishedLoading(true);
-      auth.login(data);
-      navigate("/");
-    }
+    // if (!error) {
+     
+    //   auth.login(data);
+    //   navigate("/");
+    // }
   };
 
   return (
     <>
       {
-        <AuthContainer data-testid={"signupModalId"} secondScreen={secondScreen}>
+        <AuthContainer
+          data-testid={"signupModalId"}
+          secondScreen={secondScreen}
+        >
           <AuthContainerDiv secondScreen={secondScreen}>
-            <AuthHeader    id="signUpContainerModal">Sign Up</AuthHeader>
+            <AuthHeader id="signUpContainerModal">Sign Up</AuthHeader>
             <AuthParagraph>
               By continuing, you agree are setting up a Reddit account and agree
               to our <Privacy>User Agreement</Privacy> and{" "}

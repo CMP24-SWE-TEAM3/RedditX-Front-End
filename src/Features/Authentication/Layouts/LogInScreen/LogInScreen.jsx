@@ -191,15 +191,17 @@ const LogInScreen = ({
     const { user } = await signInWithGooglePopup();
 
     loginWithGoogle(dataFetch, {
-      type: "google",
+      type: "gmail",
       googleOrFacebookToken: user.accessToken,
     });
 
-    if (!error) {
-      setFinishedLoading(true);
-      auth.login(data);
-      navigate("/");
-    }
+    setSignupSubmit(true);
+
+    // if (!error) {
+    //   setFinishedLoading(true);
+    //   auth.login(data);
+    //   navigate("/");
+    // }
   };
 
   /**
@@ -212,14 +214,15 @@ const LogInScreen = ({
       type: "facebook",
       googleOrFacebookToken: user.accessToken,
     });
+    setSignupSubmit(true);
 
-    console.log("error : " + error);
+    //console.log("error : " + error);
 
-    if (!error) {
-      setFinishedLoading(true);
-      auth.login(data);
-      navigate("/");
-    }
+    // if (!error) {
+    //   setFinishedLoading(true);
+    //   auth.login(data);
+    //   navigate("/");
+    // }
   };
 
   return (

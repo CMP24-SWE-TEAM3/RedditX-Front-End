@@ -16,6 +16,7 @@ import { useCreatePostFlags } from "Features/Post/Contexts/createPostFlags";
 import { useCreatePostFlairs } from "Features/Post/Contexts/createPostFlairs";
 import { useCreatePostAttachments } from "Features/Post/Contexts/createPostAttachments";
 import submitPost from "Features/Post/Services/submitPost";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 /**
  * Main component (the main section in the create post page)
@@ -38,20 +39,29 @@ const Main = () => {
   // Error: Contains error message when the request is failed
   // Data: the response data
   const [data, error, isLoading, dataFetch] = useFetchFunction();
+  const auth = useAuth();
+
   /**
    * Function to handle submit the post
    * (Called when the user clicks on the submit button)
    */
   const handleSubmit = () => {
+    var bodyFormData = new FormData();
+    bodyFormData.append("title", "createPostTitle");
+    bodyFormData.append("text", "createPostText");
+    // bodyFormData.append("community", selectedDestination);
+    // bodyFormData.append("flair", createPostFlairs);
+    // bodyFormData.append("flags", createPostFlags);
+    // TODO: remove
+    bodyFormData.append("spoiler", true);
+    bodyFormData.append("nsfw ", true);
+    // END TODO
+    // bodyFormData.append("attachments", createPostAttachments);
     // Call the submit post api (Service)
-    submitPost(dataFetch, {
-      title: createPostTitle,
-      originalText: createPostText,
-      ...createPostFlags,
-      ...createPostFlairs,
-      attachments: createPostAttachments,
-    });
+    submitPost(dataFetch, bodyFormData, auth);
   };
+  console.log("Main", data);
+  console.log("error", error);
   return (
     <Container>
       <Title>

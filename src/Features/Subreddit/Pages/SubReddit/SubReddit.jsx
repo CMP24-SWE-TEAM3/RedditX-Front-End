@@ -3,6 +3,7 @@ import SubRedditBody from "Features/Subreddit/Components/SubRedditBody/SubReddit
 import SubRedditHeader from "Features/Subreddit/Components/SubRedditHeader/SubRedditHeader";
 import { SubRedditProvider } from "Features/Subreddit/Contexts/SubRedditProvider";
 import { SubRedditIDProvider } from "Features/Subreddit/Contexts/SubRedditIDProvider";
+import useDocumentTitle from "Hooks/useDocumentTitle";
 import { useState } from "react";
 import { InnerContainer, SubRedditContainer } from "./SubReddit.styled";
 import { useParams } from "react-router-dom";
@@ -14,6 +15,9 @@ import { useParams } from "react-router-dom";
  */
 const SubReddit = () => {
   const { id } = useParams();
+  // Change document title
+  useDocumentTitle("Subreddit title");
+
   const [isJoined, setIsJoined] = useState(false);
   function joinHandler(e) {
     setIsJoined(e);

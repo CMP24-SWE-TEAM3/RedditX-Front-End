@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Drop Down Item Component this is a test for Drop Down Item Component 1`] = `
-<styled.div
+<Styled(NavDropdown)
   as={
     Object {
       "$$typeof": Symbol(react.forward_ref),
@@ -144,5 +144,5 @@ exports[`Drop Down Item Component this is a test for Drop Down Item Component 1`
   >
     Predictions
   </DropdownItem>
-</styled.div>
+</Styled(NavDropdown)>
 `;

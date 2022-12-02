@@ -80,15 +80,19 @@ const CommunityCardItem = ({
       setBtnContent("Joined");
     }
   }
+  var abbreviate = require("number-abbreviate");
+  console.log(communityIcon);
   return (
     <Container title="comm">
-      <Link href="#">
+      <Link to="#">
         <div className="item">
-          <img src={require(`../../Assets/${communityIcon}`)} alt="" />
+          {communityIcon && (
+            <img src={require(`../../Assets/${communityIcon}`)} alt="" />
+          )}
           <div className="info">
             <div className="info2">
-              <h6>r/{communityName}</h6>
-              <p>{membersCount}m Members</p>
+              <h6>r/{communityName.substring(3)}</h6>
+              <p>{abbreviate(membersCount, 1)} Members</p>
             </div>
           </div>
           <div className="button">

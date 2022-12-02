@@ -36,6 +36,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
 // Import api services
 import getCommunitiesList from "Features/Post/Services/getCommunitiesList";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import ModalCommunity from "Components/ModalCommunity/ModalCommunity";
 
 /**
  *
@@ -50,6 +51,9 @@ const ChooseCommunity = () => {
 
   // Context for selected submit destination
   const { submitDestination, setSubmitDestination } = useSubmitDestination();
+
+  // State to control the community modal appearance
+  const [showCommunityModal, setShowCommunityModal] = useState(false);
 
   // Fetch communities
   // const [communityList, error, isLoading, reload] = useFetch({
@@ -69,9 +73,13 @@ const ChooseCommunity = () => {
   useEffect(() => {
     getCommunitiesList(fetchData, auth);
   }, []);
-  console.log("communityList", communityList);
+
   return (
     <Container>
+      <ModalCommunity
+        show={showCommunityModal}
+        close={() => setShowCommunityModal(false)}
+      />
       <Dropdown show={showMenu}>
         <Choose id="choose-community">
           {!showMenu && !submitDestination && <TbCircleDotted size={30} />}
@@ -119,7 +127,12 @@ const ChooseCommunity = () => {
             <CreateCommunity>
               <GroupTitle>Your communities</GroupTitle>
               {/* TODO: Add handler for create community button */}
-              <CreateButton variant="light">Create New</CreateButton>
+              <CreateButton
+                variant="light"
+                onClick={() => setShowCommunityModal(true)}
+              >
+                Create New
+              </CreateButton>
             </CreateCommunity>
             {error && <Alert variant="danger">{error}</Alert>}
             {!isLoading && (

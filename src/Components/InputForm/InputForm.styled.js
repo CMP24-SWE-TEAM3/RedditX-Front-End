@@ -24,4 +24,4 @@ export const StyledSearcherInput = styled.input`
   white-space: nowrap;
   text-indent: 30px;
   padding: 15px;
-`
+`;

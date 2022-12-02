@@ -4,8 +4,10 @@ import { SearchDropDownStyled } from "./SearchDropDown.styled";
 import { Link } from "react-router-dom";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 import { IoIosLink } from "react-icons/io";
-import useFetch from "Hooks/useFetch";
 import trendingSearch from "Services/trendingSearch";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import { useEffect } from "react";
 
 /**
  * Component that displays a dropdown with a search bar inputForm
@@ -13,11 +15,17 @@ import trendingSearch from "Services/trendingSearch";
  * @return {React.Component}
  */
 const SearchDropDown = ({ show }) => {
+  // authorization user
+  const auth = useAuth();
+
   // Fetch trending posts
-  const [trendingPostList, error, loading, reload] = useFetch(trendingSearch());
+  const [trendingPostList, error, loading, fetchData] = useFetchFunction();
+  // useEffect(() => {
+  //   trendingSearch(fetchData,auth);
+  // }, []);
 
   return (
-    <SearchDropDownStyled show={show} autoClose={true}>
+    <SearchDropDownStyled show={show} autoClose={"outside"}>
       <Dropdown.Header>trending today</Dropdown.Header>
       {!loading &&
         trendingPostList.map((recentPost) => {

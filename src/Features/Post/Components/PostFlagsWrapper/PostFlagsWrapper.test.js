@@ -16,13 +16,13 @@ describe("Post flag wrapper", () => {
     expect(screen.getAllByRole("button").length).toBe(6);
   });
 
-  it("should call flairHandler when flair button is clicked", () => {
+  it("should not call flairHandler when flair button is clicked & no community selected", () => {
     render(
       <TestingComponent>
         <PostFlagsWrapper flairHandler={mockFlairHandler} />
       </TestingComponent>
     );
     fireEvent.click(screen.getByTestId("flair-button"));
-    expect(mockFlairHandler).toHaveBeenCalledTimes(1);
+    expect(mockFlairHandler).not.toHaveBeenCalledTimes(1);
   });
 });

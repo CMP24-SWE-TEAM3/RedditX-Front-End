@@ -11,6 +11,7 @@ const getCommunitiesList = async (fetchData, auth) => {
   fetchData({
     axiosInstance: axios,
     method: "GET",
+    // url: "http://localhost:8000/communities-summary/",
     url: "/api/r/mine/subscriber/",
     requestConfig: {
       headers: {

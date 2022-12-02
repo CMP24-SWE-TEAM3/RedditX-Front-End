@@ -142,7 +142,7 @@ const SignUpPageSecondScreen = ({
       signupApi(dataFetch, {
         type: "bare email",
         email: email,
-        username: userName,
+        username: "t2_"+userName,
         password: password,
       });
       setSignupSubmit(true);

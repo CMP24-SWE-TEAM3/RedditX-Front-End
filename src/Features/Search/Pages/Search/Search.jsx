@@ -17,6 +17,8 @@ import fetchCommunities from "Features/Search/Services/fetchCommunities";
 import fetchPeople from "Features/Search/Services/fetchPeople";
 import fetchSubbcomm from "Features/Search/Services/fetchSubbcomm";
 import fetchPeopleFollowed from "Features/Search/Services/fetchPeopleFollowed";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import useDocumentTitle from "Hooks/useDocumentTitle";
 /**
  * Component that contains the Search Page and the Main Links component and routes for the four pages Posts page, Comments page, Community page and People page.
  *
@@ -24,6 +26,8 @@ import fetchPeopleFollowed from "Features/Search/Services/fetchPeopleFollowed";
  * @returns {React.Component}
  */
 const Search = () => {
+
+  useDocumentTitle("reddit.com: search results - string")
   /**
    * Function take the SortItem And Handle it
    * @param {String} SortItem
@@ -31,8 +35,8 @@ const Search = () => {
   function OnSort(SortItem) {
     console.log(SortItem);
   }
+  const auth = useAuth();
   const [ActiveLink, setActiveLink] = useState("posts");
-
   // Fetch Posts
   const [PostList, error, loading, fetch] = useFetchFunction();
   // useEffect(() => {
@@ -43,7 +47,8 @@ const Search = () => {
   // fetch Communities
   let [CommunityList, errorCommunity, loadingCommunity, fetchCommunity] =
     useFetchFunction();
-
+  // console.log(CommunityList);
+  // console.log(errorCommunity);
   // fetch Communities
 
   // fetch Comments
@@ -67,15 +72,16 @@ const Search = () => {
     loadingSubCommunities,
     reloadSubCommunities,
   ] = useFetchFunction();
-
+  // console.log(CommunitiesSub2);
+  // console.log(errorSubCommunities);
   // fetch communities subscribe
 
   useEffect(() => {
-    fetchPosts(fetch);
-    fetchComments(fetchComment);
-    fetchCommunities(fetchCommunity);
-    fetchPeople(FB);
-    fetchSubbcomm(reloadSubCommunities);
+    fetchPosts(fetch, auth);
+    fetchComments(fetchComment, auth);
+    fetchCommunities(fetchCommunity, auth);
+    fetchPeople(FB, auth);
+    fetchSubbcomm(reloadSubCommunities, auth);
     fetchPeopleFollowed(fetchSub);
   }, []); // Only re-run the effect if count changes
   return (

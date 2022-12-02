@@ -8,11 +8,11 @@ import {Container} from "./PostShape.styled"
  * PostShape Component 
  * @returns {React.Component} PostShape component
  */
-const PostShape = () => {
+const PostShape = ({fullPost}) => {
   return (
-    <Container>
+    <Container fullPost={fullPost}>
       <VotingBar number={2004}/>
-      <PostBar/>
+      <PostBar fullPost={fullPost}/>
     </Container>
   );
 };

@@ -94,6 +94,23 @@ const SignUpPageFirstScreen = ({
 
   const navigate = useNavigate();
 
+  const [signupSubmit, setSignupSubmit] = useState(false);
+
+
+
+  useEffect(() => {
+    if (signupSubmit) {
+      setSignupSubmit(false);
+      // console.log("out useEffect", data);
+
+      if (!error && data.token) {
+        auth.login(data);
+
+        navigate("/");
+      }
+    }
+  }, [data]);
+
   /**
    * useEffect for email field to check if the email that the user entered is valid or not
    */
@@ -151,14 +168,15 @@ const SignUpPageFirstScreen = ({
     const { user } = await signInWithGooglePopup();
 
     signupWithGoogle(dataFetch, {
-      type: "google",
+      type: "gmail",
       googleOrFacebookToken: user.accessToken,
     });
+    setSignupSubmit(true);
 
-    if (!error) {
-      auth.login(data);
-      navigate("/");
-    }
+    // if (!error) {
+    //   auth.login(data);
+    //   navigate("/");
+    // }
   };
 
   /**
@@ -171,11 +189,12 @@ const SignUpPageFirstScreen = ({
       type: "facebook",
       googleOrFacebookToken: user.accessToken,
     });
+    setSignupSubmit(true);
 
-    if (!error) {
-      auth.login(data);
-      navigate("/");
-    }
+    // if (!error) {
+    //   auth.login(data);
+    //   navigate("/");
+    // }
   };
 
   return (

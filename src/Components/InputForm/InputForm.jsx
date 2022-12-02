@@ -1,23 +1,20 @@
 // imports
-import React, { useState } from "react";
+import React from "react";
 import { StyledSearcherInput } from "./InputForm.styled";
-import SearchDropDown from "../SearchDropDown/SearchDropDown";
 import { useNavigate } from "react-router-dom/dist";
 
 /**
  * Component that displays   a search field with search results
+ * @param {setsShow} - function which toggles search dropdown visibility
+ * @param {boolean}  - flag to toggle visibility of search dropdown
  * @returns {React.Component}
  *
  */
 
-const InputForm = () => {
+const InputForm = ({ setsShow, show }) => {
   /**
    * state of search field that show trending posts
    */
-  const [show, setsShow] = useState(false);
-  const handleDropdown = () => {
-    setsShow(!show);
-  };
   const navigate = useNavigate();
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -31,11 +28,10 @@ const InputForm = () => {
       <StyledSearcherInput
         id={"search-input"}
         onKeyDown={handleKeyDown}
-        onClick={handleDropdown}
+        onClick={() => setsShow(!show)}
         type="text"
         placeholder={"Search Reddit"}
       />
-      {/*<SearchDropDown show={show}/>*/}
     </>
   );
 };

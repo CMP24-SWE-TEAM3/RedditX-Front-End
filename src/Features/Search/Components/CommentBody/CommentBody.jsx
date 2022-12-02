@@ -16,6 +16,7 @@ import {
   Time,
   GoThread,
 } from "./CommentBody.styled";
+import Moment from "react-moment";
 // import Moment from "react-moment";
 import CommentUserImage from "../../Assets/People_Image.jpg";
 import PostFooter from "../PostFooter/PostFooter";
@@ -28,36 +29,12 @@ import { Link } from "react-router-dom";
  * @returns {React.Component}
  */
 const CommentBody = ({ commentBody }) => {
-  // function nFormatter(num, digits) {
-  //   const lookup = [
-  //     { value: 1, symbol: "" },
-  //     { value: 1e3, symbol: "k" },
-  //     { value: 1e6, symbol: "M" },
-  //     { value: 1e9, symbol: "G" },
-  //     { value: 1e12, symbol: "T" },
-  //     { value: 1e15, symbol: "P" },
-  //     { value: 1e18, symbol: "E" },
-  //   ];
-  //   const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
-  //   var item = lookup
-  //     .slice()
-  //     .reverse()
-  //     .find(function (item) {
-  //       return num >= item.value;
-  //     });
-  //   return item
-  //     ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol
-  //     : "0";
-  // }
-  // let x = nFormatter(9910, 1);
-  // console.log(x);
   if (commentBody) {
     return (
       <Container>
         <FirstText>
           <Link to="#">
             <FirstTextStyle>{commentBody.postContent}</FirstTextStyle>
-            {/* <Moment fromNow>2021/02/15, 15:05:45</Moment> */}
           </Link>
         </FirstText>
         <InnerBody>
@@ -65,8 +42,12 @@ const CommentBody = ({ commentBody }) => {
             <ImageAlign>
               <Link to="#">
                 <div>
-                  <CommentImage
+                  {/* <CommentImage
                     src={require(`../../Assets/${commentBody.commentUserImage}`)}
+                    alt="Comment User Image"
+                  /> */}
+                  <CommentImage
+                    src={CommentUserImage}
                     alt="Comment User Image"
                   />
                 </div>
@@ -77,11 +58,16 @@ const CommentBody = ({ commentBody }) => {
                 <BodyContentHeaderLayout>
                   <CommentUserName>
                     <div>
-                      <Link to="#">{commentBody.userName}</Link>
+                      {commentBody.userName && (
+                        <Link to="#">{commentBody.userName.substring(3)}</Link>
+                      )}
                     </div>
                   </CommentUserName>
                   <span className="break">·</span>
-                  <Time>{commentBody.time}</Time>
+                  <Time>
+                    {/* {commentBody.time} */}
+                    <Moment fromNow>{commentBody.time}</Moment>
+                  </Time>
                 </BodyContentHeaderLayout>
               </BodyContentHeader>
               <BodyText>
@@ -93,7 +79,7 @@ const CommentBody = ({ commentBody }) => {
               </BodyText>
             </BodyContent>
           </InnerBodyLayout>
-          <PostFooter />
+          <PostFooter postfooter={commentBody.postFooter} />
         </InnerBody>
         <GoThread href="#">Go to thread</GoThread>
       </Container>

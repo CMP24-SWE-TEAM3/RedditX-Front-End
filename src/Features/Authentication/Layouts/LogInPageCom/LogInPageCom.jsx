@@ -186,13 +186,15 @@ const LogInPageCom = () => {
       googleOrFacebookToken: user.accessToken,
     });
 
-    console.log("data from google : " + data);
+    setSignupSubmit(true);
 
-    if (!error) {
-      setFinishedLoading(true);
-      auth.login(data);
-      navigate("/");
-    }
+   // console.log("data from google : " + data);
+
+    // if (!error) {
+    //   setFinishedLoading(true);
+    //   auth.login(data);
+    //   navigate("/");
+    // }
   };
 
   /**
@@ -206,11 +208,13 @@ const LogInPageCom = () => {
       googleOrFacebookToken: user.accessToken,
     });
 
-    if (!error) {
-      setFinishedLoading(true);
-      auth.login(data);
-      navigate("/");
-    }
+    setSignupSubmit(true);
+
+    // if (!error) {
+    //   setFinishedLoading(true);
+    //   auth.login(data);
+    //   navigate("/");
+    // }
   };
 
   return (

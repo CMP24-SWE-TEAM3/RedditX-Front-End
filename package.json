@@ -74,6 +74,5 @@
       "enzyme-to-json/serializer"
     ]
   },
-
   "proxy": "https://apicors.herokuapp.com/"
 }

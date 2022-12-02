@@ -3,9 +3,10 @@ import axios from "API/axios";
 
 /**
  * Function to fetch Communities according to letter indexing
- * @param {Function} dataFetch Coming from useFetchFunction custom hook
+ * @param {object} auth Context object coming from useAuth custom Hook
+ * @param {Function} fetchFunction Coming from useFetchFunction custom hook
  */
-const fetchIndexedCommunities = (fetchFunction) => {
+const fetchIndexedCommunities = (fetchFunction, auth) => {
     
     fetchFunction({
       axiosInstance: axios,
@@ -14,6 +15,7 @@ const fetchIndexedCommunities = (fetchFunction) => {
       requestConfig: {
         headers: {
           "Content-Language": "en-US",
+          Authorization: `Bearer ${auth.getToken()}`,
         },
       },
     });

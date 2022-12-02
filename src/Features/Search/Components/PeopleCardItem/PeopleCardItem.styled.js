@@ -78,6 +78,9 @@ export const Container = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  & .info2 h6:hover {
+    text-decoration: underline;
+  }
   @media (max-width: 380px) {
     & .info2 h6 {
       margin: auto;
