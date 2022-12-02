@@ -12,13 +12,12 @@ const PostFooter = ({ postfooter }) => {
   if (postfooter) {
     return (
       <Footer>
-        <span className="upvote">
+        <span className="upvote" title="upvote">
           {/* {postfooter.upVotes} */}
           {abbreviate(postfooter.upVotes, 1)} upvotes
         </span>
         {postfooter.Comments && (
-          <span className="comment">
-            {/* {postfooter.Comments} */}
+          <span className="comment" title="commentCount">
             {abbreviate(postfooter.Comments, 1)} comments
           </span>
         )}

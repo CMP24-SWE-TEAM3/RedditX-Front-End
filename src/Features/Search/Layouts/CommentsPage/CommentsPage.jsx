@@ -8,6 +8,7 @@ import {
 // Import api
 import axios from "API/axios";
 import useFetch from "Hooks/useFetch";
+import NotFound from "Features/Search/Components/NotFound/NotFound.jsx";
 /**
  * Component that render the CommentsPage component and Contains Comment item.
  * @Component
@@ -17,15 +18,18 @@ import useFetch from "Hooks/useFetch";
 
 const CommentsPage = ({ CommentLists }) => {
   if (CommentLists.results) {
+    const CommentsNumber = CommentLists.results.length;
     // console.log(CommentLists.results);
     return (
       <Container>
         <OuterContainer>
           <InnerContainer>
             <List>
-              {CommentLists.results.map((comment) => (
-                <Comment comment={comment} key={comment._id} />
-              ))}
+              {CommentsNumber !== 0 &&
+                CommentLists.results.map((comment) => (
+                  <Comment comment={comment} key={comment._id} />
+                ))}
+              {CommentsNumber === 0 && <NotFound />}
             </List>
           </InnerContainer>
         </OuterContainer>
