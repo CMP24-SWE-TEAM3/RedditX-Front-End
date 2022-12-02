@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { useNavigate } from "react-router-dom";
-import {AlarmInput, ModalStyled} from "./Modal.styled";
+import {AlarmInput, ModalStyled} from "./ModalCommunity.styled";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal"
 import {BsFillPersonFill} from "react-icons/bs";

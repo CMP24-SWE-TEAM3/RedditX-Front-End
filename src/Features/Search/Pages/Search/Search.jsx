@@ -18,6 +18,7 @@ import fetchPeople from "Features/Search/Services/fetchPeople";
 import fetchSubbcomm from "Features/Search/Services/fetchSubbcomm";
 import fetchPeopleFollowed from "Features/Search/Services/fetchPeopleFollowed";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import useDocumentTitle from "Hooks/useDocumentTitle";
 /**
  * Component that contains the Search Page and the Main Links component and routes for the four pages Posts page, Comments page, Community page and People page.
  *
@@ -25,6 +26,8 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
  * @returns {React.Component}
  */
 const Search = () => {
+
+  useDocumentTitle("reddit.com: search results - string")
   /**
    * Function take the SortItem And Handle it
    * @param {String} SortItem

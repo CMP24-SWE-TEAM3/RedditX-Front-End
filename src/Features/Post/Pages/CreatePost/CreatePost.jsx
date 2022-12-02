@@ -12,6 +12,7 @@ import { CreatePostFlagsProvider } from "Features/Post/Contexts/createPostFlags"
 import { CreatePostAttachmentsProvider } from "Features/Post/Contexts/createPostAttachments";
 import { CreatePostFlairsProvider } from "Features/Post/Contexts/createPostFlairs";
 import { CreatePostTextProvider } from "Features/Post/Contexts/createPostText";
+import useDocumentTitle from "Hooks/useDocumentTitle";
 
 /**
  * Create Post page (Submit page)
@@ -19,6 +20,9 @@ import { CreatePostTextProvider } from "Features/Post/Contexts/createPostText";
  * @returns {React.Component} CreatePost component
  */
 const CreatePost = () => {
+  // Change document title
+  useDocumentTitle("Submit to Reddit");
+
   return (
     <SubmitDestinationProvider>
       <CreatePostTitleProvider>
