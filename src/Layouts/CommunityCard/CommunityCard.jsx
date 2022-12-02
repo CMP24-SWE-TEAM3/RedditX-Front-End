@@ -1,9 +1,11 @@
-import {CommunityContainer} from "./CommunityCard.styled";
+import { CommunityContainer, ViewAllBtn } from "./CommunityCard.styled";
 import { useNavigate } from "react-router-dom";
 import CommunityCardItem from "Components/CommunityCardItem/CommunityCardItem";
-import axios from "API/axios";
-import useFetch from "Hooks/useFetch";
-import {Link} from "react-router-dom";
+import randomCategories from "Services/randomCategories";
+import { Link } from "react-router-dom";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import { useEffect } from "react";
 
 /**
  * Component that links each  of community card item.
@@ -12,48 +14,58 @@ import {Link} from "react-router-dom";
  * @returns {React.Component}
  */
 const TopCommunities = () => {
+  // authorization's user
+  const auth = useAuth();
+  // Fetch communities
+  // Call useFetchFunction hook to handle states: loading, error, data
+  // Loading: Boolean to tell if the request has been sent, or it's still loading
+  // Error: Contains error message when the request is failed
+  // Data: the response data
+  const [communityList, error, isLoading, fetchData] = useFetchFunction();
+  useEffect(() => {
+    randomCategories(fetchData, auth);
+  }, []);
+  console.log(communityList);
 
-    // Fetch communities
-    const [communityList, error, loading, reload] = useFetch({
-        axiosInstance: axios,
-        method: "GET",
-        //  /api/random-category/
-        url: "/feedback/",
-        requestConfig: {
-            headers: {
-                "Content-Language": "en-US",
-            },
-        },
-    });
-    const navigate = useNavigate();
-    return (
-        <CommunityContainer>
-            <div className={'cover'}>
-                <div className={'filter'}>
+  const navigate = useNavigate();
+  return (
+    <CommunityContainer>
+      <div className={"cover"}>
+        <div className={"filter"}>
+          <h2>
+            <Link href={"https://www.reddit.com/subreddits/leaderboard/"}>
+              Top
+              <span>&nbsp;Gaming&nbsp;</span>
+              Communities
+            </Link>
+          </h2>
+        </div>
+      </div>
+      {communityList &&
+        communityList.length != 0 &&
+        communityList.communities.map((community, index) => {
+          return (
+            <CommunityCardItem
+              key={community.id}
+              srIcon={community.icon}
+              community={community.description}
+              communityId={index + 1}
+              onClick={() => navigate("/subreddit")}
+            />
+          );
+        })}
+      <ViewAllBtn>
+        <button onClick={() => navigate("/category/*")}>View All</button>
+      </ViewAllBtn>
 
-                    <h2>
-                        <Link href={"https://www.reddit.com/subreddits/leaderboard/"}>Top
-                            <span>&nbsp;Gaming&nbsp;</span>
-                            Communities
-                        </Link>
-                    </h2>
-                </div>
-            </div>
-            {!loading && communityList.map(community => {
-                return (
-                    <CommunityCardItem  key={community.id} community={community.name} communityId={community.id} onClick={()=>navigate("/subreddit")}/>
-                )
-            })}
-
-            <button onClick={()=>navigate("/category/*")} className={'view-all'}>View All</button>
-            <div className={'row-but'}>
-                <button className={'sub-but'}>New You</button>
-                <button className={'sub-but'}>Gaming</button>
-                <button className={'sub-but'}>News</button>
-                <button className={'sub-but'}>Aww</button>
-            </div>
-        </CommunityContainer>
-    );
+      <div className={"row-but"}>
+        <button className={"sub-but"}>New You</button>
+        <button className={"sub-but"}>Gaming</button>
+        <button className={"sub-but"}>News</button>
+        <button className={"sub-but"}>Aww</button>
+      </div>
+    </CommunityContainer>
+  );
 };
 
 export default TopCommunities;

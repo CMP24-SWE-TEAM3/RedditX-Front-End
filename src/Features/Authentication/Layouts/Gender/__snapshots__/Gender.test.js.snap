@@ -30,11 +30,13 @@ exports[`Gender Component this is a test for Gender Component 1`] = `
       How do you identify?
     </styled.div>
     <GenderButton
+      id="chooseWoman"
       onClick={[Function]}
     >
       Woman
     </GenderButton>
     <GenderButton
+      id="chooseMan"
       onClick={[Function]}
     >
       Man

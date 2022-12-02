@@ -73,22 +73,8 @@ const ForgetUserName = () => {
   /**
    * state to know what error message should be shown
    */
-  // const [isLoading, setIsLoading] = useState(false);
-
-  /**
-   * state to know what error message should be shown
-   */
   const [finishedLoading, setFinishedLoading] = useState(false);
 
-  /**
-   * the error message from forget username
-   */
-  const [forgetUserNameErrorMsg, setForgetUserNameErrorMsg] = useState("");
-  /**
-   * state to set the error message from forget username
-   */
-  const [showForgetUserNameErrorMsg, setShowForgetUserNameErrorMsg] =
-    useState(false);
   /**
    * state to know if the email sent or not
    */
@@ -111,7 +97,6 @@ const ForgetUserName = () => {
 
   useEffect(() => {
     setValidEmail(USER_EMAIL.test(email));
-    setShowForgetUserNameErrorMsg(false);
   }, [email]);
 
   /**
@@ -121,28 +106,9 @@ const ForgetUserName = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (wantSubmit) {
-      // setIsLoading(true);
-
-      // const response = await forgetUserNameApi(
-      //   email,
-      //   setForgetUserNameErrorMsg,
-      //   setShowForgetUserNameErrorMsg
-      // );
-
-      // if (response) {
-      //   setEmailSent(true);
-      // }
-
-      dataFetch({
-        axiosInstance: axios,
-        method: "post",
-        url: "/login/forget",
-        requestConfig: {
-          data: {
-            email: email,
-            operation: true,
-          },
-        },
+      forgetUserNameApi(dataFetch, {
+        email: email,
+        operation: true,
       });
 
       if (!error) {
@@ -151,8 +117,6 @@ const ForgetUserName = () => {
       }
 
       setWantSubmit(false);
-
-      // setIsLoading(false);
     }
   };
 
@@ -192,6 +156,7 @@ const ForgetUserName = () => {
       <br></br>
       <form onSubmit={handleSubmit}>
         <FormInputPageCom
+          data-testid="email"
           id="email"
           valid={validEmail}
           initialFocus={initialFocus}
@@ -208,9 +173,15 @@ const ForgetUserName = () => {
         />
 
         {/* Show error message if the email is not valid and the user made a focus on the it's input field */}
-        <ErrorParagraph id="email-error" valid={validEmail || initialFocus}>
+
+        <ErrorParagraph
+          data-testid="email-error"
+          id="email-error"
+          valid={validEmail || initialFocus}
+        >
           Please fix your email to continue
         </ErrorParagraph>
+
         {error && (
           <ErrorParagraph valid={!error || initialFocus}>
             {error}

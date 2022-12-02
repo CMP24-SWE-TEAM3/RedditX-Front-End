@@ -5,7 +5,6 @@ const fontFamily = "'IBM Plex Sans', sans-serif;";
 export const BaseButton = styled.button`
   line-height: 40px;
   background-color: ${({ theme }) => theme.color.mainInputBackGroundColor};
-
   border: none;
   cursor: pointer;
   display: flex;

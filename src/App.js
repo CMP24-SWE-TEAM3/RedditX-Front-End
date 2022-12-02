@@ -2,6 +2,15 @@
 // Import react and hooks
 import React, { useState } from "react";
 
+//////////////////////////////////////////////////////////////
+
+//Dummy imports
+
+import VotingBar from "Features/Post/Components/VotingBar/VotingBar";
+import PostShape from "Features/Post/Layouts/PostShape/PostShape";
+
+//////////////////////////////////////////////////////////////
+
 // Import react router dom
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -19,6 +28,7 @@ import { Button } from "react-bootstrap";
 // Import pages
 import { SubReddit, CommunityLeaderBoard, IndexPage } from "Features/Subreddit";
 import { CreatePost } from "Features/Post";
+import Post from "Features/Post/Pages/Post/Post";
 import {
   ForgetPasswordPage,
   ForgetUserNamePage,
@@ -36,11 +46,17 @@ import {
 } from "Features/Authentication/Contexts/Authentication";
 
 // TODO: remove this dummy page
-import Navigation from "./Layouts/Navigation/Navigation";
-import LogInVerticalModal from "Features/Authentication/Layouts/LogInVerticalModal/LogInVerticalModal";
-import SignUpVerticalModal from "Features/Authentication/Layouts/SignUpVerticalModal/SignUpVerticalModal";
+
 import AfterSignUp from "Features/Authentication/Layouts/AfterSignUp/AfterSignUp";
 import AfterSignUpModal from "Features/Authentication/Layouts/AfterSignUpModal/AfterSignUpModal";
+import LogInScreen from "Features/Authentication/Layouts/LogInScreen/LogInScreen";
+import DummyPage from "Pages/DummyPage/DummyPage";
+import Navigation from "Layouts/Navigation/Navigation";
+import LogInVerticalModal from "Features/Authentication/Layouts/LogInVerticalModal/LogInVerticalModal";
+import SignUpVerticalModal from "Features/Authentication/Layouts/SignUpVerticalModal/SignUpVerticalModal";
+import RequireAuth from "Features/Authentication/Contexts/RequireAuth";
+import NotFound from "Pages/NotFound/NotFound";
+
 /**
  * The main app of our application it handles routing
  *
@@ -106,13 +122,14 @@ function App() {
                     handleToggleTheme={handleToggleTheme}
                     theme={theme.id}
                   />
+                  {/* <PostShape></PostShape> */}
                 </>
               }
             />
             <Route
               path="subreddit"
               element={
-                <>
+                <RequireAuth>
                   <Navigation
                     toggleMode={handleToggleTheme}
                     theme={theme.id}
@@ -124,13 +141,13 @@ function App() {
                     setModalAfterSignUp={setModalAfterSignUp}
                   />
                   <SubReddit />
-                </>
+                </RequireAuth>
               }
             />
             <Route
-              path="category/*"
+              path="category/:categoryType/*"
               element={
-                <>
+                <RequireAuth>
                   <Navigation
                     toggleMode={handleToggleTheme}
                     theme={theme.id}
@@ -142,13 +159,13 @@ function App() {
                     setModalAfterSignUp={setModalAfterSignUp}
                   />
                   <CommunityLeaderBoard />
-                </>
+                </RequireAuth>
               }
             />
             <Route
-              path="index-page"
+              path="index-page/:indexLetter/*"
               element={
-                <>
+                <RequireAuth>
                   <Navigation
                     toggleMode={handleToggleTheme}
                     theme={theme.id}
@@ -160,13 +177,13 @@ function App() {
                     setModalAfterSignUp={setModalAfterSignUp}
                   />
                   <IndexPage />
-                </>
+                </RequireAuth>
               }
             />
             <Route
               path="search/*"
               element={
-                <>
+                <RequireAuth>
                   <Navigation
                     toggleMode={handleToggleTheme}
                     theme={theme.id}
@@ -178,11 +195,38 @@ function App() {
                     setModalAfterSignUp={setModalAfterSignUp}
                   />
                   <Search />
-                </>
+                </RequireAuth>
               }
             />
             <Route
               path="submit"
+              element={
+                <RequireAuth>
+                  <Navigation
+                    toggleMode={handleToggleTheme}
+                    theme={theme.id}
+                    modalShowLogIn={modalShowLogIn}
+                    setModalShowLogIn={setModalShowLogIn}
+                    modalShowSignUp={modalShowSignUp}
+                    setModalShowSignUp={setModalShowSignUp}
+                    modalAfterSignUp={modalAfterSignUp}
+                    setModalAfterSignUp={setModalAfterSignUp}
+                  />
+                  <CreatePost />
+                </RequireAuth>
+              }
+            />
+            <Route path="login" element={<LogInPage />} />
+            <Route path="register" element={<SignUpPage />} />
+            <Route path="forget-password" element={<ForgetPasswordPage />} />
+            <Route path="forget-username" element={<ForgetUserNamePage />} />
+            <Route
+              path="user/reset-password/:token"
+              element={<NewPasswordPage />}
+            />
+            <Route path="*" element={<NotFound />} />
+            <Route
+              path="post"
               element={
                 <>
                   <Navigation
@@ -195,17 +239,9 @@ function App() {
                     modalAfterSignUp={modalAfterSignUp}
                     setModalAfterSignUp={setModalAfterSignUp}
                   />
-                  <CreatePost />
+                  <Post />
                 </>
               }
-            />
-            <Route path="login" element={<LogInPage />} />
-            <Route path="register" element={<SignUpPage />} />
-            <Route path="forget-password" element={<ForgetPasswordPage />} />
-            <Route path="forget-username" element={<ForgetUserNamePage />} />
-            <Route
-              path="user/reset-password/:token"
-              element={<NewPasswordPage />}
             />
           </Routes>
         </BrowserRouter>

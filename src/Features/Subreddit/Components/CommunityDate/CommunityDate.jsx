@@ -18,6 +18,8 @@ import {
   InputContainer,
   Private,
   SaveButton,
+  StaticDescriptionContainer,
+  StaticDescriptionContent,
 } from "./CommunityDate.styled";
 
 /**
@@ -30,13 +32,19 @@ const CommunityDate = () => {
   const [inputFocus, setInputFocus] = useState(false);
   const [dummyDescription, setDummyDescription] = useState(description);
   const [modalShow, setModalShow] = useState(false);
+  let isMod = true;
   const textAreaRef = useRef();
   let isPrivate = true;
 
-  const {community} = useSubReddit();
-  useEffect(()=>{
-    setDescription(community[0].communityDescription)
-  },[community])
+  const { community } = useSubReddit();
+  useEffect(() => {
+    community &&
+      community.length &&
+      setDescription(community[0].communityDescription || "");
+    community &&
+      community.length &&
+      setDummyDescription(community[0].communityDescription || "");
+  }, [community]);
 
   /**
    * onchange set value of input text
@@ -128,9 +136,9 @@ const CommunityDate = () => {
    * @param {function} onClick - handle when click on description
    * @returns {React.Component} description
    */
-  const Description = ({ onClick }) => {
+  const Description = ({ click }) => {
     return (
-      <DescriptionContainer onClick={onClick}>
+      <DescriptionContainer title="description-container" onClick={click}>
         <DescriptionInnerContainer>
           <DescriptionContent>
             {description}
@@ -143,17 +151,28 @@ const CommunityDate = () => {
     );
   };
 
+  const StaticDescription = () => {
+    return (
+      <StaticDescriptionContainer>
+        <DescriptionContent>
+          {description}
+        </DescriptionContent>
+      </StaticDescriptionContainer>
+    );
+  };
+
   return (
     <>
-      {!inputFocus && !description && (
-        <AddDescription onClick={AddDescriptionHandler}>
+      {!isMod && <StaticDescription />}
+      {isMod && !inputFocus && !description && (
+        <AddDescription onClick={AddDescriptionHandler} title="add-description" >
           <div>Add description</div>
         </AddDescription>
       )}
-      {!inputFocus && description && (
-        <Description onClick={AddDescriptionHandler} />
+      {isMod && !inputFocus && description && (
+        <Description click={AddDescriptionHandler} />
       )}
-      {inputFocus && (
+      {isMod && inputFocus && (
         <InputContainer tabIndex="0" onBlur={blurInputHandler}>
           <textarea
             ref={textAreaRef}
@@ -164,13 +183,18 @@ const CommunityDate = () => {
             onFocus={setCursor}
             maxLength={500}
             className="textarea"
-          ></textarea>
+            title="textarea"
+          />
           <ButtonsContainer>
             <CharContainer tabIndex="0">
               {500 - description.length + " Characters remaining"}
             </CharContainer>
-            <CancelButton onClick={cancelHandler} className="cancel">Cancel</CancelButton>
-            <SaveButton onClick={saveHandler} className="save">Save</SaveButton>
+            <CancelButton onClick={cancelHandler} className="cancel">
+              Cancel
+            </CancelButton>
+            <SaveButton onClick={saveHandler} className="save">
+              Save
+            </SaveButton>
           </ButtonsContainer>
         </InputContainer>
       )}

@@ -15,16 +15,17 @@ import {
 } from "./LinkForm.styled";
 
 // Import hooks
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 // Import contexts
 import { useSubmitDestination } from "Features/Post/Contexts/submitDestination";
 import { useCreatePostTitle } from "Features/Post/Contexts/createPostTitle";
 import { useCreatePostText } from "Features/Post/Contexts/createPostText";
 
-// API
-import useFetch from "Hooks/useFetch";
-import axios from "API/axios";
+// API services
+import getPostFlairs from "Features/Post/Services/getFlairs";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 /**
  * The form of link in create post page (Link tab)
@@ -77,16 +78,24 @@ const LinkForm = ({ submitPost }) => {
     }
   };
 
-  const [flairs, error, isLoading, reload] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "/flairs/",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
+  // const [flairs, error, isLoading, reload] = useFetch({
+  //   axiosInstance: axios,
+  //   method: "GET",
+  //   url: "/flairs/",
+  //   requestConfig: {
+  //     headers: {
+  //       "Content-Language": "en-US",
+  //     },
+  //   },
+  // });
+  // Fetch flairs
+  const [flairs, error, isLoading, fetchData] = useFetchFunction();
+  const auth = useAuth();
+  useEffect(() => {
+    console.log("submitDestination", submitDestination);
+    if (submitDestination) getPostFlairs(fetchData, submitDestination._id, auth);
+  }, [submitDestination]);
+  console.log("flairs", flairs);
 
   const onModalHide = () => {
     setModalShow(false);
@@ -123,6 +132,7 @@ const LinkForm = ({ submitPost }) => {
             onKeyDown={handleKeyDown}
             rows={1}
             className="title-input"
+            id="title"
           />
           <span>{createPostTitle.length}/300</span>
         </Form.Group>
@@ -134,14 +144,17 @@ const LinkForm = ({ submitPost }) => {
             onKeyDown={handleKeyDown}
             value={url}
             onChange={(e) => setUrl(e.target.value)}
+            id="url"
           />
         </Form.Group>
         <PostFlagsWrapper flairHandler={setModalShow} />
         <SubmitButtons>
           {/* <SaveDraftButton variant="light">Save Draft</SaveDraftButton> */}
           <PostButton
-            disabled={!submitDestination || !createPostTitle}
+            // disabled={!submitDestination || !createPostTitle}
+            disabled={!createPostTitle}
             onClick={submitForm}
+            id="post"
           >
             Post
           </PostButton>

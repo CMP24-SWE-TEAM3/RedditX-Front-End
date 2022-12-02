@@ -16,12 +16,13 @@ import {
   SubmitButtons,
 } from "./DraftEditorForm.styled";
 
-// Import api
-import axios from "API/axios";
-import useFetch from "Hooks/useFetch";
+// API services
+import getPostFlairs from "Features/Post/Services/getFlairs";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 // Import hooks
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 // Import contexts
 import { useSubmitDestination } from "Features/Post/Contexts/submitDestination";
@@ -66,16 +67,25 @@ const DraftEditorForm = ({ submitPost }) => {
   // Context for selected submit destination
   const { submitDestination } = useSubmitDestination();
 
-  const [flairs, error, isLoading, reload] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "/flairs/",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
+  // const [flairs, error, isLoading, reload] = useFetch({
+  //   axiosInstance: axios,
+  //   method: "GET",
+  //   url: "/flairs/",
+  //   requestConfig: {
+  //     headers: {
+  //       "Content-Language": "en-US",
+  //     },
+  //   },
+  // });
+  // Fetch flairs
+  const auth = useAuth();
+  const [flairs, error, isLoading, fetchData] = useFetchFunction();
+  useEffect(() => {
+    console.log("submitDestination", submitDestination);
+    if (submitDestination)
+      getPostFlairs(fetchData, submitDestination._id, auth);
+  }, [submitDestination]);
+  console.log("flairs", flairs);
   /**
    * Handle title change
    *
@@ -136,6 +146,7 @@ const DraftEditorForm = ({ submitPost }) => {
             onKeyDown={handleKeyDown}
             rows={1}
             className="title-input"
+            id="title"
           />
           <span>{createPostTitle.length}/300</span>
         </Form.Group>
@@ -149,8 +160,10 @@ const DraftEditorForm = ({ submitPost }) => {
         <SubmitButtons>
           {/* <SaveDraftButton variant="light">Save Draft</SaveDraftButton> */}
           <PostButton
-            disabled={!submitDestination || !createPostTitle}
+            // disabled={!submitDestination || !createPostTitle}
+            disabled={!createPostTitle}
             onClick={submitForm}
+            id="post"
           >
             Post
           </PostButton>

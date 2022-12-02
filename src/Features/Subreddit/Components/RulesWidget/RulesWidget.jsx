@@ -1,5 +1,5 @@
 import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
 import WidgetContainer from "../WidgetContainer/WidgetContainer";
 
@@ -18,7 +18,7 @@ import {
  * @returns {React.Component}
  */
 const RulesWidget = () => {
-  const {community} = useSubReddit(); 
+  const { community } = useSubReddit();
   //rules
   // const rules = [
   //   { title: "t1", description: "d1" },
@@ -26,7 +26,13 @@ const RulesWidget = () => {
   //   { title: "t3", description: "" },
   // ];
 
-  const rules = community[0].communityRules;
+  // const rules = community[0].communityRules;
+  const [rules, setRules] = useState([]);
+  useEffect(() => {
+    community &&
+      community.length &&
+      setRules(community[0].communityRules || []);
+  }, [community]);
 
   /**
    *
@@ -84,13 +90,16 @@ const RulesWidget = () => {
     <WidgetContainer headerText="r/Eln2aa4yn Rules">
       {rules.map((rule, i) => {
         return (
-          <Rule
-            key={i}
-            index={i + 1}
-            len={rules.length}
-            title={rule.title}
-            description={rule.textDescription}
-          />
+          community &&
+          community.length && (
+            <Rule
+              key={i}
+              index={i + 1}
+              len={rules.length}
+              title={rule.title}
+              description={rule.textDescription}
+            />
+          )
         );
       })}
     </WidgetContainer>

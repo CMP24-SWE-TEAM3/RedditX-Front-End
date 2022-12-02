@@ -6,6 +6,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
     <Memo(l) />
     <styled.div>
       <styled.span
+        id="back"
         onClick={[Function]}
       >
         <IoMdArrowBack
@@ -29,6 +30,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
     </styled.div>
     <styled.div>
       <InterestButton
+        id="fun"
         onClick={[Function]}
         selected={false}
       >
@@ -193,6 +195,7 @@ exports[`Interests Component this is a test for Interests Component 1`] = `
     </styled.div>
     <Button
       disabled={true}
+      id="cont"
       onClick={[Function]}
       valid={false}
     >

@@ -8,7 +8,7 @@ LinkH2,
 } from "./CommunityCard.styled";
 import { useNavigate } from "react-router-dom";
 import { CommunityOl } from "../Communities Container/CommunitiesContainer.styled";
-import CommunityCardItem from "../../Components/CommunitySideCardItem/CommunityCardItem";
+import CommunitySideCardItem from "../../Components/CommunitySideCardItem/CommunityCardItem";
 import axios from "API/axios";
 import useFetch from "Hooks/useFetch";
 import {Link} from "react-router-dom";
@@ -19,32 +19,19 @@ import {Link} from "react-router-dom";
  * @Component
  * @returns {React.Component}
  */
-const TopCommunities = () => {
-
+const CommunitySideCard = ({communityList}) => {
     const navigate = useNavigate();
-
+    
     const navigateToRandomCat = (categoryTitle) => {
         // 👇️ navigate to /contacts
         navigate(`/category/${categoryTitle}`);
     };
 
-    // Fetch communities
-    const [communityList, error, loading, reload] = useFetch({
-        axiosInstance: axios,
-        method: "GET",
-        //  /api/random-category/
-        url: "http://localhost:8000/feedback--Leaderboard",
-        requestConfig: {
-            headers: {
-                "Content-Language": "en-US",
-            },
-        },
-    });
 
     const com = communityList.map((community, index) => {
         return (
             <li key={community.id}>
-                <CommunityCardItem
+                <CommunitySideCardItem
                 title = {community.title} 
                 community={community.name} 
                 index = {index+1}/>
@@ -74,4 +61,4 @@ const TopCommunities = () => {
     );
 };
 
-export default TopCommunities;
+export default CommunitySideCard;

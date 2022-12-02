@@ -8,13 +8,13 @@ TitleParagraph,
 } from "./CommunityCardItem.styled";
 
 /**
+ * Component that  shows the names of communities up-to-date.
  * @Component
  * @param {string} title - Subreddit Title
  * @param {number} index - Subreddit index among fetched data to index the list
- * Component that  shows the names of communities up-to-date.
  * @returns {Component.React}
  */
-const CommunityCardItem = ({index, title}) => {
+const CommunitySideCardItem = ({index, title}) => {
 
     return (
         <Container>
@@ -31,4 +31,4 @@ const CommunityCardItem = ({index, title}) => {
     );
 };
 
-export default CommunityCardItem;
+export default CommunitySideCardItem;

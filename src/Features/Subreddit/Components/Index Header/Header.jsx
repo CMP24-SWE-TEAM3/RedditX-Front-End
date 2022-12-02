@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HeaderMarginDiv, HeaderDiv, HeaderH3, HeaderP, Letters, LettersContainer } from "./Header.styled";
+import { HeaderMarginDiv, HeaderDiv, HeaderH3, Letters, LettersContainer } from "./Header.styled";
 
 
 /**
@@ -7,9 +7,10 @@ import { HeaderMarginDiv, HeaderDiv, HeaderH3, HeaderP, Letters, LettersContaine
  * @Component
  * @returns {React.Component}
  */
-export default function Header() {
+ const IndexHeader = () => {
   const [items, setItems] = useState([]);
-
+  
+  
   const clickSingleA = (e) => {
       e.preventDefault();
       console.log(items);
@@ -30,35 +31,37 @@ export default function Header() {
       <HeaderDiv>
         <HeaderH3>Community Directory</HeaderH3>
         <LettersContainer>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>a</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>b</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>c</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>d</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>e</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>f</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>g</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>h</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>i</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>j</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>k</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>l</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>m</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>n</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>o</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>p</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>q</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>r</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>s</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>t</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>u</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>v</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>w</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>x</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>y</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>z</Letters>
-                <Letters href="#" onClick={clickSingleA} className= 'single'>#</Letters>
+                <><Letters to="/index-page/A">a</Letters></>
+                <><Letters to="/index-page/B">b</Letters></>
+                <><Letters to="/index-page/C">c</Letters></>
+                <><Letters to="/index-page/D">d</Letters></>
+                <><Letters to="/index-page/E">e</Letters></>
+                <><Letters to="/index-page/F">f</Letters></>
+                <><Letters to="/index-page/G">g</Letters></>
+                <><Letters to="/index-page/H">h</Letters></>
+                <><Letters to="/index-page/I">i</Letters></>
+                <><Letters to="/index-page/J">j</Letters></>
+                <><Letters to="/index-page/K">k</Letters></>
+                <><Letters to="/index-page/L">l</Letters></>
+                <><Letters to="/index-page/M">m</Letters></>
+                <><Letters to="/index-page/N">n</Letters></>
+                <><Letters to="/index-page/O">o</Letters></>
+                <><Letters to="/index-page/P">p</Letters></>
+                <><Letters to="/index-page/Q">q</Letters></>
+                <><Letters to="/index-page/R">r</Letters></>
+                <><Letters to="/index-page/S">s</Letters></>
+                <><Letters to="/index-page/T">t</Letters></>
+                <><Letters to="/index-page/U">u</Letters></>
+                <><Letters to="/index-page/V">v</Letters></>
+                <><Letters to="/index-page/W">w</Letters></>
+                <><Letters to="/index-page/X">x</Letters></>
+                <><Letters to="/index-page/Y">y</Letters></>
+                <><Letters to="/index-page/Z">z</Letters></>
+                <><Letters to="/index-page/Non Literal">#</Letters></>
         </LettersContainer>
       </HeaderDiv>
     </HeaderMarginDiv>
   );
 }
+
+export default IndexHeader;

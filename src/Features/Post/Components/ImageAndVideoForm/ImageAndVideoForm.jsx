@@ -22,10 +22,16 @@ import { useState, useRef } from "react";
 import { useSubmitDestination } from "Features/Post/Contexts/submitDestination";
 import { useCreatePostTitle } from "Features/Post/Contexts/createPostTitle";
 
-// API
-import useFetch from "Hooks/useFetch";
-import axios from "API/axios";
+// API services
+import getPostFlairs from "Features/Post/Services/getFlairs";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+
+// Import contexts
 import { useCreatePostAttachments } from "Features/Post/Contexts/createPostAttachments";
+
+// Import hooks
+import { useEffect } from "react";
 
 /**
  * Image and video form component (The form that appears when you click on the image and video tab in main section)
@@ -55,17 +61,24 @@ const ImageAndVideoForm = ({ submitPost }) => {
   const { createPostAttachments, setCreatePostAttachments } =
     useCreatePostAttachments();
 
-  const [flairs, error, isLoading, reload] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "/flairs/",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
-
+  // const [flairs, error, isLoading, reload] = useFetch({
+  //   axiosInstance: axios,
+  //   method: "GET",
+  //   url: "/flairs/",
+  //   requestConfig: {
+  //     headers: {
+  //       "Content-Language": "en-US",
+  //     },
+  //   },
+  // });
+  // Fetch flairs
+  const [flairs, error, isLoading, fetchData] = useFetchFunction();
+  const auth = useAuth();
+  useEffect(() => {
+    console.log("submitDestination", submitDestination);
+    if (submitDestination) getPostFlairs(fetchData, submitDestination._id, auth);
+  }, [submitDestination]);
+  console.log("flairs", flairs);
   /**
    * Handle title change
    *
@@ -124,6 +137,7 @@ const ImageAndVideoForm = ({ submitPost }) => {
             onKeyDown={handleKeyDown}
             rows={1}
             className="title-input"
+            id="title"
           />
           <span>{createPostTitle.length}/300</span>
         </Form.Group>
@@ -132,8 +146,10 @@ const ImageAndVideoForm = ({ submitPost }) => {
         <SubmitButtons>
           <CancelButton variant="light">Cancel</CancelButton>
           <PostButton
-            disabled={!submitDestination || !createPostTitle}
+            // disabled={!submitDestination || !createPostTitle}
+            disabled={!createPostTitle}
             onClick={submitForm}
+            id="post"
           >
             Post
           </PostButton>

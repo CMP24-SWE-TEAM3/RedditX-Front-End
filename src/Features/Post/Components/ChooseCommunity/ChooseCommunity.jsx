@@ -1,5 +1,5 @@
 // Import hooks
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Import bootstrap components
 import Dropdown from "react-bootstrap/Dropdown";
@@ -29,12 +29,14 @@ import { CiSearch } from "react-icons/ci";
 // Import images
 import Image from "Features/Post/Assets/Images/Post-guidelines.png";
 
-// Import api
-import axios from "API/axios";
-import useFetch from "Hooks/useFetch";
-
 // Import contexts
 import { useSubmitDestination } from "Features/Post/Contexts/submitDestination";
+import useFetchFunction from "Hooks/useFetchFunction";
+
+// Import api services
+import getCommunitiesList from "Features/Post/Services/getCommunitiesList";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import ModalCommunity from "Components/ModalCommunity/ModalCommunity";
 
 /**
  *
@@ -50,34 +52,55 @@ const ChooseCommunity = () => {
   // Context for selected submit destination
   const { submitDestination, setSubmitDestination } = useSubmitDestination();
 
+  // State to control the community modal appearance
+  const [showCommunityModal, setShowCommunityModal] = useState(false);
+
   // Fetch communities
-  const [communityList, error, isLoading, reload] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "/communities/",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
+  // const [communityList, error, isLoading, reload] = useFetch({
+  //   axiosInstance: axios,
+  //   method: "GET",
+  //   url: "/communities/",
+  //   requestConfig: {
+  //     headers: {
+  //       "Content-Language": "en-US",
+  //     },
+  //   },
+  // });
+
+  // Fetch communities
+  const [communityList, error, isLoading, fetchData] = useFetchFunction();
+  const auth = useAuth();
+  useEffect(() => {
+    getCommunitiesList(fetchData, auth);
+  }, []);
 
   return (
     <Container>
+      <ModalCommunity
+        show={showCommunityModal}
+        close={() => setShowCommunityModal(false)}
+      />
       <Dropdown show={showMenu}>
-        <Choose>
+        <Choose id="choose-community">
           {!showMenu && !submitDestination && <TbCircleDotted size={30} />}
           {showMenu && (
-            <CiSearch size={30} onClick={() => setShowMenu(false)} />
+            <CiSearch
+              data-testid="search-icon"
+              size={30}
+              onClick={() => setShowMenu(false)}
+            />
           )}
           {!showMenu && submitDestination && (
             <UserImage
-              src={submitDestination.srIcon}
-              alt={submitDestination.name}
+              data-testid="user-image"
+              src={submitDestination.icon}
+              alt={submitDestination._id}
             />
           )}
           <Input
             type="text"
+            id="search-communities"
+            data-testid="search-communities"
             placeholder={showMenu ? "Search communities" : "Choose a community"}
             onClick={() => setShowMenu(true)}
             value={searchText}
@@ -92,7 +115,7 @@ const ChooseCommunity = () => {
         </Choose>
 
         {showMenu && (
-          <Menu>
+          <Menu data-testid="communities-drop-down" id="communities-drop-down">
             <GroupTitle>Your profile</GroupTitle>
             <ItemsGroup>
               <DropdownItem>
@@ -104,29 +127,34 @@ const ChooseCommunity = () => {
             <CreateCommunity>
               <GroupTitle>Your communities</GroupTitle>
               {/* TODO: Add handler for create community button */}
-              <CreateButton variant="light">Create New</CreateButton>
+              <CreateButton
+                variant="light"
+                onClick={() => setShowCommunityModal(true)}
+              >
+                Create New
+              </CreateButton>
             </CreateCommunity>
             {error && <Alert variant="danger">{error}</Alert>}
             {!isLoading && (
               <ItemsGroup>
-                {communityList
+                {communityList.communities
                   .filter(
                     (community) =>
-                      community.name
+                      community._id
                         .toLowerCase()
                         .search(searchText.toLowerCase()) !== -1
                   )
                   .map((community) => (
                     <DropdownItem
-                      key={community.communityID}
+                      key={community._id}
                       onClick={() => {
                         setSubmitDestination(community);
-                        setSearchText(community.name);
+                        setSearchText(community._id);
                         setShowMenu(false);
                       }}
                     >
-                      <UserImage src={community.srIcon} alt={community.name} />
-                      {community.name}
+                      <UserImage src={community.icon} alt={community._id} />
+                      {community._id}
                     </DropdownItem>
                   ))}
               </ItemsGroup>

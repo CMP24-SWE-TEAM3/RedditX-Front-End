@@ -1,20 +1,60 @@
-import { shallow } from "enzyme";
-import React from "react";
+import { render, screen, rerender } from "@testing-library/react";
+
+import TestingComponent from "Features/Post/TestingComponent";
 
 // Import components
 import Sidebar from "./Sidebar";
 
-describe("Sidebar section", () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = shallow(<Sidebar />);
+// Import contexts
+import { useSubmitDestination } from "Features/Post/Contexts/submitDestination";
+import { useState } from "react";
+import { useEffect } from "react";
+import { async } from "@firebase/util";
+
+const TestSubmitDestination = () => {
+  const { submitDestination, setSubmitDestination } = useSubmitDestination();
+  useEffect(() => {
+    setSubmitDestination({
+      destination: "test",
+      name: "test",
+    });
+  }, []);
+  return (
+    <>
+      <Sidebar />
+    </>
+  );
+};
+
+describe("Sidebar", () => {
+  it("renders sidebar component", () => {
+    render(
+      <TestingComponent>
+        <Sidebar />
+      </TestingComponent>
+    );
+    const footerElement = screen.getByTestId("footer");
+    expect(footerElement).toBeVisible();
+    const linkElement = screen.getByText("content policy");
+    expect(linkElement).toBeVisible();
+    const linkElement2 = screen.getByText("reddiquette");
+    expect(linkElement2).toBeVisible();
   });
 
-  it("should render without crashing", () => {
-    expect(wrapper).toMatchSnapshot();
+  it("not renders Community data", () => {
+    let communityData = screen.queryByTestId("community-data");
+    expect(communityData).toBeNull();
   });
 
-  it("should contains Footer", () => {
-    expect(wrapper.find("Link").length).toBe(2);
+  it("renders Community data", async () => {
+    const { rerender } = await render(<TestingComponent />);
+
+    await rerender(
+      <TestingComponent>
+        <TestSubmitDestination />
+      </TestingComponent>
+    );
+    let communityData = screen.queryByTestId("community-data");
+    expect(communityData).not.toBeNull();
   });
 });

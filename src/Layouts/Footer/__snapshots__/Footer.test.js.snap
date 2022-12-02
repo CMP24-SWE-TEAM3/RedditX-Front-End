@@ -14,7 +14,8 @@ exports[`Footer Component this is a test for Footer Component 1`] = `
         <Link
           href="https://www.redditinc.com/policies/user-agreement"
         >
-          User Agreement 
+          User Agreement
+           
         </Link>
         <Link
           href="https://www.redditinc.com/policies/privacy-policy"
@@ -28,7 +29,8 @@ exports[`Footer Component this is a test for Footer Component 1`] = `
         <Link
           href="https://www.redditinc.com/policies/user-agreement"
         >
-          Content Policy 
+          Content Policy
+           
         </Link>
         <Link
           href="https://www.redditinc.com/policies/privacy-policy"
@@ -46,7 +48,8 @@ exports[`Footer Component this is a test for Footer Component 1`] = `
         <Link
           href="https://www.redditinc.com/policies/user-agreement"
         >
-          English 
+          English
+           
         </Link>
         <Link
           href="https://www.redditinc.com/policies/privacy-policy"

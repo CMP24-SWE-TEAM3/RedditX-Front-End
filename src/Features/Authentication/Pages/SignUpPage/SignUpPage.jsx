@@ -2,13 +2,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState } from "react";
 
-
-
-
 import SignUpPageFirstScreen from "Features/Authentication/Layouts/SignUpPageFirstScreen/SignUpPageFirstScreen";
 import SignUpPageSecondScreen from "Features/Authentication/Layouts/SignUpPageSecondScreen/SignUpPageSecondScreen";
-
-
+import useDocumentTitle from "Hooks/useDocumentTitle";
 
 var defaultFormFields = {
   email: "",
@@ -17,6 +13,9 @@ var defaultFormFields = {
 };
 
 const SignUpPage = () => {
+  // Change document title
+  useDocumentTitle("reddit.com: Join the worldwide");
+
   /**
    * state to handel any change the user make in the input fields
    */
@@ -74,7 +73,6 @@ const SignUpPage = () => {
   const [sug3, setSug3] = useState("");
   const [sug4, setSug4] = useState("");
   const [sug5, setSug5] = useState("");
-
 
   return (
     <>

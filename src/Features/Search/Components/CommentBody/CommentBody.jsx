@@ -16,6 +16,8 @@ import {
   Time,
   GoThread,
 } from "./CommentBody.styled";
+import Moment from "react-moment";
+// import Moment from "react-moment";
 import CommentUserImage from "../../Assets/People_Image.jpg";
 import PostFooter from "../PostFooter/PostFooter";
 import { Link } from "react-router-dom";
@@ -23,6 +25,7 @@ import { Link } from "react-router-dom";
  * Component that render the CommentBody.
  *
  * @Component
+ * @param {object} commentBody - contain commentBody
  * @returns {React.Component}
  */
 const CommentBody = ({ commentBody }) => {
@@ -39,8 +42,12 @@ const CommentBody = ({ commentBody }) => {
             <ImageAlign>
               <Link to="#">
                 <div>
-                  <CommentImage
+                  {/* <CommentImage
                     src={require(`../../Assets/${commentBody.commentUserImage}`)}
+                    alt="Comment User Image"
+                  /> */}
+                  <CommentImage
+                    src={CommentUserImage}
                     alt="Comment User Image"
                   />
                 </div>
@@ -51,11 +58,16 @@ const CommentBody = ({ commentBody }) => {
                 <BodyContentHeaderLayout>
                   <CommentUserName>
                     <div>
-                      <Link to="#">{commentBody.userName}</Link>
+                      {commentBody.userName && (
+                        <Link to="#">{commentBody.userName.substring(3)}</Link>
+                      )}
                     </div>
                   </CommentUserName>
                   <span className="break">·</span>
-                  <Time>{commentBody.time}</Time>
+                  <Time>
+                    {/* {commentBody.time} */}
+                    <Moment fromNow>{commentBody.time}</Moment>
+                  </Time>
                 </BodyContentHeaderLayout>
               </BodyContentHeader>
               <BodyText>
@@ -67,7 +79,7 @@ const CommentBody = ({ commentBody }) => {
               </BodyText>
             </BodyContent>
           </InnerBodyLayout>
-          <PostFooter />
+          <PostFooter postfooter={commentBody.postFooter} />
         </InnerBody>
         <GoThread href="#">Go to thread</GoThread>
       </Container>

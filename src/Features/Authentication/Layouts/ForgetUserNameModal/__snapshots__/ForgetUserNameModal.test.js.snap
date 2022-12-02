@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ForgetUserNameModal Layout this is a test for ForgetUserNameModal Layout 1`] = `
+exports[` 1`] = `
 <Fragment>
   <styled.div
     userNameScreen={true}
@@ -8,7 +8,9 @@ exports[`ForgetUserNameModal Layout this is a test for ForgetUserNameModal Layou
     <br />
     <br />
     <br />
-    <styled.h2>
+    <styled.h2
+      data-testid=""
+    >
       Recover your username
     </styled.h2>
     <styled.div>
@@ -18,6 +20,9 @@ exports[`ForgetUserNameModal Layout this is a test for ForgetUserNameModal Layou
       onSubmit={[Function]}
     >
       <FormInput
+        data-testid="email"
+        id="email"
+        initialFocus={false}
         label="Email"
         name="email"
         onChange={[Function]}
@@ -25,9 +30,14 @@ exports[`ForgetUserNameModal Layout this is a test for ForgetUserNameModal Layou
         required={true}
         showIcon={true}
         type="email"
+        valid={false}
         value=""
       />
-      <styled.p>
+      <styled.p
+        data-testid="email-error"
+        id="emailError"
+        valid={false}
+      >
         Please enter an email address to continue
       </styled.p>
       <styled.div>
@@ -35,12 +45,16 @@ exports[`ForgetUserNameModal Layout this is a test for ForgetUserNameModal Layou
           disabled={true}
           onClick={[Function]}
           type="submit"
+          valid={false}
         >
           Email me
         </Button>
       </styled.div>
-      <styled.div>
+      <styled.div
+        validEmail={false}
+      >
         <AsyncScriptLoader(ReCAPTCHA)
+          id="notRobot"
           onChange={[Function]}
           sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
           size="normal"
@@ -60,6 +74,7 @@ exports[`ForgetUserNameModal Layout this is a test for ForgetUserNameModal Layou
       <br />
       <styled.span>
         <button
+          id="wantLogIn"
           onClick={[Function]}
         >
           Log in

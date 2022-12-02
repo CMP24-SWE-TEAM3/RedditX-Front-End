@@ -19,6 +19,7 @@ import { IoMdCheckmark } from "react-icons/io";
 // Import contexts
 import { useCreatePostFlags } from "Features/Post/Contexts/createPostFlags";
 import { useCreatePostFlairs } from "Features/Post/Contexts/createPostFlairs";
+import { useSubmitDestination } from "Features/Post/Contexts/submitDestination";
 /**
  * Post Flags Wrapper component (The wrapper that contains the flags in the post form)
  *
@@ -38,6 +39,8 @@ const PostFlagsWrapper = ({
   // Context for create post flairs
   const { createPostFlairs, setCreatePostFlairs } = useCreatePostFlairs();
 
+  // Context for selected submit destination
+  const { submitDestination } = useSubmitDestination();
   return (
     <PostFlagsWrapperContainer>
       <SpoilerButton
@@ -104,12 +107,15 @@ const PostFlagsWrapper = ({
         <Text>NSFW</Text>
       </NSFWButton>
       <FlairButton
+        data-testid="flair-button"
+        disabled={!submitDestination}
         selected={createPostFlairs}
         background={
           createPostFlairs ? createPostFlairs.flairBackGroundColor : null
         }
         color={createPostFlairs ? createPostFlairs.flairTextColor : null}
-        /*disabled={true}*/ onClick={flairHandler}
+        /*disabled={true}*/
+        onClick={flairHandler}
       >
         <IoPricetagOutline size={22} />
         {!createPostFlairs && <Text>Flair</Text>}

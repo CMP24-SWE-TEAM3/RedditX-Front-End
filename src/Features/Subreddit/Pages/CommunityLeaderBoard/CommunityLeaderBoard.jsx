@@ -9,58 +9,68 @@ import {
   LeaderBoardPage,
   DropDown,
 } from "./CommunityLeaderBoard.styled";
-import axios from "API/axios";
-import useFetch from "Hooks/useFetch";
-
+import useFetchFunction from "Hooks/useFetchFunction";
+import fetchSubbedCommunities from "Features/Subreddit/Services/fetchSubbedCommunities";
+import { DataContext } from "../../Services/DataContext";
+import data from "../../Services/data.json";
+import { useEffect, useState } from "react";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import { Route, Routes, useParams } from "react-router-dom";
 /**
  * Component that contains the whole community leaderboard page
  *
  * @Component
  * @returns {React.Component}
  */
-function CommunityLeaderBoard() {
-  let [communitiesList, error, loading, reload] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "http://localhost:8000/communities--Leaderboard",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
+const CommunityLeaderBoard = () => {
+  const [CommunitiesSub, errorSubCommunities, loadingSubCommunities, fetchSubCommunities ] = useFetchFunction();
 
-  let [
-    CommunitiesSub,
-    errorSubCommunities,
-    loadingSubCommunities,
-    reloadSubCommunities,
-  ] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "http://localhost:8000/Subscribed--Leaderboard",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
+  const {categoryType} = useParams();
+  const auth = useAuth();
+  
+  useEffect(() => {
+    fetchSubbedCommunities(fetchSubCommunities, auth);
+  }, []); // Only re-run the effect if count changes
 
-  const useEffect = () => {};
 
+
+  const [category, setCategory] = useState(data);
+  const providedData = { category, setCategory };
   return (
     <LeaderBoardContainer>
-      <LeaderBoardPage>
+      {!loadingSubCommunities &&
+        <LeaderBoardPage>
         <Header />
         <MainPadding>
+        <DataContext.Provider value={providedData}>
           <Categories />
           <DropDown>
             <CategoryDropDown />
           </DropDown>
-          <Container com={communitiesList} subscribed={CommunitiesSub} />
-          <RightSection />
+        </DataContext.Provider>
+        <Container  subscribed={CommunitiesSub} />
+        <RightSection />
+        <Routes>
+
+          <Route
+           path="/category/:categoryType"
+           element={
+            <>
+              <DataContext.Provider value={providedData}>
+                <Categories />
+                <DropDown>
+                  <CategoryDropDown />
+                </DropDown>
+              </DataContext.Provider>
+              <Container  subscribed={CommunitiesSub} />
+              <RightSection />
+            </>
+            } 
+          />
+        </Routes>
         </MainPadding>
       </LeaderBoardPage>
+      }
     </LeaderBoardContainer>
   );
 }

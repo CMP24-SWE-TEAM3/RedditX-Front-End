@@ -15,8 +15,6 @@ import { resetForgottenPassword } from "Features/Authentication/Services/authApi
 
 import { useParams } from "react-router-dom";
 
-import axios from "API/axios";
-
 import useFetchFunction from "Hooks/useFetchFunction";
 
 import {
@@ -29,7 +27,7 @@ import {
   RedditIcon,
 } from "./NewPasswordPageCom.styled";
 
-const PWD_REGEX = /^[A-z0-9-_]{8,20}$/;
+const PWD_REGEX = /^[A-z0-9-_`~!@#$%^&*()_|+\-=?;:'",.<>]{8,20}$/;
 
 const defaultFormFields = {
   confirmPassword: "",
@@ -79,22 +77,7 @@ const NewPasswordPageCom = () => {
   /**
    * state to know what error message should be shown
    */
-  // const [isLoading, setIsLoading] = useState(false);
-
-  /**
-   * state to know what error message should be shown
-   */
   const [finishedLoading, setFinishedLoading] = useState(false);
-
-  /**
-   * the error message from forget Password
-   */
-  const [forgetPasswordErrorMsg, setForgetPasswordErrorMsg] = useState("");
-  /**
-   * state to set the error message from forget Password
-   */
-  const [showForgetPasswordErrorMsg, setShowForgetPasswordErrorMsg] =
-    useState(false);
 
   const { password, confirmPassword } = formFields;
 
@@ -123,32 +106,9 @@ const NewPasswordPageCom = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (wantSubmit) {
-      // setIsLoading(true);
-
-      // const response = await resetForgottenPassword(
-      //   password,
-      //   confirmPassword,
-      //   token,
-      //   setForgetPasswordErrorMsg,
-      //   setShowForgetPasswordErrorMsg
-      // );
-
-      // if (response) {
-      //   setFinishedLoading(true);
-      // }
-
-      const apiUrl = "/login/reset-forgotten-password/" + token;
-
-      dataFetch({
-        axiosInstance: axios,
-        method: "post",
-        url: apiUrl,
-        requestConfig: {
-          data: {
-            newPassword: password,
-            confirmedNewPassword: confirmPassword,
-          },
-        },
+      resetForgottenPassword(dataFetch, token, {
+        newPassword: password,
+        confirmedNewPassword: confirmPassword,
       });
 
       if (!error) {
@@ -194,6 +154,7 @@ const NewPasswordPageCom = () => {
 
         <form onSubmit={handleSubmit}>
           <FormInputPageCom
+            data-testid="password"
             valid={validPassword}
             initialFocus={initialFocus}
             showIcon={true}
@@ -208,7 +169,10 @@ const NewPasswordPageCom = () => {
           />
 
           {/* Show error message if the password is not valid and the user made a focus on the it's input field */}
-          <ErrorParagraph valid={validPassword || initialFocus}>
+          <ErrorParagraph
+            data-testid="password-error"
+            valid={validPassword || initialFocus}
+          >
             Password must be at least 8 characters long
           </ErrorParagraph>
 
@@ -219,6 +183,7 @@ const NewPasswordPageCom = () => {
           )}
 
           <FormInputPageCom
+            data-testid="verify-password"
             label="VERIFY PASSWORD"
             valid={validConfirmPassword}
             initialFocus={initialFocus2}
@@ -234,7 +199,10 @@ const NewPasswordPageCom = () => {
 
           {/* Show error message if the confirm password is not valid and the user made a focus on the it's input field */}
 
-          <ErrorParagraph valid={validConfirmPassword || initialFocus2}>
+          <ErrorParagraph
+            data-testid="verify-password-error"
+            valid={validConfirmPassword || initialFocus2}
+          >
             Password must match
           </ErrorParagraph>
 

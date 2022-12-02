@@ -118,6 +118,9 @@ export const CommentUserName = styled.div`
     font-weight: 500;
     line-height: 16px;
   }
+  div a:hover {
+    text-decoration: underline;
+  }
 `;
 export const Time = styled.a`
   align-self: baseline;

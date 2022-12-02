@@ -35,7 +35,7 @@ const LogInVerticalModal = ({ ...props }) => {
       }}
     >
       <MyModalHeader closeButton></MyModalHeader>
-      <Modal.Body>
+      <Modal.Body data-testid="loginModalId">
         {showSignUp && (
           <>
             <SignUp />{" "}

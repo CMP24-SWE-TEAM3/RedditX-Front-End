@@ -7,19 +7,21 @@ import { Footer } from "./PostFooter.styled";
  * @param {object} postfooter - the post footer object
  * @returns {React.Component}
  */
-
+var abbreviate = require("number-abbreviate");
 const PostFooter = ({ postfooter }) => {
   if (postfooter) {
     return (
       <Footer>
         <span className="upvote">
-          {postfooter.upVotes}
-          <span className="upvote-units">k</span> upvotes
+          {/* {postfooter.upVotes} */}
+          {abbreviate(postfooter.upVotes, 1)} upvotes
         </span>
-        <span className="comment">
-          {postfooter.Comments}
-          <span className="comment-units">k</span> comments
-        </span>
+        {postfooter.Comments && (
+          <span className="comment">
+            {/* {postfooter.Comments} */}
+            {abbreviate(postfooter.Comments, 1)} comments
+          </span>
+        )}
       </Footer>
     );
   }

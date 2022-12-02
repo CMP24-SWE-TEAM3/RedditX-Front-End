@@ -10,17 +10,17 @@ import { Container, Members, Online } from "./OnlineMembers.styled";
  */
 const OnlineMembers = () => {
   const {community} = useSubReddit();
-  let members = community[0].memberCount;
+  // let members = community[0].memberCount;
   let onlineMembers = 5;
   return (
     <Container>
-      {members && <OverlayTrigger
+      {community && community.length && community[0].memberCount && <OverlayTrigger
         placement={"bottom"}
         delay="200"
-        overlay={<Tooltip>{`${members} Members`}</Tooltip>}
+        overlay={community && community.length && community[0].memberCount && <Tooltip>{`${community[0].memberCount} Members`}</Tooltip>}
       >
         {<Members>
-          <div>{members}</div>
+          <div>{community && community.length && community[0].memberCount}</div>
           <p>Members</p>
         </Members>}
       </OverlayTrigger>}

@@ -46,6 +46,8 @@ const PreviewImage = ({ selectedImageId, files, isLoadingDone }) => {
               src={image.src}
               controls={image.type.toLowerCase().includes("video")}
               alt="selected"
+              id="preview-image"
+              data-testid="image"
             />
           </ImageContainer>
           <LinkForm>

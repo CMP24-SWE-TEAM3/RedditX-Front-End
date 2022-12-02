@@ -1,21 +1,47 @@
-import { shallow } from "enzyme";
-import React from "react";
-import { useState } from "react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import TestingComponent from "Features/Post/TestingComponent";
 
 // Import components
 import UploadedImagesContainer from "./UploadedImagesContainer";
 
-describe("Uploaded images container", () => {
-  let file = [{ name: "image", uploadDate: "2020-10-10", type: "image/png" }];
-  const setFile = (recFile) => (file = recFile);
-  let wrapper;
-  beforeEach(() => {
-    wrapper = shallow(
-      <UploadedImagesContainer files={file} setFiles={setFile} />
-    );
-  });
+const mockFiles = [
+  {
+    name: "test1.jpg",
+    size: 1000,
+    type: "image/jpeg",
+    lastModified: 1620000000000,
+    uploadDate: 1620000000000,
+    preview: "https://preview1.jpg",
+    src: "https://src1.jpg",
+  },
+];
 
+const mockSetFiles = jest.fn();
+const mockSetSelectedImageId = jest.fn();
+
+describe("Uploaded images container", () => {
   it("should render without crashing", () => {
-    expect(wrapper).toMatchSnapshot();
+    render(
+      <TestingComponent>
+        <UploadedImagesContainer
+          files={[]}
+          setFiles={mockSetFiles}
+          setSelectedImageId={mockSetSelectedImageId}
+        />
+      </TestingComponent>
+    );
+    expect(screen.queryByTestId("upload-icon")).not.toBeInTheDocument();
+  });
+  it("should render without crashing with images", () => {
+    render(
+      <TestingComponent>
+        <UploadedImagesContainer
+          files={mockFiles}
+          setFiles={mockSetFiles}
+          setSelectedImageId={mockSetSelectedImageId}
+        />
+      </TestingComponent>
+    );
+    expect(screen.getByTestId("upload-icon")).toBeInTheDocument();
   });
 });

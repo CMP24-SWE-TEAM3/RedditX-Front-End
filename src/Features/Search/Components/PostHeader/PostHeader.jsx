@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import CommImage from "../../Assets/CommunityImage.png";
+import Moment from "react-moment";
 import {
   PostHeaderStyle,
   CommunityInfo,
@@ -17,42 +18,49 @@ import {
  * @returns {React.Component}
  */
 const PostHeader = ({ postheader }) => {
-  return (
-    <PostHeaderStyle>
-      <CommunityInfo>
-        <Link to="#">
-          <CommunityImage
-            src={require(`../../Assets/${postheader.headerImage}`)}
-            alt="communityimage"
-          />
-        </Link>
-        <Link to="#" className="community-name">
-          r/{postheader.communityName}
-          {/* r/WallStreetRiches */}
-        </Link>
-      </CommunityInfo>
-      <span className="break">.</span>
-      <PostedBy>
-        <span className="first">Posted by</span>
-        <UserName>
+  console.log(postheader);
+  if (postheader) {
+    return (
+      <PostHeaderStyle>
+        <CommunityInfo>
           <Link to="#">
-            u/{postheader.userName}
-            {/* u/Old_Salamander_7479 */}
+            {postheader.headerImage && (
+              <CommunityImage
+                src={require(`../../Assets/${postheader.headerImage}`)}
+                alt="communityimage"
+              />
+            )}
           </Link>
-        </UserName>
-        <Flair>
-          <span>
-            {postheader.flair.flairText}
-            {/* ali */}
+          {postheader.communityName && (
+            <Link to="#" className="community-name" title="commName">
+              r/{postheader.communityName.substring(3)}
+            </Link>
+          )}
+        </CommunityInfo>
+        <span className="break">.</span>
+        <PostedBy>
+          <span className="first">Posted by</span>
+          <UserName>
+            {postheader.userName && (
+              <Link to="#" title="userName">
+                u/{postheader.userName.substring(3)}
+                {/* u/Old_Salamander_7479 */}
+              </Link>
+            )}
+          </UserName>
+
+          <span className="time-post">
+            <Moment fromNow>{postheader.time}</Moment>
           </span>
-        </Flair>
-        <span className="time-post">{postheader.time}</span>
-        <Flair nsfw={postheader.nsfw}>
-          {postheader.nsfw && <span>nsfw</span>}
-        </Flair>
-      </PostedBy>
-    </PostHeaderStyle>
-  );
+          {postheader.nsfw && (
+            <Flair nsfw={postheader.nsfw} title="flair">
+              {postheader.nsfw && <span>nsfw</span>}
+            </Flair>
+          )}
+        </PostedBy>
+      </PostHeaderStyle>
+    );
+  }
 };
 
 export default PostHeader;

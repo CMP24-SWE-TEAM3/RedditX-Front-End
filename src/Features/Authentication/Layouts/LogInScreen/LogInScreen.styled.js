@@ -19,7 +19,7 @@ export const AuthContainerDiv = styled.span`
 `;
 
 export const Privacy = styled.span`
-  color: color: ${({ theme }) => theme.color.link};
+  color: ${({ theme }) => theme.color.link};
 `;
 export const AuthHeader = styled.h2`
   font-family: ${fontFamily};
@@ -43,6 +43,7 @@ export const ButtonsContainer = styled.div`
 `;
 export const ErrorParagraph = styled.p`
   color: ${({ theme }) => theme.color.errorColor};
+  display: ${(p) => (p.valid ? "none" : "block")};
   margin-top: ${(p) => (p.valid ? "-30px" : "0")};
   font-size: 12px;
   transition: all 0.2s ease-in-out;

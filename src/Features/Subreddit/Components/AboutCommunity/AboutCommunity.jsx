@@ -22,7 +22,7 @@ const AboutCommunity = () => {
       </Text>
       <ModTools>
         {isMod && (
-          <Link className="mod-tools">
+          <Link className="mod-tools" to="#">
             <span>
               <BsShield />
             </span>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const RuleContainer = styled.div`
+  margin-bottom: 16px;
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;

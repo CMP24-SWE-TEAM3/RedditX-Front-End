@@ -77,7 +77,7 @@ const RulesWidget = () => {
   };
 
   return (
-    <WidgetContainer headerText="r/Eln2aa4yn Rules">
+    <WidgetContainer headerText="r/Egypt Rules">
       {rules.map((rule, i) => {
         return (
           <Rule

@@ -147,6 +147,7 @@ const DraftEditor = ({ files, setFiles, text, setText }) => {
   const onChange = (editorState) => {
     setEditorState(editorState);
     const raw = convertToRaw(editorState.getCurrentContent());
+    console.log(raw);
     setText(raw);
   };
 

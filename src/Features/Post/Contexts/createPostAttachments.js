@@ -8,7 +8,7 @@ export const createPostAttachmentsContext = createContext({});
  * @param {React.Component} children Who can access this context
  * @returns {React.Component}
  */
-export const CreatePostAttachmentsProvider = ({ children }) => {
+const CreatePostAttachmentsProvider = ({ children }) => {
   // Context that is used to share attachments of the post to be created
   const [createPostAttachments, setCreatePostAttachments] = useState([]);
 
@@ -28,6 +28,7 @@ export const CreatePostAttachmentsProvider = ({ children }) => {
  *
  * @returns {React.Context}
  */
-export const useCreatePostAttachments = () => {
+const useCreatePostAttachments = () => {
   return useContext(createPostAttachmentsContext);
 };
+export { useCreatePostAttachments, CreatePostAttachmentsProvider };

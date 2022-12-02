@@ -17,6 +17,7 @@ import axios from "API/axios";
 // import CommImage from "../../Assets/CommunityImage.png";
 import useFetchFunction from "Hooks/useFetchFunction";
 import useFetch from "Hooks/useFetch";
+import joinCommunity from "Features/Search/Services/joinCommunity";
 
 /**
  * Component that render the Community item Elements.
@@ -40,22 +41,6 @@ const CommunityItem = ({
 }) => {
   const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
   const [isJoinedstate, setisJoined] = useState(false);
-  const joinCommunity = (btnState) => {
-    fetchFunction({
-      axiosInstance: axios,
-      method: "POST",
-      url: "http://localhost:8000/Join",
-      requestConfig: {
-        headers: {
-          "Content-Language": "en-US",
-        },
-        data: {
-          action: !btnState ? "unsub" : "sub",
-          sr_name: `${communityName}`,
-        },
-      },
-    });
-  };
 
   // the initialState of operations of join
   const initialState = `${isJoined !== undefined ? "Joined" : "Join"}`;
@@ -87,7 +72,11 @@ const CommunityItem = ({
     } else {
       btnState = false;
     }
-    joinCommunity(btnState);
+    let dataObj = {
+      action: !btnState ? "unsub" : "sub",
+      sr_name: `${communityName}`,
+    };
+    joinCommunity(fetchFunction, dataObj);
   };
   /**
    * it is the function that handle the state of the button when mouseEnter on it.
@@ -108,21 +97,27 @@ const CommunityItem = ({
     }
   }
   // console.log(CommunitiesSub2);
+  var abbreviate = require("number-abbreviate");
   return (
-    <Container href="#">
+    <Container href="#" title="comm">
       <Flex>
-        <Img
-          src={require(`../../Assets/${communityIcon}`)}
-          alt="Subreddit Icon"
-        />
+        {/* {communityIcon && (
+          <img src={require(`../../Assets/${communityIcon}`)} alt="" />
+        )} */}
+        {communityIcon && (
+          <Img
+            src={require(`../../Assets/${communityIcon}`)}
+            alt="Subreddit Icon"
+          />
+        )}
         <CommunityInfo>
           <CommunityMainInfo>
             <CommunityTitle className="community-name">
-              r/{communityName}
+              r/{communityName.substring(3)}
             </CommunityTitle>
             <CommunityMembers>
               <span>•</span>
-              {membersCount}k Members
+              {abbreviate(membersCount, 1)} Members
             </CommunityMembers>
           </CommunityMainInfo>
           <CommunityDescription>{communityDescription}</CommunityDescription>

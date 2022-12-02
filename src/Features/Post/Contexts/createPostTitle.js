@@ -8,7 +8,7 @@ export const createPostTitleContext = createContext({});
  * @param {React.Component} children Who can access this context
  * @returns {React.Component}
  */
-export const CreatePostTitleProvider = ({ children }) => {
+const CreatePostTitleProvider = ({ children }) => {
   // Context that is used to share title of the post to be created
   const [createPostTitle, setCreatePostTitle] = useState("");
 
@@ -28,6 +28,8 @@ export const CreatePostTitleProvider = ({ children }) => {
  *
  * @returns {React.Context}
  */
-export const useCreatePostTitle = () => {
+const useCreatePostTitle = () => {
   return useContext(createPostTitleContext);
 };
+
+export { CreatePostTitleProvider, useCreatePostTitle };

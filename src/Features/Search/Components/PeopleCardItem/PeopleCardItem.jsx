@@ -6,6 +6,7 @@ import axios from "API/axios";
 // import useFetch from "Hooks/useFetch";
 import { Link } from "react-router-dom";
 import useFetchFunction from "Hooks/useFetchFunction";
+import followPeople from "Features/Search/Services/followPeople";
 /**
  * Component that contains the PeopleCardItem and manage the state of the button Follow.
  *
@@ -27,22 +28,7 @@ const PeopleCardItem = ({
 }) => {
   const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
   const [isJoinedstate, setisJoined] = useState(false);
-  const joinCommunity = (btnState) => {
-    fetchFunction({
-      axiosInstance: axios,
-      method: "POST",
-      url: "http://localhost:8000/follow",
-      requestConfig: {
-        headers: {
-          "Content-Language": "en-US",
-        },
-        data: {
-          action: btnState ? "Follow" : "unFollow",
-          userName: `${username.slice(1)}`,
-        },
-      },
-    });
-  };
+
   // People Subscriptions
 
   // find if the user following this one
@@ -73,7 +59,11 @@ const PeopleCardItem = ({
     } else {
       btnState = false;
     }
-    joinCommunity(btnState);
+    let dataObj = {
+      action: btnState ? "Follow" : "unFollow",
+      userName: `${username.slice(1)}`,
+    };
+    followPeople(fetchFunction, dataObj);
     ////////////////
   }
 
@@ -96,15 +86,18 @@ const PeopleCardItem = ({
       setBtnContent("Following");
     }
   }
+  var abbreviate = require("number-abbreviate");
   return (
-    <Container>
+    <Container title="people">
       <Link to="#">
         <div className="item">
-          <img src={require(`../../Assets/${avatar}`)} alt="userImage" />
+          {avatar && (
+            <img src={require(`../../Assets/${avatar}`)} alt="userImage" />
+          )}
           <div className="info">
             <div className="info2">
-              <h6>{username.slice(1)}</h6>
-              <p>{totalKarmas}m Karma</p>
+              <h6>{username.substring(3)}</h6>
+              <p>{abbreviate(totalKarmas, 1)} Karma</p>
             </div>
           </div>
           <div className="button">

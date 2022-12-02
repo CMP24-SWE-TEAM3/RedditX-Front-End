@@ -1,80 +1,73 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import React from "react";
-import {SearchDropDownStyled} from "./SearchDropDown.styled";
-import {Link} from "react-router-dom";
-import {BsArrowUpRightCircle} from 'react-icons/bs';
-import {IoIosLink} from "react-icons/io";
-import useFetch from "Hooks/useFetch";
-import axios from "API/axios";
+import { SearchDropDownStyled } from "./SearchDropDown.styled";
+import { Link } from "react-router-dom";
+import { BsArrowUpRightCircle } from "react-icons/bs";
+import { IoIosLink } from "react-icons/io";
+import trendingSearch from "Services/trendingSearch";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import { useEffect } from "react";
 
 /**
  * Component that displays a dropdown with a search bar inputForm
  * @param show
  * @return {React.Component}
  */
-const SearchDropDown = ({show}) => {
+const SearchDropDown = ({ show }) => {
+  // authorization user
+  const auth = useAuth();
 
-    // Fetch trending posts
-    const [trendingPostList, error, loading, reload] = useFetch({
-        axiosInstance: axios,
-        method: "GET",
-        //  /api/random-category/
-        url: "/TrendingPosts/",
-        requestConfig: {
-            headers: {
-                "Content-Language": "en-US",
-            },
-        },
-    });
+  // Fetch trending posts
+  const [trendingPostList, error, loading, fetchData] = useFetchFunction();
+  // useEffect(() => {
+  //   trendingSearch(fetchData,auth);
+  // }, []);
 
-    return (
-        <SearchDropDownStyled show={show} rootCloseEvent={'click'}  autoClose={true}>
-            <Dropdown.Header>trending today</Dropdown.Header>
-            {!loading && trendingPostList.map(recentPost => {
-                return (
-                  <>
-                    <Dropdown.Item
-                      key={recentPost.id}
-                      eventKey={recentPost.id}
-                      disabled={false}
-                    >
-                      <Link className={"content"}>
-                        <div>
-                          <div>
-                            <div className={"header-name"}>
-                              <span className={"arrow"}>
-                                <BsArrowUpRightCircle />
-                              </span>
-                              {recentPost.title}
-                            </div>
-                            <div className={"description"}>
-                              {recentPost.description}
-                            </div>
-                          </div>
-                          <footer>
-                            <img src={recentPost.cover} alt={"img-category"} />
-                            <span>r/{recentPost.category} and more</span>
-                          </footer>
-                        </div>
-                        <aside>
-                          <div className={"link-side"}>
-                            <div>
-                              <span>
-                                {" "}
-                                <IoIosLink />
-                              </span>
-                            </div>
-                          </div>
-                        </aside>
-                      </Link>
-                    </Dropdown.Item>
-                    <Dropdown.Divider />
-                  </>
-                );
-
-            })}
-        </SearchDropDownStyled>
-    );
+  return (
+    <SearchDropDownStyled show={show} autoClose={"outside"}>
+      <Dropdown.Header>trending today</Dropdown.Header>
+      {!loading &&
+        trendingPostList.map((recentPost) => {
+          return (
+            <>
+              <Dropdown.Item eventKey={recentPost.id} disabled={false}>
+                <Link className={"content"}>
+                  <div>
+                    <div>
+                      <div className={"header-name"}>
+                        <span className={"arrow"}>
+                          <BsArrowUpRightCircle />
+                        </span>
+                        {recentPost.title}
+                      </div>
+                      <div className={"description"}>
+                        {recentPost.description}
+                      </div>
+                    </div>
+                    <footer>
+                      <img src={recentPost.cover} alt={"img-category"} />
+                      <span>r/{recentPost.category} and more</span>
+                    </footer>
+                  </div>
+                  <aside>
+                    <div className={"link-side"}>
+                      <div>
+                        <span>
+                          {" "}
+                          <IoIosLink />
+                        </span>
+                      </div>
+                    </div>
+                  </aside>
+                </Link>
+              </Dropdown.Item>
+              <Dropdown.Divider />
+            </>
+          );
+        })}
+    </SearchDropDownStyled>
+  );
 };
 
 export default SearchDropDown;

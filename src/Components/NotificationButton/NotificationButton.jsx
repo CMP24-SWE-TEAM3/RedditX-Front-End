@@ -8,10 +8,12 @@ import { Container } from "./NotificationButton.styled";
 import { BsThreeDots, BsClipboardCheck } from "react-icons/bs";
 import { FiSettings } from "react-icons/fi";
 import link from "Assets/Images/link.png";
-import db from "Data/db.json";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { Link } from "react-router-dom";
+import pushNotifications from "Services/pushNotifications";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 /**
  * Component that displays notifications about changes in the state of the application
@@ -32,6 +34,8 @@ const NotificationButton = () => {
   // ref the event listener
   const ref = useRef(null);
   const wrapperRef = useRef(null);
+  // authorization user
+  const auth = useAuth();
 
   /**
    * Function that is called when the state of the application changes (when clicks outside of notification's buttons)
@@ -71,6 +75,16 @@ const NotificationButton = () => {
   };
   useOutsideAlerter(wrapperRef);
 
+  // Fetch notifications
+  // Call useFetchFunction hook to handle states: loading, error, data
+  // Loading: Boolean to tell if the request has been sent, or it's still loading
+  // Error: Contains error message when the request is failed
+  // Data: the response data
+  const [notificationList, error, isLoading, fetchData] = useFetchFunction();
+  useEffect(() => {
+    pushNotifications(fetchData, auth);
+  }, []);
+
   return (
     <Container ref={ref}>
       <OverlayTrigger
@@ -78,14 +92,17 @@ const NotificationButton = () => {
         placement={"bottom"}
         overlay={<Tooltip id={`tooltip-bottom`}>Notification</Tooltip>}
       >
-        <GlobalButtonStyled id={"notification-box"} onClick={handleClick}>
+        <GlobalButtonStyled
+          data-testid="notificationButtonId"
+          id={"notification-box"}
+          onClick={handleClick}
+        >
           <IoMdNotificationsOutline />
         </GlobalButtonStyled>
       </OverlayTrigger>
       <Overlay
         show={show}
         target={target}
-        // key={Math.random()}
         placement="bottom"
         container={ref}
         ref={wrapperRef}
@@ -115,42 +132,46 @@ const NotificationButton = () => {
               </Link>
             </span>
           </Popover.Header>
-          <Popover.Body>
+          <Popover.Body data-testid={"notificationListId"}>
             <div className={"pop"} />
             <div className={"content"}>
-              {db.comments.map((comment) => {
-                return (
-                  <i className={"content-i"}>
-                    <Link
-                      className={"content-a"}
-                      href={
-                        "https://www.reddit.com/r/Eln2aa4yn/comments/yi1rd4/ccccc/"
-                      }
-                    >
-                      <span className={"a-span"}>
-                        <img src={link} alt={"community-name"} />
-                      </span>
-                      <span className={"span-info"}>
-                        <span className={"child"}>
-                          <span className={"sub-child"}>
-                            <span className={"info"} key={comment.id}>
-                              Now in {comment.name}
-                            </span>
-                            <span className={"dot"}>.</span>
-                            <span className={"time"}>{comment.time}h</span>
-                          </span>
-                          <button className={"dot"}>
-                            <i>
-                              <BsThreeDots />
-                            </i>
-                          </button>
+              {notificationList &&
+                notificationList.length != 0 &&
+                notificationList.notifications.map((comment, index) => {
+                  return (
+                    <i className={"content-i"} key={index}>
+                      <Link
+                        className={"content-a"}
+                        href={
+                          "https://www.reddit.com/r/Eln2aa4yn/comments/yi1rd4/ccccc/"
+                        }
+                      >
+                        <span className={"a-span"}>
+                          <img src={link} alt={"community-name"} />
                         </span>
-                        <span className={"info-child"}>{comment.message}</span>
-                      </span>
-                    </Link>
-                  </i>
-                );
-              })}
+                        <span className={"span-info"}>
+                          <span className={"child"}>
+                            <span className={"sub-child"}>
+                              <span className={"info"} key={comment._id}>
+                                Now {comment.title}
+                              </span>
+                              <span className={"dot"}>.</span>
+                              <span className={"time"}>
+                                {comment.createdAt}h
+                              </span>
+                            </span>
+                            <button className={"dot"}>
+                              <i>
+                                <BsThreeDots />
+                              </i>
+                            </button>
+                          </span>
+                          <span className={"info-child"}>{comment.text}</span>
+                        </span>
+                      </Link>
+                    </i>
+                  );
+                })}
             </div>
           </Popover.Body>
 

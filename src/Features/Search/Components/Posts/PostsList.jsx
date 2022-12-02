@@ -13,17 +13,20 @@ import { ContainerPostsList } from "./PostsList.styled";
  * @returns {React.Component}
  */
 const PostsList = ({ type, PostList }) => {
-  return (
-    <ContainerPostsList>
-      <div className="Posts-List">
-        <div className="Sub-List">
-          {PostList?.map((post) => (
-            <PostItem post={post} key={post.postID} />
-          ))}
+  console.log(PostList.results);
+  if (PostList.results) {
+    return (
+      <ContainerPostsList>
+        <div className="Posts-List">
+          <div className="Sub-List">
+            {PostList.results.map((post) => (
+              <PostItem post={post} key={post._id} />
+            ))}
+          </div>
         </div>
-      </div>
-    </ContainerPostsList>
-  );
+      </ContainerPostsList>
+    );
+  }
 };
 
 export default PostsList;

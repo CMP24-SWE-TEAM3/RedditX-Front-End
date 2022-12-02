@@ -12,11 +12,7 @@ export const Container = styled.div`
   overflow-x: hidden;
 
 
-  //@media (min-width: 640px) {
-  //  padding: 20px 24px;
-  //  width:95%
-  //  
-  //}
+ 
 
   & .content-posts {
     width: 100%;
@@ -24,7 +20,7 @@ export const Container = styled.div`
 
     @media (max-width: 970px) {
       width:95%;
-      //padding-top:48px;
+     
 
     }
     @media(max-width:640px ){
@@ -33,10 +29,7 @@ export const Container = styled.div`
     }
   }
 
-  //& .posts {
-  //  min-height: 1000px;
-  //  width: 100%;
-  //} 
+ 
 
   & aside {
     margin-left: 24px;
@@ -102,14 +95,14 @@ export const MainContainer = styled.div`
 `
 export const AppHeader = styled.header`
   background-color: ${({ theme }) => theme.canvas};
-  //min-height: 48vh;
+  min-height: 48vh;
   position: relative;
-  display: flex;
-  flex-direction: column;
+ display: flex;
+ flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+ // font-size: calc(10px + 2vmin);
+ // color: white;
 `;
 export const AppContainer = styled.div`
   text-align: center;

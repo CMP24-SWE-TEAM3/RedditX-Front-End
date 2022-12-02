@@ -1,11 +1,9 @@
 import profile from "Features/Post/Assets/Images/Post-guidelines.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HiOutlinePencil } from "react-icons/hi";
-import { Separator } from "../CommunityCard/CommunityCard.styled";
 import FlairModal from "../FlairModal/FlairModal";
 import {
   Container,
-  CreatePost,
   DataContainer,
   Flair,
   FlairContainer,
@@ -18,9 +16,10 @@ import {
   UserFlairContainer,
 } from "./UserFlairPreview.styled";
 
-// Import api
-import axios from "API/axios";
-import useFetch from "Hooks/useFetch";
+// API services
+import getPostFlairs from "Features/Post/Services/getFlairs";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 /**
  * component that preview your subreddit flair
@@ -40,29 +39,23 @@ const UserFlairPreview = () => {
     setModalShow(true);
   }
 
-  /**
-   * handler when click save on flair modal that takes new flair selected
-   *
-   * @param {object} flair
-   */
-  function changeFlair(index) {
-    setModalShow(false);
-    setFlairIndex(index);
-  }
-
+  // const [flairs, error, isLoading, reload] = useFetch({
+  //   axiosInstance: axios,
+  //   method: "GET",
+  //   url: "/flairs/",
+  //   requestConfig: {
+  //     headers: {
+  //       "Content-Language": "en-US",
+  //     },
+  //   },
+  // });
   // Fetch flairs
-  const [flairs, error, isLoading, reload] = useFetch({
-    axiosInstance: axios,
-    method: "GET",
-    url: "/flairs/",
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
-    },
-  });
-  console.log(flairs);
-  console.log(flairIndex);
+  const auth = useAuth();
+  const [flairs, error, isLoading, fetchData] = useFetchFunction();
+  useEffect(() => {
+    getPostFlairs(fetchData, auth);
+  }, []);
+
   /**
    *
    * @returns {React.Component} CreatePost component

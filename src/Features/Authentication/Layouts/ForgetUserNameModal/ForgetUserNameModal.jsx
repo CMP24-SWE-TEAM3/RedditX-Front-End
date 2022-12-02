@@ -128,31 +128,9 @@ const ForgetUserNameModal = ({
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (wantSubmit) {
-     // setIsLoading(true);
-
-
-
-      // const response = await forgetUserNameApi(
-      //   email,
-      //   setForgetUserNameErrorMsg,
-      //   setShowForgetUserNameErrorMsg
-      // );
-
-      // if (response) {
-      //   setEmailSent(true);
-      // }
-
-
-      dataFetch({
-        axiosInstance: axios,
-        method: "post",
-        url: "/login/forget",
-        requestConfig: {
-          data: {
-            email: email,
-            operation: true,
-          },
-        },
+      forgetUserNameApi(dataFetch, {
+        email: email,
+        operation: true,
       });
 
       if (!error) {
@@ -161,8 +139,6 @@ const ForgetUserNameModal = ({
       }
 
       setWantSubmit(false);
-
-     // setIsLoading(false);
     }
   };
   /**
@@ -174,6 +150,7 @@ const ForgetUserNameModal = ({
     const { name, value } = event.target;
     if (name === "email") {
       setValidEmail(USER_EMAIL.test(email));
+      setInitialFocus(false);
     }
     setFormFields({ ...formFields, [name]: value });
   };
@@ -194,7 +171,7 @@ const ForgetUserNameModal = ({
           <br></br>
           <br></br>
           <br></br>
-          <AuthHeader>Recover your username</AuthHeader>
+          <AuthHeader data-testid="">Recover your username</AuthHeader>
           <AuthParagraph>
             Tell us the email address associated with your Reddit account, and
             we’ll send you an email with your username.
@@ -202,6 +179,8 @@ const ForgetUserNameModal = ({
 
           <form onSubmit={handleSubmit}>
             <FormInput
+            data-testid="email"
+              id="email"
               valid={validEmail}
               initialFocus={initialFocus}
               showIcon={true}
@@ -217,15 +196,13 @@ const ForgetUserNameModal = ({
             />
 
             {/* Show error message if the email is not valid and the user made a focus on the it's input field */}
-            <ErrorParagraph valid={validEmail || initialFocus}>
+            <ErrorParagraph data-testid="email-error" id="emailError" valid={validEmail || initialFocus}>
               {/* {errMsg} */}
               Please enter an email address to continue
             </ErrorParagraph>
 
             {error && (
-              <ErrorParagraph
-                valid={!error || initialFocus}
-              >
+              <ErrorParagraph valid={!error || initialFocus}>
                 {error}
               </ErrorParagraph>
             )}
@@ -243,7 +220,7 @@ const ForgetUserNameModal = ({
                   Email me
                 </Button>
               )}
-              {isLoading  && (
+              {isLoading && (
                 <Button disabled valid={true} type="submit">
                   <LoadingSpinner></LoadingSpinner>
                 </Button>
@@ -255,7 +232,7 @@ const ForgetUserNameModal = ({
               )}
             </ButtonsContainer>
 
-            {emailSent && !error&&(
+            {emailSent && !error && (
               <ErrorParagraph
                 validColor={emailSent}
                 valid={!emailSent || initialFocus}
@@ -267,6 +244,7 @@ const ForgetUserNameModal = ({
             )}
             <ReCAPTCHAContainer validEmail={validEmail}>
               <ReCAPTCHA
+                id="notRobot"
                 sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
                 onChange={recaptchaHandler}
                 grecaptcha={grecaptchaObject}
@@ -281,6 +259,7 @@ const ForgetUserNameModal = ({
             <Forget>
               {/* Want to login? */}
               <button
+                id="wantLogIn"
                 onClick={() => {
                   setFinishedLoading(false);
                   // setIsLoading(false);

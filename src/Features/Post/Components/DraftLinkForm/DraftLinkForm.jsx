@@ -9,7 +9,7 @@ import {
 
 // Import bootstrap components
 import { Col } from "react-bootstrap";
-import { isValidUrl } from "Features/Post/Utils/isValidUrl";
+import isValidUrl from "Features/Post/Utils/isValidUrl";
 
 // Import hooks
 import { useState } from "react";
@@ -44,6 +44,7 @@ const DraftLinkForm = ({
    * @param {Event} e - Event object
    */
   const handleFormSubmit = (e) => {
+    e.preventDefault();
     setIsUrlValid(isValidUrl(linkUrlValue));
     if (isValidUrl(linkUrlValue)) {
       confirmLink(e);
@@ -58,7 +59,6 @@ const DraftLinkForm = ({
             onChange={onLinkTextChange}
             type="text"
             value={linkTextValue}
-            onKeyDown={onLinkInputKeyDown}
             placeholder="Title of link (optional)"
           />
         </Col>
@@ -72,14 +72,13 @@ const DraftLinkForm = ({
             onChange={onLinkURLChange}
             type="text"
             value={linkUrlValue}
-            onKeyDown={onLinkInputKeyDown}
             placeholder="Paste or type link here"
           />
         </Col>
       </FormRow>
       <FormRow>
         <Col>
-          <StyledButton onMouseDown={handleFormSubmit}> Insert </StyledButton>
+          <StyledButton type="submit"> Insert </StyledButton>
           {!isUrlValid && <span>Link doesn't look right</span>}
         </Col>
       </FormRow>

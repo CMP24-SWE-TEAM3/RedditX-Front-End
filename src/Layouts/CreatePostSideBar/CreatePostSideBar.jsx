@@ -2,7 +2,7 @@
 import React, { useState} from 'react';
 import {Container} from "./CreatePostSideBar.styled";
 import reddit from 'Assets/Images/reddit.png'
-import ModalCommunity from 'Components/Modal/Modal';
+import ModalCommunity from 'Components/ModalCommunity/ModalCommunity';
 import { useNavigate } from "react-router-dom";/**
 /**
  * Component that displays a create post and community button on sidebar.
@@ -36,7 +36,7 @@ const CreatePostSideBar = () => {
                     <hr/>
                     <div className={'buts'}>
                         <button id={'create-post-button'} onClick={()=>navigate("/submit")}  className={'sub-but1'}>Create Post</button>
-                        <button id={'create-community-button'}  onClick={() => setShow(true)} className={'sub-but2'}>Create Community</button>
+                        <button id={'create-community-button'} data-testid="createModalID"  onClick={() => setShow(true)} className={'sub-but2'}>Create Community</button>
                     </div>
                 </div>
             </Container>

@@ -11,7 +11,7 @@ const AuthContext = createContext(null);
  * getExpirationDate, isLoggedIn, getFullName.
  * @returns The AuthContext.Provider is being returned.
  */
-export const AuthProvider = ({ children }) => {
+const AuthProvider = ({ children }) => {
   // Local storage for user information
   const [user, setUser] = useLocalStorage("user", "null");
 
@@ -30,14 +30,14 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
-  // Return user's full name
-//   const getFullName = () => {
-//     return JSON.parse(user).fullName;
-//   };
+  // Return user's username
+    const getUserName = () => {
+      return JSON.parse(user).username;
+    };
 
   // Return user's token
   const getToken = () => {
-    return JSON.parse(user).accessToken;
+    return JSON.parse(user).token;
   };
 
   // Return token's expiration date
@@ -56,6 +56,7 @@ export const AuthProvider = ({ children }) => {
         login,
         logout,
         getToken,
+        getUserName,
         getExpirationDate,
         isLoggedIn,
         //getFullName,
@@ -70,6 +71,8 @@ export const AuthProvider = ({ children }) => {
  * It returns the value of the AuthContext object.
  * @returns The AuthContext object.
  */
-export const useAuth = () => {
+const useAuth = () => {
   return useContext(AuthContext);
 };
+
+export { useAuth, AuthProvider };

@@ -29,11 +29,16 @@ const MediaControls = ({ addImage, addVideo }) => {
         placement="top"
         overlay={<Tooltip id="button-tooltip-2">Add an image</Tooltip>}
       >
-        <StyledButton onClick={() => imageRef.current.click()}>
+        <StyledButton
+          data-testid="image-btn"
+          id="Add-an-image"
+          onClick={() => imageRef.current.click()}
+        >
           <IoImageOutline size={25} />
         </StyledButton>
       </OverlayTrigger>
       <input
+        data-testid="image-input"
         as={"input"}
         type="file"
         accept="image/*"
@@ -45,11 +50,16 @@ const MediaControls = ({ addImage, addVideo }) => {
         placement="top"
         overlay={<Tooltip id="button-tooltip-2">Add a video</Tooltip>}
       >
-        <StyledButton onClick={() => videoRef.current.click()}>
+        <StyledButton
+          data-testid="video-btn"
+          id="Add-a-video"
+          onClick={() => videoRef.current.click()}
+        >
           <SlSocialYoutube size={25} />
         </StyledButton>
       </OverlayTrigger>
       <input
+        data-testid="video-input"
         type="file"
         accept="video/*"
         onChange={(e) => addVideo(e.target.files[0])}

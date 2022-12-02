@@ -77,6 +77,9 @@ const darkTheme = {
     search_bar_background: "#272729",
     // hover_background_button_blue
     hover_background_button_blue: "#d7dadc",
+
+    // side bar of the post
+    sideBarPost: "#161617",
   },
   // Border colors
   borderColor: {

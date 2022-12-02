@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation Post should render without crashing 1`] = `
+<ModalHeader
+  closeButton={false}
+  closeLabel="Close"
+>
+  <styled.div>
+    <div
+      className="content"
+    >
+      <styled.div>
+        <styled.button
+          onClick={[Function]}
+        >
+          <TbArrowBigTop
+            size={26}
+          />
+        </styled.button>
+        <div
+          className="score"
+        >
+          0
+        </div>
+        <styled.button
+          onClick={[Function]}
+        >
+          <TbArrowBigDown
+            size={26}
+          />
+        </styled.button>
+      </styled.div>
+      <styled.span>
+        <RiGalleryLine />
+      </styled.span>
+      <styled.div>
+        <h6>
+          الواحد و هو بيتفرج مش عارف يفرح ولا يزعل
+        </h6>
+      </styled.div>
+      <styled.div>
+        <div>
+          <Link
+            href="https://www.reddit.com/r/Egypt/search?q=flair_name%3A%22Sports%20%D8%B1%D9%8A%D8%A7%D8%B6%D8%A9%20%22&restrict_sr=1"
+          >
+            <div
+              className="text-flair"
+            >
+              <span>
+                Sports رياضة 
+              </span>
+            </div>
+          </Link>
+        </div>
+      </styled.div>
+    </div>
+    <styled.div
+      onClick={[Function]}
+    >
+      <styled.button>
+        <i>
+          <IoMdClose />
+        </i>
+        <span>
+          Close
+        </span>
+      </styled.button>
+    </styled.div>
+  </styled.div>
+</ModalHeader>
+`;

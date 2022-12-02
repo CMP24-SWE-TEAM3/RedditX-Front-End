@@ -10,7 +10,9 @@ exports[`LogInVerticalModal Modal this is a test for LogInVerticalModal Modal 1`
   <Styled(ModalHeader)
     closeButton={true}
   />
-  <ModalBody>
+  <ModalBody
+    data-testid="loginModalId"
+  >
     <LogIn />
      
     <styled.span>
