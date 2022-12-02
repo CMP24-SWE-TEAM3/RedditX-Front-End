@@ -125,7 +125,7 @@ function App() {
               }
             />
             <Route
-              path="subreddit"
+              path="subreddit/:id"
               element={
                 <>
                   <Navigation

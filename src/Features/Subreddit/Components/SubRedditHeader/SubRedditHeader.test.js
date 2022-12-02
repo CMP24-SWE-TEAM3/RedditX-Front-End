@@ -5,7 +5,8 @@ import { SubRedditProvider } from "Features/Subreddit/Contexts/SubRedditProvider
 
 const banner = {
   color: "#33a8ff",
-  url: "Features/Subreddit/Assets/tree.jpg",
+  // url: "Features/Subreddit/Assets/tree.jpg",
+  url: "",
 };
 
 const info = {

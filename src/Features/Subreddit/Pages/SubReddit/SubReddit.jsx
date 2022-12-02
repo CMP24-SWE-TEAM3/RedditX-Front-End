@@ -2,8 +2,10 @@ import SetSubReddit from "Features/Subreddit/Components/SetSubReddit/SetSubReddi
 import SubRedditBody from "Features/Subreddit/Components/SubRedditBody/SubRedditBody";
 import SubRedditHeader from "Features/Subreddit/Components/SubRedditHeader/SubRedditHeader";
 import { SubRedditProvider } from "Features/Subreddit/Contexts/SubRedditProvider";
+import { SubRedditIDProvider } from "Features/Subreddit/Contexts/SubRedditIDProvider";
 import { useState } from "react";
 import { InnerContainer, SubRedditContainer } from "./SubReddit.styled";
+import { useParams } from "react-router-dom";
 
 /**
  * the whole subreddit Component
@@ -11,13 +13,15 @@ import { InnerContainer, SubRedditContainer } from "./SubReddit.styled";
  * @returns {React.Component}
  */
 const SubReddit = () => {
+  const { id } = useParams();
   const [isJoined, setIsJoined] = useState(false);
   function joinHandler(e) {
     setIsJoined(e);
   }
   const banner = {
     color: "#33a8ff",
-    url: "Features/Subreddit/Assets/tree.jpg",
+    // url: "Features/Subreddit/Assets/tree.jpg",
+    url: "",
   };
 
   const info = {
@@ -26,20 +30,22 @@ const SubReddit = () => {
 
   return (
     <SubRedditProvider>
-      <SetSubReddit comName="Community">
-        <SubRedditContainer>
-          {/*<header>Navbar</header>*/}
-          <InnerContainer>
-            <SubRedditHeader
-              banner={banner}
-              info={info}
-              isJoined={isJoined}
-              onJoin={joinHandler}
-            />
-            <SubRedditBody />
-          </InnerContainer>
-        </SubRedditContainer>
-      </SetSubReddit>
+      <SubRedditIDProvider>
+        <SetSubReddit comm={id}>
+          <SubRedditContainer>
+            {/*<header>Navbar</header>*/}
+            <InnerContainer>
+              <SubRedditHeader
+                banner={banner}
+                info={info}
+                isJoined={isJoined}
+                onJoin={joinHandler}
+              />
+              <SubRedditBody />
+            </InnerContainer>
+          </SubRedditContainer>
+        </SetSubReddit>
+      </SubRedditIDProvider>
     </SubRedditProvider>
   );
 };
