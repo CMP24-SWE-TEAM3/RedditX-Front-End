@@ -11,6 +11,7 @@ import {
 } from "./CommunityLeaderBoard.styled";
 import useFetchFunction from "Hooks/useFetchFunction";
 import fetchSubbedCommunities from "Features/Subreddit/Services/fetchSubbedCommunities";
+import fetchRandomCommunities from "Features/Subreddit/Services/fetchRandomCommunities";
 import { DataContext } from "../../Services/DataContext";
 import data from "../../Services/data.json";
 import { useEffect, useState } from "react";
@@ -25,11 +26,15 @@ import { Route, Routes, useParams } from "react-router-dom";
 const CommunityLeaderBoard = () => {
   const [CommunitiesSub, errorSubCommunities, loadingSubCommunities, fetchSubCommunities ] = useFetchFunction();
 
+  // Fetch communities
+  const [communityList, errorRandom, loadingRandom, fetchFunction] = useFetchFunction();
+
   const {categoryType} = useParams();
   const auth = useAuth();
   
   useEffect(() => {
     fetchSubbedCommunities(fetchSubCommunities, auth);
+    fetchRandomCommunities(fetchFunction, auth);
   }, []); // Only re-run the effect if count changes
 
 
@@ -38,7 +43,8 @@ const CommunityLeaderBoard = () => {
   const providedData = { category, setCategory };
   return (
     <LeaderBoardContainer>
-      {!loadingSubCommunities &&
+      {!loadingSubCommunities && 
+      !loadingRandom &&
         <LeaderBoardPage>
         <Header />
         <MainPadding>
@@ -49,7 +55,7 @@ const CommunityLeaderBoard = () => {
           </DropDown>
         </DataContext.Provider>
         <Container  subscribed={CommunitiesSub} />
-        <RightSection />
+        <RightSection communityList = {communityList}/>
         <Routes>
 
           <Route
@@ -63,7 +69,7 @@ const CommunityLeaderBoard = () => {
                 </DropDown>
               </DataContext.Provider>
               <Container  subscribed={CommunitiesSub} />
-              <RightSection />
+              <RightSection communityList = {communityList}/>
             </>
             } 
           />
