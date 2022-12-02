@@ -3,17 +3,13 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import CommunityDate from "./CommunityDate";
-import { SubRedditProvider } from "Features/Subreddit/Contexts/SubRedditProvider";
-import { ThemeProvider } from "styled-components";
-import defaultTheme from "Theme/defaultTheme";
-import lightTheme from "Theme/lightTheme";
 import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
 import { useEffect } from "react";
+import SubredditTestingComponent from "Features/Subreddit/SubredditTestingComponent";
 
-const theme = { ...defaultTheme, ...lightTheme };
 
 const MockDesc = () => {
-  const { community, setCommunity } = useSubReddit();
+  const { setCommunity } = useSubReddit();
   useEffect(() => {
     setCommunity([
       {
@@ -81,11 +77,9 @@ describe("Description and created date of subreddit", () => {
   it("textarea should appear", () => {
     //Arrange
     render(
-      <ThemeProvider theme={theme}>
-        <SubRedditProvider>
-          <CommunityDate />
-        </SubRedditProvider>
-      </ThemeProvider>
+      <SubredditTestingComponent>
+        <CommunityDate />
+      </SubredditTestingComponent>
     );
 
     //Act
@@ -97,15 +91,12 @@ describe("Description and created date of subreddit", () => {
     expect(textAreaElement).toBeInTheDocument();
   });
 
-
   it("textarea should appear when there is description", () => {
     //Arrange
     render(
-      <ThemeProvider theme={theme}>
-        <SubRedditProvider>
-          <MockDesc />
-        </SubRedditProvider>
-      </ThemeProvider>
+      <SubredditTestingComponent>
+        <MockDesc />
+      </SubredditTestingComponent>
     );
 
     //Act
