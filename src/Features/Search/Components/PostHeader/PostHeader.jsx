@@ -18,7 +18,7 @@ import {
  * @returns {React.Component}
  */
 const PostHeader = ({ postheader }) => {
-  console.log(postheader);
+  // console.log(postheader);
   if (postheader) {
     return (
       <PostHeaderStyle>

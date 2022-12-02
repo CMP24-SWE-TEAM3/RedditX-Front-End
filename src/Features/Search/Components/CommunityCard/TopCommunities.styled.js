@@ -112,6 +112,10 @@ export const CommunityContainer = styled.div`
   & .communities-item button:hover {
     background-color: ${({ theme }) => theme.background.card_hover};
   } */
+  & .NoResults {
+    padding: 16px;
+    color: ${({ theme }) => theme.color.titleText_of_link};
+  }
   & .more {
     font-size: 14px;
     line-height: 18px;

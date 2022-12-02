@@ -72,7 +72,10 @@ const CommentBody = ({ commentBody }) => {
               </BodyContentHeader>
               <BodyText>
                 <BodyTextStyle>
-                  <BodyTextStylePlace className="comment-content">
+                  <BodyTextStylePlace
+                    className="comment-content"
+                    title="CommentBody"
+                  >
                     {commentBody.bodyContent}
                   </BodyTextStylePlace>
                 </BodyTextStyle>

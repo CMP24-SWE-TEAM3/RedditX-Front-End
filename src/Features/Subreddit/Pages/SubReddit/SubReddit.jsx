@@ -15,8 +15,9 @@ import { useParams } from "react-router-dom";
  */
 const SubReddit = () => {
   const { id } = useParams();
+  
   // Change document title
-  useDocumentTitle("Subreddit title");
+  useDocumentTitle(id.substring(3));
 
   const [isJoined, setIsJoined] = useState(false);
   function joinHandler(e) {

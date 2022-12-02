@@ -1,3 +1,4 @@
+import NotFound from "Features/Search/Components/NotFound/NotFound";
 import PeopleItem from "Features/Search/Components/PeopleItem/PeopleItem";
 import {
   Container,
@@ -16,24 +17,27 @@ import {
  */
 const PeoplePage = ({ PeopleList, PeopleFollow }) => {
   if (PeopleList.results) {
+    const PeopleNumber = PeopleList.results.length;
     return (
       <Container>
         <OuterContainer>
           <InnerContainer>
             <List>
-              {PeopleList.results.map((People) => (
-                <PeopleItem
-                  avatar={People.avatar}
-                  key={People._id}
-                  userID={People._id}
-                  about={People.about}
-                  totalKarmas={People.karma}
-                  username={People._id}
-                  isFollow={PeopleFollow.find((element) => {
-                    return element.id === People._id;
-                  })}
-                />
-              ))}
+              {PeopleNumber !== 0 &&
+                PeopleList.results.map((People) => (
+                  <PeopleItem
+                    avatar={People.avatar}
+                    key={People._id}
+                    userID={People._id}
+                    about={People.about}
+                    totalKarmas={People.karma}
+                    username={People._id}
+                    isFollow={PeopleFollow.find((element) => {
+                      return element.id === People._id;
+                    })}
+                  />
+                ))}
+              {PeopleNumber === 0 && <NotFound />}
             </List>
           </InnerContainer>
         </OuterContainer>
