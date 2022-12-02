@@ -1,28 +1,23 @@
-import Adapter from "@zarconontol/enzyme-adapter-react-18";
+// import Adapter from "@zarconontol/enzyme-adapter-react-18";
 import { render, screen } from "@testing-library/react";
-import Enzyme, { shallow } from "enzyme";
+// import Enzyme, { shallow } from "enzyme";
 import UserFlairPreview from "./UserFlairPreview";
-import { BrowserRouter as Router } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
-import defaultTheme from "Theme/defaultTheme";
-import lightTheme from "Theme/lightTheme";
+import SubredditTestingComponent from "Features/Subreddit/SubredditTestingComponent";
 
-const theme = { ...defaultTheme, ...lightTheme };
 
-Enzyme.configure({ adapter: new Adapter() });
+// Enzyme.configure({ adapter: new Adapter() });
+
 describe("preview of selected flair", () => {
-  it("should render without crashing", () => {
-    expect(shallow(<UserFlairPreview />)).toMatchSnapshot();
-  });
+  // it("should render without crashing", () => {
+  //   expect(shallow(<UserFlairPreview />)).toMatchSnapshot();
+  // });
 
   it("show user flair preview", () => {
     //arrange
     render(
-      <ThemeProvider theme={theme}>
-        <Router>
-          <UserFlairPreview />
-        </Router>
-      </ThemeProvider>
+      <SubredditTestingComponent>
+        <UserFlairPreview />
+      </SubredditTestingComponent>
     );
 
     //assert
