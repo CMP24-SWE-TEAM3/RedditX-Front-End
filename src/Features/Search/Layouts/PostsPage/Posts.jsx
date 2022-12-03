@@ -32,10 +32,14 @@ const Posts = ({
    * State That Hndle Sorting Operation
    */
   const [Sort, setSort] = useState("Relevance");
+  const [SortName, setSortName] = useState("Sort");
+
   /**
    * State That Hndle Sorting on time Operation
    */
   const [Time, setTime] = useState("All time");
+  const [TimeName, setTimeName] = useState("time");
+
   if (PostList) {
     return (
       <>
@@ -44,7 +48,7 @@ const Posts = ({
             <div className="sort">
               <StyledDropdown
                 id="dropdown-basic-button"
-                title="Sort"
+                title={SortName}
                 variant="transparent"
                 className="sort"
               >
@@ -53,6 +57,7 @@ const Posts = ({
                   onClick={() => {
                     setSort("Relevance");
                     OnSort("Relevance");
+                    setSortName("Relevance");
                   }}
                 >
                   Relevance
@@ -61,6 +66,7 @@ const Posts = ({
                   onClick={() => {
                     setSort("Hot");
                     OnSort("Hot");
+                    setSortName("Hot");
                   }}
                 >
                   Hot
@@ -70,6 +76,7 @@ const Posts = ({
                   onClick={() => {
                     setSort("Top");
                     OnSort("Top");
+                    setSortName("Top");
                   }}
                 >
                   Top
@@ -79,6 +86,7 @@ const Posts = ({
                   onClick={() => {
                     setSort("New");
                     OnSort("New");
+                    setSortName("New");
                   }}
                 >
                   New
@@ -88,27 +96,72 @@ const Posts = ({
                   onClick={() => {
                     setSort("Most comments");
                     OnSort("Most Comments");
+                    setSortName("Most Comments");
                   }}
                 >
                   Most comments
                 </Dropdown.Item>
               </StyledDropdown>
             </div>
-            <div className="time">
-              <StyledDropdown
-                id="dropdown-basic-button"
-                title="time"
-                variant="transparent"
-                className="time"
-              >
-                <Dropdown.Item href="#">All time</Dropdown.Item>
-                <Dropdown.Item href="#">Past Year</Dropdown.Item>
-                <Dropdown.Item href="#">Past Mounth</Dropdown.Item>
-                <Dropdown.Item href="#">Past week</Dropdown.Item>
-                <Dropdown.Item href="#">Most 24 Hours</Dropdown.Item>
-                <Dropdown.Item href="#">Most Hour</Dropdown.Item>
-              </StyledDropdown>
-            </div>
+            {Sort !== "Hot" && Sort !== "New" && (
+              <div className="time">
+                <StyledDropdown
+                  id="dropdown-basic-button"
+                  title={TimeName}
+                  variant="transparent"
+                  className="time"
+                >
+                  <Dropdown.Item
+                    href="#"
+                    onClick={() => {
+                      setTimeName("All time");
+                    }}
+                  >
+                    All time
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    href="#"
+                    onClick={() => {
+                      setTimeName("Past Year");
+                    }}
+                  >
+                    Past Year
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    href="#"
+                    onClick={() => {
+                      setTimeName("Past Month");
+                    }}
+                  >
+                    Past Month
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    href="#"
+                    onClick={() => {
+                      setTimeName("Past week");
+                    }}
+                  >
+                    Past week
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    href="#"
+                    onClick={() => {
+                      setTimeName("Past 24 Hours");
+                    }}
+                  >
+                    Most 24 Hours
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    href="#"
+                    onClick={() => {
+                      setTimeName("Past Hour");
+                    }}
+                  >
+                    Most Hour
+                  </Dropdown.Item>
+                </StyledDropdown>
+              </div>
+            )}
           </div>
           <div className="x">
             <PostsList type={Sort} PostList={PostList} />

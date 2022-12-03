@@ -3,7 +3,7 @@
 // import { render, screen } from "@testing-library/react";
 // import TestingComponent from "Features/Post/TestingComponent";
 // import useFetchFunction from "Hooks/useFetchFunction";
-// import Search from "./Search";
+import Search from "./Search";
 // it("this is a test", () => {
 //   render(
 //     <TestingComponent>
@@ -25,3 +25,12 @@
 // //   });
 // // });
 it("this is a test", () => {});
+// import { render, screen } from "@testing-library/react";
+// import TestingComponent from "Features/Post/TestingComponent";
+// it("this is a test for Search", () => {
+//   render(
+//     <TestingComponent>
+//       <Search />
+//     </TestingComponent>
+//   );
+// });

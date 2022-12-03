@@ -33,15 +33,8 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
  * @Component
  * @returns {React.Component}
  */
- const RightSection = () => {
-  const auth = useAuth();
-
-  // Fetch communities
-  const [communityList, error, loading, fetchFunction] = useFetchFunction();
-
-  useEffect(()=>{
-      fetchRandomCommunities(fetchFunction, auth);
-  },[])
+ const RightSection = ({communityList}) => {
+  
 
   
 
@@ -49,12 +42,12 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
     <RightSectionContainer>
       <RightSectionStylingDiv>
         <FirstBlock>
-          <CommunitySideCard communityList={communityList.slice(0,5)}/>
+          <CommunitySideCard communityList={communityList}/>
         </FirstBlock>
         <RightSectionSticky>
           <SecondBlockWithBrowse>
             <SecondBlock>
-              <CommunitySideCard communityList={communityList.slice(0,5)}/>
+              <CommunitySideCard communityList={communityList}/>
             </SecondBlock>
             <Browse>
               <BrowseH3>Browse Communities A-Z</BrowseH3>

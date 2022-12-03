@@ -5,17 +5,12 @@ import TestingComponent from "Features/Search/TestingComponent";
 import PostHeader from "./PostHeader";
 const postHeader = {
   headerImage: "People_Image.jpg",
-  communityName: "communityName",
-  userName: "userName",
+  communityName: "t2_communityName",
+  userName: "t2_userName",
   time: "5 days ago",
-  flair: {
-    flairText: " post.flairText",
-    flairColor: "green",
-    flairBackgroundColor: "red",
-  },
   nsfw: false,
 };
-describe("Post component", () => {
+describe("PostHeader component", () => {
   it("renders check for post Header community name", async () => {
     render(
       <TestingComponent>
@@ -44,3 +39,4 @@ describe("Post component", () => {
     expect(outputElement).toBeNull();
   });
 });
+// it("this is a test", () => {});
