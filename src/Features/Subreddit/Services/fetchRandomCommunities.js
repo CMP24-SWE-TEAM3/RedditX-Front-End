@@ -7,7 +7,7 @@ import axios from "API/axios";
  * @param {Function} fetchFunction Coming from useFetchFunction custom hook
  */
 const fetchRandomCommunities = (fetchFunction, auth) => {
-    
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
     fetchFunction({
       axiosInstance: axios,
       method: "GET",

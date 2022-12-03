@@ -7,7 +7,7 @@ import axios from "API/axios";
  * @param {object} dataObject The Data to be Sent in the POST request
  */
 const joinCommunity = (fetchFunction, dataObject, auth) => {
-    
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
     fetchFunction({
       axiosInstance: axios,
       method: 'POST',
