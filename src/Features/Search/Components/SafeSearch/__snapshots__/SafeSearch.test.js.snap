@@ -14,6 +14,7 @@ exports[`Safe Search this is a test for Safe Search 1`] = `
       <FormCheck
         id="custom-switch"
         label=""
+        onClick={[Function]}
         type="switch"
       />
     </Styled(Form)>

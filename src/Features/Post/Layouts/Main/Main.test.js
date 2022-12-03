@@ -4,6 +4,8 @@ import TestingComponent from "Features/Post/TestingComponent";
 // Import components
 import Main from "./Main";
 
+jest.mock("Features/Post/Services/submitPost", () => (fetchData, auth) => {});
+
 describe("Main section", () => {
   it("renders Main component", () => {
     render(

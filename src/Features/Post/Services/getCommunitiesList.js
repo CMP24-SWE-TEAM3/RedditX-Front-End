@@ -7,6 +7,7 @@ import axios from "API/axios";
  * @param {Function} dataFetch - The function to make the request
  */
 const getCommunitiesList = async (fetchData, auth) => {
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
   // communities-summary in json server
   fetchData({
     axiosInstance: axios,

@@ -4,16 +4,12 @@ exports[`Community Leaderboard RightSection this is a test for Right Section 1`]
 <styled.div>
   <styled.div>
     <styled.div>
-      <CommunitySideCard
-        communityList={Array []}
-      />
+      <CommunitySideCard />
     </styled.div>
     <styled.div>
       <styled.div>
         <styled.div>
-          <CommunitySideCard
-            communityList={Array []}
-          />
+          <CommunitySideCard />
         </styled.div>
         <styled.div>
           <styled.h3>

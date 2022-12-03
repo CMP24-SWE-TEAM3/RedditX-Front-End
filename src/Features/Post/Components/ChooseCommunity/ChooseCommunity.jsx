@@ -73,7 +73,6 @@ const ChooseCommunity = () => {
   useEffect(() => {
     getCommunitiesList(fetchData, auth);
   }, []);
-
   return (
     <Container>
       <ModalCommunity
@@ -137,26 +136,27 @@ const ChooseCommunity = () => {
             {error && <Alert variant="danger">{error}</Alert>}
             {!isLoading && (
               <ItemsGroup>
-                {communityList.communities
-                  .filter(
-                    (community) =>
-                      community._id
-                        .toLowerCase()
-                        .search(searchText.toLowerCase()) !== -1
-                  )
-                  .map((community) => (
-                    <DropdownItem
-                      key={community._id}
-                      onClick={() => {
-                        setSubmitDestination(community);
-                        setSearchText(community._id);
-                        setShowMenu(false);
-                      }}
-                    >
-                      <UserImage src={community.icon} alt={community._id} />
-                      {community._id}
-                    </DropdownItem>
-                  ))}
+                {communityList.communities &&
+                  communityList.communities
+                    .filter(
+                      (community) =>
+                        community._id
+                          .toLowerCase()
+                          .search(searchText.toLowerCase()) !== -1
+                    )
+                    .map((community) => (
+                      <DropdownItem
+                        key={community._id}
+                        onClick={() => {
+                          setSubmitDestination(community);
+                          setSearchText(community._id);
+                          setShowMenu(false);
+                        }}
+                      >
+                        <UserImage src={community.icon} alt={community._id} />
+                        {community._id}
+                      </DropdownItem>
+                    ))}
               </ItemsGroup>
             )}
           </Menu>
