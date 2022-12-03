@@ -10,7 +10,7 @@ describe("CommunityCardItem component", () => {
     render(
       <TestingComponent>
         <CommunityCardItem
-          title = {"r/Gaming"}
+          title = {"Gaming"}
           index = {1}
         />
       </TestingComponent>

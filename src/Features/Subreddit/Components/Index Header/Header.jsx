@@ -13,8 +13,7 @@ import { HeaderMarginDiv, HeaderDiv, HeaderH3, Letters, LettersContainer } from 
   
   const clickSingleA = (e) => {
       e.preventDefault();
-      console.log(items);
-      console.log(e.currentTarget)
+      
       setItems(document.querySelectorAll('.active'));
 
       if(items) 

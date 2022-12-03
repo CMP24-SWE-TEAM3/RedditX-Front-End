@@ -8,11 +8,12 @@ import axios from "API/axios";
  */
 
 const fetchCommunities = (fetchFunction, auth, category) => {
-    console.log(`Inside Function: ${category}`);
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
+
     fetchFunction({
       axiosInstance: axios,
       method: 'GET',
-      url: "http://localhost:8000/communities--Leaderboard",
+      url: `/api/get_specific_category/`,
       requestConfig: {
         headers: {
           "Content-Language": "en-US",

@@ -1,4 +1,4 @@
-import logo from "../../Assets/images/logo.svg";
+import { BASE_URL } from "API/axios";
 import {Container,
 CommunityA,
 CommunityIndex,
@@ -14,18 +14,18 @@ TitleParagraph,
  * @param {number} index - Subreddit index among fetched data to index the list
  * @returns {Component.React}
  */
-const CommunitySideCardItem = ({index, title}) => {
-
+const CommunitySideCardItem = ({index, title, img}) => {
+    
     return (
         <Container>
-            <CommunityA to={`/subreddit`}>
+            <CommunityA to={`/subreddit/*`}>
                 <CommunityIndex>{index}</CommunityIndex>
                 <Arrow />
                  <CommunityImg
-                    src={logo}
-                    alt="logo"
+                    crossOrigin="anonynmous"
+                    src={`${BASE_URL}/subreddits/files/${img}`}
                 ></CommunityImg>
-                <TitleParagraph>{title}</TitleParagraph> 
+                <TitleParagraph>r/{title}</TitleParagraph> 
             </CommunityA>
         </Container>
     );

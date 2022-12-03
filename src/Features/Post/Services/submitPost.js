@@ -8,12 +8,14 @@ import axios from "API/axios";
  * @param {Object} post - The post data
  */
 const submitPost = (dataFetch, post, auth) => {
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
+
   console.log("submitPost", auth.getToken());
   console.log("postpost", post, ...post);
   dataFetch({
     axiosInstance: axios,
     method: "post",
-    // url: "/submit/",
+    // url: "https://localhost:8000/submit/",
     url: "/api/listing/submit/",
     requestConfig: {
       data: post,

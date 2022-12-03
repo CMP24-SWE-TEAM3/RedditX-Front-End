@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import fetchCommunities from "Features/Subreddit/Services/fetchCommunities";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import { communitiesWithCategory } from "../../Services/data";
 import {
   CommunityContainer,
   AllCommunities,
@@ -24,7 +25,7 @@ import {
  * @returns {React.Component}
  */
  const Container = ({subscribed }) => {
-  const [communitiesList, error, loading, fetchFunction] = useFetchFunction();
+  let [communitiesList, error, loading, fetchFunction] = useFetchFunction();
   const auth = useAuth();
   const {categoryType} = useParams();
   let initial = categoryType;
@@ -71,8 +72,15 @@ import {
     if(currCategory!==prevCategory) {
       setPrevCategory(currCategory);
       fetchCommunities(fetchFunction, auth, currCategory);
+      
     }
+    
   }, [categoryType, currCategory])
+
+  console.log(communitiesList);
+  communitiesList = communitiesWithCategory;
+
+  
   
   const communities = communitiesList.map((community, index) => {
     return (

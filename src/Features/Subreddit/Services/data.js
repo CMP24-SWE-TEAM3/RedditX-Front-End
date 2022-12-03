@@ -1,4 +1,4 @@
-export default [
+ export const communitiesWithCategory =  [
   {
     id: 1,
     title: "r/mildlyinteresting",
@@ -6,10 +6,10 @@ export default [
     coverImg: "logo.svg",
     stats: {
       members: 20,
-      online: 6,
+      online: 6
     },
     isJoined: false,
-    rankChange: 2,
+    rankChange: 2
   },
   {
     id: 2,
@@ -18,10 +18,10 @@ export default [
     coverImg: "funny.png",
     stats: {
       members: 200,
-      online: 60,
+      online: 60
     },
     isJoined: true,
-    rankChange: 1,
+    rankChange: 1
   },
   {
     id: 3,
@@ -30,153 +30,176 @@ export default [
     coverImg: "logo.svg",
     stats: {
       members: 203,
-      online: 63,
+      online: 63
     },
     isJoined: false,
-    rankChange: 7,
+    rankChange: 7
   },
   {
-    id: 1,
+    id: 4,
     title: "r/mildlyinteresting",
     description: "blah blah",
     coverImg: "logo.svg",
     stats: {
       members: 20,
-      online: 6,
+      online: 6
     },
     isJoined: false,
-    rankChange: 15,
+    rankChange: 15
   },
   {
-    id: 2,
+    id: 5,
     title: "r/funny",
     description: "blah blah haha",
     coverImg: "funny.png",
     stats: {
       members: 200,
-      online: 60,
+      online: 60
     },
     isJoined: true,
-    rankChange: 70,
+    rankChange: 70
   },
   {
-    id: 3,
+    id: 6,
     title: "r/space",
     description: "blah blah space",
     coverImg: "logo.svg",
     stats: {
       members: 203,
-      online: 63,
+      online: 63
     },
     isJoined: false,
-    rankChange: 17,
+    rankChange: 17
   },
   {
-    id: 1,
+    id: 7,
     title: "r/mildlyinteresting",
     description: "blah blah",
     coverImg: "logo.svg",
     stats: {
       members: 20,
-      online: 6,
+      online: 6
     },
     isJoined: false,
-    rankChange: 5,
+    rankChange: 5
   },
   {
-    id: 2,
+    id: 8,
     title: "r/funny",
     description: "blah blah haha",
     coverImg: "funny.png",
     stats: {
       members: 200,
-      online: 60,
+      online: 60
     },
     isJoined: true,
-    rankChange: 26,
+    rankChange: 26
   },
   {
-    id: 3,
+    id: 9,
     title: "r/space",
     description: "blah blah space",
     coverImg: "logo.svg",
     stats: {
       members: 203,
-      online: 63,
+      online: 63
     },
     isJoined: false,
-    rankChange: 20,
+    rankChange: 20
   },
   {
-    id: 1,
+    id: 10,
     title: "r/mildlyinteresting",
     description: "blah blah",
     coverImg: "logo.svg",
     stats: {
       members: 20,
-      online: 6,
+      online: 6
     },
     isJoined: false,
-    rankChange: 14,
+    rankChange: 14
   },
   {
-    id: 2,
+    id: 11,
     title: "r/funny",
     description: "blah blah haha",
     coverImg: "funny.png",
     stats: {
       members: 200,
-      online: 60,
+      online: 60
     },
     isJoined: true,
-    rankChange: 23,
+    rankChange: 23
   },
   {
-    id: 3,
+    id: 12,
     title: "r/space",
     description: "blah blah space",
     coverImg: "logo.svg",
     stats: {
       members: 203,
-      online: 63,
+      online: 63
     },
     isJoined: false,
-    rankChange: 55,
+    rankChange: 55
   },
   {
-    id: 1,
+    id: 13,
     title: "r/mildlyinteresting",
     description: "blah blah",
     coverImg: "logo.svg",
     stats: {
       members: 20,
-      online: 6,
+      online: 6
     },
     isJoined: false,
-    rankChange: 2,
+    rankChange: 2
   },
   {
-    id: 2,
+    id: 14,
     title: "r/funny",
     description: "blah blah haha",
     coverImg: "funny.png",
     stats: {
       members: 200,
-      online: 60,
+      online: 60
     },
     isJoined: true,
-    rankChange: 12,
+    rankChange: 12
   },
   {
-    id: 3,
+    id: 15,
     title: "r/space",
     description: "blah blah space",
     coverImg: "logo.svg",
     stats: {
       members: 203,
-      online: 63,
+      online: 63
     },
     isJoined: false,
-    rankChange: 33,
-  },
+    rankChange: 33
+  }
 ];
+
+export const subscribed = [
+  {
+    id: 1
+  },
+  {
+    id: 3
+  },
+  {
+    id: 7
+  },
+  {
+    id: 10
+  },
+  {
+    id: 13
+  },
+  {
+    id: 15
+  }
+]
+
+

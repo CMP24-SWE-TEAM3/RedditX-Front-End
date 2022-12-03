@@ -6,6 +6,8 @@ import LinkForm from "./LinkForm";
 
 const mockSubmitPost = jest.fn();
 
+jest.mock("Features/Post/Services/getFlairs", () => (fetchData, auth) => {});
+
 describe("Link form", () => {
   it("should be able to render title and url", async () => {
     render(

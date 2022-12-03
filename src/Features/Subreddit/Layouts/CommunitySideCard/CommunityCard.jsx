@@ -12,7 +12,6 @@ import CommunitySideCardItem from "../../Components/CommunitySideCardItem/Commun
 import axios from "API/axios";
 import useFetch from "Hooks/useFetch";
 import {Link} from "react-router-dom";
-
 /**
  * Component that links each  of community card item.
  *
@@ -20,24 +19,31 @@ import {Link} from "react-router-dom";
  * @returns {React.Component}
  */
 const CommunitySideCard = ({communityList}) => {
+
     const navigate = useNavigate();
     
     const navigateToRandomCat = (categoryTitle) => {
         // 👇️ navigate to /contacts
         navigate(`/category/${categoryTitle}`);
     };
+    let cat = 'Growing';    //Assign Random Category  [Can change to be a prop to change shown random among the two cards]
+    let com; 
 
-
-    const com = communityList.map((community, index) => {
-        return (
-            <li key={community.id}>
-                <CommunitySideCardItem
-                title = {community.title} 
-                community={community.name} 
-                index = {index+1}/>
-            </li>
-        );
-    });
+    if(communityList && communityList.length!==0) {
+        
+        cat = communityList.communities[0]['category'];   //Assign the Random Category to be shown [can call two requests in leaderboard Page, to have different radnoms in both cards]
+        com = communityList.communities.slice(0,5).map((community, index) => {
+            return (
+                <li key={community._id}>
+                    <CommunitySideCardItem
+                    title = {community.description}
+                    img = {community.icon}
+                    index = {index+1}/>
+                </li>
+            );
+        });
+    }
+    // const cat =
     
     return (
         <CommunityContainer>
@@ -45,7 +51,7 @@ const CommunitySideCard = ({communityList}) => {
                 <GradientDiv>
                   <LinkH2>
                       <Link href={"https://www.reddit.com/subreddits/leaderboard/"}>Top
-                          <span>&nbsp;Gaming&nbsp;</span>
+                          <span>&nbsp;{cat}&nbsp;</span>
                           Communities
                       </Link>
                   </LinkH2>
@@ -55,7 +61,7 @@ const CommunitySideCard = ({communityList}) => {
                   {com}
               </CommunityOl>
             <BtnDiv>
-                <ViewAllBtn onClick={()=>navigateToRandomCat('Gaming')}>See All Gaming</ViewAllBtn>
+                <ViewAllBtn onClick={()=>navigateToRandomCat(cat)}>See All {cat}</ViewAllBtn>
             </BtnDiv>
         </CommunityContainer>
     );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useFetchFunction from "Hooks/useFetchFunction";
 import joinCommunity from "Features/Subreddit/Services/joinCommunity";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 import {
   CommunityItem,
@@ -38,6 +39,7 @@ import {
  */
  const Community = ({isJoined, img, title, description, index, members}) => {
 
+  const auth = useAuth();
   const [isJoinedstate, setIsJoined] = useState(
     isJoined !== undefined ? true : false
   );
@@ -53,9 +55,11 @@ import {
   function changeButton() {
     let dataObject = {
       action: isJoinedstate ? "unsub" : "sub",
-      sr_name: `${title}`,
+      sr_name: "t5_imagePro235"
+      // sr_name: `t5_${title}`,
     }
-    joinCommunity(fetchFunction, dataObject);
+    joinCommunity(fetchFunction, dataObject, auth);
+    
     setIsJoined((prevJoined) => !prevJoined);
   }
   const isRising = isJoinedstate;
@@ -63,7 +67,7 @@ import {
     
     <CommunityItem>
       <HoverDiv>
-        <CommunityA to={`/subreddit`}>
+        <CommunityA to={`/subreddit/*`}>
           <CommunityIndex>{index}</CommunityIndex>
           <Arrow up={isRising? "true": "false"}></Arrow>
           <CommunityImg
@@ -78,7 +82,7 @@ import {
             <HoverItem>
               <ImgTitle>
                 <HoverImg src={require(`../../Assets/images/${img}`)} />
-                <HoverTitle to={'/subreddit'}>{title}</HoverTitle>
+                <HoverTitle to={'/subreddit/*'}>{title}</HoverTitle>
               </ImgTitle>
               <MembersOnline>
                 <Members>

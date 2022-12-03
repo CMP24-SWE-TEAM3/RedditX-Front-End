@@ -7,11 +7,11 @@ import axios from "API/axios";
  * @param {Function} fetchFunction Coming from useFetchFunction custom hook
  */
 const fetchRandomCommunities = (fetchFunction, auth) => {
-    
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
     fetchFunction({
       axiosInstance: axios,
-      method: 'GET',
-      url: "http://localhost:8000/feedback--Leaderboard",
+      method: "GET",
+      url: "/api/r/random-category",
       requestConfig: {
         headers: {
           "Content-Language": "en-US",
