@@ -5,14 +5,16 @@ import axios from "API/axios";
  *
  * @param {Function} fetchData - The function to make the request
  */
-const getSubreddit = async (fetchData) => {
+const getSubreddit = async (fetchData, comm ,auth) => {
   fetchData({
     axiosInstance: axios,
     method: "GET",
-    url: "http://localhost:8000/Community/",
+    // url: "http://localhost:8000/Community/",
+    url: `/api/info?id=${comm}`,
     requestConfig: {
       headers: {
         "Content-Language": "en-US",
+        Authorization: `Bearer ${auth.getToken()}`,
       },
     },
   });

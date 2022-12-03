@@ -1,7 +1,7 @@
 import { ContainerCreateComm } from "./CreateCommunity.styled";
 import BackgroundImage from "../../Assets/search-results-community-banner.png";
 import logo from "../../Assets/snoo-thinking.png";
-import ModalCommunity from "Components/Modal/Modal";
+import ModalCommunity from "Components/ModalCommunity/ModalCommunity";
 import { useState } from "react";
 /**
  * Component that contains the CreateCommunity component.

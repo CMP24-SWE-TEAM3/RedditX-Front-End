@@ -36,6 +36,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
 // Import api services
 import getCommunitiesList from "Features/Post/Services/getCommunitiesList";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import ModalCommunity from "Components/ModalCommunity/ModalCommunity";
 
 /**
  *
@@ -50,6 +51,9 @@ const ChooseCommunity = () => {
 
   // Context for selected submit destination
   const { submitDestination, setSubmitDestination } = useSubmitDestination();
+
+  // State to control the community modal appearance
+  const [showCommunityModal, setShowCommunityModal] = useState(false);
 
   // Fetch communities
   // const [communityList, error, isLoading, reload] = useFetch({
@@ -69,12 +73,12 @@ const ChooseCommunity = () => {
   useEffect(() => {
     getCommunitiesList(fetchData, auth);
   }, []);
-  useEffect(() => {
-    console.log("communityList", communityList);
-  }, [communityList]);
-  console.log("communityList", communityList);
   return (
     <Container>
+      <ModalCommunity
+        show={showCommunityModal}
+        close={() => setShowCommunityModal(false)}
+      />
       <Dropdown show={showMenu}>
         <Choose id="choose-community">
           {!showMenu && !submitDestination && <TbCircleDotted size={30} />}
@@ -122,31 +126,37 @@ const ChooseCommunity = () => {
             <CreateCommunity>
               <GroupTitle>Your communities</GroupTitle>
               {/* TODO: Add handler for create community button */}
-              <CreateButton variant="light">Create New</CreateButton>
+              <CreateButton
+                variant="light"
+                onClick={() => setShowCommunityModal(true)}
+              >
+                Create New
+              </CreateButton>
             </CreateCommunity>
             {error && <Alert variant="danger">{error}</Alert>}
             {!isLoading && (
               <ItemsGroup>
-                {communityList.communities
-                  .filter(
-                    (community) =>
-                      community._id
-                        .toLowerCase()
-                        .search(searchText.toLowerCase()) !== -1
-                  )
-                  .map((community) => (
-                    <DropdownItem
-                      key={community._id}
-                      onClick={() => {
-                        setSubmitDestination(community);
-                        setSearchText(community._id);
-                        setShowMenu(false);
-                      }}
-                    >
-                      <UserImage src={community.icon} alt={community._id} />
-                      {community._id}
-                    </DropdownItem>
-                  ))}
+                {communityList.communities &&
+                  communityList.communities
+                    .filter(
+                      (community) =>
+                        community._id
+                          .toLowerCase()
+                          .search(searchText.toLowerCase()) !== -1
+                    )
+                    .map((community) => (
+                      <DropdownItem
+                        key={community._id}
+                        onClick={() => {
+                          setSubmitDestination(community);
+                          setSearchText(community._id);
+                          setShowMenu(false);
+                        }}
+                      >
+                        <UserImage src={community.icon} alt={community._id} />
+                        {community._id}
+                      </DropdownItem>
+                    ))}
               </ItemsGroup>
             )}
           </Menu>

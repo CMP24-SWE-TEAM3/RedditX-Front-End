@@ -114,7 +114,8 @@ const PostFlagsWrapper = ({
           createPostFlairs ? createPostFlairs.flairBackGroundColor : null
         }
         color={createPostFlairs ? createPostFlairs.flairTextColor : null}
-        /*disabled={true}*/ onClick={flairHandler}
+        /*disabled={true}*/
+        onClick={flairHandler}
       >
         <IoPricetagOutline size={22} />
         {!createPostFlairs && <Text>Flair</Text>}

@@ -15,6 +15,7 @@ import ScrollButton from "Components/ScrollButton/ScrollButton";
 import RecentPosts from "Layouts/RecentPosts/RecentPosts";
 import PostShape from "Features/Post/Layouts/PostShape/PostShape";
 import Post from "Features/Post/Pages/Post/Post";
+import useDocumentTitle from "Hooks/useDocumentTitle";
 
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
@@ -46,6 +47,9 @@ let recentPost = [
 ];
 
 const HomePage = () => {
+  // Change document title
+  useDocumentTitle("Reddit - Dive into anything");
+
   const [showPost, setShowPost] = useState(false);
   // TODO: replace dummy data with post data
   // handle recent posts to append and delete from local storage

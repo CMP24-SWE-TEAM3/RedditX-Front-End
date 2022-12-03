@@ -14,6 +14,10 @@ export const PeopleContainer = styled.div`
     padding: 16px 16px 0;
     font-weight: 500;
   }
+  & .NoResults {
+    padding: 16px;
+    color: ${({ theme }) => theme.color.titleText_of_link};
+  }
   /* .communities-item a {
     margin-bottom: 0;
     border-bottom: thin solid ${({ theme }) => theme.lineColor.PostBorder};

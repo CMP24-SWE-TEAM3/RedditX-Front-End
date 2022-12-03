@@ -10,8 +10,8 @@ const fetchRandomCommunities = (fetchFunction, auth) => {
     
     fetchFunction({
       axiosInstance: axios,
-      method: 'GET',
-      url: "http://localhost:8000/feedback--Leaderboard",
+      method: "GET",
+      url: "/api/r/random-category",
       requestConfig: {
         headers: {
           "Content-Language": "en-US",

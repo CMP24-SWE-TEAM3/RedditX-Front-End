@@ -81,7 +81,7 @@ const CommunityCardItem = ({
     }
   }
   var abbreviate = require("number-abbreviate");
-  console.log(communityIcon);
+  // console.log(communityIcon);
   return (
     <Container title="comm">
       <Link to="#">

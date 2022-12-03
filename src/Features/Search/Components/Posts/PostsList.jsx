@@ -1,3 +1,4 @@
+import NotFound from "../NotFound/NotFound";
 import PostItem from "../Post/Post";
 import { ContainerPostsList } from "./PostsList.styled";
 // // Import api
@@ -13,15 +14,18 @@ import { ContainerPostsList } from "./PostsList.styled";
  * @returns {React.Component}
  */
 const PostsList = ({ type, PostList }) => {
-  console.log(PostList.results);
+  // console.log(PostList.results);
   if (PostList.results) {
+    const PostsNumber = PostList.results.length;
     return (
       <ContainerPostsList>
         <div className="Posts-List">
           <div className="Sub-List">
-            {PostList.results.map((post) => (
-              <PostItem post={post} key={post._id} />
-            ))}
+            {PostsNumber !== 0 &&
+              PostList.results.map((post) => (
+                <PostItem post={post} key={post._id} />
+              ))}
+            {PostsNumber === 0 && <NotFound />}
           </div>
         </div>
       </ContainerPostsList>

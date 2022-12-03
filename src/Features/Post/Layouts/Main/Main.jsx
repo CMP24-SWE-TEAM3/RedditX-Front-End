@@ -40,6 +40,7 @@ const Main = () => {
   // Data: the response data
   const [data, error, isLoading, dataFetch] = useFetchFunction();
   const auth = useAuth();
+
   /**
    * Function to handle submit the post
    * (Called when the user clicks on the submit button)

@@ -2,7 +2,7 @@
 import React, { useState} from 'react';
 import {Container} from "./CreatePostSideBar.styled";
 import reddit from 'Assets/Images/reddit.png'
-import ModalCommunity from 'Components/Modal/Modal';
+import ModalCommunity from 'Components/ModalCommunity/ModalCommunity';
 import { useNavigate } from "react-router-dom";/**
 /**
  * Component that displays a create post and community button on sidebar.
