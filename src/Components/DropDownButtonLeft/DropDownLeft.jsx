@@ -22,10 +22,8 @@ const DropDownLeft = () => {
 
   const handleToggle = () => {
     if (!show && showSideBar) {
-      console.log("hereee");
       return;
     }
-    console.log("baraa");
     setShow(!show);
   };
   useEffect(() => {
@@ -75,13 +73,7 @@ const DropDownLeft = () => {
           <GrFormDown />
         </span>
       </Dropdown.Toggle>
-      {
-        <DropDownMenu
-          dropDownItemRef={dropDownItemRef}
-          dropdownMenuRef={dropdownMenuRef}
-          show={show}
-        />
-      }
+      {<DropDownMenu dropdownMenuRef={dropdownMenuRef} show={show} />}
     </DropDownLeftStyled>
   );
 };
