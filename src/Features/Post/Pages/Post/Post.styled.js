@@ -9,7 +9,6 @@ export const Container = styled(Modal)`
   width: 100%;
   will-change: transform;
   contain: layout style size;
-
   // styles of modal dialog body
   .modal-dialog {
     box-sizing: border-box;
@@ -24,6 +23,10 @@ export const Container = styled(Modal)`
     transition: top 0.3s ease;
     width: calc(100% - 160px);
     z-index: 70;
+    @media (max-width: 730px) {
+      max-width: 100%;
+      width: 100%;
+    }
   }
 
   // styles of  modal content
@@ -49,6 +52,13 @@ export const Container = styled(Modal)`
     transition: top 0.3s ease;
     width: 100%;
     z-index: 70;
+    @media (max-width: 730px) {
+      max-width: 100%;
+      width: 100%;
+    }
+    @media (max-width: 730px) {
+      padding: 0;
+    }
   }
 `;
 // styles of modal body element
@@ -62,6 +72,10 @@ export const ModalBodyContainer = styled(ModalBody)`
   padding: 0;
   position: relative;
   width: calc(100% - 160px);
+  @media (max-width: 730px) {
+    max-width: 100%;
+    width: 100%;
+  }
 `;
 export const PostContent = styled.div`
   flex: 1;

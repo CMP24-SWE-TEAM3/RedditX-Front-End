@@ -51,7 +51,7 @@ const NavigationPost = ({ setHandleShowModal }) => {
             <RiGalleryLine />
           </Gallery>
           <Title>
-            <h6>الواحد و هو بيتفرج مش عارف يفرح ولا يزعل</h6>
+            <h6>Post Header</h6>
           </Title>
           <FlairTitle>
             <div>
