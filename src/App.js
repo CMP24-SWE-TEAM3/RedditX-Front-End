@@ -58,6 +58,7 @@ import RequireAuth from "Features/Authentication/Contexts/RequireAuth";
 import NotFound from "Pages/NotFound/NotFound";
 import { SearchContextProvider } from "Features/Search/Contexts/SearchWordContext/Search-context";
 import { SafeContextProvider } from "Features/Search/Contexts/SafeSearchContext/Safe-context";
+import useLocalStorage from "Hooks/useLocalStorage";
 
 /**
  * The main app of our application it handles routing
@@ -66,17 +67,33 @@ import { SafeContextProvider } from "Features/Search/Contexts/SafeSearchContext/
  */
 function App() {
   // State to store the current theme of the website
-  const [theme, setTheme] = useState({ ...defaultTheme, ...lightTheme });
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    JSON.stringify({
+      ...defaultTheme,
+      ...lightTheme,
+    })
+  );
 
   /**
    * Function to toggle the theme of the website
    * It will change the theme from light to dark and vice versa
    */
   const handleToggleTheme = () => {
-    if (theme.id === "dark") {
-      setTheme({ ...defaultTheme, ...lightTheme });
+    if (JSON.parse(theme).id === "dark") {
+      setTheme(
+        JSON.stringify({
+          ...defaultTheme,
+          ...lightTheme,
+        })
+      );
     } else {
-      setTheme({ ...defaultTheme, ...darkTheme });
+      setTheme(
+        JSON.stringify({
+          ...defaultTheme,
+          ...darkTheme,
+        })
+      );
     }
   };
 
@@ -86,7 +103,7 @@ function App() {
 
   const auth = useAuth();
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={JSON.parse(theme)}>
       <AuthProvider>
         <SearchContextProvider>
           <SafeContextProvider>
