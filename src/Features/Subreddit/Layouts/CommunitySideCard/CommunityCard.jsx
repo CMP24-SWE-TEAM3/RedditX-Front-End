@@ -16,6 +16,7 @@ import {Link} from "react-router-dom";
  * Component that links each  of community card item.
  *
  * @Component
+ * @param {object} communityList - array that contains all the Random Category communities
  * @returns {React.Component}
  */
 const CommunitySideCard = ({communityList}) => {

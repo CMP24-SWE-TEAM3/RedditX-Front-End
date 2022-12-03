@@ -87,12 +87,18 @@ const PeopleCardItem = ({
     }
   }
   var abbreviate = require("number-abbreviate");
+
+  console.log(avatar);
   return (
     <Container title="people">
       <Link to="#">
         <div className="item">
           {avatar && (
-            <img src={require(`../../Assets/${avatar}`)} alt="userImage" />
+            <img
+              crossOrigin="anonymous"
+              src={`https://api.redditswe22.tech/users/files/${avatar}`}
+              alt="People Icon"
+            />
           )}
           <div className="info">
             <div className="info2">

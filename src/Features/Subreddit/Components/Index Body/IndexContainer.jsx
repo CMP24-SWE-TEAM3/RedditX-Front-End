@@ -14,7 +14,9 @@ import {
 
 /**
  * Component acts as a container for all communities of the Community Indexing Page
+ * 
  * @Component
+ * @param {object} communityIndex - array that contains all the Indexed communities
  * @returns {React.Component}
  */
  const IndexContainer = ({communityIndex}) => {

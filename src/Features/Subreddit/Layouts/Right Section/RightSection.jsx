@@ -31,6 +31,7 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
  * Component that contains the right section of the community leaderboard page
  *
  * @Component
+ * @param {object} communityList - array that contains all the Random Category communities
  * @returns {React.Component}
  */
  const RightSection = ({communityList}) => {
