@@ -102,3 +102,8 @@ export const DropdownContainer = styled(NavDropdown)`
     color: #878a8c;
   }
 `
+
+export const Stars= styled.span
+`
+  position: relative;
+`

@@ -27,10 +27,7 @@ export const Container = styled(NavDropdown)`
   .accordion {
     --bs-accordion-bg: ${({theme}) => theme.canvas.primary} !important;
     --bs-accordion-active-bg: none;
-
-    :hover {
-      //background-color: ${({theme})=>theme.background.muted} !important;
-    }
+    
 
     --bs-accordion-active-color: none;
 
@@ -160,8 +157,10 @@ export const Container = styled(NavDropdown)`
     background-color: ${({theme}) => theme.background.primary} !important;
     left: -140px;
     top: 10px;
+    position: relative;
     @media (max-width:990px){
       width:fit-content;
+      left: -85px;
     }
 
     .stuff {
