@@ -8,10 +8,11 @@ TitleParagraph,
 } from "./CommunityCardItem.styled";
 
 /**
- * Component that  shows the names of communities up-to-date.
+ * Component that  shows the communities in side cards
  * @Component
  * @param {string} title - Subreddit Title
  * @param {number} index - Subreddit index among fetched data to index the list
+ * @param {string} img - Subreddit Image
  * @returns {Component.React}
  */
 const CommunitySideCardItem = ({index, title, img}) => {

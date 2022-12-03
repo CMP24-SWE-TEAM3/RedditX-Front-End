@@ -76,7 +76,7 @@ const CommunityLeaderBoard = () => {
                   <CategoryDropDown />
                 </DropDown>
               </DataContext.Provider>
-              <Container  subscribed={CommunitiesSub} />
+              <Container  subscribed={CommunitiesSub.communities} />
               <RightSection communityList = {communityList}/>
             </>
             } 
