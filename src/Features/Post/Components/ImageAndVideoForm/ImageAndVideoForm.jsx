@@ -75,10 +75,8 @@ const ImageAndVideoForm = ({ submitPost }) => {
   const [flairs, error, isLoading, fetchData] = useFetchFunction();
   const auth = useAuth();
   useEffect(() => {
-    console.log("submitDestination", submitDestination);
     if (submitDestination) getPostFlairs(fetchData, submitDestination._id, auth);
   }, [submitDestination]);
-  console.log("flairs", flairs);
   /**
    * Handle title change
    *

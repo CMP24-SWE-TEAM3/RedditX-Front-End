@@ -81,11 +81,9 @@ const DraftEditorForm = ({ submitPost }) => {
   const auth = useAuth();
   const [flairs, error, isLoading, fetchData] = useFetchFunction();
   useEffect(() => {
-    console.log("submitDestination", submitDestination);
     if (submitDestination)
       getPostFlairs(fetchData, submitDestination._id, auth);
   }, [submitDestination]);
-  console.log("flairs", flairs);
   /**
    * Handle title change
    *

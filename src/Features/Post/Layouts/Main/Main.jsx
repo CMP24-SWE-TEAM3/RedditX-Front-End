@@ -60,8 +60,6 @@ const Main = () => {
     // Call the submit post api (Service)
     submitPost(dataFetch, bodyFormData, auth);
   };
-  console.log("Main", data);
-  console.log("error", error);
   return (
     <Container>
       <Title>
