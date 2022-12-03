@@ -81,10 +81,10 @@ const CommunityCardItem = ({
     }
   }
   var abbreviate = require("number-abbreviate");
-  console.log(communityIcon);
+  // console.log(communityIcon);
   return (
     <Container title="comm">
-      <Link to="#">
+      <Link to={`/subreddit/${communityID}`}>
         <div className="item">
           {communityIcon && (
             <img src={require(`../../Assets/${communityIcon}`)} alt="" />

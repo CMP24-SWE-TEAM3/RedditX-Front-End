@@ -6,11 +6,11 @@ import axios from "API/axios";
  * @param {Function} fetchFunction Coming from useFetchFunction custom hook
  */
 const fetchSubbedCommunities = (fetchFunction, auth) => {
-    
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
     fetchFunction({
       axiosInstance: axios,
       method: 'GET',
-      url: "http://localhost:8000/Subscribed--Leaderboard",
+      url: "/api/r/mine/subscriber",
       requestConfig: {
         headers: {
           "Content-Language": "en-US",

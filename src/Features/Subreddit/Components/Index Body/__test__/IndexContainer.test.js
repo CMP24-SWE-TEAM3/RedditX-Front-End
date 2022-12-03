@@ -5,9 +5,10 @@ import IndexContainer from "../IndexContainer";
 describe("Index Body component Heading", () => {
 
   it('renders static Header', () => {
+    const arr = [{id:1, title:'First'}, {id:2, title:'Second'}];
     render(
       <TestingComponent>
-        <IndexContainer />
+        <IndexContainer communityIndex={arr}/>
       </TestingComponent>
     );
     const outputElement = screen.getByRole("heading");

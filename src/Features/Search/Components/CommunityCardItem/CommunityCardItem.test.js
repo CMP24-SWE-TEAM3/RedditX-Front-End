@@ -14,7 +14,7 @@ describe("CommunityCardItem component", () => {
           communityDescription={
             "A subreddit dedicated to German photos and portraits from the period of 1933-1946 (dates are flexible)"
           }
-          communityName={"GermanWW2photos"}
+          communityName={"t2_GermanWW2photos"}
           membersCount={10}
           isJoined={undefined}
         />
@@ -34,7 +34,7 @@ describe("CommunityCardItem component", () => {
           communityDescription={
             "A subreddit dedicated to German photos and portraits from the period of 1933-1946 (dates are flexible)"
           }
-          communityName={"GermanWW2photos"}
+          communityName={"t2_GermanWW2photos"}
           membersCount={10}
           isJoined={true}
         />
@@ -56,7 +56,7 @@ describe("CommunityCardItem component", () => {
           communityDescription={
             "A subreddit dedicated to German photos and portraits from the period of 1933-1946 (dates are flexible)"
           }
-          communityName={"GermanWW2photos"}
+          communityName={"t2_GermanWW2photos"}
           membersCount={10}
           isJoined={undefined}
         />
@@ -82,7 +82,7 @@ describe("CommunityCardItem component", () => {
           communityDescription={
             "A subreddit dedicated to German photos and portraits from the period of 1933-1946 (dates are flexible)"
           }
-          communityName={"GermanWW2photos"}
+          communityName={"t2_GermanWW2photos"}
           membersCount={10}
           isJoined={true}
         />
@@ -106,7 +106,7 @@ describe("CommunityCardItem component", () => {
           communityDescription={
             "A subreddit dedicated to German photos and portraits from the period of 1933-1946 (dates are flexible)"
           }
-          communityName={"GermanWW2photos"}
+          communityName={"t2_GermanWW2photos"}
           membersCount={10}
           isJoined={true}
         />

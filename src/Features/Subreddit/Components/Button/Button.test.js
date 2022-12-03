@@ -3,11 +3,8 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 // import Enzyme, { shallow } from "enzyme";
 import Button from "./Button";
-import { ThemeProvider } from "styled-components";
-import defaultTheme from "Theme/defaultTheme";
-import lightTheme from "Theme/lightTheme";
+import SubredditTestingComponent from "Features/Subreddit/SubredditTestingComponent";
 
-const theme = { ...defaultTheme, ...lightTheme };
 
 function onJoin() {
   console.log("click Join");
@@ -16,8 +13,6 @@ function onJoin() {
 // Enzyme.configure({ adapter: new Adapter() });
 
 describe("Join and Leave button", () => {
-
-
   // it("should render without crashing", () => {
   //   expect(
   //     shallow(<Button isJoined={isJoined} onJoin={onJoin} />)
@@ -27,9 +22,9 @@ describe("Join and Leave button", () => {
   it("should have text joined", () => {
     //arrange
     render(
-      <ThemeProvider theme={theme}>
+      <SubredditTestingComponent>
         <Button isJoined={true} onJoin={onJoin} />
-      </ThemeProvider>
+      </SubredditTestingComponent>
     );
 
     //assert
@@ -41,11 +36,10 @@ describe("Join and Leave button", () => {
   it("should have text join", () => {
     //arrange
     render(
-      <ThemeProvider theme={theme}>
+      <SubredditTestingComponent>
         <Button isJoined={false} onJoin={onJoin} />
-      </ThemeProvider>
+      </SubredditTestingComponent>
     );
-
 
     //assert
     const buttonElement = screen.getByText("join");
@@ -56,9 +50,9 @@ describe("Join and Leave button", () => {
   it("text should change", () => {
     //arrange
     render(
-      <ThemeProvider theme={theme}>
+      <SubredditTestingComponent>
         <Button isJoined={true} onJoin={onJoin} />
-      </ThemeProvider>
+      </SubredditTestingComponent>
     );
 
     //act

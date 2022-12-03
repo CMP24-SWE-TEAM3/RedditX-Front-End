@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-export const Container = styled.a`
+export const Container = styled(Link)`
   margin-bottom: 0;
   border-radius: 4px 4px 0 0;
   text-decoration: none;

@@ -68,12 +68,64 @@ const ChooseCommunity = () => {
   // });
 
   // Fetch communities
-  const [communityList, error, isLoading, fetchData] = useFetchFunction();
+  let [communityList, error, isLoading, fetchData] = useFetchFunction();
+  // TODO: remove this statement
+  communityList = {
+    communities: [
+      {
+        icon: "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png",
+        _id: "t5_imagepro",
+        description: "This is a community description",
+        name: "go 1",
+        category: "Gaming",
+        coverImg:
+          "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png",
+        title: "Final post test",
+        isJoined: true,
+        stats: {
+          members: 100,
+          online: 100,
+        },
+        rankChange: 0,
+      },
+      {
+        icon: "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png",
+        _id: "t5_imagepro1",
+        description: "This is a community description",
+        name: "Gaming 2",
+        category: "Gaming",
+        coverImg:
+          "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png",
+        title: "Final post test",
+        isJoined: true,
+        stats: {
+          members: 100,
+          online: 100,
+        },
+        rankChange: 0,
+      },
+      {
+        icon: "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png",
+        _id: "t5_imagepro2",
+        description: "This is a community description",
+        name: "Hello 3",
+        category: "Gaming",
+        coverImg:
+          "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png",
+        title: "Final post test",
+        isJoined: true,
+        stats: {
+          members: 100,
+          online: 100,
+        },
+        rankChange: 0,
+      },
+    ],
+  };
   const auth = useAuth();
   useEffect(() => {
     getCommunitiesList(fetchData, auth);
   }, []);
-
   return (
     <Container>
       <ModalCommunity
@@ -137,26 +189,27 @@ const ChooseCommunity = () => {
             {error && <Alert variant="danger">{error}</Alert>}
             {!isLoading && (
               <ItemsGroup>
-                {communityList.communities
-                  .filter(
-                    (community) =>
-                      community._id
-                        .toLowerCase()
-                        .search(searchText.toLowerCase()) !== -1
-                  )
-                  .map((community) => (
-                    <DropdownItem
-                      key={community._id}
-                      onClick={() => {
-                        setSubmitDestination(community);
-                        setSearchText(community._id);
-                        setShowMenu(false);
-                      }}
-                    >
-                      <UserImage src={community.icon} alt={community._id} />
-                      {community._id}
-                    </DropdownItem>
-                  ))}
+                {communityList.communities &&
+                  communityList.communities
+                    .filter(
+                      (community) =>
+                        community._id
+                          .toLowerCase()
+                          .search(searchText.toLowerCase()) !== -1
+                    )
+                    .map((community) => (
+                      <DropdownItem
+                        key={community._id}
+                        onClick={() => {
+                          setSubmitDestination(community);
+                          setSearchText(community._id);
+                          setShowMenu(false);
+                        }}
+                      >
+                        <UserImage src={community.icon} alt={community._id} />
+                        {community._id}
+                      </DropdownItem>
+                    ))}
               </ItemsGroup>
             )}
           </Menu>

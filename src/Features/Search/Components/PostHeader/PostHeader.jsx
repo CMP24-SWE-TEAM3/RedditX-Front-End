@@ -18,12 +18,12 @@ import {
  * @returns {React.Component}
  */
 const PostHeader = ({ postheader }) => {
-  console.log(postheader);
+  // console.log(postheader);
   if (postheader) {
     return (
       <PostHeaderStyle>
         <CommunityInfo>
-          <Link to="#">
+          <Link to={`/subreddit/${postheader.communityID}`}>
             {postheader.headerImage && (
               <CommunityImage
                 src={require(`../../Assets/${postheader.headerImage}`)}
@@ -32,7 +32,11 @@ const PostHeader = ({ postheader }) => {
             )}
           </Link>
           {postheader.communityName && (
-            <Link to="#" className="community-name" title="commName">
+            <Link
+              to={`/subreddit/${postheader.communityID}`}
+              className="community-name"
+              title="commName"
+            >
               r/{postheader.communityName.substring(3)}
             </Link>
           )}

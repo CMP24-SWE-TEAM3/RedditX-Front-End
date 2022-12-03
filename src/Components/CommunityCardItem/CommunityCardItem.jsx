@@ -1,5 +1,6 @@
 import { useState } from "react";
 import logo from "Assets/Images/logo.png";
+import { BASE_URL } from "API/axios";
 import { Container } from "./CommunityCardItem.styled";
 import { Link } from "react-router-dom";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa";
@@ -40,7 +41,10 @@ const CommunityCardItem = ({ communityId, community, srIcon }) => {
           <span className="caret">
             <FaAngleUp />
           </span>
-          <img src={srIcon} alt="" />
+          <img 
+          crossOrigin="anonynmous"
+          src={`${BASE_URL}/subreddits/files/${srIcon}`}
+          alt="" />
           <div className="info">
             <div className="info2">
               <h6>r/{community}</h6>

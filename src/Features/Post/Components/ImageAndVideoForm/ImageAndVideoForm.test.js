@@ -6,6 +6,8 @@ import ImageAndVideoForm from "./ImageAndVideoForm";
 
 const mockSubmitPost = jest.fn();
 
+jest.mock("Features/Post/Services/getFlairs", () => (fetchData, auth) => {});
+
 describe("Image and video form", () => {
   it("should be able to render title and post button", async () => {
     render(

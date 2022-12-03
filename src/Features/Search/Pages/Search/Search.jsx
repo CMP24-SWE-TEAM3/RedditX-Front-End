@@ -7,7 +7,7 @@ import React from "react";
 import Links from "../../Components/MainHeader/MainHeader";
 import Posts from "../../Layouts/PostsPage/Posts";
 import { Container } from "./Search.styled";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import useFetch from "Hooks/useFetch";
 import axios from "API/axios";
 import useFetchFunction from "Hooks/useFetchFunction";
@@ -18,7 +18,7 @@ import fetchPeople from "Features/Search/Services/fetchPeople";
 import fetchSubbcomm from "Features/Search/Services/fetchSubbcomm";
 import fetchPeopleFollowed from "Features/Search/Services/fetchPeopleFollowed";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
-import useDocumentTitle from "Hooks/useDocumentTitle";
+import SearchContext from "Features/Search/Contexts/SearchWordContext/Search-context";
 /**
  * Component that contains the Search Page and the Main Links component and routes for the four pages Posts page, Comments page, Community page and People page.
  *
@@ -26,14 +26,12 @@ import useDocumentTitle from "Hooks/useDocumentTitle";
  * @returns {React.Component}
  */
 const Search = () => {
-
-  useDocumentTitle("reddit.com: search results - string")
   /**
    * Function take the SortItem And Handle it
    * @param {String} SortItem
    */
   function OnSort(SortItem) {
-    console.log(SortItem);
+    // console.log(SortItem);
   }
   const auth = useAuth();
   const [ActiveLink, setActiveLink] = useState("posts");
@@ -43,21 +41,22 @@ const Search = () => {
   //   fetchPosts(fetch);
   // }, []); // Only re-run the effect if count changes
   // Fetch Posts
-
+  // console.log(PostList);
   // fetch Communities
   let [CommunityList, errorCommunity, loadingCommunity, fetchCommunity] =
     useFetchFunction();
-  // console.log(CommunityList);
-  // console.log(errorCommunity);
+
   // fetch Communities
 
   // fetch Comments
   let [CommentLists, errorComment, loadingComment, fetchComment] =
     useFetchFunction();
+  // console.log(CommentLists);
   // fetch Comments
 
   // fetch People
   let [PeopleList, errorPeople, loadingPeople, FB] = useFetchFunction();
+  // console.log(PeopleList);
   // fetch People
 
   // fetch people follow
@@ -72,18 +71,19 @@ const Search = () => {
     loadingSubCommunities,
     reloadSubCommunities,
   ] = useFetchFunction();
-  // console.log(CommunitiesSub2);
-  // console.log(errorSubCommunities);
-  // fetch communities subscribe
 
+  // fetch communities subscribe
+  // const searchWord = "text";
+  const ctx = useContext(SearchContext);
   useEffect(() => {
-    fetchPosts(fetch, auth);
-    fetchComments(fetchComment, auth);
-    fetchCommunities(fetchCommunity, auth);
-    fetchPeople(FB, auth);
+    // ctx.wordHandler(searchWord);
+    fetchPosts(fetch, auth, ctx.word);
+    fetchComments(fetchComment, auth, ctx.word);
+    fetchCommunities(fetchCommunity, auth, ctx.word);
+    fetchPeople(FB, auth, ctx.word);
     fetchSubbcomm(reloadSubCommunities, auth);
     fetchPeopleFollowed(fetchSub);
-  }, []); // Only re-run the effect if count changes
+  }, [ctx.word]); // Only re-run the effect if count changes
   return (
     <Container>
       <div className="outer-container">

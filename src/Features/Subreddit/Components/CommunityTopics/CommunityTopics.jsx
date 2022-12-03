@@ -55,12 +55,30 @@ const CommunityTopics = () => {
   //topics and suggested topics
   let topics = [
     { topic: "Activism" },
-    { topic: "Sports" },
+    { topic: "Addiction Support" },
+    { topic: "Animals and Pets" },
     { topic: "Anime" },
-    { topic: "Pla" },
-    { topic: "Plapla" },
-    { topic: "Haha" },
-    { topic: "Good" },
+    { topic: "Art" },
+    { topic: "Beauty and makeup" },
+    { topic: "Business, Economics, and Finance" },
+    { topic: "careers" },
+    { topic: "Cars and Motor Vehicles" },
+    { topic: "Celebrity" },
+    { topic: "Crafts and DIY" },
+    { topic: "Crypto" },
+    { topic: "Culture, Race, and Ethnicity" },
+    { topic: "Ethics and Philosophy" },
+    { topic: "Family and Relationships" },
+    { topic: "fashion" },
+    { topic: "Fitness and Nutrition" },
+    { topic: "Food and Drink" },
+    { topic: "Funny/Humor" },
+    { topic: "Gaming" },
+    { topic: "Gender" },
+    { topic: "History" },
+    { topic: "Hobbies" },
+    { topic: "Home and Garden" },
+
   ];
 
   //useEffect();

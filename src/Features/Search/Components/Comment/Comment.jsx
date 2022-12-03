@@ -49,14 +49,24 @@ const Comment = ({ comment }) => {
       Comments: "",
     },
   };
-
-  console.log(comment);
+  const postfooter = {
+    upVotes: 1000,
+    Comments: "",
+  };
+  const postHeader = {
+    headerImage: "People_Image.jpg",
+    communityName: "t2_egypt",
+    userName: "t2_Ali",
+    time: "12/10/2021",
+    nsfw: false,
+  };
+  // console.log(comment);
   return (
     <Container title="comment">
       <Layout>
-        {/* <PostHeader postheader={comment.postHeader} /> */}
+        <PostHeader postheader={postHeader} />
         <CommentBody commentBody={commentBody} />
-        {/* <PostFooter postfooter={comment.postFooter} /> */}
+        <PostFooter postfooter={postfooter} />
       </Layout>
     </Container>
   );

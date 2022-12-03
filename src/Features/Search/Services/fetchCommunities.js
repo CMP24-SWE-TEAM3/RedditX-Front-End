@@ -3,13 +3,14 @@ import axios from "API/axios";
  * A service to handle Communities list retrieval
  *
  * @param {Function} fetchFunction - The function to make the request
+ * @param {searchWord} fetchFunction - the word we search for
  */
 
-const fetchCommunities = (fetchFunction, auth) => {
+const fetchCommunities = (fetchFunction, auth, searchWord) => {
   fetchFunction({
     axiosInstance: axios,
     method: "GET",
-    url: "/api/search/r?type=sr&q=image",
+    url: `/api/search/r?type=sr&q=${searchWord}`,
     requestConfig: {
       headers: {
         "Content-Language": "en-US",

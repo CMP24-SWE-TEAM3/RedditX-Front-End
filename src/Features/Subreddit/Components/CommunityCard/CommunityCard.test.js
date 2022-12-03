@@ -2,19 +2,14 @@
 // import Enzyme, { shallow } from "enzyme";
 import CommunityCard from "./CommunityCard";
 import { render } from "@testing-library/react";
-import { ThemeProvider } from "styled-components";
-import defaultTheme from "Theme/defaultTheme";
-import lightTheme from "Theme/lightTheme";
-import { BrowserRouter as Router } from "react-router-dom";
 import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
-import { SubRedditProvider } from "Features/Subreddit/Contexts/SubRedditProvider";
+import SubredditTestingComponent from "Features/Subreddit/SubredditTestingComponent";
 import { useEffect } from "react";
 
-const theme = { ...defaultTheme, ...lightTheme };
 
 // Enzyme.configure({ adapter: new Adapter() });
 const MockCard = () => {
-  const { community, setCommunity } = useSubReddit();
+  const { setCommunity } = useSubReddit();
   useEffect(() => {
     setCommunity([
       {
@@ -73,13 +68,9 @@ describe("Content of Subreddit", () => {
 
   it("should render Content of Subreddit without crashing", () => {
     render(
-      <ThemeProvider theme={theme}>
-        <Router>
-          <SubRedditProvider>
-            <MockCard />
-          </SubRedditProvider>
-        </Router>
-      </ThemeProvider>
+      <SubredditTestingComponent>
+        <MockCard />
+      </SubredditTestingComponent>
     );
   });
 });
