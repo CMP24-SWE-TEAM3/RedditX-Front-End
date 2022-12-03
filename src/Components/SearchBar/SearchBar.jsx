@@ -9,7 +9,7 @@ import { useContext, useEffect } from "react";
 import SearchContext from "Features/Search/Contexts/SearchWordContext/Search-context";
 import fetchCommunities from "Features/Search/Services/fetchCommunities";
 import fetchPeople from "Features/Search/Services/fetchPeople";
-
+import { useNavigate } from "react-router-dom/dist";
 /**
  * Component that displays the search results for a given search term.
  *
@@ -17,6 +17,10 @@ import fetchPeople from "Features/Search/Services/fetchPeople";
  */
 const SearchBar = () => {
   const auth = useAuth();
+
+  // navigation to search page
+  const navigate = useNavigate();
+  const ctx = useContext(SearchContext);
 
   // fetch communities
   let [CommunityList, errorCommunity, loadingCommunity, fetchCommunity] =
@@ -28,11 +32,12 @@ const SearchBar = () => {
   // console.log("People", PeopleList);
 
   const searchWord = "text";
-  const ctx = useContext(SearchContext);
   ctx.wordHandler(searchWord);
   useEffect(() => {
-    fetchCommunities(fetchCommunity, auth, ctx.word);
-    fetchPeople(FB, auth, ctx.word);
+    if (ctx.isLoggedIn) {
+      fetchCommunities(fetchCommunity, auth, ctx.word);
+      fetchPeople(FB, auth, ctx.word);
+    }
   }, [ctx.word]);
 
   const formatResult = (item) => {
@@ -70,8 +75,18 @@ const SearchBar = () => {
       name: "Angular",
     },
   ];
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      ctx.wordHandler(event.target.value);
+      navigate("/search/posts");
+    }
+  };
+
   return (
-    <SearchItem>
+    <SearchItem onKeyDown={handleKeyDown}>
       <ReactSearchAutocomplete
         placeholder="Search Reddit"
         styling={SearchItem}

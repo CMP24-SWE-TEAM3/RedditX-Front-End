@@ -15,9 +15,7 @@ export const SearchItem = styled.div`
     min-width: 516px;
   }
   @media (max-width:992px){
-    .bTvxAB{
-      width: 300px;
-    }
+      width: 100% !important;
   }
   color: ${({ theme }) => theme.color.primary};
 
