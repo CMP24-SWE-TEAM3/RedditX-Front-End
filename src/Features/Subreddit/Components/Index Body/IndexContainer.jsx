@@ -39,7 +39,7 @@ import {
       return;
     }
     setCurrLetter(indexLetter);
-    console.log(currLetter);
+    
   }, [indexLetter])
 
   

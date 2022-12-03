@@ -15,7 +15,7 @@ TitleParagraph,
  * @returns {Component.React}
  */
 const CommunitySideCardItem = ({index, title, img}) => {
-    console.log(img);
+    
     return (
         <Container>
             <CommunityA to={`/subreddit/*`}>

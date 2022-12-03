@@ -9,7 +9,7 @@ import axios from "API/axios";
 
 const fetchCommunities = (fetchFunction, auth, category) => {
   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
-    console.log(`Inside Function: ${category}`);
+  
     fetchFunction({
       axiosInstance: axios,
       method: 'GET',

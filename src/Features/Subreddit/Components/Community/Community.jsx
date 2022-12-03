@@ -59,7 +59,7 @@ import {
       // sr_name: `t5_${title}`,
     }
     joinCommunity(fetchFunction, dataObject, auth);
-    console.log(`Join Response: ${joinRes}`);
+    
     setIsJoined((prevJoined) => !prevJoined);
   }
   const isRising = isJoinedstate;
