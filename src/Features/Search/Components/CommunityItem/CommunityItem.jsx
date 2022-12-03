@@ -99,7 +99,7 @@ const CommunityItem = ({
   // console.log(CommunitiesSub2);
   var abbreviate = require("number-abbreviate");
   return (
-    <Container href="#" title="comm">
+    <Container to={`/subreddit/${communityID}`} title="comm">
       <Flex>
         {/* {communityIcon && (
           <img src={require(`../../Assets/${communityIcon}`)} alt="" />

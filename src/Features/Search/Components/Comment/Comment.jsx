@@ -57,7 +57,7 @@ const Comment = ({ comment }) => {
     headerImage: "People_Image.jpg",
     communityName: "t2_egypt",
     userName: "t2_Ali",
-    time: "12/10/2001",
+    time: "12/10/2021",
     nsfw: false,
   };
   // console.log(comment);
