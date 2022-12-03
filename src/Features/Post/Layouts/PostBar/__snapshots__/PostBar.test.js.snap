@@ -2,9 +2,7 @@
 
 exports[`PostBar Component this is a test for PostBar Component 1`] = `
 <styled.div>
-  <PostPublisher
-    fullPost={true}
-  />
+  <PostPublisher />
   <PostContent />
   <PostFooter />
 </styled.div>

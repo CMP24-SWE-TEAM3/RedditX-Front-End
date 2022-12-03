@@ -39,5 +39,18 @@ exports[`Drop Down list Component this is a test for Drop Down list Component 1`
       <GrFormDown />
     </span>
   </DropdownToggle>
+  <DropDownMenu
+    dropDownItemRef={
+      Object {
+        "current": null,
+      }
+    }
+    dropdownMenuRef={
+      Object {
+        "current": null,
+      }
+    }
+    show={false}
+  />
 </Styled(Dropdown)>
 `;
