@@ -58,7 +58,7 @@ export const Container = styled(Modal)`
     }
     .modal {
       @media (max-width: 730px) {
-        padding: 0;
+        padding: 0 !important;
       }
     }
   }
