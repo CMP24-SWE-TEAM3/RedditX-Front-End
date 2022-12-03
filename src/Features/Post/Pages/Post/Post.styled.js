@@ -56,8 +56,10 @@ export const Container = styled(Modal)`
       max-width: 100%;
       width: 100%;
     }
-    @media (max-width: 730px) {
-      padding: 0;
+    .modal {
+      @media (max-width: 730px) {
+        padding: 0;
+      }
     }
   }
 `;
