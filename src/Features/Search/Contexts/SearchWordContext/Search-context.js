@@ -1,17 +1,21 @@
 import React from "react";
 import { useState, useEffect } from "react";
 const SearchContext = React.createContext({
-  word: "ali",
+  word: "",
   wordHandler: (word) => {},
 });
-// import React from 'react'
-
+/**
+ * Context for the word we search for
+ *
+ * @param {React.Component} children Who can access this context
+ * @returns {React.Component}
+ */
 export function SearchContextProvider(props) {
   const [word, setword] = useState("");
 
   const wordHandler = (word) => {
     setword(word);
-    console.log(word);
+    // console.log(word);
   };
 
   return (
@@ -26,5 +30,22 @@ export function SearchContextProvider(props) {
   );
 }
 
-// export default Auth-context
+// export default SearchContext
 export default SearchContext;
+
+// import { createContext, useContext, useState } from "react";
+// const SearchContext = createContext(null);
+
+// export const SearchContextProvider = ({ children }) => {
+//   const [word, setWord] = useState(null);
+
+//   return (
+//     <SearchContext.Provider value={{ word, setWord }}>
+//       {children}
+//     </SearchContext.Provider>
+//   );
+// };
+
+// export const useSearchContext = () => {
+//   return useContext(SearchContext);
+// };

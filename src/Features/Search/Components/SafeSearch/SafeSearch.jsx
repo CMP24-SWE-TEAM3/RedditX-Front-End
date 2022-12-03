@@ -1,7 +1,10 @@
 import Form from "react-bootstrap/Form";
 import { SafeSearchStyle, StyledSwitch } from "./SafeSearch.styled";
-// import { useContext } from "react";
-// import SearchContext from "Features/Search/Contexts/SearchWordContext/Search-context";
+import { useContext, useEffect } from "react";
+import SearchContext from "Features/Search/Contexts/SearchWordContext/Search-context";
+import { useState } from "react";
+import SafeContext from "Features/Search/Contexts/SafeSearchContext/Safe-context";
+import { useRef } from "react";
 /**
  * Component that contains the Safe Search component.
  *
@@ -10,8 +13,13 @@ import { SafeSearchStyle, StyledSwitch } from "./SafeSearch.styled";
  */
 const SafeSearch = () => {
   // const searchWord = "Valid";
-  // const ctx = useContext(SearchContext);
+  const ctx = useContext(SafeContext);
   // ctx.wordHandler(searchWord);
+  const [SafeSearch, setSafeSearch] = useState(0);
+  const safe = useRef();
+  useEffect(() => {
+    safe.current.click();
+  }, []);
   return (
     <SafeSearchStyle>
       <div className="safe-search-inner">
@@ -21,9 +29,15 @@ const SafeSearch = () => {
             type="switch"
             id="custom-switch"
             label=""
+            ref={safe}
             onClick={(e) => {
-              // e.preventDefault();
-              console.log(e.target.value);
+              if (SafeSearch === 0) {
+                ctx.safeHandler(true);
+                setSafeSearch(1);
+              } else {
+                ctx.safeHandler(false);
+                setSafeSearch(0);
+              }
             }}
           />
         </StyledSwitch>

@@ -41,7 +41,7 @@ const Search = () => {
   //   fetchPosts(fetch);
   // }, []); // Only re-run the effect if count changes
   // Fetch Posts
-
+  // console.log(PostList);
   // fetch Communities
   let [CommunityList, errorCommunity, loadingCommunity, fetchCommunity] =
     useFetchFunction();
@@ -51,12 +51,12 @@ const Search = () => {
   // fetch Comments
   let [CommentLists, errorComment, loadingComment, fetchComment] =
     useFetchFunction();
-  console.log(CommentLists);
+  // console.log(CommentLists);
   // fetch Comments
 
   // fetch People
   let [PeopleList, errorPeople, loadingPeople, FB] = useFetchFunction();
-  console.log(PeopleList);
+  // console.log(PeopleList);
   // fetch People
 
   // fetch people follow
@@ -73,10 +73,10 @@ const Search = () => {
   ] = useFetchFunction();
 
   // fetch communities subscribe
-  const searchWord = "text";
+  // const searchWord = "text";
   const ctx = useContext(SearchContext);
-  ctx.wordHandler(searchWord);
   useEffect(() => {
+    // ctx.wordHandler(searchWord);
     fetchPosts(fetch, auth, ctx.word);
     fetchComments(fetchComment, auth, ctx.word);
     fetchCommunities(fetchCommunity, auth, ctx.word);
