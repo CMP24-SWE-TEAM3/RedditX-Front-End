@@ -6,7 +6,9 @@ import TopCommunities from "../../Components/CommunityCard/TopCommunities";
 import CreateCommunity from "../../Components/CreateCommunity/CreateCommunity";
 // import { PeopleContainer } from "../../Components/People/People.styled";
 import People from "../../Components/People/People";
-import { useState } from "react";
+import { useState, useContext } from "react";
+// import SafeSearch from "Features/Search/Components/SafeSearch/SafeSearch";
+import SafeContext from "Features/Search/Contexts/SafeSearchContext/Safe-context";
 /**
  * Component that contains the Posts Page included the 2 drop downs and posts list component and the People Card Component ,Community Card Component.
  *
@@ -39,8 +41,12 @@ const Posts = ({
    */
   const [Time, setTime] = useState("All time");
   const [TimeName, setTimeName] = useState("time");
-
+  // const ctx = useContext(SafeContext);
+  // console.log(ctx.safe);
   if (PostList) {
+    // const filteredPostList = PostList.results.filter((post) => {
+    //   return post.nsfw === ctx.safe;
+    // });
     return (
       <>
         <ContainerPosts>

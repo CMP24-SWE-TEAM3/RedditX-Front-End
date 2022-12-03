@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import PostFooter from "../PostFooter/PostFooter";
 import PostHeader from "../PostHeader/PostHeader";
+import { useState } from "react";
 import { ContainerPost } from "./Post.styled";
+import Post from "Features/Post/Pages/Post/Post";
 
 /**
  * Component that contains the PostslistItems included PostHeader Component and post body and PostFooter Component.
@@ -12,6 +14,7 @@ import { ContainerPost } from "./Post.styled";
  */
 
 const PostItem = ({ post }) => {
+  const [showPost, setShowPost] = useState(false);
   if (post) {
     // console.log(post);
     const postBody = {
@@ -41,7 +44,7 @@ const PostItem = ({ post }) => {
     if (images === 0) {
       isThereImage = false;
     }
-
+    // console.log(postBody.bodyImage);
     // console.log(isThereImage);
     return (
       <ContainerPost
@@ -49,7 +52,12 @@ const PostItem = ({ post }) => {
         flairColor={postBody.flairColor}
         flairBackgroundColor={postBody.flairBackgroundColor}
         title="post"
+        // onClick={(e) => {
+        //   e.preventDefault();
+        //   setShowPost(true);
+        // }}
       >
+        {/* <Post show={showPost} setShow={setShowPost} /> */}
         <div className="post-outline">
           <PostHeader postheader={postHeader} />
           <div className="post-body">
@@ -71,7 +79,8 @@ const PostItem = ({ post }) => {
                   <Link to="#">
                     <div className="image">
                       <img
-                        src={require(`../../Assets/CommunityImage.png`)}
+                        crossOrigin="anonymous"
+                        src={`https://api.redditswe22.tech/posts/files/${postBody.bodyImage}`}
                         alt="userImage"
                         className="image"
                       />

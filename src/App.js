@@ -57,6 +57,8 @@ import SignUpVerticalModal from "Features/Authentication/Layouts/SignUpVerticalM
 import RequireAuth from "Features/Authentication/Contexts/RequireAuth";
 import NotFound from "Pages/NotFound/NotFound";
 import { SearchContextProvider } from "Features/Search/Contexts/SearchWordContext/Search-context";
+import { SafeContextProvider } from "Features/Search/Contexts/SafeSearchContext/Safe-context";
+import useLocalStorage from "Hooks/useLocalStorage";
 
 /**
  * The main app of our application it handles routing
@@ -65,17 +67,33 @@ import { SearchContextProvider } from "Features/Search/Contexts/SearchWordContex
  */
 function App() {
   // State to store the current theme of the website
-  const [theme, setTheme] = useState({ ...defaultTheme, ...lightTheme });
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    JSON.stringify({
+      ...defaultTheme,
+      ...lightTheme,
+    })
+  );
 
   /**
    * Function to toggle the theme of the website
    * It will change the theme from light to dark and vice versa
    */
   const handleToggleTheme = () => {
-    if (theme.id === "dark") {
-      setTheme({ ...defaultTheme, ...lightTheme });
+    if (JSON.parse(theme).id === "dark") {
+      setTheme(
+        JSON.stringify({
+          ...defaultTheme,
+          ...lightTheme,
+        })
+      );
     } else {
-      setTheme({ ...defaultTheme, ...darkTheme });
+      setTheme(
+        JSON.stringify({
+          ...defaultTheme,
+          ...darkTheme,
+        })
+      );
     }
   };
 
@@ -85,169 +103,177 @@ function App() {
 
   const auth = useAuth();
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={JSON.parse(theme)}>
       <AuthProvider>
         <SearchContextProvider>
-          <BrowserRouter>
-            <LogInVerticalModal
-              show={modalShowLogIn}
-              onHide={() => setModalShowLogIn(false)}
-              setModalShowLogIn={setModalShowLogIn}
-            />
-            <SignUpVerticalModal
-              show={modalShowSignUp}
-              onHide={() => setModalShowSignUp(false)}
-              setModalShowSignUp={setModalShowSignUp}
-              setModalAfterSignUp={setModalAfterSignUp}
-            />
-            <AfterSignUpModal
-              show={modalAfterSignUp}
-              setModalAfterSignUp={setModalAfterSignUp}
-              onHide={() => setModalAfterSignUp(false)}
-            />
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <>
-                    <Navigation
-                      toggleMode={handleToggleTheme}
-                      theme={theme.id}
-                      modalShowLogIn={modalShowLogIn}
-                      setModalShowLogIn={setModalShowLogIn}
-                      modalShowSignUp={modalShowSignUp}
-                      setModalShowSignUp={setModalShowSignUp}
-                      modalAfterSignUp={modalAfterSignUp}
-                      setModalAfterSignUp={setModalAfterSignUp}
-                    />
-                    <HomePage
-                      handleToggleTheme={handleToggleTheme}
-                      theme={theme.id}
-                    />
-                    {/* <PostShape></PostShape> */}
-                  </>
-                }
+          <SafeContextProvider>
+            <BrowserRouter>
+              <LogInVerticalModal
+                show={modalShowLogIn}
+                onHide={() => setModalShowLogIn(false)}
+                setModalShowLogIn={setModalShowLogIn}
               />
-              <Route
-                path="subreddit/:id"
-                element={
-                  <RequireAuth>
-                    <Navigation
-                      toggleMode={handleToggleTheme}
-                      theme={theme.id}
-                      modalShowLogIn={modalShowLogIn}
-                      setModalShowLogIn={setModalShowLogIn}
-                      modalShowSignUp={modalShowSignUp}
-                      setModalShowSignUp={setModalShowSignUp}
-                      modalAfterSignUp={modalAfterSignUp}
-                      setModalAfterSignUp={setModalAfterSignUp}
-                    />
-                    <SubReddit />
-                  </RequireAuth>
-                }
+              <SignUpVerticalModal
+                show={modalShowSignUp}
+                onHide={() => setModalShowSignUp(false)}
+                setModalShowSignUp={setModalShowSignUp}
+                setModalAfterSignUp={setModalAfterSignUp}
               />
-              <Route
-                path="category/:categoryType/*"
-                element={
-                  <RequireAuth>
-                    <Navigation
-                      toggleMode={handleToggleTheme}
-                      theme={theme.id}
-                      modalShowLogIn={modalShowLogIn}
-                      setModalShowLogIn={setModalShowLogIn}
-                      modalShowSignUp={modalShowSignUp}
-                      setModalShowSignUp={setModalShowSignUp}
-                      modalAfterSignUp={modalAfterSignUp}
-                      setModalAfterSignUp={setModalAfterSignUp}
-                    />
-                    <CommunityLeaderBoard />
-                  </RequireAuth>
-                }
+              <AfterSignUpModal
+                show={modalAfterSignUp}
+                setModalAfterSignUp={setModalAfterSignUp}
+                onHide={() => setModalAfterSignUp(false)}
               />
-              <Route
-                path="index-page/:indexLetter/*"
-                element={
-                  <RequireAuth>
-                    <Navigation
-                      toggleMode={handleToggleTheme}
-                      theme={theme.id}
-                      modalShowLogIn={modalShowLogIn}
-                      setModalShowLogIn={setModalShowLogIn}
-                      modalShowSignUp={modalShowSignUp}
-                      setModalShowSignUp={setModalShowSignUp}
-                      modalAfterSignUp={modalAfterSignUp}
-                      setModalAfterSignUp={setModalAfterSignUp}
-                    />
-                    <IndexPage />
-                  </RequireAuth>
-                }
-              />
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <>
+                      <Navigation
+                        toggleMode={handleToggleTheme}
+                        theme={theme.id}
+                        modalShowLogIn={modalShowLogIn}
+                        setModalShowLogIn={setModalShowLogIn}
+                        modalShowSignUp={modalShowSignUp}
+                        setModalShowSignUp={setModalShowSignUp}
+                        modalAfterSignUp={modalAfterSignUp}
+                        setModalAfterSignUp={setModalAfterSignUp}
+                      />
+                      <HomePage
+                        handleToggleTheme={handleToggleTheme}
+                        theme={theme.id}
+                      />
+                      {/* <PostShape></PostShape> */}
+                    </>
+                  }
+                />
+                <Route
+                  path="subreddit/:id"
+                  element={
+                    <RequireAuth>
+                      <Navigation
+                        toggleMode={handleToggleTheme}
+                        theme={theme.id}
+                        modalShowLogIn={modalShowLogIn}
+                        setModalShowLogIn={setModalShowLogIn}
+                        modalShowSignUp={modalShowSignUp}
+                        setModalShowSignUp={setModalShowSignUp}
+                        modalAfterSignUp={modalAfterSignUp}
+                        setModalAfterSignUp={setModalAfterSignUp}
+                      />
+                      <SubReddit />
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path="category/:categoryType/*"
+                  element={
+                    <RequireAuth>
+                      <Navigation
+                        toggleMode={handleToggleTheme}
+                        theme={theme.id}
+                        modalShowLogIn={modalShowLogIn}
+                        setModalShowLogIn={setModalShowLogIn}
+                        modalShowSignUp={modalShowSignUp}
+                        setModalShowSignUp={setModalShowSignUp}
+                        modalAfterSignUp={modalAfterSignUp}
+                        setModalAfterSignUp={setModalAfterSignUp}
+                      />
+                      <CommunityLeaderBoard />
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path="index-page/:indexLetter/*"
+                  element={
+                    <RequireAuth>
+                      <Navigation
+                        toggleMode={handleToggleTheme}
+                        theme={theme.id}
+                        modalShowLogIn={modalShowLogIn}
+                        setModalShowLogIn={setModalShowLogIn}
+                        modalShowSignUp={modalShowSignUp}
+                        setModalShowSignUp={setModalShowSignUp}
+                        modalAfterSignUp={modalAfterSignUp}
+                        setModalAfterSignUp={setModalAfterSignUp}
+                      />
+                      <IndexPage />
+                    </RequireAuth>
+                  }
+                />
 
-              <Route
-                path="search/*"
-                element={
-                  <RequireAuth>
-                    <Navigation
-                      toggleMode={handleToggleTheme}
-                      theme={theme.id}
-                      modalShowLogIn={modalShowLogIn}
-                      setModalShowLogIn={setModalShowLogIn}
-                      modalShowSignUp={modalShowSignUp}
-                      setModalShowSignUp={setModalShowSignUp}
-                      modalAfterSignUp={modalAfterSignUp}
-                      setModalAfterSignUp={setModalAfterSignUp}
-                    />
-                    <Search />
-                  </RequireAuth>
-                }
-              />
-              <Route
-                path="submit"
-                element={
-                  <RequireAuth>
-                    <Navigation
-                      toggleMode={handleToggleTheme}
-                      theme={theme.id}
-                      modalShowLogIn={modalShowLogIn}
-                      setModalShowLogIn={setModalShowLogIn}
-                      modalShowSignUp={modalShowSignUp}
-                      setModalShowSignUp={setModalShowSignUp}
-                      modalAfterSignUp={modalAfterSignUp}
-                      setModalAfterSignUp={setModalAfterSignUp}
-                    />
-                    <CreatePost />
-                  </RequireAuth>
-                }
-              />
-              <Route path="login" element={<LogInPage />} />
-              <Route path="register" element={<SignUpPage />} />
-              <Route path="forget-password" element={<ForgetPasswordPage />} />
-              <Route path="forget-username" element={<ForgetUserNamePage />} />
-              <Route
-                path="user/reset-password/:token"
-                element={<NewPasswordPage />}
-              />
-              <Route path="*" element={<NotFound />} />
-              <Route
-                path="post"
-                element={
-                  <>
-                    <Navigation
-                      toggleMode={handleToggleTheme}
-                      theme={theme.id}
-                      modalShowLogIn={modalShowLogIn}
-                      setModalShowLogIn={setModalShowLogIn}
-                      modalShowSignUp={modalShowSignUp}
-                      setModalShowSignUp={setModalShowSignUp}
-                      modalAfterSignUp={modalAfterSignUp}
-                      setModalAfterSignUp={setModalAfterSignUp}
-                    />
-                    <Post />
-                  </>
-                }
-              />
-            </Routes>
-          </BrowserRouter>
+                <Route
+                  path="search/*"
+                  element={
+                    <RequireAuth>
+                      <Navigation
+                        toggleMode={handleToggleTheme}
+                        theme={theme.id}
+                        modalShowLogIn={modalShowLogIn}
+                        setModalShowLogIn={setModalShowLogIn}
+                        modalShowSignUp={modalShowSignUp}
+                        setModalShowSignUp={setModalShowSignUp}
+                        modalAfterSignUp={modalAfterSignUp}
+                        setModalAfterSignUp={setModalAfterSignUp}
+                      />
+                      <Search />
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path="submit"
+                  element={
+                    <RequireAuth>
+                      <Navigation
+                        toggleMode={handleToggleTheme}
+                        theme={theme.id}
+                        modalShowLogIn={modalShowLogIn}
+                        setModalShowLogIn={setModalShowLogIn}
+                        modalShowSignUp={modalShowSignUp}
+                        setModalShowSignUp={setModalShowSignUp}
+                        modalAfterSignUp={modalAfterSignUp}
+                        setModalAfterSignUp={setModalAfterSignUp}
+                      />
+                      <CreatePost />
+                    </RequireAuth>
+                  }
+                />
+                <Route path="login" element={<LogInPage />} />
+                <Route path="register" element={<SignUpPage />} />
+                <Route
+                  path="forget-password"
+                  element={<ForgetPasswordPage />}
+                />
+                <Route
+                  path="forget-username"
+                  element={<ForgetUserNamePage />}
+                />
+                <Route
+                  path="user/reset-password/:token"
+                  element={<NewPasswordPage />}
+                />
+                <Route path="*" element={<NotFound />} />
+                <Route
+                  path="post"
+                  element={
+                    <>
+                      <Navigation
+                        toggleMode={handleToggleTheme}
+                        theme={theme.id}
+                        modalShowLogIn={modalShowLogIn}
+                        setModalShowLogIn={setModalShowLogIn}
+                        modalShowSignUp={modalShowSignUp}
+                        setModalShowSignUp={setModalShowSignUp}
+                        modalAfterSignUp={modalAfterSignUp}
+                        setModalAfterSignUp={setModalAfterSignUp}
+                      />
+                      <Post />
+                    </>
+                  }
+                />
+              </Routes>
+            </BrowserRouter>
+          </SafeContextProvider>
         </SearchContextProvider>
       </AuthProvider>
     </ThemeProvider>

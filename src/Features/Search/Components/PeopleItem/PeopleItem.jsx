@@ -90,11 +90,16 @@ const PeopleItem = ({
     }
   }
   var abbreviate = require("number-abbreviate");
+  console.log(avatar);
   return (
     <Container href="#" title="people">
       <Flex>
         {avatar && (
-          <Img src={require(`../../Assets/${avatar}`)} alt="People Icon" />
+          <Img
+            crossOrigin="anonymous"
+            src={`https://api.redditswe22.tech/users/files/${avatar}`}
+            alt="People Icon"
+          />
         )}
         <PeopleInfo>
           <PeopleMainInfo>

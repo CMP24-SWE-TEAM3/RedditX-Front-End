@@ -3,9 +3,10 @@ import axios from "API/axios";
  * A service to handle Posts list retrieval
  *
  * @param {Function} fetchFunction - The function to make the request
+ * @param {searchWord} fetchFunction - the word we search for
  */
 const fetchPosts = (fetchFunction, auth, searchWord) => {
-  console.log("Fetching posts", searchWord);
+  // console.log("Fetching posts", searchWord);
   fetchFunction({
     axiosInstance: axios,
     method: "GET",
