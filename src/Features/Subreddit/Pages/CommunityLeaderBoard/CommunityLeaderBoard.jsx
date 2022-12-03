@@ -9,6 +9,7 @@ import {
   LeaderBoardPage,
   DropDown,
 } from "./CommunityLeaderBoard.styled";
+import { subscribed } from "../../Services/data";
 import useFetchFunction from "Hooks/useFetchFunction";
 import fetchSubbedCommunities from "Features/Subreddit/Services/fetchSubbedCommunities";
 import fetchRandomCommunities from "Features/Subreddit/Services/fetchRandomCommunities";
@@ -37,6 +38,12 @@ const CommunityLeaderBoard = () => {
     fetchRandomCommunities(fetchFunction, auth);
   }, []); // Only re-run the effect if count changes
 
+ console.log(CommunitiesSub);
+
+ if(CommunitiesSub.communities) {
+  CommunitiesSub.communities = subscribed;
+ }
+  
 
 
   const [category, setCategory] = useState(data);
@@ -45,6 +52,7 @@ const CommunityLeaderBoard = () => {
     <LeaderBoardContainer>
       {!loadingSubCommunities && 
       !loadingRandom &&
+      CommunitiesSub.communities &&
         <LeaderBoardPage>
         <Header />
         <MainPadding>
@@ -54,7 +62,7 @@ const CommunityLeaderBoard = () => {
             <CategoryDropDown />
           </DropDown>
         </DataContext.Provider>
-        <Container  subscribed={CommunitiesSub} />
+        <Container  subscribed={CommunitiesSub.communities} />
         <RightSection communityList = {communityList}/>
         <Routes>
 

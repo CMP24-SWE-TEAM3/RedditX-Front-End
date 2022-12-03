@@ -10,7 +10,7 @@ const fetchSubbedCommunities = (fetchFunction, auth) => {
     fetchFunction({
       axiosInstance: axios,
       method: 'GET',
-      url: "http://localhost:8000/Subscribed--Leaderboard",
+      url: "/api/r/mine/subscriber",
       requestConfig: {
         headers: {
           "Content-Language": "en-US",
