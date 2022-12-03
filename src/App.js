@@ -131,7 +131,7 @@ function App() {
                     <>
                       <Navigation
                         toggleMode={handleToggleTheme}
-                        theme={theme.id}
+                        theme={JSON.parse(theme).id}
                         modalShowLogIn={modalShowLogIn}
                         setModalShowLogIn={setModalShowLogIn}
                         modalShowSignUp={modalShowSignUp}
@@ -141,7 +141,7 @@ function App() {
                       />
                       <HomePage
                         handleToggleTheme={handleToggleTheme}
-                        theme={theme.id}
+                        theme={JSON.parse(theme).id}
                       />
                       {/* <PostShape></PostShape> */}
                     </>
@@ -153,7 +153,7 @@ function App() {
                     <RequireAuth>
                       <Navigation
                         toggleMode={handleToggleTheme}
-                        theme={theme.id}
+                        theme={JSON.parse(theme).id}
                         modalShowLogIn={modalShowLogIn}
                         setModalShowLogIn={setModalShowLogIn}
                         modalShowSignUp={modalShowSignUp}
@@ -171,7 +171,7 @@ function App() {
                     <RequireAuth>
                       <Navigation
                         toggleMode={handleToggleTheme}
-                        theme={theme.id}
+                        theme={JSON.parse(theme).id}
                         modalShowLogIn={modalShowLogIn}
                         setModalShowLogIn={setModalShowLogIn}
                         modalShowSignUp={modalShowSignUp}
@@ -189,7 +189,7 @@ function App() {
                     <RequireAuth>
                       <Navigation
                         toggleMode={handleToggleTheme}
-                        theme={theme.id}
+                        theme={JSON.parse(theme).id}
                         modalShowLogIn={modalShowLogIn}
                         setModalShowLogIn={setModalShowLogIn}
                         modalShowSignUp={modalShowSignUp}
@@ -208,7 +208,7 @@ function App() {
                     <RequireAuth>
                       <Navigation
                         toggleMode={handleToggleTheme}
-                        theme={theme.id}
+                        theme={JSON.parse(theme).id}
                         modalShowLogIn={modalShowLogIn}
                         setModalShowLogIn={setModalShowLogIn}
                         modalShowSignUp={modalShowSignUp}
@@ -226,7 +226,7 @@ function App() {
                     <RequireAuth>
                       <Navigation
                         toggleMode={handleToggleTheme}
-                        theme={theme.id}
+                        theme={JSON.parse(theme).id}
                         modalShowLogIn={modalShowLogIn}
                         setModalShowLogIn={setModalShowLogIn}
                         modalShowSignUp={modalShowSignUp}
@@ -259,7 +259,7 @@ function App() {
                     <>
                       <Navigation
                         toggleMode={handleToggleTheme}
-                        theme={theme.id}
+                        theme={JSON.parse(theme).id}
                         modalShowLogIn={modalShowLogIn}
                         setModalShowLogIn={setModalShowLogIn}
                         modalShowSignUp={modalShowSignUp}

@@ -35,7 +35,7 @@ const CommunityCardItem = ({ communityId, community, srIcon }) => {
 
   return (
     <Container>
-      <Link to={"/subreddit"}>
+      <Link to={"/subreddit/*"}>
         <div className="item">
           <span className={"num"}>{communityId}</span>
           <span className="caret">
