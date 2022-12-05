@@ -1,3 +1,4 @@
+import SettingsComponent from "Features/settings/Components/SettingsComponent/SettingsComponent";
 import { NavLink } from "react-router-dom";
 import {
   ContainerSettings,
@@ -18,6 +19,14 @@ const SettingsPage = () => {
           <NavLink to={"/settings/feed"}>Feed Settings</NavLink>
           <NavLink to={"/settings/emails"}>Emails</NavLink>
         </SettingsNav>
+        <SettingsComponent
+          headerText="hello"
+          innerText="hello brother"
+          onToggle={(e) => {
+            console.log(e);
+          }}
+          state={false}
+        />
       </InnerContainerSettings>
     </ContainerSettings>
   );
