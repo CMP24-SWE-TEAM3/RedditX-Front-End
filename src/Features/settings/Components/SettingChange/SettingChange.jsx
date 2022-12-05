@@ -9,8 +9,16 @@ import {
     Button,
 } from "./SettingChange.styled";
 
+import SettingModal from "../../Components/SettingModal/SettingModal";
+import { useState } from "react";
+
+
+
 
 const SettingsChange = ({header, content}) => {
+
+    const[showModal, setShowModal] = useState(false); 
+    const handleShow = () => setShowModal(true);
 
     return (
         <ComponentDiv>
@@ -24,10 +32,15 @@ const SettingsChange = ({header, content}) => {
 
             <RightDiv>
                 <ButtonDiv>
-                    <Button>Change</Button>
+                    <Button onClick={handleShow}>Change</Button>
                 </ButtonDiv>
             </RightDiv>
+
+            
+            <SettingModal showModal={showModal} setShowModal={setShowModal}/>
         </ComponentDiv>
+
+        
     );
 
 

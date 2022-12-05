@@ -9,6 +9,7 @@ const AccountPage = () => {
       <SettingsChange header={"Change password"} content={"Password must be at least 8 characters long"} />
 
       <CountryChange header={"Country"} content={"This is your primary location."}></CountryChange>
+
     </>
   );
 };

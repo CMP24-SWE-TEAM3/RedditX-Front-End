@@ -6,13 +6,19 @@ import Modal from "react-bootstrap/Modal";
 import { FaLeaf, FaSellcast } from "react-icons/fa";
 import { StyledModal } from "./SettingModal.styled.js";
 
-export default function SettingModal() {
-  const [show, setShow] = useState(false);
+ const SettingModal = ({showModal, setShowModal}) => {
+
+  console.log(showModal);
+  const [show, setShow] = useState(showModal);
   const [valid, setValid] = useState(null);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    setShow(showModal);
+  }, [showModal]);
 
   function handleChange(event) {
     const { email, password } = event.target;
@@ -42,13 +48,16 @@ export default function SettingModal() {
   }, [formData.email]);
 
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setShowModal(false);
+  };
   const handleShow = () => setShow(true);
   return (
       <>      
-      <Button variant="primary" onClick={handleShow} className="change-btn">
+      {/* <Button variant="primary" onClick={handleShow} className="change-btn">
         Change
-      </Button>
+      </Button> */}
       
     
       <StyledModal show={show} onHide={handleClose}>
@@ -174,3 +183,5 @@ export default function SettingModal() {
       </>
   );
 }
+
+export default SettingModal;
