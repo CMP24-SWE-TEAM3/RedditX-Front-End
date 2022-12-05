@@ -6,8 +6,7 @@ import React, { useState } from "react";
 
 //Dummy imports
 
-import VotingBar from "Features/Post/Components/VotingBar/VotingBar";
-import PostShape from "Features/Post/Layouts/PostShape/PostShape";
+import ModeratorsPage from "Features/Moderator/Layouts/ModeratorsPage/ModeratorsPage";
 
 //////////////////////////////////////////////////////////////
 
@@ -139,11 +138,11 @@ function App() {
                         modalAfterSignUp={modalAfterSignUp}
                         setModalAfterSignUp={setModalAfterSignUp}
                       />
-                      <HomePage
+                      {/* <HomePage
                         handleToggleTheme={handleToggleTheme}
                         theme={JSON.parse(theme).id}
-                      />
-                      {/* <PostShape></PostShape> */}
+                      /> */}
+                     <ModeratorsPage></ModeratorsPage>
                     </>
                   }
                 />
