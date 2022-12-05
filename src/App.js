@@ -103,11 +103,11 @@ function App() {
                     modalAfterSignUp={modalAfterSignUp}
                     setModalAfterSignUp={setModalAfterSignUp}
                   />
-                  {/* <HomePage
+                  <HomePage
                     handleToggleTheme={handleToggleTheme}
                     theme={theme.id}
-                  /> */}
-                  <SettingsPage />
+                  />
+                  {/* <SettingsPage /> */}
                 </>
               }
             />
@@ -180,6 +180,24 @@ function App() {
                     setModalAfterSignUp={setModalAfterSignUp}
                   />
                   <Search />
+                </>
+              }
+            />
+            <Route
+              path="settings/*"
+              element={
+                <>
+                  <Navigation
+                    toggleMode={handleToggleTheme}
+                    theme={theme.id}
+                    modalShowLogIn={modalShowLogIn}
+                    setModalShowLogIn={setModalShowLogIn}
+                    modalShowSignUp={modalShowSignUp}
+                    setModalShowSignUp={setModalShowSignUp}
+                    modalAfterSignUp={modalAfterSignUp}
+                    setModalAfterSignUp={setModalAfterSignUp}
+                  />
+                  <SettingsPage />
                 </>
               }
             />
