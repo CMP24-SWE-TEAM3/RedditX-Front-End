@@ -25,7 +25,7 @@ export const TitleContainer = styled.div`
 
 export const Title = styled.h3`
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 20px;
   color: ${({ theme }) => theme.color.primary};
   display: flex;
