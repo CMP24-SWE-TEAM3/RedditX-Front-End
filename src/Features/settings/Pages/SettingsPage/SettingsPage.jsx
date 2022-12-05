@@ -5,6 +5,7 @@ import {
   SettingsNav,
   Title,
 } from "./SettingsPage.styled";
+import SettingModal from "../../Components/SettingModal/SettingModal";
 
 const SettingsPage = () => {
   return (
