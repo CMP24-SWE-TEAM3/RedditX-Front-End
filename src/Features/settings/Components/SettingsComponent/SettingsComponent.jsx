@@ -16,12 +16,12 @@ const SettingsComponent = ({ headerText, innerText, onToggle, state }) => {
   function toggleHandler(e) {
     onToggle(!toggle);
     setToggle((prev) => !prev);
-    console.log(e.target.value)
+    // console.log(e.target.value);
   }
 
   function Switch() {
     return (
-      <SettingForm >
+      <SettingForm>
         <Form.Check
           type="switch"
           id="4"

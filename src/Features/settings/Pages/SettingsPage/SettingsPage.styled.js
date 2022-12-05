@@ -54,3 +54,13 @@ export const SettingsNav = styled.div`
     /* border-bottom: 3px solid ${({ theme }) => theme.color.link}; */
   }
 `;
+export const TabContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+`;
+export const TabInnerContainer = styled.div`
+  max-width: 688px;
+  flex: 1 1 auto;
+`;
