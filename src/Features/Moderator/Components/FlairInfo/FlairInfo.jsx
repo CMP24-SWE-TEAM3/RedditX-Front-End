@@ -25,6 +25,9 @@ import {
 } from "react-color";
 import { useContext } from "react";
 import FlairContext from "Features/Moderator/Contexts/Safe-context";
+import { useRef } from "react";
+import useOutsideAlerter from "Features/Moderator/Hooks/useOutsideAlerter";
+import { useEffect } from "react";
 const FlairInfo = ({
   text,
   color,
@@ -78,6 +81,22 @@ const FlairInfo = ({
       ctx.AddHandler(false);
     }
   };
+  const a = (e) => {
+    console.log("ffd");
+  };
+  const wrapperRef = useRef();
+  const inputRef = useRef();
+  useEffect(() => {
+    inputRef.current.focus();
+    if (Count === 64) {
+      setDisSave(true);
+    }
+  }, []);
+  useEffect(() => {
+    setCount(64 - text.trim().length);
+  }, [text]);
+  console.log(Count);
+  // useOutsideAlerter(a, wrapperRef);
   return (
     <FlaironeEdit>
       <FlaironeEditInner>
@@ -92,19 +111,26 @@ const FlairInfo = ({
                     type="text"
                     value={text}
                     onChange={(e) => {
-                      if (Count > 0 && e.target.value.length > text.length) {
+                      if (
+                        Count > 0 &&
+                        e.target.value.trim().length > text.trim().length
+                      ) {
                         setTextState(e.target.value);
                         setCount(Count - 1);
                         setDisSave(false);
                       }
-                      if (Count <= 64 && e.target.value.length < text.length) {
+                      if (
+                        Count <= 64 &&
+                        e.target.value.trim().length < text.trim().length
+                      ) {
                         setTextState(e.target.value);
                         setCount(Count + 1);
                       }
-                      if (e.target.value.length === 0) {
+                      if (e.target.value.trim().length === 0) {
                         setDisSave(true);
                       }
                     }}
+                    ref={inputRef}
                   />
                 </InDiv>
                 <Remain>{Count} characters remaining</Remain>
@@ -131,6 +157,7 @@ const FlairInfo = ({
                 color={PickColor}
                 onChange={handleChange}
                 onChangeComplete={handleChangeComplete}
+                ref={wrapperRef}
               />
             )}
           </BackgroundFlair>

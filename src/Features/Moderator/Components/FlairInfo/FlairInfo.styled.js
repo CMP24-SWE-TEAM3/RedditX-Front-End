@@ -1,13 +1,16 @@
 import styled from "styled-components";
 export const FlaironeEdit = styled.div`
+  transition: 0.5s;
   background-color: ${({ theme }) => theme.lineColor.primary};
   color: ${({ theme }) => theme.color.primary};
   padding: 16px;
 `;
 export const FlaironeEditInner = styled.div`
+  transition: 0.5s;
   display: flex;
 `;
 export const FlaironeEditApperence = styled.div`
+  transition: 0.5s;
   flex: 1;
   max-width: 280px;
   min-width: 0;
@@ -27,10 +30,12 @@ export const FlairText = styled.div`
   line-height: 18px;
 `;
 export const FlairTexSpant = styled.span`
+  transition: 0.5s;
   display: block;
   margin-bottom: 8px;
 `;
 export const InDiv = styled.span`
+  transition: 0.5s;
   /* border: 1px solid var(--newCommunityTheme-line); */
   background-color: ${({ theme }) => theme.background.lightMuted};
   border-radius: 4px;
@@ -80,10 +85,12 @@ export const InDiv = styled.span`
     font-family: inherit;
   }
   & input:focus {
+    transition: 0.5s;
     outline: 1px solid ${({ theme }) => theme.color.link};
   }
 `;
 export const Remain = styled.div`
+  transition: 0.5s;
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
@@ -95,6 +102,7 @@ export const Remain = styled.div`
   align-items: center;
 `;
 export const BackgroundFlair = styled.div`
+  transition: 0.5s;
   margin-top: 16px;
   font-size: 14px;
   font-weight: 500;
@@ -108,6 +116,7 @@ export const BackgroundFlair = styled.div`
   }
 `;
 export const BackgroundFlairPicker = styled.div`
+  transition: 0.5s;
   background-color: ${(props) => props.PickColor || " #ccc"};
   fill: rgb(0, 0, 0);
   cursor: pointer;
@@ -130,12 +139,14 @@ export const BackgroundFlairPicker = styled.div`
   }
 `;
 export const DownButtons = styled.div`
+  transition: 0.5s;
   justify-content: flex-end;
   margin-top: 24px;
   display: flex;
   align-items: center;
 `;
 export const CancelBtn = styled.button`
+  transition: 0.5s;
   margin-left: 8px;
   min-width: 100px;
   position: relative;
@@ -160,6 +171,7 @@ export const CancelBtn = styled.button`
   background: transparent;
 `;
 export const SaveBtn = styled.button`
+  transition: 0.5s;
   margin-left: 8px;
   min-width: 100px;
   position: relative;
@@ -194,6 +206,7 @@ export const SaveBtn = styled.button`
   }
 `;
 export const TextFlairPicker = styled.button`
+  transition: 0.5s;
   background-color: ${(props) => (props.Black ? "#878a8c" : "#fff")};
   color: ${(props) => (props.Black ? "#fff" : "#878a8c")};
   font-size: 12px;

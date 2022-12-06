@@ -177,3 +177,7 @@ export const ButtonDeleteAll = styled.button`
     cursor: not-allowed;
   }
 `;
+export const IconSort = styled.span`
+  font-size: 20px;
+  color: ${({ theme }) => theme.borderColor.primary};
+`;

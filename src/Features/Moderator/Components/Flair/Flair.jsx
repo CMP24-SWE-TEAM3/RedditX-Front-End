@@ -8,6 +8,7 @@ import {
   FlaironeExact,
   FlairSettings,
   FlairStyle,
+  IconSort,
 } from "./Flair.styled";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import FlairInfo from "../FlairInfo/FlairInfo";
@@ -15,7 +16,8 @@ import { useState } from "react";
 import { useContext } from "react";
 import FlairContext from "Features/Moderator/Contexts/Safe-context";
 import { useEffect } from "react";
-const Flair = ({ text, color, background, isNew }) => {
+import { TbColumns } from "react-icons/tb";
+const Flair = ({ text, color, background, isNew, innerRef, ...rest }) => {
   const [back, setback] = useState(background);
   const [textState, setTextState] = useState(text);
   const [Color, setColor] = useState(color);
@@ -29,7 +31,7 @@ const Flair = ({ text, color, background, isNew }) => {
   }, []);
   return (
     <>
-      <Flairone>
+      <Flairone ref={innerRef} {...rest}>
         <FlaironeExact>
           <FlairStyle flairColor={Color} flairBackgroundColor={back}>
             {textState}
@@ -37,23 +39,30 @@ const Flair = ({ text, color, background, isNew }) => {
         </FlaironeExact>
         <FlairClassN></FlairClassN>
         <FlairSettings></FlairSettings>
-        <Buttons>
-          <ButtonDel>Copy Id</ButtonDel>
-          <ButtonDel2
-            onClick={() => {
-              setEdit(true);
-              ctx.EditHandler(true);
-            }}
-            disabled={Edit}
-          >
-            Edit
-          </ButtonDel2>
-          <ButtonDeleteAll disabled={Edit}>
-            <span>
-              <RiDeleteBin5Fill />
-            </span>
-          </ButtonDeleteAll>
-        </Buttons>
+        {!ctx.Reorder && (
+          <Buttons>
+            <ButtonDel>Copy Id</ButtonDel>
+            <ButtonDel2
+              onClick={() => {
+                setEdit(true);
+                ctx.EditHandler(true);
+              }}
+              disabled={Edit}
+            >
+              Edit
+            </ButtonDel2>
+            <ButtonDeleteAll disabled={Edit}>
+              <span>
+                <RiDeleteBin5Fill />
+              </span>
+            </ButtonDeleteAll>
+          </Buttons>
+        )}
+        {ctx.Reorder && (
+          <IconSort>
+            <TbColumns />
+          </IconSort>
+        )}
       </Flairone>
       {Edit && (
         <FlairInfo
