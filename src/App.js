@@ -59,6 +59,7 @@ import NotFound from "Pages/NotFound/NotFound";
 import { SearchContextProvider } from "Features/Search/Contexts/SearchWordContext/Search-context";
 import { SafeContextProvider } from "Features/Search/Contexts/SafeSearchContext/Safe-context";
 import useLocalStorage from "Hooks/useLocalStorage";
+import FlairPage from "Features/Moderator/Pages/FlairPage/FlairPage";
 
 /**
  * The main app of our application it handles routing
@@ -139,11 +140,12 @@ function App() {
                         modalAfterSignUp={modalAfterSignUp}
                         setModalAfterSignUp={setModalAfterSignUp}
                       />
-                      <HomePage
+                      {/* <HomePage
                         handleToggleTheme={handleToggleTheme}
                         theme={JSON.parse(theme).id}
-                      />
+                      /> */}
                       {/* <PostShape></PostShape> */}
+                      <FlairPage />
                     </>
                   }
                 />
