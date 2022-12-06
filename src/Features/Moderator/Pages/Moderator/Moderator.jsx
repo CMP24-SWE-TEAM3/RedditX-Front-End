@@ -1,6 +1,6 @@
 // Import components
-import LayoutHeader from "Features/Moderator/Components/LayoutHeader/LayoutHeader";
-import LayoutTabs from "Features/Moderator/Components/LayoutTabs/LayoutTabs";
+import LayoutHeader from "Features/Moderator/Layouts/LayoutHeader/LayoutHeader";
+import LayoutTabs from "Features/Moderator/Layouts/LayoutTabs/LayoutTabs";
 import useDocumentTitle from "Hooks/useDocumentTitle";
 import { Route, Routes, useParams } from "react-router-dom";
 
