@@ -4,8 +4,14 @@ import {
   ReorderButton,
 } from "./BuutonsBar.styled";
 import { useState } from "react";
+import { useContext } from "react";
+import FlairContext from "Features/Moderator/Contexts/Safe-context";
 const BuutonsBar = () => {
+  const [DisReorder, setDisReorder] = useState(false);
+  const [DisAdd, setDisAdd] = useState(false);
+  const [DisSave, setDisSave] = useState(false);
   const [Reorder, setReorder] = useState(false);
+  const ctx = useContext(FlairContext);
   return (
     <ContainerFlairButtons>
       {!Reorder && (
@@ -14,10 +20,18 @@ const BuutonsBar = () => {
             onClick={() => {
               setReorder(!Reorder);
             }}
+            disabled={ctx.Edit}
           >
             Reorder
           </ReorderButton>
-          <AddFlairButton>Add flair</AddFlairButton>
+          <AddFlairButton
+            disabled={ctx.Edit}
+            onClick={() => {
+              ctx.AddHandler(true);
+            }}
+          >
+            Add flair
+          </AddFlairButton>
         </>
       )}
       {Reorder && (
@@ -29,7 +43,7 @@ const BuutonsBar = () => {
           >
             Cancel
           </ReorderButton>
-          <AddFlairButton>Save</AddFlairButton>
+          <AddFlairButton disabled={DisSave}>Save</AddFlairButton>
         </>
       )}
     </ContainerFlairButtons>

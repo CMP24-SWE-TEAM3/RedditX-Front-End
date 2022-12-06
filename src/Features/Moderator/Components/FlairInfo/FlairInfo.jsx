@@ -11,6 +11,7 @@ import {
   InDiv,
   Remain,
   SaveBtn,
+  TextFlairPicker,
 } from "./FlairInfo.styled";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useState } from "react";
@@ -22,6 +23,8 @@ import {
   TwitterPicker,
   CompactPicker,
 } from "react-color";
+import { useContext } from "react";
+import FlairContext from "Features/Moderator/Contexts/Safe-context";
 const FlairInfo = ({
   text,
   color,
@@ -31,14 +34,18 @@ const FlairInfo = ({
   setback,
   Edit,
   setEdit,
+  isNew,
 }) => {
   const intialState = {
     text: text,
     color: color,
     background: background,
   };
+  const ctx = useContext(FlairContext);
   console.log(intialState);
   const [ShowColor, setShowColor] = useState(false);
+  const [Black, setBlack] = useState(true);
+  const [DisSave, setDisSave] = useState(false);
   const [PickColor, setPickColor] = useState(background);
   const [Count, setCount] = useState(64 - text.trim().length);
   console.log(text.trim().length);
@@ -58,6 +65,18 @@ const FlairInfo = ({
   const CancelHandler = (e) => {
     e.preventDefault();
     setEdit(false);
+    ctx.EditHandler(false);
+    if (isNew) {
+      ctx.AddHandler(false);
+    }
+  };
+  const saveHandler = (e) => {
+    e.preventDefault();
+    setEdit(false);
+    ctx.EditHandler(false);
+    if (isNew) {
+      ctx.AddHandler(false);
+    }
   };
   return (
     <FlaironeEdit>
@@ -76,14 +95,15 @@ const FlairInfo = ({
                       if (Count > 0 && e.target.value.length > text.length) {
                         setTextState(e.target.value);
                         setCount(Count - 1);
+                        setDisSave(false);
                       }
-                      if (Count <= 60 && e.target.value.length < text.length) {
+                      if (Count <= 64 && e.target.value.length < text.length) {
                         setTextState(e.target.value);
                         setCount(Count + 1);
                       }
-                      //   if (Count === 0) {
-                      //     setCount(0);
-                      //   }
+                      if (e.target.value.length === 0) {
+                        setDisSave(true);
+                      }
                     }}
                   />
                 </InDiv>
@@ -114,11 +134,30 @@ const FlairInfo = ({
               />
             )}
           </BackgroundFlair>
+          {/*  */}
+          <BackgroundFlair>
+            <label htmlFor="">
+              <span>Flair text color</span>
+              <TextFlairPicker
+                Black={Black}
+                onClick={() => {
+                  let c = !Black ? "#ffff" : "#000";
+                  setColor(c);
+                  setBlack(!Black);
+                }}
+              >
+                Aa
+              </TextFlairPicker>
+            </label>
+          </BackgroundFlair>
+          {/*  */}
         </FlaironeEditApperence>
       </FlaironeEditInner>
       <DownButtons>
         <CancelBtn onClick={CancelHandler}>Cancel</CancelBtn>
-        <SaveBtn>Save</SaveBtn>
+        <SaveBtn disabled={DisSave} onClick={saveHandler}>
+          Save
+        </SaveBtn>
       </DownButtons>
     </FlaironeEdit>
   );

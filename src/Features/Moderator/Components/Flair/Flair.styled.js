@@ -94,6 +94,9 @@ export const ButtonDel = styled.button`
   width: auto;
   background: transparent;
   /* margin-left: 32px; */
+  &:hover {
+    background-color: #ededed;
+  }
 `;
 export const ButtonDel2 = styled.button`
   padding: 0;
@@ -118,6 +121,18 @@ export const ButtonDel2 = styled.button`
   width: auto;
   background: transparent;
   margin-left: 32px;
+  &:hover {
+    background-color: #ededed;
+  }
+  &:disabled,
+  &:focus:disabled,
+  &:hover:disabled,
+  &:active:disabled {
+    /* background: #ccc; */
+    /* border-color: #ccc; */
+    color: #666666;
+    cursor: not-allowed;
+  }
 `;
 export const ButtonDeleteAll = styled.button`
   margin-left: 32px;
@@ -148,5 +163,17 @@ export const ButtonDeleteAll = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  &:hover {
+    background-color: #ededed;
+  }
+  &:disabled,
+  &:focus:disabled,
+  &:hover:disabled,
+  &:active:disabled {
+    /* background: #ccc; */
+    /* border-color: #ccc; */
+    color: #666666;
+    cursor: not-allowed;
   }
 `;

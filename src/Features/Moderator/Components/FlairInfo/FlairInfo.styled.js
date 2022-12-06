@@ -108,7 +108,7 @@ export const BackgroundFlair = styled.div`
   }
 `;
 export const BackgroundFlairPicker = styled.div`
-  background-color: ${(props) => props.PickColor};
+  background-color: ${(props) => props.PickColor || " #ccc"};
   fill: rgb(0, 0, 0);
   cursor: pointer;
   height: 24px;
@@ -183,4 +183,48 @@ export const SaveBtn = styled.button`
   text-align: center;
   width: auto;
   /* background: transparent; */
+  &:disabled,
+  &:focus:disabled,
+  &:hover:disabled,
+  &:active:disabled {
+    background: #ccc;
+    border-color: #ccc;
+    color: #666666;
+    cursor: not-allowed;
+  }
+`;
+export const TextFlairPicker = styled.button`
+  background-color: ${(props) => (props.Black ? "#878a8c" : "#fff")};
+  color: ${(props) => (props.Black ? "#fff" : "#878a8c")};
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  align-items: center;
+  border-radius: 2px;
+  border: 1px ${({ theme }) => theme.borderColor.primary};
+  box-sizing: border-box;
+  display: flex;
+  height: 24px;
+  justify-content: center;
+  padding: 4px;
+  width: 24px;
+  & span {
+    font-size: 20px;
+    display: none;
+  }
+  &:hover span {
+    /* font-size: 200px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &:disabled,
+  &:focus:disabled,
+  &:hover:disabled,
+  &:active:disabled {
+    background: #ccc;
+    border-color: #ccc;
+    color: #666666;
+    cursor: not-allowed;
+  }
 `;

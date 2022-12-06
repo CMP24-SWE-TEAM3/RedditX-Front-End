@@ -15,11 +15,31 @@ const FlairList = () => {
     <ContainerFlairList>
       <FlairListHeader />
       <div>
-        <Flair text={"abdo"} color={"black"} background={"yellow"} />
+        <Flair
+          text={"abdo"}
+          color={"black"}
+          background={"yellow"}
+          isNew={false}
+        />
         {/* <FlairInfo /> */}
-        <Flair text={"abdo"} color={"black"} background={"yellow"} />
-        <Flair text={"abdo"} color={"black"} background={"yellow"} />
-        <Flair text={"abdo"} color={"black"} background={"yellow"} />
+        <Flair
+          text={"abdo"}
+          color={"black"}
+          background={"yellow"}
+          isNew={false}
+        />
+        <Flair
+          text={"abdo"}
+          color={"black"}
+          background={"yellow"}
+          isNew={false}
+        />
+        <Flair
+          text={"abdo"}
+          color={"black"}
+          background={"yellow"}
+          isNew={false}
+        />
       </div>
     </ContainerFlairList>
   );

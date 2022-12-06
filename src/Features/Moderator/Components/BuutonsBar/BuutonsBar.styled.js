@@ -37,6 +37,15 @@ export const ReorderButton = styled.button`
   text-align: center;
   width: auto;
   background: transparent;
+  &:disabled,
+  &:focus:disabled,
+  &:hover:disabled,
+  &:active:disabled {
+    /* background: #ccc; */
+    border-color: #ccc;
+    color: #666666;
+    cursor: not-allowed;
+  }
 `;
 export const AddFlairButton = styled.button`
   margin-left: 8px;
@@ -61,5 +70,14 @@ export const AddFlairButton = styled.button`
   justify-content: center;
   text-align: center;
   width: auto;
+  &:disabled,
+  &:focus:disabled,
+  &:hover:disabled,
+  &:active:disabled {
+    background: #ccc;
+    border-color: #ccc;
+    color: #666666;
+    cursor: not-allowed;
+  }
   /* background: transparent; */
 `;

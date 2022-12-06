@@ -14,19 +14,12 @@ import FlairInfo from "../FlairInfo/FlairInfo";
 import { useState } from "react";
 import { useContext } from "react";
 import FlairContext from "Features/Moderator/Contexts/Safe-context";
-import { useEffect } from "react";
-const Flair = ({ text, color, background, isNew }) => {
+const NewFlair = ({ text, color, background }) => {
   const [back, setback] = useState(background);
   const [textState, setTextState] = useState(text);
   const [Color, setColor] = useState(color);
   const [Edit, setEdit] = useState(false);
   const ctx = useContext(FlairContext);
-  useEffect(() => {
-    if (isNew) {
-      setEdit(true);
-      ctx.EditHandler(true);
-    }
-  }, []);
   return (
     <>
       <Flairone>
@@ -65,11 +58,10 @@ const Flair = ({ text, color, background, isNew }) => {
           setColor={setColor}
           Edit={Edit}
           setEdit={setEdit}
-          isNew={isNew}
         />
       )}
     </>
   );
 };
 
-export default Flair;
+export default NewFlair;
