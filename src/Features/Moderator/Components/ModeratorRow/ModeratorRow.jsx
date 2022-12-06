@@ -14,7 +14,8 @@ import {
   Date,
   Abilities,
   PhotoAndUsername,
-  Edit
+  Edit,
+  ButtonsContainer
 } from "./ModeratorRow.styled";
 
 /**
@@ -22,7 +23,7 @@ import {
  * @returns {React.Component}  ModeratorRow component that is used in User management
  */
 
-const ModeratorRow = ({Moderator, edit, invited}) => {
+const ModeratorRow = ({Moderator, edit, invited, approved}) => {
 
     
 
@@ -41,7 +42,8 @@ const ModeratorRow = ({Moderator, edit, invited}) => {
           </PhotoAndUsername>
           <Date><Moment fromNow>{Moderator.date}</Moment></Date>
         </ProfileContainer>
-        <Abilities>Everything {edit && <Edit><MdEdit/></Edit>} {invited && <Edit><MdDelete/></Edit>}</Abilities>
+        {!approved&&<Abilities>Everything {edit && <Edit><MdEdit/></Edit>} {invited && <Edit><MdDelete/></Edit>}</Abilities>}
+        {approved && <ButtonsContainer><button>Send message</button> <button>Remove</button></ButtonsContainer>}
       </Container>
     </>
   );

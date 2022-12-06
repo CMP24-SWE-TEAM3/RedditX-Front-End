@@ -8,6 +8,7 @@ import React, { useState } from "react";
 
 import TestModeratorsModals from "Features/Moderator/Pages/TestModeratorsModals/TestModeratorsModals";
 
+
 //////////////////////////////////////////////////////////////
 
 // Import react router dom
@@ -139,11 +140,11 @@ function App() {
                         modalAfterSignUp={modalAfterSignUp}
                         setModalAfterSignUp={setModalAfterSignUp}
                       />
-                      {/* <HomePage
+                      <HomePage
                         handleToggleTheme={handleToggleTheme}
                         theme={JSON.parse(theme).id}
-                      /> */}
-                     <TestModeratorsModals></TestModeratorsModals>
+                      />
+                     {/* <TestModeratorsModals></TestModeratorsModals> */}
                     </>
                   }
                 />

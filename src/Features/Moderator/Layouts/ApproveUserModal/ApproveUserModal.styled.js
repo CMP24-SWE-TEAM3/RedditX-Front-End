@@ -12,7 +12,6 @@ export const MyModal = styled(Modal)`
     max-width: 550px;
     background-color: ${({ theme }) => theme.background.primary};
   }
-  
 
   > div {
     min-width: 350px;
@@ -24,7 +23,6 @@ export const MyModalHeader = styled(Modal.Header)`
   color: ${({ theme }) => theme.color.primary};
   background-color: ${({ theme }) => theme.background.primary};
   font-weight: 500;
-
   button {
     font-size: 10px;
   }

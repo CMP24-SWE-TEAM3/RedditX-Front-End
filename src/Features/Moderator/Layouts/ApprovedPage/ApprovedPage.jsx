@@ -3,28 +3,24 @@ import { useState } from "react";
 
 import AllModerators from "Features/Moderator/Components/AllModerators/AllModerators";
 
-import EditModerators from "Features/Moderator/Components/EditModerators/EditModerators";
-
-import InvitedModerators from "Features/Moderator/Components/InvitedModerators/InvitedModerators";
+import ApprovedUsers from "Features/Moderator/Components/ApprovedUsers/ApprovedUsers";
 
 import { AiOutlineInfoCircle } from "react-icons/ai";
 
 import {
   Container,
   ButtonsContainer,
-  ButtonOne,
   ButtonTwo,
   NameHeader,
   InnerContainer,
-  EditMod,
-} from "./ModeratorsPage.styled";
+} from "./ApprovedPage.styled";
 
 /**
- * ModeratorsPage Layout that is used in User management
- * @returns {React.Component}  ModeratorsPage Layout that is used in User management
+ * ApprovedPage Layout that is used in User management
+ * @returns {React.Component}  ApprovedPage Layout that is used in User management
  */
 
-const ModeratorsPage = ({ setModalShowSignUp }) => {
+const ApprovedPage = ({ setModalShowApproveUser }) => {
   const communityName = " r/Eln2aa4yn";
 
   let Moderator = [
@@ -70,32 +66,26 @@ const ModeratorsPage = ({ setModalShowSignUp }) => {
     <>
       <Container>
         <ButtonsContainer>
-          <ButtonOne>Leave as mod</ButtonOne>
+          
           <ButtonTwo
             onClick={() => {
-              setModalShowSignUp(true);
+                setModalShowApproveUser(true);
             }}
           >
-            Invite user as mod
+            Approve user
           </ButtonTwo>
         </ButtonsContainer>
         <InnerContainer>
           <NameHeader>
-            Moderators of {communityName}{" "}
+            Approved users{" "}
             <AiOutlineInfoCircle></AiOutlineInfoCircle>
           </NameHeader>
 
-          <AllModerators Moderator={Moderator}></AllModerators>
-          <br></br>
-          <EditMod>You can edit these moderators</EditMod>
-          <EditModerators Moderator={Moderator}></EditModerators>
-          <br></br>
-          <EditMod>Invited moderators</EditMod>
-          <InvitedModerators Moderator={Moderator}></InvitedModerators>
+          <ApprovedUsers  Moderator={Moderator}></ApprovedUsers>
         </InnerContainer>
       </Container>
     </>
   );
 };
 
-export default ModeratorsPage;
+export default ApprovedPage;

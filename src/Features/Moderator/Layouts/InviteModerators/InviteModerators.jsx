@@ -34,7 +34,7 @@ const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
  * @returns {React.Component}  InviteModerators Layout that is used in User management
  */
 
-const InviteModerators = ({ setModalShowLogIn }) => {
+const InviteModerators = ({ setModalShowLogIn, setModalShowSignUp }) => {
   /**
    * state to handel any change the user make in the input fields
    */
@@ -79,12 +79,7 @@ const InviteModerators = ({ setModalShowLogIn }) => {
         <GiveAccess>Give them access to...</GiveAccess>
         <AbilityContainer>
           <CheckBox>
-            <input
-              type="checkbox"
-              id="EveryThing"
-              name="EveryThing"
-              value="EveryThing"
-            ></input>
+          <input className="form-check-input w-5vm" type="checkbox" id="Everything" value="Everything" name="Everything"/>
           </CheckBox>
           <Ability>
             <Head>Everything</Head>
@@ -98,6 +93,7 @@ const InviteModerators = ({ setModalShowLogIn }) => {
         <AbilityContainer>
           <CheckBox>
             <input
+            className="form-check-input w-5vm"
               type="checkbox"
               id="EveryThing"
               name="EveryThing"
@@ -114,6 +110,7 @@ const InviteModerators = ({ setModalShowLogIn }) => {
         <AbilityContainer>
           <CheckBox>
             <input
+            className="form-check-input w-5vm"
               type="checkbox"
               id="EveryThing"
               name="EveryThing"
@@ -128,6 +125,7 @@ const InviteModerators = ({ setModalShowLogIn }) => {
         <AbilityContainer>
           <CheckBox>
             <input
+            className="form-check-input w-5vm"
               type="checkbox"
               id="EveryThing"
               name="EveryThing"
@@ -145,6 +143,7 @@ const InviteModerators = ({ setModalShowLogIn }) => {
         <AbilityContainer>
           <CheckBox>
             <input
+            className="form-check-input w-5vm"
               type="checkbox"
               id="EveryThing"
               name="EveryThing"
@@ -159,6 +158,7 @@ const InviteModerators = ({ setModalShowLogIn }) => {
         <AbilityContainer>
           <CheckBox>
             <input
+            className="form-check-input w-5vm"
               type="checkbox"
               id="EveryThing"
               name="EveryThing"
@@ -173,6 +173,7 @@ const InviteModerators = ({ setModalShowLogIn }) => {
         <AbilityContainer>
           <CheckBox>
             <input
+            className="form-check-input w-5vm"
               type="checkbox"
               id="EveryThing"
               name="EveryThing"
@@ -190,6 +191,7 @@ const InviteModerators = ({ setModalShowLogIn }) => {
         <AbilityContainer>
           <CheckBox>
             <input
+            className="form-check-input w-5vm"
               type="checkbox"
               id="EveryThing"
               name="EveryThing"
@@ -208,13 +210,13 @@ const InviteModerators = ({ setModalShowLogIn }) => {
         </Par>
         <Line></Line>
         <ButtonsContainer>
-          <ButtonOne
+          {/* <ButtonOne
             onClick={() => {
               setModalShowLogIn(false);
             }}
           >
             Cancel
-          </ButtonOne>
+          </ButtonOne> */}
           <ButtonTwo disabled={validName} valid={validName}>
             Invite
           </ButtonTwo>

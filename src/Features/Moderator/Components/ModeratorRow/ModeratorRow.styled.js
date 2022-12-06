@@ -7,6 +7,7 @@ export const Container = styled.div`
   max-height: 50px;
   border-bottom: 1px solid #eee;
   width: 100%;
+  background-color: ${({ theme }) => theme.background.primary};
 `;
 
 export const ProfileContainer = styled.div`
@@ -23,7 +24,9 @@ export const Photo = styled.div`
     max-width: 100%;
   }
 `;
-export const UserName = styled.div``;
+export const UserName = styled.div`
+  color: ${({ theme }) => theme.color.primary};
+`;
 export const Date = styled.div`
   color: ${({ theme }) => theme.borderColor.primary};
   font-size: 13px;
@@ -36,12 +39,12 @@ export const Abilities = styled.div`
 export const PhotoAndUsername = styled.div`
   display: flex;
   align-items: center;
-  margin-left:5px;
+  margin-left: 5px;
   margin-right: 5px;
   padding: 5px;
   cursor: pointer;
   border-radius: 5px;
-  width:150px;
+  width: 150px;
   margin-top: 5px;
   margin-bottom: 5px;
   height: 35px;
@@ -53,4 +56,14 @@ export const PhotoAndUsername = styled.div`
 export const Edit = styled.span`
   cursor: pointer;
   font-size: 16px;
+`;
+export const ButtonsContainer = styled.div`
+  button {
+    border: none;
+    background: none;
+    margin: 0 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: ${({ theme }) => theme.color.secondary};
+  }
 `;

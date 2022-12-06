@@ -1,27 +1,27 @@
 import { useState } from "react";
 
 import Modal from "react-bootstrap/Modal";
-import InviteModerators from "../InviteModerators/InviteModerators";
+import ApproveUser from "../ApproveUser/ApproveUser";
 
 import {
   MyModal,
   MyModalHeader,
   HaveAccount,
-} from "./InviteModeratorsModal.styled";
+} from "./ApproveUserModal.styled";
 
 
 
 /**
- * InviteModeratorsModal layout that is in user management
- * @returns {React.Component}  InviteModeratorsModal layout that is in user management
+ * ApproveUserModal layout that is in user management
+ * @returns {React.Component}  ApproveUserModal layout that is in user management
  */
 
-const InviteModeratorsModal = ({ ...props }) => {
+const ApproveUserModal = ({ ...props }) => {
 
   /**
    * state to know what component should be shown in the modal
    */
-  const [showSignUp, setShowSignUp] = useState(false);
+  const [showSignUp, setModalShowApproveUser] = useState(false);
 
   return (
     <MyModal
@@ -30,14 +30,14 @@ const InviteModeratorsModal = ({ ...props }) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
       onExit={() => {
-        setShowSignUp(false);
+        setModalShowApproveUser(false);
       }}
     >
-      <MyModalHeader closeButton>Invite Moderators</MyModalHeader>
+      <MyModalHeader closeButton>Add approved user</MyModalHeader>
       <Modal.Body data-testid="loginModalId">
         {!showSignUp && (
           <>
-            <InviteModerators setModalShowSignUp={props.setModalShowSignUp} setModalShowLogIn={setShowSignUp} />{" "}
+            <ApproveUser setModalShowSignUp={props.setModalShowSignUp} setModalShowLogIn={setModalShowApproveUser} />{" "}
             {/* <HaveAccount>
               New to Reddit?{" "}
               <button onClick={() => setShowSignUp(true)}>Sign up</button>
@@ -49,4 +49,4 @@ const InviteModeratorsModal = ({ ...props }) => {
   );
 };
 
-export default InviteModeratorsModal;
+export default ApproveUserModal;

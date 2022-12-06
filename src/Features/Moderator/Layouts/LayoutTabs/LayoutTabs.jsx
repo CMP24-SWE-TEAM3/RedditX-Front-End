@@ -2,6 +2,8 @@
 import Nav from "react-bootstrap/Nav";
 import Tab from "react-bootstrap/Tab";
 
+import ModeratorsPage from "../ModeratorsPage/ModeratorsPage";
+
 // Import icons
 import {
   MdOutlineLibraryBooks,
@@ -28,6 +30,7 @@ import {
   BackButton,
 } from "./LayoutTabs.styled";
 import { useState } from "react";
+import ApprovedPage from "../ApprovedPage/ApprovedPage";
 
 const paths = {
   ModQueue: "mod-queue",
@@ -44,7 +47,7 @@ const paths = {
   Community: "Community",
   PostsAndComments: "PostsAndComments",
 };
-function LayoutTabs() {
+function LayoutTabs({setModalShowSignUp, setModalShowApproveUser}) {
   const [isCommunitySettings, setIsCommunitySettings] = useState(false);
   const { subredditId, moderatorId } = useParams();
   const getPath = (path) => {
@@ -220,8 +223,8 @@ function LayoutTabs() {
             {moderatorId === paths.Unmoderated && <div>Unmoderated</div>}
             {moderatorId === paths.Banned && <div>Banned</div>}
             {moderatorId === paths.Muted && <div>Muted</div>}
-            {moderatorId === paths.Approved && <div>Approved</div>}
-            {moderatorId === paths.Moderators && <div>Moderators</div>}
+            {moderatorId === paths.Approved && <div><ApprovedPage setModalShowApproveUser={setModalShowApproveUser}/></div>}
+            {moderatorId === paths.Moderators && <ModeratorsPage setModalShowSignUp={setModalShowSignUp}/>}
             {moderatorId === paths.PostFlair && <div>PostFlair</div>}
             {moderatorId === paths.Rules && <div>Rules</div>}
             {moderatorId === paths.TrafficStates && (

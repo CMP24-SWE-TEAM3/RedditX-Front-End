@@ -16,6 +16,8 @@ export const SearchInput = styled.input`
   height: 30px;
   margin-left: 10px;
   padding: 5px;
+  background-color: ${({ theme }) => theme.background.primary};
+  color: ${({ theme }) => theme.color.primary};
   border: 1px solid ${({ theme }) => theme.borderColor.primary};
 `;
 export const SearchIcon = styled.div`
