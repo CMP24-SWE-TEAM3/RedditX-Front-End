@@ -6,7 +6,7 @@ import React, { useState } from "react";
 
 //Dummy imports
 
-import ModeratorsPage from "Features/Moderator/Layouts/ModeratorsPage/ModeratorsPage";
+import TestModeratorsModals from "Features/Moderator/Pages/TestModeratorsModals/TestModeratorsModals";
 
 //////////////////////////////////////////////////////////////
 
@@ -142,7 +142,7 @@ function App() {
                         handleToggleTheme={handleToggleTheme}
                         theme={JSON.parse(theme).id}
                       /> */}
-                     <ModeratorsPage></ModeratorsPage>
+                     <TestModeratorsModals></TestModeratorsModals>
                     </>
                   }
                 />

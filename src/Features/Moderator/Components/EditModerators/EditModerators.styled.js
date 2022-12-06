@@ -11,7 +11,6 @@ export const SearchContainer = styled.div`
   background-color: ${({ theme }) => theme.lineColor.primary};
   display: flex;
   align-items: center;
-
 `;
 export const SearchInput = styled.input`
   height: 30px;
@@ -24,5 +23,8 @@ export const SearchIcon = styled.div`
   padding: 5px;
   color: white;
   border-radius: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: ${({ theme }) => theme.borderColor.primary};
 `;
