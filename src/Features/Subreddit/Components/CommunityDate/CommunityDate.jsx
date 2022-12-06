@@ -1,10 +1,13 @@
 import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
+import { useSubRedditID } from "Features/Subreddit/Contexts/SubRedditIDProvider";
+import { useIsModerator } from "Features/Subreddit/Contexts/IsModeratorProvider";
 import { useEffect, useRef, useState } from "react";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { FiEyeOff } from "react-icons/fi";
 import { HiOutlinePencil } from "react-icons/hi";
 import { TbCake } from "react-icons/tb";
+import Moment from "react-moment";
 import SaveChangesModal from "../SaveChangesModal/SaveChangesModal";
 import {
   AddDescription,
@@ -32,7 +35,8 @@ const CommunityDate = () => {
   const [inputFocus, setInputFocus] = useState(false);
   const [dummyDescription, setDummyDescription] = useState(description);
   const [modalShow, setModalShow] = useState(false);
-  let isMod = true;
+  const {isMod} = useIsModerator();
+  const {communityID} = useSubRedditID();
   const textAreaRef = useRef();
   let isPrivate = true;
 
@@ -156,6 +160,7 @@ const CommunityDate = () => {
       <StaticDescriptionContainer>
         <DescriptionContent>
           {description}
+          {!description && communityID && `Welcome to ${communityID.substring(3)}`}
         </DescriptionContent>
       </StaticDescriptionContainer>
     );
@@ -200,7 +205,7 @@ const CommunityDate = () => {
       )}
       <OverlayTrigger
         placement={"bottom"}
-        overlay={<Tooltip>16 days ago</Tooltip>}
+        overlay={<Tooltip><Moment fromNow>Oct 17, 2022</Moment></Tooltip>}
         delay="200"
       >
         <BirthDay>

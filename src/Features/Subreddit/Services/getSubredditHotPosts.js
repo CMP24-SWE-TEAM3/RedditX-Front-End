@@ -5,13 +5,22 @@ import axios from "API/axios";
  *
  * @param {Function} fetchData - The function to make the request
  */
-const getSubredditHotPosts = async (fetchData, comm ,auth) => {
+const getSubredditHotPosts = async (
+  fetchData,
+  comm,
+  auth,
+  type,
+  time,
+  pgNum
+) => {
   // console.log(comm);
   fetchData({
     axiosInstance: axios,
     method: "GET",
     // url: "http://localhost:8000/Community/",
-    url: `/api/listing/posts/r/${comm}/hot?page=1&limit=5`,
+    url: `/api/listing/posts/r/${comm}/${type}?page=${pgNum}&limit=12${
+      time ? `&t=${time}` : ""
+    }`,
     // url: `/api/listing/posts/r/t5_imagePro235/hot?page=1&limit=5`,
     requestConfig: {
       headers: {

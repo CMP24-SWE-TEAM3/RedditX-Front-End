@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
 import { useSubRedditID } from "Features/Subreddit/Contexts/SubRedditIDProvider";
+import { useIsModerator } from "Features/Subreddit/Contexts/IsModeratorProvider";
 import getSubreddit from "Features/Subreddit/Services/getSubreddit";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 /**
@@ -15,7 +16,16 @@ const SetSubReddit = ({ comm, children }) => {
   const auth = useAuth();
 
   const {setCommunityID} = useSubRedditID();
-  setCommunityID(comm);
+  
+  useEffect(() => {
+    setCommunityID(comm);
+  },[comm,setCommunityID])
+
+
+  const {setIsMod} = useIsModerator();
+  useEffect(() => {
+    setIsMod(false);
+  },[setIsMod])
 
   // const [Community, error, isLoading, fetchData] = useFetchFunction();
   // useEffect(() => {

@@ -5,7 +5,7 @@ export const RuleContainer = styled.div`
   font-weight: 500;
   line-height: 18px;
   ${(props) =>
-    props.last ? "" : "border-bottom: 1px solid rgba(26, 26, 27, 0.07);"}
+    props.last ? "" : `border-bottom: 1px solid ${props.theme.lineColor.primary};`}
   ${(props) => (props.last ? "padding: 8px 0 0 0;" : "padding: 8px 0;")}
   cursor: ${(props) => (props.desc ? "pointer" : "default")};
 `;
@@ -19,6 +19,7 @@ export const Number = styled.div`
   box-sizing: border-box;
   flex: 0 0;
   padding-right: 2px;
+  color: ${({ theme }) => theme.color.primary};
 `;
 
 export const Title = styled.div`
@@ -27,6 +28,7 @@ export const Title = styled.div`
   width: 100%;
   padding-right: 8px;
   word-break: break-word;
+  color: ${({ theme }) => theme.color.primary};
 `;
 
 export const Arrow = styled.div`
@@ -38,6 +40,7 @@ export const Arrow = styled.div`
     line-height: 20px;
     vertical-align: middle;
     width: 20px;
+    color: ${({ theme }) => theme.color.primary};
   }
 `;
 
@@ -59,5 +62,6 @@ export const Description = styled.div`
     padding-top: 0;
     padding-bottom: 0;
     margin-bottom: 0;
+    color: ${({ theme }) => theme.color.primary};
   }
 `;

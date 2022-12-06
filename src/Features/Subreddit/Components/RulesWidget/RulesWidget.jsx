@@ -21,9 +21,9 @@ const RulesWidget = () => {
   const { community } = useSubReddit();
   //rules
   // const rules = [
-  //   { title: "t1", description: "d1" },
-  //   { title: "t2", description: "d2" },
-  //   { title: "t3", description: "" },
+  //   { title: "t1", textDescription: "d1" },
+  //   { title: "t2", textDescription: "d2" },
+  //   { title: "t3", textDescription: "" },
   // ];
 
   // const rules = community[0].communityRules;
@@ -31,7 +31,7 @@ const RulesWidget = () => {
   useEffect(() => {
     community &&
       community.length &&
-      setRules(community[0].communityRules || []);
+      setRules(community.communityRules || []);
   }, [community]);
 
   /**
