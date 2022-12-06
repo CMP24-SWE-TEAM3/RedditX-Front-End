@@ -67,6 +67,8 @@ export const StyledNavLink = styled(NavLink)`
       ${({ theme, selected }) =>
         selected ? theme.color.secondary : theme.lineColor.primary};
   }
+  display: flex;
+  justify-content: space-between;
 `;
 export const CategoryTitle = styled.div`
   margin-top: ${({ first }) => (first ? "0" : "16px")};
@@ -83,6 +85,25 @@ export const CategoryTitle = styled.div`
   span {
     display: inline-block;
     margin-left: 4px;
+  }
+`;
+
+export const BackButton = styled(NavLink)`
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  align-items: center;
+  display: flex;
+  padding: 0 24px 10px;
+  color: ${({ theme }) => theme.color.primary};
+  text-decoration: none;
+  &:hover {
+    color: ${({ theme }) => theme.color.primary};
+    cursor: pointer;
+  }
+  span {
+    display: inline-block;
   }
 `;
 
