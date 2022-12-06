@@ -140,12 +140,10 @@ function App() {
                         modalAfterSignUp={modalAfterSignUp}
                         setModalAfterSignUp={setModalAfterSignUp}
                       />
-                      {/* <HomePage
+                      <HomePage
                         handleToggleTheme={handleToggleTheme}
                         theme={JSON.parse(theme).id}
-                      /> */}
-                      {/* <PostShape></PostShape> */}
-                      <FlairPage />
+                      />
                     </>
                   }
                 />
