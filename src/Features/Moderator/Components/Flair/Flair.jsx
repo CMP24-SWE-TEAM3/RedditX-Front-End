@@ -16,6 +16,7 @@ const Flair = ({ text, color, background }) => {
   const [back, setback] = useState(background);
   const [textState, setTextState] = useState(text);
   const [Color, setColor] = useState(color);
+  const [Edit, setEdit] = useState(false);
   return (
     <>
       <Flairone>
@@ -28,7 +29,13 @@ const Flair = ({ text, color, background }) => {
         <FlairSettings></FlairSettings>
         <Buttons>
           <ButtonDel>Copy Id</ButtonDel>
-          <ButtonDel2>Edit</ButtonDel2>
+          <ButtonDel2
+            onClick={() => {
+              setEdit(true);
+            }}
+          >
+            Edit
+          </ButtonDel2>
           <ButtonDeleteAll>
             <span>
               <RiDeleteBin5Fill />
@@ -36,14 +43,18 @@ const Flair = ({ text, color, background }) => {
           </ButtonDeleteAll>
         </Buttons>
       </Flairone>
-      <FlairInfo
-        text={textState}
-        color={Color}
-        background={back}
-        setback={setback}
-        setTextState={setTextState}
-        setColor={setColor}
-      />
+      {Edit && (
+        <FlairInfo
+          text={textState}
+          color={Color}
+          background={back}
+          setback={setback}
+          setTextState={setTextState}
+          setColor={setColor}
+          Edit={Edit}
+          setEdit={setEdit}
+        />
+      )}
     </>
   );
 };

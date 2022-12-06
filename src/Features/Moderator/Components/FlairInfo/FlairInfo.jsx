@@ -29,6 +29,8 @@ const FlairInfo = ({
   setColor,
   setTextState,
   setback,
+  Edit,
+  setEdit,
 }) => {
   const intialState = {
     text: text,
@@ -52,6 +54,10 @@ const FlairInfo = ({
     setback(color.hex);
 
     // setShowColor(false);
+  };
+  const CancelHandler = (e) => {
+    e.preventDefault();
+    setEdit(false);
   };
   return (
     <FlaironeEdit>
@@ -111,7 +117,7 @@ const FlairInfo = ({
         </FlaironeEditApperence>
       </FlaironeEditInner>
       <DownButtons>
-        <CancelBtn>Cancel</CancelBtn>
+        <CancelBtn onClick={CancelHandler}>Cancel</CancelBtn>
         <SaveBtn>Save</SaveBtn>
       </DownButtons>
     </FlaironeEdit>
