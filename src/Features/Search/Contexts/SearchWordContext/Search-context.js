@@ -2,7 +2,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 const SearchContext = React.createContext({
   word: "",
+  isSubreddit: "",
+  community: "",
+  communityHandler: (community) => {},
   wordHandler: (word) => {},
+  isSubredditHandler: (isSubreddit) => {},
 });
 /**
  * Context for the word we search for
@@ -12,17 +16,29 @@ const SearchContext = React.createContext({
  */
 export function SearchContextProvider(props) {
   const [word, setword] = useState("");
-
+  const [isSubreddit, setisSubreddit] = useState("");
+  const [community, setcommunity] = useState("");
   const wordHandler = (word) => {
     setword(word);
     // console.log(word);
   };
-
+  const isSubredditHandler = (isSubreddit) => {
+    setisSubreddit(isSubreddit);
+    console.log(isSubreddit);
+  };
+  const communityHandler = (community) => {
+    setcommunity(community);
+    console.log(community);
+  };
   return (
     <SearchContext.Provider
       value={{
         word: word,
         wordHandler: wordHandler,
+        isSubredditHandler: isSubredditHandler,
+        isSubreddit: isSubreddit,
+        community: community,
+        communityHandler: communityHandler,
       }}
     >
       {props.children}

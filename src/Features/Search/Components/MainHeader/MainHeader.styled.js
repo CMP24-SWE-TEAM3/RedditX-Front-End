@@ -67,6 +67,55 @@ export const MainLinks = styled.div`
   & .safe-search-inner label {
     margin-right: 30px;
   }
+  & .isSub .isSubLink {
+    background-color: transparent;
+    border-bottom: none;
+    border-top: none;
+    height: auto;
+    margin-bottom: 0;
+    padding: 0 8px;
+    display: flex;
+    border-radius: 4px;
+    align-items: center;
+    font-family: Noto Sans, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    color: ${({ theme }) => theme.color.titleText_of_link};
+    text-decoration: none;
+  }
+  & .isSub .isSubSpan1 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  & .isSub p {
+    margin: 0;
+    padding: 0;
+    color: ${({ theme }) => theme.color.link};
+    display: inline;
+    font-weight: 700;
+    margin-left: 4px;
+    text-decoration: none;
+  }
+  & .isSub .isSubSpan2 {
+    margin-left: 4px;
+    color: ${({ theme }) => theme.color.link};
+    font-size: 20px;
+    font-weight: 400;
+    height: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+    width: 20px;
+    text-decoration: none;
+  }
+  & .isSub {
+    text-decoration: none;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 export const StyledSwitch = styled(Form)`
   & .form-check-input {
