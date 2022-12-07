@@ -16,6 +16,7 @@ import RecentPosts from "Layouts/RecentPosts/RecentPosts";
 import PostShape from "Features/Post/Layouts/PostShape/PostShape";
 import Post from "Features/Post/Pages/Post/Post";
 import useDocumentTitle from "Hooks/useDocumentTitle";
+import CollapsePost from "Features/Post/Layouts/CollapsePost/CollapsePost";
 
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
@@ -73,6 +74,7 @@ const HomePage = () => {
               >
                 <PostShape />
               </div>
+              <CollapsePost />
               <Post show={showPost} setShow={setShowPost} />
             </div>
             <aside>
