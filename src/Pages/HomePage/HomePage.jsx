@@ -5,6 +5,13 @@ import {
   MainContainer,
   AppContainer,
   AppHeader,
+  ContentPost,
+  Main,
+  Sidebar,
+  CreateCommunity,
+  RecentPostsContainer,
+  ChildFooter,
+  ScrollBtn,
 } from "./HomePage.styled";
 import CreatePost from "Layouts/CreatePost/CreatePost";
 import TopCommunities from "Layouts/CommunityCard/CommunityCard";
@@ -60,9 +67,9 @@ const HomePage = () => {
     <AppContainer>
       <AppHeader>
         <MainContainer data-testid="home-page-id">
-          <div className="main" />
+          <Main />
           <Container>
-            <div className={"content-posts"}>
+            <ContentPost>
               <CreatePost />
               <PopularPosts />
               <div
@@ -74,28 +81,28 @@ const HomePage = () => {
                 <PostShape />
               </div>
               <Post show={showPost} setShow={setShowPost} />
-            </div>
+            </ContentPost>
             <aside>
-              <div className={"sidebar"}>
+              <Sidebar>
                 <TopCommunities />
 
-                <div className={"create-community"}>
+                <CreateCommunity>
                   <CreatePostSideBar />
-                </div>
-                <div className={"recent-posts"}>
+                </CreateCommunity>
+                <RecentPostsContainer>
                   <div>
                     <RecentPosts />
                   </div>
-                </div>
+                </RecentPostsContainer>
                 <footer>
-                  <div className={"child-footer"}>
+                  <ChildFooter>
                     <Footer />
-                  </div>
-                  <div className={"scroll-but"}>
+                  </ChildFooter>
+                  <ScrollBtn>
                     <ScrollButton />
-                  </div>
+                  </ScrollBtn>
                 </footer>
-              </div>
+              </Sidebar>
             </aside>
           </Container>
         </MainContainer>

@@ -14,11 +14,8 @@ import {
   Footer,
 } from "./RuleModal.styled";
 
-const RuleModal = () => {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+const RuleModal = ({ show, close, setShow }) => {
+  // const [show, setShow] = useState(false);
   const [rule, setRule] = useState("");
   const [reasonRule, setReasonRule] = useState("");
   const [description, setDescription] = useState("");
@@ -38,11 +35,11 @@ const RuleModal = () => {
   };
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
+      {/*<Button variant="primary" onClick={() => setShow(true)}>*/}
+      {/*  Launch demo modal*/}
+      {/*</Button>*/}
 
-      <ModalContainer show={show} onHide={handleClose}>
+      <ModalContainer show={show} onHide={close}>
         <Modal.Header closeButton>
           <Modal.Title>Edit rule</Modal.Title>
         </Modal.Header>
@@ -134,10 +131,10 @@ const RuleModal = () => {
           </Form>
         </Modal.Body>
         <Footer>
-          <ButtonContainer onClick={handleClose} deleteBtn={0}>
+          <ButtonContainer onClick={() => setShow(false)} deleteBtn={0}>
             Cancel
           </ButtonContainer>
-          <ButtonContainer onClick={handleClose} deleteBtn={0}>
+          <ButtonContainer onClick={() => setShow(false)} deleteBtn={0}>
             Save
           </ButtonContainer>
           {/*TODO: delete button*/}

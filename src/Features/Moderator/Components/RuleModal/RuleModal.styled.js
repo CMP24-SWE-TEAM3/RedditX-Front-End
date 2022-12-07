@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import {FormControl, ModalFooter} from "react-bootstrap";
+import { FormControl, ModalFooter } from "react-bootstrap";
 
 export const ModalContainer = styled(Modal)`
   .modal-content {
@@ -20,19 +20,21 @@ export const ModalContainer = styled(Modal)`
       font-weight: 500;
       line-height: 20px;
     }
-  }
-  .modal-body{
-    
-    .form-control{
-    :focus{
-      box-shadow: none;
-    }  
+    .btn-close:focus {
+      box-shadow: none !important;
     }
   }
-  
+  .modal-body {
+    .form-control {
+      :focus {
+        box-shadow: none;
+      }
+    }
+  }
 `;
 export const Characters = styled.p`
-  color: ${({alarmValue}) => (alarmValue > 0) ? '#7c7c7c' : '#ea0027'} !important;
+  color: ${({ alarmValue }) =>
+    alarmValue > 0 ? "#7c7c7c" : "#ea0027"} !important;
   padding-top: 5px;
   font-weight: 400;
   font-size: 12px;
@@ -49,8 +51,7 @@ export const FormCheck = styled.div`
     padding-top: 8px;
   }
 `;
-export const FormLabel=styled.div
-`
+export const FormLabel = styled.div`
   display: flex;
   margin-bottom: 16px;
 
@@ -66,36 +67,32 @@ export const FormLabel=styled.div
       box-shadow: none;
     }
   }
-`
-export const FormText=styled.div
-`
+`;
+export const FormText = styled.div`
   display: inline;
-  font-family: Noto Sans,Arial,sans-serif;
+  font-family: Noto Sans, Arial, sans-serif;
   font-weight: 400;
-  color: ${({ theme})=>theme.categoryColor.text};
+  color: ${({ theme }) => theme.categoryColor.text};
   font-size: 14px;
   line-height: 21px;
   margin-left: 6px;
-`
-export const ReportLabel=styled.p
-`
-  font-family: Noto Sans,Arial,sans-serif;
+`;
+export const ReportLabel = styled.p`
+  font-family: Noto Sans, Arial, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
   padding-top: 8px;
-`
-export const ReportDefault=styled.div
-`
+`;
+export const ReportDefault = styled.div`
   padding: 4px 0 8px;
   color: ${({ theme }) => theme.color.muted};
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
-`
-export const ButtonContainer=styled(Button)
-`
-  font-family: Noto Sans,Arial,sans-serif;
+`;
+export const ButtonContainer = styled(Button)`
+  font-family: Noto Sans, Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: unset;
@@ -106,8 +103,8 @@ export const ButtonContainer=styled(Button)
   padding: 4px 16px;
   cursor: not-allowed;
   filter: grayscale(1);
-  color:${({ theme }) => theme.borderColor.primary};
-  border: 1px solid ${({ theme})=> theme.btnColor.primary};
+  color: ${({ theme }) => theme.borderColor.primary};
+  border: 1px solid ${({ theme }) => theme.btnColor.primary};
   margin-left: 16px;
   position: relative;
   align-items: center;
@@ -117,14 +114,13 @@ export const ButtonContainer=styled(Button)
   justify-content: center;
   text-align: center;
   width: auto;
-  //margin-right:${({deleteBtn}) => deleteBtn? 'auto':'none'};
-`
-export const Footer= styled(ModalFooter)
-`
+  //margin-right:${({ deleteBtn }) => (deleteBtn ? "auto" : "none")};
+`;
+export const Footer = styled(ModalFooter)`
   background-color: ${({ theme }) => theme.lineColor.primary};
   border-top: 1px solid ${({ theme }) => theme.lineColor.primary};
   flex-direction: row-reverse;
   justify-content: flex-start;
   display: flex;
   padding: 16px;
-`
+`;

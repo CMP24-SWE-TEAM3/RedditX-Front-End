@@ -1,5 +1,5 @@
 import React from "react";
-import { HeaderRule, RuleContainer } from "./RuleHeader";
+import { HeaderRule, RuleContainer } from "./RuleHeader.styed";
 import { CgDanger } from "react-icons/cg";
 
 const RuleHeader = () => {

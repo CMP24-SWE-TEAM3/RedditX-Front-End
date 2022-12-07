@@ -1,11 +1,11 @@
 import React from "react";
 import { Container, AddRuleBtn, RecordBtn } from "./NavbarRule.styled";
 
-const NavbarRule = () => {
+const NavbarRule = ({ setShow }) => {
   return (
     <Container>
       <RecordBtn>Reorder rules</RecordBtn>
-      <AddRuleBtn>Add rule</AddRuleBtn>
+      <AddRuleBtn onClick={() => setShow(true)}>Add rule</AddRuleBtn>
     </Container>
   );
 };

@@ -33,6 +33,7 @@ export const RecordBtn = styled.button`
   justify-content: center;
   text-align: center;
   width: auto;
+  outline: none;
 `;
 export const AddRuleBtn = styled.button`
   font-family: Noto Sans, Arial, sans-serif;
@@ -53,8 +54,8 @@ export const AddRuleBtn = styled.button`
   border-radius: 9999px;
   box-sizing: border-box;
   display: flex;
-  -ms-flex-pack: center;
   justify-content: center;
   text-align: center;
   width: auto;
+  outline: none;
 `;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Accordion } from "react-bootstrap";
 import {
   Apply,
@@ -7,38 +7,56 @@ import {
   Description,
   StampOne,
   StampTwo,
-  AccordionBody, Number, RuleText, Space,
+  Number,
+  RuleText,
+  Space,
+  AccordionContainer,
+  MarginRight,
+  EditBtn,
+  ExpandedBtn,
+  ShrinkBtn,
 } from "./RuleTab.styled";
-import {MdOutlineModeEdit} from "react-icons/md";
+import { MdOutlineModeEdit } from "react-icons/md";
+import { CgArrowsExpandLeft } from "react-icons/cg";
+import { TbArrowsDiagonalMinimize } from "react-icons/tb";
 
-const Rules = () => {
+const Rules = ({ setShow }) => {
+  const [expand, setExpand] = useState(false);
+  const handleExpansion = () => {
+    setExpand(!expand);
+  };
   return (
-    <Accordion defaultActiveKey="0">
+    <AccordionContainer defaultActiveKey="0" onClick={handleExpansion}>
       <Accordion.Item eventKey="0">
         <Accordion.Header>
           <Number>1</Number>
-          <RuleText>
-            try
-          </RuleText>
-<Space>
-
-</Space>
-          <button><MdOutlineModeEdit/></button>
+          <RuleText>try</RuleText>
+          <Space>
+            <EditBtn onClick={() => setShow(true)}>
+              <MdOutlineModeEdit />
+            </EditBtn>
+            <ExpandedBtn show={expand}>
+              <CgArrowsExpandLeft />
+            </ExpandedBtn>
+            <ShrinkBtn show={expand}>
+              <TbArrowsDiagonalMinimize size={20} />
+            </ShrinkBtn>
+          </Space>
         </Accordion.Header>
-        <AccordionBody>
+        <Accordion.Body>
           <ReportReason>
             <StampOne>REPORT REASON</StampOne>
             <StampTwo>try</StampTwo>
           </ReportReason>
           <Apply>
-            <div>
+            <MarginRight>
               <StampOne>Applies to</StampOne>
               <PostsComments>Posts & comments</PostsComments>
-            </div>
-            <div>
+            </MarginRight>
+            <MarginRight>
               <StampOne>Created</StampOne>
               <StampTwo>Fri, Jun 19, 54781, 05:26:40 PM GMT+02:00</StampTwo>
-            </div>
+            </MarginRight>
           </Apply>
           <Description>
             <StampOne>Full description</StampOne>
@@ -48,9 +66,9 @@ const Rules = () => {
               </StampTwo>
             </StampTwo>
           </Description>
-        </AccordionBody>
+        </Accordion.Body>
       </Accordion.Item>
-    </Accordion>
+    </AccordionContainer>
   );
 };
 
