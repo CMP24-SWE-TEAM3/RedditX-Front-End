@@ -217,7 +217,7 @@ const InviteModerators = ({ setModalShowLogIn, setModalShowSignUp }) => {
           >
             Cancel
           </ButtonOne> */}
-          <ButtonTwo disabled={validName} valid={validName}>
+          <ButtonTwo disabled={!validName} valid={validName}>
             Invite
           </ButtonTwo>
         </ButtonsContainer>

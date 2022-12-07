@@ -18,9 +18,9 @@ export const SearchInput = styled.input`
   width: 100%;
   height: 40px;
   padding: 5px;
-  border: 1px solid #eee !important;
+  border: 1px solid ${({ theme }) => theme.borderColor.primary} !important;
   color: ${({ theme }) => theme.borderColor.primary};
-  background-color: ${({ theme }) => theme.lineColor.primary};
+  background-color: ${({ theme }) => theme.background.primary};
   border-radius: 5px;
 `;
 

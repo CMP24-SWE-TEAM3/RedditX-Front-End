@@ -67,3 +67,37 @@ export const ButtonsContainer = styled.div`
     color: ${({ theme }) => theme.color.secondary};
   }
 `;
+export const MoreDetails = styled.div`
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #eee;
+  background-color: ${({ theme }) => theme.lineColor.primary};
+  color: ${({ theme }) => theme.borderColor.primary};
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+`;
+export const MoreDetailsBanned = styled.div`
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  background-color: ${({ theme }) => theme.lineColor.primary};
+  color: ${({ theme }) => theme.borderColor.primary};
+  padding-left: 10px;
+`;
+export const ModNote = styled.div`
+  display: flex;
+  margin: 10px 10px; 
+
+  h3 {
+    font-size: 10px;
+    margin: 0 5px 0 0;
+    display: flex;
+    align-items: center;
+  }
+
+  p {
+    margin: 0;
+    font-size: 12px;
+    color: ${({ theme }) => theme.color.primary};
+  }
+`;

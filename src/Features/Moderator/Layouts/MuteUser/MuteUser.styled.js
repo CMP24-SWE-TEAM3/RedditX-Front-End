@@ -18,10 +18,11 @@ export const SearchInput = styled.input`
   width: 100%;
   height: 40px;
   padding: 5px;
-  border: 1px solid #eee !important;
+  border: 1px solid ${({ theme }) => theme.borderColor.primary}; !important;
   color: ${({ theme }) => theme.borderColor.primary};
   background-color: ${({ theme }) => theme.background.primary};
   border-radius: 5px;
+  
 `;
 
 export const AbilityContainer = styled.div`
@@ -44,6 +45,7 @@ export const Head = styled.h4`
   color: ${({ theme }) => theme.color.primary};
 `;
 export const Par = styled.p`
+  width: ${(p) => (p.fullWidth ? "100%" : "auto")};
   font-size: 11px;
   color: ${({ theme }) => theme.borderColor.primary};
 `;
@@ -87,4 +89,13 @@ export const GiveAccess = styled.div`
   margin: 10px 0;
   font-weight: 500;
   color: ${({ theme }) => theme.color.primary};
+`;
+export const TextArea = styled.textarea`
+  width: 100%;
+  height: 100px;
+  padding: 5px;
+  border: 1px solid ${({ theme }) => theme.borderColor.primary}; !important;
+  color: ${({ theme }) => theme.borderColor.primary};
+  background-color: ${({ theme }) => theme.background.primary};
+  border-radius: 5px;
 `;

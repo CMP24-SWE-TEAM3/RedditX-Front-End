@@ -31,6 +31,8 @@ import {
 } from "./LayoutTabs.styled";
 import { useState } from "react";
 import ApprovedPage from "../ApprovedPage/ApprovedPage";
+import MutedPage from "../MutedPage/MutedPage";
+import BannedPage from "../BannedPage/BannedPage";
 
 const paths = {
   ModQueue: "mod-queue",
@@ -47,7 +49,7 @@ const paths = {
   Community: "Community",
   PostsAndComments: "PostsAndComments",
 };
-function LayoutTabs({setModalShowSignUp, setModalShowApproveUser}) {
+function LayoutTabs({setModalShowSignUp, setModalShowApproveUser, setModalShowMuteUser, setModalShowBaneUser}) {
   const [isCommunitySettings, setIsCommunitySettings] = useState(false);
   const { subredditId, moderatorId } = useParams();
   const getPath = (path) => {
@@ -221,8 +223,8 @@ function LayoutTabs({setModalShowSignUp, setModalShowApproveUser}) {
             {moderatorId === paths.Spam && <div>Spam</div>}
             {moderatorId === paths.Edited && <div>Edited</div>}
             {moderatorId === paths.Unmoderated && <div>Unmoderated</div>}
-            {moderatorId === paths.Banned && <div>Banned</div>}
-            {moderatorId === paths.Muted && <div>Muted</div>}
+            {moderatorId === paths.Banned && <div><BannedPage setModalShowBaneUser={setModalShowBaneUser}/></div>}
+            {moderatorId === paths.Muted && <div><MutedPage setModalShowMuteUser={setModalShowMuteUser}/></div>}
             {moderatorId === paths.Approved && <div><ApprovedPage setModalShowApproveUser={setModalShowApproveUser}/></div>}
             {moderatorId === paths.Moderators && <ModeratorsPage setModalShowSignUp={setModalShowSignUp}/>}
             {moderatorId === paths.PostFlair && <div>PostFlair</div>}
