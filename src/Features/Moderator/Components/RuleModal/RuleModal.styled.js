@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { FormControl, ModalFooter } from "react-bootstrap";
+import { ModalFooter } from "react-bootstrap";
 
 export const ModalContainer = styled(Modal)`
   .modal-content {

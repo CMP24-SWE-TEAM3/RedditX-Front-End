@@ -1,11 +1,41 @@
-import React from "react";
-import { Container, AddRuleBtn, RecordBtn } from "./NavbarRule.styled";
+import React, { useState } from "react";
+import {
+  Container,
+  AddRuleBtn,
+  ReorderBtn,
+  CancelBtn,
+  SaveBtn,
+} from "./NavbarRule.styled";
 
-const NavbarRule = ({ setShow }) => {
+const NavbarRule = ({ setShowModal, setShowDragDrop }) => {
+  const [showReorder, setShowReorder] = useState(false);
+  const handleShow = () => {
+    setShowReorder(!showReorder);
+  };
   return (
     <Container>
-      <RecordBtn>Reorder rules</RecordBtn>
-      <AddRuleBtn onClick={() => setShow(true)}>Add rule</AddRuleBtn>
+      <ReorderBtn
+        showReorder={showReorder}
+        onClick={() => {
+          handleShow();
+          setShowDragDrop(true);
+        }}
+      >
+        Reorder rules
+      </ReorderBtn>
+      <AddRuleBtn showReorder={showReorder} onClick={() => setShowModal(true)}>
+        Add rule
+      </AddRuleBtn>
+      <CancelBtn
+        onClick={() => {
+          handleShow();
+          setShowDragDrop(false);
+        }}
+        showReorder={showReorder}
+      >
+        Cancel
+      </CancelBtn>
+      <SaveBtn showReorder={showReorder}>Save</SaveBtn>
     </Container>
   );
 };

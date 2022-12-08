@@ -12,7 +12,7 @@ export const Container = styled.div`
   right: 0;
   z-index: 3;
 `;
-export const RecordBtn = styled.button`
+export const ReorderBtn = styled.button`
   font-family: Noto Sans, Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -29,7 +29,7 @@ export const RecordBtn = styled.button`
   align-items: center;
   border-radius: 9999px;
   box-sizing: border-box;
-  display: flex;
+  display: ${({ showReorder }) => (showReorder ? "none" : "flex")};
   justify-content: center;
   text-align: center;
   width: auto;
@@ -53,7 +53,54 @@ export const AddRuleBtn = styled.button`
   align-items: center;
   border-radius: 9999px;
   box-sizing: border-box;
-  display: flex;
+  display: ${({ showReorder }) => (showReorder ? "none" : "flex")};
+  justify-content: center;
+  text-align: center;
+  width: auto;
+  outline: none;
+`;
+export const CancelBtn = styled.button`
+  position: relative;
+  border: 1px solid ${({ theme }) => theme.btnColor.primary};
+  color: ${({ theme }) => theme.btnColor.primary};
+  fill: ${({ theme }) => theme.btnColor.primary};
+  font-family: Noto Sans, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: unset;
+  line-height: 17px;
+  text-transform: unset;
+  min-height: 32px;
+  min-width: 32px;
+  padding: 4px 16px;
+  align-items: center;
+  border-radius: 9999px;
+  box-sizing: border-box;
+  display: ${({ showReorder }) => (showReorder ? "flex" : "none")};
+  justify-content: center;
+  text-align: center;
+  width: auto;
+`;
+export const SaveBtn = styled.button`
+  margin-left: 8px;
+  font-family: Noto Sans, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: unset;
+  line-height: 17px;
+  text-transform: unset;
+  min-height: 32px;
+  min-width: 32px;
+  padding: 4px 16px;
+  position: relative;
+  border: 1px solid transparent;
+  background-color: ${({ theme }) => theme.btnColor.primary};
+  color: ${({ theme }) => theme.color.baseButtonColor};
+  fill: ${({ theme }) => theme.color.baseButtonColor};
+  align-items: center;
+  border-radius: 9999px;
+  box-sizing: border-box;
+  display: ${({ showReorder }) => (showReorder ? "flex" : "none")};
   justify-content: center;
   text-align: center;
   width: auto;

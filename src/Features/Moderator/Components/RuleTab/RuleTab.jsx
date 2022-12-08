@@ -15,35 +15,40 @@ import {
   EditBtn,
   ExpandedBtn,
   ShrinkBtn,
+  Tabs,
 } from "./RuleTab.styled";
 import { MdOutlineModeEdit } from "react-icons/md";
 import { CgArrowsExpandLeft } from "react-icons/cg";
 import { TbArrowsDiagonalMinimize } from "react-icons/tb";
+import { GrDrag } from "react-icons/gr";
 
-const Rules = ({ setShow }) => {
+const Rules = ({ setShowModal, name, showDragDrop }) => {
   const [expand, setExpand] = useState(false);
   const handleExpansion = () => {
     setExpand(!expand);
   };
   return (
-    <AccordionContainer defaultActiveKey="0" onClick={handleExpansion}>
+    <AccordionContainer defaultActiveKey="1" onClick={handleExpansion}>
       <Accordion.Item eventKey="0">
         <Accordion.Header>
-          <Number>1</Number>
+          <Number>{name}</Number>
           <RuleText>try</RuleText>
-          <Space>
-            <EditBtn onClick={() => setShow(true)}>
+          <Space showDragDrop={showDragDrop}>
+            <EditBtn onClick={() => setShowModal(true)}>
               <MdOutlineModeEdit />
             </EditBtn>
             <ExpandedBtn show={expand}>
               <CgArrowsExpandLeft />
             </ExpandedBtn>
             <ShrinkBtn show={expand}>
-              <TbArrowsDiagonalMinimize size={20} />
+              <TbArrowsDiagonalMinimize />
             </ShrinkBtn>
           </Space>
+          <Tabs showDragDrop={showDragDrop}>
+            <GrDrag />
+          </Tabs>
         </Accordion.Header>
-        <Accordion.Body>
+        <Accordion.Body disabled>
           <ReportReason>
             <StampOne>REPORT REASON</StampOne>
             <StampTwo>try</StampTwo>

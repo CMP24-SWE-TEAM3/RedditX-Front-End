@@ -104,7 +104,7 @@ export const RuleText = styled.span`
   font-weight: 400;
 `;
 export const Space = styled.span`
-  display: flex;
+  display: ${({ showDragDrop }) => (showDragDrop ? "none" : "flex")};
   margin-left: auto;
   padding-right: 4px;
   border: 0;
@@ -127,4 +127,11 @@ export const ExpandedBtn = styled.span`
 `;
 export const ShrinkBtn = styled.span`
   display: ${({ show }) => (show ? "initial" : "none")};
+`;
+export const Tabs = styled.span`
+  display: ${({ showDragDrop }) => (showDragDrop ? "flex" : "none")};
+  margin-left: auto;
+  padding-right: 4px;
+  border: 0;
+  vertical-align: baseline;
 `;
