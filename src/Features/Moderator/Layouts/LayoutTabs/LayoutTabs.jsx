@@ -28,6 +28,7 @@ import {
   BackButton,
 } from "./LayoutTabs.styled";
 import { useState } from "react";
+import Rules from "../Rules/Rules";
 
 const paths = {
   ModQueue: "mod-queue",
@@ -223,10 +224,8 @@ function LayoutTabs() {
             {moderatorId === paths.Approved && <div>Approved</div>}
             {moderatorId === paths.Moderators && <div>Moderators</div>}
             {moderatorId === paths.PostFlair && <div>PostFlair</div>}
-            {moderatorId === paths.Rules && <div>Rules</div>}
-            {moderatorId === paths.TrafficStates && (
-              <div>TrafficStates</div>
-            )}
+            {moderatorId === paths.Rules && <Rules />}
+            {moderatorId === paths.TrafficStates && <div>TrafficStates</div>}
             {moderatorId === paths.Community && <div>Community</div>}
             {moderatorId === paths.PostsAndComments && (
               <div>PostsAndComments</div>
