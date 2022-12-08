@@ -146,7 +146,7 @@ const DraftEditorForm = ({ submitPost }) => {
   const submitForm = () => {
     setCreatePostAttachments(files);
     setCreatePostText(text);
-    submitPost();
+    submitPost("linkWithImage");
   };
   return (
     <>

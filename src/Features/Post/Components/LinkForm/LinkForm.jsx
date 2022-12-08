@@ -132,7 +132,7 @@ const LinkForm = ({ submitPost }) => {
    */
   const submitForm = () => {
     setCreatePostText(url);
-    submitPost();
+    submitPost("link");
   };
   return (
     <>

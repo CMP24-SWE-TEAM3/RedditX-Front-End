@@ -138,7 +138,7 @@ const ImageAndVideoForm = ({ submitPost }) => {
    */
   const submitForm = () => {
     setCreatePostAttachments(files);
-    submitPost();
+    submitPost("image");
   };
   return (
     <>
