@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { Accordion } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+
 export const ReportReason = styled.span`
   display: block;
   padding: 8px 0;
@@ -46,8 +47,12 @@ export const StampOne = styled.div`
   display: block;
   text-transform: uppercase;
 `;
-export const AccordionContainer = styled(Accordion)`
-  .accordion-header {
+export const AccordionContainer = styled(Card)`
+  .card {
+    --bs-card-cap-padding-y: unset !important;
+  }
+
+  .card-header {
     font-family: Noto Sans, Arial, sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -58,28 +63,15 @@ export const AccordionContainer = styled(Accordion)`
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 51px;
   }
-  .accordion-body {
+
+  .card-body {
     background-color: ${({ theme }) => theme.lineColor.primary};
     border: 1px solid ${({ theme }) => theme.lineColor.primary};
     display: block;
     padding: 4px 20px 8px;
     word-break: break-word;
-  }
-  .accordion-button {
-    padding: 0;
-    :focus {
-      box-shadow: none !important;
-    }
-    ::after {
-      margin-left: 16px !important;
-      content: none !important;
-    }
-  }
-  .accordion-button:not(.collapsed) {
-    color: unset !important;
-    background: none !important;
-    box-shadow: none !important;
   }
 `;
 export const Number = styled.span`
@@ -116,7 +108,7 @@ export const MarginRight = styled.div`
 export const EditBtn = styled.button`
   background: transparent;
   border: none;
-  color: inherit;
+  color: ${({ theme }) => theme.color.muted};
   cursor: pointer;
   display: flex;
   padding: 0;
@@ -124,14 +116,16 @@ export const EditBtn = styled.button`
 `;
 export const ExpandedBtn = styled.span`
   display: ${({ show }) => (show ? "none" : "initial")};
+  color: ${({ theme }) => theme.color.muted};
 `;
 export const ShrinkBtn = styled.span`
   display: ${({ show }) => (show ? "initial" : "none")};
+  color: ${({ theme }) => theme.color.muted};
 `;
 export const Tabs = styled.span`
   display: ${({ showDragDrop }) => (showDragDrop ? "flex" : "none")};
   margin-left: auto;
-  padding-right: 4px;
+  padding-right: 16px;
   border: 0;
   vertical-align: baseline;
 `;

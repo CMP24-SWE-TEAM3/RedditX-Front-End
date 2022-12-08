@@ -21,34 +21,61 @@ import { MdOutlineModeEdit } from "react-icons/md";
 import { CgArrowsExpandLeft } from "react-icons/cg";
 import { TbArrowsDiagonalMinimize } from "react-icons/tb";
 import { GrDrag } from "react-icons/gr";
+import Card from "react-bootstrap/Card";
+import { useAccordionButton } from "react-bootstrap/AccordionButton";
 
-const Rules = ({ setShowModal, name, showDragDrop }) => {
+const HandleButton = ({ eventKey, showDragDrop, setShowModal }) => {
+  // state  handles expand/collapse of body accordion button
   const [expand, setExpand] = useState(false);
   const handleExpansion = () => {
     setExpand(!expand);
   };
+  const decoratedOnClick = useAccordionButton(eventKey);
+
   return (
-    <AccordionContainer defaultActiveKey="1" onClick={handleExpansion}>
-      <Accordion.Item eventKey="0">
-        <Accordion.Header>
-          <Number>{name}</Number>
-          <RuleText>try</RuleText>
-          <Space showDragDrop={showDragDrop}>
-            <EditBtn onClick={() => setShowModal(true)}>
-              <MdOutlineModeEdit />
-            </EditBtn>
-            <ExpandedBtn show={expand}>
-              <CgArrowsExpandLeft />
-            </ExpandedBtn>
-            <ShrinkBtn show={expand}>
-              <TbArrowsDiagonalMinimize />
-            </ShrinkBtn>
-          </Space>
-          <Tabs showDragDrop={showDragDrop}>
-            <GrDrag />
-          </Tabs>
-        </Accordion.Header>
-        <Accordion.Body disabled>
+    <Space showDragDrop={showDragDrop}>
+      <EditBtn onClick={() => setShowModal(true)}>
+        <MdOutlineModeEdit size={22} />
+      </EditBtn>
+      <ExpandedBtn
+        onClick={() => {
+          decoratedOnClick(undefined);
+          handleExpansion();
+        }}
+        show={expand}
+      >
+        <CgArrowsExpandLeft size={22} />
+      </ExpandedBtn>
+      <ShrinkBtn
+        show={expand}
+        onClick={() => {
+          decoratedOnClick(undefined);
+          handleExpansion();
+        }}
+      >
+        <TbArrowsDiagonalMinimize size={22} />
+      </ShrinkBtn>
+    </Space>
+  );
+};
+
+const Rules = ({ setShowModal, name, showDragDrop, collapse }) => {
+  return (
+    <AccordionContainer>
+      <Card.Header>
+        <Number>{name}</Number>
+        <RuleText>try</RuleText>
+        <HandleButton
+          eventKey={collapse}
+          showDragDrop={showDragDrop}
+          setShowModal={setShowModal}
+        />
+        <Tabs showDragDrop={showDragDrop}>
+          <GrDrag size={22} />
+        </Tabs>
+      </Card.Header>
+      <Accordion.Collapse eventKey={collapse}>
+        <Card.Body>
           <ReportReason>
             <StampOne>REPORT REASON</StampOne>
             <StampTwo>try</StampTwo>
@@ -71,8 +98,8 @@ const Rules = ({ setShowModal, name, showDragDrop }) => {
               </StampTwo>
             </StampTwo>
           </Description>
-        </Accordion.Body>
-      </Accordion.Item>
+        </Card.Body>
+      </Accordion.Collapse>
     </AccordionContainer>
   );
 };

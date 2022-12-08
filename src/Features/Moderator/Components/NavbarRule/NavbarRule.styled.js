@@ -34,6 +34,10 @@ export const ReorderBtn = styled.button`
   text-align: center;
   width: auto;
   outline: none;
+  margin-right: 5px;
+  :hover {
+    background-color: ${({ theme }) => theme.borderColor.secondary};
+  }
 `;
 export const AddRuleBtn = styled.button`
   font-family: Noto Sans, Arial, sans-serif;
@@ -58,6 +62,10 @@ export const AddRuleBtn = styled.button`
   text-align: center;
   width: auto;
   outline: none;
+  :hover {
+    background-color: ${({ theme }) =>
+      theme.background.hover_background_button_blue};
+  }
 `;
 export const CancelBtn = styled.button`
   position: relative;
@@ -80,6 +88,9 @@ export const CancelBtn = styled.button`
   justify-content: center;
   text-align: center;
   width: auto;
+  :hover {
+    background-color: ${({ theme }) => theme.background.post_background};
+  }
 `;
 export const SaveBtn = styled.button`
   margin-left: 8px;
@@ -105,4 +116,8 @@ export const SaveBtn = styled.button`
   text-align: center;
   width: auto;
   outline: none;
+  :hover {
+    background-color: ${({ theme }) =>
+      theme.background.hover_background_button_blue};
+  }
 `;

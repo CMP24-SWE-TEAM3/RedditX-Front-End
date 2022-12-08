@@ -60,6 +60,7 @@ import { SearchContextProvider } from "Features/Search/Contexts/SearchWordContex
 import { SafeContextProvider } from "Features/Search/Contexts/SafeSearchContext/Safe-context";
 import useLocalStorage from "Hooks/useLocalStorage";
 import Moderator from "Features/Moderator/Pages/Moderator/Moderator";
+import Rules from "Features/Moderator/Layouts/Rules/Rules";
 
 /**
  * The main app of our application it handles routing
@@ -287,6 +288,24 @@ function App() {
                         setModalAfterSignUp={setModalAfterSignUp}
                       />
                       <Moderator />
+                    </>
+                  }
+                />
+                <Route
+                  path="rules"
+                  element={
+                    <>
+                      <Navigation
+                        toggleMode={handleToggleTheme}
+                        theme={JSON.parse(theme).id}
+                        modalShowLogIn={modalShowLogIn}
+                        setModalShowLogIn={setModalShowLogIn}
+                        modalShowSignUp={modalShowSignUp}
+                        setModalShowSignUp={setModalShowSignUp}
+                        modalAfterSignUp={modalAfterSignUp}
+                        setModalAfterSignUp={setModalAfterSignUp}
+                      />
+                      <Rules />
                     </>
                   }
                 />

@@ -19,10 +19,26 @@ const Rules = () => {
         setShowModal={setShowModal}
       />
       <RuleHeader showNote={showDragDrop} />
-      <RuleTabContainer showRuleTabs={showDragDrop}>
-        <RuleTab showDragDrop={showDragDrop} setShowModal={setShowModal} />
+      <RuleTabContainer defaultActiveKey="1" showRuleTabs={showDragDrop}>
+        <RuleTab
+          collapse={"0"}
+          showDragDrop={showDragDrop}
+          setShowModal={setShowModal}
+        />
+        <RuleTab
+          collapse={"2"}
+          showDragDrop={showDragDrop}
+          setShowModal={setShowModal}
+        />
+        <RuleTab
+          collapse={"3"}
+          showDragDrop={showDragDrop}
+          setShowModal={setShowModal}
+        />
       </RuleTabContainer>
-      <ReorderRules showDragDrop={showDragDrop} />
+      <RuleTabContainer defaultActiveKey="1">
+        <ReorderRules showDragDrop={showDragDrop} />
+      </RuleTabContainer>
       <RuleModal
         showModal={showModal}
         closeModal={() => setShowModal(false)}
