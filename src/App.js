@@ -12,7 +12,7 @@ import PostShape from "Features/Post/Layouts/PostShape/PostShape";
 //////////////////////////////////////////////////////////////
 
 // Import react router dom
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 // Import themes
 import darkTheme from "Theme/darkTheme";
@@ -59,7 +59,7 @@ import NotFound from "Pages/NotFound/NotFound";
 import { SearchContextProvider } from "Features/Search/Contexts/SearchWordContext/Search-context";
 import { SafeContextProvider } from "Features/Search/Contexts/SafeSearchContext/Safe-context";
 import useLocalStorage from "Hooks/useLocalStorage";
-import Rules from "Features/Moderator/Layouts/Rules/Rules";
+import Moderator from "Features/Moderator/Pages/Moderator/Moderator";
 
 /**
  * The main app of our application it handles routing
@@ -273,22 +273,22 @@ function App() {
                   }
                 />
                 <Route
-                    path="rules"
-                    element={
-                      <>
-                        <Navigation
-                            toggleMode={handleToggleTheme}
-                            theme={JSON.parse(theme).id}
-                            modalShowLogIn={modalShowLogIn}
-                            setModalShowLogIn={setModalShowLogIn}
-                            modalShowSignUp={modalShowSignUp}
-                            setModalShowSignUp={setModalShowSignUp}
-                            modalAfterSignUp={modalAfterSignUp}
-                            setModalAfterSignUp={setModalAfterSignUp}
-                        />
-                        <Rules />
-                      </>
-                    }
+                  path="subreddit/:subredditId/moderator/:moderatorId/"
+                  element={
+                    <>
+                      <Navigation
+                        toggleMode={handleToggleTheme}
+                        theme={JSON.parse(theme).id}
+                        modalShowLogIn={modalShowLogIn}
+                        setModalShowLogIn={setModalShowLogIn}
+                        modalShowSignUp={modalShowSignUp}
+                        setModalShowSignUp={setModalShowSignUp}
+                        modalAfterSignUp={modalAfterSignUp}
+                        setModalAfterSignUp={setModalAfterSignUp}
+                      />
+                      <Moderator />
+                    </>
+                  }
                 />
               </Routes>
             </BrowserRouter>
