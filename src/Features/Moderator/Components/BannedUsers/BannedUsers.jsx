@@ -46,7 +46,7 @@ const BannedUsers = ({ Moderator }) => {
       </SearchContainer>
       <Container>
         {filteredMonsters.map((mod) => (
-          <ModeratorRow key={mod.userName} Moderator={mod} banned={true}></ModeratorRow>
+          <ModeratorRow key={mod.userName} Moderator={mod} banned={true} ></ModeratorRow>
         ))}
       </Container>
     </>

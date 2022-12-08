@@ -8,6 +8,8 @@ import { IoIosArrowUp } from "react-icons/io";
 
 import Moment from "react-moment";
 
+import EditBanUserModal from "Features/Moderator/Layouts/EditBanUserModal/EditBanUserModal";
+
 import {
   Container,
   ProfileContainer,
@@ -44,6 +46,10 @@ const ModeratorRow = ({
    * state to handel more details dropdown for banned
    */
   const [showDropBanned, setShowDropBanned] = useState(false);
+  /**
+   * state to handel edit modal
+   */
+  const [showEditModal, setShowEditModal] = useState(false);
 
   return (
     <>
@@ -96,7 +102,13 @@ const ModeratorRow = ({
         )}
         {banned && (
           <ButtonsContainer>
-            <button>Edit</button>{" "}
+            <button
+              onClick={() => {
+                setShowEditModal(true);
+              }}
+            >
+              Edit
+            </button>{" "}
             <button
               onClick={() => {
                 setShowDropBanned(!showDropBanned);
@@ -118,6 +130,14 @@ const ModeratorRow = ({
             <h3>BANNED FOR:</h3> <p>{Moderator.bannedFor}</p>
           </ModNote>{" "}
         </MoreDetailsBanned>
+      )}
+
+      {banned && showEditModal && (
+        <EditBanUserModal
+          moderator={Moderator}
+          show={banned && showEditModal}
+          onHide={() => setShowEditModal(false)}
+        />
       )}
     </>
   );
