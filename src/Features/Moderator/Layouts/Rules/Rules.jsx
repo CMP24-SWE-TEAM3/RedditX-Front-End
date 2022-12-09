@@ -5,7 +5,7 @@ import RuleHeader from "Features/Moderator/Components/RuleHeader/RuleHeader";
 import RuleTab from "Features/Moderator/Components/RuleTab/RuleTab";
 import RuleModal from "Features/Moderator/Components/RuleModal/RuleModal";
 import ReorderRules from "Features/Moderator/Components/ReorderRules/ReorderRules";
-import { RuleTabContainer } from "./Rules.styled";
+import {RulesContainer, RuleTabContainer} from "./Rules.styled";
 
 const Rules = () => {
   // state which handles displaying of modal rule
@@ -13,7 +13,7 @@ const Rules = () => {
   // handle displaying of droppable rule tabs
   const [showDragDrop, setShowDragDrop] = useState(false);
   return (
-    <>
+    <RulesContainer>
       <NavbarRule
         setShowDragDrop={setShowDragDrop}
         setShowModal={setShowModal}
@@ -44,7 +44,7 @@ const Rules = () => {
         closeModal={() => setShowModal(false)}
         setShowModal={setShowModal}
       />
-    </>
+    </RulesContainer>
   );
 };
 

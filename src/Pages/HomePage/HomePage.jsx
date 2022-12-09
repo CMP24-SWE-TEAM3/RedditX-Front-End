@@ -14,7 +14,7 @@ import {
   ScrollBtn,
 } from "./HomePage.styled";
 import CreatePost from "Layouts/CreatePost/CreatePost";
-import TopCommunities from "Layouts/CommunityCard/CommunityCard";
+import CommunityCard from "Layouts/CommunityCard/CommunityCard";
 import PopularPosts from "Layouts/PopularPosts/PopularPosts";
 import CreatePostSideBar from "Layouts/CreatePostSideBar/CreatePostSideBar";
 import Footer from "Layouts/Footer/Footer";
@@ -96,7 +96,7 @@ const HomePage = () => {
             </ContentPost>
             <aside>
               <Sidebar>
-                <TopCommunities />
+                <CommunityCard />
 
                 <CreateCommunity>
                   <CreatePostSideBar />
