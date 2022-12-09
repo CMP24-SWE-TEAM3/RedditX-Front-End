@@ -9,8 +9,24 @@ import {
   CommunityLink,
   Dot,
   PostedLink,
+  CommentBodyContainer,
+  CommentBodyInnerContainer,
+  CommentBodyContent,
+  DashedLine,
+  CommentBodyInfoContainer,
+  CommentBodyInfoInnerContainer,
+  CommentedContainer,
+  CommentedLink,
+  Point,
+  DaysLink,
+  CommentContainer,
+  CommentInnerContainer,
+  ReplyShareContainer,
+  ReplyShareButton,
+  ThreeDotsButton,
 } from "./UserComment.styled";
 import { FaRegCommentAlt } from "react-icons/fa";
+import {BiDotsHorizontalRounded} from "react-icons/bi"
 
 const UserComment = () => {
   const CommentHeader = ({ user, title, community, posted }) => {
@@ -39,6 +55,52 @@ const UserComment = () => {
     );
   };
 
+  const CommentBodyInfo = ({ commented, commentContent }) => {
+    return (
+      <CommentBodyInfoContainer>
+        <CommentBodyInfoInnerContainer>
+          <CommentedContainer>
+            <CommentedLink to="">{commented}</CommentedLink>
+            <Point>1 point</Point>
+            <Dot>.</Dot>
+            <DaysLink to="#">3 days ago</DaysLink>
+          </CommentedContainer>
+          <div>
+            <CommentContainer>
+              <CommentInnerContainer>
+                <p>{commentContent}</p>
+              </CommentInnerContainer>
+            </CommentContainer>
+            <div>
+              <ReplyShareContainer>
+                <ReplyShareButton>Reply</ReplyShareButton>
+                <ReplyShareButton>Share</ReplyShareButton>
+                <ThreeDotsButton>
+                  <span className="icon">
+                    <BiDotsHorizontalRounded />
+                  </span>
+                </ThreeDotsButton>
+              </ReplyShareContainer>
+            </div>
+          </div>
+        </CommentBodyInfoInnerContainer>
+      </CommentBodyInfoContainer>
+    );
+  };
+
+  const CommentBody = ({ commented, commentContent }) => {
+    return (
+      <CommentBodyContainer>
+        <CommentBodyInnerContainer>
+          <CommentBodyContent>
+            <DashedLine></DashedLine>
+            <CommentBodyInfo commented={commented} commentContent={commentContent} />
+          </CommentBodyContent>
+        </CommentBodyInnerContainer>
+      </CommentBodyContainer>
+    );
+  };
+
   return (
     <div>
       <div>
@@ -48,6 +110,7 @@ const UserComment = () => {
           community="Eln2aa4yn"
           posted="hamza"
         />
+        <CommentBody commented="khaled-farahat" commentContent="Hello World" />
       </div>
     </div>
   );

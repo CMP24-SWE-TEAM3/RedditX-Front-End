@@ -1,5 +1,4 @@
 import CategoryBar from "Features/User/Components/CategoryBar/CategoryBar";
-import UserComment from "Features/User/Components/UserComment/UserComment";
 import { Container, PostContainer } from "./Overview.styled";
 
 const Overview = () => {
@@ -7,7 +6,6 @@ const Overview = () => {
     <Container>
       <CategoryBar />
       <PostContainer>
-        <UserComment />
       </PostContainer>
     </Container>
   );
