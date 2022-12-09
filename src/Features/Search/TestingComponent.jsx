@@ -7,12 +7,19 @@ import lightTheme from "Theme/lightTheme";
 
 // Import theme provider from styled components
 import { ThemeProvider } from "styled-components";
-
+// import FlairContext from "Features/Moderator/Contexts/Safe-context";
+import { SafeContextProvider } from "./Contexts/SafeSearchContext/Safe-context";
+import { SearchContextProvider } from "./Contexts/SearchWordContext/Search-context";
+import { EditContextProvider } from "Features/Moderator/Contexts/Safe-context";
 const TestingComponent = ({ children }) => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={{ ...defaultTheme, ...lightTheme }}>
-        {children}
+        <EditContextProvider>
+          <SearchContextProvider>
+            <SafeContextProvider>{children}</SafeContextProvider>
+          </SearchContextProvider>
+        </EditContextProvider>
       </ThemeProvider>
     </BrowserRouter>
   );
