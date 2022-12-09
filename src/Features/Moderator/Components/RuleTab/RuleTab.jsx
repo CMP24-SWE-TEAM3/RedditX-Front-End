@@ -61,46 +61,48 @@ const HandleButton = ({ eventKey, showDragDrop, setShowModal }) => {
 
 const Rules = ({ setShowModal, name, showDragDrop, collapse }) => {
   return (
-    <AccordionContainer>
-      <Card.Header>
-        <Number>{name}</Number>
-        <RuleText>try</RuleText>
-        <HandleButton
-          eventKey={collapse}
-          showDragDrop={showDragDrop}
-          setShowModal={setShowModal}
-        />
-        <Tabs showDragDrop={showDragDrop}>
-          <GrDrag size={22} />
-        </Tabs>
-      </Card.Header>
-      <Accordion.Collapse eventKey={collapse}>
-        <Card.Body>
-          <ReportReason>
-            <StampOne>REPORT REASON</StampOne>
-            <StampTwo>try</StampTwo>
-          </ReportReason>
-          <Apply>
-            <MarginRight>
-              <StampOne>Applies to</StampOne>
-              <PostsComments>Posts & comments</PostsComments>
-            </MarginRight>
-            <MarginRight>
-              <StampOne>Created</StampOne>
-              <StampTwo>Fri, Jun 19, 54781, 05:26:40 PM GMT+02:00</StampTwo>
-            </MarginRight>
-          </Apply>
-          <Description>
-            <StampOne>Full description</StampOne>
-            <StampTwo>
+    <Accordion defaultActiveKey="1">
+      <AccordionContainer>
+        <Card.Header>
+          <Number>{name}</Number>
+          <RuleText>try</RuleText>
+          <HandleButton
+            eventKey={collapse}
+            showDragDrop={showDragDrop}
+            setShowModal={setShowModal}
+          />
+          <Tabs showDragDrop={showDragDrop}>
+            <GrDrag size={22} />
+          </Tabs>
+        </Card.Header>
+        <Accordion.Collapse eventKey={collapse}>
+          <Card.Body>
+            <ReportReason>
+              <StampOne>REPORT REASON</StampOne>
+              <StampTwo>try</StampTwo>
+            </ReportReason>
+            <Apply>
+              <MarginRight>
+                <StampOne>Applies to</StampOne>
+                <PostsComments>Posts & comments</PostsComments>
+              </MarginRight>
+              <MarginRight>
+                <StampOne>Created</StampOne>
+                <StampTwo>Fri, Jun 19, 54781, 05:26:40 PM GMT+02:00</StampTwo>
+              </MarginRight>
+            </Apply>
+            <Description>
+              <StampOne>Full description</StampOne>
               <StampTwo>
-                <p>just a try</p>
+                <StampTwo>
+                  <p>just a try</p>
+                </StampTwo>
               </StampTwo>
-            </StampTwo>
-          </Description>
-        </Card.Body>
-      </Accordion.Collapse>
-    </AccordionContainer>
+            </Description>
+          </Card.Body>
+        </Accordion.Collapse>
+      </AccordionContainer>
+    </Accordion>
   );
 };
 

@@ -1,6 +1,6 @@
 // imports
 import React from "react";
-import { Button, Word } from "./Top.styled";
+import { Button, Word } from "./TopBtn.styled";
 import { AiOutlineToTop } from "react-icons/ai";
 
 /**
@@ -8,7 +8,7 @@ import { AiOutlineToTop } from "react-icons/ai";
  *
  * @returns {React.Component}
  */
-const TopButton = ({ setShowDate }) => {
+const TopBtn = ({ setShowDate }) => {
   return (
     <Button onClick={() => setShowDate(true)}>
       <span>
@@ -20,4 +20,4 @@ const TopButton = ({ setShowDate }) => {
   );
 };
 
-export default TopButton;
+export default TopBtn;

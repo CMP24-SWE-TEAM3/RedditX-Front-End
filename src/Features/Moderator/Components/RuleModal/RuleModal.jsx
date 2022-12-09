@@ -12,6 +12,8 @@ import {
   ReportDefault,
   ButtonContainer,
   Footer,
+  AddRuleBtn,
+  CancelBtn,
 } from "./RuleModal.styled";
 
 const RuleModal = ({ showModal, closeModal, setShowModal }) => {
@@ -149,14 +151,10 @@ const RuleModal = ({ showModal, closeModal, setShowModal }) => {
         </Form>
       </Modal.Body>
       <Footer>
-        <ButtonContainer onClick={() => setShowModal(false)} deleteBtn={0}>
-          Add new rule
-        </ButtonContainer>
-        <ButtonContainer onClick={() => setShowModal(false)} deleteBtn={0}>
-          cancel
-        </ButtonContainer>
+        <AddRuleBtn addRule={rule.length}>Add new rule</AddRuleBtn>
+        <CancelBtn onClick={() => setShowModal(false)}>cancel</CancelBtn>
         {/*TODO: delete button*/}
-        <ButtonContainer deleteBtn={1}>Delete</ButtonContainer>
+        {/*<ButtonContainer deleteBtn={1}>Delete</ButtonContainer>*/}
       </Footer>
     </ModalContainer>
   );

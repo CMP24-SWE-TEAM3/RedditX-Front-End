@@ -1,13 +1,12 @@
 // imports
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import HotButton from "Components/HotButton/HotButton";
-import {Container} from "./PopularPosts.styled";
-import EveryWhereButton from "Components/EveryWhereButton/EveryWhereButton";
+import { Container } from "./PopularPosts.styled";
 import NewButton from "Components/NewButton/NewButton";
-import TopButton from "Components/TopButton/Top";
+import TopButton from "Components/TopButton/TopBtn";
 import DotButton from "Components/DotButton/DotButton";
-import {HiFire} from "react-icons/hi";
-import {RiRocketLine} from 'react-icons/ri';
+import { HiFire } from "react-icons/hi";
+import { RiRocketLine } from "react-icons/ri";
 import ChooseDate from "../../Components/ChooseDate/ChooseDate";
 
 /**
@@ -15,18 +14,18 @@ import ChooseDate from "../../Components/ChooseDate/ChooseDate";
  * @returns {React.Component}
  */
 const PopularPost = () => {
-    const [showDate,setShowDate]=useState(false);
-    return (
-        <Container>
-            <HotButton ico={<RiRocketLine size={20}/>} name={'Best'}/>
-            <HotButton ico={<HiFire size={21}/>} name={'Hot'} />
-            <NewButton/>
-            <TopButton setShowDate={setShowDate} />
-            <ChooseDate/>
-            <DotButton/>
-            {/*<CategoryButton/>*/}
-        </Container>
-    );
+  const [showDate, setShowDate] = useState(false);
+  return (
+    <Container>
+      <HotButton ico={<RiRocketLine size={20} />} name={"Best"} />
+      <HotButton ico={<HiFire size={21} />} name={"Hot"} />
+      <NewButton />
+      <TopButton setShowDate={setShowDate} />
+      <ChooseDate />
+      <DotButton />
+      {/*<CategoryButton/>*/}
+    </Container>
+  );
 };
 
 export default PopularPost;
