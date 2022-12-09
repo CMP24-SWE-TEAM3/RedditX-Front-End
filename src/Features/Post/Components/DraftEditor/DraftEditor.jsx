@@ -150,6 +150,7 @@ const DraftEditor = ({ files, setFiles, text, setText, load }) => {
     setEditorState(editorState);
     const raw = convertToRaw(editorState.getCurrentContent());
     setText(JSON.stringify(raw));
+    console.log(raw);
   };
 
   /**

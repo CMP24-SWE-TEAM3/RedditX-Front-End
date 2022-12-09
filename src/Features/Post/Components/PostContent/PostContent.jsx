@@ -13,6 +13,8 @@ import {
 } from "./PostContent.styled";
 
 import { BASE_URL } from "API/axios";
+import RichTextPostBody from "../RichTextPostBody/RichTextPostBody";
+import { useEffect } from "react";
 /**
  * PostContent Component that is in the side of Post
  * @returns {React.Component} PostContent component
@@ -23,29 +25,41 @@ const PostContent = ({ post }) => {
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
+
+  function isJsonString(str) {
+    try {
+      JSON.parse(str);
+    } catch (e) {
+      return false;
+    }
+    return true;
+  }
   return (
     <Container>
       <PostTitle>{post.title}</PostTitle>
-      <Paragraph>{post.text}</Paragraph>
-      <ImageContainer>
-        <Carousel
-          activeIndex={index}
-          onSelect={handleSelect}
-          controls={post.attachments.length > 1}
-          interval={null}
-        >
-          {post.attachments.map((attachment) => (
-            <Carousel.Item>
-              <img
-                crossOrigin="anonymous"
-                className="d-block w-100"
-                src={`${BASE_URL}/posts/files/${attachment}`}
-                alt="First slide"
-              />
-            </Carousel.Item>
-          ))}
-        </Carousel>
-      </ImageContainer>
+      {!isJsonString(post.text) && <Paragraph>{post.text}</Paragraph>}
+      {isJsonString(post.text) && <RichTextPostBody post={post} />}
+      {!isJsonString(post.text) && (
+        <ImageContainer>
+          <Carousel
+            activeIndex={index}
+            onSelect={handleSelect}
+            controls={post.attachments.length > 1}
+            interval={null}
+          >
+            {post.attachments.map((attachment) => (
+              <Carousel.Item>
+                <img
+                  crossOrigin="anonymous"
+                  className="d-block w-100"
+                  src={`${BASE_URL}/posts/files/${attachment}`}
+                  alt="First slide"
+                />
+              </Carousel.Item>
+            ))}
+          </Carousel>
+        </ImageContainer>
+      )}
     </Container>
   );
 };
