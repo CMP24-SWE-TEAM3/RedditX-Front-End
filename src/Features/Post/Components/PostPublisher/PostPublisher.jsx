@@ -53,7 +53,7 @@ const PostPublisher = ({ fullPost, post }) => {
         <Photo url={url}></Photo>
         <Community>{communityName}</Community>
         <PublishBy>
-          . Posted by {post.userID} <Moment fromNow>{post.createdAt}</Moment>
+          . Posted by {post.userID._id} <Moment fromNow>{post.createdAt}</Moment>
         </PublishBy>
       </InfoContainer>
       {fullPost && (

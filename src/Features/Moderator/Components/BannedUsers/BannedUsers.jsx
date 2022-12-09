@@ -23,7 +23,7 @@ const BannedUsers = ({ Moderator }) => {
 
   useEffect(() => {
     const newFilteredMonsters = Moderator.filter((mod) => {
-      return mod.userName.toLowerCase().includes(searchField);
+      return mod._id.toLowerCase().includes(searchField);
     });
     setFilterMonsters(newFilteredMonsters);
   }, [Moderator,searchField]);
@@ -46,7 +46,11 @@ const BannedUsers = ({ Moderator }) => {
       </SearchContainer>
       <Container>
         {filteredMonsters.map((mod) => (
-          <ModeratorRow key={mod.userName} Moderator={mod} banned={true} ></ModeratorRow>
+          <ModeratorRow
+            key={mod._id}
+            Moderator={mod}
+            banned={true}
+          ></ModeratorRow>
         ))}
       </Container>
     </>
