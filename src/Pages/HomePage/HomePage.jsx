@@ -64,7 +64,7 @@ const HomePage = () => {
   const [data, error, isLoading, dataFetch] = useFetchFunction();
   const auth = useAuth();
   useEffect(() => {
-    getNewPosts(dataFetch, auth, 1, 50);
+    getNewPosts(dataFetch, auth, 1, 10);
   }, []);
   console.log("fetched posts", data);
 
