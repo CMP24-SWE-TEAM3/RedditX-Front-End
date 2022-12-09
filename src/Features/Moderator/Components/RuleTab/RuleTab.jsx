@@ -69,7 +69,7 @@ const HandleButton = ({
   );
 };
 
-const Rules = ({
+const RuleTab = ({
   setShowModal,
   name,
   showDragDrop,
@@ -123,4 +123,4 @@ const Rules = ({
   );
 };
 
-export default Rules;
+export default RuleTab;
