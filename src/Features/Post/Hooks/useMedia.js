@@ -30,20 +30,31 @@ const useMedia = (
     confirmMedia();
   }, [urlValue]);
 
+  function encodeImageFileAsURL(element) {
+    var reader = new FileReader();
+    let res = "";
+    reader.onloadend = function () {
+      res = reader.result;
+      setUrlValue(res);
+    };
+    reader.readAsDataURL(element);
+  }
   /**
    * Handler for add media in draft editor (Called when user click on add media button)
    *
    * @param {String} type - The type of media file
    * @param {File} file - The media file
    */
-  function promptForMedia(type, file) {
+  const promptForMedia = async (type, file) => {
     setUrlValue("");
     setUrlType(type);
     setFile(file);
     setFiles([...files, file]);
     const url = URL.createObjectURL(file);
-    setUrlValue(() => url);
-  }
+    console.log(await fetch(url).then((res) => res.blob()));
+    encodeImageFileAsURL(file);
+    // setUrlValue(url);
+  };
 
   /**
    * Function handle adding images in draft editor

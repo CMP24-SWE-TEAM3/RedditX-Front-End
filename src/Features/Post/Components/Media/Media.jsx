@@ -1,5 +1,6 @@
 // Import components
 import UploadedMedia from "Features/Post/Components/UploadedMedia/UploadedMedia";
+import { useEffect } from "react";
 
 /**
  * The uploaded media (Images and videos) in the draft editor
@@ -12,6 +13,7 @@ const Media = ({ contentState, block }) => {
   const entity = contentState.getEntity(block.getEntityAt(0));
   const { src } = entity.getData();
   const type = entity.getType();
+  useEffect(() => {}, [src]);
   if (type === "image") {
     return <UploadedMedia type={"img"} src={src} />;
   } else if (type === "video") {
