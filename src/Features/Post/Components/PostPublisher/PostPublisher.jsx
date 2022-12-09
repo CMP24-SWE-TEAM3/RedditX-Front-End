@@ -52,11 +52,13 @@ const PostPublisher = ({ fullPost, post }) => {
     <Container>
       <InfoContainer>
         <Photo
-          url={`${
+          crossOrigin="anonymous"
+          src={`${
             post.userID.avatar
-              ? `${BASE_URL}/posts/files/${post.userID.avatar}`
+              ? `${BASE_URL}/users/files/${post.userID.avatar}`
               : url
           }`}
+          alt="user"
         ></Photo>
         <Community>{communityName}</Community>
         <PublishBy>
