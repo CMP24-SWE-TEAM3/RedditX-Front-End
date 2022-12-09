@@ -28,6 +28,7 @@ import { Button } from "react-bootstrap";
 // Import pages
 import { SubReddit, CommunityLeaderBoard, IndexPage } from "Features/Subreddit";
 import { CreatePost } from "Features/Post";
+import { Messages } from "Features/Messages";
 import Post from "Features/Post/Pages/Post/Post";
 import {
   ForgetPasswordPage,
@@ -235,6 +236,24 @@ function App() {
                         setModalAfterSignUp={setModalAfterSignUp}
                       />
                       <CreatePost />
+                    </RequireAuth>
+                  }
+                />
+                 <Route
+                  path="message/*"
+                  element={
+                    <RequireAuth>
+                      <Navigation
+                        toggleMode={handleToggleTheme}
+                        theme={JSON.parse(theme).id}
+                        modalShowLogIn={modalShowLogIn}
+                        setModalShowLogIn={setModalShowLogIn}
+                        modalShowSignUp={modalShowSignUp}
+                        setModalShowSignUp={setModalShowSignUp}
+                        modalAfterSignUp={modalAfterSignUp}
+                        setModalAfterSignUp={setModalAfterSignUp}
+                      />
+                      <Messages />
                     </RequireAuth>
                   }
                 />
