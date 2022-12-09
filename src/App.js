@@ -6,8 +6,8 @@ import React, { useState } from "react";
 
 //Dummy imports
 
-import VotingBar from "Features/Post/Components/VotingBar/VotingBar";
-import PostShape from "Features/Post/Layouts/PostShape/PostShape";
+import TestModeratorsModals from "Features/Moderator/Pages/TestModeratorsModals/TestModeratorsModals";
+
 
 //////////////////////////////////////////////////////////////
 
