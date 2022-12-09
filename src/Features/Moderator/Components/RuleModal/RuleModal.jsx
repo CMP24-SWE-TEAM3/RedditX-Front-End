@@ -36,8 +36,16 @@ const RuleModal = ({ showModal, closeModal, setShowModal }) => {
     setDescription(event.target.value);
   };
   return (
-    <ModalContainer show={showModal} onHide={()=>{closeModal();setRule('');setDescription('');
-      setReasonRule('');}}>
+    <ModalContainer
+      show={showModal}
+      onHide={() => {
+        closeModal();
+        setRule("");
+        setDescription("");
+        setReasonRule("");
+        setCurrentRadioValue("posts-comments");
+      }}
+    >
       <Modal.Header closeButton>
         <Modal.Title>Edit rule</Modal.Title>
       </Modal.Header>
