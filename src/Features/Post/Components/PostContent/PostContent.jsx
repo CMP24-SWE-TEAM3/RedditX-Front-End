@@ -1,26 +1,50 @@
-import { Container, Paragraph, ImageContainer } from "./PostContent.styled";
+// Import react bootstrap components
+import Carousel from "react-bootstrap/Carousel";
 
+// Import react hooks
+import { useState } from "react";
+
+// Import styled components
+import {
+  Container,
+  Paragraph,
+  ImageContainer,
+  PostTitle,
+} from "./PostContent.styled";
+
+import { BASE_URL } from "API/axios";
 /**
  * PostContent Component that is in the side of Post
  * @returns {React.Component} PostContent component
  */
-const PostContent = () => {
+const PostContent = ({ post }) => {
+  // Index of the carousel image
+  const [index, setIndex] = useState(0);
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
   return (
     <Container>
-      <Paragraph>
-        Chinese government reportedly helps the world's biggest iPhone-maker
-        fill in labor shortages by recruiting Communist Party members and
-        veterans
-      </Paragraph>
+      <PostTitle>{post.title}</PostTitle>
+      <Paragraph>{post.text}</Paragraph>
       <ImageContainer>
-        <img
-          src="https://wallpapercave.com/wp/wp9247442.jpg"
-          alt=""
-        />
-        {/* <img
-          src="https://i.pinimg.com/originals/58/2d/96/582d96a1df2d94bb439af1594639ccfe.jpg"
-          alt=""
-        /> */}
+        <Carousel
+          activeIndex={index}
+          onSelect={handleSelect}
+          controls={post.attachments.length > 1}
+          interval={null}
+        >
+          {post.attachments.map((attachment) => (
+            <Carousel.Item>
+              <img
+                crossOrigin="anonymous"
+                className="d-block w-100"
+                src={`${BASE_URL}/posts/files/${attachment}`}
+                alt="First slide"
+              />
+            </Carousel.Item>
+          ))}
+        </Carousel>
       </ImageContainer>
     </Container>
   );

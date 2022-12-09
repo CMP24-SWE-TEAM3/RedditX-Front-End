@@ -20,7 +20,7 @@ import { BsFillBellFill } from "react-icons/bs";
  * PostPublisher Component that is in the side of Post
  * @returns {React.Component} PostPublisher component
  */
-const PostPublisher = ({ fullPost }) => {
+const PostPublisher = ({ fullPost, post }) => {
   /**
    * Custom hook
    */
@@ -53,7 +53,7 @@ const PostPublisher = ({ fullPost }) => {
         <Photo url={url}></Photo>
         <Community>{communityName}</Community>
         <PublishBy>
-          . Posted by {publisher} <Moment fromNow>{date}</Moment>
+          . Posted by {post.userID} <Moment fromNow>{post.createdAt}</Moment>
         </PublishBy>
       </InfoContainer>
       {fullPost && (
