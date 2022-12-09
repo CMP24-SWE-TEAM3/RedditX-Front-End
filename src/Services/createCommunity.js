@@ -8,7 +8,7 @@ import axios from "API/axios";
  * @return {Boolean}
  */
 
-const createCommunity = (fetchData, objectData) => {
+const createCommunity = (fetchData, auth, objectData) => {
   if (
     objectData.communityName !== undefined &&
     objectData.type !== undefined &&
@@ -23,7 +23,13 @@ const createCommunity = (fetchData, objectData) => {
         axiosInstance: axios,
         method: "post",
         url: "/api/r/create-subreddit/",
-        requestConfig: objectData,
+        requestConfig: {
+          data: objectData,
+          headers: {
+            "Content-Language": "en-US",
+            authorization: `Bearer ${auth.getToken()}`,
+          },
+        },
       });
       return true;
     }

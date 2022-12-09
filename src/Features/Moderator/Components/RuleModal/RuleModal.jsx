@@ -19,6 +19,8 @@ const RuleModal = ({ showModal, closeModal, setShowModal }) => {
   const [rule, setRule] = useState("");
   const [reasonRule, setReasonRule] = useState("");
   const [description, setDescription] = useState("");
+  // state store type of community
+  const [currentRadioValue, setCurrentRadioValue] = useState("posts-comments");
 
   /**
    * function that controls length of string in modal's inputForm
@@ -47,6 +49,7 @@ const RuleModal = ({ showModal, closeModal, setShowModal }) => {
               placeholder='Rule displayed (e.g "No Photos")'
               autoFocus
               rows={2}
+              value={rule}
               onChange={handlerRules}
               maxlength="100"
             />
@@ -64,6 +67,9 @@ const RuleModal = ({ showModal, closeModal, setShowModal }) => {
                   type="radio"
                   id={"checkId-1"}
                   name="Radio"
+                  value="posts-comments"
+                  onChange={(e) => setCurrentRadioValue(e.target.value)}
+                  defaultChecked={currentRadioValue === "posts-comments"}
                 />
                 <label htmlFor="checkId-1">
                   <FormText>Posts & comments</FormText>
@@ -75,6 +81,9 @@ const RuleModal = ({ showModal, closeModal, setShowModal }) => {
                   type="radio"
                   id={"checkId-2"}
                   name="Radio"
+                  value="posts-only"
+                  onChange={(e) => setCurrentRadioValue(e.target.value)}
+                  defaultChecked={currentRadioValue === "posts-only"}
                 />
                 <label htmlFor="checkId-2">
                   <FormText>Posts only</FormText>
@@ -86,6 +95,9 @@ const RuleModal = ({ showModal, closeModal, setShowModal }) => {
                   type="radio"
                   id={"checkId-3"}
                   name="Radio"
+                  value="comments-only"
+                  onChange={(e) => setCurrentRadioValue(e.target.value)}
+                  defaultChecked={currentRadioValue === "comments-only"}
                 />
                 <label htmlFor="checkId-3">
                   <FormText>Comments only</FormText>
@@ -133,9 +145,7 @@ const RuleModal = ({ showModal, closeModal, setShowModal }) => {
           cancel
         </ButtonContainer>
         {/*TODO: delete button*/}
-        {/*<ButtonContainer deleteBtn={1}>*/}
-        {/*  Delete*/}
-        {/*</ButtonContainer>*/}
+        <ButtonContainer deleteBtn={1}>Delete</ButtonContainer>
       </Footer>
     </ModalContainer>
   );

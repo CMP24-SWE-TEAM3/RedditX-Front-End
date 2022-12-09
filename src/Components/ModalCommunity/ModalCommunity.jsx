@@ -22,6 +22,8 @@ import { VscEye } from "react-icons/vsc";
 import { HiLockClosed } from "react-icons/hi";
 import { CgDanger } from "react-icons/cg";
 import createCommunity from "Services/createCommunity";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 /**
  * Component that has been showed after clicking on create community button in home page .
@@ -31,14 +33,22 @@ import createCommunity from "Services/createCommunity";
  */
 
 const ModalCommunity = ({ show, close }) => {
+  const auth = useAuth();
+  // Fetch notifications
+  // Call useFetchFunction hook to handle states: loading, error, data
+  // Loading: Boolean to tell if the request has been sent, or it's still loading
+  // Error: Contains error message when the request is failed
+  // Data: the response data
+  const [response, error, isLoading, fetchData] = useFetchFunction();
+
   /**
    * state of the community which tracks string is shown in input filed in modal
    */
   const [communityName, setCommunityName] = useState("");
-   // state store type of community
-   const [currentRadioValue, setCurrentRadioValue] = useState("public");
-   // state store if NSFW or not
-   const [currentCheckBoxValue, setCurrentCheckBoxValue] = useState(false);
+  // state store type of community
+  const [currentRadioValue, setCurrentRadioValue] = useState("public");
+  // state store if NSFW or not
+  const [currentCheckBoxValue, setCurrentCheckBoxValue] = useState(false);
 
   /**
    * function that controls length of string in modal's inputForm
@@ -54,14 +64,25 @@ const ModalCommunity = ({ show, close }) => {
    */
   const handleSubmit = (event) => {
     event.preventDefault();
-    event.target.reset();
-    // alert(`Radio button ${currentRadioValue}`);
-    // alert(`CheckBox button ${currentCheckBoxValue}`);
-    // alert(`The Community name you entered was: ${communityName}`);
+    createCommunity(fetchData, auth, {
+      communityName: communityName,
+      type: currentRadioValue,
+      nsfw: currentCheckBoxValue,
+    });
+    alert(`Radio button ${currentRadioValue}`);
+    alert(`CheckBox button ${currentCheckBoxValue}`);
+    alert(`The Community name you entered was: ${communityName}`);
   };
- 
+
   return (
-    <ModalStyled show={show} onHide={close} id={"modal"}>
+    <ModalStyled
+      show={show}
+      onHide={() => {
+        close();
+        setCommunityName("");
+      }}
+      id={"modal"}
+    >
       <Modal.Header closeButton>
         <Modal.Title>Create a community</Modal.Title>
       </Modal.Header>
@@ -74,7 +95,7 @@ const ModalCommunity = ({ show, close }) => {
             <CgDanger size={20} />
           </span>
         </p>
-        <Form id={"community-form"} method={"post"} onSubmit={handleSubmit}>
+        <Form>
           <Form.Group className="mb-3">
             <Form.Control
               id={"text-input"}
@@ -171,14 +192,10 @@ const ModalCommunity = ({ show, close }) => {
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <CloseBtn id={"close-button"} onClick={()=>{close();handleSubmit();}}>
+        <CloseBtn id={"close-button"} onClick={close}>
           Close
         </CloseBtn>
-        <CreateBtn
-          id={"create-community-form"}
-          type={"submit"}
-          form={"community-form"}
-        >
+        <CreateBtn id={"create-community-form"} onClick={handleSubmit}>
           Create Community
         </CreateBtn>
       </Modal.Footer>

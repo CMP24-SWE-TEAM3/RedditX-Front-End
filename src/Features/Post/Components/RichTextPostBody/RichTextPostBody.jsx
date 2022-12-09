@@ -36,7 +36,7 @@ const styleMap = {
 };
 
 const RichTextPostBody = ({ post }) => {
-  console.log("RichTextPostBody", post.text, post);
+  // console.log("RichTextPostBody", post.text, post);
   // State for draft editor
   const [editorState, setEditorState] = useState(
     EditorState.createWithContent(convertFromRaw(JSON.parse(post.text)))

@@ -50,9 +50,10 @@ const CommunityCard = () => {
       {communityList &&
         communityList.length !== 0 &&
         communityList.communities.map((community, index) => {
+          console.log(community);
           return (
             <CommunityCardItem
-              key={community.id}
+              key={community._id}
               srIcon={community.icon}
               community={community.description}
               communityId={index + 1}
@@ -65,10 +66,12 @@ const CommunityCard = () => {
       </ViewAllBtn>
 
       <RowBtn>
-        <SubBtn>New You</SubBtn>
-        <SubBtn>Gaming</SubBtn>
-        <SubBtn>News</SubBtn>
-        <SubBtn>Aww</SubBtn>
+        <SubBtn onClick={() => navigate("/category/Near You")}>
+          Near You{" "}
+        </SubBtn>
+        <SubBtn onClick={() => navigate("/category/Gaming")}>Gaming</SubBtn>
+        <SubBtn onClick={() => navigate("/category/News")}>News</SubBtn>
+        <SubBtn onClick={() => navigate("/category/Aww")}>Aww</SubBtn>
       </RowBtn>
     </CommunityContainer>
   );

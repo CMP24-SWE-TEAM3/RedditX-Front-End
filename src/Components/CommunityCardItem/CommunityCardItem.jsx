@@ -5,7 +5,8 @@ import {
   Caret,
   CommunityNameChild,
   CommunityNameContainer,
-  Container, HeaderLine,
+  Container,
+  HeaderLine,
   Image,
   Item,
   JoinBtn,
@@ -44,38 +45,40 @@ const CommunityCardItem = ({ communityId, community, srIcon }) => {
   };
 
   return (
-      <>
-    <Container>
-      <Link to={"/subreddit/*"}>
-        <Item>
-          <Number>{communityId}</Number>
-          <Caret>
-            <FaAngleUp />
-          </Caret>
-          <Image
-            crossOrigin="anonymous"
-            src={`${BASE_URL}/subreddits/files/${srIcon}`}
-            alt="community-icon"
-          />
-          <CommunityNameContainer>
-            <CommunityNameChild>
-              <h6>r/{community}</h6>
-            </CommunityNameChild>
-          </CommunityNameContainer>
-          <JoinContainer>
-            <JoinBtn
-              onClick={clickHandler}
-              onMouseEnter={mouseEnterHandler}
-              onMouseLeave={MouseLeaveHandler}
-            >
-              {btnContent}
-            </JoinBtn>
-          </JoinContainer>
-        </Item>
-      </Link>
-    </Container>
-  <HeaderLine/>
-      </>
+    <>
+      <Container>
+        <Link to={"/subreddit/*"}>
+          <Item>
+            <Number>{communityId}</Number>
+            <Caret>
+              <FaAngleUp />
+            </Caret>
+            {srIcon && (
+              <Image
+                crossOrigin="anonymous"
+                src={`${BASE_URL}/subreddits/files/${srIcon}`}
+                alt="community-icon"
+              />
+            )}
+            <CommunityNameContainer>
+              <CommunityNameChild>
+                <h6>r/{community}</h6>
+              </CommunityNameChild>
+            </CommunityNameContainer>
+            <JoinContainer>
+              <JoinBtn
+                onClick={clickHandler}
+                onMouseEnter={mouseEnterHandler}
+                onMouseLeave={MouseLeaveHandler}
+              >
+                {btnContent}
+              </JoinBtn>
+            </JoinContainer>
+          </Item>
+        </Link>
+      </Container>
+      <HeaderLine />
+    </>
   );
 };
 

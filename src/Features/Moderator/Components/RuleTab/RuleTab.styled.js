@@ -113,14 +113,19 @@ export const EditBtn = styled.button`
   display: flex;
   padding: 0;
   margin-right: 16px;
+  outline: none;
 `;
 export const ExpandedBtn = styled.span`
   display: ${({ show }) => (show ? "none" : "initial")};
   color: ${({ theme }) => theme.color.muted};
+  cursor:pointer;
+  outline: none;
 `;
 export const ShrinkBtn = styled.span`
   display: ${({ show }) => (show ? "initial" : "none")};
   color: ${({ theme }) => theme.color.muted};
+  cursor:pointer;
+  outline: none;
 `;
 export const Tabs = styled.span`
   display: ${({ showDragDrop }) => (showDragDrop ? "flex" : "none")};

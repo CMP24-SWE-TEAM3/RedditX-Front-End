@@ -8,6 +8,7 @@ import TopButton from "Components/TopButton/Top";
 import DotButton from "Components/DotButton/DotButton";
 import {HiFire} from "react-icons/hi";
 import {RiRocketLine} from 'react-icons/ri';
+import ChooseDate from "../../Components/ChooseDate/ChooseDate";
 
 /**
  * Component that displays a list of posts from a category list view
@@ -21,6 +22,7 @@ const PopularPost = () => {
             {/*<EveryWhereButton/>*/}
             <NewButton/>
             <TopButton/>
+            <ChooseDate/>
             <DotButton/>
             {/*<CategoryButton/>*/}
         </Container>

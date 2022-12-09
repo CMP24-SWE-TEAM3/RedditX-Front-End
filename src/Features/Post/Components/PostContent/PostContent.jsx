@@ -47,8 +47,8 @@ const PostContent = ({ post }) => {
             controls={post.attachments.length > 1}
             interval={null}
           >
-            {post.attachments.map((attachment) => (
-              <Carousel.Item>
+            {post.attachments.map((attachment, index) => (
+              <Carousel.Item key={index}>
                 <img
                   crossOrigin="anonymous"
                   className="d-block w-100"
