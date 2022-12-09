@@ -35,7 +35,7 @@ exports[`Navigation Post should render without crashing 1`] = `
       </styled.span>
       <styled.div>
         <h6>
-          الواحد و هو بيتفرج مش عارف يفرح ولا يزعل
+          Post Header
         </h6>
       </styled.div>
       <styled.div>

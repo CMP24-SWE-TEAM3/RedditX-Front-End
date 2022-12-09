@@ -7,12 +7,16 @@ import lightTheme from "Theme/lightTheme";
 
 // Import theme provider from styled components
 import { ThemeProvider } from "styled-components";
+import { SafeContextProvider } from "./Contexts/SafeSearchContext/Safe-context";
+import { SearchContextProvider } from "./Contexts/SearchWordContext/Search-context";
 
 const TestingComponent = ({ children }) => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={{ ...defaultTheme, ...lightTheme }}>
-        {children}
+        <SearchContextProvider>
+          <SafeContextProvider>{children}</SafeContextProvider>
+        </SearchContextProvider>
       </ThemeProvider>
     </BrowserRouter>
   );

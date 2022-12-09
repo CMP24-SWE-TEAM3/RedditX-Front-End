@@ -22,10 +22,18 @@ export function SearchContextProvider(props) {
     setword(word);
     // console.log(word);
   };
+  /**
+   * Function for is the search for Subreddit
+   * @param {boolean} isSubreddit  - which indicates if the search for Subreddit
+   */
   const isSubredditHandler = (isSubreddit) => {
     setisSubreddit(isSubreddit);
     console.log(isSubreddit);
   };
+  /**
+   * Function for is the search for Subreddit
+   * @param {string} community  - which indicates the Subreddit we search for.
+   */
   const communityHandler = (community) => {
     setcommunity(community);
     console.log(community);

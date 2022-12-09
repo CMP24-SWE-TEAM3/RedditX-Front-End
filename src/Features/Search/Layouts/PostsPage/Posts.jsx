@@ -1,19 +1,15 @@
 import { ContainerPosts, StyledDropdown } from "./Posts.styled";
 import Dropdown from "react-bootstrap/Dropdown";
-// import DropdownButton from "react-bootstrap/DropdownButton";
 import PostsList from "../../Components/Posts/PostsList";
 import TopCommunities from "../../Components/CommunityCard/TopCommunities";
 import CreateCommunity from "../../Components/CreateCommunity/CreateCommunity";
-// import { PeopleContainer } from "../../Components/People/People.styled";
 import People from "../../Components/People/People";
 import { useState, useContext } from "react";
-// import SafeSearch from "Features/Search/Components/SafeSearch/SafeSearch";
 import SafeContext from "Features/Search/Contexts/SafeSearchContext/Safe-context";
 import SearchContext from "Features/Search/Contexts/SearchWordContext/Search-context";
 import { CommunityCard } from "Features/Subreddit";
 import { SubRedditIDProvider } from "Features/Subreddit/Contexts/SubRedditIDProvider";
 import { SubRedditProvider } from "Features/Subreddit/Contexts/SubRedditProvider";
-// import { useContext } from "react";
 /**
  * Component that contains the Posts Page included the 2 drop downs and posts list component and the People Card Component ,Community Card Component.
  *

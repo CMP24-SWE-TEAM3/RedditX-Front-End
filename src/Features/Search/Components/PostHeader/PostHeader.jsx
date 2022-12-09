@@ -18,7 +18,7 @@ import {
  * @returns {React.Component}
  */
 const PostHeader = ({ postheader }) => {
-  // console.log(postheader);
+  console.log(postheader.headerImage);
   if (postheader) {
     return (
       <PostHeaderStyle>
@@ -26,7 +26,8 @@ const PostHeader = ({ postheader }) => {
           <Link to={`/subreddit/${postheader.communityID}`}>
             {postheader.headerImage && (
               <CommunityImage
-                src={require(`../../Assets/${postheader.headerImage}`)}
+                crossOrigin="anonymous"
+                src={`https://api.redditswe22.tech/posts/files/${postheader.headerImage}`}
                 alt="communityimage"
               />
             )}

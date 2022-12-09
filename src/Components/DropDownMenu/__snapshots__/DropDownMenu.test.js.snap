@@ -4,6 +4,8 @@ exports[`Drop Down Menu Component this is a test for Drop Down Menu 1`] = `
 <Styled(DropdownMenu)
   data-testid="dropDownMenuId"
 >
-  <DropDownItem />
+  <DropDownItem
+    display={[Function]}
+  />
 </Styled(DropdownMenu)>
 `;

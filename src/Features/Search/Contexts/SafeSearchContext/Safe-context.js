@@ -12,7 +12,11 @@ const SafeContext = React.createContext({
  */
 export function SafeContextProvider(props) {
   const [safe, setsafe] = useState(false);
-
+  /**
+   * Function for the safe search
+   *
+   * @param {boolean} safe  - which indicates if the safe search is enabled or not
+   */
   const safeHandler = (safe) => {
     setsafe(safe);
     // console.log(safe);
