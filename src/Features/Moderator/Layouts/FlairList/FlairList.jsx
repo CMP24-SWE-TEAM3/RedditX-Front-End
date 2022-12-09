@@ -13,35 +13,18 @@ import FlairInfo from "Features/Moderator/Components/FlairInfo/FlairInfo";
 // import { DragHandle } from "./partials/DragHandle";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import NewFlair from "Features/Moderator/Components/NewFlair/NewFlair";
+
+/**
+ * Component that contains the FlairList component and the FlairlistItems.
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const FlairList = () => {
   return (
     <ContainerFlairList>
       <FlairListHeader />
       <div>
-        {/* <Flair
-          text={"abdo"}
-          color={"black"}
-          background={"yellow"}
-          isNew={false}
-        />
-        <Flair
-          text={"abdo"}
-          color={"black"}
-          background={"yellow"}
-          isNew={false}
-        />
-        <Flair
-          text={"abdo"}
-          color={"black"}
-          background={"yellow"}
-          isNew={false}
-        />
-        <Flair
-          text={"abdo"}
-          color={"black"}
-          background={"yellow"}
-          isNew={false}
-        /> */}
         <NewFlair />
       </div>
     </ContainerFlairList>

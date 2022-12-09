@@ -28,6 +28,23 @@ import FlairContext from "Features/Moderator/Contexts/Safe-context";
 import { useRef } from "react";
 import useOutsideAlerter from "Features/Moderator/Hooks/useOutsideAlerter";
 import { useEffect } from "react";
+import CancelModal from "../CancelModal/CancelModal";
+
+/**
+ * Component that contains the Postslist component and the PostslistItems.
+ *
+ * @Component
+ * @param {String} text -  the text of Flair
+ * @param {String} color -  the color of Flair
+ * @param {boolean} Edit -  is this flair are editing now
+ * @param {String} background -  the background of Flair
+ * @param {boolean} isNew -  the state of Flair is it created new or only fetched
+ * @param {function} setColor -  Handle color state
+ * @param {function} setTextState -  Handle text state
+ * @param {function} setback -  Handle background state
+ * @param {function} setEdit -  Handle Edit state
+ * @returns {React.Component}
+ */
 const FlairInfo = ({
   text,
   color,
@@ -39,51 +56,86 @@ const FlairInfo = ({
   setEdit,
   isNew,
 }) => {
-  const intialState = {
+  const [ShowModal, setShowModal] = useState(false);
+  const [theBegin, settheBegin] = useState({
     text: text,
     color: color,
     background: background,
-  };
+  });
+  console.log("xxb", theBegin);
   const ctx = useContext(FlairContext);
-  console.log(intialState);
+  // console.log("ali", intialState);
   const [ShowColor, setShowColor] = useState(false);
   const [Black, setBlack] = useState(true);
   const [DisSave, setDisSave] = useState(false);
   const [PickColor, setPickColor] = useState(background);
   const [Count, setCount] = useState(64 - text.trim().length);
   console.log(text.trim().length);
+
+  /**
+   * function to handle change of color
+   *
+   * @param {String} color -  color in hex
+   * @param {object} event -  event object
+   */
   const handleChange = (color, event) => {
     setPickColor(color.hex);
     setback(color.hex);
     console.log(color);
     // setShowColor(false);
   };
+  /**
+   * function to handle complete change of color
+   *
+   * @param {String} color -  color in hex
+   * @param {object} event -  event object
+   */
   const handleChangeComplete = (color, event) => {
     setPickColor(color.hex);
     console.log(color);
     setback(color.hex);
-
-    // setShowColor(false);
   };
+  /**
+   * function to handle Cancel operation
+   * @param {object} e -  event object
+   */
   const CancelHandler = (e) => {
-    e.preventDefault();
-    setEdit(false);
-    ctx.EditHandler(false);
-    if (isNew) {
-      ctx.AddHandler(false);
+    if (
+      text !== theBegin.text ||
+      color !== theBegin.color ||
+      background !== theBegin.background
+    ) {
+      setShowModal(true);
+      console.log("object");
+    } else {
+      // e.preventDefault();
+      setEdit(false);
+      ctx.EditHandler(false);
+      if (isNew) {
+        ctx.AddHandler(false);
+      }
     }
   };
+  /**
+   * function to handle Save operation
+   * @param {object} e -  event object
+   */
   const saveHandler = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
+    settheBegin((old) => ({
+      ...old,
+      ...theBegin,
+    }));
     setEdit(false);
     ctx.EditHandler(false);
     if (isNew) {
       ctx.AddHandler(false);
     }
   };
-  const a = (e) => {
-    console.log("ffd");
-  };
+
+  // const a = (e) => {
+  //   console.log("ffd");
+  // };
   const wrapperRef = useRef();
   const inputRef = useRef();
   useEffect(() => {
@@ -96,9 +148,25 @@ const FlairInfo = ({
     setCount(64 - text.trim().length);
   }, [text]);
   console.log(Count);
-  // useOutsideAlerter(a, wrapperRef);
+  const onDiscard = () => {
+    setTextState(theBegin.text);
+    setColor(theBegin.color);
+    setback(theBegin.background);
+    setEdit(false);
+    ctx.EditHandler(false);
+    if (isNew) {
+      ctx.AddHandler(false);
+    }
+  };
   return (
-    <FlaironeEdit>
+    <FlaironeEdit title="flairEdit">
+      {ShowModal && (
+        <CancelModal
+          ShowModal={ShowModal}
+          setShowModal={setShowModal}
+          onDiscard={onDiscard}
+        />
+      )}
       <FlaironeEditInner>
         <FlaironeEditApperence>
           <legend>FLAIR APPEARANCE</legend>
@@ -142,7 +210,6 @@ const FlairInfo = ({
               <span>Flair background color</span>
               <BackgroundFlairPicker
                 onClick={() => {
-                  // setPickColor(background);
                   setShowColor(!ShowColor);
                 }}
                 PickColor={PickColor}
@@ -161,7 +228,6 @@ const FlairInfo = ({
               />
             )}
           </BackgroundFlair>
-          {/*  */}
           <BackgroundFlair>
             <label htmlFor="">
               <span>Flair text color</span>
@@ -177,7 +243,6 @@ const FlairInfo = ({
               </TextFlairPicker>
             </label>
           </BackgroundFlair>
-          {/*  */}
         </FlaironeEditApperence>
       </FlaironeEditInner>
       <DownButtons>

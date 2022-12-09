@@ -9,18 +9,18 @@ const FlairListHeader = () => {
   return (
     <ContainerFlairListHeading>
       <FlairPreview>Post flair preview</FlairPreview>
-      <Containerepet>
+      {/* <Containerepet>
         CSS class
         <span>
           <AiOutlineInfoCircle />
         </span>
-      </Containerepet>
-      <Containerepet2>
+      </Containerepet> */}
+      {/* <Containerepet2>
         SETTINGS
         <span>
           <AiOutlineInfoCircle />
         </span>
-      </Containerepet2>
+      </Containerepet2> */}
       <Containerepet2>
         FLAIR ID
         <span>

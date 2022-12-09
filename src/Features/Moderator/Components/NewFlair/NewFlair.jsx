@@ -73,22 +73,30 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
+/**
+ * Component that contains render the flairs and reorder them
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const NewFlair = () => {
   const ctx = useContext(FlairContext);
   const [items, setItems] = useState([]);
   const initial = items;
   console.log(initial, "initial");
   useEffect(() => {
+    ctx.flairsDataHandler(data);
     setItems(data);
-  }, []);
+  }, [data]);
   useEffect(() => {
     if (ctx.CancelReorder) {
       ctx.CancelReorderHandler(false);
-      setItems(data);
+      setItems(ctx.flairsData);
     }
     if (ctx.saveReorder) {
       ctx.saveReorderHandler(false);
       // setItems(result);
+      ctx.flairsDataHandler(initial);
     }
   }, [ctx.CancelReorder, ctx.saveReorder, ctx.Reorder]);
   const onDragEnd = (result) => {

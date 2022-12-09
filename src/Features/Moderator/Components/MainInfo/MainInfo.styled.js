@@ -15,7 +15,7 @@ export const ContainerFlairMainHeader = styled.div`
   line-height: 22px;
   color: ${({ theme }) => theme.color.titleText_of_link};
   margin-bottom: 16px;
-  & span {
+  & span.x {
     margin-left: 4px;
     vertical-align: text-top;
     font-size: 20px;

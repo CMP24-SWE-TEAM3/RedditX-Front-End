@@ -17,11 +17,26 @@ import { useContext } from "react";
 import FlairContext from "Features/Moderator/Contexts/Safe-context";
 import { useEffect } from "react";
 import { TbColumns } from "react-icons/tb";
+import DeleteModal from "../DeleteModal/DeleteModal";
+
+/**
+ * Component that contains Flair Item
+ *
+ * @Component
+ * @param {String} text -  the text of Flair
+ * @param {String} color -  the color of Flair
+ * @param {String} background -  the background of Flair
+ * @param {boolean} isNew -  the state of Flair is it created new or only fetched
+ * @param {object} innerRef -  useful to drag and drop
+ * @param {object} rest -  useful to drag and drop
+ * @returns {React.Component}
+ */
 const Flair = ({ text, color, background, isNew, innerRef, ...rest }) => {
   const [back, setback] = useState(background);
   const [textState, setTextState] = useState(text);
   const [Color, setColor] = useState(color);
   const [Edit, setEdit] = useState(false);
+  const [ShowModal, setShowModal] = useState(false);
   const ctx = useContext(FlairContext);
   useEffect(() => {
     if (isNew) {
@@ -31,7 +46,10 @@ const Flair = ({ text, color, background, isNew, innerRef, ...rest }) => {
   }, []);
   return (
     <>
-      <Flairone ref={innerRef} {...rest}>
+      {ShowModal && (
+        <DeleteModal ShowModal={ShowModal} setShowModal={setShowModal} />
+      )}
+      <Flairone ref={innerRef} {...rest} title="flair">
         <FlaironeExact>
           <FlairStyle flairColor={Color} flairBackgroundColor={back}>
             {textState}
@@ -46,13 +64,27 @@ const Flair = ({ text, color, background, isNew, innerRef, ...rest }) => {
               onClick={() => {
                 setEdit(true);
                 ctx.EditHandler(true);
+                // setShowModal(true);
+                // console.log("show");
               }}
-              disabled={Edit}
+              disabled={ctx.Edit}
+              title="edit"
             >
               Edit
             </ButtonDel2>
-            <ButtonDeleteAll disabled={Edit}>
-              <span>
+            <ButtonDeleteAll
+              disabled={Edit}
+              onClick={() => {
+                setShowModal(true);
+                console.log("show");
+              }}
+              title="delete"
+            >
+              <span
+                onClick={() => {
+                  // setShowModal(true);
+                }}
+              >
                 <RiDeleteBin5Fill />
               </span>
             </ButtonDeleteAll>

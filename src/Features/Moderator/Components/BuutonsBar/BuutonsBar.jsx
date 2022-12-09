@@ -7,6 +7,13 @@ import { useState } from "react";
 import { useContext } from "react";
 import FlairContext from "Features/Moderator/Contexts/Safe-context";
 import context from "react-bootstrap/esm/AccordionContext";
+
+/**
+ * Component that contains the BuutonsBar
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const BuutonsBar = () => {
   const [DisReorder, setDisReorder] = useState(false);
   const [DisAdd, setDisAdd] = useState(false);
@@ -21,8 +28,10 @@ const BuutonsBar = () => {
             onClick={() => {
               setReorder(!Reorder);
               ctx.ReorderHandler(true);
+              ctx.AddHandler(false);
             }}
             disabled={ctx.Edit}
+            title="reorder"
           >
             Reorder
           </ReorderButton>
@@ -31,6 +40,7 @@ const BuutonsBar = () => {
             onClick={() => {
               ctx.AddHandler(true);
             }}
+            title="AddFlair"
           >
             Add flair
           </AddFlairButton>
@@ -44,6 +54,7 @@ const BuutonsBar = () => {
               ctx.ReorderHandler(false);
               ctx.CancelReorderHandler(true);
             }}
+            title="Cancel"
           >
             Cancel
           </ReorderButton>
@@ -55,6 +66,7 @@ const BuutonsBar = () => {
               setReorder(!Reorder);
               ctx.saveReorderHandler(true);
             }}
+            title="Save"
           >
             Save
           </AddFlairButton>
