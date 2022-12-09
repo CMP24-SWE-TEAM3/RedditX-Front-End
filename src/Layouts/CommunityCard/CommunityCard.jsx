@@ -1,4 +1,11 @@
-import { CommunityContainer, ViewAllBtn } from "./CommunityCard.styled";
+import {
+  CommunityContainer,
+  CoverCommunity,
+  Filter,
+  RowBtn,
+  SubBtn,
+  ViewAllBtn,
+} from "./CommunityCard.styled";
 import { useNavigate } from "react-router-dom";
 import CommunityCardItem from "Components/CommunityCardItem/CommunityCardItem";
 import randomCategories from "Services/randomCategories";
@@ -13,7 +20,7 @@ import { useEffect } from "react";
  * @Component
  * @returns {React.Component}
  */
-const TopCommunities = () => {
+const CommunityCard = () => {
   // authorization's user
   const auth = useAuth();
   // Fetch communities
@@ -25,13 +32,12 @@ const TopCommunities = () => {
   useEffect(() => {
     randomCategories(fetchData, auth);
   }, []);
-  console.log(communityList);
 
   const navigate = useNavigate();
   return (
     <CommunityContainer>
-      <div className={"cover"}>
-        <div className={"filter"}>
+      <CoverCommunity>
+        <Filter>
           <h2>
             <Link href={"https://www.reddit.com/subreddits/leaderboard/"}>
               Top
@@ -39,10 +45,10 @@ const TopCommunities = () => {
               Communities
             </Link>
           </h2>
-        </div>
-      </div>
+        </Filter>
+      </CoverCommunity>
       {communityList &&
-        communityList.length != 0 &&
+        communityList.length !== 0 &&
         communityList.communities.map((community, index) => {
           return (
             <CommunityCardItem
@@ -58,14 +64,14 @@ const TopCommunities = () => {
         <button onClick={() => navigate("/category/*")}>View All</button>
       </ViewAllBtn>
 
-      <div className={"row-but"}>
-        <button className={"sub-but"}>New You</button>
-        <button className={"sub-but"}>Gaming</button>
-        <button className={"sub-but"}>News</button>
-        <button className={"sub-but"}>Aww</button>
-      </div>
+      <RowBtn>
+        <SubBtn>New You</SubBtn>
+        <SubBtn>Gaming</SubBtn>
+        <SubBtn>News</SubBtn>
+        <SubBtn>Aww</SubBtn>
+      </RowBtn>
     </CommunityContainer>
   );
 };
 
-export default TopCommunities;
+export default CommunityCard;

@@ -1,7 +1,17 @@
+// Imports
 import { useState } from "react";
-import logo from "Assets/Images/logo.png";
 import { BASE_URL } from "API/axios";
-import { Container } from "./CommunityCardItem.styled";
+import {
+  Caret,
+  CommunityNameChild,
+  CommunityNameContainer,
+  Container, HeaderLine,
+  Image,
+  Item,
+  JoinBtn,
+  JoinContainer,
+  Number,
+} from "./CommunityCardItem.styled";
 import { Link } from "react-router-dom";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa";
 
@@ -34,34 +44,38 @@ const CommunityCardItem = ({ communityId, community, srIcon }) => {
   };
 
   return (
+      <>
     <Container>
       <Link to={"/subreddit/*"}>
-        <div className="item">
-          <span className={"num"}>{communityId}</span>
-          <span className="caret">
+        <Item>
+          <Number>{communityId}</Number>
+          <Caret>
             <FaAngleUp />
-          </span>
-          <img 
-          crossOrigin="anonynmous"
-          src={`${BASE_URL}/subreddits/files/${srIcon}`}
-          alt="" />
-          <div className="info">
-            <div className="info2">
+          </Caret>
+          <Image
+            crossOrigin="anonymous"
+            src={`${BASE_URL}/subreddits/files/${srIcon}`}
+            alt="community-icon"
+          />
+          <CommunityNameContainer>
+            <CommunityNameChild>
               <h6>r/{community}</h6>
-            </div>
-          </div>
-          <div className="button">
-            <button
+            </CommunityNameChild>
+          </CommunityNameContainer>
+          <JoinContainer>
+            <JoinBtn
               onClick={clickHandler}
               onMouseEnter={mouseEnterHandler}
               onMouseLeave={MouseLeaveHandler}
             >
               {btnContent}
-            </button>
-          </div>
-        </div>
+            </JoinBtn>
+          </JoinContainer>
+        </Item>
       </Link>
     </Container>
+  <HeaderLine/>
+      </>
   );
 };
 

@@ -30,4 +30,5 @@ export const Note = styled.div`
   line-height: 18px;
   color: ${({ theme }) => theme.categoryColor.text};
   display: ${({ show }) => (show ? "none" : "inherit")};
+  margin: 10px 0;
 `;
