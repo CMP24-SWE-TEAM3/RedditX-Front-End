@@ -12,6 +12,8 @@ const Rules = () => {
   const [showModal, setShowModal] = useState(false);
   // handle displaying of droppable rule tabs
   const [showDragDrop, setShowDragDrop] = useState(false);
+  // handle edit modal rule
+  const [showEditModal, setShowEditModal] = useState(false);
   return (
     <RulesContainer>
       <NavbarRule
@@ -20,12 +22,26 @@ const Rules = () => {
       />
       <RuleHeader showNote={showDragDrop} />
       <RuleTabContainer showRuleTabs={showDragDrop}>
-        <RuleTab showDragDrop={showDragDrop} setShowModal={setShowModal} />
-        <RuleTab showDragDrop={showDragDrop} setShowModal={setShowModal} />
-        <RuleTab showDragDrop={showDragDrop} setShowModal={setShowModal} />
+        <RuleTab
+          setShowEditModal={setShowEditModal}
+          showDragDrop={showDragDrop}
+          setShowModal={setShowModal}
+        />
+        <RuleTab
+          setShowEditModal={setShowEditModal}
+          showDragDrop={showDragDrop}
+          setShowModal={setShowModal}
+        />
+        <RuleTab
+          setShowEditModal={setShowEditModal}
+          showDragDrop={showDragDrop}
+          setShowModal={setShowModal}
+        />
       </RuleTabContainer>
       <ReorderRules showDragDrop={showDragDrop} />
       <RuleModal
+        setShowEditModal={setShowEditModal}
+        showEditModal={showEditModal}
         showModal={showModal}
         closeModal={() => setShowModal(false)}
         setShowModal={setShowModal}
