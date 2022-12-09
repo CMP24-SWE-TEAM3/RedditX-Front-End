@@ -37,7 +37,7 @@ const BanUserModal = ({ ...props }) => {
       <Modal.Body data-testid="loginModalId">
         {!showSignUp && (
           <>
-            <BanUser setModalShowSignUp={props.setModalShowSignUp} setModalShowLogIn={setModalShowApproveUser} />{" "}
+            <BanUser setModalShowBaneUser={props.setModalShowBaneUser} setModalShowLogIn={setModalShowApproveUser} />{" "}
             {/* <HaveAccount>
               New to Reddit?{" "}
               <button onClick={() => setShowSignUp(true)}>Sign up</button>

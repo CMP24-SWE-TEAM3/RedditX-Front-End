@@ -4,6 +4,13 @@ import { useState } from "react";
 
 import { BsDot } from "react-icons/bs";
 
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import useFetchFunction from "Hooks/useFetchFunction";
+
+import { banUser } from "Features/Moderator/Services/UserManagementApi/UserManagementApi";
+
+import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
+
 import {
   Container,
   SearchContainer,
@@ -13,11 +20,8 @@ import {
   Ability,
   Head,
   Par,
-  Line,
   ButtonsContainer,
-  ButtonOne,
   ButtonTwo,
-  GiveAccess,
   TextArea,
   MyDropdown,
   Per,
@@ -37,7 +41,13 @@ const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
  * @returns {React.Component}  BanUser Layout that is used in User management
  */
 
-const BanUser = ({ setModalShowMuteUser }) => {
+const BanUser = ({ setModalShowBaneUser }) => {
+  const communityName = "t5_imagePro235";
+
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
+
+  const auth = useAuth();
+
   /**
    * state to handel any change the user make in the input fields
    */
@@ -97,6 +107,18 @@ const BanUser = ({ setModalShowMuteUser }) => {
 
   const handleReason = (sReason) => {
     setSelectReason(sReason);
+  };
+  const handleBan = () => {
+    banUser(
+      dataFetch,
+      {
+        userID: "t2_" + userName,
+        operation: "ban",
+      },
+      communityName,
+      auth.getToken()
+    );
+    setModalShowBaneUser(false);
   };
 
   return (
@@ -214,7 +236,13 @@ const BanUser = ({ setModalShowMuteUser }) => {
           <Head>
             Visible to banned user <BsDot />
           </Head>
-          <ButtonTwo disabled={!validName} valid={validName} onClick={() => {}}>
+          <ButtonTwo
+            disabled={!validName}
+            valid={validName}
+            onClick={() => {
+              handleBan();
+            }}
+          >
             Ban user
           </ButtonTwo>
         </ButtonsContainer>

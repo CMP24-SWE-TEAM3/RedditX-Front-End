@@ -1,7 +1,7 @@
 // imports
 import React from 'react';
 import {BsChatDots} from 'react-icons/bs';
-import {ButtonsGroupStyled, GlobalButtonStyled} from "Components/GlobalButton/GlobalButton.styled"
+import {GlobalButtonStyled} from "Components/GlobalButton/GlobalButton.styled"
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 

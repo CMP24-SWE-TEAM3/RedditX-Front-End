@@ -37,7 +37,7 @@ const InviteModeratorsModal = ({ ...props }) => {
       <Modal.Body data-testid="loginModalId">
         {!showSignUp && (
           <>
-            <InviteModerators setModalShowSignUp={props.setModalShowSignUp} setModalShowLogIn={setShowSignUp} />{" "}
+            <InviteModerators setModalShowInviteModerator={props.setModalShowInviteModerator} setModalShowLogIn={setShowSignUp} />{" "}
             {/* <HaveAccount>
               New to Reddit?{" "}
               <button onClick={() => setShowSignUp(true)}>Sign up</button>

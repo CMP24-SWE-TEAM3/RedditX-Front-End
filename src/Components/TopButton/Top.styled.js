@@ -10,24 +10,21 @@ export const Button = styled.button`
   line-height: 17px;
   font-weight: 700;
   padding: 6px 8px;
-  margin: auto 0 auto ;
+  margin: auto 3px auto 0;
   border-radius: 1.5em;
-  background-color: ${({theme}) => theme.background.primary};
-  color: ${({theme}) => theme.color.muted};
+  background-color: ${({ theme }) => theme.background.primary};
+  color: ${({ theme }) => theme.color.muted};
 
-  &:hover {
-    background-color: ${({theme}) => theme.background.muted};
+  :hover {
+    background-color: ${({ theme }) => theme.background.muted};
   }
-
-  & .word {
-    color: ${({theme}) => theme.lineColor.muted};
-    padding-left: 6px;
-    font-weight: 700;
-  }
-  @media (max-width: 1010px){
+  @media (max-width: 1010px) {
     display: none;
   }
+`;
 
-`
-
-
+export const Word = styled.span`
+  color: ${({ theme }) => theme.lineColor.muted};
+  padding-left: 6px;
+  font-weight: 700;
+`;

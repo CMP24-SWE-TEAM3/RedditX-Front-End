@@ -1,18 +1,17 @@
 import VotingBar from "Features/Post/Components/VotingBar/VotingBar";
 import PostBar from "../PostBar/PostBar";
 
-
-import {Container} from "./PostShape.styled"
+import { Container } from "./PostShape.styled";
 
 /**
- * PostShape Component 
+ * PostShape Component
  * @returns {React.Component} PostShape component
  */
-const PostShape = ({fullPost}) => {
+const PostShape = ({ fullPost, post }) => {
   return (
     <Container fullPost={fullPost}>
-      <VotingBar number={2004}/>
-      <PostBar fullPost={fullPost}/>
+      <VotingBar number={post.votesCount} />
+      <PostBar fullPost={fullPost} post={post} />
     </Container>
   );
 };

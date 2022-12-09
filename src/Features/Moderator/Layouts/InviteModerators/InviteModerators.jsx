@@ -2,10 +2,9 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-import { MdCheckBox, MdEdit } from "react-icons/md";
-import { MdDelete } from "react-icons/md";
 
-import Moment from "react-moment";
+
+import { inviteModerator } from "Features/Moderator/Services/UserManagementApi/UserManagementApi";
 
 import {
   Container,
@@ -18,10 +17,12 @@ import {
   Par,
   Line,
   ButtonsContainer,
-  ButtonOne,
   ButtonTwo,
   GiveAccess,
 } from "./InviteModerators.styled";
+
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import useFetchFunction from "Hooks/useFetchFunction";
 
 const defaultFormFields = {
   userName: "",
@@ -34,7 +35,14 @@ const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
  * @returns {React.Component}  InviteModerators Layout that is used in User management
  */
 
-const InviteModerators = ({ setModalShowLogIn, setModalShowSignUp }) => {
+const InviteModerators = ({setModalShowInviteModerator}) => {
+
+  const communityName = "t5_imagePro235";
+
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
+
+  const auth = useAuth();
+
   /**
    * state to handel any change the user make in the input fields
    */
@@ -63,6 +71,19 @@ const InviteModerators = ({ setModalShowLogIn, setModalShowSignUp }) => {
     const { name, value } = event.target;
     setValidName(USER_REGEX.test(userName));
     setFormFields({ ...formFields, [name]: value });
+  };
+
+  /**
+   * Function to handle Invite user
+   */
+  const handleInvite = () => {
+    inviteModerator(dataFetch, {
+      userID: "t2_"+userName,
+      type: "moderator_invite",
+      communityID: communityName,
+    })
+
+    setModalShowInviteModerator(false);
   };
 
   return (
@@ -217,7 +238,9 @@ const InviteModerators = ({ setModalShowLogIn, setModalShowSignUp }) => {
           >
             Cancel
           </ButtonOne> */}
-          <ButtonTwo disabled={!validName} valid={validName}>
+          <ButtonTwo disabled={!validName} valid={validName} onClick={() => {
+            handleInvite();
+          }}>
             Invite
           </ButtonTwo>
         </ButtonsContainer>

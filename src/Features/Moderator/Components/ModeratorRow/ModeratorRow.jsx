@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
@@ -38,6 +38,14 @@ const ModeratorRow = ({
   muted,
   banned,
 }) => {
+  const [photoUrl, setPhotoUrl] = useState("");
+  /**
+   * useEffect to get photo
+   */
+  useEffect(() => {
+    setPhotoUrl("https://api.redditswe22.tech/users/files/" + Moderator.avatar);
+  }, []);
+
   /**
    * state to handel more details dropdown for mutted
    */
@@ -51,21 +59,23 @@ const ModeratorRow = ({
    */
   const [showEditModal, setShowEditModal] = useState(false);
 
+  const date = "2022/011/15, 15:05:45";
+
   return (
     <>
       <Container>
         <ProfileContainer>
           <PhotoAndUsername>
             <Photo>
-              <img src={Moderator.photo} alt="image" />
+              <img crossOrigin="anonymous" src={photoUrl} alt="image" />
             </Photo>
-            <UserName>{Moderator.userName}</UserName>
+            <UserName>{Moderator._id.substring(3)}</UserName>
           </PhotoAndUsername>
-          <Date>
-            <Moment fromNow>{Moderator.date}</Moment>
+          {/* <Date>
+            <Moment fromNow>{date}</Moment>
 
             {banned && <span> . {Moderator.bannedFor}</span>}
-          </Date>
+          </Date> */}
         </ProfileContainer>
         {!approved && !muted && !banned && (
           <Abilities>
@@ -134,6 +144,7 @@ const ModeratorRow = ({
 
       {banned && showEditModal && (
         <EditBanUserModal
+        setShowEditModal={setShowEditModal}
           moderator={Moderator}
           show={banned && showEditModal}
           onHide={() => setShowEditModal(false)}

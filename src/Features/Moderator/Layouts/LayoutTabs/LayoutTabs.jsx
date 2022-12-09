@@ -34,6 +34,9 @@ import ApprovedPage from "../ApprovedPage/ApprovedPage";
 import MutedPage from "../MutedPage/MutedPage";
 import BannedPage from "../BannedPage/BannedPage";
 
+
+import Rules from "Features/Moderator/Components/RuleTab/RuleTab";
+
 const paths = {
   ModQueue: "mod-queue",
   Spam: "spam",
@@ -49,7 +52,7 @@ const paths = {
   Community: "Community",
   PostsAndComments: "PostsAndComments",
 };
-function LayoutTabs({setModalShowSignUp, setModalShowApproveUser, setModalShowMuteUser, setModalShowBaneUser}) {
+function LayoutTabs({setModalShowInviteModerator, setModalShowApproveUser, setModalShowMuteUser, setModalShowBaneUser}) {
   const [isCommunitySettings, setIsCommunitySettings] = useState(false);
   const { subredditId, moderatorId } = useParams();
   const getPath = (path) => {
@@ -226,12 +229,10 @@ function LayoutTabs({setModalShowSignUp, setModalShowApproveUser, setModalShowMu
             {moderatorId === paths.Banned && <div><BannedPage setModalShowBaneUser={setModalShowBaneUser}/></div>}
             {moderatorId === paths.Muted && <div><MutedPage setModalShowMuteUser={setModalShowMuteUser}/></div>}
             {moderatorId === paths.Approved && <div><ApprovedPage setModalShowApproveUser={setModalShowApproveUser}/></div>}
-            {moderatorId === paths.Moderators && <ModeratorsPage setModalShowSignUp={setModalShowSignUp}/>}
+            {moderatorId === paths.Moderators && <ModeratorsPage setModalShowInviteModerator={setModalShowInviteModerator}/>}
             {moderatorId === paths.PostFlair && <div>PostFlair</div>}
-            {moderatorId === paths.Rules && <div>Rules</div>}
-            {moderatorId === paths.TrafficStates && (
-              <div>TrafficStates</div>
-            )}
+            {moderatorId === paths.Rules && <Rules />}
+            {moderatorId === paths.TrafficStates && <div>TrafficStates</div>}
             {moderatorId === paths.Community && <div>Community</div>}
             {moderatorId === paths.PostsAndComments && (
               <div>PostsAndComments</div>

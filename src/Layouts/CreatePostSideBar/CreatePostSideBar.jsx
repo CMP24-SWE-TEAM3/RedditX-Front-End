@@ -1,48 +1,71 @@
 // imports
-import React, { useState} from 'react';
-import {Container} from "./CreatePostSideBar.styled";
-import reddit from 'Assets/Images/reddit.png'
-import ModalCommunity from 'Components/ModalCommunity/ModalCommunity';
-import { useNavigate } from "react-router-dom";/**
+import React, { useState } from "react";
+import {
+  BlockHome,
+  ButtonContainer,
+  Container,
+  Content,
+  Cover,
+  CreateCommunityBtn,
+  CreatePostBtn,
+  HeaderLine,
+  Home,
+  Image,
+  Quote,
+  QuoteContainer,
+  Word,
+} from "./CreatePostSideBar.styled";
+import reddit from "Assets/Images/reddit.png";
+import ModalCommunity from "Components/ModalCommunity/ModalCommunity";
+import { useNavigate } from "react-router-dom"; /**
 /**
  * Component that displays a create post and community button on sidebar.
  * @returns {Component.React}
  */
 const CreatePostSideBar = () => {
-    /**
-     * function that controls showing modal
-     */
-    const [show, setShow] = useState(false);
-    const navigate = useNavigate();
-    return (
-        <>
-            <Container>
-                <div className={'content'}>
-                    <div className={'cover'}/>
-
-                    <div className={'home'}>
-                        <img src={reddit} className={'logo'}/>
-                        <div className={'block-home'}>
-                    <span className={'word'}>
-                    Home
-                </span>
-                        </div>
-                    </div>
-                    <div className={'out-fav'}>
-                        <div className={'fav-com'}>
-                            Your personal Reddit frontpage. Come here to check in with your favorite communities.
-                        </div>
-                    </div>
-                    <hr/>
-                    <div className={'buts'}>
-                        <button id={'create-post-button'} onClick={()=>navigate("/submit")}  className={'sub-but1'}>Create Post</button>
-                        <button id={'create-community-button'} data-testid="createModalID"  onClick={() => setShow(true)} className={'sub-but2'}>Create Community</button>
-                    </div>
-                </div>
-            </Container>
-            {<ModalCommunity show={show} close={() => setShow(false)}/>}
-        </>
-    );
+  /**
+   * function that controls showing modal
+   */
+  const [show, setShow] = useState(false);
+  const navigate = useNavigate();
+  return (
+    <>
+      <Container>
+        <Content>
+          <Cover />
+          <Home>
+            <Image src={reddit} />
+            <BlockHome>
+              <Word>Home</Word>
+            </BlockHome>
+          </Home>
+          <QuoteContainer>
+            <Quote>
+              Your personal Reddit frontpage. Come here to check in with your
+              favorite communities.
+            </Quote>
+          </QuoteContainer>
+          <HeaderLine />
+          <ButtonContainer>
+            <CreatePostBtn
+              id={"create-post-button"}
+              onClick={() => navigate("/submit")}
+            >
+              Create Post
+            </CreatePostBtn>
+            <CreateCommunityBtn
+              id={"create-community-button"}
+              data-testid="createModalID"
+              onClick={() => setShow(true)}
+            >
+              Create Community
+            </CreateCommunityBtn>
+          </ButtonContainer>
+        </Content>
+      </Container>
+      {<ModalCommunity show={show} close={() => setShow(false)} />}
+    </>
+  );
 };
 
 export default CreatePostSideBar;

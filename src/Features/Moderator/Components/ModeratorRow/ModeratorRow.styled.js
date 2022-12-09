@@ -22,9 +22,11 @@ export const Photo = styled.div`
 
   img {
     max-width: 100%;
+    border-radius: 100px;
   }
 `;
 export const UserName = styled.div`
+  margin-left: 5px;
   color: ${({ theme }) => theme.color.primary};
 `;
 export const Date = styled.div`
@@ -86,7 +88,7 @@ export const MoreDetailsBanned = styled.div`
 `;
 export const ModNote = styled.div`
   display: flex;
-  margin: 10px 10px; 
+  margin: 10px 10px;
 
   h3 {
     font-size: 10px;

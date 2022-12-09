@@ -5,6 +5,13 @@ import { useState } from "react";
 import { BsDot } from "react-icons/bs";
 import { MdOutlinePersonAddDisabled } from "react-icons/md";
 
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import useFetchFunction from "Hooks/useFetchFunction";
+
+import { banUser } from "Features/Moderator/Services/UserManagementApi/UserManagementApi";
+
+import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
+
 import {
   Container,
   SearchContainer,
@@ -22,11 +29,10 @@ import {
   TextArea,
   MyDropdown,
   Per,
-  UnBan
+  UnBan,
 } from "./EditBanUser.styled";
 
 const defaultFormFields = {
-  userName: "",
   days: "",
 };
 
@@ -37,13 +43,19 @@ const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
  * @returns {React.Component}  EditBanUser Layout that is used in User management
  */
 
-const EditBanUser = ({ moderator }) => {
+const EditBanUser = ({ moderator, setShowEditModal, userName }) => {
+  const communityName = "t5_imagePro235";
+
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
+
+  const auth = useAuth();
+
   /**
    * state to handel any change the user make in the input fields
    */
   const [formFields, setFormFields] = useState(defaultFormFields);
 
-  let { userName, days } = formFields;
+  let { days } = formFields;
 
   /**
    * state to know if the userName is valid or not to control what to show to the user
@@ -114,6 +126,19 @@ const EditBanUser = ({ moderator }) => {
 
   const handleReason = (sReason) => {
     setSelectReason(sReason);
+  };
+
+  const handleBan = () => {
+    banUser(
+      dataFetch,
+      {
+        userID: "t2_" + userName,
+        operation: "ban",
+      },
+      communityName,
+      auth.getToken()
+    );
+    setShowEditModal(false);
   };
 
   return (
@@ -217,8 +242,12 @@ const EditBanUser = ({ moderator }) => {
         ></TextArea>
         <Par fullWidth={true}>{5000 - reasonLength} Characters remaining</Par>
         <ButtonsContainer>
-          <UnBan >
-            <MdOutlinePersonAddDisabled/>
+          <UnBan
+            onClick={() => {
+              handleBan();
+            }}
+          >
+            <MdOutlinePersonAddDisabled />
           </UnBan>
           <ButtonTwo disabled={!validName} valid={validName} onClick={() => {}}>
             Ban user

@@ -23,7 +23,7 @@ const Moderator = () => {
     <>
       <LayoutHeader />
       <LayoutTabs
-        setModalShowSignUp={setModalShowInviteModerator}
+        setModalShowInviteModerator={setModalShowInviteModerator}
         setModalShowApproveUser={setModalShowApproveUser}
         setModalShowMuteUser={setModalShowMuteUser}
         setModalShowBaneUser={setModalShowBaneUser}
@@ -31,6 +31,7 @@ const Moderator = () => {
 
       <InviteModeratorsModal
         show={modalShowInviteModerator}
+        setModalShowInviteModerator={setModalShowInviteModerator}
         onHide={() => setModalShowInviteModerator(false)}
       />
       <ApproveUserModal
@@ -44,6 +45,7 @@ const Moderator = () => {
       <BanUserModal
         show={modalShowBaneUser}
         onHide={() => setModalShowBaneUser(false)}
+        setModalShowBaneUser={setModalShowBaneUser}
       />
     </>
   );
