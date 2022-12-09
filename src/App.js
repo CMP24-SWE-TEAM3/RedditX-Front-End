@@ -59,6 +59,7 @@ import NotFound from "Pages/NotFound/NotFound";
 import { SearchContextProvider } from "Features/Search/Contexts/SearchWordContext/Search-context";
 import { SafeContextProvider } from "Features/Search/Contexts/SafeSearchContext/Safe-context";
 import useLocalStorage from "Hooks/useLocalStorage";
+import { User } from "Features/User";
 
 /**
  * The main app of our application it handles routing
@@ -268,6 +269,24 @@ function App() {
                         setModalAfterSignUp={setModalAfterSignUp}
                       />
                       <Post />
+                    </>
+                  }
+                />
+                <Route
+                  path="/user/:userId/*"
+                  element={
+                    <>
+                      <Navigation
+                        toggleMode={handleToggleTheme}
+                        theme={JSON.parse(theme).id}
+                        modalShowLogIn={modalShowLogIn}
+                        setModalShowLogIn={setModalShowLogIn}
+                        modalShowSignUp={modalShowSignUp}
+                        setModalShowSignUp={setModalShowSignUp}
+                        modalAfterSignUp={modalAfterSignUp}
+                        setModalAfterSignUp={setModalAfterSignUp}
+                      />
+                      <User />
                     </>
                   }
                 />

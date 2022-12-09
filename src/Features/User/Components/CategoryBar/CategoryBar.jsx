@@ -25,18 +25,28 @@ const CategoryBar = () => {
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const time = queryParams.get("t");
-  const url = location.pathname;
-  const top = url.split("/")[3];
+  const sort = queryParams.get("sort");
+  // const url = location.pathname;
+  // const top = url.split("/")[3];
   // console.log(top);
 
   function selectDateHandler(e) {
     const text = e.target.innerText;
-    if (text === "Now") navigate("top/?t=hour");
-    else if (text === "Today") navigate("top/?t=day");
-    else if (text === "This Week") navigate("top/?t=week");
-    else if (text === "This Month") navigate("top/?t=month");
-    else if (text === "This Year") navigate("top/?t=year");
-    else navigate("top/?t=all");
+    if (text === "Now") navigate("?sort=top&t=hour");
+    else if (text === "Today") navigate("?sort=top&t=day");
+    else if (text === "This Week") navigate("?sort=top&t=week");
+    else if (text === "This Month") navigate("?sort=top&t=month");
+    else if (text === "This Year") navigate("?sort=top&t=year");
+    else navigate("?sort=top&t=all");
+  }
+
+  function selectSortHandler(e) {
+    // console.log(e.target);
+    const text = e.currentTarget.innerText;
+    if (text === "Hot") navigate("?sort=hot");
+    else if (text === "New") navigate("?sort=new");
+    else if (text === "Top") navigate("?sort=top");
+    else navigate("?sort=hot");
   }
 
   /**
@@ -125,7 +135,7 @@ const CategoryBar = () => {
     return (
       <StyledDrop>
         <Dropdown.Toggle>
-          {(top === "hot" || !top) && (
+          {(sort === "hot" || !sort ) && (
             <>
               <span className="icon">
                 <IoFlameOutline />
@@ -133,7 +143,7 @@ const CategoryBar = () => {
               <span className="text">Hot</span>
             </>
           )}
-          {top === "new" && (
+          {sort === "new" && (
             <>
               <span className="icon">
                 <TiStarburstOutline />
@@ -141,7 +151,7 @@ const CategoryBar = () => {
               <span className="text">New</span>
             </>
           )}
-          {top === "top" && (
+          {sort === "top" && (
             <>
               <span className="icon">
                 <BsFillFileArrowUpFill />
@@ -149,7 +159,7 @@ const CategoryBar = () => {
               <span className="text">Top</span>
             </>
           )}
-          {top === "rising" && false && (
+          {sort === "rising" && false && (
             <>
               <span className="icon">
                 <HiTrendingUp />
@@ -164,8 +174,9 @@ const CategoryBar = () => {
 
         <Dropdown.Menu>
           <Dropdown.Item
-            as={NavLink}
-            to="hot"
+            as="button"
+            className={sort ? (sort === "hot" ? "active" : "") : "active"}
+            onClick={selectSortHandler}
           >
             <span className="icon">
               <IoFlameOutline />
@@ -173,8 +184,9 @@ const CategoryBar = () => {
             <span className="text">Hot</span>
           </Dropdown.Item>
           <Dropdown.Item
-            as={NavLink}
-            to="new"
+            as="button"
+            className={sort ? (sort === "new" ? "active" : "") : ""}
+            onClick={selectSortHandler}
           >
             <span className="icon">
               <TiStarburstOutline />
@@ -182,8 +194,9 @@ const CategoryBar = () => {
             <span className="text">New</span>
           </Dropdown.Item>
           <Dropdown.Item
-            as={NavLink}
-            to="top"
+            as="button"
+            className={sort ? (sort === "top" ? "active" : "") : ""}
+            onClick={selectSortHandler}
           >
             <span className="icon">
               <BsFillFileArrowUpFill />
@@ -191,10 +204,7 @@ const CategoryBar = () => {
             <span className="text">Top</span>
           </Dropdown.Item>
           {false && (
-            <Dropdown.Item
-              as={NavLink}
-              to="rising"
-            >
+            <Dropdown.Item as="button" to="rising">
               <span className="icon">
                 <HiTrendingUp />
               </span>
@@ -215,35 +225,54 @@ const CategoryBar = () => {
     return (
       <>
         <InnerContainer>
-          <NavLink
-            to="hot"
-            className={top ? "icon hot" : "icon hot active"}  
+          <button
+            onClick={selectSortHandler}
+            className={
+              sort
+                ? sort === "hot"
+                  ? "icon hot active"
+                  : "icon hot"
+                : "icon hot active"
+            }
           >
-            <span className="fire-icon">
+            <span className="fire-icon" tabIndex="0">
               <IoFlameOutline />
             </span>
             <span className="fire-txt">Hot</span>
-          </NavLink>
-          <NavLink
-            to="new"
-            className="icon new"
+          </button>
+          <button
+            onClick={selectSortHandler}
+            className={
+              sort
+                ? sort === "new"
+                  ? "icon new active"
+                  : "icon new"
+                : "icon new"
+            }
+            tabIndex="0"
           >
-            <span className="fire-icon">
+            <span className="fire-icon" tabIndex="0">
               <TiStarburstOutline />
             </span>
             <span className="fire-txt">New</span>
-          </NavLink>
-          <NavLink
-            to="top"
-            className="icon top"
+          </button>
+          <button
+            onClick={selectSortHandler}
+            className={
+              sort
+                ? sort === "top"
+                  ? "icon top active"
+                  : "icon top"
+                : "icon top"
+            }
           >
-            <span className="fire-icon">
+            <span className="fire-icon" tabIndex="0">
               <BsFillFileArrowUpFill />
             </span>
             <span className="fire-txt">Top</span>
-          </NavLink>
+          </button>
         </InnerContainer>
-        {top && top === "top" && (
+        {sort && sort === "top" && (
           <DateDiv>
             <ChooseDate />
           </DateDiv>
@@ -274,7 +303,7 @@ const CategoryBar = () => {
     <Container>
       <Nav />
       <DropNav />
-      {top && top === "top" && (
+      {sort && sort === "top" && (
         <DropDateDiv>
           <ChooseDate />
         </DropDateDiv>
