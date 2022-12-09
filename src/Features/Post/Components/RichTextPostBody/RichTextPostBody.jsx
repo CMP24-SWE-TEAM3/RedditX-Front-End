@@ -39,7 +39,7 @@ const RichTextPostBody = ({ post }) => {
   // console.log("RichTextPostBody", post.text, post);
   // State for draft editor
   const [editorState, setEditorState] = useState(
-    EditorState.createWithContent(convertFromRaw(JSON.parse(post.text)))
+    EditorState.createWithContent(convertFromRaw(JSON.parse(post.textJSON)))
   );
   function mediaBlockRenderer(block) {
     if (block.getType() === "atomic") {
