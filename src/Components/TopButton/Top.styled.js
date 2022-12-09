@@ -10,7 +10,7 @@ export const Button = styled.button`
   line-height: 17px;
   font-weight: 700;
   padding: 6px 8px;
-  margin: auto 0 auto ;
+  margin: auto 3px  auto 0 ;
   border-radius: 1.5em;
   background-color: ${({theme}) => theme.background.primary};
   color: ${({theme}) => theme.color.muted};

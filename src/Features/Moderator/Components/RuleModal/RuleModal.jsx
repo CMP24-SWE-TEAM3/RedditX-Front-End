@@ -36,7 +36,8 @@ const RuleModal = ({ showModal, closeModal, setShowModal }) => {
     setDescription(event.target.value);
   };
   return (
-    <ModalContainer show={showModal} onHide={closeModal}>
+    <ModalContainer show={showModal} onHide={()=>{closeModal();setRule('');setDescription('');
+      setReasonRule('');}}>
       <Modal.Header closeButton>
         <Modal.Title>Edit rule</Modal.Title>
       </Modal.Header>
@@ -115,6 +116,7 @@ const RuleModal = ({ showModal, closeModal, setShowModal }) => {
               placeholder='Reason rule is broken (eg "This is a photo")'
               onChange={handleReason}
               maxlength="100"
+              value={reasonRule}
             />
             <Characters alarmValue={100 - reasonRule.length}>
               {" "}
@@ -129,6 +131,7 @@ const RuleModal = ({ showModal, closeModal, setShowModal }) => {
               placeholder="Enter the full description of the rule"
               onChange={handleDescription}
               maxlength="500"
+              value={description}
             />
             <Characters alarmValue={500 - description.length}>
               {" "}

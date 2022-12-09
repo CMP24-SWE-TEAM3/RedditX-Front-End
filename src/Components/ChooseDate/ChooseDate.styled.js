@@ -130,7 +130,6 @@ export const StyledDrop = styled(Dropdown)`
       font-size: 20px;
       font-weight: 400;
       height: 20px;
-      line-height: 16px;
       vertical-align: middle;
       width: 20px;
     }

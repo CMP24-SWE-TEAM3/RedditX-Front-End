@@ -1,5 +1,5 @@
 // imports
-import React from 'react';
+import React, {useState} from 'react';
 import HotButton from "Components/HotButton/HotButton";
 import {Container} from "./PopularPosts.styled";
 import EveryWhereButton from "Components/EveryWhereButton/EveryWhereButton";
@@ -15,13 +15,13 @@ import ChooseDate from "../../Components/ChooseDate/ChooseDate";
  * @returns {React.Component}
  */
 const PopularPost = () => {
+    const [showDate,setShowDate]=useState(false);
     return (
         <Container>
-            <HotButton ico={<RiRocketLine/>} name={'Best'}/>
-            <HotButton ico={<HiFire/>} name={'Hot'} />
-            {/*<EveryWhereButton/>*/}
+            <HotButton ico={<RiRocketLine size={20}/>} name={'Best'}/>
+            <HotButton ico={<HiFire size={21}/>} name={'Hot'} />
             <NewButton/>
-            <TopButton/>
+            <TopButton setShowDate={setShowDate} />
             <ChooseDate/>
             <DotButton/>
             {/*<CategoryButton/>*/}

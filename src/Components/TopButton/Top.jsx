@@ -8,9 +8,9 @@ import {AiOutlineToTop} from 'react-icons/ai';
  *
  * @returns {React.Component}
  */
-const TopButton = () => {
+const TopButton = ({setShowDate}) => {
     return (
-        <Button>
+        <Button onClick={()=>setShowDate(true)}>
             <span> <AiOutlineToTop/></span>
             <span className={'word'}>Top</span>
         </Button>

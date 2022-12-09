@@ -1,7 +1,7 @@
 // imports
-import React from 'react';
-import {MdOutlineWbSunny} from 'react-icons/md';
-import {Button} from "./NewButton.styled";
+import React from "react";
+import { MdOutlineWbSunny } from "react-icons/md";
+import { Button, Word, Ico } from "./NewButton.styled";
 
 /**
  * Component that directs to New posts
@@ -9,12 +9,15 @@ import {Button} from "./NewButton.styled";
  * @returns {React.Component}
  */
 const NewButton = () => {
-    return (
-        <Button>
-            <span className={'icon'}> <MdOutlineWbSunny/></span>
-            <span className='word'>New</span>
-        </Button>
-    );
+  return (
+    <Button>
+      <Ico>
+        {" "}
+        <MdOutlineWbSunny size={21} />
+      </Ico>
+      <Word>New</Word>
+    </Button>
+  );
 };
 
 export default NewButton;
