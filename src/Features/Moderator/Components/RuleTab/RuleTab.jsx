@@ -24,7 +24,12 @@ import { GrDrag } from "react-icons/gr";
 import Card from "react-bootstrap/Card";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 
-const HandleButton = ({ eventKey, showDragDrop, setShowModal }) => {
+const HandleButton = ({
+  eventKey,
+  showDragDrop,
+  setShowModal,
+  setShowEditModal,
+}) => {
   // state  handles expand/collapse of body accordion button
   const [expand, setExpand] = useState(false);
   const handleExpansion = () => {
@@ -34,7 +39,12 @@ const HandleButton = ({ eventKey, showDragDrop, setShowModal }) => {
 
   return (
     <Space showDragDrop={showDragDrop}>
-      <EditBtn onClick={() => setShowModal(true)}>
+      <EditBtn
+        onClick={() => {
+          setShowModal(true);
+          setShowEditModal(true);
+        }}
+      >
         <MdOutlineModeEdit size={22} />
       </EditBtn>
       <ExpandedBtn
@@ -59,7 +69,13 @@ const HandleButton = ({ eventKey, showDragDrop, setShowModal }) => {
   );
 };
 
-const Rules = ({ setShowModal, name, showDragDrop, collapse }) => {
+const Rules = ({
+  setShowModal,
+  name,
+  showDragDrop,
+  collapse,
+  setShowEditModal,
+}) => {
   return (
     <Accordion defaultActiveKey="1">
       <AccordionContainer>
@@ -70,6 +86,7 @@ const Rules = ({ setShowModal, name, showDragDrop, collapse }) => {
             eventKey={collapse}
             showDragDrop={showDragDrop}
             setShowModal={setShowModal}
+            setShowEditModal={setShowEditModal}
           />
           <Tabs showDragDrop={showDragDrop}>
             <GrDrag size={22} />
