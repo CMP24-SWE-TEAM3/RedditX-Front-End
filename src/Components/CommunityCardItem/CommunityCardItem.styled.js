@@ -104,8 +104,7 @@ export const JoinContainer = styled.div`
   flex-shrink: 0;
   border: none;
 `;
-export const HeaderLine = styled.hr
-`
-  margin: 0.1rem 0;
-  opacity: .1 ;
-`
+export const HeaderLine = styled.hr`
+  margin: 0.1px 0;
+  opacity: 0.1;
+`;

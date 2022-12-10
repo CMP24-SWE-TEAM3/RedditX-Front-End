@@ -50,16 +50,17 @@ const CommunityCard = () => {
       {communityList &&
         communityList.length !== 0 &&
         communityList.communities.map((community, index) => {
-          console.log(community);
-          return (
-            <CommunityCardItem
-              key={community._id}
-              srIcon={community.icon}
-              community={community.description}
-              communityId={index + 1}
-              onClick={() => navigate("/subreddit")}
-            />
-          );
+          if (index < 4) {
+            return (
+              <CommunityCardItem
+                key={community._id}
+                srIcon={community.icon}
+                communityDescription={community.description}
+                communityId={index + 1}
+                community={`subreddit/${community._id}`}
+              />
+            );
+          }
         })}
       <ViewAllBtn>
         <button onClick={() => navigate("/category/*")}>View All</button>
