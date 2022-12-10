@@ -24,10 +24,10 @@ const MutedUsers = ({ Moderator }) => {
   console.log(Moderator);
   useEffect(() => {
     const newFilteredMonsters = Moderator.filter((mod) => {
-      return mod._id.toLowerCase().includes(searchField);
+      return mod._id.substring(3).toLowerCase().includes(searchField);
     });
     setFilterMonsters(newFilteredMonsters);
-  }, [Moderator,searchField]);
+  }, [Moderator, searchField]);
 
   const onSearchChange = (event) => {
     const searchFieldString = event.target.value.toLowerCase();
