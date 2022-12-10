@@ -10,7 +10,7 @@ export const createPostFlagsContext = createContext({});
 const CreatePostFlagsProvider = ({ children }) => {
   // Context that is used to share flags of the post to be created
   const [createPostFlags, setCreatePostFlags] = useState({
-    NSFW: false,
+    nsfw: false,
     spoiler: false,
   });
 

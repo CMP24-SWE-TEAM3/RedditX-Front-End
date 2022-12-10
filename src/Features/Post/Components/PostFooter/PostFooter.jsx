@@ -12,11 +12,11 @@ import { FiFlag } from "react-icons/fi";
  * PostFooter Component that is in the side of Post
  * @returns {React.Component} PostFooter component
  */
-const PostFooter = () => {
+const PostFooter = ({ post }) => {
   return (
     <Container>
       <Comment onClick={(event) => {}}>
-        <TfiComment /> 231 Comments
+        <TfiComment /> {post.commentsNumber} Comments
       </Comment>
       <Comment
         onClick={(event) => {

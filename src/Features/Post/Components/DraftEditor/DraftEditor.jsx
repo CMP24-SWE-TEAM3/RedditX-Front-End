@@ -85,7 +85,7 @@ const Link = (props) => {
  * DraftEditor component
  * @returns {React.Component} DraftEditor
  */
-const DraftEditor = ({ files, setFiles, text, setText }) => {
+const DraftEditor = ({ files, setFiles, text, setText, load }) => {
   const decorator = new CompositeDecorator([
     {
       strategy: findLinkEntities,
@@ -95,7 +95,9 @@ const DraftEditor = ({ files, setFiles, text, setText }) => {
 
   // State for draft editor
   const [editorState, setEditorState] = useState(
-    EditorState.createEmpty(decorator)
+    load
+      ? EditorState.createWithContent(convertFromRaw(JSON.parse(load)))
+      : EditorState.createEmpty(decorator)
   );
 
   // Ref for draft editor
@@ -147,8 +149,8 @@ const DraftEditor = ({ files, setFiles, text, setText }) => {
   const onChange = (editorState) => {
     setEditorState(editorState);
     const raw = convertToRaw(editorState.getCurrentContent());
+    setText(JSON.stringify(raw));
     console.log(raw);
-    setText(raw);
   };
 
   /**

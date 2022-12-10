@@ -45,18 +45,26 @@ const Main = () => {
    * Function to handle submit the post
    * (Called when the user clicks on the submit button)
    */
-  const handleSubmit = () => {
+  const handleSubmit = (type) => {
     var bodyFormData = new FormData();
-    bodyFormData.append("title", "createPostTitle");
-    bodyFormData.append("text", "createPostText");
     // bodyFormData.append("community", selectedDestination);
     // bodyFormData.append("flair", createPostFlairs);
-    // bodyFormData.append("flags", createPostFlags);
-    // TODO: remove
-    bodyFormData.append("spoiler", true);
-    bodyFormData.append("nsfw ", true);
-    // END TODO
-    // bodyFormData.append("attachments", createPostAttachments);
+    bodyFormData.append("title", createPostTitle);
+    // TODO: remove letter "a" when the backend is fixed
+    if (type === "linkWithImage") {
+      bodyFormData.append("textJSON", createPostText);
+      // bodyFormData.append("textHTML", createPostText);
+    } else {
+      bodyFormData.append("textJSON", createPostText);
+      bodyFormData.append("textHTML", createPostText);
+    }
+    bodyFormData.append("nsfw", createPostFlags["nsfw"]);
+    bodyFormData.append("spoiler", createPostFlags["spoiler"]);
+    createPostAttachments.forEach((element) => {
+      bodyFormData.append("attachments", element, element.path);
+    });
+    bodyFormData.append("type", type);
+
     // Call the submit post api (Service)
     submitPost(dataFetch, bodyFormData, auth);
   };
@@ -69,6 +77,7 @@ const Main = () => {
         selectedDestination={selectedDestination}
         setSelectedDestination={setSelectedDestination}
       />
+      {error}
       <Tabs
         submitPost={handleSubmit}
         selectedDestination={selectedDestination}

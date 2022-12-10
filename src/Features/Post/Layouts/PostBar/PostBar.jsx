@@ -8,12 +8,12 @@ import {Container} from "./PostBar.styled"
  * PostPublisher Component 
  * @returns {React.Component} PostPublisher component
  */
-const PostBar = ({fullPost}) => {
+const PostBar = ({ fullPost, post }) => {
   return (
     <Container>
-      <PostPublisher fullPost={fullPost}/>
-      <PostContent/>
-      <PostFooter/>
+      <PostPublisher fullPost={fullPost} post={post} />
+      <PostContent post={post} />
+      <PostFooter post={post} />
     </Container>
   );
 };

@@ -9,6 +9,9 @@ import AfterSignUpLoading from "../AfterSignUpLoading/AfterSignUpLoading";
 
 // Import styled components
 import { StyledSpinner } from "./AfterSignUp.styled";
+import uploadUserPhoto from "Features/Authentication/Services/uploadUserPhoto";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 /**
  * AfterSignUp component that appear to the user after he signed up
@@ -48,10 +51,18 @@ const AfterSignUp = ({ setModalAfterSignUp }) => {
    *
    */
   const [loadingScreen, setLoadingScreen] = useState(false);
+
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
+  const auth = useAuth();
   /**
    * Function to submit the form
    */
   const submitForm = () => {
+    const bodyFormData = new FormData();
+    bodyFormData.append("action", "upload");
+    bodyFormData.append("attachment", profilePhoto, profilePhoto.path);
+    console.log(profilePhoto);
+    uploadUserPhoto(dataFetch, bodyFormData, auth);
     // TODO: submit the form
     // profilePhoto, interests, gender
     setGenderScreen(false);
@@ -62,6 +73,7 @@ const AfterSignUp = ({ setModalAfterSignUp }) => {
       setModalAfterSignUp(false);
     }, 3000);
   };
+  console.log(data);
   return (
     <>
       {genderScreen && (

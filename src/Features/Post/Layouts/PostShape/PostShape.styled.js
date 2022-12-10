@@ -8,16 +8,19 @@ export const Container = styled.div`
   max-width: 100%;
   margin: 0 auto;
   border-radius: 5px;
-  cursor: ${(p)=>!p.fullPost? "pointer" : "default" };
+  cursor: ${(p) => (!p.fullPost ? "pointer" : "default")};
   border: 1px solid transparent;
-
+  margin-bottom: 10px;
   &:hover {
-    border-color:${(p)=>!p.fullPost? "black !important" : "transparent"};
+    border-color: ${(p) => (!p.fullPost ? "black !important" : "transparent")};
+  }
+  @media (max-width: 960px) {
+    width: 100%;
   }
 `;
 
 export const PostBar = styled.div`
   width: 95%;
-  heigth: 100%;
+  height: 100%;
   background-color: red;
 `;

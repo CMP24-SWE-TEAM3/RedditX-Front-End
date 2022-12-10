@@ -16,7 +16,7 @@ export const loginApi = (dataFetch, objectData) => {
       typeof objectData.username === "string" &&
       typeof objectData.password === "string"
     ) {
-      console.log(objectData);
+     
       dataFetch({
         axiosInstance: axios,
         method: "POST",

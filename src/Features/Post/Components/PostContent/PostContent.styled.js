@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -25,4 +24,10 @@ export const ImageContainer = styled.div`
     max-width: 100%;
     max-height: 500px;
   }
+`;
+
+export const PostTitle = styled.h5`
+  width: 100%;
+  text-align: start;
+  color: ${({ theme }) => theme.color.primary};
 `;

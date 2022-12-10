@@ -5,9 +5,16 @@ import {
   MainContainer,
   AppContainer,
   AppHeader,
+  ContentPost,
+  Main,
+  Sidebar,
+  CreateCommunity,
+  RecentPostsContainer,
+  ChildFooter,
+  ScrollBtn,
 } from "./HomePage.styled";
 import CreatePost from "Layouts/CreatePost/CreatePost";
-import TopCommunities from "Layouts/CommunityCard/CommunityCard";
+import CommunityCard from "Layouts/CommunityCard/CommunityCard";
 import PopularPosts from "Layouts/PopularPosts/PopularPosts";
 import CreatePostSideBar from "Layouts/CreatePostSideBar/CreatePostSideBar";
 import Footer from "Layouts/Footer/Footer";
@@ -16,6 +23,11 @@ import RecentPosts from "Layouts/RecentPosts/RecentPosts";
 import PostShape from "Features/Post/Layouts/PostShape/PostShape";
 import Post from "Features/Post/Pages/Post/Post";
 import useDocumentTitle from "Hooks/useDocumentTitle";
+import { useEffect } from "react";
+import getNewPosts from "Services/getNewPosts";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import useFetchFunction from "Hooks/useFetchFunction";
+import ChooseDate from "../../Components/ChooseDate/ChooseDate";
 
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
@@ -49,6 +61,12 @@ let recentPost = [
 const HomePage = () => {
   // Change document title
   useDocumentTitle("Reddit - Dive into anything");
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
+  const auth = useAuth();
+  useEffect(() => {
+    getNewPosts(dataFetch, auth, 1, 50);
+  }, []);
+  console.log("fetched posts", data);
 
   const [showPost, setShowPost] = useState(false);
   // TODO: replace dummy data with post data
@@ -60,42 +78,44 @@ const HomePage = () => {
     <AppContainer>
       <AppHeader>
         <MainContainer data-testid="home-page-id">
-          <div className="main" />
+          <Main />
           <Container>
-            <div className={"content-posts"}>
+            <ContentPost>
               <CreatePost />
               <PopularPosts />
               <div
-                onClick={() => {
-                  setShowPost(true);
-                  handleRecentPosts();
-                }}
+                // onClick={() => {
+                //   setShowPost(true);
+                //   handleRecentPosts();
+                // }}
               >
-                <PostShape />
+                {!isLoading &&
+                  data.posts &&
+                  data.posts.map((post) => <PostShape post={post} />)}
               </div>
               <Post show={showPost} setShow={setShowPost} />
-            </div>
+            </ContentPost>
             <aside>
-              <div className={"sidebar"}>
-                <TopCommunities />
+              <Sidebar>
+                <CommunityCard />
 
-                <div className={"create-community"}>
+                <CreateCommunity>
                   <CreatePostSideBar />
-                </div>
-                <div className={"recent-posts"}>
+                </CreateCommunity>
+                <RecentPostsContainer>
                   <div>
                     <RecentPosts />
                   </div>
-                </div>
+                </RecentPostsContainer>
                 <footer>
-                  <div className={"child-footer"}>
+                  <ChildFooter>
                     <Footer />
-                  </div>
-                  <div className={"scroll-but"}>
+                  </ChildFooter>
+                  <ScrollBtn>
                     <ScrollButton />
-                  </div>
+                  </ScrollBtn>
                 </footer>
-              </div>
+              </Sidebar>
             </aside>
           </Container>
         </MainContainer>

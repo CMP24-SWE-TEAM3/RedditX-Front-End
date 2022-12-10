@@ -3,12 +3,14 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { DropdownContainer, Stars } from "./DropDownItem.styled";
 import CustomMenu from "Components/CustomMenu/CustomMenu";
 import db from "Data/db.json";
+import { useNavigate } from "react-router-dom";
 
 /**
  * Component that displays a dropdown item in left-hand side corner of the home page
  * @return {React.Component}
  */
 const DropDownItem = ({ dropDownItemRef, setDisplayMenu }) => {
+  const navigate = useNavigate();
   return (
     <DropdownContainer as={CustomMenu}>
       <Dropdown.ItemText as={"title"}>your communities</Dropdown.ItemText>
@@ -18,6 +20,7 @@ const DropDownItem = ({ dropDownItemRef, setDisplayMenu }) => {
             key={community.id}
             eventKey={community.id}
             onClick={() => {
+              navigate("/rules");
               setDisplayMenu(false);
             }}
           >{`r/${community.name}`}</Dropdown.Item>
