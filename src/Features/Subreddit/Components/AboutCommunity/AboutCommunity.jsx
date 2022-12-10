@@ -1,5 +1,6 @@
 import { BsShield, BsThreeDots } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { useIsModerator } from "Features/Subreddit/Contexts/IsModeratorProvider";
 
 import {
   AboutCommunityContainer,
@@ -13,7 +14,8 @@ import {
  * @returns {React.Component}
  */
 const AboutCommunity = () => {
-  let isMod = true;
+  // let isMod = true;
+  const {isMod} = useIsModerator();
 
   return (
     <AboutCommunityContainer>

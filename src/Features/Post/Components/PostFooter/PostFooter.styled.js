@@ -6,7 +6,7 @@ export const Container = styled.div`
   justify-content: start;
   align-items: center;
   background-color: ${({ theme }) => theme.background.primary};
-  padding: 0 20px 20px;
+  padding: 0 20px 0 20px;
   gap: 2%;
   max-width: 100%;
   flex-wrap: wrap;

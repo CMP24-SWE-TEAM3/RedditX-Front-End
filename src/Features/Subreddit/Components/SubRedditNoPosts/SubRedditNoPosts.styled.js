@@ -28,11 +28,11 @@ export const FakePostContainer = styled.div`
   position: relative;
   backface-visibility: hidden;
   transform: translateZ(0);
-  border: thin solid #ccc;
+  border: thin solid ${({theme})=>theme.borderColor.secondary};
   margin-bottom: -1px;
   z-index: 0;
   background-color: rgba(255, 255, 255, 0.8);
-  color: #878a8c;
+  color: ${({theme})=>theme.borderColor.primary};
   height: 88px;
 `;
 
@@ -63,7 +63,7 @@ export const Icon = styled.span`
   width: 24px;
   font-size: 16px;
   line-height: 24px;
-  color: #878a8c;
+  color: ${({theme})=>theme.borderColor.primary};
   vertical-align: middle;
   font-size: 20px;
   font-weight: 400;
@@ -90,7 +90,7 @@ export const AddPostInnerContainer = styled.div`
 `;
 
 export const NoPost = styled.div`
-  color: #1c1c1c;
+  color: ${({theme})=>theme.color.primary};
   font-weight: 500;
   margin: 16px;
   font-size: 18px;
@@ -98,7 +98,7 @@ export const NoPost = styled.div`
 `;
 
 export const BeFirst = styled.div`
-  color: #1c1c1c;
+  color: ${({theme})=>theme.color.primary};
   font-weight: 500;
   margin: 16px;
   font-size: 14px;
@@ -110,10 +110,10 @@ export const AddPostButton = styled(Link)`
   margin: 16px auto;
   width: 200px;
   position: relative;
-  background-color: #0079d3;
+  background-color: ${({theme})=>theme.color.secondary};
   text-decoration: none;
   border: none;
-  color: #fff;
+  color: ${({theme})=>theme.background.primary};
   font-family: "Noto Sans", Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -128,7 +128,7 @@ export const AddPostButton = styled(Link)`
   align-items: center;
 
   :hover{
-    background-color: #1483d6;
-    color: #fff;
+    background-color: ${({theme})=>theme.background.hover_background_button_blue};
+    color: ${({theme})=>theme.background.primary};
   }
 `;

@@ -6,6 +6,7 @@ import CommunityTopics from "../CommunityTopics/CommunityTopics";
 import OnlineMembers from "../OnlineMembers/OnlineMembers";
 import UserFlairPreview from "../UserFlairPreview/UserFlairPreview";
 import { Container, Content, Separator } from "./CommunityCard.styled";
+import { useIsModerator } from "Features/Subreddit/Contexts/IsModeratorProvider";
 
 /**
  * Community Card 
@@ -13,6 +14,9 @@ import { Container, Content, Separator } from "./CommunityCard.styled";
  * @returns {React.Component} 
  */
 const CommunityCard = () => {
+
+  const {isMod} = useIsModerator();
+
   return (
     <Container>
       <AboutCommunity />
@@ -20,7 +24,7 @@ const CommunityCard = () => {
         <CommunityDate />
         <Separator />
         <OnlineMembers />
-        {true && <CommunityTopics />}
+        {isMod && <CommunityTopics />}
         <Separator />
         <UserFlairPreview />
         <CommunityOptions />
