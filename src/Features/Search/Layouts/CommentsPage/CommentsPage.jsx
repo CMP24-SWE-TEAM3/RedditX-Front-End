@@ -15,6 +15,7 @@ import { CommunityCard } from "Features/Subreddit";
 import { SubRedditIDProvider } from "Features/Subreddit/Contexts/SubRedditIDProvider";
 import { SubRedditProvider } from "Features/Subreddit/Contexts/SubRedditProvider";
 import { useState, useContext } from "react";
+import { IsModeratorProvider } from "Features/Subreddit/Contexts/IsModeratorProvider.js";
 /**
  * Component that render the CommentsPage component and Contains Comment item.
  * @Component
@@ -30,24 +31,26 @@ const CommentsPage = ({ CommentLists }) => {
     return (
       <SubRedditProvider>
         <SubRedditIDProvider>
-          <Container>
-            <OuterContainer>
-              <InnerContainer>
-                <List>
-                  {CommentsNumber !== 0 &&
-                    CommentLists.results.map((comment) => (
-                      <Comment comment={comment} key={comment._id} />
-                    ))}
-                  {CommentsNumber === 0 && <NotFound />}
-                </List>
-              </InnerContainer>
-            </OuterContainer>
-            {ctx.isSubreddit && (
-              <div className="side-cards">
-                <CommunityCard />
-              </div>
-            )}
-          </Container>
+          <IsModeratorProvider>
+            <Container>
+              <OuterContainer>
+                <InnerContainer>
+                  <List>
+                    {CommentsNumber !== 0 &&
+                      CommentLists.results.map((comment) => (
+                        <Comment comment={comment} key={comment._id} />
+                      ))}
+                    {CommentsNumber === 0 && <NotFound />}
+                  </List>
+                </InnerContainer>
+              </OuterContainer>
+              {ctx.isSubreddit && (
+                <div className="side-cards">
+                  <CommunityCard />
+                </div>
+              )}
+            </Container>
+          </IsModeratorProvider>
         </SubRedditIDProvider>
       </SubRedditProvider>
     );
