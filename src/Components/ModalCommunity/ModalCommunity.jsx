@@ -65,13 +65,13 @@ const ModalCommunity = ({ show, close }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     createCommunity(fetchData, auth, {
-      communityName: communityName,
+      communityName: `t5_+${communityName}`,
       type: currentRadioValue,
       nsfw: currentCheckBoxValue,
     });
-    alert(`Radio button ${currentRadioValue}`);
-    alert(`CheckBox button ${currentCheckBoxValue}`);
-    alert(`The Community name you entered was: ${communityName}`);
+    // alert(`Radio button ${currentRadioValue}`);
+    // alert(`CheckBox button ${currentCheckBoxValue}`);
+    // alert(`The Community name you entered was: ${communityName}`);
   };
 
   return (

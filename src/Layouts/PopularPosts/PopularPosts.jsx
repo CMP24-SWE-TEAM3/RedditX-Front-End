@@ -3,27 +3,30 @@ import React, { useState } from "react";
 import HotButton from "Components/HotButton/HotButton";
 import { Container } from "./PopularPosts.styled";
 import NewButton from "Components/NewButton/NewButton";
-import TopButton from "Components/TopButton/TopBtn";
+import TopButton from "Components/TopButton/TopButton";
 import DotButton from "Components/DotButton/DotButton";
-import { HiFire } from "react-icons/hi";
-import { RiRocketLine } from "react-icons/ri";
-import ChooseDate from "../../Components/ChooseDate/ChooseDate";
+import ChooseDate from "Components/ChooseDate/ChooseDate";
+import BestButton from "Components/BestButton/BestButton";
 
 /**
  * Component that displays a list of posts from a category list view
  * @returns {React.Component}
  */
 const PopularPost = () => {
-  const [showDate, setShowDate] = useState(false);
+  const [showDate, setShowDate] = useState(true);
+  const [clickedBtn, setClickedBtn] = useState("1");
+  const handleClicked = (event) => {
+    setClickedBtn(event.target.id);
+    // console.log(event.target.id);
+  };
   return (
     <Container>
-      <HotButton ico={<RiRocketLine size={20} />} name={"Best"} />
-      <HotButton ico={<HiFire size={21} />} name={"Hot"} />
-      <NewButton />
-      <TopButton setShowDate={setShowDate} />
-      <ChooseDate />
+      <BestButton handleClicked={handleClicked} clickedBtn={clickedBtn} />
+      <HotButton handleClicked={handleClicked} clickedBtn={clickedBtn} />
+      <NewButton handleClicked={handleClicked} clickedBtn={clickedBtn} />
+      <TopButton handleClicked={handleClicked} clickedBtn={clickedBtn} />
+      {showDate && <ChooseDate />}
       <DotButton />
-      {/*<CategoryButton/>*/}
     </Container>
   );
 };

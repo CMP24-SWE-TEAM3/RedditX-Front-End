@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
+export const NewBtn = styled.button`
   width: 75.36px;
   height: 32px;
   border: none;
@@ -8,9 +8,13 @@ export const Button = styled.button`
   position: relative;
   top: 0;
   left: 0;
-  background-color: ${({ theme }) => theme.background.primary};
+  background-color: ${({ theme, clickedBtn }) =>
+    clickedBtn === "3"
+      ? theme.background.post_background
+      : theme.background.primary};
+  color: ${({ theme, clickedBtn }) =>
+    clickedBtn === "3" ? theme.btnColor.primary : theme.color.muted};
   border-radius: 20px;
-  margin: 0.2em;
 
   &:hover {
     background-color: ${(props) => props.theme.background.muted};
@@ -21,7 +25,6 @@ export const Button = styled.button`
 `;
 export const Word = styled.span`
   padding-left: 4px;
-  color: #878a8c;
   font-size: 14px;
   font-weight: 500;
   text-transform: capitalize;
@@ -30,8 +33,4 @@ export const Word = styled.span`
   white-space: normal;
   text-align: left;
   padding-top: 6px;
-`;
-export const Ico = styled.span`
-  color: #878a8c;
-  margin: 0.12em;
 `;
