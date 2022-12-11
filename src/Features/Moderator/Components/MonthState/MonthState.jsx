@@ -1,0 +1,85 @@
+import { TableContainer } from "./MonthState.styled";
+const MonthState = () => {
+  return (
+    <TableContainer bordered>
+      <thead>
+        <tr>
+          <th>MONTH</th>
+          <th>PAGEVIEWS</th>
+          <th>UNIQUES</th>
+          <th>MEMBERS JOINED</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>December</td>
+          <td>30</td>
+          <td>1</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>November</td>
+          <td>5</td>
+          <td>3</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>September</td>
+          <td>7</td>
+          <td>21</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>August</td>
+          <td>5</td>
+          <td>3</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>July</td>
+          <td>9</td>
+          <td>3</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>June</td>
+          <td>7</td>
+          <td>3</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>May</td>
+          <td>71</td>
+          <td>3</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>April</td>
+          <td>11</td>
+          <td>3</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>March</td>
+          <td>12</td>
+          <td>3</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>February</td>
+          <td>17</td>
+          <td>3</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>January</td>
+          <td>64</td>
+          <td>3</td>
+          <td>1</td>
+        </tr>
+      </tbody>
+    </TableContainer>
+  );
+};
+
+export default MonthState;
