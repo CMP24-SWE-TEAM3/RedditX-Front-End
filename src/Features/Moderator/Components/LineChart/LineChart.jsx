@@ -6,14 +6,14 @@ import { Chart, LineContainer } from "./LineChart.styled";
  * @returns {React.Component}
  */
 const LineChart = () => {
+  // function which contains datasets of members to display on chart
   const data = () => {
     return {
       labels: ["January", "February", "March", "April", "May", "June", "July"],
       datasets: [
         {
-          backgroundColor: "rgba(151, 187, 205, 0.2)",
-          borderColor: "rgba(151, 187, 205, 1)",
-          pointBackgroundColor: "rgba(151, 187, 205, 1)",
+          borderColor: "rgb(255 176 0)",
+          pointBackgroundColor: "rgb(255 176 0)",
           pointBorderColor: `${({ theme }) => theme.categoryColor.text}`,
           data: [1, 0.1, 0.3, 0.7, 0.45, 0.1, 0.12, 0.9, 0.6],
         },

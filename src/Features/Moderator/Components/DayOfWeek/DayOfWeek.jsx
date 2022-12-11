@@ -1,4 +1,4 @@
-import { TableContainer, HeadTable } from "./DayOfWeek.styled";
+import { TableContainer } from "./DayOfWeek.styled";
 const DayOfWeek = () => {
   return (
     <TableContainer bordered>

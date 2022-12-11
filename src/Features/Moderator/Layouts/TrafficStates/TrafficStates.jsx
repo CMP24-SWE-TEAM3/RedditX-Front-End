@@ -37,7 +37,7 @@ const TrafficStates = () => {
     <Container>
       <HeaderGraph />
       <ContainerBody>
-        <MemberBtn>Member</MemberBtn>
+        <MemberBtn>Members</MemberBtn>
         <Results />
         <GraphContainer>
           <MembersLabel>Members</MembersLabel>
