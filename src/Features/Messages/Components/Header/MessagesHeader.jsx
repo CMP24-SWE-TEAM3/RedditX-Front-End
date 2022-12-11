@@ -10,12 +10,19 @@ import {
   SecondaryLI,
   SecondaryLink,
   Body,
-} from "./Header.styled";
+} from "./MessagesHeader.styled";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 
-function Header() {
+/**
+ * Component that contains the header of the Messages page
+ *
+ * @Component
+ * @returns {React.Component}
+ */
+
+function MessagesHeader() {
   let location = useLocation();
   let type = location.pathname.split("/")[2];
   const [allHeader, setAllHeader] = useState(type === "sent" || type === "compose" ? false : true);
@@ -79,4 +86,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default MessagesHeader;

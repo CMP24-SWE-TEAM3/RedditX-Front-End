@@ -44,6 +44,12 @@ const messagesData = [
     },
 ];
 
+/**
+ * Component that contains the Unread Messages Panel
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const Unread = ()=>{
 const [eachMessage, setEachMessage] = useState(messagesData);
 

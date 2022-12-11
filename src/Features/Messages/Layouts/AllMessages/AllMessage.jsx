@@ -58,6 +58,12 @@ const messagesData = [
   },
 ];
 
+/**
+ * Component that contains the All Messages Panel
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 function AllMessagesTypes() {
   const [eachMessage, setEachMessage] = useState(messagesData);
   const Message = eachMessage.map((item) => {

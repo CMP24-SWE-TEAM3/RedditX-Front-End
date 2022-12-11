@@ -26,7 +26,7 @@ import {
 } from "./Community.styled";
 
 /**
- * Component that contains the header of the community leaderboard page
+ * Component that contains the community items of the community leaderboard page
  *
  * @Component
  * @param {boolean} isJoined - Boolean showing whether the user joined that community or not

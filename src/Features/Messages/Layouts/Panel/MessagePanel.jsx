@@ -30,6 +30,13 @@ const messagesData = [
     block: false,
   },
 ];
+
+/**
+ * Component that contains the Messages Panel
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 function MessageBannel() {
   const [eachMessage, setEachMessage] = useState(messagesData);
 

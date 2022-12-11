@@ -1,4 +1,4 @@
-import Header from "../Components/Header/Header";
+import MessagesHeader from "../Components/Header/MessagesHeader";
 import MessageItem from "../Layouts/AllMessages/AllMessage";
 import MessageBannel from "../Layouts/Panel/MessagePanel";
 import UserMentions from "../Layouts/Mentions/UsernameMentions";
@@ -8,10 +8,17 @@ import Unread from "../Layouts/Unread/Unread";
 import Footer from "Layouts/Footer/Footer";
 import { Routes, Route } from "react-router-dom";
 import PostReplay from "../Layouts/Posts/PostReply";
+
+/**
+ * Component that contains the Messages Page
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 function Messages() {
   return (
     <>
-      <Header />
+      <MessagesHeader />
       <Routes>
         <Route
           path="/"

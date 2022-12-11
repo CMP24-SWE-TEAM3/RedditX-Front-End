@@ -24,6 +24,22 @@ import downVote from "../../Utils/Downvote";
 import markUnread from "../../Utils/MarkUnread";
 import readed from "../../Utils/Read";
 
+/**
+ * Component that contains the Post Reply item
+ *
+ * @Component
+ * @param {Function} changeMessage - Function that changes the contents of the current message
+ * @param {string} aurthor - Message Sender
+ * @param {string} title - Message Title
+ * @param {Date} time - Time the message was sent
+ * @param {string} msg - The Message Text
+ * @param {boolean} admin - Whether the message was sent by an admin
+ * @param {boolean} read - Whether the message was read or not
+ * @param {string} upvote - Indicates Upvote status of the comment
+ * @param {boolean} block - Whether the message was sent by a blocked user
+ * @param {number} id - Id of the message
+ * @returns {React.Component}
+ */
 const PostReplayItem = ({
   changeMessage,
   aurthor,

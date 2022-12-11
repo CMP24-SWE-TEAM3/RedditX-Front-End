@@ -26,6 +26,13 @@ const messagesData = [
     block: false,
   },
 ];
+
+/**
+ * Component that contains the Username Mention Panel
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 function UsernameMentions() {
   const [eachMessage, setEachMessage] = useState(messagesData);
   const Message = eachMessage.map((item) => {

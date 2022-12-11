@@ -17,8 +17,13 @@ import {
   Error,
 } from "./SendMessage.styled";
 import { useState } from "react";
-import { CgLayoutGrid } from "react-icons/cg";
 
+/**
+ * Component that contains Compose Message
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 function SendAMessage() {
   const [formData, setFormData] = useState({
     from: "",

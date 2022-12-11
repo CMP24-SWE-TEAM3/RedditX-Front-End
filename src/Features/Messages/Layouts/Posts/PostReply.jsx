@@ -26,6 +26,13 @@ const messagesData = [
     block: false,
   },
 ];
+
+/**
+ * Component that contains the Post Replies Panel
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 function PostReplay() {
   const [eachMessage, setEachMessage] = useState(messagesData);
   const Message = eachMessage.map((item) => {

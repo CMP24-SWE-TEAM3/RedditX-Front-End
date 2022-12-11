@@ -18,6 +18,23 @@ import ReportModal from "../ReportModal/ReportModal";
 import markUnread from "../../Utils/MarkUnread";
 import readed from "../../Utils/Read";
 
+
+/**
+ * Component that contains the ordinary message item
+ *
+ * @Component
+ * @param {Function} changeMessage - Function that changes the contents of the current message
+ * @param {string} aurthor - Message Sender
+ * @param {string} title - Message Title
+ * @param {Date} time - Time the message was sent
+ * @param {string} msg - The Message Text
+ * @param {boolean} admin - Whether the message was sent by an admin
+ * @param {boolean} read - Whether the message was read or not
+ * @param {boolean} deleted - Whether the message was deleted or not
+ * @param {boolean} block - Whether the message was sent by a blocked user
+ * @param {number} id - Id of the message
+ * @returns {React.Component}
+ */
 const NormalMessageAll = ({
   changeMessage,
   aurthor,
