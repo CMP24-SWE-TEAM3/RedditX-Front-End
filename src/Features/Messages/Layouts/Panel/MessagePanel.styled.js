@@ -15,7 +15,7 @@ export const PageContainer = styled.div`
   margin: 20px auto;
   width: 70%;
   min-width: 700px;
-  background: ${({ theme }) => theme.canvas};
   transition: 0.3s;
+  background: ${({ theme }) => theme.canvas};
   font: normal x-small verdana, arial, helvetica, sans-serif;
 `;

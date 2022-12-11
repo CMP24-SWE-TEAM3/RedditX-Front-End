@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SentMessageItem from "../../Components/SentMessageItem/SentMessageItem";
-import { EmbeddedPage, PageContainer } from "../../Components/MessagesPanel/MessagePanel.styled";
+import { EmbeddedPage, PageContainer } from "./SentMessages.styled";
 const messagesData = [
     {
       author: "Mohamed",

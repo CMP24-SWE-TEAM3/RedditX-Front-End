@@ -1,5 +1,17 @@
 import styled from "styled-components";
 
+export const MessageWithAu = styled.div`
+  padding-left: 35px;
+`;
+
+export const ArrowsDiv = styled.div`
+  float: left;
+  margin-right: 7px;
+  margin-left: 7px;
+  background: transparent;
+  overflow: hidden;
+`;
+
 export const OddItems = styled.div`
   background-color: ${({ theme }) => theme.background.lightMuted};
   transition: 0.3s;
@@ -8,6 +20,60 @@ export const OddItems = styled.div`
   &.even {
     background-color: ${({ theme }) => theme.background.primary};
   }
+`;
+
+export const MessagesWithBtns = styled.div`
+  color: ${({ theme }) => theme.color.primary};
+  margin-left: 10px;
+  border-left: 2px dashed ${({ theme }) => theme.color.initialBorderColor};
+  transition: 0.3s;
+  padding-bottom: 10px;
+  width: 100%;
+  &.expanded {
+    display: inline-block;
+  }
+  &.collapsed {
+    display: none;
+  }
+`;
+
+export const Visted = styled.div`
+  &.read-before {
+    background-color: ${({ theme }) => theme.lineColor.primary};
+    border-color: ${({ theme }) => theme.lineColor.primary};
+    color: ${({ theme }) => theme.color.primary};
+    transition: 0.3s;
+    width: 100%;
+  }
+`;
+
+export const AreYouSure = styled.div`
+  display: none;
+  &.active {
+    display: inline;
+  }
+`;
+
+export const BtnWarning = styled.span`
+  font-size: x-small;
+  color: red;
+`;
+
+export const ToggleExpan = styled.a`
+  text-decoration: none;
+  margin-right: 3px;
+  color: ${({ theme }) => theme.color.frame};
+  transition: 0.3s;
+  cursor: pointer;
+`;
+
+export const Msg = styled.div`
+  display: block;
+  margin: 5px 0 5px 15px;
+  line-height: 1.5em;
+  font-size: 0.9rem;
+  font-weight: 400;
+  max-width: 60em;
 `;
 
 export const ListBtns = styled.ul`
@@ -37,6 +103,9 @@ export const BtnsLinks = styled.a`
   text-decoration: none;
   cursor: pointer;
   line-height: 1.6em;
+  &.active {
+    display: none;
+  }
   &:hover {
     color: #888;
     text-decoration: underline;
@@ -59,28 +128,16 @@ export const SubjectText = styled.span`
 export const Tagline = styled.p`
   width: 100%;
   margin-bottom: 5px;
-  margin-top: 9px;
   padding-left: 14px;
   float: left;
   color: ${({ theme }) => theme.borderColor.primary};
   transition: 0.3s;
   font-weight: inherit;
 `;
-
-export const Msg = styled.div`
-  display: block;
-  margin: 5px 0 5px 15px;
-  line-height: 1.5em;
-  font-size: 0.9rem;
-  font-weight: 400;
-  max-width: 60em;
-`;
-
 export const TimeTag = styled(Tagline)`
   display: inline;
   float: none;
   margin: 0 5px;
-
   &.active&::before {
     content: " [A]";
     margin: 0 5px;
@@ -92,13 +149,12 @@ export const Author = styled.a`
   margin-right: -15px;
   text-decoration: none;
   cursor: pointer;
-  color: ${({ theme }) => theme.lineColor.frame};
+  color: ${({ theme }) => theme.color.frame};
   transition: 0.3s;
   &:hover {
-    color: ${({ theme }) => theme.lineColor.frame};
+    color: ${({ theme }) => theme.color.frame};
     text-decoration: underline;
   }
-
   &.admin {
     color: #ff0011;
   }
@@ -106,6 +162,10 @@ export const Author = styled.a`
   &::before {
     content: "/u/";
   }
+`;
+export const Expand = styled.a`
+  margin-right: 3px;
+  display: none;
 `;
 
 export const MessageDetails = styled.div`

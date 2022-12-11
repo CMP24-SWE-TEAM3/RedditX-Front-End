@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
     OddItems,
     ListBtns,
@@ -11,7 +10,7 @@ import {
     Author,
     MessageDetails,
     TimeTag,
-  } from "../MessagesItems/MessageItem.styled";
+  } from "./SentMessageItem.styled";
 
 const SentMessageItem = ({id, subject, author, msg, time})=>{
 
@@ -24,17 +23,12 @@ const SentMessageItem = ({id, subject, author, msg, time})=>{
               <SubjectText>{subject}:</SubjectText>
             </Subject>
             <Tagline>
-              from <Author className="admin visted">{author}</Author>
+              to <Author>{author}</Author>
               <TimeTag>
                 <time dateTime="20/10/2022">{time.toDateString()} </time>
               </TimeTag>
             </Tagline>
               <Msg>{msg}</Msg>
-              <ListBtns>
-                <Btns>
-                  <BtnsLinks>Permalink</BtnsLinks>
-                </Btns>
-              </ListBtns>
           </MessageDetails>
         </OddItems>
       );

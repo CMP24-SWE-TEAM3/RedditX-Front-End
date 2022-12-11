@@ -53,21 +53,21 @@ function Header() {
           <HeadSecondaryMargin>
             <HeadSecondaryUL>
               <SecondaryLI>
-                <SecondaryLink to={`/message/inbox`}>All</SecondaryLink>
+                <SecondaryLink to={`/message/inbox/all`}>All</SecondaryLink>
               </SecondaryLI>
               <SecondaryLI>
-                <SecondaryLink to={`/message/unread`}>Unread</SecondaryLink>
+                <SecondaryLink to={`/message/inbox/unread`}>Unread</SecondaryLink>
               </SecondaryLI>
               <SecondaryLI>
-                <SecondaryLink to={`/message/messages`}>Messages</SecondaryLink>
+                <SecondaryLink to={`/message/inbox/messages`}>Messages</SecondaryLink>
               </SecondaryLI>
               <SecondaryLI>
-                <SecondaryLink to={`/message/selfreply`}>
+                <SecondaryLink to={`/message/inbox/selfreply`}>
                   Post Replies
                 </SecondaryLink>
               </SecondaryLI>
               <SecondaryLI>
-                <SecondaryLink to={`/message/mentions`}>
+                <SecondaryLink to={`/message/inbox/mentions`}>
                   Username Mentions
                 </SecondaryLink>
               </SecondaryLI>
