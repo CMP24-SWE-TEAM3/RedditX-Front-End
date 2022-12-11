@@ -1,8 +1,8 @@
 // imports
 import React from "react";
-import { BestBtn, Word } from "./BestButton,styled";
+import { BestBtn, Word, NavLinkBtn } from "./BestButton,styled";
 import { RiRocketLine } from "react-icons/ri";
-
+import { useNavigate } from "react-router-dom";
 /**
  * Component that displays a list of posts on the homepage categorized as hot posts
  *
