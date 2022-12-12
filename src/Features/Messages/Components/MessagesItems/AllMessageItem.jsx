@@ -79,12 +79,12 @@ const NormalMessageAll = ({
           <SubjectText>{title}:</SubjectText>
         </Subject>
         <Tagline>
-          from <Author className={admin ? "admin" : ""}>{aurthor}</Author>
+          from <Author data-testid= {"author-element"} className={admin ? "admin" : ""}>{aurthor}</Author>
           <TimeTag className={admin ? "active" : ""}>
             <time dateTime="20/10/2022">{time} </time>
           </TimeTag>
         </Tagline>
-        <Visted className={read ? "" : "read-before"}>
+        <Visted data-testid = {"read-test"} className={read ? "" : "read-before"}>
           <Msg>{msg}</Msg>
           <ListBtns>
             <Btns>

@@ -96,7 +96,7 @@ const UsernameMentionItem = ({
           <Tagline>
             <Author className={admin ? "admin" : ""}>{aurthor}</Author>
             <TimeTag className={admin ? "active" : ""}>
-              <time dateTime="20/10/2022">{time}</time>
+              <time dateTime="20/10/2022">{time.to}</time>
             </TimeTag>
           </Tagline>
           <MessagesWithBtns>
