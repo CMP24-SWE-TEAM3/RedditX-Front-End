@@ -30,12 +30,12 @@ import {
   BackButton,
 } from "./LayoutTabs.styled";
 import { useState } from "react";
-import Rules from "../Rules/Rules";
+import Rules from "Features/Moderator/Pages/Rules/Rules";
 import TrafficStates from "Features/Moderator/Pages/TrafficStates/TrafficStates";
 import FlairPage from "Features/Moderator/Pages/FlairPage/FlairPage";
-import ApprovedPage from "../ApprovedPage/ApprovedPage";
-import MutedPage from "../MutedPage/MutedPage";
-import BannedPage from "../BannedPage/BannedPage";
+import ApprovedPage from "Features/Moderator/Layouts/ApprovedPage/ApprovedPage";
+import MutedPage from "Features/Moderator/Layouts/MutedPage/MutedPage";
+import BannedPage from "Features/Moderator/Layouts/BannedPage/BannedPage";
 
 const paths = {
   ModQueue: "mod-queue",
