@@ -7,6 +7,11 @@ export const TableContainer = styled(Table)`
     font-family: Noto Sans, Arial, sans-serif !important;
     font-weight: 700 !important;
   }
+  thead:first-child tr {
+    th:first-child {
+      display: flex !important;
+    }
+  }
   tr {
     font-family: Noto Sans, Arial, sans-serif;
     font-size: 14px !important;
@@ -38,4 +43,11 @@ export const HeadTable = styled.tr`
   background-color: red;
   height: 40px;
   width: 100%;
+`;
+export const SortIcon = styled.span`
+  display: inline-flex;
+  align-items: end;
+  flex: 1 !important;
+  justify-content: flex-end;
+  cursor: pointer;
 `;

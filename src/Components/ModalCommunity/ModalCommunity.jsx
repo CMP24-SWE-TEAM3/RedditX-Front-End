@@ -59,19 +59,18 @@ const ModalCommunity = ({ show, close }) => {
   };
 
   /**
-   * function that handle form after submitting modal's form
+   * Function to handle create community
    * @param event
    */
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
+
     createCommunity(fetchData, auth, {
       communityName: `t5_+${communityName}`,
       type: currentRadioValue,
       nsfw: currentCheckBoxValue,
     });
-    // alert(`Radio button ${currentRadioValue}`);
-    // alert(`CheckBox button ${currentCheckBoxValue}`);
-    // alert(`The Community name you entered was: ${communityName}`);
   };
 
   return (

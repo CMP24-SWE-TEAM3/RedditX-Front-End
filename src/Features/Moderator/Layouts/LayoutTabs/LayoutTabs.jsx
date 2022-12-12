@@ -31,13 +31,11 @@ import {
 } from "./LayoutTabs.styled";
 import { useState } from "react";
 import Rules from "../Rules/Rules";
-import TrafficStates from "Features/Moderator/Layouts/TrafficStates/TrafficStates";
+import TrafficStates from "Features/Moderator/Pages/TrafficStates/TrafficStates";
 import FlairPage from "Features/Moderator/Pages/FlairPage/FlairPage";
 import ApprovedPage from "../ApprovedPage/ApprovedPage";
 import MutedPage from "../MutedPage/MutedPage";
 import BannedPage from "../BannedPage/BannedPage";
-
-import RulesTab from "Features/Moderator/Components/RuleTab/RuleTab";
 
 const paths = {
   ModQueue: "mod-queue",
