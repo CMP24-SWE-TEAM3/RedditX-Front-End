@@ -17,30 +17,35 @@ exports[`Drop Down Item Component this is a test for Drop Down Item Component 1`
   <DropdownItem
     eventKey="1"
     key="1"
+    onClick={[Function]}
   >
     r/announcements
   </DropdownItem>
   <DropdownItem
     eventKey="2"
     key="2"
+    onClick={[Function]}
   >
     r/Egypt
   </DropdownItem>
   <DropdownItem
     eventKey="3"
     key="3"
+    onClick={[Function]}
   >
     r/politics
   </DropdownItem>
   <DropdownItem
     eventKey="4"
     key="4"
+    onClick={[Function]}
   >
     r/reactjs
   </DropdownItem>
   <DropdownItem
     eventKey="5"
     key="5"
+    onClick={[Function]}
   >
     r/Futurology
   </DropdownItem>
@@ -52,24 +57,28 @@ exports[`Drop Down Item Component this is a test for Drop Down Item Component 1`
   <DropdownItem
     eventKey="6"
     key="6"
+    onClick={[Function]}
   >
     Home
   </DropdownItem>
   <DropdownItem
     eventKey="7"
     key="7"
+    onClick={[Function]}
   >
     Popular
   </DropdownItem>
   <DropdownItem
     eventKey="8"
     key="8"
+    onClick={[Function]}
   >
     All
   </DropdownItem>
   <DropdownItem
     eventKey="9"
     key="9"
+    onClick={[Function]}
   >
     Reddit Live
   </DropdownItem>
@@ -81,66 +90,77 @@ exports[`Drop Down Item Component this is a test for Drop Down Item Component 1`
   <DropdownItem
     eventKey="10"
     key="10"
+    onClick={[Function]}
   >
     User Settings
   </DropdownItem>
   <DropdownItem
     eventKey="11"
     key="11"
+    onClick={[Function]}
   >
     Messages
   </DropdownItem>
   <DropdownItem
     eventKey="12"
     key="12"
+    onClick={[Function]}
   >
     Create Post
   </DropdownItem>
   <DropdownItem
     eventKey="13"
     key="13"
+    onClick={[Function]}
   >
     Top Communities
   </DropdownItem>
   <DropdownItem
     eventKey="14"
     key="14"
+    onClick={[Function]}
   >
     Notifications
   </DropdownItem>
   <DropdownItem
     eventKey="15"
     key="15"
+    onClick={[Function]}
   >
     Community Hubs
   </DropdownItem>
   <DropdownItem
     eventKey="16"
     key="16"
+    onClick={[Function]}
   >
     Coins
   </DropdownItem>
   <DropdownItem
     eventKey="17"
     key="17"
+    onClick={[Function]}
   >
     Premium
   </DropdownItem>
   <DropdownItem
     eventKey="18"
     key="18"
+    onClick={[Function]}
   >
     Avatar
   </DropdownItem>
   <DropdownItem
     eventKey="19"
     key="19"
+    onClick={[Function]}
   >
     Talk
   </DropdownItem>
   <DropdownItem
     eventKey="20"
     key="20"
+    onClick={[Function]}
   >
     Predictions
   </DropdownItem>

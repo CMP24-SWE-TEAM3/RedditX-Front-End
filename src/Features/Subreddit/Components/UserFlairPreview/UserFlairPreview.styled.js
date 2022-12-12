@@ -20,13 +20,13 @@ export const CreatePost = styled(Link)`
   font-weight: 700;
   padding: 4px 16px;
   position: relative;
-  background-color: #0079d3;
+  background-color: ${({ theme }) => theme.color.secondary};
   border: none;
-  color: #fff;
+  color: ${({ theme }) => theme.background.primary};
 
   :hover {
-    background-color: #1483d6;
-    color: #fff;
+    background-color: ${({ theme }) => theme.background.hover_background_button_blue};
+    color: ${({ theme }) => theme.background.primary};
   }
 `;
 
@@ -43,6 +43,7 @@ export const FlairPreview = styled.div`
   text-transform: uppercase;
   justify-content: space-between;
   align-items: center;
+  color: ${({ theme }) => theme.color.primary};
 
   button {
     padding: 0;
@@ -51,7 +52,7 @@ export const FlairPreview = styled.div`
     text-align: center;
     position: relative;
     border: 1px solid transparent;
-    color: #0079d3;
+    color: ${({ theme }) => theme.color.secondary};
     background: transparent;
     border-radius: 50%;
     min-height: 25px;
@@ -120,7 +121,7 @@ export const Name = styled.div`
     font-size: 12px;
     font-weight: 500;
     line-height: 16px;
-    color: #1a1a1b;
+    color: ${({ theme }) => theme.color.titleText_of_link};
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

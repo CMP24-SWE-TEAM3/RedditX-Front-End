@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import {
@@ -10,11 +9,19 @@ import {
   FormText,
   ReportLabel,
   ReportDefault,
-  ButtonContainer,
   Footer,
+  AddRuleBtn,
+  CancelBtn,
+  DeleteBtn,
 } from "./RuleModal.styled";
 
-const RuleModal = ({ showModal, closeModal, setShowModal }) => {
+const RuleModal = ({
+  showModal,
+  closeModal,
+  setShowModal,
+  showEditModal,
+  setShowEditModal,
+}) => {
   // const [show, setShow] = useState(false);
   const [rule, setRule] = useState("");
   const [reasonRule, setReasonRule] = useState("");
@@ -44,6 +51,7 @@ const RuleModal = ({ showModal, closeModal, setShowModal }) => {
         setDescription("");
         setReasonRule("");
         setCurrentRadioValue("posts-comments");
+        setShowEditModal(false);
       }}
     >
       <Modal.Header closeButton>
@@ -149,14 +157,19 @@ const RuleModal = ({ showModal, closeModal, setShowModal }) => {
         </Form>
       </Modal.Body>
       <Footer>
-        <ButtonContainer onClick={() => setShowModal(false)} deleteBtn={0}>
-          Add new rule
-        </ButtonContainer>
-        <ButtonContainer onClick={() => setShowModal(false)} deleteBtn={0}>
+        {!showEditModal && (
+          <AddRuleBtn addRule={rule.length}>Add new rule</AddRuleBtn>
+        )}
+        {showEditModal && <AddRuleBtn addRule={rule.length}>Save</AddRuleBtn>}
+        <CancelBtn
+          onClick={() => {
+            setShowModal(false);
+            setShowEditModal(false);
+          }}
+        >
           cancel
-        </ButtonContainer>
-        {/*TODO: delete button*/}
-        <ButtonContainer deleteBtn={1}>Delete</ButtonContainer>
+        </CancelBtn>
+        <DeleteBtn show={showEditModal}>Delete</DeleteBtn>
       </Footer>
     </ModalContainer>
   );

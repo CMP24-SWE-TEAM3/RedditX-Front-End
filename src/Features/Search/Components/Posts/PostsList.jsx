@@ -3,10 +3,6 @@ import NotFound from "../NotFound/NotFound";
 import PostItem from "../Post/Post";
 import { ContainerPostsList } from "./PostsList.styled";
 import { useContext } from "react";
-// // Import api
-// import axios from "API/axios";
-// import useFetch from "Hooks/useFetch";
-
 /**
  * Component that contains the Postslist component and the PostslistItems.
  *

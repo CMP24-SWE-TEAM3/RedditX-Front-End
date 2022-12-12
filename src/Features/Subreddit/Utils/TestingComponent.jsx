@@ -1,5 +1,5 @@
 // Import react router dom
-import { BrowserRouter} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 // Import themes
 import darkTheme from "Theme/darkTheme";
 import defaultTheme from "Theme/defaultTheme";

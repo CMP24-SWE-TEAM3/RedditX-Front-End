@@ -2,7 +2,8 @@ import Form from "react-bootstrap/Form";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  border-top: 1px solid rgba(26, 26, 27, 0.07);
+  border-top: 1px solid ${({ theme }) => theme.lineColor.primary}
+    /*rgba(26, 26, 27, 0.07)*/;
   margin-top: 16px;
   padding-top: 16px;
 
@@ -35,6 +36,7 @@ export const OptionsButtons = styled.div`
   box-sizing: border-box;
   border-radius: 20px;
   cursor: pointer;
+  color: ${({ theme }) => theme.color.primary};
 
   :hover,
   :focus {
@@ -52,8 +54,13 @@ export const CommunityTheme = styled.div`
   align-items: center;
   margin: 8px 0;
 
+  label {
+    color: ${({ theme }) => theme.color.primary};
+  }
+
   span {
     margin-right: 8px;
+    color: ${({ theme }) => theme.color.primary};
   }
 `;
 
@@ -69,6 +76,7 @@ export const StyledForm = styled(Form)`
     height: 24px;
     /* margin-top: 0.25em;*/
   }
+  
   form-check-input:checked {
     background-color: ${({ theme }) => theme.color.secondary};
     border-color: ${({ theme }) => theme.color.secondary};

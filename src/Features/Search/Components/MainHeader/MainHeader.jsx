@@ -4,6 +4,10 @@ import ResponsiveNavbar from "../ResponsiveNavbar/ResponsiveNavbar";
 import SafeSearch from "../SafeSearch/SafeSearch";
 import { MainLinks } from "./MainHeader.styled";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import SearchContext from "Features/Search/Contexts/SearchWordContext/Search-context";
+import { useContext } from "react";
+import { AiOutlineArrowRight } from "react-icons/ai";
 /**
  * Component that contains the Main Links.
  *
@@ -11,6 +15,8 @@ import { useState } from "react";
  * @returns {React.Component}
  */
 const Links = ({ ActiveLink, setActiveLink }) => {
+  const ctx = useContext(SearchContext);
+  const navigate = useNavigate();
   return (
     <MainLinks>
       <div className="links">
@@ -33,26 +39,48 @@ const Links = ({ ActiveLink, setActiveLink }) => {
               Comments
             </button>
           </NavLink>
-          <NavLink to="/search/communities">
-            <button
-              onClick={() => {
-                setActiveLink("Communities");
-              }}
-            >
-              Communities
-            </button>
-          </NavLink>
-          <NavLink to="/search/people">
-            <button
-              onClick={() => {
-                setActiveLink("People");
-              }}
-            >
-              People
-            </button>
-          </NavLink>
+          {!ctx.isSubreddit && (
+            <NavLink to="/search/communities">
+              <button
+                onClick={() => {
+                  setActiveLink("Communities");
+                }}
+              >
+                Communities
+              </button>
+            </NavLink>
+          )}
+          {!ctx.isSubreddit && (
+            <NavLink to="/search/people">
+              <button
+                onClick={() => {
+                  setActiveLink("People");
+                }}
+              >
+                People
+              </button>
+            </NavLink>
+          )}
         </div>
         <ResponsiveNavbar act={ActiveLink} />
+        {ctx.isSubreddit && (
+          <div className="isSub">
+            <Link
+              className="isSubLink"
+              onClick={(e) => {
+                e.preventDefault();
+                ctx.isSubredditHandler(false);
+                navigate("/search/posts");
+              }}
+            >
+              <span className="isSubSpan1">Show results from</span>
+              <p className="isSubP">all of Reddit</p>
+              <span className="isSubSpan2">
+                <AiOutlineArrowRight />
+              </span>
+            </Link>
+          </div>
+        )}
         <SafeSearch />
       </div>
     </MainLinks>

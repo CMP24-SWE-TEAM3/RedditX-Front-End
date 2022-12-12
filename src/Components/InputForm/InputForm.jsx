@@ -23,6 +23,8 @@ const InputForm = ({ setsShow, show }) => {
       // Cancel the default action, if needed
       event.preventDefault();
       ctx.wordHandler(event.target.value);
+      ctx.isSubredditHandler(true);
+      ctx.communityHandler("t5_imagePro235");
       navigate("/search/posts");
     }
   };

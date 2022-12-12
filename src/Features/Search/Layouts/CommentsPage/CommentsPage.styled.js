@@ -4,6 +4,13 @@ export const Container = styled.div`
   max-width: 100%;
   display: flex;
   padding-top: 8px;
+  & .side-cards {
+    display: block;
+
+    margin-left: 24px;
+    max-width: 312px;
+    flex: 0 0 312px;
+  }
 `;
 export const OuterContainer = styled.div`
   width: 100%;

@@ -30,6 +30,8 @@ import {
   BackButton,
 } from "./LayoutTabs.styled";
 import { useState } from "react";
+import Rules from "../Rules/Rules";
+import FlairPage from "Features/Moderator/Pages/FlairPage/FlairPage";
 import ApprovedPage from "../ApprovedPage/ApprovedPage";
 import MutedPage from "../MutedPage/MutedPage";
 import BannedPage from "../BannedPage/BannedPage";
@@ -229,12 +231,12 @@ function LayoutTabs({setModalShowInviteModerator, setModalShowApproveUser, setMo
             {moderatorId === paths.Spam && <div>Spam</div>}
             {moderatorId === paths.Edited && <div>Edited</div>}
             {moderatorId === paths.Unmoderated && <div>Unmoderated</div>}
+            {moderatorId === paths.Rules && <Rules />}
+            {moderatorId === paths.PostFlair && <FlairPage />}
             {moderatorId === paths.Banned && <div><BannedPage setModalShowBaneUser={setModalShowBaneUser}/></div>}
             {moderatorId === paths.Muted && <div><MutedPage setModalShowMuteUser={setModalShowMuteUser}/></div>}
             {moderatorId === paths.Approved && <div><ApprovedPage setModalShowApproveUser={setModalShowApproveUser}/></div>}
             {moderatorId === paths.Moderators && <ModeratorsPage setModalShowInviteModerator={setModalShowInviteModerator}/>}
-            {moderatorId === paths.PostFlair && <div>PostFlair</div>}
-            {moderatorId === paths.Rules && <Rules />}
             {moderatorId === paths.TrafficStates && <div>TrafficStates</div>}
             {moderatorId === paths.Community && <div><CommunitySettingsPage/></div>}
             {moderatorId === paths.PostsAndComments && (

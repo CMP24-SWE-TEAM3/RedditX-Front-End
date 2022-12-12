@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const AddDescription = styled.div`
   transition: all 0.1s linear 0s;
   display: block;
-  background-color: #f6f7f8;
+  background-color: ${({ theme }) => theme.background.lightMuted};
   border-radius: 4px;
   padding: 8px;
   margin-bottom: 12px;
@@ -33,6 +33,7 @@ export const BirthDay = styled.div`
     line-height: 18px;
     display: flex;
     flex-flow: row nowrap;
+    color: ${({ theme }) => theme.color.primary};
   }
 
   .icon {
@@ -46,7 +47,7 @@ export const BirthDay = styled.div`
   }
 
   .text {
-    color: #7c7c7c;
+    color: ${({ theme }) => theme.color.muted};
   }
 `;
 
@@ -67,6 +68,7 @@ export const Private = styled.div`
     font-weight: 400;
     line-height: 20px;
     width: 20px;
+    color: ${({ theme }) => theme.color.primary};
   }
 
   span.text {
@@ -74,6 +76,7 @@ export const Private = styled.div`
     font-size: 14px;
     font-weight: 400;
     line-height: 18px;
+    color: ${({ theme }) => theme.color.primary};
   }
 `;
 
@@ -188,10 +191,7 @@ export const SaveButton = styled.button`
 `;
 
 export const StaticDescriptionContainer = styled.div`
-margin-bottom: 8px;
-position: relative;
-color: ${({ theme }) => theme.color.primary}; 
+  margin-bottom: 8px;
+  position: relative;
+  color: ${({ theme }) => theme.color.primary};
 `;
-
-
-

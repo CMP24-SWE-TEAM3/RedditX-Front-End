@@ -1,9 +1,9 @@
-import {Container, Navbar, NavbarBrand} from "react-bootstrap";
+import { Container, Navbar, NavbarBrand } from "react-bootstrap";
 import styled from "styled-components";
 
 export const ContainerNav = styled(Container)`
   @media (min-width: 992px) {
-    max-width: 100% ;
+    max-width: 100%;
   }
   display: flex;
 
@@ -15,7 +15,6 @@ export const ContainerNav = styled(Container)`
     @media (max-width: 992px) {
       align-items: flex-start;
     }
-
   }
 
   .nav-link {
@@ -26,14 +25,13 @@ export const ContainerNav = styled(Container)`
   .nav-dropdown .nav-link {
     display: block !important;
   }
-
-`
+`;
 export const NavBarContent = styled(Navbar)`
   width: 100%;
-  background: ${({theme}) => theme.background.primary};
+  background: ${({ theme }) => theme.background.primary};
   --bs-navbar-toggler-border-color: unset !important;
   .navbar-toggler {
-   background: white;
+    background: white;
   }
 
   .navbar-toggler:focus {
@@ -45,17 +43,17 @@ export const NavBarContent = styled(Navbar)`
   }
 
   .drop-caret {
-    width: 17%
+    width: 17%;
   }
-`
+`;
 export const Span = styled.span`
   font-size: 16px;
   padding-left: 10px;
-  color:${({theme}) => theme.color.primary};
+  color: ${({ theme }) => theme.color.primary};
   @media (min-width: 992px) {
     display: none;
   }
-`
+`;
 
 export const AppHeader = styled.header`
   background-color: ${({ theme }) => theme.canvas};
@@ -67,8 +65,13 @@ export const AppHeader = styled.header`
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 `;
 
 export const AppContainer = styled.div`
   text-align: center;
+  height: 49px;
 `;

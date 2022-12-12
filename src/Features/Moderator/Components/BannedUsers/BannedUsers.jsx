@@ -26,7 +26,7 @@ const BannedUsers = ({ Moderator }) => {
       return mod._id.substring(3).toLowerCase().includes(searchField);
     });
     setFilterMonsters(newFilteredMonsters);
-  }, [Moderator,searchField]);
+  }, [Moderator, searchField]);
 
   const onSearchChange = (event) => {
     const searchFieldString = event.target.value.toLowerCase();
@@ -46,7 +46,11 @@ const BannedUsers = ({ Moderator }) => {
       </SearchContainer>
       <Container>
         {filteredMonsters.map((mod) => (
-          <ModeratorRow key={mod.userName} Moderator={mod} banned={true} ></ModeratorRow>
+          <ModeratorRow
+            key={mod._id}
+            Moderator={mod}
+            banned={true}
+          ></ModeratorRow>
         ))}
       </Container>
     </>

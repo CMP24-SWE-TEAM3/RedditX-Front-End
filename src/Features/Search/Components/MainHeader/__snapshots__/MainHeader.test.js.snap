@@ -1,52 +1,107 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`People Main Header this is a test for Main Header 1`] = `
-<styled.div>
-  <div
-    className="links"
+<BrowserRouter>
+  <Component
+    theme={
+      Object {
+        "arrowColor": Object {
+          "down": "#EA2700",
+          "up": "#46D160",
+        },
+        "background": Object {
+          "active": "#F6F7F8",
+          "card_hover": "#E3EDF6",
+          "comment": "#e9f5fd",
+          "fill": "#f6f7f878",
+          "header": "#f6f7f8",
+          "hover_background": "#f5fafd",
+          "hover_background_button_blue": "#1484d6",
+          "lightMuted": "#f6f7f8",
+          "muted": "#D3D3D3",
+          "pink": "#fb133a",
+          "post_background": "#f6f7f8",
+          "primary": "#fff",
+          "search_bar_background": "#f6f7f8",
+          "sideBarPost": "#f8f9fa",
+        },
+        "borderColor": Object {
+          "active": "#F6F7F8",
+          "card_hover": "#E3EDF6",
+          "comment": "#e9f5fd",
+          "fill": "#f6f7f878",
+          "hover_background_button_blue": "#1484d6",
+          "muted": "#878a8c80",
+          "post_background": "#f6f7f8",
+          "primary": "#878a8c",
+          "secondary": "#ccc",
+          "sideBtnHover": "#f5fafd",
+        },
+        "btnColor": Object {
+          "backColor": "#fff",
+          "primary": "#0079d3",
+          "secondary": "#0079d3",
+          "text": "#fff",
+        },
+        "button": Object {
+          "PostBorder": "#ccc",
+          "hoverBlue": "#0079d3e3",
+          "hoverLight": "#0079d312",
+          "muted": "#f6f7f8",
+          "secondary": "#f0f0f0",
+        },
+        "canvas": "#DAE0E6",
+        "categoryColor": Object {
+          "hover": "#f6f7f8",
+          "text": "#1c1c1c",
+        },
+        "color": Object {
+          "authParagraphColor": "#1a1a1b",
+          "baseButtonColor": "#fff",
+          "blueValid": "#24a0ed",
+          "borderColor": "#86888a",
+          "btnHover": "#3293db",
+          "danger": "#ea0027",
+          "errorColor": "#ea0027",
+          "gray": "#7c7c7c",
+          "initialBorderColor": "#e6e6e5",
+          "initialLabelColor": "#aeadad",
+          "lightOrange": "#ff585b",
+          "link": "#0079d3",
+          "logInBlueHovered": "#3394dc",
+          "logInButtonColorHovered": "#dc4a14",
+          "mainInputBackGroundColor": "#f6f7f8",
+          "mainInputColor": "black",
+          "muted": "#7c7c7c",
+          "orHeaderColor": "#93908e",
+          "orange": "#d93a00",
+          "pink": "#fb133a",
+          "primary": "#1c1c1c",
+          "secondary": "#0079d3",
+          "sideBarHeader": "#fff",
+          "signInWithFacebookColor": "#237df3",
+          "subColor": "#797b7d",
+          "titleText_of_link": "#1A1A1B",
+        },
+        "degree": Object {
+          "gradient": 0,
+        },
+        "id": "light",
+        "lineColor": Object {
+          "PostBorder": "#ccc",
+          "primary": "#edeff1",
+        },
+        "linecolor": Object {
+          "sideBorder": "#ccc",
+        },
+      }
+    }
   >
-    <div
-      className="inner-links"
-    >
-      <NavLink
-        to="/search/posts"
-      >
-        <button
-          onClick={[Function]}
-        >
-          Posts
-        </button>
-      </NavLink>
-      <NavLink
-        to="/search/comments"
-      >
-        <button
-          onClick={[Function]}
-        >
-          Comments
-        </button>
-      </NavLink>
-      <NavLink
-        to="/search/communities"
-      >
-        <button
-          onClick={[Function]}
-        >
-          Communities
-        </button>
-      </NavLink>
-      <NavLink
-        to="/search/people"
-      >
-        <button
-          onClick={[Function]}
-        >
-          People
-        </button>
-      </NavLink>
-    </div>
-    <ResponsiveNavbar />
-    <SafeSearch />
-  </div>
-</styled.div>
+    <SearchContextProvider>
+      <SafeContextProvider>
+        <Links />
+      </SafeContextProvider>
+    </SearchContextProvider>
+  </Component>
+</BrowserRouter>
 `;

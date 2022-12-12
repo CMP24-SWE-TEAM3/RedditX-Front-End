@@ -21,6 +21,7 @@ export const CommunityTopic = styled.div`
   font-weight: 500;
   line-height: 20px;
   margin-bottom: 4px;
+  color: ${({ theme }) => theme.color.primary};
   span.new {
     font-size: 12px;
     line-height: 16px;

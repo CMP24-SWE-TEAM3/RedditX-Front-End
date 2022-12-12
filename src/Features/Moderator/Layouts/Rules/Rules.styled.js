@@ -1,11 +1,9 @@
 import styled from "styled-components";
-import { Accordion } from "react-bootstrap";
 
-export const RuleTabContainer = styled(Accordion)`
+export const RuleTabContainer = styled.div`
   display: ${({ showRuleTabs }) => (showRuleTabs ? "none" : "inherit")};
 `;
-export const RulesContainer= styled.div
-`
-    margin:0 24px;
+export const RulesContainer = styled.div`
+  margin: 0 24px;
   overflow: hidden;
-`
+`;

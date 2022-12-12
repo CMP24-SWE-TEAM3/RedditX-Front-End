@@ -1,5 +1,5 @@
 import styled from "styled-components";
-export const Button = styled.button`
+export const HotBtn = styled.button`
   display: inline-flex;
   position: relative;
   width: 70px;
@@ -11,14 +11,17 @@ export const Button = styled.button`
   padding: 6px 8px;
   margin-right: 8px;
   border-radius: 1.5em;
-  background-color: ${({ theme }) => theme.background.post_background};
-  color: ${({ theme }) => theme.color.secondary};
+  background-color: ${({ theme, clickedBtn }) =>
+    clickedBtn === "2"
+      ? theme.background.post_background
+      : theme.background.primary};
+  color: ${({ theme, clickedBtn }) =>
+    clickedBtn === "2" ? theme.btnColor.primary : theme.color.muted};
 
   &:hover {
     background-color: ${({ theme }) => theme.background.muted};
   }
 `;
 export const Word = styled.span`
-  color: ${({ theme }) => theme.color.secondary};
   font-weight: 700;
 `;

@@ -37,9 +37,9 @@ const PostContent = ({ post }) => {
   return (
     <Container>
       <PostTitle>{post.title}</PostTitle>
-      {!isJsonString(post.text) && <Paragraph>{post.text}</Paragraph>}
-      {isJsonString(post.text) && <RichTextPostBody post={post} />}
-      {!isJsonString(post.text) && (
+      {!isJsonString(post.textJSON) && <Paragraph>{post.textJSON}</Paragraph>}
+      {isJsonString(post.textJSON) && <RichTextPostBody post={post} />}
+      {!isJsonString(post.textJSON) && (
         <ImageContainer>
           <Carousel
             activeIndex={index}

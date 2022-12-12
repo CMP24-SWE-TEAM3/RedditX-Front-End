@@ -20,10 +20,12 @@ export const ModalContainer = styled(Modal)`
       font-weight: 500;
       line-height: 20px;
     }
+
     .btn-close:focus {
       box-shadow: none !important;
     }
   }
+
   .modal-body {
     .form-control {
       :focus {
@@ -43,6 +45,7 @@ export const Characters = styled.p`
 export const FormCheck = styled.div`
   display: block;
   margin-bottom: 16px;
+
   p {
     font-family: Noto Sans, Arial, sans-serif;
     font-size: 14px;
@@ -91,19 +94,30 @@ export const ReportDefault = styled.div`
   font-weight: 400;
   line-height: 16px;
 `;
-export const ButtonContainer = styled(Button)`
+export const AddRuleBtn = styled.button`
   font-family: Noto Sans, Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: unset;
+  background-color: ${({ addRule, theme }) =>
+    addRule > 0 ? theme.color.secondary : theme.borderColor.muted};
   line-height: 17px;
   text-transform: unset;
   min-height: 32px;
   min-width: 32px;
   padding: 4px 16px;
-  cursor: not-allowed;
-  filter: grayscale(1);
-  color: ${({ theme }) => theme.borderColor.primary};
+
+  :hover {
+    background-color: ${({ theme, addRule }) =>
+      addRule > 0
+        ? theme.background.hover_background_button_blue
+        : theme.borderColor.secondary};
+  }
+
+  color: ${({ theme, addRule }) =>
+    addRule > 0 ? theme.lineColor.primary : theme.color.muted};
+  cursor: ${({ addRule }) =>
+    addRule > 0 ? "pointer" : "not-allowed"} !important;
   border: 1px solid ${({ theme }) => theme.btnColor.primary};
   margin-left: 16px;
   position: relative;
@@ -123,4 +137,58 @@ export const Footer = styled(ModalFooter)`
   justify-content: flex-start;
   display: flex;
   padding: 16px;
+`;
+
+export const CancelBtn = styled.button`
+  font-family: Noto Sans, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: unset;
+  line-height: 17px;
+  text-transform: unset;
+  min-height: 32px;
+  min-width: 32px;
+  padding: 4px 16px;
+
+  :hover {
+    background-color: ${({ theme }) => theme.borderColor.sideBtnHover};
+  }
+
+  color: ${({ theme }) => theme.color.muted};
+  border: 1px solid ${({ theme }) => theme.btnColor.primary};
+  margin-left: 16px;
+  position: relative;
+  align-items: center;
+  border-radius: 9999px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: auto;
+`;
+export const DeleteBtn = styled.button`
+  color: #ea0027;
+  margin-right: auto;
+  position: relative;
+  border: 1px solid transparent;
+  font-family: Noto Sans, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: unset;
+  line-height: 17px;
+  text-transform: unset;
+  min-height: 32px;
+  min-width: 32px;
+  padding: 4px 16px;
+  align-items: center;
+  border-radius: 9999px;
+  box-sizing: border-box;
+
+  display: ${({ show }) => (show ? "flex" : "none")};
+  justify-content: center;
+  text-align: center;
+  width: auto;
+  :hover {
+    background-color: ${({ theme }) => theme.borderColor.muted};
+  }
 `;

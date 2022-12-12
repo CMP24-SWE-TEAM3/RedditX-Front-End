@@ -31,11 +31,8 @@ const createCommunity = (fetchData, auth, objectData) => {
           },
         },
       });
-      return true;
     }
-    return false;
   }
-  return false;
 };
 
 export default createCommunity;

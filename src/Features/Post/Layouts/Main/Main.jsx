@@ -51,10 +51,13 @@ const Main = () => {
     // bodyFormData.append("flair", createPostFlairs);
     bodyFormData.append("title", createPostTitle);
     // TODO: remove letter "a" when the backend is fixed
-    bodyFormData.append(
-      "text",
-      createPostText.length === 0 ? "a" : createPostText
-    );
+    if (type === "linkWithImage") {
+      bodyFormData.append("textJSON", createPostText);
+      // bodyFormData.append("textHTML", createPostText);
+    } else {
+      bodyFormData.append("textJSON", createPostText);
+      bodyFormData.append("textHTML", createPostText);
+    }
     bodyFormData.append("nsfw", createPostFlags["nsfw"]);
     bodyFormData.append("spoiler", createPostFlags["spoiler"]);
     createPostAttachments.forEach((element) => {

@@ -3,6 +3,7 @@ import SubRedditBody from "Features/Subreddit/Components/SubRedditBody/SubReddit
 import SubRedditHeader from "Features/Subreddit/Components/SubRedditHeader/SubRedditHeader";
 import { SubRedditProvider } from "Features/Subreddit/Contexts/SubRedditProvider";
 import { SubRedditIDProvider } from "Features/Subreddit/Contexts/SubRedditIDProvider";
+import { IsModeratorProvider } from "Features/Subreddit/Contexts/IsModeratorProvider";
 import useDocumentTitle from "Hooks/useDocumentTitle";
 import { useState } from "react";
 import { InnerContainer, SubRedditContainer } from "./SubReddit.styled";
@@ -36,6 +37,7 @@ const SubReddit = () => {
   return (
     <SubRedditProvider>
       <SubRedditIDProvider>
+        <IsModeratorProvider>
         <SetSubReddit comm={id}>
           <SubRedditContainer>
             {/*<header>Navbar</header>*/}
@@ -50,6 +52,7 @@ const SubReddit = () => {
             </InnerContainer>
           </SubRedditContainer>
         </SetSubReddit>
+        </IsModeratorProvider>
       </SubRedditIDProvider>
     </SubRedditProvider>
   );

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
+export const TopBtn = styled.button`
   display: inline-flex;
   position: relative;
   width: 68.66px;
@@ -10,10 +10,14 @@ export const Button = styled.button`
   line-height: 17px;
   font-weight: 700;
   padding: 6px 8px;
-  margin: auto 3px auto 0;
+  margin: auto 10px auto 3px;
   border-radius: 1.5em;
-  background-color: ${({ theme }) => theme.background.primary};
-  color: ${({ theme }) => theme.color.muted};
+  background-color: ${({ theme, clickedBtn }) =>
+    clickedBtn === "4"
+      ? theme.background.post_background
+      : theme.background.primary};
+  color: ${({ theme, clickedBtn }) =>
+    clickedBtn === "4" ? theme.btnColor.primary : theme.color.muted};
 
   :hover {
     background-color: ${({ theme }) => theme.background.muted};
@@ -24,7 +28,6 @@ export const Button = styled.button`
 `;
 
 export const Word = styled.span`
-  color: ${({ theme }) => theme.lineColor.muted};
   padding-left: 6px;
   font-weight: 700;
 `;

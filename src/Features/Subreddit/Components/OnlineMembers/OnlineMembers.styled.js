@@ -15,6 +15,7 @@ export const Members = styled.div`
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;
+    color: ${({ theme }) => theme.color.primary};
   }
 
   p {
@@ -33,6 +34,7 @@ export const Online = styled.div`
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;
+    color: ${({ theme }) => theme.color.primary};
   }
 
   div::before {

@@ -10,7 +10,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.background.primary};
   max-width: 100%;
 `;
-export const Photo = styled.div`
+export const Photo = styled.img`
   background-image: url(${(p) => p.url});
   background-repeat: no-repeat;
   background-size: cover;

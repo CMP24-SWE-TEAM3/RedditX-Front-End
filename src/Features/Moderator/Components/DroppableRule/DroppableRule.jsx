@@ -1,6 +1,6 @@
 // import components
 import React from "react";
-import ReorderItem from "../ReorderItem/ReorderItem";
+import ReorderItem from "Features/Moderator/Components/ReorderItem/ReorderItem";
 import { DroppableContainer } from "./DroppableRule.styled";
 import { Droppable } from "react-beautiful-dnd";
 

@@ -16,7 +16,7 @@ export const Content = styled.div`
 `;
 
 export const Separator = styled.hr`
-  background-color: rgba(26, 26, 27, 0.07);
+  background-color: ${({theme})=>theme.lineColor.primary} /*rgba(26, 26, 27, 0.07)*/;
   border: none;
   height: 1px;
   margin: 16px 0;

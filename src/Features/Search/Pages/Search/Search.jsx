@@ -19,6 +19,9 @@ import fetchSubbcomm from "Features/Search/Services/fetchSubbcomm";
 import fetchPeopleFollowed from "Features/Search/Services/fetchPeopleFollowed";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import SearchContext from "Features/Search/Contexts/SearchWordContext/Search-context";
+import fetchPostsCommunity from "Features/Search/Services/fetchPostsCommunity";
+import fetchCommentsCommunity from "Features/Search/Services/fetchCommentsCommunity";
+
 /**
  * Component that contains the Search Page and the Main Links component and routes for the four pages Posts page, Comments page, Community page and People page.
  *
@@ -41,7 +44,7 @@ const Search = () => {
   //   fetchPosts(fetch);
   // }, []); // Only re-run the effect if count changes
   // Fetch Posts
-  // console.log(PostList);
+  console.log(PostList);
   // fetch Communities
   let [CommunityList, errorCommunity, loadingCommunity, fetchCommunity] =
     useFetchFunction();
@@ -76,14 +79,18 @@ const Search = () => {
   // const searchWord = "text";
   const ctx = useContext(SearchContext);
   useEffect(() => {
-    // ctx.wordHandler(searchWord);
-    fetchPosts(fetch, auth, ctx.word);
-    fetchComments(fetchComment, auth, ctx.word);
+    if (ctx.isSubreddit) {
+      fetchPostsCommunity(fetch, auth, ctx.word, ctx.community);
+      fetchCommentsCommunity(fetchComment, auth, ctx.word);
+    } else {
+      fetchPosts(fetch, auth, ctx.word);
+      fetchComments(fetchComment, auth, ctx.word);
+    }
     fetchCommunities(fetchCommunity, auth, ctx.word);
     fetchPeople(FB, auth, ctx.word);
     fetchSubbcomm(reloadSubCommunities, auth);
     fetchPeopleFollowed(fetchSub);
-  }, [ctx.word]); // Only re-run the effect if count changes
+  }, [ctx.word, ctx.isSubreddit, ctx.community]); // Only re-run the effect if count changes
   return (
     <Container>
       <div className="outer-container">

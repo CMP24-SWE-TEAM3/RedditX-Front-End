@@ -84,10 +84,10 @@ const HomePage = () => {
               <CreatePost />
               <PopularPosts />
               <div
-                // onClick={() => {
-                //   setShowPost(true);
-                //   handleRecentPosts();
-                // }}
+              // onClick={() => {
+              //   setShowPost(true);
+              //   handleRecentPosts();
+              // }}
               >
                 {!isLoading &&
                   data.posts &&

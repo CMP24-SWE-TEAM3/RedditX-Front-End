@@ -172,16 +172,16 @@ export const StyledDrop = styled(Dropdown)`
     display: flex;
   }
 
-  a.dropdown-item.active {
+  button.dropdown-item.active, a.dropdown-item.active {
     color: ${({ theme }) => theme.color.secondary};
     background-color: ${({ theme }) => theme.background.primary};
     :hover {
-      background-color: #e9f5fd;
+      background-color: ${({ theme }) => theme.background.comment};
       color: ${({ theme }) => theme.color.secondary};
     }
   }
 
-  a.dropdown-item {
+  button.dropdown-item, a.dropdown-item {
     box-sizing: border-box;
     padding: 8px;
     overflow: hidden;
@@ -194,19 +194,19 @@ export const StyledDrop = styled(Dropdown)`
 
     :hover,
     :focus-within {
-      background-color: #e9f5fd;
+      background-color: ${({ theme }) => theme.background.comment};
       color: ${({ theme }) => theme.color.primary};
     }
     .active {
       color: ${({ theme }) => theme.color.secondary};
       background-color: ${({ theme }) => theme.background.primary};
       :hover {
-        background-color: #e9f5fd;
+        background-color: ${({ theme }) => theme.background.comment};
         color: ${({ theme }) => theme.color.secondary};
       }
     }
     :hover {
-      background-color: #e9f5fd;
+      background-color: ${({ theme }) => theme.background.comment};
       color: ${({ theme }) => theme.color.primary};
     }
 
@@ -303,7 +303,7 @@ export const DotsDropdown = styled(Dropdown)`
 
       :hover,
       :focus {
-        background-color: #e9f5fd;
+        background-color: ${({ theme }) => theme.background.comment};
         color: ${({ theme }) => theme.color.primary};
       }
     }

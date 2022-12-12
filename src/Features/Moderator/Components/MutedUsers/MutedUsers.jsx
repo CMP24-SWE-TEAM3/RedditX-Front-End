@@ -21,12 +21,13 @@ const MutedUsers = ({ Moderator }) => {
   const [searchField, setSearchField] = useState("");
   const [filteredMonsters, setFilterMonsters] = useState(Moderator);
 
+  console.log(Moderator);
   useEffect(() => {
     const newFilteredMonsters = Moderator.filter((mod) => {
       return mod._id.substring(3).toLowerCase().includes(searchField);
     });
     setFilterMonsters(newFilteredMonsters);
-  }, [Moderator,searchField]);
+  }, [Moderator, searchField]);
 
   const onSearchChange = (event) => {
     const searchFieldString = event.target.value.toLowerCase();
@@ -46,7 +47,11 @@ const MutedUsers = ({ Moderator }) => {
       </SearchContainer>
       <Container>
         {filteredMonsters.map((mod) => (
-          <ModeratorRow key={mod.userName} Moderator={mod} muted={true}></ModeratorRow>
+          <ModeratorRow
+            key={mod._id}
+            Moderator={mod}
+            muted={true}
+          ></ModeratorRow>
         ))}
       </Container>
     </>

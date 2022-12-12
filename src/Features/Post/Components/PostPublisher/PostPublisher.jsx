@@ -15,6 +15,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import { useState } from "react";
 
 import { BsFillBellFill } from "react-icons/bs";
+import { BASE_URL } from "API/axios";
 
 /**
  * PostPublisher Component that is in the side of Post
@@ -50,10 +51,18 @@ const PostPublisher = ({ fullPost, post }) => {
   return (
     <Container>
       <InfoContainer>
-        <Photo url={url}></Photo>
+        <Photo
+          crossOrigin="anonymous"
+          src={`${
+            post.userID.avatar
+              ? `${BASE_URL}/users/files/${post.userID.avatar}`
+              : url
+          }`}
+          alt="user"
+        ></Photo>
         <Community>{communityName}</Community>
         <PublishBy>
-          . Posted by {post.userID} <Moment fromNow>{post.createdAt}</Moment>
+          . Posted by {post.userID._id} <Moment fromNow>{post.createdAt}</Moment>
         </PublishBy>
       </InfoContainer>
       {fullPost && (

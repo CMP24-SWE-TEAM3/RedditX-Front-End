@@ -2,6 +2,12 @@ import SearchContext from "Features/Search/Contexts/SearchWordContext/Search-con
 import logo from "../../Assets/telescope-snoo.png";
 import { ContainerNotFound } from "./NotFound.styled";
 import { useContext } from "react";
+/**
+ * Component that contains the NotFound Page
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const NotFound = () => {
   const ctx = useContext(SearchContext);
   return (
