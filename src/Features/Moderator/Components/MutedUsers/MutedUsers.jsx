@@ -23,7 +23,7 @@ const MutedUsers = ({ Moderator }) => {
 
   useEffect(() => {
     const newFilteredMonsters = Moderator.filter((mod) => {
-      return mod.userName.toLowerCase().includes(searchField);
+      return mod._id.substring(3).toLowerCase().includes(searchField);
     });
     setFilterMonsters(newFilteredMonsters);
   }, [Moderator,searchField]);

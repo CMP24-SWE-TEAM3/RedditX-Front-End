@@ -34,8 +34,11 @@ import ApprovedPage from "../ApprovedPage/ApprovedPage";
 import MutedPage from "../MutedPage/MutedPage";
 import BannedPage from "../BannedPage/BannedPage";
 
+import CommunitySettingsPage from "../CommunitySettingsPage/CommunitySettingsPage";
+
 
 import Rules from "Features/Moderator/Components/RuleTab/RuleTab";
+import PostsAndCommentsPage from "../PostsAndCommentsPage/PostsAndCommentsPage";
 
 const paths = {
   ModQueue: "mod-queue",
@@ -233,9 +236,9 @@ function LayoutTabs({setModalShowInviteModerator, setModalShowApproveUser, setMo
             {moderatorId === paths.PostFlair && <div>PostFlair</div>}
             {moderatorId === paths.Rules && <Rules />}
             {moderatorId === paths.TrafficStates && <div>TrafficStates</div>}
-            {moderatorId === paths.Community && <div>Community</div>}
+            {moderatorId === paths.Community && <div><CommunitySettingsPage/></div>}
             {moderatorId === paths.PostsAndComments && (
-              <div>PostsAndComments</div>
+              <div><PostsAndCommentsPage/></div>
             )}
           </Tab.Content>
         </ContentCol>
