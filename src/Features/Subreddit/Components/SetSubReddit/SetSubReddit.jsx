@@ -27,15 +27,15 @@ const SetSubReddit = ({ comm, children }) => {
     setIsMod(false);
   },[setIsMod])
 
-  // const [Community, error, isLoading, fetchData] = useFetchFunction();
-  // useEffect(() => {
-  //   getSubreddit(fetchData, comm ,auth );
-  // }, []);
-  // console.log(Community, "__", error, "__", isLoading);
+  const [Community, error, isLoading, fetchData] = useFetchFunction();
+  useEffect(() => {
+    getSubreddit(fetchData, comm ,auth );
+  }, []);
+  console.log(Community&&Community.things, "__", error, "__", isLoading);
 
-  // useEffect(() => {
-  //   setCommunity(Community);
-  // }, [Community]);
+  useEffect(() => {
+    Community &&  Community.things && Community.things.length && setCommunity(Community.things[0]);
+  }, [Community]);
 
   return <>{children}</>;
 };

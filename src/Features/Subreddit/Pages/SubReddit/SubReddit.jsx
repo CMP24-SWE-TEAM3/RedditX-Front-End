@@ -24,15 +24,7 @@ const SubReddit = () => {
   function joinHandler(e) {
     setIsJoined(e);
   }
-  const banner = {
-    color: "#33a8ff",
-    // url: "Features/Subreddit/Assets/tree.jpg",
-    url: "",
-  };
 
-  const info = {
-    name: "Subreddit",
-  };
 
   return (
     <SubRedditProvider>
@@ -43,8 +35,6 @@ const SubReddit = () => {
             {/*<header>Navbar</header>*/}
             <InnerContainer>
               <SubRedditHeader
-                banner={banner}
-                info={info}
                 isJoined={isJoined}
                 onJoin={joinHandler}
               />

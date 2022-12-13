@@ -1,4 +1,5 @@
 import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
+import { useEffect, useState } from "react";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { Container, Members, Online } from "./OnlineMembers.styled";
@@ -9,18 +10,24 @@ import { Container, Members, Online } from "./OnlineMembers.styled";
  * @returns {React.Component} 
  */
 const OnlineMembers = () => {
+  const [memberCount, setMemberCount] = useState(0);
   const {community} = useSubReddit();
+
+  useEffect(()=>{
+    community && community.members && setMemberCount(community.members.length);
+  },[community])
+
   // let members = community[0].memberCount;
   let onlineMembers = 5;
   return (
     <Container>
-      {community && community.length && community[0].memberCount && <OverlayTrigger
+      { memberCount !== 0 && <OverlayTrigger
         placement={"bottom"}
         delay="200"
-        overlay={community && community.length && community[0].memberCount && <Tooltip>{`${community[0].memberCount} Members`}</Tooltip>}
+        overlay={memberCount && <Tooltip>{`${memberCount} Members`}</Tooltip>}
       >
-        {<Members>
-          <div>{community && community.length && community[0].memberCount}</div>
+        {memberCount !== 0 && <Members>
+          <div>{ memberCount}</div>
           <p>Members</p>
         </Members>}
       </OverlayTrigger>}
