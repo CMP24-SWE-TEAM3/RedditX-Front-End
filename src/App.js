@@ -153,7 +153,7 @@ function App() {
                     }
                   />
                   <Route
-                    path="subreddit/:id"
+                    path="subreddit/:id/*"
                     element={
                       <RequireAuth>
                         <Navigation

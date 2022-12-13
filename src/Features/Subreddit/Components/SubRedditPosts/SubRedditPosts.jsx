@@ -5,6 +5,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import { useSubRedditID } from "Features/Subreddit/Contexts/SubRedditIDProvider";
 import getSubredditHotPosts from "Features/Subreddit/Services/getSubredditHotPosts";
 import SubRedditNoPosts from "Features/Subreddit/Components/SubRedditNoPosts/SubRedditNoPosts";
+import PostShape from "Features/Post/Layouts/PostShape/PostShape";
 
 const SubRedditPosts = ({ type }) => {
   const [pgNum, setPgNum] = useState(1);
@@ -59,11 +60,16 @@ const SubRedditPosts = ({ type }) => {
           if (p.length === i + 1) {
             return (
               <div ref={lastPostElementRef} key={i}>
-                {post.title}
+                {/* {post.title} */}
+                <PostShape post={post} />
               </div>
             );
           } else {
-            return <div key={i}>{post.title}</div>;
+            return (
+              <div key={i}>
+                <PostShape post={post} />
+              </div>
+            );
           }
         })}
       {p && p.length === 0 && !isLoading && <SubRedditNoPosts />}
