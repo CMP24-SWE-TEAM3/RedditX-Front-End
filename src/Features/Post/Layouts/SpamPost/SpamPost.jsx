@@ -1,25 +1,25 @@
 import VotingBar from "Features/Post/Components/VotingBar/VotingBar";
 import PostPublisher from "Features/Post/Components/PostPublisher/PostPublisher";
 import PostContent from "Features/Post/Components/PostContent/PostContent";
-import PostFooter from "Features/Post/Components/PostFooter/PostFooter";
+import SpamPostFooter from "Features/Post/Components/SpamPostFooter/SpamPostFooter";
 
-import { Container, ContentContainer } from "./PostShape.styled";
+import { Container, ContentContainer } from "./SpamPost.styled";
 
 /**
- * PostShape Component
- * @returns {React.Component} PostShape component
+ * SpamPost Component
+ * @returns {React.Component} SpamPost component
  */
-const PostShape = ({ fullPost, post }) => {
+const SpamPost = ({ fullPost, post }) => {
   return (
     <Container fullPost={fullPost}>
       <VotingBar number={post.votesCount} />
       <ContentContainer>
         <PostPublisher fullPost={fullPost} post={post} />
         <PostContent post={post} />
-        <PostFooter post={post} />
+        <SpamPostFooter post={post} />
       </ContentContainer>
     </Container>
   );
 };
 
-export default PostShape;
+export default SpamPost;

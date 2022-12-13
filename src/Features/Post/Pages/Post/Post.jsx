@@ -26,7 +26,7 @@ import Comment from "Features/Post/Components/Comment/Comment";
  * @param setShow
  * @return {React.Component}
  */
-const Post = ({ show, setShow }) => {
+const Post = ({ post, show, setShow }) => {
   // State for files in drat editor
   const [files, setFiles] = useState([]);
   // State for text in draft editor
@@ -86,7 +86,7 @@ const Post = ({ show, setShow }) => {
       <NavigationPost setHandleShowModal={setShow} />
       <ModalBodyContainer>
         <PostContent>
-          <PostShape fullPost={true} />
+          <PostShape post={post} fullPost={true} />
           <UserNameContainer>
             Comment as <UserName>Abdelrahman_Hamza</UserName>
           </UserNameContainer>

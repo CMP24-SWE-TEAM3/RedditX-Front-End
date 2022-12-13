@@ -69,6 +69,7 @@ const HomePage = () => {
   console.log("fetched posts", data);
 
   const [showPost, setShowPost] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
   // TODO: replace dummy data with post data
   // handle recent posts to append and delete from local storage
   const handleRecentPosts = () => {
@@ -83,17 +84,28 @@ const HomePage = () => {
             <ContentPost>
               <CreatePost />
               <PopularPosts />
-              <div
-              // onClick={() => {
-              //   setShowPost(true);
-              //   handleRecentPosts();
-              // }}
-              >
+              <div>
                 {!isLoading &&
                   data.posts &&
-                  data.posts.map((post) => <PostShape post={post} />)}
+                  data.posts.map((post) => (
+                    <div
+                      onClick={() => {
+                        setShowPost(true);
+                        setSelectedPost(post);
+                        handleRecentPosts();
+                      }}
+                    >
+                      <PostShape post={post} />
+                    </div>
+                  ))}
               </div>
-              <Post show={showPost} setShow={setShowPost} />
+              {selectedPost && (
+                <Post
+                  post={selectedPost}
+                  show={showPost}
+                  setShow={setShowPost}
+                />
+              )}
             </ContentPost>
             <aside>
               <Sidebar>

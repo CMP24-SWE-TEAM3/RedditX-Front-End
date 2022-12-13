@@ -36,11 +36,12 @@ import ApprovedPage from "../ApprovedPage/ApprovedPage";
 import MutedPage from "../MutedPage/MutedPage";
 import BannedPage from "../BannedPage/BannedPage";
 
-
 import RulesTab from "Features/Moderator/Components/RuleTab/RuleTab";
+import SpamQueue from "../SpamQueue/SpamQueue";
+import EditedQueue from "../EditedQueue/EditedQueue";
+import UnmoderatedQueue from "../UnmoderatedQueue/UnmoderatedQueue";
 
 const paths = {
-  ModQueue: "mod-queue",
   Spam: "spam",
   Edited: "edited",
   Unmoderated: "unmoderated",
@@ -54,7 +55,12 @@ const paths = {
   Community: "Community",
   PostsAndComments: "PostsAndComments",
 };
-function LayoutTabs({setModalShowInviteModerator, setModalShowApproveUser, setModalShowMuteUser, setModalShowBaneUser}) {
+function LayoutTabs({
+  setModalShowInviteModerator,
+  setModalShowApproveUser,
+  setModalShowMuteUser,
+  setModalShowBaneUser,
+}) {
   const [isCommunitySettings, setIsCommunitySettings] = useState(false);
   const { subredditId, moderatorId } = useParams();
   const getPath = (path) => {
@@ -67,7 +73,7 @@ function LayoutTabs({setModalShowInviteModerator, setModalShowApproveUser, setMo
           {isCommunitySettings && (
             <Nav variant="pills" className="flex-column">
               <BackButton
-                to={getPath(paths.ModQueue)}
+                to={getPath(paths.spam)}
                 onClick={() => setIsCommunitySettings(false)}
               >
                 <MdKeyboardArrowLeft size={30} />
@@ -97,14 +103,6 @@ function LayoutTabs({setModalShowInviteModerator, setModalShowApproveUser, setMo
                 <MdOutlineLibraryBooks size={22} />
                 <span> Queues </span>
               </CategoryTitle>
-              <Nav.Item>
-                <StyledNavLink
-                  to={getPath(paths.ModQueue)}
-                  selected={moderatorId === paths.ModQueue}
-                >
-                  Mod queue
-                </StyledNavLink>
-              </Nav.Item>
               <Nav.Item>
                 <StyledNavLink
                   to={getPath(paths.Spam)}
@@ -224,16 +222,33 @@ function LayoutTabs({setModalShowInviteModerator, setModalShowApproveUser, setMo
         </TabsCol>
         <ContentCol>
           <Tab.Content>
-            {moderatorId === paths.ModQueue && <div>Mod-queue</div>}
-            {moderatorId === paths.Spam && <div>Spam</div>}
-            {moderatorId === paths.Edited && <div>Edited</div>}
-            {moderatorId === paths.Unmoderated && <div>Unmoderated</div>}
+            {moderatorId === paths.Spam && <SpamQueue />}
+            {moderatorId === paths.Edited && <EditedQueue />}
+            {moderatorId === paths.Unmoderated && <UnmoderatedQueue />}
             {moderatorId === paths.Rules && <Rules />}
             {moderatorId === paths.PostFlair && <FlairPage />}
-            {moderatorId === paths.Banned && <div><BannedPage setModalShowBaneUser={setModalShowBaneUser}/></div>}
-            {moderatorId === paths.Muted && <div><MutedPage setModalShowMuteUser={setModalShowMuteUser}/></div>}
-            {moderatorId === paths.Approved && <div><ApprovedPage setModalShowApproveUser={setModalShowApproveUser}/></div>}
-            {moderatorId === paths.Moderators && <ModeratorsPage setModalShowInviteModerator={setModalShowInviteModerator}/>}
+            {moderatorId === paths.Banned && (
+              <div>
+                <BannedPage setModalShowBaneUser={setModalShowBaneUser} />
+              </div>
+            )}
+            {moderatorId === paths.Muted && (
+              <div>
+                <MutedPage setModalShowMuteUser={setModalShowMuteUser} />
+              </div>
+            )}
+            {moderatorId === paths.Approved && (
+              <div>
+                <ApprovedPage
+                  setModalShowApproveUser={setModalShowApproveUser}
+                />
+              </div>
+            )}
+            {moderatorId === paths.Moderators && (
+              <ModeratorsPage
+                setModalShowInviteModerator={setModalShowInviteModerator}
+              />
+            )}
             {moderatorId === paths.TrafficStates && <div>TrafficStates</div>}
             {moderatorId === paths.Community && <div>Community</div>}
             {moderatorId === paths.PostsAndComments && (

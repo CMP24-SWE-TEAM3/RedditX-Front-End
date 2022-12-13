@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`PostBar Component this is a test for PostBar Component 1`] = `
-<styled.div>
-  <PostPublisher />
-  <PostContent />
-  <PostFooter />
-</styled.div>
-`;
