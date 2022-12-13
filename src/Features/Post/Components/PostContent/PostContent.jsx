@@ -52,6 +52,7 @@ const PostContent = ({ post }) => {
               <span
                 onClick={(e) => {
                   e.stopPropagation();
+                  e.preventDefault();
                   setIndex(
                     index < post.attachments.length - 1 ? index + 1 : index
                   );
@@ -64,6 +65,7 @@ const PostContent = ({ post }) => {
               <span
                 onClick={(e) => {
                   e.stopPropagation();
+                  e.preventDefault();
                   setIndex(index > 0 ? index - 1 : index);
                 }}
                 aria-hidden="true"

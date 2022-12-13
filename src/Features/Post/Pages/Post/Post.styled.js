@@ -5,10 +5,7 @@ import { ModalBody } from "react-bootstrap";
 
 export const Container = styled(Modal)`
   height: 100%;
-  -webkit-overflow-scrolling: touch;
   width: 100%;
-  will-change: transform;
-  contain: layout style size;
   // styles of modal dialog body
   .modal-dialog {
     box-sizing: border-box;
