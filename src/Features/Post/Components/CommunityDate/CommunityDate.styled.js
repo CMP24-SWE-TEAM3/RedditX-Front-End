@@ -12,6 +12,7 @@ export const CommunityImage = styled.img`
   display: inline-block;
   margin-right: 10px;
   margin-bottom: 10px;
+  font-size: 10px;
 `;
 
 export const CommunityName = styled.h6`

@@ -12,26 +12,31 @@ import {
   Container,
   Content,
   Separator,
-  CommunityBanner,
+  BackgroundImage,
 } from "./CommunityCard.styled";
 
+import egyptImg from "Features/Post/Assets/Images/Backgorund-post.png";
+import { BASE_URL } from "API/axios";
 /**
  *
  * @returns {React.Component} CreatePost component
  */
-const CommunityCard = () => {
+const CommunityCard = ({ communityInfo }) => {
   // Context for selected submit destination
   const { submitDestination, setSubmitDestination } = useSubmitDestination();
 
   return (
     <Container>
-      <CommunityBanner />
+      <BackgroundImage
+        crossOrigin="anonymous"
+        src={`${BASE_URL}/subreddits/files/${communityInfo.banner}`}
+      />
       <Content>
-        <CommunityDate />
+        <CommunityDate communityInfo={communityInfo} />
         <Separator />
-        <OnlineMembers online={5} members={7} />
+        <OnlineMembers online={5} members={communityInfo.membersCnt} />
         <Separator />
-        <UserFlairPreview />
+        <UserFlairPreview flairList={communityInfo.flairList} />
         <CommunityOptions />
       </Content>
     </Container>
