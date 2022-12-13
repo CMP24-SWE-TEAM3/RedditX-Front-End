@@ -6,15 +6,13 @@ import {
   ButtonModal,
 } from "./ModalAfterCreateCommunity.styled";
 
-const ModalAfterCreateCommunity = () => {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
+const ModalAfterCreateCommunity = ({ showModal, setShowWelcomeModal }) => {
+  const handleClose = () => setShowWelcomeModal(false);
   const navigate = useNavigate();
 
   return (
     <ModalContainer
-      show={show}
+      show={showModal}
       onHide={handleClose}
       backdrop="static"
       keyboard={true}

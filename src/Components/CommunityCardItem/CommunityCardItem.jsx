@@ -22,7 +22,7 @@ import { FaAngleUp, FaAngleDown } from "react-icons/fa";
  */
 const CommunityCardItem = ({
   communityId,
-  communityDescription,
+  communityUserName,
   srIcon,
   community,
 }) => {
@@ -67,7 +67,7 @@ const CommunityCardItem = ({
             )}
             <CommunityNameContainer>
               <CommunityNameChild>
-                <h6>r/{communityDescription}</h6>
+                <h6>r/{communityUserName}</h6>
               </CommunityNameChild>
             </CommunityNameContainer>
             <JoinContainer>

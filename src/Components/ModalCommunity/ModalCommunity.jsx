@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Adult,
   AdultCheck,
@@ -34,7 +34,7 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
  * @returns {Modal} returns a modal that shows the user's create community form
  */
 
-const ModalCommunity = ({ show, close }) => {
+const ModalCommunity = ({ showModal, setShoweModal, close }) => {
   const auth = useAuth();
   // Fetch notifications
   // Call useFetchFunction hook to handle states: loading, error, data
@@ -42,7 +42,7 @@ const ModalCommunity = ({ show, close }) => {
   // Error: Contains error message when the request is failed
   // Data: the response data
   const [response, error, isLoading, fetchData] = useFetchFunction();
-  // console.log(response.status);
+  // console.log("Out==>", response);
 
   /**
    * state of the community which tracks string is shown in input filed in modal
@@ -53,19 +53,15 @@ const ModalCommunity = ({ show, close }) => {
   // state store if NSFW or not
   const [currentCheckBoxValue, setCurrentCheckBoxValue] = useState(false);
   // state handles show modal after create community
-  const [showWelcomeModal, seteShowWelcomeModal] = useState(false);
+  const [showWelcomeModal, setShowWelcomeModal] = useState(false);
+  /// state that handles if community is used or not
+  const [showUsedCommunity, setUsedCommunity] = useState(false);
   /**
    * function that controls length of string in modal's inputForm
    * @param event
    */
   const handlerChars = (event) => {
     setCommunityName(event.target.value);
-    if (
-      response.status !== "subreddit is already made" ||
-      response.status === undefined
-    )
-      seteShowWelcomeModal(false);
-    else seteShowWelcomeModal(true);
   };
 
   /**
@@ -75,16 +71,28 @@ const ModalCommunity = ({ show, close }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     createCommunity(fetchData, auth, {
-      name: `t5_+${communityName}`,
+      name: `t5_${communityName}`,
       type: currentRadioValue,
       over18: currentCheckBoxValue,
     });
   };
+  // effect if any change happened on response
+  useEffect(() => {
+    if (response.status === undefined) return;
+    console.log("Passed");
+    if (response.status === "subreddit is already made") setUsedCommunity(true);
+    else setUsedCommunity(false);
+
+    if (!showUsedCommunity) {
+      setShoweModal(false);
+      setShowWelcomeModal(true);
+    }
+  }, [response]);
 
   return (
     <>
       <ModalStyled
-        show={show}
+        show={showModal}
         onHide={() => {
           close();
           setCommunityName("");
@@ -119,7 +127,7 @@ const ModalCommunity = ({ show, close }) => {
               {21 - communityName.length} Characters remaining
             </AlarmInput>
 
-            {showWelcomeModal && (
+            {showUsedCommunity && (
               <UsedCommunity>
                 <span>Sorry, r/{communityName} is taken. Try another.</span>
               </UsedCommunity>
@@ -137,11 +145,11 @@ const ModalCommunity = ({ show, close }) => {
                 onChange={(e) => setCurrentRadioValue(e.target.value)}
                 defaultChecked={currentRadioValue === "public"}
               />
-              <LabelForm for="public">
+              <LabelForm htmlFor="public">
                 <Ico>
                   <BsFillPersonFill />
                 </Ico>
-                <FormCheckLabel for="public">Public</FormCheckLabel>
+                <FormCheckLabel htmlFor="public">Public</FormCheckLabel>
                 <Content>
                   Anyone can view, post, and comment to this community
                 </Content>
@@ -158,11 +166,11 @@ const ModalCommunity = ({ show, close }) => {
                 onChange={(e) => setCurrentRadioValue(e.target.value)}
                 defaultChecked={currentRadioValue === "restricted"}
               />
-              <LabelForm for="restricted">
+              <LabelForm htmlFor="restricted">
                 <Ico>
                   <VscEye />
                 </Ico>
-                <FormCheckLabel for="restricted">Restricted</FormCheckLabel>
+                <FormCheckLabel htmlFor="restricted">Restricted</FormCheckLabel>
                 <Content>
                   Anyone can view this community, but only approved users can
                   post
@@ -179,11 +187,11 @@ const ModalCommunity = ({ show, close }) => {
                 onChange={(e) => setCurrentRadioValue(e.target.value)}
                 defaultChecked={currentRadioValue === "private"}
               />
-              <LabelForm for="private">
+              <LabelForm htmlFor="private">
                 <Ico>
                   <HiLockClosed />
                 </Ico>
-                <FormCheckLabel for="private">Private</FormCheckLabel>
+                <FormCheckLabel htmlFor="private">Private</FormCheckLabel>
                 <Content>
                   Only approved users can view and submit to this community
                 </Content>
@@ -200,12 +208,20 @@ const ModalCommunity = ({ show, close }) => {
                 onChange={(e) => setCurrentCheckBoxValue(e.target.checked)}
               />
               <NSFW>NSFW</NSFW>
-              <FormCheckLabel for="nsfw">18+ year old community</FormCheckLabel>
+              <FormCheckLabel htmlFor="nsfw">
+                18+ year old community
+              </FormCheckLabel>
             </AdultCheck>
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <CloseBtn id={"close-button"} onClick={close}>
+          <CloseBtn
+            id={"close-button"}
+            onClick={() => {
+              close();
+              setCommunityName("");
+            }}
+          >
             Close
           </CloseBtn>
           <CreateBtn id={"create-community-form"} onClick={handleSubmit}>
@@ -213,7 +229,12 @@ const ModalCommunity = ({ show, close }) => {
           </CreateBtn>
         </Modal.Footer>
       </ModalStyled>
-      {showWelcomeModal && <ModalAfterCreateCommunity />}
+      {showWelcomeModal && (
+        <ModalAfterCreateCommunity
+          showModal={showWelcomeModal}
+          setShowWelcomeModal={setShowWelcomeModal}
+        />
+      )}
     </>
   );
 };
