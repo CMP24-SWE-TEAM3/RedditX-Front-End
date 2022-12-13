@@ -30,8 +30,6 @@ const Search = () => {
   const ctx = useContext(SearchContext);
   ctx.wordHandler(searchWord);
   useEffect(() => {
-    if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
-
     fetchCommunities(fetchCommunity, auth, ctx.word);
     fetchPeople(FB, auth, ctx.word);
   }, [ctx.word]);

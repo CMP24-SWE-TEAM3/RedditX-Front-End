@@ -208,3 +208,18 @@ export const CreateBtn = styled.button`
       theme.background.hover_background_button_blue};
   }
 `;
+export const UsedCommunity = styled.div`
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: red;
+  padding-top: 4px;
+  text-align: right;
+  display: flex;
+  margin: -32px 0 16px;
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+`;

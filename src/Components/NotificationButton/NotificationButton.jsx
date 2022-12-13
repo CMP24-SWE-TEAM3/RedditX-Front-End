@@ -82,7 +82,6 @@ const NotificationButton = () => {
   // Data: the response data
   const [notificationList, error, isLoading, fetchData] = useFetchFunction();
   useEffect(() => {
-    if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
     pushNotifications(fetchData, auth);
   }, []);
 
