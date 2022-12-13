@@ -30,7 +30,7 @@ export const MemberBtn = styled.button`
 
 export const GraphContainer = styled.div`
   display: flex;
-  max-height: 525px;
+  /* max-height: 525px; */
 `;
 export const MembersLabel = styled.span`
   font-size: 14px;

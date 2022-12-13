@@ -1,5 +1,6 @@
 import React from "react";
-import { Chart, LineContainer } from "./LineChart.styled";
+import { LineContainer } from "./LineChart.styled";
+import { CChart } from "@coreui/react-chartjs";
 
 /**
  * Component that displays chart with datasets of members
@@ -23,7 +24,7 @@ const LineChart = () => {
 
   return (
     <LineContainer>
-      <Chart
+      <CChart
         data={data()}
         options={{
           plugins: {
@@ -33,7 +34,7 @@ const LineChart = () => {
           },
         }}
         type="line"
-      ></Chart>
+      ></CChart>
     </LineContainer>
   );
 };
