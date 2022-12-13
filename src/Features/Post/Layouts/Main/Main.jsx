@@ -45,22 +45,21 @@ const Main = () => {
    * Function to handle submit the post
    * (Called when the user clicks on the submit button)
    */
-  const handleSubmit = (type) => {
+  const handleSubmit = ({
+    type = "linkWithImage",
+    textJSON = "",
+    textHTML = "",
+    attachments = [],
+  } = {}) => {
     var bodyFormData = new FormData();
     // bodyFormData.append("community", selectedDestination);
     // bodyFormData.append("flair", createPostFlairs);
     bodyFormData.append("title", createPostTitle);
-    // TODO: remove letter "a" when the backend is fixed
-    if (type === "linkWithImage") {
-      bodyFormData.append("textJSON", createPostText);
-      // bodyFormData.append("textHTML", createPostText);
-    } else {
-      bodyFormData.append("textJSON", createPostText);
-      bodyFormData.append("textHTML", createPostText);
-    }
+    bodyFormData.append("textJSON", textJSON);
+    bodyFormData.append("textHTML", textHTML);
     bodyFormData.append("nsfw", createPostFlags["nsfw"]);
     bodyFormData.append("spoiler", createPostFlags["spoiler"]);
-    createPostAttachments.forEach((element) => {
+    attachments.forEach((element) => {
       bodyFormData.append("attachments", element, element.path);
     });
     bodyFormData.append("type", type);

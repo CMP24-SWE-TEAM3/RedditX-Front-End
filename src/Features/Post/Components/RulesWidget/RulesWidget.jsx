@@ -70,7 +70,9 @@ const RulesWidget = ({ rules, communityId }) => {
   };
 
   return (
-    <WidgetContainer headerText={`r/${communityId.substring(3)}`}>
+    <WidgetContainer
+      headerText={`r/${communityId && communityId.substring(3)}`}
+    >
       {rules &&
         rules.map((rule, i) => {
           return (

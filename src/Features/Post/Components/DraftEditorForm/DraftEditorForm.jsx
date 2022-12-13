@@ -48,6 +48,9 @@ const DraftEditorForm = ({ submitPost }) => {
   // State for editor state (text)
   const [text, setText] = useState("");
 
+  // State for editor state (text)
+  const [textHTML, setTextHTML] = useState("");
+
   // State for flair
   const [flairIndex, setFlairIndex] = useState(null);
 
@@ -146,7 +149,12 @@ const DraftEditorForm = ({ submitPost }) => {
   const submitForm = () => {
     setCreatePostAttachments(files);
     setCreatePostText(text);
-    submitPost("linkWithImage");
+    submitPost({
+      type: "linkWithImage",
+      textJSON: text,
+      textHTML: textHTML,
+      attachments: files,
+    });
   };
   return (
     <>
@@ -180,6 +188,7 @@ const DraftEditorForm = ({ submitPost }) => {
           setFiles={setFiles}
           text={text}
           setText={setText}
+          setTextHTML={setTextHTML}
         />
         <PostFlagsWrapper flairHandler={setModalShow} />
         <SubmitButtons>
