@@ -13,12 +13,15 @@ import {
 import NavigationPost from "Features/Post/Components/NavigationPost/NavigationPost";
 import PostShape from "Features/Post/Layouts/PostShape/PostShape";
 import RulesWidget from "Features/Post/Components/RulesWidget/RulesWidget";
-import AboutPost from "Features/Post/Components/AboutPost/AboutPost";
 import ModeratorWidget from "Features/Post/Components/ModeratorWidget/ModeratorWidget";
 import RelatedCommunities from "Features/Post/Components/RelatedCommunities/RelatedCommunities";
 import CommentDraftEditor from "Features/Post/Components/CommentDarftEditor/CommentDarftEditor";
 import { useState, useEffect } from "react";
 import Comment from "Features/Post/Components/Comment/Comment";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import getCommunityInfo from "Features/Post/Services/getCommunityInfo";
+import CommunityCardPost from "Features/Post/Components/CommunityCardPost/CommunityCardPost";
 /**
  *
  * Component that displays post with comments , likes displayed on show modal
@@ -81,6 +84,12 @@ const Post = ({ post, show, setShow }) => {
       body: "lorem ipsum dolor sit amet",
     },
   ];
+  console.log("postpost", post);
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
+  const auth = useAuth();
+  useEffect(() => {
+    getCommunityInfo(dataFetch, "submitDestination", auth);
+  }, []);
   return (
     <Container show={show} onHide={setShow} backdrop={"true"}>
       <NavigationPost setHandleShowModal={setShow} />
@@ -88,7 +97,7 @@ const Post = ({ post, show, setShow }) => {
         <PostContent>
           <PostShape post={post} fullPost={true} />
           <UserNameContainer>
-            Comment as <UserName>Abdelrahman_Hamza</UserName>
+            Comment as <UserName>{auth.getUserName().substring(3)}</UserName>
           </UserNameContainer>
           <DraftEditorContainer>
             <CommentDraftEditor
@@ -106,8 +115,15 @@ const Post = ({ post, show, setShow }) => {
         </PostContent>
         <AsidePost>
           <AsidePostChild>
-            <AboutPost />
-            <RulesWidget />
+            {data && data.things && data.things[0] && !isLoading && (
+              <CommunityCardPost communityInfo={data.things[0]} />
+            )}
+            {data && data.things && data.things[0] && !isLoading && (
+              <RulesWidget
+                rules={data.things[0].communityRules}
+                communityId={data.things[0]._id}
+              />
+            )}
             <RelatedCommunities />
             <ModeratorWidget />
           </AsidePostChild>

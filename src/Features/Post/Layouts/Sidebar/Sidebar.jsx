@@ -26,7 +26,7 @@ const Sidebar = () => {
   useEffect(() => {
     getCommunityInfo(dataFetch, submitDestination, auth);
   }, []);
-  console.log("here", data);
+
   return (
     <Container>
       {submitDestination && (

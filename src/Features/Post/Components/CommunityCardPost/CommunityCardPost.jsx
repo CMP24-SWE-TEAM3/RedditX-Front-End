@@ -10,14 +10,26 @@ import {
   Content,
   Separator,
   BackgroundImage,
-} from "./CommunityCard.styled";
+  Button,
+} from "./CommunityCardPost.styled";
 
 import { BASE_URL } from "API/axios";
+import { useState } from "react";
 /**
  *
- * @returns {React.Component} CreatePost component
+ * @returns {React.Component} CommunityCardPost component
  */
-const CommunityCard = ({ communityInfo }) => {
+const CommunityCardPost = ({ communityInfo }) => {
+  const [toggleStatus, setToggleStatus] = useState("Joined");
+
+  const onMouseOver = (e) => {
+    e.preventDefault();
+    setToggleStatus("Leave");
+  };
+  const onMouseLeave = (e) => {
+    e.preventDefault();
+    setToggleStatus("Joined");
+  };
   return (
     <Container>
       <BackgroundImage
@@ -29,11 +41,15 @@ const CommunityCard = ({ communityInfo }) => {
         <Separator />
         <OnlineMembers online={5} members={communityInfo.membersCnt} />
         <Separator />
-        <UserFlairPreview flairList={communityInfo.flairList} />
+        <div>
+          <Button but={"1"} onMouseOver={onMouseOver} onMouseOut={onMouseLeave}>
+            {toggleStatus}
+          </Button>
+        </div>
         <CommunityOptions />
       </Content>
     </Container>
   );
 };
 
-export default CommunityCard;
+export default CommunityCardPost;
