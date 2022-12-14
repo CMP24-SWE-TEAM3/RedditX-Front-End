@@ -93,6 +93,9 @@ export const SubBtn = styled.button`
 `;
 export const CoverCommunity = styled.div`
   color: ${({ theme }) => theme.color.secondary};
+  position: relative;
+  text-align: center;
+  color: white;
 `;
 export const Filter = styled.div`
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0, transparent);
