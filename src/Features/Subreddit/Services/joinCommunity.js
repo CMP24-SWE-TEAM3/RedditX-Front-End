@@ -12,7 +12,7 @@ const joinCommunity = (fetchFunction, dataObject, auth) => {
     fetchFunction({
       axiosInstance: axios,
       method: 'POST',
-      url: '/api/user/subscribe',
+      url: "/api/user/subscribe",
       requestConfig: {
         data: dataObject,
         headers: {
