@@ -27,6 +27,7 @@ import { Button } from "react-bootstrap";
 // Import pages
 import { SubReddit, CommunityLeaderBoard, IndexPage } from "Features/Subreddit";
 import { CreatePost } from "Features/Post";
+import { Messages } from "Features/Messages";
 import Post from "Features/Post/Pages/Post/Post";
 import {
   ForgetPasswordPage,
@@ -62,6 +63,7 @@ import Moderator from "Features/Moderator/Pages/Moderator/Moderator";
 import Rules from "Features/Moderator/Layouts/Rules/Rules";
 import { EditContextProvider } from "Features/Moderator/Contexts/Safe-context";
 import { User } from "Features/User";
+import SettingsPage from "Features/settings/Pages/SettingsPage/SettingsPage";
 
 /**
  * The main app of our application it handles routing
@@ -307,6 +309,42 @@ function App() {
                         />
                         <User />
                       </>
+                    }
+                  />
+                  <Route
+                    path="settings/*"
+                    element={
+                      <>
+                        <Navigation
+                          toggleMode={handleToggleTheme}
+                          theme={JSON.parse(theme).id}
+                          modalShowLogIn={modalShowLogIn}
+                          setModalShowLogIn={setModalShowLogIn}
+                          modalShowSignUp={modalShowSignUp}
+                          setModalShowSignUp={setModalShowSignUp}
+                          modalAfterSignUp={modalAfterSignUp}
+                          setModalAfterSignUp={setModalAfterSignUp}
+                        />
+                        <SettingsPage />
+                      </>
+                    }
+                  />
+                  <Route
+                    path="message/*"
+                    element={
+                      <RequireAuth>
+                        <Navigation
+                          toggleMode={handleToggleTheme}
+                          theme={JSON.parse(theme).id}
+                          modalShowLogIn={modalShowLogIn}
+                          setModalShowLogIn={setModalShowLogIn}
+                          modalShowSignUp={modalShowSignUp}
+                          setModalShowSignUp={setModalShowSignUp}
+                          modalAfterSignUp={modalAfterSignUp}
+                          setModalAfterSignUp={setModalAfterSignUp}
+                        />
+                        <Messages />
+                      </RequireAuth>
                     }
                   />
                 </Routes>

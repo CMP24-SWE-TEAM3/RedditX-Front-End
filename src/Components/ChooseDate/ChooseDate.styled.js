@@ -184,7 +184,6 @@ export const StyledDrop = styled(Dropdown)`
     box-sizing: border-box;
     padding: 8px;
     overflow: hidden;
-    font-weight: 500px;
     color: ${({ theme }) => theme.borderColor.primary};
     line-height: 18px;
     max-height: 54px;
