@@ -45,15 +45,14 @@ const CommunityCard = () => {
               crossOrigin="anonymous"
               src={`${BASE_URL}/subreddits/files/${communityList.communities[0].banner}`}
             />
-          
 
-          <h2>
-            <Link href={"https://www.reddit.com/subreddits/leaderboard/"}>
-              Top
-              <span> Gaming </span>
-              Communities
-            </Link>
-          </h2>
+            <h2>
+              <Link href={"https://www.reddit.com/subreddits/leaderboard/"}>
+                Top
+                <span> Gaming </span>
+                Communities
+              </Link>
+            </h2>
           </Filter>
         </CoverCommunity>
       )}

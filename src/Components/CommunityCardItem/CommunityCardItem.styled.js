@@ -19,7 +19,6 @@ export const Item = styled.div`
 `;
 export const Number = styled.span`
   color: ${({ theme }) => theme.color.primary};
-  text-align: right;
   min-width: 20px;
   font-size: 14px;
   font-weight: 500;
@@ -31,6 +30,9 @@ export const Caret = styled.span`
   font-weight: 400;
   vertical-align: middle;
   margin: 8px;
+  svg {
+    vertical-align: initial;
+  }
 `;
 export const Image = styled.img`
   border: none;
@@ -106,5 +108,6 @@ export const JoinContainer = styled.div`
 `;
 export const HeaderLine = styled.hr`
   margin: 0.1px 0;
-  opacity: 0.1;
+  opacity: ${({ theme }) =>
+    theme.categoryColor.text === "#1c1c1c" ? "0.1" : "1.1"};
 `;

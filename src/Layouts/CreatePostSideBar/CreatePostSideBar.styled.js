@@ -74,8 +74,8 @@ export const Quote = styled.div`
 export const HeaderLine = styled.hr`
   background-color: rgb(26 26 27 / 7%);
   height: 1px;
-  margin: 16px 0;
-  opacity: 0.1;
+  opacity: ${({ theme }) =>
+    theme.categoryColor.text === "#1c1c1c" ? "0.1" : "2.3"};
 `;
 
 export const ButtonContainer = styled.div`
