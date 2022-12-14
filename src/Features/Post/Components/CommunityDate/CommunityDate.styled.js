@@ -13,6 +13,7 @@ export const CommunityImage = styled.img`
   margin-right: 10px;
   margin-bottom: 10px;
   font-size: 10px;
+  background-color: ${({ theme }) => theme.color.secondary};
 `;
 
 export const CommunityName = styled.h6`

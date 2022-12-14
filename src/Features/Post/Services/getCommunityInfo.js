@@ -13,7 +13,7 @@ function getCommunityInfo(fetchData, subreddit, auth) {
   fetchData({
     axiosInstance: axios,
     method: "GET",
-    url: `/api/r/info?id=t5_imagePro235`,
+    url: `/api/r/info?id=${subreddit}`,
     requestConfig: {
       headers: {
         "Content-Language": "en-US",

@@ -5,6 +5,7 @@ export const BackgroundImage = styled.img`
   height: 34px;
   object-fit: cover;
   top: 0;
+  background-color: ${({ theme }) => theme.color.secondary};
   border-radius: 3px 3px 0 0;
   margin: -12px 0 10px;
 `;

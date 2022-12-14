@@ -23,6 +23,7 @@ const CommunityCard = ({ communityInfo }) => {
       <BackgroundImage
         crossOrigin="anonymous"
         src={`${BASE_URL}/subreddits/files/${communityInfo.banner}`}
+        as={`${communityInfo.banner ? "img" : "div"}`}
       />
       <Content>
         <CommunityDate communityInfo={communityInfo} />

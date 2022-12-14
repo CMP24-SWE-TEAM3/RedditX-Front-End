@@ -34,6 +34,7 @@ const CommunityDate = ({ communityInfo }) => {
           crossOrigin="anonymous"
           src={`${BASE_URL}/subreddits/files/${communityInfo.icon}`}
           alt="community"
+          as={`${communityInfo.banner ? "img" : "div"}`}
         />
         {communityInfo && (
           <CommunityName data-testid="community-name">

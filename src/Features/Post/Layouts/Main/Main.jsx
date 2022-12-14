@@ -17,6 +17,7 @@ import { useCreatePostFlairs } from "Features/Post/Contexts/createPostFlairs";
 import { useCreatePostAttachments } from "Features/Post/Contexts/createPostAttachments";
 import submitPost from "Features/Post/Services/submitPost";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import { useSubmitDestination } from "Features/Post/Contexts/submitDestination";
 
 /**
  * Main component (the main section in the create post page)
@@ -24,15 +25,13 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
  * @returns {React.Component} Main component (the main section in the create post page)
  */
 const Main = () => {
-  // State to store the selected community
-  const [selectedDestination, setSelectedDestination] = useState(null);
-
   const { createPostTitle, setCreatePostTitle } = useCreatePostTitle();
   const { createPostText, setCreatePostText } = useCreatePostText();
   const { createPostFlags, setCreatePostFlags } = useCreatePostFlags();
   const { createPostFlairs, setCreatePostFlairs } = useCreatePostFlairs();
   const { createPostAttachments, setCreatePostAttachments } =
     useCreatePostAttachments();
+  const { submitDestination, setSubmitDestination } = useSubmitDestination();
 
   // Call useFetchFunction hook to handle states: loading, error, data
   // Loading: Boolean to tell if the request has been sent or it's still loading
@@ -52,7 +51,8 @@ const Main = () => {
     attachments = [],
   } = {}) => {
     var bodyFormData = new FormData();
-    // bodyFormData.append("community", selectedDestination);
+    submitDestination.type !== "user" &&
+      bodyFormData.append("communityID", submitDestination._id);
     // bodyFormData.append("flair", createPostFlairs);
     bodyFormData.append("title", createPostTitle);
     bodyFormData.append("textJSON", textJSON);
@@ -72,15 +72,9 @@ const Main = () => {
       <Title>
         <h4>Create a post</h4>
       </Title>
-      <ChooseCommunity
-        selectedDestination={selectedDestination}
-        setSelectedDestination={setSelectedDestination}
-      />
+      <ChooseCommunity />
       {error}
-      <Tabs
-        submitPost={handleSubmit}
-        selectedDestination={selectedDestination}
-      />
+      <Tabs submitPost={handleSubmit} />
     </Container>
   );
 };

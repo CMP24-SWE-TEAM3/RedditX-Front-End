@@ -24,8 +24,10 @@ const Sidebar = () => {
   const [data, error, isLoading, dataFetch] = useFetchFunction();
   const auth = useAuth();
   useEffect(() => {
-    getCommunityInfo(dataFetch, submitDestination, auth);
-  }, []);
+    submitDestination &&
+      submitDestination._id &&
+      getCommunityInfo(dataFetch, submitDestination._id, auth);
+  }, [submitDestination]);
 
   return (
     <Container>

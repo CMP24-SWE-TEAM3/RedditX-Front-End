@@ -172,8 +172,7 @@ const ImageAndVideoForm = ({ submitPost }) => {
         <SubmitButtons>
           <CancelButton variant="light">Cancel</CancelButton>
           <PostButton
-            // disabled={!submitDestination || !createPostTitle}
-            disabled={!createPostTitle}
+            disabled={!submitDestination || !createPostTitle}
             onClick={submitForm}
             id="post"
           >

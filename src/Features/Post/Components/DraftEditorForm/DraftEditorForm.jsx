@@ -194,8 +194,7 @@ const DraftEditorForm = ({ submitPost }) => {
         <SubmitButtons>
           {/* <SaveDraftButton variant="light">Save Draft</SaveDraftButton> */}
           <PostButton
-            // disabled={!submitDestination || !createPostTitle}
-            disabled={!createPostTitle}
+            disabled={!submitDestination || !createPostTitle}
             onClick={submitForm}
             id="post"
           >
