@@ -97,11 +97,15 @@ exports[`People Main Header this is a test for Main Header 1`] = `
       }
     }
   >
-    <SearchContextProvider>
-      <SafeContextProvider>
-        <Links />
-      </SafeContextProvider>
-    </SearchContextProvider>
+    <CategoryContextProvider>
+      <EditContextProvider>
+        <SearchContextProvider>
+          <SafeContextProvider>
+            <Links />
+          </SafeContextProvider>
+        </SearchContextProvider>
+      </EditContextProvider>
+    </CategoryContextProvider>
   </Component>
 </BrowserRouter>
 `;

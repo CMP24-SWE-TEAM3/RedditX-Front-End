@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Top Communities this is a test for Top Communities 1`] = `
+<styled.div>
+  <p
+    className="title"
+  >
+    Communities
+  </p>
+  <Link
+    to="/communities"
+  >
+    <p
+      className="more"
+    >
+      See more communities
+    </p>
+  </Link>
+</styled.div>
+`;
