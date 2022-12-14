@@ -18,6 +18,7 @@ import {
  * @returns {React.Component}
  */
 const RulesWidget = () => {
+  const [rules, setRules] = useState([]);
   const { community } = useSubReddit();
   //rules
   // const rules = [
@@ -27,11 +28,11 @@ const RulesWidget = () => {
   // ];
 
   // const rules = community[0].communityRules;
-  const [rules, setRules] = useState([]);
   useEffect(() => {
     community &&
-      community.length &&
-      setRules(community.communityRules || []);
+      community.communityRules &&
+      community.communityRules.length !== 0 &&
+      setRules(community.communityRules);
   }, [community]);
 
   /**
@@ -88,20 +89,18 @@ const RulesWidget = () => {
 
   return (
     <WidgetContainer headerText="r/Eln2aa4yn Rules">
-      {rules.map((rule, i) => {
-        return (
-          community &&
-          community.length && (
+      {rules.length !== 0 &&
+        rules.map((rule, i) => {
+          return (
             <Rule
               key={i}
               index={i + 1}
               len={rules.length}
               title={rule.title}
-              description={rule.textDescription}
+              description={rule.description}
             />
-          )
-        );
-      })}
+          );
+        })}
     </WidgetContainer>
   );
 };
