@@ -4,6 +4,7 @@ import PostHeader from "../PostHeader/PostHeader";
 import { useState } from "react";
 import { ContainerPost } from "./Post.styled";
 import Post from "Features/Post/Pages/Post/Post";
+import RichTextPostBody from "Features/Post/Components/RichTextPostBody/RichTextPostBody";
 
 /**
  * Component that contains the PostslistItems included PostHeader Component and post body and PostFooter Component.
@@ -19,7 +20,7 @@ const PostItem = ({ post }) => {
     // console.log(post);
     const postBody = {
       bodyImage: post.attachments[0],
-      bodyText: post.text,
+      bodyText: post.textJSON,
       flair: post.flairText,
       flairColor: post.flairTextColor,
       flairBackgroundColor: post.flairBackGround,
@@ -46,6 +47,14 @@ const PostItem = ({ post }) => {
     }
     // console.log(postBody.bodyImage);
     // console.log(isThereImage);
+    function isJsonString(str) {
+      try {
+        JSON.parse(str);
+      } catch (e) {
+        return false;
+      }
+      return true;
+    }
     return (
       <ContainerPost
         pimage={postBody.bodyImage}
@@ -65,7 +74,11 @@ const PostItem = ({ post }) => {
               <Link to="#">
                 <div>
                   <p className={"post-content"} title="postbody">
-                    {postBody.bodyText}
+                    {/* {postBody.bodyText} */}
+                    {isJsonString(postBody.bodyText) && (
+                      <RichTextPostBody post={post} />
+                    )}
+                    {!isJsonString(postBody.bodyText) && postBody.bodyText}
                   </p>
                 </div>
               </Link>

@@ -27,7 +27,9 @@ const PostHeader = ({ postheader }) => {
             {postheader.headerImage && (
               <CommunityImage
                 crossOrigin="anonymous"
-                src={`https://api.redditswe22.tech/users/files/${postheader.headerImage}`}
+                // src={`https://api.redditswe22.tech/users/files/${postheader.headerImage}`}
+                // crossOrigin="anonynmous"
+                src={`https://api.redditswe22.tech/subreddits/files/${postheader.headerImage}`}
                 alt="communityimage"
               />
             )}

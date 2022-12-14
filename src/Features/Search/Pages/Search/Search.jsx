@@ -48,18 +48,19 @@ const Search = () => {
   // fetch Communities
   let [CommunityList, errorCommunity, loadingCommunity, fetchCommunity] =
     useFetchFunction();
+  console.log(CommunityList);
 
   // fetch Communities
 
   // fetch Comments
   let [CommentLists, errorComment, loadingComment, fetchComment] =
     useFetchFunction();
-  // console.log(CommentLists);
+  console.log(CommentLists);
   // fetch Comments
 
   // fetch People
   let [PeopleList, errorPeople, loadingPeople, FB] = useFetchFunction();
-  // console.log(PeopleList);
+  console.log(PeopleList);
   // fetch People
 
   // fetch people follow

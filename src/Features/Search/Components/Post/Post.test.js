@@ -10,7 +10,8 @@ const post = {
   communityID: "t5_imagepro",
   communityName: "WallStreetRiches",
   createdAt: "2022/02/15, 15:05:45",
-  text: " John Oliver Refers to NFL’s ‘Monday Night Football’ as“Primetime Programming Where People Kill Themselves forEntertainment” ",
+  textJSON:
+    " John Oliver Refers to NFL’s ‘Monday Night Football’ as“Primetime Programming Where People Kill Themselves forEntertainment” ",
   title: "This is a post title",
   nsfw: true,
   flairID: "id1",

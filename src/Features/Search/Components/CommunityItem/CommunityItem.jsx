@@ -106,7 +106,8 @@ const CommunityItem = ({
         )} */}
         {communityIcon && (
           <Img
-            src={require(`../../Assets/${communityIcon}`)}
+            crossOrigin="anonynmous"
+            src={`https://api.redditswe22.tech/subreddits/files/${communityIcon}`}
             alt="Subreddit Icon"
           />
         )}

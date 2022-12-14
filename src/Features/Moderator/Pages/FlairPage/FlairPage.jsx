@@ -21,9 +21,9 @@ const FlairPage = () => {
   const auth = useAuth();
   const [flairList, error, loading, fetch] = useFetchFunction();
   console.log(flairList);
-  useEffect(() => {
-    fetchFlairs(fetch, auth, "gg");
-  }, []);
+  // useEffect(() => {
+  //   fetchFlairs(fetch, auth, "gg");
+  // }, []);
   return (
     <ContainerFlair>
       <BuutonsBar />

@@ -87,7 +87,12 @@ const CommunityCardItem = ({
       <Link to={`/subreddit/${communityID}`}>
         <div className="item">
           {communityIcon && (
-            <img src={require(`../../Assets/${communityIcon}`)} alt="" />
+            <img
+              // src={require(`../../Assets/${communityIcon}`)}
+              crossOrigin="anonynmous"
+              src={`https://api.redditswe22.tech/subreddits/files/${communityIcon}`}
+              alt=""
+            />
           )}
           <div className="info">
             <div className="info2">

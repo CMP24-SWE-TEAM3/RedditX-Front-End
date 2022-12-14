@@ -9,7 +9,7 @@ const data = [
     id: "item-1",
     flairText: "Item-1",
     FlairColor: "red",
-    flairBackGroundColor: "yellow",
+    flairBackGroundColor: "black",
   },
   {
     id: "item-2",
