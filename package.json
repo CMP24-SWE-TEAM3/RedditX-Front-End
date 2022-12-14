@@ -39,6 +39,7 @@
     "react-search-autocomplete": "^8.2.1",
     "react-switch": "^7.0.0",
     "react-test-renderer": "^18.2.0",
+    "reactjs-popup": "^2.0.5",
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
