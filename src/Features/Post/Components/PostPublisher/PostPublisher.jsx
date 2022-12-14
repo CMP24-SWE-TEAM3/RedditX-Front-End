@@ -17,6 +17,8 @@ import { useState } from "react";
 import { BsFillBellFill } from "react-icons/bs";
 import { BASE_URL } from "API/axios";
 
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+
 /**
  * PostPublisher Component that is in the side of Post
  * @returns {React.Component} PostPublisher component
@@ -27,25 +29,25 @@ const PostPublisher = ({ fullPost, post }) => {
    */
   const [data, error, isLoading, dataFetch] = useFetchFunction();
 
+  const auth = useAuth();
+
   const url =
     "https://i.pinimg.com/originals/58/2d/96/582d96a1df2d94bb439af1594639ccfe.jpg";
   const communityName = "hello world ";
-  const publisher = "mohamedromee";
-  const date = "2022/011/15, 15:05:45";
-
-  const id = "5496783"; //test;
 
   const [follow, setFollow] = useState(false);
 
   const handleFollow = () => {
     setFollow(!follow);
 
-    const sentId = "t3_" + id;
-
-    makeFollow(dataFetch, {
-      linkID: sentId,
-      action: !follow,
-    });
+    makeFollow(
+      dataFetch,
+      {
+        linkID: post._id,
+        action: !follow,
+      },
+      auth.getToken()
+    );
   };
 
   return (
@@ -62,7 +64,8 @@ const PostPublisher = ({ fullPost, post }) => {
         ></Photo>
         <Community>{communityName}</Community>
         <PublishBy>
-          . Posted by {post.userID._id} <Moment fromNow>{post.createdAt}</Moment>
+          . Posted by {post.userID._id.substring(3)}{" "}
+          <Moment fromNow>{post.createdAt}</Moment>
         </PublishBy>
       </InfoContainer>
       {fullPost && (

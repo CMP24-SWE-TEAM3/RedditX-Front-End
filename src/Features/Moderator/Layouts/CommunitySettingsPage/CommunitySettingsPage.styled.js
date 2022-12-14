@@ -1,10 +1,7 @@
 import styled from "styled-components";
 import Form from "react-bootstrap/Form";
 import ReactLanguageSelect from "react-languages-select";
-import {
-    CountryDropdown,
-    RegionDropdown,
-  } from "react-country-region-selector";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
 export const Container = styled.div`
   display: flex;
@@ -23,6 +20,10 @@ export const ButtonsContainer = styled.div`
   justify-content: end;
   background-color: ${({ theme }) => theme.lineColor.primary};
   padding: 10px 0;
+  position: sticky;
+  top: 88px;
+  right: 0;
+  left: 0;
 `;
 export const ButtonOne = styled.button`
   background-color: transparent;
@@ -166,7 +167,6 @@ export const WelcomeContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-
 
 export const WelcomeOne = styled.div``;
 export const WelcomeTwo = styled.div``;

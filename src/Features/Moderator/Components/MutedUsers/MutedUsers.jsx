@@ -17,7 +17,7 @@ import {
  * @returns {React.Component}  ApprovedUsers component that is used in User management
  */
 
-const MutedUsers = ({ Moderator }) => {
+const MutedUsers = ({ Moderator, communityName }) => {
   const [searchField, setSearchField] = useState("");
   const [filteredMonsters, setFilterMonsters] = useState(Moderator);
 
@@ -48,6 +48,7 @@ const MutedUsers = ({ Moderator }) => {
       <Container>
         {filteredMonsters.map((mod) => (
           <ModeratorRow
+          communityName={communityName}
             key={mod._id}
             Moderator={mod}
             muted={true}

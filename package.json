@@ -26,11 +26,8 @@
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-bootstrap": "^2.5.0",
-<<<<<<< HEAD
-    "react-country-region-selector": "^3.6.1",
-=======
     "react-color": "^2.19.3",
->>>>>>> 0395b811c82bcc17b7bd512b3656e7e366863f76
+    "react-country-region-selector": "^3.6.1",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-facebook-login": "^4.1.1",

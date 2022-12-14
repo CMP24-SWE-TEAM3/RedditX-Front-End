@@ -8,12 +8,12 @@ import {Container} from "./PostBar.styled"
  * PostPublisher Component 
  * @returns {React.Component} PostPublisher component
  */
-const PostBar = ({ fullPost, post }) => {
+const PostBar = ({ fullPost, post, setMakeHidden }) => {
   return (
     <Container>
       <PostPublisher fullPost={fullPost} post={post} />
       <PostContent post={post} />
-      <PostFooter post={post} />
+      <PostFooter post={post} setMakeHidden={setMakeHidden}/>
     </Container>
   );
 };

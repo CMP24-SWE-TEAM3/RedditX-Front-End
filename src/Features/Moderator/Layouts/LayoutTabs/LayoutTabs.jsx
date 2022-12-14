@@ -37,9 +37,6 @@ import MutedPage from "../MutedPage/MutedPage";
 import BannedPage from "../BannedPage/BannedPage";
 
 import CommunitySettingsPage from "../CommunitySettingsPage/CommunitySettingsPage";
-
-
-import Rules from "Features/Moderator/Components/RuleTab/RuleTab";
 import PostsAndCommentsPage from "../PostsAndCommentsPage/PostsAndCommentsPage";
 
 const paths = {

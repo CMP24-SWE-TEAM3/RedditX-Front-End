@@ -4,7 +4,7 @@ import { useState } from "react";
 
 
 
-import { inviteModerator } from "Features/Moderator/Services/UserManagementApi/UserManagementApi";
+import { inviteModerator } from "Features/Moderator/Services/UserManagementApi/userManagementApi";
 
 import {
   Container,

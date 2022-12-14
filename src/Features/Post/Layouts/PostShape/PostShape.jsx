@@ -1,6 +1,8 @@
 import VotingBar from "Features/Post/Components/VotingBar/VotingBar";
 import PostBar from "../PostBar/PostBar";
 
+import { useState } from "react";
+
 import { Container } from "./PostShape.styled";
 
 /**
@@ -8,11 +10,17 @@ import { Container } from "./PostShape.styled";
  * @returns {React.Component} PostShape component
  */
 const PostShape = ({ fullPost, post }) => {
+  const [makeHidden, setMakeHidden] = useState(false);
+
   return (
-    <Container fullPost={fullPost}>
-      <VotingBar number={post.votesCount} />
-      <PostBar fullPost={fullPost} post={post} />
-    </Container>
+    <>
+      {!makeHidden && (
+        <Container fullPost={fullPost}>
+          <VotingBar number={post.votesCount} id={post._id} />
+          <PostBar fullPost={fullPost} post={post} setMakeHidden={setMakeHidden}/>
+        </Container>
+      )}
+    </>
   );
 };
 
