@@ -5,6 +5,7 @@ import {
   RowBtn,
   SubBtn,
   ViewAllBtn,
+  CoverImg,
 } from "./CommunityCard.styled";
 import { useNavigate } from "react-router-dom";
 import CommunityCardItem from "Components/CommunityCardItem/CommunityCardItem";
@@ -13,6 +14,7 @@ import { Link } from "react-router-dom";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useEffect } from "react";
+import { BASE_URL } from "API/axios";
 
 /**
  * Component that links each  of community card item.
@@ -36,17 +38,25 @@ const CommunityCard = () => {
   const navigate = useNavigate();
   return (
     <CommunityContainer>
-      <CoverCommunity>
-        <Filter>
+      {communityList.length !== 0 && (
+        <CoverCommunity>
+          <Filter>
+            <CoverImg
+              crossOrigin="anonymous"
+              src={`${BASE_URL}/subreddits/files/${communityList.communities[0].banner}`}
+            />
+          
+
           <h2>
             <Link href={"https://www.reddit.com/subreddits/leaderboard/"}>
               Top
-              <span>&nbsp;Gaming&nbsp;</span>
+              <span> Gaming </span>
               Communities
             </Link>
           </h2>
-        </Filter>
-      </CoverCommunity>
+          </Filter>
+        </CoverCommunity>
+      )}
       {communityList &&
         communityList.length !== 0 &&
         communityList.communities.map((community, index) => {

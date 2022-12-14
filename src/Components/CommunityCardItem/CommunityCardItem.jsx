@@ -82,7 +82,8 @@ const CommunityCardItem = ({
           </Item>
         </Link>
       </Container>
-      <HeaderLine />
+
+      {communityId < 4 && <HeaderLine />}
     </>
   );
 };
