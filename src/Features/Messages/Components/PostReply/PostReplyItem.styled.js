@@ -13,11 +13,19 @@ export const ArrowsDiv = styled.div`
 `;
 
 export const OddItems = styled.div`
-  background-color: ${({ theme }) => theme.background.lightMuted};
+  /* background-color: ${({ theme }) => theme.background.lightMuted}; */
   transition: 0.3s;
   margin: 0;
   padding: 10px 15px;
-  &.even {
+  /* &.even {
+    background-color: ${({ theme }) => theme.background.primary};
+  } */
+
+  &:nth-child(odd){
+    background-color: ${({ theme }) => theme.background.lightMuted};
+  }
+
+  &:nth-child(even){
     background-color: ${({ theme }) => theme.background.primary};
   }
 `;

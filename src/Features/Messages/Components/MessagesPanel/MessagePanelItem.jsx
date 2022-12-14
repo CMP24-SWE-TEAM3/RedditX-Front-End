@@ -22,6 +22,7 @@ import {
 import ReportModal from "../ReportModal/ReportModal";
 import markUnread from "../../Utils/MarkUnread";
 import readed from "../../Utils/Read";
+import compareDate from "../../Utils/ParseDate";
 
 /**
  * Component that contains the message item of Message Panel
@@ -104,10 +105,6 @@ const MessageBannelItem = ({
     });
   }
 
-  if(deleted) {
-    return;
-  }
-
   return (
     <OddItems className={id % 2 === 0 ? "even" : ""} key={id}>
       <MessageDetails
@@ -146,7 +143,7 @@ const MessageBannelItem = ({
           </ToggleExpan>
           from <Author className={admin ? "admin" : ""}>{aurthor}</Author>
           <TimeTag className={admin ? "active" : ""}>
-            <time dateTime="20/10/2022">{time}</time>
+            <time dateTime="20/10/2022">{compareDate(time).toDateString()}</time>
           </TimeTag>
         </Tagline>
         <MessagesWithBtns className={expanded ? "expanded" : "collapsed"}>

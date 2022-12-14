@@ -8,7 +8,7 @@ const messagesData = [
   {
     aurthor: "Mohamed",
     title: "Greeting",
-    time: "new Date(2022, 11, 30)",
+    time: "2022, 11, 30",
     msg: "Hello Hello",
     expanded: true,
     admin: true,
@@ -20,12 +20,24 @@ const messagesData = [
   {
     aurthor: "Ahmed",
     title: "Mod",
-    time: "new Date(2022, 11, 29)",
+    time: "2022, 11, 2",
     msg: "You are Mod",
     expanded: true,
     admin: false,
     read: false,
     id: 2,
+    delete: true,
+    block: false,
+  },
+  {
+    aurthor: "Mahmoud",
+    title: "Mod",
+    time: "2022, 11, 2",
+    msg: "You are Mod",
+    expanded: true,
+    admin: true,
+    read: false,
+    id: 3,
     delete: false,
     block: false,
   },
@@ -37,10 +49,11 @@ const messagesData = [
  * @Component
  * @returns {React.Component}
  */
-function MessageBannel() {
+function MessageBannel({messages}) {
   const [eachMessage, setEachMessage] = useState(messagesData);
 
   const Message = eachMessage.map((item) => {
+    if(!item.delete) {
     return (
       <MessageBannelItem
         changeMessage={setEachMessage}
@@ -57,6 +70,7 @@ function MessageBannel() {
         key={item.id}
       />
     );
+    }
   });
 
   return (

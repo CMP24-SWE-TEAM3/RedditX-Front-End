@@ -11,7 +11,7 @@ import {
     MessageDetails,
     TimeTag,
   } from "./SentMessageItem.styled";
-
+import compareDate from "../../Utils/ParseDate";
 /**
  * Component that contains the Sent Message item
  *
@@ -37,7 +37,7 @@ const SentMessageItem = ({id, subject, author, msg, time, admin})=>{
             <Tagline>
               to <Author className={admin ? "admin" : ""}>{author}</Author>
               <TimeTag>
-                <time dateTime="20/10/2022">{time.toDateString()} </time>
+                <time dateTime="20/10/2022">{compareDate(time).toDateString()}</time>
               </TimeTag>
             </Tagline>
               <Msg>{msg}</Msg>

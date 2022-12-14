@@ -5,7 +5,7 @@ const messagesData = [
     {
       author: "Mohamed",
       title: "Greeting",
-      time: new Date(2022, 11, 30),
+      time: "2022, 11, 29",
       text: "Hello Hello",
       read: false,
       admin: false,
@@ -14,7 +14,7 @@ const messagesData = [
     {
       author: "Ahmed",
       title: "Mod",
-      time: new Date(2022, 11, 29),
+      time: "2022, 11, 29",
       text: "You are Mod",
       read: false,
       admin: false,
@@ -23,7 +23,7 @@ const messagesData = [
     {
       author: "Jacob",
       title: "Broken",
-      time: new Date(2022, 11, 29),
+      time: "2022, 11, 29",
       text: "It Is Broken Now",
       read: false,
       admin: true,
@@ -32,7 +32,7 @@ const messagesData = [
     {
       author: "Joanne",
       title: "Greeting",
-      time: new Date(2022, 11, 29),
+      time: "2022, 11, 29",
       text: "Henlo",
       read: false,
       admin: false,
@@ -41,7 +41,7 @@ const messagesData = [
     {
       author: "Arabella",
       title: "Hmmmm...",
-      time: new Date(2022, 11, 29),
+      time: "2022, 11, 29",
       text: "Hi.",
       read: false,
       admin: true,
@@ -74,10 +74,9 @@ const Message = eachMessage.map((item) => {
 
 return (
   <EmbeddedPage>
-    <PageContainer>{Message}</PageContainer>
+    <PageContainer className="try">{Message}</PageContainer>
   </EmbeddedPage>
 );
-
 }
 
 export default SentMessages;

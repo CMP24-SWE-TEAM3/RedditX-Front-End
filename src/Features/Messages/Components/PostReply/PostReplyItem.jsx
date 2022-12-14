@@ -23,7 +23,7 @@ import upVote from "../../Utils/Upvote";
 import downVote from "../../Utils/Downvote";
 import markUnread from "../../Utils/MarkUnread";
 import readed from "../../Utils/Read";
-
+import compareDate from "../../Utils/ParseDate";
 /**
  * Component that contains the Post Reply item
  *
@@ -93,7 +93,7 @@ const PostReplayItem = ({
           <Tagline>
             <Author className={admin ? "admin" : ""}>{aurthor}</Author>
             <TimeTag className={admin ? "active" : ""}>
-              <time dateTime="20/10/2022">{time}</time>
+              <time dateTime="20/10/2022">{compareDate(time).toDateString()}</time>
             </TimeTag>
           </Tagline>
           <MessagesWithBtns>

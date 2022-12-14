@@ -33,7 +33,7 @@ const messagesData = [
  * @Component
  * @returns {React.Component}
  */
-function PostReplay() {
+function PostReplay({replies}) {
   const [eachMessage, setEachMessage] = useState(messagesData);
   const Message = eachMessage.map((item) => {
     return (

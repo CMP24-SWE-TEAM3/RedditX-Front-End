@@ -9,7 +9,7 @@ const messagesData = [
     aurthor: "Mohamed",
     title: "Greeting",
     type: "usernameMention",
-    time: "new Date(2022, 11, 30)",
+    time: "2022, 11, 30",
     msg: "Hello Hello",
     upvote: "neutral",
     admin: true,
@@ -22,7 +22,7 @@ const messagesData = [
     aurthor: "Ahmed",
     title: "Mod",
     type: "usernameMention",
-    time: "new Date(2022, 11, 29)",
+    time: "2022, 11, 29",
     msg: "You are Mod",
     upvote: "neutral",
     admin: false,
@@ -34,8 +34,8 @@ const messagesData = [
   {
     aurthor: "Mohamed",
     title: "Greeting",
-    type: "postReplay",
-    time: "new Date(2022, 11, 30)",
+    type: "postReply",
+    time: "2022, 11, 30",
     msg: "Hello Hello",
     upvote: "neutral",
     admin: true,
@@ -48,7 +48,7 @@ const messagesData = [
     aurthor: "Ahmed",
     title: "Mod",
     type: "normal",
-    time: "new Date(2022, 11, 29)",
+    time: "2022, 11, 29",
     msg: "You are Mod",
     admin: false,
     read: false,
@@ -64,7 +64,7 @@ const messagesData = [
  * @Component
  * @returns {React.Component}
  */
-function AllMessagesTypes() {
+function AllMessagesTypes({messages}) {
   const [eachMessage, setEachMessage] = useState(messagesData);
   const Message = eachMessage.map((item) => {
     switch (item.type) {
@@ -85,7 +85,7 @@ function AllMessagesTypes() {
           />
         );
         break;
-      case "postReplay":
+      case "postReply":
         return (
           <PostReplayItem
             changeMessage={setEachMessage}
@@ -103,6 +103,7 @@ function AllMessagesTypes() {
         );
         break;
       default:
+        // if(!item.delete) {
         return (
           <NormalMessageAll
             changeMessage={setEachMessage}
@@ -118,6 +119,7 @@ function AllMessagesTypes() {
             key={item.id}
           />
         );
+        // }
     }
   });
 

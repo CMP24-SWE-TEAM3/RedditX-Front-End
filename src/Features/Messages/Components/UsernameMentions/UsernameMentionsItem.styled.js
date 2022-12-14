@@ -48,10 +48,18 @@ export const ArrowDown = styled(GoArrowDown)`
 
 export const OddItems = styled.div`
   transition: 0.3s;
-  background-color: ${({ theme }) => theme.background.lightMuted};
+  /* background-color: ${({ theme }) => theme.background.lightMuted}; */
   margin: 0;
   padding: 10px 15px;
-  &.even {
+  /* &.even {
+    background-color: ${({ theme }) => theme.background.primary};
+  } */
+
+  &:nth-child(odd){
+    background-color: ${({ theme }) => theme.background.lightMuted};
+  }
+
+  &:nth-child(even){
     background-color: ${({ theme }) => theme.background.primary};
   }
 `;

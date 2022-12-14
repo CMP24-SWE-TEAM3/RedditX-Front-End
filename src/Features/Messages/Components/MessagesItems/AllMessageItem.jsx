@@ -17,7 +17,8 @@ import {
 import ReportModal from "../ReportModal/ReportModal";
 import markUnread from "../../Utils/MarkUnread";
 import readed from "../../Utils/Read";
-
+import compareDate from "../../Utils/ParseDate";
+import { useState } from "react";
 
 /**
  * Component that contains the ordinary message item
@@ -48,8 +49,12 @@ const NormalMessageAll = ({
   block,
 }) => {
   
+  const [deletePrompt, setDeletePrompt] = useState(false);
+  function toggleDeleteWarning() {
+    setDeletePrompt((prev)=>!prev);
+  }
 
-  function toggleDeleteWarning(id) {
+  function Delete(id) {
     changeMessage((message) => {
       return message.map((prevState) => {
         return prevState.id === id
@@ -58,6 +63,7 @@ const NormalMessageAll = ({
       });
     });
   }
+
   function toggleBlockWarning(id) {
     changeMessage((message) => {
       return message.map((prevState) => {
@@ -66,6 +72,10 @@ const NormalMessageAll = ({
           : prevState;
       });
     });
+  }
+
+  if(deleted) {
+    return;
   }
 
   return (
@@ -81,31 +91,32 @@ const NormalMessageAll = ({
         <Tagline>
           from <Author data-testid= {"author-element"} className={admin ? "admin" : ""}>{aurthor}</Author>
           <TimeTag className={admin ? "active" : ""}>
-            <time dateTime="20/10/2022">{time} </time>
+            <time dateTime="20/10/2022">{compareDate(time).toDateString()}</time>
           </TimeTag>
         </Tagline>
         <Visted data-testid = {"read-test"} className={read ? "" : "read-before"}>
           <Msg>{msg}</Msg>
           <ListBtns>
             <Btns>
-              <BtnsLinks>Permalink</BtnsLinks>
-            </Btns>
-            <Btns>
               <BtnsLinks
                 className={deleted ? "active" : ""}
                 onClick={() => {
-                  toggleDeleteWarning(id);
+                  toggleDeleteWarning();
                 }}
               >
                 Delete
               </BtnsLinks>
-              <AreYouSure className={deleted ? "active" : ""}>
+              <AreYouSure className={deletePrompt ? "active" : ""}>
                 <BtnWarning> Are You Sure </BtnWarning>
-                <BtnsLinks>Yes</BtnsLinks>
+                <BtnsLinks
+                onClick={()=>{
+                  Delete(id);
+                }}
+                >Yes</BtnsLinks>
                 <BtnWarning> / </BtnWarning>
                 <BtnsLinks
                   onClick={() => {
-                    toggleDeleteWarning(id);
+                    toggleDeleteWarning();
                   }}
                 >
                   No

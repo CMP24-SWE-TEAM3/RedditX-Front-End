@@ -18,4 +18,12 @@ export const PageContainer = styled.div`
   background: ${({ theme }) => theme.canvas};
   transition: 0.3s;
   font: normal x-small verdana, arial, helvetica, sans-serif;
+
+  &:nth-child(odd){
+    background-color: ${({ theme }) => theme.background.lightMuted};
+  }
+
+  &:nth-child(even){
+    background-color: ${({ theme }) => theme.background.primary};
+  }
 `;
