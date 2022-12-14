@@ -30,14 +30,12 @@ import {
   BackButton,
 } from "./LayoutTabs.styled";
 import { useState } from "react";
-import Rules from "../Rules/Rules";
+import Rules from "Features/Moderator/Pages/Rules/Rules";
+import TrafficStates from "Features/Moderator/Pages/TrafficStates/TrafficStates";
 import FlairPage from "Features/Moderator/Pages/FlairPage/FlairPage";
-import ApprovedPage from "../ApprovedPage/ApprovedPage";
-import MutedPage from "../MutedPage/MutedPage";
-import BannedPage from "../BannedPage/BannedPage";
-
-
-import RulesTab from "Features/Moderator/Components/RuleTab/RuleTab";
+import ApprovedPage from "Features/Moderator/Layouts/ApprovedPage/ApprovedPage";
+import MutedPage from "Features/Moderator/Layouts/MutedPage/MutedPage";
+import BannedPage from "Features/Moderator/Layouts/BannedPage/BannedPage";
 
 const paths = {
   ModQueue: "mod-queue",
@@ -54,7 +52,12 @@ const paths = {
   Community: "Community",
   PostsAndComments: "PostsAndComments",
 };
-function LayoutTabs({setModalShowInviteModerator, setModalShowApproveUser, setModalShowMuteUser, setModalShowBaneUser}) {
+function LayoutTabs({
+  setModalShowInviteModerator,
+  setModalShowApproveUser,
+  setModalShowMuteUser,
+  setModalShowBaneUser,
+}) {
   const [isCommunitySettings, setIsCommunitySettings] = useState(false);
   const { subredditId, moderatorId } = useParams();
   const getPath = (path) => {
@@ -230,11 +233,33 @@ function LayoutTabs({setModalShowInviteModerator, setModalShowApproveUser, setMo
             {moderatorId === paths.Unmoderated && <div>Unmoderated</div>}
             {moderatorId === paths.Rules && <Rules />}
             {moderatorId === paths.PostFlair && <FlairPage />}
-            {moderatorId === paths.Banned && <div><BannedPage setModalShowBaneUser={setModalShowBaneUser}/></div>}
-            {moderatorId === paths.Muted && <div><MutedPage setModalShowMuteUser={setModalShowMuteUser}/></div>}
-            {moderatorId === paths.Approved && <div><ApprovedPage setModalShowApproveUser={setModalShowApproveUser}/></div>}
-            {moderatorId === paths.Moderators && <ModeratorsPage setModalShowInviteModerator={setModalShowInviteModerator}/>}
-            {moderatorId === paths.TrafficStates && <div>TrafficStates</div>}
+            {moderatorId === paths.Banned && (
+              <div>
+                <BannedPage setModalShowBaneUser={setModalShowBaneUser} />
+              </div>
+            )}
+            {moderatorId === paths.Muted && (
+              <div>
+                <MutedPage setModalShowMuteUser={setModalShowMuteUser} />
+              </div>
+            )}
+            {moderatorId === paths.Approved && (
+              <div>
+                <ApprovedPage
+                  setModalShowApproveUser={setModalShowApproveUser}
+                />
+              </div>
+            )}
+            {moderatorId === paths.Moderators && (
+              <ModeratorsPage
+                setModalShowInviteModerator={setModalShowInviteModerator}
+              />
+            )}
+            {moderatorId === paths.TrafficStates && (
+              <div>
+                <TrafficStates />
+              </div>
+            )}
             {moderatorId === paths.Community && <div>Community</div>}
             {moderatorId === paths.PostsAndComments && (
               <div>PostsAndComments</div>

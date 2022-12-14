@@ -13,31 +13,18 @@ export const CommunityContainer = styled.div`
     text-decoration: none;
   }
 
-  p {
-    margin: 0;
-    padding: 0;
-  }
-
-  h6,
-  a,
-  h4,
-  p {
-    margin: 0;
-    padding: 0;
-  }
-
   h2 {
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;
     bottom: 8px;
-    color: ${({ theme }) => theme.color.primary};
+    color: ${({ theme }) => theme.color.baseButtonColor};
     left: 16px;
     position: absolute;
   }
 
   h2 a {
-    color: ${({ theme }) => theme.background.primary};
+    color: ${({ theme }) => theme.color.baseButtonColor};
   }
 
   @media (max-width: 960px) {
@@ -105,18 +92,18 @@ export const SubBtn = styled.button`
   }
 `;
 export const CoverCommunity = styled.div`
-  background-image: url(${web});
-  color: black;
-  height: 80px;
-  background-position: 50%;
-  text-align: left;
-  background-repeat: no-repeat;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  position: relative;
+  color: ${({ theme }) => theme.color.secondary};
 `;
 export const Filter = styled.div`
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0, transparent);
   width: 100%;
   height: 100%;
+`;
+export const CoverImg = styled.img`
+  background-position: 50%;
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  position: relative;
 `;

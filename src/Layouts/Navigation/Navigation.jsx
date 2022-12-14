@@ -23,6 +23,7 @@ import {
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import SignUp from "Components/SignUp/SignUp";
 import LoginButton from "Components/LoginButton/LoginButton";
+import Search from "Components/Search/Search";
 const Navigation = ({
   theme,
   toggleMode,
@@ -54,30 +55,6 @@ const Navigation = ({
                   </Nav.Link>
                   <Nav.Link>
                     {" "}
-                    <PopularButton />
-                    <Span>Popular</Span>{" "}
-                  </Nav.Link>
-                  <Nav.Link>
-                    {" "}
-                    <CoinButton />
-                    <Span>Coin</Span>{" "}
-                  </Nav.Link>
-                  <Nav.Link>
-                    {" "}
-                    <StyledSeperator />
-                  </Nav.Link>
-                  <Nav.Link>
-                    {" "}
-                    <Moderator />
-                    <Span>Moderator</Span>{" "}
-                  </Nav.Link>
-                  <Nav.Link>
-                    {" "}
-                    <ChatButton />
-                    <Span>Chat</Span>
-                  </Nav.Link>
-                  <Nav.Link>
-                    {" "}
                     <NotificationButton />
                     <Span>Notification</Span>{" "}
                   </Nav.Link>
@@ -85,11 +62,6 @@ const Navigation = ({
                     {" "}
                     <CreatePostButton />
                     <Span>Create Post</Span>{" "}
-                  </Nav.Link>
-                  <Nav.Link>
-                    {" "}
-                    <AdvertiseButton />
-                    <Span>Advertise</Span>{" "}
                   </Nav.Link>
                   <Nav.Link className={"nav-dropdown"}>
                     {" "}

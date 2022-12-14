@@ -8,6 +8,7 @@ import axios from "API/axios";
  * @param {auth} - authorization to make user has an access
  */
 const randomCategories = async (fetchData, auth) => {
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
   fetchData({
     axiosInstance: axios,
     method: "GET",

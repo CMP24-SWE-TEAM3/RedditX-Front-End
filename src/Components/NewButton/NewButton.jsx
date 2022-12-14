@@ -1,7 +1,7 @@
 // imports
 import React from "react";
 import { MdOutlineWbSunny } from "react-icons/md";
-import { NewBtn, Word } from "./NewButton.styled";
+import { NewBtn, Word, NavLinkBtn } from "./NewButton.styled";
 
 /**
  * Component that directs to New posts
