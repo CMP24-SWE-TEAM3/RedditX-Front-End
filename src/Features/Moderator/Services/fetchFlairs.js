@@ -10,7 +10,7 @@ const fetchFlairs = (fetchFunction, auth, subreddit) => {
   fetchFunction({
     axiosInstance: axios,
     method: "GET",
-    url: `/api/r/cars/api/flair-list?show=all`,
+    url: `/api/r/t5_imagePro235/api/flair-list`,
     requestConfig: {
       headers: {
         "Content-Language": "en-US",

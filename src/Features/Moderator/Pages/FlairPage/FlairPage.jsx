@@ -18,12 +18,6 @@ const { ContainerFlair } = require("./FlairPage.styled");
  * @returns {React.Component}
  */
 const FlairPage = () => {
-  const auth = useAuth();
-  const [flairList, error, loading, fetch] = useFetchFunction();
-  console.log(flairList);
-  // useEffect(() => {
-  //   fetchFlairs(fetch, auth, "gg");
-  // }, []);
   return (
     <ContainerFlair>
       <BuutonsBar />

@@ -1,16 +1,34 @@
-import React, { useState } from "react";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import FlairContext from "Features/Moderator/Contexts/Safe-context";
+import DeleteFlair from "Features/Moderator/Services/DeleteFlair";
+import useFetchFunction from "Hooks/useFetchFunction";
+import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { CancelButton, DeleteButton, StyledModal } from "./DeleteModal.styled";
-const DeleteModal = ({ ShowModal, setShowModal }) => {
+const DeleteModal = ({ ShowModal, setShowModal, id }) => {
   console.log(ShowModal);
   const [show, setShow] = useState(ShowModal);
   const handleClose = () => {
     setShow(false);
     setShowModal(false);
   };
+  const ctx = useContext(FlairContext);
+  const auth = useAuth();
+  const [Community, error, isLoading, fetchData] = useFetchFunction();
   const handleShow = () => setShow(true);
-
+  const DeleteHandler = () => {
+    setShow(false);
+    setShowModal(false);
+    console.log(id);
+    const obj = {
+      id: id,
+    };
+    DeleteFlair(fetchData, obj, auth);
+    if (!isLoading) {
+      ctx.ChangeFetchHandler(!ctx.ChangeFetch);
+    }
+  };
   return (
     <>
       {/* <Button variant="primary" onClick={handleShow}>
@@ -30,7 +48,7 @@ const DeleteModal = ({ ShowModal, setShowModal }) => {
         <Modal.Body>Do you wish to delete this post flair?</Modal.Body>
         <Modal.Footer>
           <CancelButton onClick={handleClose}>Cancel</CancelButton>
-          <DeleteButton>Delete</DeleteButton>
+          <DeleteButton onClick={DeleteHandler}>Delete</DeleteButton>
         </Modal.Footer>
       </StyledModal>
     </>

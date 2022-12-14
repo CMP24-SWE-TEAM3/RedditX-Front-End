@@ -44,11 +44,11 @@ const Search = () => {
   //   fetchPosts(fetch);
   // }, []); // Only re-run the effect if count changes
   // Fetch Posts
-  console.log(PostList);
+  // console.log(PostList);
   // fetch Communities
   let [CommunityList, errorCommunity, loadingCommunity, fetchCommunity] =
     useFetchFunction();
-  console.log(CommunityList);
+  // console.log(CommunityList);
 
   // fetch Communities
 
@@ -60,7 +60,7 @@ const Search = () => {
 
   // fetch People
   let [PeopleList, errorPeople, loadingPeople, FB] = useFetchFunction();
-  console.log(PeopleList);
+  // console.log(PeopleList);
   // fetch People
 
   // fetch people follow

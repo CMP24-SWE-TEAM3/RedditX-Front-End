@@ -29,6 +29,9 @@ import { useRef } from "react";
 import useOutsideAlerter from "Features/Moderator/Hooks/useOutsideAlerter";
 import { useEffect } from "react";
 import CancelModal from "../CancelModal/CancelModal";
+import AddFlair from "Features/Moderator/Services/AddFlair";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 /**
  * Component that contains the Postslist component and the PostslistItems.
@@ -55,6 +58,7 @@ const FlairInfo = ({
   Edit,
   setEdit,
   isNew,
+  id,
 }) => {
   const [ShowModal, setShowModal] = useState(false);
   const [theBegin, settheBegin] = useState({
@@ -116,10 +120,13 @@ const FlairInfo = ({
       }
     }
   };
+  const [Community, error, isLoading, fetchData] = useFetchFunction();
+
   /**
    * function to handle Save operation
    * @param {object} e -  event object
    */
+  const auth = useAuth();
   const saveHandler = (e) => {
     // e.preventDefault();
     settheBegin((old) => ({
@@ -130,6 +137,16 @@ const FlairInfo = ({
     ctx.EditHandler(false);
     if (isNew) {
       ctx.AddHandler(false);
+      const obj = {
+        text: text,
+        flairTextColor: color,
+        flairBackGround: background,
+      };
+      AddFlair(fetchData, obj, auth, "ali");
+      // console.log(Community, isLoading);
+      if (!isLoading) {
+        ctx.ChangeFetchHandler(!ctx.ChangeFetch);
+      }
     }
   };
 

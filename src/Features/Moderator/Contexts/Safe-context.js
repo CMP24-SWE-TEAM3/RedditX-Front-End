@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 const FlairContext = React.createContext({
   Edit: false,
   EditHandler: (Edit) => {},
+  ChangeFetch: false,
+  ChangeFetchHandler: (ChangeFetch) => {},
   Add: false,
   AddHandler: (Add) => {},
   Reorder: false,
@@ -27,6 +29,7 @@ export function EditContextProvider(props) {
   const [CancelReorder, setCancelReorder] = useState(false);
   const [saveReorder, setsaveReorder] = useState(false);
   const [flairsData, setflairsData] = useState([]);
+  const [ChangeFetch, setChangeFetch] = useState([]);
   /**
    * function to handle Edit Flair State
    * @param {boolean} Edit -  Edit Flair State
@@ -75,6 +78,14 @@ export function EditContextProvider(props) {
     setflairsData(flairsData);
     console.log(flairsData);
   };
+  /**
+   * function to handle ChangeFetch order
+   * @param {object} ChangeFetch  -  current order
+   */
+  const ChangeFetchHandler = (ChangeFetch) => {
+    setChangeFetch(ChangeFetch);
+    console.log(ChangeFetch);
+  };
   return (
     <FlairContext.Provider
       value={{
@@ -90,6 +101,8 @@ export function EditContextProvider(props) {
         saveReorderHandler: saveReorderHandler,
         flairsData: flairsData,
         flairsDataHandler: flairsDataHandler,
+        ChangeFetch: ChangeFetch,
+        ChangeFetchHandler: ChangeFetchHandler,
       }}
     >
       {props.children}

@@ -1,65 +1,68 @@
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import FlairContext from "Features/Moderator/Contexts/Safe-context";
+import fetchFlairs from "Features/Moderator/Services/fetchFlairs";
+import useFetchFunction from "Hooks/useFetchFunction";
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Flair from "../Flair/Flair";
 
-const data = [
-  {
-    id: "item-1",
-    flairText: "Item-1",
-    FlairColor: "red",
-    flairBackGroundColor: "black",
-  },
-  {
-    id: "item-2",
-    flairText: "Item-2",
-    FlairColor: "red",
-    flairBackGroundColor: "yellow",
-  },
-  {
-    id: "item-3",
-    flairText: "Item-3",
-    FlairColor: "red",
-    flairBackGroundColor: "yellow",
-  },
-  {
-    id: "item-4",
-    flairText: "Item-4",
-    FlairColor: "red",
-    flairBackGroundColor: "yellow",
-  },
-  {
-    id: "item-5",
-    flairText: "Item-5",
-    FlairColor: "red",
-    flairBackGroundColor: "yellow",
-  },
-  {
-    id: "item-6",
-    flairText: "Item-6",
-    FlairColor: "red",
-    flairBackGroundColor: "yellow",
-  },
-  {
-    id: "item-7",
-    flairText: "Item-7",
-    FlairColor: "red",
-    flairBackGroundColor: "yellow",
-  },
-  {
-    id: "item-8",
-    flairText: "Item-8",
-    FlairColor: "red",
-    flairBackGroundColor: "yellow",
-  },
-  {
-    id: "item-9",
-    flairText: "Item-9",
-    FlairColor: "red",
-    flairBackGroundColor: "yellow",
-  },
-];
+// const data = [
+//   {
+//     id: "item-1",
+//     flairText: "Item-1",
+//     FlairColor: "red",
+//     flairBackGroundColor: "black",
+//   },
+//   {
+//     id: "item-2",
+//     flairText: "Item-2",
+//     FlairColor: "red",
+//     flairBackGroundColor: "yellow",
+//   },
+//   {
+//     id: "item-3",
+//     flairText: "Item-3",
+//     FlairColor: "red",
+//     flairBackGroundColor: "yellow",
+//   },
+//   {
+//     id: "item-4",
+//     flairText: "Item-4",
+//     FlairColor: "red",
+//     flairBackGroundColor: "yellow",
+//   },
+//   {
+//     id: "item-5",
+//     flairText: "Item-5",
+//     FlairColor: "red",
+//     flairBackGroundColor: "yellow",
+//   },
+//   {
+//     id: "item-6",
+//     flairText: "Item-6",
+//     FlairColor: "red",
+//     flairBackGroundColor: "yellow",
+//   },
+//   {
+//     id: "item-7",
+//     flairText: "Item-7",
+//     FlairColor: "red",
+//     flairBackGroundColor: "yellow",
+//   },
+//   {
+//     id: "item-8",
+//     flairText: "Item-8",
+//     FlairColor: "red",
+//     flairBackGroundColor: "yellow",
+//   },
+//   {
+//     id: "item-9",
+//     flairText: "Item-9",
+//     FlairColor: "red",
+//     flairBackGroundColor: "yellow",
+//   },
+// ];
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -80,14 +83,21 @@ const reorder = (list, startIndex, endIndex) => {
  * @returns {React.Component}
  */
 const NewFlair = () => {
+  const auth = useAuth();
   const ctx = useContext(FlairContext);
+  const [flairList, error, loading, fetch] = useFetchFunction();
+  console.log(flairList.flairs, "jjjjj");
+  // console.log(flairList);
+  useEffect(() => {
+    fetchFlairs(fetch, auth, "gg");
+  }, [ctx.ChangeFetch]);
   const [items, setItems] = useState([]);
   const initial = items;
   console.log(initial, "initial");
   useEffect(() => {
-    ctx.flairsDataHandler(data);
-    setItems(data);
-  }, [data]);
+    ctx.flairsDataHandler(flairList.flairs);
+    setItems(flairList.flairs);
+  }, [flairList.flairs]);
   useEffect(() => {
     if (ctx.CancelReorder) {
       ctx.CancelReorderHandler(false);
@@ -123,26 +133,28 @@ const NewFlair = () => {
               ref={provided.innerRef}
               // style={getListStyle(snapshot.isDraggingOver)}
             >
-              {items.map((item, index) => (
-                <Draggable
-                  key={item.id}
-                  draggableId={item.id}
-                  index={index}
-                  isDragDisabled={!ctx.Reorder}
-                >
-                  {(provided, snapshot) => (
-                    <Flair
-                      innerRef={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      text={item.flairText}
-                      color={item.FlairColor}
-                      background={item.flairBackGroundColor}
-                      isNew={false}
-                    />
-                  )}
-                </Draggable>
-              ))}
+              {flairList.flairs &&
+                flairList.flairs.map((item, index) => (
+                  <Draggable
+                    key={item.id}
+                    draggableId={item.id}
+                    index={index}
+                    isDragDisabled={!ctx.Reorder}
+                  >
+                    {(provided, snapshot) => (
+                      <Flair
+                        innerRef={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        text={item.flairText}
+                        color={item.flairTextColor}
+                        background={item.flairBackGround}
+                        isNew={false}
+                        id={item._id}
+                      />
+                    )}
+                  </Draggable>
+                ))}
               {provided.placeholder}
             </div>
           )}
