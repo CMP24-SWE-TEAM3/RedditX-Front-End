@@ -1,3 +1,4 @@
+import { BASE_URL } from "API/axios";
 import {
 BtnDiv, 
 CommunityContainer, 
@@ -5,6 +6,7 @@ ViewAllBtn,
 CoverDiv,
 GradientDiv,
 LinkH2,
+CoverImg,
 } from "./CommunityCard.styled";
 import { useNavigate } from "react-router-dom";
 import { CommunityOl } from "../Communities Container/CommunitiesContainer.styled";
@@ -49,14 +51,16 @@ const CommunitySideCard = ({communityList}) => {
     return (
         <CommunityContainer>
               <CoverDiv>
-                <GradientDiv>
+                  <CoverImg
+                    crossOrigin="anonynmous"
+                    src={`${BASE_URL}/subreddits/files/${communityList.communities[0].banner}`}
+                  />
                   <LinkH2>
                       <Link href={"https://www.reddit.com/subreddits/leaderboard/"}>Top
                           <span>&nbsp;{cat}&nbsp;</span>
                           Communities
                       </Link>
                   </LinkH2>
-                </GradientDiv>
               </CoverDiv>
               <CommunityOl>
                   {com}
