@@ -40,3 +40,9 @@ export const TextMain = styled.span`
   display: block;
   padding: 8px 16px;
 `;
+
+export const NotificationList = styled.ol`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+`;
