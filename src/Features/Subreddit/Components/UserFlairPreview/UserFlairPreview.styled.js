@@ -25,7 +25,33 @@ export const CreatePost = styled(Link)`
   color: ${({ theme }) => theme.background.primary};
 
   :hover {
-    background-color: ${({ theme }) => theme.background.hover_background_button_blue};
+    background-color: ${({ theme }) =>
+      theme.background.hover_background_button_blue};
+    color: ${({ theme }) => theme.background.primary};
+  }
+`;
+
+export const RequestPostButton = styled.button`
+  display: flex;
+  /* text-align: center; */
+  text-decoration: none;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 4px 16px;
+  position: relative;
+  background-color: ${({ theme }) => theme.color.secondary};
+  border: none;
+  color: ${({ theme }) => theme.background.primary};
+
+  :hover {
+    background-color: ${({ theme }) =>
+      theme.background.hover_background_button_blue};
     color: ${({ theme }) => theme.background.primary};
   }
 `;
