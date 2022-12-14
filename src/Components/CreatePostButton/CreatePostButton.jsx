@@ -1,6 +1,6 @@
 // imports
 import React from "react";
-import { HiOutlinePlus } from "react-icons/hi";
+import { TfiPlus } from "react-icons/tfi";
 import { GlobalButtonStyled } from "Components/GlobalButton/GlobalButton.styled";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
@@ -22,7 +22,7 @@ const CreatePostButton = () => {
       overlay={<Tooltip id={`tooltip-bottom`}>Create Post</Tooltip>}
     >
       <GlobalButtonStyled onClick={() => navigate("/submit")}>
-        <HiOutlinePlus />
+        <TfiPlus size={22} />
       </GlobalButtonStyled>
     </OverlayTrigger>
   );

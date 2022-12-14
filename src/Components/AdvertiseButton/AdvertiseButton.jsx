@@ -1,6 +1,6 @@
-import React from 'react';
-import {AdvertiseButtonStyled} from "./AdvertiseButton.styled";
-import {HiOutlineSpeakerphone} from "react-icons/hi";
+import React from "react";
+import { AdvertiseButtonStyled } from "./AdvertiseButton.styled";
+import { FcAdvertising } from "react-icons/fc";
 
 /**
  * Component that shows  advertisements
@@ -8,12 +8,14 @@ import {HiOutlineSpeakerphone} from "react-icons/hi";
  *
  */
 const AdvertiseButton = () => {
-    return (
-        <AdvertiseButtonStyled>
-            <span><HiOutlineSpeakerphone/></span>
-            {/*<span>Advertise</span>*/}
-        </AdvertiseButtonStyled>
-    );
+  return (
+    <AdvertiseButtonStyled>
+      <span>
+        <FcAdvertising size={18} />
+      </span>
+      {/*<span>Advertise</span>*/}
+    </AdvertiseButtonStyled>
+  );
 };
 
 export default AdvertiseButton;
