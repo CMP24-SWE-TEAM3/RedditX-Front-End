@@ -48,6 +48,9 @@ const DraftEditorForm = ({ submitPost }) => {
   // State for editor state (text)
   const [text, setText] = useState("");
 
+  // State for editor state (text)
+  const [textHTML, setTextHTML] = useState("");
+
   // State for flair
   const [flairIndex, setFlairIndex] = useState(null);
 
@@ -84,33 +87,8 @@ const DraftEditorForm = ({ submitPost }) => {
     if (submitDestination)
       getPostFlairs(fetchData, submitDestination._id, auth);
   }, [submitDestination]);
-  // TODO: Remove this statement
-  flairs = [
-    {
-      id: "t7_63248d012f459a937e2684fd",
-      text: "Flair 1 text",
-      flairBackGroundColor: "rgb(70, 209, 96)",
-      flairTextColor: "rgb(255, 255, 255)",
-      modOnly: true,
-      allowUserEdits: true,
-    },
-    {
-      id: "t7_63248d012f459a937e1223123d",
-      text: "Flair 2 text",
-      flairBackGroundColor: "blue",
-      flairTextColor: "rgb(255, 255, 255)",
-      modOnly: true,
-      allowUserEdits: true,
-    },
-    {
-      id: "t1_632012f459a937e1223123d",
-      text: "Flair 3 text",
-      flairBackGroundColor: "red",
-      flairTextColor: "rgb(70, 209, 96)",
-      modOnly: true,
-      allowUserEdits: true,
-    },
-  ];
+  console.log("flairs = ", flairs);
+
   /**
    * Handle title change
    *
@@ -146,7 +124,12 @@ const DraftEditorForm = ({ submitPost }) => {
   const submitForm = () => {
     setCreatePostAttachments(files);
     setCreatePostText(text);
-    submitPost("linkWithImage");
+    submitPost({
+      type: "linkWithImage",
+      textJSON: text,
+      textHTML: textHTML,
+      attachments: files,
+    });
   };
   return (
     <>
@@ -155,7 +138,7 @@ const DraftEditorForm = ({ submitPost }) => {
         onHide={onModalHide}
         flairIndex={flairIndex}
         setFlairIndex={setFlairIndex}
-        flairList={flairs}
+        flairList={flairs.flairs}
         error={error}
         isLoading={isLoading}
         postOrUser="post"
@@ -180,13 +163,13 @@ const DraftEditorForm = ({ submitPost }) => {
           setFiles={setFiles}
           text={text}
           setText={setText}
+          setTextHTML={setTextHTML}
         />
         <PostFlagsWrapper flairHandler={setModalShow} />
         <SubmitButtons>
           {/* <SaveDraftButton variant="light">Save Draft</SaveDraftButton> */}
           <PostButton
-            // disabled={!submitDestination || !createPostTitle}
-            disabled={!createPostTitle}
+            disabled={!submitDestination || !createPostTitle}
             onClick={submitForm}
             id="post"
           >

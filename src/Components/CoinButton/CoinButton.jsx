@@ -1,7 +1,10 @@
 // imports
-import React from 'react';
-import {RiCoinsLine} from 'react-icons/ri'
-import {ButtonsGroupStyled, GlobalButtonStyled} from 'Components/GlobalButton/GlobalButton.styled';
+import React from "react";
+import { RiCoinsLine } from "react-icons/ri";
+import {
+  ButtonsGroupStyled,
+  GlobalButtonStyled,
+} from "Components/GlobalButton/GlobalButton.styled";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
@@ -14,19 +17,19 @@ import Tooltip from "react-bootstrap/Tooltip";
  *
  */
 const CoinButton = (props) => {
-    return (
-        <ButtonsGroupStyled>
-            <OverlayTrigger
-                key={'bottom'}
-                placement={'bottom'}
-                overlay={
-                    <Tooltip id={`tooltip-bottom`}>Coin</Tooltip>}>
-                <GlobalButtonStyled onClick={props.onshow}>
-                    <RiCoinsLine/>
-                </GlobalButtonStyled>
-            </OverlayTrigger>
-        </ButtonsGroupStyled>
-    );
+  return (
+    <ButtonsGroupStyled>
+      <OverlayTrigger
+        key={"bottom"}
+        placement={"bottom"}
+        overlay={<Tooltip id={`tooltip-bottom`}>Coin</Tooltip>}
+      >
+        <GlobalButtonStyled onClick={props.onshow}>
+          <RiCoinsLine size={24} />
+        </GlobalButtonStyled>
+      </OverlayTrigger>
+    </ButtonsGroupStyled>
+  );
 };
 //#4f5250
 export default CoinButton;

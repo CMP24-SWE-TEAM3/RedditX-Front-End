@@ -26,7 +26,7 @@ const CreatePostSideBar = () => {
   /**
    * function that controls showing modal
    */
-  const [show, setShow] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   return (
     <>
@@ -56,14 +56,20 @@ const CreatePostSideBar = () => {
             <CreateCommunityBtn
               id={"create-community-button"}
               data-testid="createModalID"
-              onClick={() => setShow(true)}
+              onClick={() => setShowModal(true)}
             >
               Create Community
             </CreateCommunityBtn>
           </ButtonContainer>
         </Content>
       </Container>
-      {<ModalCommunity show={show} close={() => setShow(false)} />}
+      {
+        <ModalCommunity
+          showModal={showModal}
+          setShowModal={setShowModal}
+          close={() => setShowModal(false)}
+        />
+      }
     </>
   );
 };

@@ -60,7 +60,6 @@ import { SearchContextProvider } from "Features/Search/Contexts/SearchWordContex
 import { SafeContextProvider } from "Features/Search/Contexts/SafeSearchContext/Safe-context";
 import useLocalStorage from "Hooks/useLocalStorage";
 import Moderator from "Features/Moderator/Pages/Moderator/Moderator";
-import Rules from "Features/Moderator/Layouts/Rules/Rules";
 import { EditContextProvider } from "Features/Moderator/Contexts/Safe-context";
 import { User } from "Features/User";
 import SettingsPage from "Features/settings/Pages/SettingsPage/SettingsPage";
@@ -243,7 +242,7 @@ function App() {
                     }
                   />
                   <Route path="login" element={<LogInPage />} />
-                  <Route path="register" element={<SignUpPage />} />
+                  <Route path="register" element={<SignUpPage setModalAfterSignUp={setModalAfterSignUp}/>} />
                   <Route
                     path="forget-password"
                     element={<ForgetPasswordPage />}

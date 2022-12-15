@@ -49,7 +49,6 @@ function DragAndDropFile({ files, setFiles }) {
               src: x.target.result,
               uploadDate: new Date().getTime(),
             });
-            // TODO: rerender preview image when image loading is done
             if (reader.readyState === FileReader.DONE)
               setIsLoadingDone(() => !isLoadingDone);
           };

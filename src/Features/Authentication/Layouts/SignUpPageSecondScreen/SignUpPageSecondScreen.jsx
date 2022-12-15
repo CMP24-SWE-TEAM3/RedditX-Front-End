@@ -105,6 +105,7 @@ const SignUpPageSecondScreen = ({
   setSug3,
   setSug4,
   setSug5,
+  setModalAfterSignUp
 }) => {
   const auth = useAuth();
   const { email, userName, password } = formFields;
@@ -202,6 +203,7 @@ const SignUpPageSecondScreen = ({
         // console.log(auth.getToken());
         // console.log(auth.getUserName());
         navigate("/");
+        setModalAfterSignUp(true);
       }
     }
   }, [data]);

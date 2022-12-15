@@ -10,17 +10,22 @@ import NumberAbbreviate from "number-abbreviate";
 
 import useFetchFunction from "Hooks/useFetchFunction";
 
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+
 /**
  * VotingBar Component that is in the side of Post Container
  * @returns {React.Component} VotingBar component
  */
-const VotingBar = ({ number }) => {
+const VotingBar = ({ number, id }) => {
   const [giveUp, setGiveUp] = useState(false);
   const [giveDown, setGiveDown] = useState(false);
   const [count, setCount] = useState(number);
   const [countStr, setCountStr] = useState("");
 
-  const id = "468452313"; // test id
+
+  const auth = useAuth();
+
+
 
   /**
    * Custom hook
@@ -46,7 +51,8 @@ const VotingBar = ({ number }) => {
             setGiveUp,
             setGiveDown,
             id,
-            dataFetch
+            dataFetch,
+            auth.getToken()
           );
         }}
       >
@@ -68,7 +74,8 @@ const VotingBar = ({ number }) => {
             setGiveUp,
             setGiveDown,
             id,
-            dataFetch
+            dataFetch,
+            auth.getToken()
           );
         }}
       >

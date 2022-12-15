@@ -14,6 +14,10 @@ export const ButtonsContainer = styled.div`
   justify-content: end;
   background-color: ${({ theme }) => theme.lineColor.primary};
   padding: 10px 0;
+  position: sticky;
+  top: 88px;
+  right: 0;
+  left: 0;
 `;
 export const ButtonOne = styled.button`
   background-color: transparent;
@@ -35,7 +39,7 @@ export const ButtonTwo = styled.button`
 `;
 export const NameHeader = styled.h2`
   font-size: 18px;
-  color:  ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.primary};
 
   svg {
     color: #0079d3;

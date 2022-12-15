@@ -33,11 +33,11 @@ const EditBanUserModal = ({ ...props }) => {
         setModalShowApproveUser(false);
       }}
     >
-      <MyModalHeader closeButton>Edit ban for: u/{props.moderator.userName}</MyModalHeader>
+      <MyModalHeader closeButton>Edit ban for: u/{props.moderator._id.substring(3)}</MyModalHeader>
       <Modal.Body data-testid="loginModalId">
         {!showSignUp && (
           <>
-            <EditBanUser userName={props.moderator.userName} setShowEditModal={props.setShowEditModal} setModalShowLogIn={setModalShowApproveUser} moderator={props.moderator}/>{" "}
+            <EditBanUser userName={props.moderator._id} setShowEditModal={props.setShowEditModal} setModalShowLogIn={setModalShowApproveUser} moderator={props.moderator}/>{" "}
             {/* <HaveAccount>
               New to Reddit?{" "}
               <button onClick={() => setShowSignUp(true)}>Sign up</button>

@@ -12,7 +12,7 @@ const getPostFlairs = async (fetchData, subreddit, auth) => {
   fetchData({
     axiosInstance: axios,
     method: "GET",
-    url: `/api/r/${subreddit}/flair-list/`,
+    url: `/api/r/${subreddit}/api/flair-list/`,
     // url: `https://api.redditswe22.tech/api/r/t5_imagePro235/api/flair-list?show=all`,
     // url: `http://localhost:8000/flairs/`,
     requestConfig: {

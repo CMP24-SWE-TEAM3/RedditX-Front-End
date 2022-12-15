@@ -17,7 +17,7 @@ import {
  * @returns {React.Component}  InvitedModerators component that is used in User management
  */
 
-const InvitedModerators = ({ Moderator }) => {
+const InvitedModerators = ({ Moderator, communityName }) => {
   const [searchField, setSearchField] = useState("");
   const [filteredMonsters, setFilterMonsters] = useState(Moderator);
 
@@ -46,7 +46,7 @@ const InvitedModerators = ({ Moderator }) => {
       </SearchContainer>
       <Container>
         {filteredMonsters.map((mod) => (
-          <ModeratorRow Moderator={mod} invited={true}></ModeratorRow>
+          <ModeratorRow communityName={communityName} Moderator={mod} invited={true}></ModeratorRow>
         ))}
       </Container>
     </>

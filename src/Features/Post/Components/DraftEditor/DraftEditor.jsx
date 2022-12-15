@@ -29,6 +29,7 @@ import useMedia from "Features/Post/Hooks/useMedia";
 
 // Import bootstrap components
 import { OverlayTrigger, Popover } from "react-bootstrap";
+import { convertToHTML } from "draft-convert";
 
 // Extract Draft variables
 const {
@@ -85,7 +86,7 @@ const Link = (props) => {
  * DraftEditor component
  * @returns {React.Component} DraftEditor
  */
-const DraftEditor = ({ files, setFiles, text, setText, load }) => {
+const DraftEditor = ({ files, setFiles, text, setText, load, setTextHTML }) => {
   const decorator = new CompositeDecorator([
     {
       strategy: findLinkEntities,
@@ -150,6 +151,30 @@ const DraftEditor = ({ files, setFiles, text, setText, load }) => {
     setEditorState(editorState);
     const raw = convertToRaw(editorState.getCurrentContent());
     setText(JSON.stringify(raw));
+    setTextHTML(
+      convertToHTML({
+        entityToHTML: (entity, originalText) => {
+          if (entity.type === "LINK") {
+            return <a href={entity.data.url}>{originalText}</a>;
+          }
+          if (entity.type === "image") {
+            return {
+              start: `<img src='${entity.data["src"]}'>`,
+              end: "</img>",
+              empty: "",
+            };
+          }
+          if (entity.type === "video") {
+            return {
+              start: `<video src='${entity.data["src"]}'>`,
+              end: "</video>",
+              empty: "",
+            };
+          }
+          return originalText;
+        },
+      })(editorState.getCurrentContent())
+    );
     console.log(raw);
   };
 

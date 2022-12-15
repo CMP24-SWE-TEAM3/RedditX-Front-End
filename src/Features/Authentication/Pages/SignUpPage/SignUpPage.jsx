@@ -12,7 +12,7 @@ var defaultFormFields = {
   password: "",
 };
 
-const SignUpPage = () => {
+const SignUpPage = ({setModalAfterSignUp}) => {
   // Change document title
   useDocumentTitle("reddit.com: Join the worldwide");
 
@@ -127,6 +127,7 @@ const SignUpPage = () => {
           sug5={sug5}
           validPassword={validPassword}
           validUserName={validUserName}
+          setModalAfterSignUp={setModalAfterSignUp}
         />
       }
     </>

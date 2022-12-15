@@ -30,6 +30,34 @@ export const getModerators = (dataFetch, subredditName, token) => {
 };
 
 /**
+ * Function to get the moderators of subreddit
+ * @param {Function} dataFetch Coming from useFetchFunction custom hook
+ * @param {String} subredditName The name of the subreddit
+ * @param {String} token The token of the user
+ */
+export const getApproved = (dataFetch, subredditName, token) => {
+  //let searchSubredditName = "t5_" + subredditName;
+  let finalUrl = "/api/r/" + subredditName + "/about/members";
+  if (subredditName?.length > 0) {
+    dataFetch({
+      axiosInstance: axios,
+      method: "get",
+      url: finalUrl,
+      requestConfig: {
+        headers: {
+          "Content-Language": "en-US",
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    });
+
+    return true;
+  }
+
+  return false;
+};
+
+/**
  * Function to invite moderator
  * @param {Function} dataFetch Coming from useFetchFunction custom hook
  * @param {Object} objectData Object that contains the data that will be sent to the api
@@ -76,6 +104,66 @@ export const leaveModerator = (dataFetch, objectData, subredditName, token) => {
   if (objectData.userID !== undefined && subredditName?.length > 0) {
     if (typeof objectData.userID === "string") {
       let finalUrl = "/api/r/" + subredditName + "/leave-moderator";
+      dataFetch({
+        axiosInstance: axios,
+        method: "POST",
+        url: finalUrl,
+        requestConfig: {
+          data: objectData,
+          headers: {
+            "Content-Language": "en-US",
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      });
+      return true;
+    }
+    return false;
+  }
+  return false;
+};
+
+/**
+ * Function to make moderator as an ordinary memeber
+ * @param {Function} dataFetch Coming from useFetchFunction custom hook
+ * @param {Object} objectData Object that contains the data that will be sent to the api
+ * @param {String} subredditName The name of the subreddit
+ * @param {String} token The token of the user
+ */
+export const kickModerator = (dataFetch, objectData, subredditName, token) => {
+  if (objectData.userID !== undefined && subredditName?.length > 0) {
+    if (typeof objectData.userID === "string") {
+      let finalUrl = "/api/r/" + subredditName + "/kick-moderator";
+      dataFetch({
+        axiosInstance: axios,
+        method: "POST",
+        url: finalUrl,
+        requestConfig: {
+          data: objectData,
+          headers: {
+            "Content-Language": "en-US",
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      });
+      return true;
+    }
+    return false;
+  }
+  return false;
+};
+
+/**
+ * Function to kick user from community
+ * @param {Function} dataFetch Coming from useFetchFunction custom hook
+ * @param {Object} objectData Object that contains the data that will be sent to the api
+ * @param {String} subredditName The name of the subreddit
+ * @param {String} token The token of the user
+ */
+export const kickMember = (dataFetch, objectData, subredditName, token) => {
+  if (objectData.userID !== undefined && subredditName?.length > 0) {
+    if (typeof objectData.userID === "string") {
+      let finalUrl = "/api/r/" + subredditName + "/kick-moderator";
       dataFetch({
         axiosInstance: axios,
         method: "POST",
@@ -171,6 +259,43 @@ export const banUser = (dataFetch, objectData, subredditName, token) => {
       (objectData.operation === "ban" || objectData.operation === "unban")
     ) {
       let finalUrl = "/api/r/" + subredditName + "/about/banned";
+      dataFetch({
+        axiosInstance: axios,
+        method: "POST",
+        url: finalUrl,
+        requestConfig: {
+          data: objectData,
+          headers: {
+            "Content-Language": "en-US",
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      });
+      return true;
+    }
+    return false;
+  }
+  return false;
+};
+
+/**
+ * Function to mute or unmute user
+ * @param {Function} dataFetch Coming from useFetchFunction custom hook
+ * @param {Object} objectData Object that contains the data that will be sent to the api
+ * @param {String} subredditName The name of the subreddit
+ * @param {String} token The token of the user
+ */
+export const muteUser = (dataFetch, objectData, subredditName, token) => {
+  if (
+    objectData.userID !== undefined &&
+    objectData.operation !== undefined &&
+    subredditName?.length > 0
+  ) {
+    if (
+      typeof objectData.userID === "string" &&
+      (objectData.operation === "mute" || objectData.operation === "unmute")
+    ) {
+      let finalUrl = "/api/r/" + subredditName + "/about/muted";
       dataFetch({
         axiosInstance: axios,
         method: "POST",

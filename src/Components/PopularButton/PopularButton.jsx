@@ -1,7 +1,10 @@
 // imports
-import React from 'react';
-import {BsArrowUpRightCircle} from 'react-icons/bs'
-import {ButtonsGroupStyled, GlobalButtonStyled} from 'Components/GlobalButton/GlobalButton.styled'
+import React from "react";
+import { BsArrowUpRightCircle } from "react-icons/bs";
+import {
+  ButtonsGroupStyled,
+  GlobalButtonStyled,
+} from "Components/GlobalButton/GlobalButton.styled";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
@@ -10,19 +13,19 @@ import Tooltip from "react-bootstrap/Tooltip";
  * @returns {React.Component}
  */
 const PopularButton = () => {
-    return (
-        <ButtonsGroupStyled>
-        <OverlayTrigger
-            key={'bottom'}
-            placement={'bottom'}
-            overlay={
-                <Tooltip id={`tooltip-bottom`}>Popular</Tooltip>}>
-            <GlobalButtonStyled>
-                <BsArrowUpRightCircle/>
-            </GlobalButtonStyled>
-        </OverlayTrigger>
-        </ButtonsGroupStyled>
-    );
+  return (
+    <ButtonsGroupStyled>
+      <OverlayTrigger
+        key={"bottom"}
+        placement={"bottom"}
+        overlay={<Tooltip id={`tooltip-bottom`}>Popular</Tooltip>}
+      >
+        <GlobalButtonStyled>
+          <BsArrowUpRightCircle size={22}/>
+        </GlobalButtonStyled>
+      </OverlayTrigger>
+    </ButtonsGroupStyled>
+  );
 };
 
 export default PopularButton;

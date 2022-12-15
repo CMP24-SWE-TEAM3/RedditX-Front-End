@@ -4,34 +4,33 @@ import CommunityOptions from "../CommunityOptions/CommunityOptions";
 import OnlineMembers from "../OnlineMembers/OnlineMembers";
 import UserFlairPreview from "../UserFlairPreview/UserFlairPreview";
 
-// Import contexts
-import { useSubmitDestination } from "Features/Post/Contexts/submitDestination";
-
 // Import styled components
 import {
   Container,
   Content,
   Separator,
-  CommunityBanner,
+  BackgroundImage,
 } from "./CommunityCard.styled";
 
+import { BASE_URL } from "API/axios";
 /**
  *
  * @returns {React.Component} CreatePost component
  */
-const CommunityCard = () => {
-  // Context for selected submit destination
-  const { submitDestination, setSubmitDestination } = useSubmitDestination();
-
+const CommunityCard = ({ communityInfo }) => {
   return (
     <Container>
-      <CommunityBanner />
+      <BackgroundImage
+        crossOrigin="anonymous"
+        src={`${BASE_URL}/subreddits/files/${communityInfo.banner}`}
+        as={`${communityInfo.banner ? "img" : "div"}`}
+      />
       <Content>
-        <CommunityDate />
+        <CommunityDate communityInfo={communityInfo} />
         <Separator />
-        <OnlineMembers online={5} members={7} />
+        <OnlineMembers online={5} members={communityInfo.membersCnt} />
         <Separator />
-        <UserFlairPreview />
+        <UserFlairPreview flairList={communityInfo.flairList} />
         <CommunityOptions />
       </Content>
     </Container>

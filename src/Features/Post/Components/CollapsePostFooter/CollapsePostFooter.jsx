@@ -18,7 +18,7 @@ import { CgArrowsExpandLeft } from "react-icons/cg";
  * PostFooter Component that is in the side of Post
  * @returns {React.Component} PostFooter component
  */
-const CollapsePostFooter = ({ collapse, setCollapse }) => {
+const CollapsePostFooter = ({ collapse, setCollapse, post }) => {
   return (
     <Container>
       <CommentCollapse
@@ -30,7 +30,7 @@ const CollapsePostFooter = ({ collapse, setCollapse }) => {
         <CgArrowsExpandLeft />
       </CommentCollapse>
       <CommentCollapse onClick={(event) => {}}>
-        <TfiComment /> 231 Comments
+        <TfiComment /> {post.commentsNumber} Comments
       </CommentCollapse>
       <CommentCollapse
         onClick={(event) => {

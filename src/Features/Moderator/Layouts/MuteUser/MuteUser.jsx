@@ -2,20 +2,21 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
+import { muteUser } from "Features/Moderator/Services/UserManagementApi/userManagementApi";
+
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import useFetchFunction from "Hooks/useFetchFunction";
+
 import {
   Container,
   SearchContainer,
   SearchInput,
   AbilityContainer,
-  CheckBox,
   Ability,
   Head,
   Par,
-  Line,
   ButtonsContainer,
-  ButtonOne,
   ButtonTwo,
-  GiveAccess,
   TextArea,
 } from "./MuteUser.styled";
 
@@ -31,7 +32,13 @@ const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
  * @returns {React.Component}  MuteUser Layout that is used in User management
  */
 
-const MuteUser = ({ setModalShowMuteUser }) => {
+const MuteUser = ({ communityName }) => {
+
+
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
+
+  const auth = useAuth();
+
   /**
    * state to handel any change the user make in the input fields
    */
@@ -110,7 +117,12 @@ const MuteUser = ({ setModalShowMuteUser }) => {
           >
             Cancel
           </ButtonOne> */}
-          <ButtonTwo disabled={!validName} valid={validName} onClick={() => {}}>
+          <ButtonTwo disabled={!validName} valid={validName} onClick={() => {
+            muteUser(dataFetch, {
+              userID: "t2_"+userName,
+              operation: "mute",
+            }, communityName, auth.getToken())
+          }}>
             Mute user
           </ButtonTwo>
         </ButtonsContainer>

@@ -1,8 +1,7 @@
 // imports
 import React from "react";
-import { HotBtn, Word } from "./HotButton.styled";
+import { HotBtn, Word, NavLinkBtn } from "./HotButton.styled";
 import { HiFire } from "react-icons/hi";
-
 /**
  * Component that displays a list of posts on the homepage categorized as hot posts
  *

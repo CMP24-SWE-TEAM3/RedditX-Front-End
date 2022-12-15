@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const RuleContainer = styled.div`
+  color: ${({ theme }) => theme.color.primary};
   margin-bottom: 16px;
   font-size: 14px;
   font-weight: 500;

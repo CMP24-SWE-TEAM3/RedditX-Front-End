@@ -9,15 +9,16 @@ import axios from "API/axios";
  */
 
 const createCommunity = (fetchData, auth, objectData) => {
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
   if (
-    objectData.communityName !== undefined &&
+    objectData.name !== undefined &&
     objectData.type !== undefined &&
-    objectData.nsfw !== undefined
+    objectData.over18 !== undefined
   ) {
     if (
-      typeof objectData.communityName === "string" &&
-      typeof objectData.type == "string" &&
-      typeof objectData.nsfw === "boolean"
+      typeof objectData.name === "string" &&
+      typeof objectData.type === "string" &&
+      typeof objectData.over18 === "boolean"
     ) {
       fetchData({
         axiosInstance: axios,

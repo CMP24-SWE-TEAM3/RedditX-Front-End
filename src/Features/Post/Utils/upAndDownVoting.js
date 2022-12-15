@@ -8,7 +8,8 @@ export const handleUp = (
   setGiveUp,
   setGiveDown,
   id,
-  dataFetch
+  dataFetch,
+  token
 ) => {
   const sentId = "t3_" + id;
 
@@ -19,19 +20,19 @@ export const handleUp = (
       giveVote(dataFetch, {
         id: sentId,
         dir: 2,
-      });
+      },token);
 
       giveVote(dataFetch, {
         id: sentId,
         dir: 1,
-      });
+      },token);
     } else {
       setCount(count + 1);
 
       giveVote(dataFetch, {
         id: sentId,
         dir: 1,
-      });
+      },token);
     }
   } else {
     setCount(count - 1);
@@ -39,7 +40,7 @@ export const handleUp = (
     giveVote(dataFetch, {
       id: sentId,
       dir: 0,
-    });
+    },token);
   }
   setGiveUp(!giveUp);
   setGiveDown(false);
@@ -53,7 +54,8 @@ export const handleDown = (
   setGiveUp,
   setGiveDown,
   id,
-  dataFetch
+  dataFetch,
+  token
 ) => {
   const sentId = "t3_" + id;
 
@@ -64,19 +66,19 @@ export const handleDown = (
       giveVote(dataFetch, {
         id: sentId,
         dir: 0,
-      });
+      }, token);
 
       giveVote(dataFetch, {
         id: sentId,
         dir: -1,
-      });
+      }, token);
     } else {
       setCount(count - 1);
 
       giveVote(dataFetch, {
         id: sentId,
         dir: -1,
-      });
+      }, token);
     }
   } else {
     setCount(count + 1);
@@ -84,7 +86,7 @@ export const handleDown = (
     giveVote(dataFetch, {
       id: sentId,
       dir: 2,
-    });
+    }, token);
   }
   setGiveDown(!giveDown);
   setGiveUp(false);

@@ -37,7 +37,7 @@ const MuteUserModal = ({ ...props }) => {
       <Modal.Body data-testid="loginModalId">
         {!showSignUp && (
           <>
-            <MuteUser setModalShowSignUp={props.setModalShowSignUp} setModalShowLogIn={setModalShowApproveUser} />{" "}
+            <MuteUser communityName={props.communityName} setModalShowSignUp={props.setModalShowSignUp} setModalShowLogIn={setModalShowApproveUser} />{" "}
             {/* <HaveAccount>
               New to Reddit?{" "}
               <button onClick={() => setShowSignUp(true)}>Sign up</button>

@@ -8,7 +8,7 @@ import { MdOutlinePersonAddDisabled } from "react-icons/md";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 
-import { banUser } from "Features/Moderator/Services/UserManagementApi/UserManagementApi";
+import { banUser } from "Features/Moderator/Services/UserManagementApi/userManagementApi";
 
 import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
 
@@ -128,12 +128,12 @@ const EditBanUser = ({ moderator, setShowEditModal, userName }) => {
     setSelectReason(sReason);
   };
 
-  const handleBan = () => {
+  const handleBan = (op) => {
     banUser(
       dataFetch,
       {
         userID: "t2_" + userName,
-        operation: "ban",
+        operation: op,
       },
       communityName,
       auth.getToken()
@@ -244,12 +244,18 @@ const EditBanUser = ({ moderator, setShowEditModal, userName }) => {
         <ButtonsContainer>
           <UnBan
             onClick={() => {
-              handleBan();
+              handleBan("unban");
             }}
           >
             <MdOutlinePersonAddDisabled />
           </UnBan>
-          <ButtonTwo disabled={!validName} valid={validName} onClick={() => {}}>
+          <ButtonTwo
+            disabled={!validName}
+            valid={validName}
+            onClick={() => {
+              handleBan("ban");
+            }}
+          >
             Ban user
           </ButtonTwo>
         </ButtonsContainer>

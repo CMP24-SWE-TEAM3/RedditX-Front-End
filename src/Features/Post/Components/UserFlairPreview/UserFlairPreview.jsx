@@ -26,7 +26,7 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
  *
  * @returns {React.Component} CreatePost component
  */
-const UserFlairPreview = () => {
+const UserFlairPreview = ({ flairList }) => {
   //state to show modal
   const [modalShow, setModalShow] = useState(false);
 
@@ -39,16 +39,6 @@ const UserFlairPreview = () => {
     setModalShow(true);
   }
 
-  // const [flairs, error, isLoading, reload] = useFetch({
-  //   axiosInstance: axios,
-  //   method: "GET",
-  //   url: "/flairs/",
-  //   requestConfig: {
-  //     headers: {
-  //       "Content-Language": "en-US",
-  //     },
-  //   },
-  // });
   // Fetch flairs
   const auth = useAuth();
   let [flairs, error, isLoading, fetchData] = useFetchFunction();
@@ -56,32 +46,6 @@ const UserFlairPreview = () => {
     getPostFlairs(fetchData, auth);
   }, []);
   // TODO: Remove this statement
-  flairs = [
-    {
-      id: "t7_63248d012f459a937e2684fd",
-      text: "Flair 1 text",
-      flairBackGroundColor: "rgb(70, 209, 96)",
-      flairTextColor: "rgb(255, 255, 255)",
-      modOnly: true,
-      allowUserEdits: true,
-    },
-    {
-      id: "t7_63248d012f459a937e1223123d",
-      text: "Flair 2 text",
-      flairBackGroundColor: "blue",
-      flairTextColor: "rgb(255, 255, 255)",
-      modOnly: true,
-      allowUserEdits: true,
-    },
-    {
-      id: "t1_632012f459a937e1223123d",
-      text: "Flair 3 text",
-      flairBackGroundColor: "red",
-      flairTextColor: "rgb(70, 209, 96)",
-      modOnly: true,
-      allowUserEdits: true,
-    },
-  ];
   /**
    *
    * @returns {React.Component} CreatePost component
@@ -104,17 +68,18 @@ const UserFlairPreview = () => {
             </ProfilePicContainer>
             <NameAndFlairContainer>
               <Name>
-                <span>user name</span>
+                <span>{auth.getUserName().substring(3)}</span>
               </Name>
               <FlairContainer>
                 {flairIndex !== null && (
                   <Flair
                     style={{
-                      color: flairs[flairIndex].flairTextColor,
-                      backgroundColor: flairs[flairIndex].flairBackGroundColor,
+                      color: flairList[flairIndex].flairTextColor,
+                      backgroundColor:
+                        flairList[flairIndex].flairBackGroundColor,
                     }}
                   >
-                    {flairs[flairIndex].text}
+                    {flairList[flairIndex].text}
                   </Flair>
                 )}
               </FlairContainer>

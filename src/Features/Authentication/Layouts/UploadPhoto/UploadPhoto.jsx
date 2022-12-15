@@ -58,7 +58,13 @@ const UploadPhoto = ({
         You can change it later if you’d like.
       </AuthParagraph>
       <DragAndDropFile file={profilePhoto} setFile={setProfilePhoto} />
-      <Button onClick={submitForm} disabled={false} valid={true}>
+      <Button
+        onClick={() => {
+          submitForm();
+        }}
+        disabled={false}
+        valid={true}
+      >
         Continue
       </Button>
     </AuthContainer>

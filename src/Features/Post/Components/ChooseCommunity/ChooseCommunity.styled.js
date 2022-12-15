@@ -88,6 +88,8 @@ export const Menu = styled.div`
   outline: 0;
   background-color: ${({ theme }) => theme.background.primary};
   border: 1px solid ${({ theme }) => theme.lineColor.primary};
+  max-height: 300px;
+  overflow-y: scroll;
 `;
 
 // Container for items group
@@ -97,6 +99,8 @@ export const ItemsGroup = styled.div`
 
 // Dropdown item
 export const DropdownItem = styled.div`
+  display: flex;
+  align-items: center;
   width: 100%;
   padding: 5px 10px;
   border-radius: 0;
@@ -128,6 +132,8 @@ export const UserImage = styled.img`
   width: 30px;
   object-fit: cover;
   border-radius: 50%;
+  display: inline-block;
+  background-color: ${({ theme }) => theme.color.secondary};
 `;
 
 // Down arrow icon
