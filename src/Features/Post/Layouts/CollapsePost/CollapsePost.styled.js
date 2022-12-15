@@ -14,6 +14,9 @@ export const Container = styled.div`
   &:hover {
     border-color: ${(p) => (!p.fullPost ? "black !important" : "transparent")};
   }
+  @media (max-width: 960px) {
+    width: 100%;
+  }
 `;
 
 export const PostBar = styled.div`
@@ -35,8 +38,16 @@ export const StyledImage = styled.img`
   width: 96px;
   border: none;
   border-radius: 4px;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  background-color: ${({ theme }) => theme.background.lightMuted};
   @media (max-width: 600px) {
     display: none;
   }
+`;
+
+export const OuterContianer = styled.div`
+  width: 100%;
 `;

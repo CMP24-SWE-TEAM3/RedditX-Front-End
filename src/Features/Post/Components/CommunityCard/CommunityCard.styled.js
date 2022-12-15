@@ -1,18 +1,13 @@
 import styled from "styled-components";
 
-
-export const CommunityBanner = styled.div`
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  line-height: 12px;
-  text-transform: uppercase;
+export const BackgroundImage = styled.img`
+  width: 100%;
+  height: 34px;
+  object-fit: cover;
+  top: 0;
   background-color: ${({ theme }) => theme.color.secondary};
   border-radius: 3px 3px 0 0;
-  color: ${({ theme }) => theme.background.primary};
-  display: flex;
-  padding: 0 12px 12px;
-  height: 34px;
+  margin: -12px 0 10px;
 `;
 
 export const Container = styled.div`

@@ -1,35 +1,54 @@
+import { BASE_URL } from "API/axios";
 import PostContent from "Features/Post/Components/PostContent/PostContent";
 import VotingBar from "Features/Post/Components/VotingBar/VotingBar";
 import CollapsePostContent from "Features/Post/Layouts/CollapsePostContent/CollapsePostContent";
 import { useState } from "react";
-
+import { TiDocumentText } from "react-icons/ti";
 import {
   Container,
   ContentContainer,
   StyledImage,
+  OuterContianer,
 } from "./CollapsePost.styled";
 
 /**
  * PostPublisher Component
  * @returns {React.Component} PostPublisher component
  */
-const CollapsePost = ({ fullPost }) => {
+const CollapsePost = ({ fullPost, post }) => {
   const [collapse, setCollapse] = useState(true);
 
   return (
     <Container fullPost={fullPost}>
-      <VotingBar number={2004} />
-      <div>
+      <VotingBar number={post.votesCount} />
+      <OuterContianer>
         <ContentContainer>
-          <StyledImage src="https://picsum.photos/200/300" alt="post" />
+          {post.attachments.length !== 0 && (
+            <StyledImage
+              crossOrigin="anonymous"
+              src={`${BASE_URL}/posts/files/${post.attachments[0]}`}
+              alt="post"
+            />
+          )}
+          {post.attachments.length === 0 && (
+            <StyledImage
+              crossOrigin="anonymous"
+              src={`${BASE_URL}/posts/files/${post.attachments[0]}`}
+              alt="post"
+              as="div"
+            >
+              <TiDocumentText size={25} />
+            </StyledImage>
+          )}
           <CollapsePostContent
             fullPost={fullPost}
             collapse={collapse}
             setCollapse={setCollapse}
+            post={post}
           />
         </ContentContainer>
-        {!collapse && <PostContent />}
-      </div>
+        {!collapse && <PostContent post={post} />}
+      </OuterContianer>
     </Container>
   );
 };

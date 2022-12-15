@@ -14,22 +14,33 @@ import { FiMail } from "react-icons/fi";
  * @returns {React.Component}
  */
 const ModeratorButton = () => {
-    return (
-        <><OverlayTrigger
-            key={'bottom'}
-            placement={'bottom'}
-            overlay={
-                <Tooltip id={`tooltip-bottom`}>Moderator</Tooltip>}>
-            <ButtonModerator id={'moderator-button'}>
-                <Dropdown.Toggle as={MdOutlineRemoveModerator}/>
-                <Dropdown.Menu id={'moderator-menu'}>
-                    <Dropdown.Item  href="#"><span><TbBoxModel2/></span> <span>Mod Queue</span></Dropdown.Item>
-                    <Dropdown.Item  href="#"><span><FiMail/></span> <span>Modmail</span></Dropdown.Item>
-                </Dropdown.Menu>
-            </ButtonModerator>
-        </OverlayTrigger>
-        </>
-    );
+  return (
+    <>
+      <OverlayTrigger
+        key={"bottom"}
+        placement={"bottom"}
+        overlay={<Tooltip id={`tooltip-bottom`}>Moderator</Tooltip>}
+      >
+        <ButtonModerator id={"moderator-button"}>
+          <Dropdown.Toggle as={MdOutlineRemoveModerator} />
+          <Dropdown.Menu id={"moderator-menu"}>
+            <Dropdown.Item href="#">
+              <span>
+                <TbBoxModel2 />
+              </span>
+              <span>Mod Queue</span>
+            </Dropdown.Item>
+            <Dropdown.Item href="#">
+              <span>
+                <FiMail />
+              </span>
+              <span>Modmail</span>
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </ButtonModerator>
+      </OverlayTrigger>
+    </>
+  );
 };
 
 export default ModeratorButton;

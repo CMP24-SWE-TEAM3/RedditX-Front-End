@@ -5,7 +5,8 @@ export const ButtonModerator = styled(Dropdown)`
   border: none;
   outline: none;
   margin: 0 8px;
-  color: ${({ theme }) => theme.color.muted} !important;
+  color: ${({ theme }) => theme.color.primary} !important;
+  font-size: 23px;
   @media (max-width: 768px) {
     width: auto;
   }

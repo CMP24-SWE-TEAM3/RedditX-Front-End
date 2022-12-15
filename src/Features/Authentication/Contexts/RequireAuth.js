@@ -10,7 +10,11 @@ import { useAuth } from "./Authentication";
 const RequireAuth = ({ children }) => {
   const auth = useAuth();
 
-  if (!auth.isLoggedIn()) {
+  if (!auth.isLoggedIn() || new Date(auth.getExpirationDate()) < new Date()) {
+    if (auth.getExpirationDate() < new Date()) {
+      console.log("Token expired");
+      auth.logout();
+    }
     return <Navigate to="/login"></Navigate>;
   }
   return children;

@@ -33,12 +33,16 @@ import { useState } from "react";
 import Rules from "Features/Moderator/Pages/Rules/Rules";
 import TrafficStates from "Features/Moderator/Pages/TrafficStates/TrafficStates";
 import FlairPage from "Features/Moderator/Pages/FlairPage/FlairPage";
-import ApprovedPage from "Features/Moderator/Layouts/ApprovedPage/ApprovedPage";
-import MutedPage from "Features/Moderator/Layouts/MutedPage/MutedPage";
-import BannedPage from "Features/Moderator/Layouts/BannedPage/BannedPage";
+import ApprovedPage from "../ApprovedPage/ApprovedPage";
+import MutedPage from "../MutedPage/MutedPage";
+import BannedPage from "../BannedPage/BannedPage";
+
+import RulesTab from "Features/Moderator/Components/RuleTab/RuleTab";
+import SpamQueue from "../SpamQueue/SpamQueue";
+import EditedQueue from "../EditedQueue/EditedQueue";
+import UnmoderatedQueue from "../UnmoderatedQueue/UnmoderatedQueue";
 
 const paths = {
-  ModQueue: "mod-queue",
   Spam: "spam",
   Edited: "edited",
   Unmoderated: "unmoderated",
@@ -70,7 +74,7 @@ function LayoutTabs({
           {isCommunitySettings && (
             <Nav variant="pills" className="flex-column">
               <BackButton
-                to={getPath(paths.ModQueue)}
+                to={getPath(paths.spam)}
                 onClick={() => setIsCommunitySettings(false)}
               >
                 <MdKeyboardArrowLeft size={30} />
@@ -100,14 +104,6 @@ function LayoutTabs({
                 <MdOutlineLibraryBooks size={22} />
                 <span> Queues </span>
               </CategoryTitle>
-              <Nav.Item>
-                <StyledNavLink
-                  to={getPath(paths.ModQueue)}
-                  selected={moderatorId === paths.ModQueue}
-                >
-                  Mod queue
-                </StyledNavLink>
-              </Nav.Item>
               <Nav.Item>
                 <StyledNavLink
                   to={getPath(paths.Spam)}
@@ -227,10 +223,9 @@ function LayoutTabs({
         </TabsCol>
         <ContentCol>
           <Tab.Content>
-            {moderatorId === paths.ModQueue && <div>Mod-queue</div>}
-            {moderatorId === paths.Spam && <div>Spam</div>}
-            {moderatorId === paths.Edited && <div>Edited</div>}
-            {moderatorId === paths.Unmoderated && <div>Unmoderated</div>}
+            {moderatorId === paths.Spam && <SpamQueue />}
+            {moderatorId === paths.Edited && <EditedQueue />}
+            {moderatorId === paths.Unmoderated && <UnmoderatedQueue />}
             {moderatorId === paths.Rules && <Rules />}
             {moderatorId === paths.PostFlair && <FlairPage />}
             {moderatorId === paths.Banned && (

@@ -31,8 +31,23 @@ const DropDownRightButton = ({ toggleMode }) => {
   return (
     <Container
       id={"right-drop-down"}
+      align={{ md: "end" }}
       autoClose="outside"
-      title={<DropdownButtonIconStyled />}
+      title={
+        <div className="avatar-container">
+          <div>
+            <img
+              src="https://styles.redditmedia.com/t5_75g7xm/styles/profileIcon_snoo6422fdc6-0631-4a70-a9f3-36b423763138-headshot.png?width=256&height=256&frame=1&crop=256:256,smart&v=enabled&s=152682da18e53c50b9f18fc2b7fdd03ee3d9e6ec"
+              alt="Avatar"
+              className="avatar"
+            />
+          </div>
+          <div className="user-name-container">
+            <span className="user-name">Abdelrahman_Hamza</span>
+            <span className="karma">Karma</span>
+          </div>
+        </div>
+      }
     >
       <NavDropdown.Item as={"title"} disabled={"disabled"}>
         <i className={"ico"}>

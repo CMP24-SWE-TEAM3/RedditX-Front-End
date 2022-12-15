@@ -74,7 +74,7 @@ const Search = () => {
       <ReactSearchAutocomplete
         placeholder="Search Reddit"
         styling={SearchItem}
-        items={CommunityList.result}
+        items={items}
         autoFocus
         formatResult={formatResult}
       />

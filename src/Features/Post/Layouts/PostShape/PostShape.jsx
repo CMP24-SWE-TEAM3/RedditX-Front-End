@@ -1,7 +1,9 @@
 import VotingBar from "Features/Post/Components/VotingBar/VotingBar";
-import PostBar from "../PostBar/PostBar";
+import PostPublisher from "Features/Post/Components/PostPublisher/PostPublisher";
+import PostContent from "Features/Post/Components/PostContent/PostContent";
+import PostFooter from "Features/Post/Components/PostFooter/PostFooter";
 
-import { Container } from "./PostShape.styled";
+import { Container, ContentContainer } from "./PostShape.styled";
 
 /**
  * PostShape Component
@@ -11,7 +13,11 @@ const PostShape = ({ fullPost, post }) => {
   return (
     <Container fullPost={fullPost}>
       <VotingBar number={post.votesCount} />
-      <PostBar fullPost={fullPost} post={post} />
+      <ContentContainer>
+        <PostPublisher fullPost={fullPost} post={post} />
+        <PostContent post={post} />
+        <PostFooter post={post} />
+      </ContentContainer>
     </Container>
   );
 };

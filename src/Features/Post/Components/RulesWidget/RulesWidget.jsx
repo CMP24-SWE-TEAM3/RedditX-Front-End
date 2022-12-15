@@ -16,14 +16,7 @@ import {
  *
  * @returns {React.Component} CreatePost component
  */
-const RulesWidget = () => {
-  //rules
-  const rules = [
-    { title: "t1", description: "d1" },
-    { title: "t2", description: "d2" },
-    { title: "t3", description: "" },
-  ];
-
+const RulesWidget = ({ rules, communityId }) => {
   /**
    *
    * @param {number} index - order of rule
@@ -77,18 +70,21 @@ const RulesWidget = () => {
   };
 
   return (
-    <WidgetContainer headerText="r/Egypt Rules">
-      {rules.map((rule, i) => {
-        return (
-          <Rule
-            index={i + 1}
-            len={rules.length}
-            title={rule.title}
-            key={rule.title}
-            description={rule.description}
-          />
-        );
-      })}
+    <WidgetContainer
+      headerText={`r/${communityId && communityId.substring(3)}`}
+    >
+      {rules &&
+        rules.map((rule, i) => {
+          return (
+            <Rule
+              index={i + 1}
+              len={rules.length}
+              title={rule.title}
+              key={rule.title}
+              description={rule.description}
+            />
+          );
+        })}
     </WidgetContainer>
   );
 };
