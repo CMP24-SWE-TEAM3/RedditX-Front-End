@@ -105,7 +105,7 @@ const SignUpPageSecondScreen = ({
   setSug3,
   setSug4,
   setSug5,
-  setModalAfterSignUp
+  setModalAfterSignUp,
 }) => {
   const auth = useAuth();
   const { email, userName, password } = formFields;
@@ -143,7 +143,7 @@ const SignUpPageSecondScreen = ({
       signupApi(dataFetch, {
         type: "bare email",
         email: email,
-        username: "t2_"+userName,
+        username: "t2_" + userName,
         password: password,
       });
       setSignupSubmit(true);
@@ -194,10 +194,10 @@ const SignUpPageSecondScreen = ({
   useEffect(() => {
     if (signupSubmit) {
       setSignupSubmit(false);
-     // console.log("out useEffect", data);
+      // console.log("out useEffect", data);
 
       if (!error && data.token) {
-       // console.log("useEffect", data);
+        // console.log("useEffect", data);
         setFinishedLoading(true);
         auth.login(data);
         // console.log(auth.getToken());
@@ -420,7 +420,7 @@ const SignUpPageSecondScreen = ({
                 BACK
               </BackButton>
               <ButtonsContainer>
-                {!finishedLoading && (
+                {
                   <Button
                     id="signUpButton"
                     page={true}
@@ -434,20 +434,10 @@ const SignUpPageSecondScreen = ({
                     type="submit"
                     onClick={() => setWantSubmit(true)}
                   >
-                    SIGN UP
+                    {!isLoading && <span> SIGN UP</span>}
+                    {isLoading && <LoadingSpinner />}
                   </Button>
-                )}
-
-                {/* {isLoading && !finishedLoading && availableUserName &&(
-                  <Button page={true} disabled valid={true} type="submit">
-                    <LoadingSpinner></LoadingSpinner>
-                  </Button>
-                )} */}
-                {finishedLoading && (
-                  <Button page={true} disabled valid={true} type="submit">
-                    <Checked></Checked>
-                  </Button>
-                )}
+                }
               </ButtonsContainer>
             </LastDiv>
           </form>

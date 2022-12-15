@@ -120,12 +120,12 @@ const LogInPageCom = () => {
    * Function to handle the submit of the form of login
    * @param {*} event
    */
-  const handleSubmit =  (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     if (wantSubmit) {
-       loginApi(dataFetch, {
+      loginApi(dataFetch, {
         type: "bare email",
-        username: "t2_"+userName,
+        username: "t2_" + userName,
         password: password,
       });
       setSignupSubmit(true);
@@ -136,19 +136,16 @@ const LogInPageCom = () => {
       //   navigate("/");
       // }
 
-
       //console.log("data : "+data);
 
       setWantSubmit(false);
     }
   };
 
-
-
   useEffect(() => {
     if (signupSubmit) {
       setSignupSubmit(false);
-     // console.log("out useEffect", data);
+      // console.log("out useEffect", data);
 
       if (!error && data.token) {
         setFinishedLoading(true);
@@ -188,7 +185,7 @@ const LogInPageCom = () => {
 
     setSignupSubmit(true);
 
-   // console.log("data from google : " + data);
+    // console.log("data from google : " + data);
 
     // if (!error) {
     //   setFinishedLoading(true);
@@ -265,15 +262,15 @@ const LogInPageCom = () => {
               />
 
               {/* Show error message if the userName is not valid and the user made a focus on the it's input field */}
-             
-                <ErrorParagraph
+
+              <ErrorParagraph
                 data-testid="username-error"
-                  id="username-error"
-                  valid={validName || initialFocus}
-                >
-                  Username must be between 3 and 20 characters
-                </ErrorParagraph>
-             
+                id="username-error"
+                valid={validName || initialFocus}
+              >
+                Username must be between 3 and 20 characters
+              </ErrorParagraph>
+
               {error && (
                 <ErrorParagraph id="username-error" valid={!error}>
                   {error}
@@ -298,7 +295,7 @@ const LogInPageCom = () => {
               />
 
               <ButtonsContainer>
-                {!isLoading && !finishedLoading && (
+                {
                   <Button
                     id="login-button"
                     page={true}
@@ -309,20 +306,10 @@ const LogInPageCom = () => {
                       setWantSubmit(true);
                     }}
                   >
-                    LOG IN
+                    {!isLoading && <span>Log In</span>}
+                    {isLoading && <LoadingSpinner />}
                   </Button>
-                )}
-
-                {isLoading && (
-                  <Button page={true} disabled valid={true} type="submit">
-                    <LoadingSpinner></LoadingSpinner>
-                  </Button>
-                )}
-                {!isLoading && finishedLoading && (
-                  <Button page={true} disabled valid={true} type="submit">
-                    <Checked></Checked>
-                  </Button>
-                )}
+                }
               </ButtonsContainer>
 
               <Forget>

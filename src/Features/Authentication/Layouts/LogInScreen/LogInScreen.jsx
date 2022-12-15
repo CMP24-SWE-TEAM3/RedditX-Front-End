@@ -101,7 +101,6 @@ const LogInScreen = ({
    */
   const [wantSubmit, setWantSubmit] = useState(false);
 
-
   const [signupSubmit, setSignupSubmit] = useState(false);
 
   const navigate = useNavigate();
@@ -134,7 +133,7 @@ const LogInScreen = ({
     if (wantSubmit) {
       loginApi(dataFetch, {
         type: "bare email",
-        username: "t2_"+userName,
+        username: "t2_" + userName,
         password: password,
       });
 
@@ -151,11 +150,10 @@ const LogInScreen = ({
     }
   };
 
-
   useEffect(() => {
     if (signupSubmit) {
       setSignupSubmit(false);
-     // console.log("out useEffect", data);
+      // console.log("out useEffect", data);
 
       if (!error && data.token) {
         setFinishedLoading(true);
@@ -334,28 +332,17 @@ const LogInScreen = ({
               </Forget>
 
               <ButtonsContainer>
-                {!isLoading && !finishedLoading && (
-                  <Button
-                    disabled={!validName || !validPassword}
-                    valid={validName && validPassword}
-                    type="submit"
-                    onClick={() => {
-                      setWantSubmit(true);
-                    }}
-                  >
-                    Log In
-                  </Button>
-                )}
-                {isLoading && (
-                  <Button disabled valid={true} type="submit">
-                    <LoadingSpinner></LoadingSpinner>
-                  </Button>
-                )}
-                {!isLoading && finishedLoading && (
-                  <Button disabled valid={true} type="submit">
-                    <Checked></Checked>
-                  </Button>
-                )}
+                <Button
+                  disabled={!validName || !validPassword}
+                  valid={validName && validPassword}
+                  type="submit"
+                  onClick={() => {
+                    setWantSubmit(true);
+                  }}
+                >
+                  {!isLoading && <span>Log In</span>}
+                  {isLoading && <LoadingSpinner />}
+                </Button>
               </ButtonsContainer>
             </form>
           </AuthContainerDiv>

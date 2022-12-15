@@ -246,7 +246,7 @@ function App() {
                       }
                     />
                     <Route path="login" element={<LogInPage />} />
-                    <Route path="register" element={<SignUpPage />} />
+                    <Route path="register" element={<SignUpPage setModalAfterSignUp={setModalAfterSignUp}/>} />
                     <Route
                       path="forget-password"
                       element={<ForgetPasswordPage />}

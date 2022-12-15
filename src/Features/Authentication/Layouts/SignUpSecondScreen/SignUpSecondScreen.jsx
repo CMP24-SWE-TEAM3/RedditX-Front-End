@@ -152,7 +152,7 @@ const SignUpSecondScreen = ({
       //console.log("out useEffect", data);
 
       if (!error && data.token) {
-       // console.log("useEffect", data);
+        // console.log("useEffect", data);
         setFinishedLoading(true);
         auth.login(data);
         navigate("/");
@@ -182,7 +182,7 @@ const SignUpSecondScreen = ({
       signupApi(dataFetch, {
         type: "bare email",
         email: email,
-        username: "t2_"+userName,
+        username: "t2_" + userName,
         password: password,
       });
       setSignupSubmit(true);
@@ -338,7 +338,7 @@ const SignUpSecondScreen = ({
               password should contain 8 to 20 characters
             </ErrorParagraph>
             <ButtonsContainer>
-              {!finishedLoading && (
+              {
                 <Button
                   id="signUpButtonModal"
                   disabled={
@@ -358,20 +358,11 @@ const SignUpSecondScreen = ({
                     setWantSubmit(true);
                   }}
                 >
-                  Continue
+                  {!isLoading && <span>Continue</span>}
+                  {isLoading && <LoadingSpinner />}
                 </Button>
-              )}
+              }
 
-              {/* {isLoading && !finishedLoading && (
-                <Button disabled valid={true} type="submit">
-                  <LoadingSpinner></LoadingSpinner>
-                </Button>
-              )} */}
-              {finishedLoading && (
-                <Button disabled valid={true} type="submit">
-                  <Checked></Checked>
-                </Button>
-              )}
             </ButtonsContainer>
           </form>
 

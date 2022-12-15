@@ -15,7 +15,7 @@ import {
   kickModerator,
   kickMember,
   leaveModerator,
-} from "Features/Moderator/Services/UserManagementApi/userManagementApi";
+} from "Features/Moderator/Services/userManagementApi";
 
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
@@ -107,7 +107,7 @@ const ModeratorRow = ({
                 <MdEdit />
               </Edit>
             )}{" "}
-            {invited && (
+            {invited && Moderator?._id !== auth.getUserName() && Moderator?.role !== "creator" &&(
               <Edit
                 onClick={() => {
                   leaveModerator(
@@ -125,10 +125,10 @@ const ModeratorRow = ({
             )}
           </Abilities>
         )}
-        {approved && (
+        {approved && Moderator?._id !== auth.getUserName()  &&(
           <ButtonsContainer>
-            <button>Send message</button>{" "}
-            <button
+            <button>Send message</button>
+            {Moderator?.role !== "creator" &&<button
               onClick={() => {
                 kickMember(
                   dataFetch,
@@ -141,7 +141,7 @@ const ModeratorRow = ({
               }}
             >
               Remove
-            </button>
+            </button>}
           </ButtonsContainer>
         )}
         {muted && (
