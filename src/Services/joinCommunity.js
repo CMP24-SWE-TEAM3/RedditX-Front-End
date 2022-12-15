@@ -12,7 +12,7 @@ const joinCommunity = (fetchData, auth, dataObject) => {
   if (dataObject.action !== undefined && dataObject.srName !== undefined) {
     if (
       typeof dataObject.action === "string" &&
-      dataObject.srName === "string"
+      typeof dataObject.srName === "string"
     ) {
       fetchData({
         axiosInstance: axios,
