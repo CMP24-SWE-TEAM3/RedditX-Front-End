@@ -7,6 +7,7 @@ import axios from "API/axios";
  */
 const fetchPosts = (fetchFunction, auth, searchWord) => {
   // console.log("Fetching posts", searchWord);
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
   fetchFunction({
     axiosInstance: axios,
     method: "GET",

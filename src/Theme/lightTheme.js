@@ -14,6 +14,8 @@ const lightTheme = {
     primary: "#1c1c1c",
     // The blue color of the website
     secondary: "#0079d3",
+    //Blue Color of the Message Frame
+    frame: "#0079d3",
     // The blue color of Hovered Blue Buttons
     btnHover: "#3293db",
     // The color of the muted text on the website
@@ -24,6 +26,8 @@ const lightTheme = {
     orange: "#d93a00",
     // The pink color of the website
     pink: "#fb133a",
+    // Color Of Header Navlinks
+    mutedLink: "#80bce9",
     // The color of the text of the main links of search page
     titleText_of_link: "#1A1A1B",
 
@@ -127,6 +131,9 @@ const lightTheme = {
   },
   // The colors of the arrows in the leadboard
   arrowColor: {
+    upvoted: "#ff8b60",
+    downvoted: "#9494ff",
+    arrow: "#aaa",
     up: "#46D160",
     down: "#EA2700",
   },

@@ -1,6 +1,6 @@
 // imports
 import React from "react";
-import { Container } from "./Footer.styled";
+import { Container, Content, Section, Menu, CopyRight } from "./Footer.styled";
 import { Link } from "react-router-dom";
 
 /**
@@ -11,27 +11,27 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <Container>
-      <div className={"content"}>
-        <div className={"menu-1"}>
-          <div className={"sec"}>
+      <Content>
+        <Menu>
+          <Section>
             <Link href={"https://www.redditinc.com/policies/user-agreement"}>
               User Agreement{" "}
             </Link>
             <Link href={"https://www.redditinc.com/policies/privacy-policy"}>
               Privacy Policy
             </Link>
-          </div>
-          <div className={"sec"}>
+          </Section>
+          <Section>
             <Link href={"https://www.redditinc.com/policies/user-agreement"}>
               Content Policy{" "}
             </Link>
             <Link href={"https://www.redditinc.com/policies/privacy-policy"}>
               Moderator Code of Conduct
             </Link>
-          </div>
-        </div>
-        <div className={"menu-1"}>
-          <div className={"sec"}>
+          </Section>
+        </Menu>
+        <Menu>
+          <Section>
             <Link href={"https://www.redditinc.com/policies/user-agreement"}>
               English{" "}
             </Link>
@@ -41,8 +41,8 @@ const Footer = () => {
             <Link href={"https://www.redditinc.com/policies/privacy-policy"}>
               Italiano
             </Link>
-          </div>
-          <div className={"sec"}>
+          </Section>
+          <Section>
             <Link href={"https://www.redditinc.com/policies/privacy-policy"}>
               Deutsch
             </Link>
@@ -52,10 +52,10 @@ const Footer = () => {
             <Link href={"https://www.redditinc.com/policies/privacy-policy"}>
               Português
             </Link>
-          </div>
-        </div>
-        <div className={"inc"}>Reddit Inc © 2022. All rights reserved</div>
-      </div>
+          </Section>
+        </Menu>
+        <CopyRight>Reddit Inc © 2022. All rights reserved</CopyRight>
+      </Content>
     </Container>
   );
 };

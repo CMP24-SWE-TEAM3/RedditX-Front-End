@@ -21,10 +21,12 @@ describe("Flair", () => {
         )}
       </TestingComponent>
     );
+    screen.logTestingPlaygroundURL();
 
+    // // Act
     // Act
-    const buttonElement = screen.getAllByRole("button");
-    fireEvent.click(buttonElement[1]);
+    // const buttonElement = screen.getAllByRole("button");
+    // fireEvent.click(buttonElement[1]);
 
     // // Assert
     // const outputElement = screen.queryByTitle("flairEdit");

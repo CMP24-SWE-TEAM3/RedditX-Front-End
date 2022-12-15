@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+
 export const BestBtn = styled.button`
   display: inline-flex;
   position: relative;
@@ -25,4 +27,7 @@ export const BestBtn = styled.button`
 `;
 export const Word = styled.span`
   font-weight: 700;
+`;
+export const NavLinkBtn = styled(NavLink)`
+  text-decoration: none;
 `;

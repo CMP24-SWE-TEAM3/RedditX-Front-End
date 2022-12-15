@@ -1,20 +1,72 @@
-import styled from 'styled-components';
-import {BsPerson} from 'react-icons/bs';
-import {NavDropdown} from "react-bootstrap";
+import styled from "styled-components";
+import { BsPerson } from "react-icons/bs";
+import { NavDropdown } from "react-bootstrap";
 
 export const Container = styled(NavDropdown)`
-  @media(max-width:990px){
-    max-width:fit-content;
-    width:fit-content;
+  border: 1px solid ${({ theme }) => theme.background.primary} !important;
+  &:hover {
+    border: 1px solid ${({ theme }) => theme.background.muted} !important;
+    border-radius: 5px;
   }
-  font-size: 20px;
-  font-weight: 500;
-  color: ${({theme}) => theme.color.primary} !important;
-  background: unset !important;
+  padding: 0 2px !important;
+  width: 203px;
+  position: relative;
+  .avatar {
+    width: 24px;
+    height: 24px;
+  }
+  .avatar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    width: 100%;
+    flex-grow: 1;
+    span {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+    }
+    .username-container {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      flex-grow: 1;
+    }
+    .user-name {
+      color: ${({ theme }) => theme.color.primary};
+    }
+    .karma {
+      color: ${({ theme }) => theme.color.muted};
+    }
+  }
+  .user-name-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    .user-name {
+      width: 100%;
+    }
+  }
+
   .dropdown-toggle::after {
-    vertical-align: 0.1em;
-    color: #878a8c
+    margin-left: 0 !important;
   }
+  .dropdown-toggle {
+    padding: 0 !important;
+  }
+  .nav-link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  @media (max-width: 990px) {
+    max-width: fit-content;
+    width: fit-content;
+  }
+
+  color: ${({ theme }) => theme.color.primary} !important;
+  background: unset !important;
 
   .ico {
     font-size: 20px;
@@ -25,24 +77,22 @@ export const Container = styled(NavDropdown)`
   }
 
   .accordion {
-    --bs-accordion-bg: ${({theme}) => theme.canvas.primary} !important;
+    --bs-accordion-bg: ${({ theme }) => theme.canvas.primary} !important;
     --bs-accordion-active-bg: none;
 
     :hover {
-      //background-color: ${({theme})=>theme.background.muted} !important;
+      //background-color: ${({ theme }) => theme.background.muted} !important;
     }
 
     --bs-accordion-active-color: none;
-
   }
   .child.accordion-body {
     padding: 0.25rem 0 0.25rem 0.3rem !important;
-
   }
 
   .accordion-body {
     padding: 0.25rem 0 0.25rem 1.7rem !important;
-    :hover{
+    :hover {
       background: none !important;
     }
   }
@@ -55,20 +105,17 @@ export const Container = styled(NavDropdown)`
     margin-left: 2.255em;
   }
 
-
   white-space: break-spaces;
   padding: 0;
   max-width: 252px;
-  border-color: ${({theme}) => theme.background.primary} !important;
+  border-color: ${({ theme }) => theme.background.primary} !important;
 
   :active {
-    background-color: ${({theme}) => theme.background.primary};
+    background-color: ${({ theme }) => theme.background.primary};
   }
-
 
   span {
     padding-right: 10px;
-
   }
 
   .accordion-item {
@@ -78,8 +125,8 @@ export const Container = styled(NavDropdown)`
     align-items: center;
     font-size: 16px;
     padding: 0 20px 0 0;
-    :hover{
-      background-color: ${({theme}) => theme.background.muted} !important;
+    :hover {
+      background-color: ${({ theme }) => theme.background.muted} !important;
     }
   }
 
@@ -98,40 +145,37 @@ export const Container = styled(NavDropdown)`
     height: 100%;
     box-shadow: none;
     white-space: nowrap;
-    color: ${({theme}) => theme.color.primary};
-    :hover{
-      background:none !important;
+    color: ${({ theme }) => theme.color.primary};
+    :hover {
+      background: none !important;
     }
 
     //text-align: center;
     :focus {
       box-shadow: 0 0;
     }
-
   }
 
   & span {
     padding: 3px;
   }
-  
 
-  color: ${({theme}) => theme.color.muted};
-
+  color: ${({ theme }) => theme.color.muted};
 
   .rs-dropdown-toggle.rs-btn {
-    background-color: ${({theme}) => theme.background.primary};
+    background-color: ${({ theme }) => theme.background.primary};
     display: block;
     position: relative;
   }
 
   .rs-dropdown-toggle.rs-btn:hover {
-    border-color: ${({theme}) => theme.background.primary} !important;
-    background-color: ${({theme}) => theme.background.primary} !important;
+    border-color: ${({ theme }) => theme.background.primary} !important;
+    background-color: ${({ theme }) => theme.background.primary} !important;
   }
 
   .rs-dropdown {
     display: block;
-    color: ${({theme}) => theme.color.primary};
+    color: ${({ theme }) => theme.color.primary};
     padding: 5px;
   }
 
@@ -150,25 +194,26 @@ export const Container = styled(NavDropdown)`
     overflow-y: auto;
     overflow-x: hidden;
     max-width: 100%;
-
   }
 
   .dropdown-menu {
     overflow: hidden scroll;
-    transform: translate3d(0px, 35px, 0px) !important;
     height: 578px;
-    background-color: ${({theme}) => theme.background.primary} !important;
-    left: -140px;
-    top: 10px;
-    @media (max-width:990px){
-      width:fit-content;
+    background-color: ${({ theme }) => theme.background.primary} !important;
+    margin-top: 4px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    width: 252px;
+    @media (max-width: 770px) {
+      width: 95vw;
+      height: fit-content;
+      overflow: hidden;
     }
-
     .stuff {
       font-weight: 500;
       font-size: 14px;
       padding-left: 5px;
-      color: ${({theme}) => theme.color.muted};
+      color: ${({ theme }) => theme.color.muted};
     }
 
     i {
@@ -190,16 +235,15 @@ export const Container = styled(NavDropdown)`
     font-size: 14px;
     height: 40px;
     width: 100%;
-    padding-left:18px;
+    padding-left: 18px;
 
     span {
-      color: ${({theme}) => theme.color.primary};
+      color: ${({ theme }) => theme.color.primary};
     }
 
     :hover {
-      background-color: ${({theme}) => theme.background.muted} !important;
+      background-color: ${({ theme }) => theme.background.muted} !important;
     }
-
   }
 
   .dropdown-item {
@@ -208,12 +252,12 @@ export const Container = styled(NavDropdown)`
     font-size: 14px;
     height: 40px;
     width: 100%;
-    color: ${({theme}) => theme.color.primary} !important;
+    color: ${({ theme }) => theme.color.primary} !important;
 
     :hover {
-      background-color: ${({theme}) => theme.background.muted} !important;
+      background-color: ${({ theme }) => theme.background.muted} !important;
     }
-    :focus{
+    :focus {
       background-color: unset !important;
     }
 
@@ -222,8 +266,7 @@ export const Container = styled(NavDropdown)`
       height: 20px;
       min-width: 20px;
       width: 20px;
-      color: ${({theme}) => theme.color.primary};
-
+      color: ${({ theme }) => theme.color.primary};
     }
 
     :active {
@@ -233,9 +276,8 @@ export const Container = styled(NavDropdown)`
   }
 
   :active {
-    background-color: ${({theme}) => theme.background.post_background};
+    background-color: ${({ theme }) => theme.background.post_background};
   }
-  
 
   @media only screen and (max-width: 1290px) {
     //left: 20px;
@@ -250,13 +292,12 @@ export const Container = styled(NavDropdown)`
   }
 
   .ico {
-    color: ${({theme}) => theme.color.muted} !important;
+    color: ${({ theme }) => theme.color.muted} !important;
   }
-
-`
+`;
 export const DropdownButtonIconStyled = styled(BsPerson)`
   color: grey;
   width: 20px;
   height: 20px;
   margin-right: 2px;
-`
+`;

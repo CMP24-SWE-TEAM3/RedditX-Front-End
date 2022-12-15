@@ -24,3 +24,6 @@ export const PostBar = styled.div`
   height: 100%;
   background-color: red;
 `;
+export const ContentContainer = styled.div`
+  width: 93%;
+`;

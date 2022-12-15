@@ -26,7 +26,7 @@ const ApprovedUsers = ({ Moderator, communityName }) => {
       return mod._id?.substring(3).toLowerCase().includes(searchField);
     });
     setFilterMonsters(newFilteredMonsters);
-  }, [Moderator,searchField]);
+  }, [Moderator, searchField]);
 
   const onSearchChange = (event) => {
     const searchFieldString = event.target.value.toLowerCase();
@@ -46,7 +46,12 @@ const ApprovedUsers = ({ Moderator, communityName }) => {
       </SearchContainer>
       <Container>
         {filteredMonsters.map((mod) => (
-          <ModeratorRow communityName={communityName} key={mod.userName} Moderator={mod} approved={true}></ModeratorRow>
+          <ModeratorRow
+            communityName={communityName}
+            key={mod.userName}
+            Moderator={mod}
+            approved={true}
+          ></ModeratorRow>
         ))}
       </Container>
     </>

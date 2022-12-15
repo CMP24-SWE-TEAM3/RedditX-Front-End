@@ -27,7 +27,14 @@ const MainInfo = () => {
       </ContainerFlairMainHeader>
       <FlairList />
       {ctx.Add && (
-        <Flair text={""} color={""} background={""} isNew={true} title="new" />
+        <Flair
+          text={""}
+          color={""}
+          background={""}
+          isNew={true}
+          id={""}
+          title="new"
+        />
       )}
     </ContainerFlairMain>
   );

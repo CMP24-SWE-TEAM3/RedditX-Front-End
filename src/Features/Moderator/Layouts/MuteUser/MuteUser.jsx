@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-import { muteUser } from "Features/Moderator/Services/UserManagementApi/userManagementApi";
+import { muteUser } from "Features/Moderator/Services/userManagementApi";
 
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";

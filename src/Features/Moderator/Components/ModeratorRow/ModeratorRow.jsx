@@ -87,16 +87,16 @@ const ModeratorRow = ({
             <Photo>
               <img
                 crossOrigin="anonymous"
-                src={`${Moderator.avatar ? `${photoUrl}` : url}`}
+                src={`${Moderator && Moderator.avatar ? `${photoUrl}` : url}`}
                 alt="image"
               />
             </Photo>
             <UserName>{Moderator._id?.substring(3)}</UserName>
           </PhotoAndUsername>
           <Date>
-            <Moment fromNow>{Moderator.date}</Moment>
+            <Moment fromNow>{Moderator && Moderator.date}</Moment>
 
-            {banned && <span> . {Moderator.bannedFor}</span>}
+            {banned && <span> . {Moderator && Moderator.bannedFor}</span>}
           </Date>
         </ProfileContainer>
         {!approved && !muted && !banned && (
@@ -195,10 +195,10 @@ const ModeratorRow = ({
       {showDropBanned && (
         <MoreDetailsBanned>
           <ModNote>
-            <h3>MOD NOTE:</h3> <p>{Moderator.modNote}</p>
+            <h3>MOD NOTE:</h3> <p>{Moderator && Moderator.modNote}</p>
           </ModNote>{" "}
           <ModNote>
-            <h3>BANNED FOR:</h3> <p>{Moderator.bannedFor}</p>
+            <h3>BANNED FOR:</h3> <p>{Moderator && Moderator.bannedFor}</p>
           </ModNote>{" "}
         </MoreDetailsBanned>
       )}

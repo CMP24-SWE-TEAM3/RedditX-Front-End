@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
     OddItems,
     ListBtns,
@@ -11,9 +10,21 @@ import {
     Author,
     MessageDetails,
     TimeTag,
-  } from "../MessagesItems/MessageItem.styled";
-
-const SentMessageItem = ({id, subject, author, msg, time})=>{
+  } from "./SentMessageItem.styled";
+import compareDate from "../../Utils/ParseDate";
+/**
+ * Component that contains the Sent Message item
+ *
+ * @Component
+ * @param {string} author - Message Sender
+ * @param {string} subject - Message Title
+ * @param {Date} time - Time the message was sent
+ * @param {string} msg - The Message Text
+ * @param {boolean} admin - Whether the message was sent by an admin
+ * @param {number} id - Id of the message
+ * @returns {React.Component}
+ */
+const SentMessageItem = ({id, subject, author, msg, time, admin})=>{
 
 
     return (
@@ -24,17 +35,12 @@ const SentMessageItem = ({id, subject, author, msg, time})=>{
               <SubjectText>{subject}:</SubjectText>
             </Subject>
             <Tagline>
-              from <Author className="admin visted">{author}</Author>
+              to <Author className={admin ? "admin" : ""}>{author}</Author>
               <TimeTag>
-                <time dateTime="20/10/2022">{time.toDateString()} </time>
+                <time>sent {compareDate(time).toDateString()}</time>
               </TimeTag>
             </Tagline>
               <Msg>{msg}</Msg>
-              <ListBtns>
-                <Btns>
-                  <BtnsLinks>Permalink</BtnsLinks>
-                </Btns>
-              </ListBtns>
           </MessageDetails>
         </OddItems>
       );

@@ -12,3 +12,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.popup-content{
+  position: fixed;
+  left: 320px;
+  top: 269.3px;
+  margin-left: 18px;
+  margin-top: 2px;
+  z-index: 100;
+  border: 1px solid #edeff1;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px 0 rgba(28, 28, 28, 0.2);
+  overflow: hidden;
+}
+[role="tooltip"].popup-content{
+  width: 168px !important;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}

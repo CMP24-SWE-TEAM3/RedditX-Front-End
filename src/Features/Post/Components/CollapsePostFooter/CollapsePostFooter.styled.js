@@ -10,6 +10,7 @@ export const Container = styled.div`
   padding: 0 20px 0 20px;
   gap: 2%;
   max-width: 100%;
+  width: 100%;
   flex-wrap: wrap;
 `;
 export const Comment = styled.span`

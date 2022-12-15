@@ -31,7 +31,7 @@ exports[`Community Card  Component this is a test for Community Card  Component 
   }
 >
   <Routes>
-    <TopCommunities />
+    <CommunityCard />
   </Routes>
 </Router>
 `;

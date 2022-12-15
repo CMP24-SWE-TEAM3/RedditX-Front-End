@@ -19,7 +19,7 @@ export const AdvertiseButtonStyled = styled.button`
   font-size: 14px;
   font-weight: 500;
   color: ${({theme}) => theme.color.primary};
-  background-color: ${({theme}) => theme.background.muted};
+  background-color: ${({theme}) => theme.background.lightMuted};
 
   :hover {
     background-color: ${({theme}) => theme.background.muted};

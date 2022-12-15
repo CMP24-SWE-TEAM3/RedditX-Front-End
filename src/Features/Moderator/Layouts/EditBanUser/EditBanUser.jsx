@@ -8,7 +8,7 @@ import { MdOutlinePersonAddDisabled } from "react-icons/md";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 
-import { banUser } from "Features/Moderator/Services/UserManagementApi/userManagementApi";
+import { banUser } from "Features/Moderator/Services/userManagementApi";
 
 import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
 

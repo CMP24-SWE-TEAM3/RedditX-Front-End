@@ -1,11 +1,11 @@
 import { useState } from "react";
 import SentMessageItem from "../../Components/SentMessageItem/SentMessageItem";
-import { EmbeddedPage, PageContainer } from "../../Components/MessagesPanel/MessagePanel.styled";
+import { EmbeddedPage, PageContainer } from "./Unread.styled";
 const messagesData = [
     {
       author: "Mohamed",
       title: "Greeting",
-      time: new Date(2022, 11, 30),
+      time: "2022, 11, 30",
       text: "Hello Hello",
       read: false,
       id: 1,
@@ -13,7 +13,7 @@ const messagesData = [
     {
       author: "Ahmed",
       title: "Mod",
-      time: new Date(2022, 11, 29),
+      time: "2022, 11, 29",
       text: "You are Mod",
       read: false,
       id: 2,
@@ -21,7 +21,7 @@ const messagesData = [
     {
       author: "Jacob",
       title: "Broken",
-      time: new Date(2022, 11, 29),
+      time: "2022, 11, 29",
       text: "It Is Broken Now",
       read: false,
       id: 3,
@@ -29,7 +29,7 @@ const messagesData = [
     {
       author: "Joanne",
       title: "Greeting",
-      time: new Date(2022, 11, 29),
+      time: "2022, 11, 29",
       text: "Henlo",
       read: false,
       id: 4,
@@ -37,14 +37,20 @@ const messagesData = [
     {
       author: "Arabella",
       title: "Hmmmm...",
-      time: new Date(2022, 11, 29),
+      time: "2022, 11, 29",
       text: "Hi.",
       read: false,
       id: 5,
     },
 ];
 
-const Unread = ()=>{
+/**
+ * Component that contains the Unread Messages Panel
+ *
+ * @Component
+ * @returns {React.Component}
+ */
+const Unread = ({messages})=>{
 const [eachMessage, setEachMessage] = useState(messagesData);
 
 const Message = eachMessage.map((item) => {

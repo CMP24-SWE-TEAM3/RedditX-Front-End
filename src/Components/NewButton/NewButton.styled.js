@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 export const NewBtn = styled.button`
   width: 75.36px;
@@ -33,4 +34,7 @@ export const Word = styled.span`
   white-space: normal;
   text-align: left;
   padding-top: 6px;
+`;
+export const NavLinkBtn = styled(NavLink)`
+  text-decoration: none;
 `;

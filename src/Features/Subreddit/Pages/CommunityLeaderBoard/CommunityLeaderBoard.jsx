@@ -38,7 +38,6 @@ const CommunityLeaderBoard = () => {
     fetchRandomCommunities(fetchFunction, auth);
   }, []); // Only re-run the effect if count changes
 
- console.log(CommunitiesSub);
 
  if(CommunitiesSub.communities) {
   CommunitiesSub.communities = subscribed;

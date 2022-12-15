@@ -20,7 +20,12 @@ import { FaAngleUp, FaAngleDown } from "react-icons/fa";
  * Component that  shows the names of communities up-to-date.
  * @returns {Component.React}
  */
-const CommunityCardItem = ({ communityId, community, srIcon }) => {
+const CommunityCardItem = ({
+  communityId,
+  communityUserName,
+  srIcon,
+  community,
+}) => {
   const [btnContent, setBtnContent] = useState("Join");
 
   const clickHandler = (e) => {
@@ -47,7 +52,7 @@ const CommunityCardItem = ({ communityId, community, srIcon }) => {
   return (
     <>
       <Container>
-        <Link to={"/subreddit/*"}>
+        <Link to={community}>
           <Item>
             <Number>{communityId}</Number>
             <Caret>
@@ -62,7 +67,7 @@ const CommunityCardItem = ({ communityId, community, srIcon }) => {
             )}
             <CommunityNameContainer>
               <CommunityNameChild>
-                <h6>r/{community}</h6>
+                <h6>r/{communityUserName}</h6>
               </CommunityNameChild>
             </CommunityNameContainer>
             <JoinContainer>
@@ -77,7 +82,8 @@ const CommunityCardItem = ({ communityId, community, srIcon }) => {
           </Item>
         </Link>
       </Container>
-      <HeaderLine />
+
+      {communityId < 4 && <HeaderLine />}
     </>
   );
 };

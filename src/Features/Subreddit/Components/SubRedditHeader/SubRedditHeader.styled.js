@@ -8,10 +8,31 @@ export const HeaderContainer = styled.div`
 
 export const Banner = styled.div`
   height: 80px;
-  background: ${({ banner }) =>
-    banner.color + ` url("${banner.url}") no-repeat center`};
+  background: ${({ banner }) =>` #33a8ff  url(${banner?"https://api.redditswe22.tech/subreddits/files/"+banner:""}) no-repeat center`};
+  /* background-image: ${({ banner }) =>` url(${banner?"https://api.redditswe22.tech/subreddits/files/"+banner: ""}) `}; */
+  /* background-image: url("https://api.redditswe22.tech/subreddits/files/community-banner-t5_imagePro235-1670710355874.jpg"); */
+
 `;
 
+export const Image = styled.img`
+max-width: 100%;
+height: auto;
+`
+
+export const IconAlt = styled.div`
+    background-color: #0079d3;
+    border-radius: 100%;
+    border: 4px solid #fff;
+    display: inline-block;
+    height: 74px;
+    width: 74px;
+    color: white;
+    text-align: center;
+    font-size: 60px;
+    line-height: 45px;
+    cursor: default;
+`
+//#33a8ff 
 export const HeaderContent = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.background.primary};

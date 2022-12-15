@@ -7,6 +7,7 @@ import axios from "API/axios";
  */
 
 const fetchCommunities = (fetchFunction, auth, searchWord) => {
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
   fetchFunction({
     axiosInstance: axios,
     method: "GET",

@@ -10,7 +10,7 @@ import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/Lo
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 
-import { getMutted } from "Features/Moderator/Services/UserManagementApi/userManagementApi";
+import { getMutted } from "Features/Moderator/Services/userManagementApi";
 
 import MuteUserModal from "../MuteUserModal/MuteUserModal";
 

@@ -9,6 +9,7 @@ import axios from "API/axios";
  */
 
 const pushNotifications = async (fetchData, auth) => {
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
   fetchData({
     axiosInstance: axios,
     method: "GET",

@@ -31,7 +31,7 @@ import DeleteModal from "../DeleteModal/DeleteModal";
  * @param {object} rest -  useful to drag and drop
  * @returns {React.Component}
  */
-const Flair = ({ text, color, background, isNew, innerRef, ...rest }) => {
+const Flair = ({ text, color, background, isNew, innerRef, id, ...rest }) => {
   const [back, setback] = useState(background);
   const [textState, setTextState] = useState(text);
   const [Color, setColor] = useState(color);
@@ -44,10 +44,15 @@ const Flair = ({ text, color, background, isNew, innerRef, ...rest }) => {
       ctx.EditHandler(true);
     }
   }, []);
+  console.log(id);
   return (
     <>
       {ShowModal && (
-        <DeleteModal ShowModal={ShowModal} setShowModal={setShowModal} />
+        <DeleteModal
+          ShowModal={ShowModal}
+          setShowModal={setShowModal}
+          id={id}
+        />
       )}
       <Flairone ref={innerRef} {...rest} title="flair">
         <FlaironeExact>
@@ -107,6 +112,7 @@ const Flair = ({ text, color, background, isNew, innerRef, ...rest }) => {
           Edit={Edit}
           setEdit={setEdit}
           isNew={isNew}
+          id={id}
         />
       )}
     </>
