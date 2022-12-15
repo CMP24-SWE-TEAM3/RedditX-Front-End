@@ -59,33 +59,46 @@ const Navigation = ({
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Search />
-            <Nav.Link>
-              <PopularButton />
-              <Span>Popular</Span>
-            </Nav.Link>
-            <Nav.Link>
-              <CoinButton />
-              <Span>Coin</Span>
-            </Nav.Link>
-            {/* <Nav.Link>
+            {ctx.isLoggedIn() && (
+              <>
+                <Nav.Link>
+                  <PopularButton />
+                  <Span>Popular</Span>
+                </Nav.Link>
+                <Nav.Link>
+                  <CoinButton />
+                  <Span>Coin</Span>
+                </Nav.Link>
+                {/* <Nav.Link>
               <StyledSeperator />
             </Nav.Link> */}
-            <Nav.Link>
-              <Moderator />
-              <Span>Moderator</Span>
-            </Nav.Link>
-            <Nav.Link>
-              <ChatButton />
-              <Span>Chat</Span>
-            </Nav.Link>
-            <Nav.Link>
-              <NotificationButton />
-              <Span>Notification</Span>
-            </Nav.Link>
-            <Nav.Link>
-              <CreatePostButton />
-              <Span>Create Post</Span>
-            </Nav.Link>
+                <Nav.Link>
+                  <Moderator />
+                  <Span>Moderator</Span>
+                </Nav.Link>
+                <Nav.Link>
+                  <ChatButton />
+                  <Span>Chat</Span>
+                </Nav.Link>
+                <Nav.Link>
+                  <NotificationButton />
+                  <Span>Notification</Span>
+                </Nav.Link>
+                <Nav.Link>
+                  <CreatePostButton />
+                  <Span>Create Post</Span>
+                </Nav.Link>
+              </>
+            )}
+            {!ctx.isLoggedIn() && (
+              <Nav>
+                {/* <Nav.Link>
+                      <SearchBar />
+                    </Nav.Link> */}{" "}
+                <SignUp setModalShowSignUp={setModalShowSignUp} />
+                <LoginButton setModalShowLogIn={setModalShowLogIn} />
+              </Nav>
+            )}
             <Nav.Link>
               <AdvertiseButton />
               <Span>Advertise</Span>
@@ -155,20 +168,8 @@ const Navigation = ({
                       <DropDownRightButton toggleMode={toggleMode} />
                     </Nav.Link>
                   </Nav>
-                )}
-                {!ctx.isLoggedIn() && (
-                  <Nav>
-                    <Nav.Link>
-                      <SearchBar />
-                    </Nav.Link>
-                    <Nav.Link>
-                      {" "}
-                      <SignUp setModalShowSignUp={setModalShowSignUp} />
-                    </Nav.Link>
-                    <Nav.Link>
-                      <LoginButton setModalShowLogIn={setModalShowLogIn} />
-                    </Nav.Link>
-                    <Nav.Link className={"nav-dropdown"}>
+                )} */}
+      {/* <Nav.Link className={"nav-dropdown"}>
                       {" "}
                       <DropDownRightButton toggleMode={toggleMode} />
                     </Nav.Link>
@@ -178,7 +179,7 @@ const Navigation = ({
             </ContainerNav>
           </NavBarContent>
         </AppHeader>
-      </AppContainer> */}
+      </AppContainer> */}{" "}
     </>
   );
 };
