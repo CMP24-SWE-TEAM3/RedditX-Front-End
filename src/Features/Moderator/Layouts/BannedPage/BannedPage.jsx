@@ -12,7 +12,7 @@ import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/Lo
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 
-import { getBanned } from "Features/Moderator/Services/UserManagementApi/userManagementApi";
+import { getBanned } from "Features/Moderator/Services/userManagementApi";
 
 import {
   Container,

@@ -8,7 +8,7 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 
-import { getApproved } from "Features/Moderator/Services/UserManagementApi/userManagementApi";
+import { getApproved } from "Features/Moderator/Services/userManagementApi";
 
 import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
 

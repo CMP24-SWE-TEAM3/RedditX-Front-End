@@ -17,7 +17,7 @@ import InviteModeratorsModal from "../InviteModeratorsModal/InviteModeratorsModa
 import {
   getModerators,
   leaveModerator,
-} from "Features/Moderator/Services/UserManagementApi/userManagementApi";
+} from "Features/Moderator/Services/userManagementApi";
 
 import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
 
