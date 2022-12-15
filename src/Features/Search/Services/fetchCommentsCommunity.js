@@ -6,6 +6,7 @@ import axios from "API/axios";
  * @param {searchWord} fetchFunction - the word we search for
  */
 const fetchCommentsCommunity = (fetchFunction, auth, searchWord, community) => {
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
   // console.log("Fetching posts", searchWord);
   fetchFunction({
     axiosInstance: axios,
