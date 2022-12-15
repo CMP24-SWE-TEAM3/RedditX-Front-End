@@ -5,6 +5,7 @@ import axios from "API/axios";
  * @param {Function} fetchFunction - The function to make the request
  */
 const fetchSubbcomm = (fetchFunction, auth) => {
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
   fetchFunction({
     axiosInstance: axios,
     method: "GET",
