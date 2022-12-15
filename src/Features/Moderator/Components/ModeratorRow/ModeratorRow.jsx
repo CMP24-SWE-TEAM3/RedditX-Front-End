@@ -14,6 +14,7 @@ import {
   muteUser,
   kickModerator,
   kickMember,
+  leaveModerator,
 } from "Features/Moderator/Services/UserManagementApi/userManagementApi";
 
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
@@ -90,7 +91,7 @@ const ModeratorRow = ({
                 alt="image"
               />
             </Photo>
-            <UserName>{Moderator._id.substring(3)}</UserName>
+            <UserName>{Moderator._id?.substring(3)}</UserName>
           </PhotoAndUsername>
           <Date>
             <Moment fromNow>{Moderator.date}</Moment>
@@ -109,7 +110,7 @@ const ModeratorRow = ({
             {invited && (
               <Edit
                 onClick={() => {
-                  kickModerator(
+                  leaveModerator(
                     dataFetch,
                     {
                       userID: Moderator._id,

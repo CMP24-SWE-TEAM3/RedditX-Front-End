@@ -163,7 +163,7 @@ export const kickModerator = (dataFetch, objectData, subredditName, token) => {
 export const kickMember = (dataFetch, objectData, subredditName, token) => {
   if (objectData.userID !== undefined && subredditName?.length > 0) {
     if (typeof objectData.userID === "string") {
-      let finalUrl = "/api/r/" + subredditName + "/kick-moderator";
+      let finalUrl = "/api/r/" + subredditName + "/kick-member";
       dataFetch({
         axiosInstance: axios,
         method: "POST",
