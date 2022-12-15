@@ -41,6 +41,8 @@ import RulesTab from "Features/Moderator/Components/RuleTab/RuleTab";
 import SpamQueue from "../SpamQueue/SpamQueue";
 import EditedQueue from "../EditedQueue/EditedQueue";
 import UnmoderatedQueue from "../UnmoderatedQueue/UnmoderatedQueue";
+import CommunitySettingsPage from "../CommunitySettingsPage/CommunitySettingsPage";
+import PostsAndCommentsPage from "../PostsAndCommentsPage/PostsAndCommentsPage";
 
 const paths = {
   Spam: "spam",
@@ -255,9 +257,15 @@ function LayoutTabs({
                 <TrafficStates />
               </div>
             )}
-            {moderatorId === paths.Community && <div>Community</div>}
+            {moderatorId === paths.Community && (
+              <div>
+                <CommunitySettingsPage />
+              </div>
+            )}
             {moderatorId === paths.PostsAndComments && (
-              <div>PostsAndComments</div>
+              <div>
+                <PostsAndCommentsPage />
+              </div>
             )}
           </Tab.Content>
         </ContentCol>

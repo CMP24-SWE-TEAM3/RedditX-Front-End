@@ -22,6 +22,7 @@ export const Photo = styled.div`
 
   img {
     max-width: 100%;
+    width:24px;
     border-radius: 100px;
   }
 `;

@@ -65,8 +65,8 @@ const Gender = ({
             Tell us about yourself to start building your home feed.
           </AuthParagraph>
           <AuthParagraph identity={true}>How do you identify?</AuthParagraph>
-          <GenderButton id="chooseWoman" onClick={() => nextScreen("woman")}>Woman</GenderButton>
-          <GenderButton id="chooseMan" onClick={() => nextScreen("man")}>Man</GenderButton>
+          <GenderButton id="chooseWoman" onClick={() => nextScreen("Woman")}>Woman</GenderButton>
+          <GenderButton id="chooseMan" onClick={() => nextScreen("Man")}>Man</GenderButton>
         </AuthContainer>
       }
     </>

@@ -16,7 +16,6 @@ export const loginApi = (dataFetch, objectData) => {
       typeof objectData.username === "string" &&
       typeof objectData.password === "string"
     ) {
-     
       dataFetch({
         axiosInstance: axios,
         method: "POST",
@@ -283,6 +282,64 @@ export const resetForgottenPassword = (dataFetch, myToken, objectData) => {
       return true;
     }
     return false;
+  }
+  return false;
+};
+
+/**
+ * Function to set gender of the user
+ * @param {Function} dataFetch Coming from useFetchFunction custom hook
+ * @param {Object} objectData Object that contains the data that will be sent to the api
+ * @param {String} token The token of the user
+ */
+export const setGenderFunction = (dataFetch, objectData, token) => {
+  if (objectData.type !== undefined && objectData.value !== undefined) {
+    if (
+      objectData.type === "gender" &&
+      (objectData.value === "Man" || objectData.value === "Woman")
+    ) {
+      console.log("Entered setGender");
+      dataFetch({
+        axiosInstance: axios,
+        method: "POST",
+        url: "/api/user/update",
+        requestConfig: {
+          data: objectData,
+          headers: {
+            "Content-Language": "en-US",
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      });
+      return true;
+    }
+    return false;
+  }
+  return false;
+};
+
+/**
+ * Function to set interests of user
+ * @param {Function} dataFetch Coming from useFetchFunction custom hook
+ * @param {Object} objectData Object that contains the data that will be sent to the api
+ * @param {String} token The token of the user
+ */
+export const setInterestsFunction = (dataFetch, objectData, token) => {
+  if (objectData.categories !== undefined) {
+    console.log("Entered setInterests");
+    dataFetch({
+      axiosInstance: axios,
+      method: "POST",
+      url: "/api/user/me/interests",
+      requestConfig: {
+        data: objectData,
+        headers: {
+          "Content-Language": "en-US",
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    });
+    return true;
   }
   return false;
 };

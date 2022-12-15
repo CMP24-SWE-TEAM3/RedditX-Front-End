@@ -7,7 +7,7 @@ import { BsDot } from "react-icons/bs";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 
-import { banUser } from "Features/Moderator/Services/UserManagementApi/UserManagementApi";
+import { banUser } from "Features/Moderator/Services/UserManagementApi/userManagementApi";
 
 import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
 
