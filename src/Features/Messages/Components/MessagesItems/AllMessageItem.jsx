@@ -14,11 +14,24 @@ import {
   BtnWarning,
   Visted,
 } from "./MessageItem.styled";
+
+import { 
+  ReplyDiv,
+  TextAreaDiv,
+  MesssageDiv,
+  TextAreaElement,
+  ButtonsDiv,
+  SaveButton,
+} from "../PostReply/PostReplyItem.styled";
+
 import ReportModal from "../ReportModal/ReportModal";
 import markUnread from "../../Utils/MarkUnread";
 import readed from "../../Utils/Read";
 import compareDate from "../../Utils/ParseDate";
 import { useState } from "react";
+import deleteMessage from "Features/Messages/Services/DeleteMessage";
+import useFetchFunction from "Hooks/useFetchFunction";
+import unreadMessages from "Features/Messages/Services/UnreadMessage";
 
 /**
  * Component that contains the ordinary message item
@@ -49,7 +62,12 @@ const NormalMessageAll = ({
   block,
 }) => {
   
+  const [deleteMessageRes, errorDeleteMessage, loadingDeleteMessage, fetchData ] = useFetchFunction();
+  const [unreadMessageRes, errorUnreadMessage, loadingUnreadMessage, fetchDataUnread ] = useFetchFunction();
   const [deletePrompt, setDeletePrompt] = useState(false);
+  const [blockPrompt, setBlockPrompt] = useState(false);
+  const [replyPrompt, setReplyPrompt] = useState(false);
+
   function toggleDeleteWarning() {
     setDeletePrompt((prev)=>!prev);
   }
@@ -62,9 +80,18 @@ const NormalMessageAll = ({
           : prevState;
       });
     });
+
+    let dataObject = {
+      msgID: `t4_${id}`
+    };
+    deleteMessage(fetchData, dataObject);
   }
 
-  function toggleBlockWarning(id) {
+  function toggleBlockWarning() {
+    setBlockPrompt((prev)=>!prev);
+  }
+
+  function Block(id) {
     changeMessage((message) => {
       return message.map((prevState) => {
         return prevState.id === id
@@ -74,15 +101,26 @@ const NormalMessageAll = ({
     });
   }
 
-  if(deleted) {
-    return;
+  function toggleReplyOn() {
+    setReplyPrompt(true);
+  }
+
+  function toggleReplyOff() {
+    setReplyPrompt(false);
+  }
+
+  function handleUnread(){
+    let dataObject = {
+      msgID: `t4_${id}`
+    };
+    unreadMessages(fetchDataUnread, dataObject);
   }
 
   return (
     <OddItems className={id % 2 === 0 ? "even" : ""} key={id}>
       <MessageDetails
         onClick={() => {
-          readed(id, changeMessage, read);
+          readed(id, changeMessage);
         }}
       >
         <Subject>
@@ -109,10 +147,11 @@ const NormalMessageAll = ({
               <AreYouSure className={deletePrompt ? "active" : ""}>
                 <BtnWarning> Are You Sure </BtnWarning>
                 <BtnsLinks
-                onClick={()=>{
-                  Delete(id);
-                }}
-                >Yes</BtnsLinks>
+                  onClick={()=>{
+                    Delete(id);
+                  }}
+                >
+                  Yes</BtnsLinks>
                 <BtnWarning> / </BtnWarning>
                 <BtnsLinks
                   onClick={() => {
@@ -136,18 +175,22 @@ const NormalMessageAll = ({
                 <BtnsLinks
                   className={block ? "active" : ""}
                   onClick={() => {
-                    toggleBlockWarning(id);
+                    toggleBlockWarning();
                   }}
                 >
                   Block User
                 </BtnsLinks>
-                <AreYouSure className={block ? "active" : ""}>
+                <AreYouSure className={blockPrompt ? "active" : ""}>
                   <BtnWarning> Are You Sure </BtnWarning>
-                  <BtnsLinks>Yes</BtnsLinks>
+                  <BtnsLinks
+                    onClick={()=> {
+                      Block(id)
+                    }}
+                  >Yes</BtnsLinks>
                   <BtnWarning> / </BtnWarning>
                   <BtnsLinks
                     onClick={() => {
-                      toggleBlockWarning(id);
+                      toggleBlockWarning();
                     }}
                   >
                     No
@@ -160,7 +203,8 @@ const NormalMessageAll = ({
                 <BtnsLinks
                   onClick={(e) => {
                     e.stopPropagation();
-                    markUnread(id, changeMessage, read);
+                    markUnread(id, changeMessage);
+                    handleUnread();
                   }}
                 >
                   Mark Unread
@@ -168,11 +212,27 @@ const NormalMessageAll = ({
               </Btns>
             )}
             <Btns>
-              <BtnsLinks>Reply</BtnsLinks>
+              <BtnsLinks 
+                onClick={toggleReplyOn}
+              >Reply</BtnsLinks>
             </Btns>
           </ListBtns>
         </Visted>
       </MessageDetails>
+      <ReplyDiv className={replyPrompt?"active": ""}>
+        <TextAreaDiv>
+          <MesssageDiv>
+            <TextAreaElement />
+          </MesssageDiv>
+          <ButtonsDiv>
+            <SaveButton>Save</SaveButton>
+            <SaveButton
+              onClick={toggleReplyOff}
+            >
+              Cancel</SaveButton>
+          </ButtonsDiv>
+        </TextAreaDiv>
+      </ReplyDiv>
     </OddItems>
   );
 };

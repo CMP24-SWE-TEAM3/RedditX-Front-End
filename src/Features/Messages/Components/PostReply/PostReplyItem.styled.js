@@ -179,3 +179,66 @@ export const Expand = styled.a`
 export const MessageDetails = styled.div`
   padding: 10px 15px;
 `;
+
+export const ReplyDiv = styled.div`
+  margin-top: 10px;
+  margin-left: 12px;
+  font-size: small;
+  display: none;
+
+  &.active {
+    display: block;
+  }
+`;
+
+export const TextAreaDiv = styled.div`
+  unicode-bidi: isolate;
+  padding: 0 1px;
+  clear: left;
+  margin-top: 1.5em;
+  font-size: 12px;
+  width: 500px;
+`;
+
+export const MesssageDiv = styled.div`
+  display: block;
+  transition: 0.3s;
+  font-weight: 400;
+  margin-left: 15px;
+  color: ${({ theme }) => theme.color.primary};
+  margin-top: 5px;
+  margin-bottom: 5px;
+  max-width: 60em;
+  font-size: 1em;
+`;
+
+export const TextAreaElement = styled.textarea`
+  width: 500px;
+  height: 100px;
+  line-height: 1.5em;
+  margin-bottom: 0;
+  margin-top: 0;
+  font-size: 1em;
+`;
+
+export const ButtonsDiv = styled.div`
+  overflow: hidden;
+  width: 100%;
+`;
+
+export const SaveButton = styled.button`
+  display: inline-block;
+  transition: 0.3s;
+  border-radius: 4px;
+  background-color: ${({ theme }) => theme.color.secondary};
+  border-color: ${({ theme }) => theme.color.secondary};
+  padding: 6px 16px 4px;
+  color: ${({ theme }) => theme.btnColor.text};
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 5px 5px 10px 0;
+  cursor: pointer;
+`;
+
+
+

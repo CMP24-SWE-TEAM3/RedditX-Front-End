@@ -103,7 +103,7 @@ function AllMessagesTypes({messages}) {
         );
         break;
       default:
-        // if(!item.delete) {
+        if(!item.delete) {
         return (
           <NormalMessageAll
             changeMessage={setEachMessage}
@@ -119,7 +119,7 @@ function AllMessagesTypes({messages}) {
             key={item.id}
           />
         );
-        // }
+        }
     }
   });
 

@@ -19,13 +19,25 @@ import {
   ArrowDown,
   MessageWithAu,
 } from "./UsernameMentionsItem.styled";
+
+import { 
+  ReplyDiv,
+  TextAreaDiv,
+  MesssageDiv,
+  TextAreaElement,
+  ButtonsDiv,
+  SaveButton,
+} from "../PostReply/PostReplyItem.styled";
 import ReportModal from "../ReportModal/ReportModal";
 import upVote from "../../Utils/Upvote";
 import downVote from "../../Utils/Downvote";
 import markUnread from "../../Utils/MarkUnread";
 import readed from "../../Utils/Read";
 import compareDate from "../../Utils/ParseDate";
-
+import unreadMessages from "Features/Messages/Services/UnreadMessage";
+import { useState } from "react";
+import useFetchFunction from "Hooks/useFetchFunction";
+import voteMessage from "../../Services/VoteMessages";
 /**
  * Component that contains the Username Mention item
  *
@@ -54,8 +66,16 @@ const UsernameMentionItem = ({
   id,
   block,
 }) => {
+  const [unreadMessageRes, errorUnreadMessage, loadingUnreadMessage, fetchDataUnread ] = useFetchFunction();
+  const [voteMessageRes, errorVoteMessage, loadingVoteMessage, fetchDataVote ] = useFetchFunction();
+  const [blockPrompt, setBlockPrompt] = useState(false);
+  const [replyPrompt, setReplyPrompt] = useState(false);
 
-  function toggleBlockWarning(id) {
+  function toggleBlockWarning() {
+    setBlockPrompt((prev)=>!prev);
+  }
+
+  function Block(id) {
     changeMessage((message) => {
       return message.map((prevState) => {
         return prevState.id === id
@@ -63,16 +83,64 @@ const UsernameMentionItem = ({
           : prevState;
       });
     });
+
+    
+  }
+  
+  function toggleReplyOn() {
+    setReplyPrompt(true);
   }
 
+  function toggleReplyOff() {
+    setReplyPrompt(false);
+  }
 
-  
+  function handleUnread(){
+    let dataObject = {
+      msgID: `t4_${id}`
+    };
+    unreadMessages(fetchDataUnread, dataObject);
+  }
+
+  function handleUpvote(){
+    let dataObject;
+    if((upvote === "down" || upvote ==="neutral")) {
+      dataObject = {
+        id: `t3_${id}`,
+        dir: 1
+      }
+    }
+    else if (upvote==="up") {
+      dataObject = {
+        id: `t3_${id}`,
+        dir: 0
+      }
+    }
+    voteMessage(fetchDataVote, dataObject); 
+  }
+
+  function handleDownote(){
+    let dataObject;
+    if((upvote === "up" || upvote ==="neutral")) {
+      dataObject = {
+        id: `t3_${id}`,
+        dir: -1
+      }
+    }
+    else if (upvote==="down") {
+      dataObject = {
+        id: `t3_${id}`,
+        dir: 2
+      }
+    }
+    voteMessage(fetchDataVote, dataObject); 
+  }
 
   return (
     <OddItems className={id % 2 === 0 ? "even" : ""} key={id}>
       <MessageDetails
         onClick={() => {
-          readed(id, changeMessage, read);
+          readed(id, changeMessage);
         }}
       >
         <Subject>
@@ -82,12 +150,14 @@ const UsernameMentionItem = ({
           <ArrowUp
             onClick={() => {
               upVote(id, changeMessage, upvote);
+              handleUpvote();
             }}
             className={upvote === "up" ? "active" : ""}
           />
           <ArrowDown
             onClick={() => {
               downVote(id, changeMessage, upvote);
+              handleDownote();
             }}
             className={upvote === "down" ? "active" : ""}
           />
@@ -122,18 +192,23 @@ const UsernameMentionItem = ({
                     <BtnsLinks
                       className={block ? "active" : ""}
                       onClick={() => {
-                        toggleBlockWarning(id);
+                        toggleBlockWarning();
                       }}
                     >
                       Block User
                     </BtnsLinks>
-                    <AreYouSure className={block ? "active" : ""}>
+                    <AreYouSure className={blockPrompt ? "active" : ""}>
                       <BtnWarning> Are You Sure </BtnWarning>
-                      <BtnsLinks>Yes</BtnsLinks>
+                      <BtnsLinks
+                        onClick={()=>{
+                          Block(id);
+                        }}
+                      >
+                        Yes</BtnsLinks>
                       <BtnWarning> / </BtnWarning>
                       <BtnsLinks
                         onClick={() => {
-                          toggleBlockWarning(id);
+                          toggleBlockWarning();
                         }}
                       >
                         No
@@ -146,7 +221,8 @@ const UsernameMentionItem = ({
                     <BtnsLinks
                       onClick={(e) => {
                         e.stopPropagation();
-                        markUnread(id, changeMessage, read);
+                        markUnread(id, changeMessage);
+                        handleUnread();
                       }}
                     >
                       Mark Unread
@@ -154,13 +230,30 @@ const UsernameMentionItem = ({
                   </Btns>
                 )}
                 <Btns>
-                  <BtnsLinks>Reply</BtnsLinks>
+                  <BtnsLinks
+                    onClick={toggleReplyOn}
+                  >
+                    Reply</BtnsLinks>
                 </Btns>
               </ListBtns>
             </Visted>
           </MessagesWithBtns>
         </MessageWithAu>
       </MessageDetails>
+      <ReplyDiv className={replyPrompt?"active": ""}>
+        <TextAreaDiv>
+          <MesssageDiv>
+            <TextAreaElement />
+          </MesssageDiv>
+          <ButtonsDiv>
+            <SaveButton>Save</SaveButton>
+            <SaveButton
+              onClick={toggleReplyOff}
+            >
+              Cancel</SaveButton>
+          </ButtonsDiv>
+        </TextAreaDiv>
+      </ReplyDiv>
     </OddItems>
   );
 };

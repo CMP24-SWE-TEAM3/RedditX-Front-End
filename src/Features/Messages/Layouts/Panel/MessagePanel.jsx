@@ -26,7 +26,7 @@ const messagesData = [
     admin: false,
     read: false,
     id: 2,
-    delete: true,
+    delete: false,
     block: false,
   },
   {

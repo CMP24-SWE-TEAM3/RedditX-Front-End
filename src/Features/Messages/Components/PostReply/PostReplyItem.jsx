@@ -16,6 +16,12 @@ import {
   BtnWarning,
   ArrowsDiv,
   MessageWithAu,
+  ReplyDiv,
+  TextAreaDiv,
+  MesssageDiv,
+  TextAreaElement,
+  ButtonsDiv,
+  SaveButton,
 } from "./PostReplyItem.styled";
 import { ArrowUp, ArrowDown } from "../UsernameMentions/UsernameMentionsItem.styled";
 import ReportModal from "../ReportModal/ReportModal";
@@ -24,6 +30,9 @@ import downVote from "../../Utils/Downvote";
 import markUnread from "../../Utils/MarkUnread";
 import readed from "../../Utils/Read";
 import compareDate from "../../Utils/ParseDate";
+import unreadMessages from "Features/Messages/Services/UnreadMessage";
+import { useState } from "react";
+import useFetchFunction from "Hooks/useFetchFunction";
 /**
  * Component that contains the Post Reply item
  *
@@ -53,8 +62,15 @@ const PostReplayItem = ({
   block,
 }) => {
   
+  const [unreadMessageRes, errorUnreadMessage, loadingUnreadMessage, fetchDataUnread ] = useFetchFunction();
+  const [blockPrompt, setBlockPrompt] = useState(false);
+  const [replyPrompt, setReplyPrompt] = useState(false);
 
-  function toggleBlockWarning(id) {
+  function toggleBlockWarning() {
+    setBlockPrompt((prev)=>!prev);
+  }
+
+  function Block(id) {
     changeMessage((message) => {
       return message.map((prevState) => {
         return prevState.id === id
@@ -64,12 +80,26 @@ const PostReplayItem = ({
     });
   }
 
+  function toggleReplyOn() {
+    setReplyPrompt(true);
+  }
+
+  function toggleReplyOff() {
+    setReplyPrompt(false);
+  }
+
+  function handleUnread(){
+    let dataObject = {
+      msgID: `t4_${id}`
+    };
+    unreadMessages(fetchDataUnread, dataObject);
+  }
 
   return (
     <OddItems className={id % 2 === 0 ? "even" : ""} key={id}>
       <MessageDetails
         onClick={() => {
-          readed(id, changeMessage, read);
+          readed(id, changeMessage);
         }}
       >
         <Subject>
@@ -119,18 +149,23 @@ const PostReplayItem = ({
                     <BtnsLinks
                       className={block ? "active" : ""}
                       onClick={() => {
-                        toggleBlockWarning(id);
+                        toggleBlockWarning();
                       }}
                     >
                       Block User
                     </BtnsLinks>
-                    <AreYouSure className={block ? "active" : ""}>
+                    <AreYouSure className={blockPrompt ? "active" : ""}>
                       <BtnWarning> Are You Sure </BtnWarning>
-                      <BtnsLinks>Yes</BtnsLinks>
+                      <BtnsLinks
+                        onClick={()=>{
+                          Block(id);
+                        }}
+                      >
+                        Yes</BtnsLinks>
                       <BtnWarning> / </BtnWarning>
                       <BtnsLinks
                         onClick={() => {
-                          toggleBlockWarning(id);
+                          toggleBlockWarning();
                         }}
                       >
                         No
@@ -143,7 +178,8 @@ const PostReplayItem = ({
                     <BtnsLinks
                       onClick={(e) => {
                         e.stopPropagation();
-                        markUnread(id, changeMessage, read);
+                        markUnread(id, changeMessage);
+                        handleUnread();
                       }}
                     >
                       Mark Unread
@@ -151,13 +187,29 @@ const PostReplayItem = ({
                   </Btns>
                 )}
                 <Btns>
-                  <BtnsLinks>Reply</BtnsLinks>
+                  <BtnsLinks
+                    onClick = {toggleReplyOn}
+                  >Reply</BtnsLinks>
                 </Btns>
               </ListBtns>
             </Visted>
           </MessagesWithBtns>
         </MessageWithAu>
       </MessageDetails>
+      <ReplyDiv className={replyPrompt?"active": ""}>
+        <TextAreaDiv>
+          <MesssageDiv>
+            <TextAreaElement />
+          </MesssageDiv>
+          <ButtonsDiv>
+            <SaveButton>Save</SaveButton>
+            <SaveButton
+              onClick={toggleReplyOff}
+            >
+              Cancel</SaveButton>
+          </ButtonsDiv>
+        </TextAreaDiv>
+      </ReplyDiv>
     </OddItems>
   );
 };

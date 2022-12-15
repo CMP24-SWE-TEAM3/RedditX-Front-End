@@ -19,11 +19,24 @@ import {
   AreYouSure,
   BtnWarning,
 } from "./MessagePanelItem.styled";
+
+import { 
+  ReplyDiv,
+  TextAreaDiv,
+  MesssageDiv,
+  TextAreaElement,
+  ButtonsDiv,
+  SaveButton,
+} from "../PostReply/PostReplyItem.styled";
+
 import ReportModal from "../ReportModal/ReportModal";
 import markUnread from "../../Utils/MarkUnread";
 import readed from "../../Utils/Read";
 import compareDate from "../../Utils/ParseDate";
-
+import { useState } from "react";
+import useFetchFunction from "Hooks/useFetchFunction";
+import deleteMessage from "Features/Messages/Services/DeleteMessage";
+import unreadMessages from "Features/Messages/Services/UnreadMessage";
 /**
  * Component that contains the message item of Message Panel
  *
@@ -54,6 +67,10 @@ const MessageBannelItem = ({
   deleted,
   block,
 }) => {
+  const [unreadMessageRes, errorUnreadMessage, loadingUnreadMessage, fetchDataUnread ] = useFetchFunction();
+  const [deleteMessageRes, errorDeleteMessage, loadingDeleteMessage, fetchData ] = useFetchFunction();
+  const [deletePrompt, setDeletePrompt] = useState(false);
+  const [replyPrompt, setReplyPrompt] = useState(false);
   function collapseAll(name) {
     changeMessage((message) => {
       return message.map((prevState) => {
@@ -85,7 +102,12 @@ const MessageBannelItem = ({
     });
   }
 
-  function toggleDeleteWarning(id) {
+  
+  function toggleDeleteWarning() {
+    setDeletePrompt((prev)=>!prev);
+  }
+
+  function Delete(id) {
     changeMessage((message) => {
       return message.map((prevState) => {
         return prevState.id === id
@@ -93,6 +115,11 @@ const MessageBannelItem = ({
           : prevState;
       });
     });
+
+    let dataObject = {
+      msgID: `t4_${id}`
+    };
+    deleteMessage(fetchData, dataObject);
   }
 
   function toggleBlockWarning(id) {
@@ -105,11 +132,26 @@ const MessageBannelItem = ({
     });
   }
 
+  function toggleReplyOn() {
+    setReplyPrompt(true);
+  }
+
+  function toggleReplyOff() {
+    setReplyPrompt(false);
+  }
+
+  function handleUnread(){
+    let dataObject = {
+      msgID: `t4_${id}`
+    };
+    unreadMessages(fetchDataUnread, dataObject);
+  }
+
   return (
     <OddItems className={id % 2 === 0 ? "even" : ""} key={id}>
       <MessageDetails
         onClick={() => {
-          readed(id, changeMessage, read);
+          readed(id, changeMessage);
         }}
       >
         <Subject>
@@ -154,18 +196,22 @@ const MessageBannelItem = ({
                 <BtnsLinks
                   className={deleted ? "active" : ""}
                   onClick={() => {
-                    toggleDeleteWarning(id);
+                    toggleDeleteWarning();
                   }}
                 >
                   Delete
                 </BtnsLinks>
-                <AreYouSure className={deleted ? "active" : ""}>
+                <AreYouSure className={deletePrompt ? "active" : ""}>
                   <BtnWarning> Are You Sure </BtnWarning>
-                  <BtnsLinks>Yes</BtnsLinks>
+                  <BtnsLinks
+                      onClick={() => {
+                        Delete(id);
+                      }}              
+                  >Yes</BtnsLinks>
                   <BtnWarning> / </BtnWarning>
                   <BtnsLinks
                     onClick={() => {
-                      toggleDeleteWarning(id);
+                      toggleDeleteWarning();
                     }}
                   >
                     No
@@ -209,7 +255,8 @@ const MessageBannelItem = ({
                   <BtnsLinks
                     onClick={(e) => {
                       e.stopPropagation();
-                      markUnread(id, changeMessage, read);
+                      markUnread(id, changeMessage);
+                      handleUnread();
                     }}
                   >
                     Mark Unread
@@ -217,12 +264,28 @@ const MessageBannelItem = ({
                 </Btns>
               )}
               <Btns>
-                <BtnsLinks>Reply</BtnsLinks>
+                <BtnsLinks
+                  onClick={toggleReplyOn}
+                >Reply</BtnsLinks>
               </Btns>
             </ListBtns>
           </Visted>
         </MessagesWithBtns>
       </MessageDetails>
+      <ReplyDiv className={replyPrompt?"active": ""}>
+        <TextAreaDiv>
+          <MesssageDiv>
+            <TextAreaElement />
+          </MesssageDiv>
+          <ButtonsDiv>
+            <SaveButton>Save</SaveButton>
+            <SaveButton
+              onClick={toggleReplyOff}
+            >
+              Cancel</SaveButton>
+          </ButtonsDiv>
+        </TextAreaDiv>
+      </ReplyDiv>
     </OddItems>
   );
 };

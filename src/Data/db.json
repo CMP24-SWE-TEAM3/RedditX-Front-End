@@ -4307,9 +4307,14 @@
       "id": 4,
       "delete": false,
       "block": false
-    },
-    {
-      "id": 5
     }
-  ]
+  ],
+  "delete-message": [
+    {
+      "msgID": "t4_1",
+      "id": 1
+    }
+  ],
+  "unread-message": [],
+  "vote-message": []
 }
