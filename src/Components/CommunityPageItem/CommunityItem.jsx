@@ -1,36 +1,23 @@
-import { useState, useEffect } from "react";
 import {
-  BtnContainer,
-  Button,
-  CommunityDescription,
-  CommunityInfo,
-  CommunityMainInfo,
-  CommunityMembers,
-  CommunityTitle,
-  Container,
-  Flex,
-  Img,
+  BtnJoin,
+  CommContainer,
+  CommContent,
+  CommImage,
+  CommunityName,
+  Discrepion,
+  MemContent,
+  MemLayout,
+  Visit,
 } from "./CommunityItem.styled";
-
-// Import api
+// import logo from ".././../.././Search/Assets/download.jpg";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 import axios from "API/axios";
 // import CommImage from "../../Assets/CommunityImage.png";
 import useFetchFunction from "Hooks/useFetchFunction";
 import useFetch from "Hooks/useFetch";
 import joinCommunity from "Features/Search/Services/joinCommunity";
-
-/**
- * Component that render the Community item Elements.
- *
- * @Component
- * @param {String} communityIcon - The image of the CommunityCardItem
- * @param {String} communityID - The ID of the CommunityCardItem
- * @param {String} communityDescription - The Description of the CommunityCardItem
- * @param {number} membersCount - The membersCount of the CommunityCardItem
- * @param {String} communityName - The name of the CommunityCardItem
- * @param {object} isJoined - it is object indicating whether the user is joining this community
- * @returns {React.Component}
- */
+import { useEffect } from "react";
 const CommunityItem = ({
   communityIcon,
   communityDescription,
@@ -39,6 +26,7 @@ const CommunityItem = ({
   communityID,
   isJoined,
 }) => {
+  console.log(communityIcon, communityDescription, membersCount, communityID);
   const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
   const [isJoinedstate, setisJoined] = useState(false);
 
@@ -99,39 +87,43 @@ const CommunityItem = ({
   // console.log(CommunitiesSub2);
   var abbreviate = require("number-abbreviate");
   return (
-    <Container to={`/subreddit/${communityID}`} title="comm">
-      <Flex>
-        {communityIcon && (
-          <Img
-            crossOrigin="anonynmous"
-            src={`https://api.redditswe22.tech/subreddits/files/${communityIcon}`}
-            alt="Subreddit Icon"
-          />
+    <CommContainer title="comm">
+      {communityIcon && (
+        <CommImage
+          alt="Community image"
+          crossOrigin="anonynmous"
+          src={`https://api.redditswe22.tech/subreddits/files/${communityIcon}`}
+        />
+      )}
+      <CommContent>
+        {communityID && (
+          <Link to={`/subreddit/${communityID}`}>
+            {communityName && (
+              <CommunityName>r/{communityName.substring(3)}</CommunityName>
+            )}
+            {membersCount && (
+              <MemLayout>
+                <MemContent>{abbreviate(membersCount, 1)} Members</MemContent>
+              </MemLayout>
+            )}
+          </Link>
         )}
-        <CommunityInfo>
-          <CommunityMainInfo>
-            <CommunityTitle className="community-name">
-              r/{communityName.substring(3)}
-            </CommunityTitle>
-            <CommunityMembers>
-              <span>•</span>
-              {abbreviate(membersCount, 1)} Members
-            </CommunityMembers>
-          </CommunityMainInfo>
-          <CommunityDescription>{communityDescription}</CommunityDescription>
-        </CommunityInfo>
-        <BtnContainer>
-          <Button
-            onClick={clickHandler}
-            onMouseEnter={mouseEnterHandler}
-            onMouseLeave={MouseLeaveHandler}
-            className="join"
-          >
-            {btnContent}
-          </Button>
-        </BtnContainer>
-      </Flex>
-    </Container>
+        {communityDescription && (
+          <Discrepion>{communityDescription}</Discrepion>
+        )}
+        {<Visit to={`/subreddit/${communityID}`}>Visit</Visit>}
+      </CommContent>
+      <BtnJoin
+        onClick={clickHandler}
+        onMouseEnter={mouseEnterHandler}
+        onMouseLeave={MouseLeaveHandler}
+        active={
+          btnContent === "Joined" || btnContent === "Leave" ? true : false
+        }
+      >
+        {btnContent}
+      </BtnJoin>
+    </CommContainer>
   );
 };
 

@@ -24,6 +24,7 @@ describe("Flair", () => {
     screen.logTestingPlaygroundURL();
 
     // // Act
+    // Act
     // const buttonElement = screen.getAllByRole("button");
     // fireEvent.click(buttonElement[1]);
 

@@ -156,35 +156,113 @@ const DropDownRightButton = ({ toggleMode }) => {
           </Accordion.Header>
           <Accordion.Body>
             <Accordion defaultActiveKey="1">
-              <Accordion.Header>Gaming</Accordion.Header>
+              <Accordion.Header
+                onClick={() => {
+                  navigate("/explore/posts/Gaming");
+                }}
+              >
+                Gaming
+              </Accordion.Header>
               <Accordion.Body className={"child"}>
-                <NavDropdown.Item>MineCraft</NavDropdown.Item>
-                <NavDropdown.Item>Pokimane</NavDropdown.Item>
+                <NavDropdown.Item
+                  onClick={() => {
+                    navigate("/explore/posts/MineCraft");
+                  }}
+                >
+                  MineCraft
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  onClick={() => {
+                    navigate("/explore/posts/Pokimane");
+                  }}
+                >
+                  Pokimane
+                </NavDropdown.Item>
                 <hr className={"border-dark my-3"} />
               </Accordion.Body>
             </Accordion>
             <Accordion defaultActiveKey="1">
-              <Accordion.Header>Sports</Accordion.Header>
+              <Accordion.Header
+                onClick={() => {
+                  navigate("/explore/posts/Sports");
+                }}
+              >
+                Sports
+              </Accordion.Header>
               <Accordion.Body className={"child"}>
-                <NavDropdown.Item>NBA</NavDropdown.Item>
-                <NavDropdown.Item>NFL</NavDropdown.Item>
-                <NavDropdown.Item>Item 4B</NavDropdown.Item>
+                <NavDropdown.Item
+                  onClick={() => {
+                    navigate("/explore/posts/NBA");
+                  }}
+                >
+                  NBA
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  onClick={() => {
+                    navigate("/explore/posts/NFL");
+                  }}
+                >
+                  NFL
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  onClick={() => {
+                    navigate("/explore/posts/Item 4B");
+                  }}
+                >
+                  Item 4B
+                </NavDropdown.Item>
                 <hr className={"border-dark my-3"} />
               </Accordion.Body>
             </Accordion>
             <Accordion defaultActiveKey="1">
-              <Accordion.Header>Television</Accordion.Header>
+              <Accordion.Header
+                onClick={() => {
+                  navigate("/explore/posts/Television");
+                }}
+              >
+                Television
+              </Accordion.Header>
               <Accordion.Body className={"child"}>
-                <NavDropdown.Item>Wife Swap</NavDropdown.Item>
-                <NavDropdown.Item>Sister Wives</NavDropdown.Item>
+                <NavDropdown.Item
+                  onClick={() => {
+                    navigate("/explore/posts/Wife Swap");
+                  }}
+                >
+                  Wife Swap
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  onClick={() => {
+                    navigate("/explore/posts/Sister Wives");
+                  }}
+                >
+                  Sister Wives
+                </NavDropdown.Item>
                 <hr className={"border-dark my-3"} />
               </Accordion.Body>
             </Accordion>
             <Accordion defaultActiveKey="1">
-              <Accordion.Header>Celebrity</Accordion.Header>
+              <Accordion.Header
+                onClick={() => {
+                  navigate("/explore/posts/Celebrity");
+                }}
+              >
+                Celebrity
+              </Accordion.Header>
               <Accordion.Body className={"child"}>
-                <NavDropdown.Item>Doja Cat</NavDropdown.Item>
-                <NavDropdown.Item>Anya Taylor-Joy</NavDropdown.Item>
+                <NavDropdown.Item
+                  onClick={() => {
+                    navigate("/explore/posts/Doja Cat");
+                  }}
+                >
+                  Doja Cat
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  onClick={() => {
+                    navigate("/explore/posts/Anya Taylor-Joy");
+                  }}
+                >
+                  Anya Taylor-Joy
+                </NavDropdown.Item>
                 <hr className={"border-dark my-3"} />
               </Accordion.Body>
             </Accordion>

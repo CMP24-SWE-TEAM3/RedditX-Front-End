@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Community CardI tem this is a test for Community Card Item 1`] = `
+<styled.div
+  title="comm"
+>
+  <Link
+    to="/subreddit/t5_imagepro"
+  >
+    <div
+      className="item"
+    >
+      <img
+        alt=""
+        crossOrigin="anonynmous"
+        src="https://api.redditswe22.tech/subreddits/files/CommunityImage.png"
+      />
+      <div
+        className="info"
+      >
+        <div
+          className="info2"
+        >
+          <div>
+            r/
+            manWW2photos
+          </div>
+          <p>
+            10
+             Members
+          </p>
+        </div>
+      </div>
+      <div
+        className="button"
+      >
+        <button
+          className="join"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Join
+        </button>
+      </div>
+    </div>
+  </Link>
+</styled.div>
+`;

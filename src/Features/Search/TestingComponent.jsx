@@ -11,15 +11,18 @@ import { ThemeProvider } from "styled-components";
 import { SafeContextProvider } from "./Contexts/SafeSearchContext/Safe-context";
 import { SearchContextProvider } from "./Contexts/SearchWordContext/Search-context";
 import { EditContextProvider } from "Features/Moderator/Contexts/Safe-context";
+import { CategoryContextProvider } from "Contexts/CategoryContext/Category-context";
 const TestingComponent = ({ children }) => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={{ ...defaultTheme, ...lightTheme }}>
-        <EditContextProvider>
-          <SearchContextProvider>
-            <SafeContextProvider>{children}</SafeContextProvider>
-          </SearchContextProvider>
-        </EditContextProvider>
+        <CategoryContextProvider>
+          <EditContextProvider>
+            <SearchContextProvider>
+              <SafeContextProvider>{children}</SafeContextProvider>
+            </SearchContextProvider>
+          </EditContextProvider>
+        </CategoryContextProvider>
       </ThemeProvider>
     </BrowserRouter>
   );
