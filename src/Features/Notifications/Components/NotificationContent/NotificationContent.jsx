@@ -36,34 +36,46 @@ const Notifications = [
 
 
 
-const NotificationContent = () => {
-  const [notificationRes, errorNotification, notificationLoading, fetchFunction] = useFetchFunction();
-  const auth = useAuth();
-
-  useEffect(()=>{
-    pushNotifications(fetchFunction, auth)
-  },[])
-  console.log(notificationRes);
-  
-  const notifs = notificationRes.map((item)=>{
+const NotificationContent = ({notificationRes}) => {
+  let notifs = [];
+  console.log(notificationRes.notifications);
+  if (notificationRes && notificationRes.length!==0) {
+  notifs = notificationRes.notifications.map((item)=>{
+    let src;
+    let fileSrc;
+    if(item.sourceThing.substring(0,2)==="t2") {
+      src = item.userIcon;
+      fileSrc = "users";
+    }
+    else {
+      src="community-icon-t5_imagePro235-1670710332045.jpg";
+      //item.communityIcon;
+      fileSrc = "subreddits";
+    }
     return(
-      <li key={item.id.toString()}>
+      <li key={item._id.toString()}>
         <NotificationItem
+          id = {item._id}  //For Routing
           header={item.title}
           content={item.text}
           date = {item.createdAt}
+          img = {src}
+          fileSrc = {fileSrc}   //Used to Request Images, also for routing (to a user or a community)
         />
       </li>
     );
-
   });
+}
+
+
   return (
     <ContainerContent>
       <ContainerWalid>
         <ContainerContentOuter>
           <ContainerContentInner>
             <TextMain>Earlier</TextMain>
-            <NotificationList>{notifs}</NotificationList>
+            {notificationRes && 
+            <NotificationList>{notifs}</NotificationList>}
           </ContainerContentInner>
         </ContainerContentOuter>
       </ContainerWalid>
