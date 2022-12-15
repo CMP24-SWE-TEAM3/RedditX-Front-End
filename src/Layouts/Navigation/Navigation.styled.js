@@ -6,8 +6,8 @@ export const StyledContainer = styled(Container)`
   top: 0;
   width: 100%;
   z-index: 30;
-  background: white;
   height: 49px;
+  background-color: ${({ theme }) => theme.background.primary};
 `;
 
 export const StyledNavbar = styled(Navbar)`

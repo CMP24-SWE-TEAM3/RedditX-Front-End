@@ -78,33 +78,7 @@ const ImageAndVideoForm = ({ submitPost }) => {
     if (submitDestination)
       getPostFlairs(fetchData, submitDestination._id, auth);
   }, [submitDestination]);
-  // TODO: Remove this statement
-  flairs = [
-    {
-      id: "t7_63248d012f459a937e2684fd",
-      text: "Flair 1 text",
-      flairBackGroundColor: "rgb(70, 209, 96)",
-      flairTextColor: "rgb(255, 255, 255)",
-      modOnly: true,
-      allowUserEdits: true,
-    },
-    {
-      id: "t7_63248d012f459a937e1223123d",
-      text: "Flair 2 text",
-      flairBackGroundColor: "blue",
-      flairTextColor: "rgb(255, 255, 255)",
-      modOnly: true,
-      allowUserEdits: true,
-    },
-    {
-      id: "t1_632012f459a937e1223123d",
-      text: "Flair 3 text",
-      flairBackGroundColor: "red",
-      flairTextColor: "rgb(70, 209, 96)",
-      modOnly: true,
-      allowUserEdits: true,
-    },
-  ];
+
   /**
    * Handle title change
    *
@@ -147,7 +121,7 @@ const ImageAndVideoForm = ({ submitPost }) => {
         onHide={onModalHide}
         flairIndex={flairIndex}
         setFlairIndex={setFlairIndex}
-        flairList={flairs}
+        flairList={flairs.flairs}
         error={error}
         isLoading={isLoading}
         postOrUser="post"

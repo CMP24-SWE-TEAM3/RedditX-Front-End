@@ -28,6 +28,7 @@ import getNewPosts from "Services/getNewPosts";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 import ChooseDate from "../../Components/ChooseDate/ChooseDate";
+import CollapsePost from "Features/Post/Layouts/CollapsePost/CollapsePost";
 
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
@@ -96,6 +97,7 @@ const HomePage = () => {
                       }}
                     >
                       <PostShape post={post} />
+                      <CollapsePost post={post} />
                     </div>
                   ))}
               </div>
