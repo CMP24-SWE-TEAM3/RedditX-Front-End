@@ -1,6 +1,10 @@
 // Imports
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BASE_URL } from "API/axios";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import joinCommunity from "Services/joinCommunity";
+import getCommunities from "Services/getCommunities";
 import {
   Caret,
   CommunityNameChild,
@@ -14,10 +18,10 @@ import {
   Number,
 } from "./CommunityCardItem.styled";
 import { Link } from "react-router-dom";
-import { FaAngleUp, FaAngleDown } from "react-icons/fa";
+import { FaAngleUp } from "react-icons/fa";
 
 /**
- * Component that  shows the names of communities up-to-date.
+ * Component that  shows random categories
  * @returns {Component.React}
  */
 const CommunityCardItem = ({
@@ -26,24 +30,52 @@ const CommunityCardItem = ({
   srIcon,
   community,
 }) => {
+  // states
   const [btnContent, setBtnContent] = useState("Join");
+  const [currentState, setCurrentState] = useState(null);
+  // useFetchFunction
+  const [subscribed, errorCommunities, loadingCommunities, fetchCommunities] =
+    useFetchFunction();
 
+  const [joiningResponse, errorJoining, loadingJoining, fetchData] =
+    useFetchFunction();
+
+  // authorization
+  const auth = useAuth();
+
+  // joined communities or unjonined
+  const handleJoining = ({ event, communityName, type }) => {
+    event.preventDefault();
+    joinCommunity(fetchData, auth, {
+      action: type === "joined" ? "sub" : "unsub",
+      srName: `t5_${communityName}`,
+    });
+  };
+
+  // handle fetch joined communities
+  useEffect(() => {
+    getCommunities(fetchCommunities, auth);
+  }, []);
+
+  // handle unjoined communities
   const clickHandler = (e) => {
     e.preventDefault();
-    if (btnContent === "Join") {
+    if (currentState !== undefined) {
       setBtnContent("Joined");
     } else {
       setBtnContent("Join");
     }
   };
 
+  // handle hover joined communities
   const mouseEnterHandler = () => {
     if (btnContent === "Joined") {
       setBtnContent("Leave");
     }
   };
 
-  const MouseLeaveHandler = () => {
+  // hover leaved communities
+  const mouseLeaveHandler = () => {
     if (btnContent === "Leave") {
       setBtnContent("Joined");
     }
@@ -72,17 +104,23 @@ const CommunityCardItem = ({
             </CommunityNameContainer>
             <JoinContainer>
               <JoinBtn
-                onClick={clickHandler}
+                onClick={() => {
+                  clickHandler();
+                  handleJoining(communityUserName, btnContent);
+                }}
                 onMouseEnter={mouseEnterHandler}
-                onMouseLeave={MouseLeaveHandler}
+                onMouseLeave={mouseLeaveHandler}
               >
-                {btnContent}
+                {subscribed.length !== 0 &&
+                  subscribed.communities.find(({ _id }) =>
+                    setCurrentState(_id.substring(3) === communityUserName)
+                  ) &&
+                  btnContent}
               </JoinBtn>
             </JoinContainer>
           </Item>
         </Link>
       </Container>
-
       {communityId < 4 && <HeaderLine />}
     </>
   );

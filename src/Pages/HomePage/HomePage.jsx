@@ -27,7 +27,7 @@ import { useEffect } from "react";
 import getNewPosts from "Services/getNewPosts";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
-import ChooseDate from "../../Components/ChooseDate/ChooseDate";
+// import PushNotification from "Components/PushNotification/PushNotification";
 
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
