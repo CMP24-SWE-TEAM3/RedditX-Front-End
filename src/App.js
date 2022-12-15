@@ -117,14 +117,25 @@ function App() {
             <SafeContextProvider>
               <EditContextProvider>
                 <BrowserRouter>
+                  <LogInVerticalModal
+                    show={modalShowLogIn}
+                    onHide={() => setModalShowLogIn(false)}
+                    setModalShowLogIn={setModalShowLogIn}
+                  />
+                  <SignUpVerticalModal
+                    show={modalShowSignUp}
+                    onHide={() => setModalShowSignUp(false)}
+                    setModalShowSignUp={setModalShowSignUp}
+                    setModalAfterSignUp={setModalAfterSignUp}
+                  />
+                  <AfterSignUpModal
+                    show={modalAfterSignUp}
+                    setModalAfterSignUp={setModalAfterSignUp}
+                    onHide={() => setModalAfterSignUp(false)}
+                  />
                   <Routes>
-                    <LogInVerticalModal
-                      show={modalShowLogIn}
-                      onHide={() => setModalShowLogIn(false)}
-                      setModalShowLogIn={setModalShowLogIn}
-                    />
                     <Route
-                      path="/notifications"
+                      path="/"
                       element={
                         <>
                           <Navigation
@@ -137,12 +148,15 @@ function App() {
                             modalAfterSignUp={modalAfterSignUp}
                             setModalAfterSignUp={setModalAfterSignUp}
                           />
-                          <Notifications />
+                          <HomePage
+                            handleToggleTheme={handleToggleTheme}
+                            theme={JSON.parse(theme).id}
+                          />
                         </>
                       }
                     />
                     <Route
-                      path="subreddit/:id"
+                      path="subreddit/:id/*"
                       element={
                         <RequireAuth>
                           <Navigation
@@ -159,10 +173,23 @@ function App() {
                         </RequireAuth>
                       }
                     />
-                    <AfterSignUpModal
-                      show={modalAfterSignUp}
-                      setModalAfterSignUp={setModalAfterSignUp}
-                      onHide={() => setModalAfterSignUp(false)}
+                    <Route
+                      path="category/:categoryType/*"
+                      element={
+                        <RequireAuth>
+                          <Navigation
+                            toggleMode={handleToggleTheme}
+                            theme={JSON.parse(theme).id}
+                            modalShowLogIn={modalShowLogIn}
+                            setModalShowLogIn={setModalShowLogIn}
+                            modalShowSignUp={modalShowSignUp}
+                            setModalShowSignUp={setModalShowSignUp}
+                            modalAfterSignUp={modalAfterSignUp}
+                            setModalAfterSignUp={setModalAfterSignUp}
+                          />
+                          <CommunityLeaderBoard />
+                        </RequireAuth>
+                      }
                     />
                     <Route
                       path="index-page/:indexLetter/*"
@@ -219,12 +246,7 @@ function App() {
                       }
                     />
                     <Route path="login" element={<LogInPage />} />
-                    <Route
-                      path="register"
-                      element={
-                        <SignUpPage setModalAfterSignUp={setModalAfterSignUp} />
-                      }
-                    />
+                    <Route path="register" element={<SignUpPage />} />
                     <Route
                       path="forget-password"
                       element={<ForgetPasswordPage />}
@@ -326,6 +348,24 @@ function App() {
                           />
                           <Messages />
                         </RequireAuth>
+                      }
+                    />
+                    <Route
+                      path="/notifications"
+                      element={
+                        <>
+                          <Navigation
+                            toggleMode={handleToggleTheme}
+                            theme={JSON.parse(theme).id}
+                            modalShowLogIn={modalShowLogIn}
+                            setModalShowLogIn={setModalShowLogIn}
+                            modalShowSignUp={modalShowSignUp}
+                            setModalShowSignUp={setModalShowSignUp}
+                            modalAfterSignUp={modalAfterSignUp}
+                            setModalAfterSignUp={setModalAfterSignUp}
+                          />
+                          <Notifications />
+                        </>
                       }
                     />
                     <Route
