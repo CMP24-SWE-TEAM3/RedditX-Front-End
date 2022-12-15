@@ -7,6 +7,11 @@ import {
   NotificationList,
   TextMain,
 } from "./NotificationContent.styled";
+import useFetchFunction from "Hooks/useFetchFunction";
+
+import { useEffect } from "react";
+import pushNotifications from "Services/pushNotifications";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 const Notifications = [
   {
@@ -28,8 +33,19 @@ const Notifications = [
     createdAt: "2022,11,30",
   },
 ];
+
+
+
 const NotificationContent = () => {
-  const notifs = Notifications.map((item)=>{
+  const [notificationRes, errorNotification, notificationLoading, fetchFunction] = useFetchFunction();
+  const auth = useAuth();
+
+  useEffect(()=>{
+    pushNotifications(fetchFunction, auth)
+  },[])
+  console.log(notificationRes);
+  
+  const notifs = notificationRes.map((item)=>{
     return(
       <li key={item.id.toString()}>
         <NotificationItem

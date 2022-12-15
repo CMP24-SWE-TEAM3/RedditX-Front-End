@@ -1,5 +1,5 @@
-import NotificationContent from "Features/User/Components/NotificationContent/NotificationContent";
-import NotificationsUpperSide from "Features/User/Components/NotificationsUpperSide/NotificationsUpperSide";
+import NotificationContent from "Features/Notifications/Components/NotificationContent/NotificationContent";
+import NotificationsUpperSide from "Features/Notifications/Components/NotificationsUpperSide/NotificationsUpperSide";
 import {
   ContainerNotifications,
   ContainerNotificationsInner,

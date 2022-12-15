@@ -13,7 +13,7 @@ import {
   StyledPopup,
   HideButton,
 } from "./NotificationItem.styled";
-import ParseDateFromNow from "Features/User/Utils/ParseDateFromNow";
+import ParseDateFromNow from "Features/Notifications/Utils/ParseDateFromNow";
 import { useState } from "react";
 import React from "react";
 import Popup from "reactjs-popup";
