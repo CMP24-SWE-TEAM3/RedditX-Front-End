@@ -32,7 +32,7 @@ const CommunityCardItem = ({
 }) => {
   console.log("community", communityUserName);
   // states
-  const [btnContent, setBtnContent] = useState("Join");
+  const [btnContent, setBtnContent] = useState("");
   const [currentState, setCurrentState] = useState(null);
   // useFetchFunction
   const [subscribed, errorCommunities, loadingCommunities, fetchCommunities] =
@@ -47,7 +47,7 @@ const CommunityCardItem = ({
   // joined communities or unjonined
   const handleJoining = (communityName, type) => {
     joinCommunity(fetchData, auth, {
-      action: type === "Joined" ? "unsub" : "sub",
+      action: type === "Leave" ? "unsub" : "sub",
       srName: `t5_${communityName}`,
     });
   };
@@ -65,18 +65,18 @@ const CommunityCardItem = ({
           ({ _id }) => _id.substring(3) === communityUserName
         )
       );
+      if (currentState !== undefined) {
+        setBtnContent("Joined");
+      } else setBtnContent("Join");
     }
-  }, [subscribed]);
+  }, [subscribed, currentState]);
 
   // handle unjoined communities
   const clickHandler = () => {
-    if (currentState !== undefined) {
-      setBtnContent("Joined");
-    } else {
-      setBtnContent("Join");
-    }
+    if (btnContent === "Join") setBtnContent("Joined");
+    else setBtnContent("Join");
+    handleJoining(communityUserName, btnContent);
   };
-
   // handle hover joined communities
   const mouseEnterHandler = () => {
     if (btnContent === "Joined") {
@@ -118,7 +118,6 @@ const CommunityCardItem = ({
                   e.preventDefault();
                   e.stopPropagation();
                   clickHandler();
-                  handleJoining(communityUserName, btnContent);
                 }}
                 onMouseEnter={mouseEnterHandler}
                 onMouseLeave={mouseLeaveHandler}

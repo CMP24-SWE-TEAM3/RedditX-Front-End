@@ -34,7 +34,7 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
  * @returns {Modal} returns a modal that shows the user's create community form
  */
 
-const ModalCommunity = ({ showModal, setShoweModal, close }) => {
+const ModalCommunity = ({ showModal, setShowModal, close }) => {
   const auth = useAuth();
   // Fetch notifications
   // Call useFetchFunction hook to handle states: loading, error, data
@@ -42,7 +42,6 @@ const ModalCommunity = ({ showModal, setShoweModal, close }) => {
   // Error: Contains error message when the request is failed
   // Data: the response data
   const [response, error, isLoading, fetchData] = useFetchFunction();
-  // console.log("Out==>", response);
 
   /**
    * state of the community which tracks string is shown in input filed in modal
@@ -79,13 +78,15 @@ const ModalCommunity = ({ showModal, setShoweModal, close }) => {
   // effect if any change happened on response
   useEffect(() => {
     if (response.status === undefined) return;
-    console.log("Passed");
-    if (response.status === "subreddit is already made") setUsedCommunity(true);
-    else setUsedCommunity(false);
 
-    if (!showUsedCommunity) {
-      setShoweModal(false);
+    if (response.status !== "subreddit is already made") {
+      setUsedCommunity(false);
+      setShowModal(false);
       setShowWelcomeModal(true);
+    } else {
+      setUsedCommunity(true);
+      setShowModal(true);
+      setShowWelcomeModal(false);
     }
   }, [response]);
 
@@ -96,6 +97,7 @@ const ModalCommunity = ({ showModal, setShoweModal, close }) => {
         onHide={() => {
           close();
           setCommunityName("");
+          setUsedCommunity(false);
         }}
         id={"modal"}
       >
@@ -220,6 +222,7 @@ const ModalCommunity = ({ showModal, setShoweModal, close }) => {
             onClick={() => {
               close();
               setCommunityName("");
+              setUsedCommunity(false);
             }}
           >
             Close
@@ -233,6 +236,7 @@ const ModalCommunity = ({ showModal, setShoweModal, close }) => {
         <ModalAfterCreateCommunity
           showModal={showWelcomeModal}
           setShowWelcomeModal={setShowWelcomeModal}
+          community={communityName}
         />
       )}
     </>

@@ -43,7 +43,7 @@ const DropDownRightButton = ({ toggleMode }) => {
             />
           </div>
           <div className="user-name-container">
-            <span className="user-name">Abdelrahman_Hamza</span>
+            <span className="user-name">{auth.getUserName().substring(3)}</span>
             <span className="karma">Karma</span>
           </div>
         </div>
@@ -63,13 +63,13 @@ const DropDownRightButton = ({ toggleMode }) => {
             <SwitchButton />
           </span>
         </NavDropdown.Item>
-        <NavDropdown.Item>
+        <NavDropdown.Item onClick={() => navigate("/profile")}>
           <span>Profile</span>
         </NavDropdown.Item>
         <NavDropdown.Item>
           <span>Style Avatar</span>
         </NavDropdown.Item>
-        <NavDropdown.Item>
+        <NavDropdown.Item onClick={() => navigate("/settings/*")}>
           <span>User Settings</span>
         </NavDropdown.Item>
       </div>
