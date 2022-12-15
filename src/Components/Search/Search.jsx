@@ -8,7 +8,7 @@ import { useContext, useEffect } from "react";
 import SearchContext from "Features/Search/Contexts/SearchWordContext/Search-context";
 import fetchCommunities from "Features/Search/Services/fetchCommunities";
 import fetchPeople from "Features/Search/Services/fetchPeople";
-
+import SearchDropDown from "Components/SearchDropDown/SearchDropDown";
 /**
  * Component that displays the search results for a given search term.
  *
@@ -73,10 +73,10 @@ const Search = () => {
     <SearchItem>
       <ReactSearchAutocomplete
         placeholder="Search Reddit"
-        styling={SearchItem}
+        styling={SearchDropDown}
         items={items}
         autoFocus
-        formatResult={formatResult}
+        formatResult={SearchDropDown}
       />
     </SearchItem>
   );
