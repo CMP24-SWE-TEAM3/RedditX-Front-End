@@ -77,18 +77,21 @@ const FlairModal = ({
       </ModalHeader>
       <ModalBody>
         <SelectedFlairContainer>
-          {flairIndex === null && (
+          {flairIndex === null && flairList && (
             <FlairParagraph> No flair selected</FlairParagraph>
           )}
-          {flairIndex !== null && (
+          {flairIndex !== null && flairList && (
             <FlairParagraph>
               <span> Post Title </span>
-              <Flair
-                color={flairList[flairIndex].flairTextColor}
-                backgroundColor={flairList[flairIndex].flairBackGroundColor}
-              >
-                {flairEditText}
-              </Flair>
+              {flairList[flairIndex].flairTextColor &&
+                flairList[flairIndex].flairBackGround && (
+                  <Flair
+                    color={flairList[flairIndex].flairTextColor}
+                    backgroundColor={flairList[flairIndex].flairBackGround}
+                  >
+                    {flairEditText}
+                  </Flair>
+                )}
             </FlairParagraph>
           )}
         </SelectedFlairContainer>
@@ -104,32 +107,40 @@ const FlairModal = ({
             />
           </SearchContainer>
           {isLoading && <Spinner />}
-          {!isLoading && (
+          {!isLoading && flairList && flairList.length !== 0 && (
             <Form>
               {flairList
-                .filter((flair) =>
-                  flair.text.toLowerCase().includes(searchText.toLowerCase())
+                .filter(
+                  (flair) =>
+                    flair.flairText &&
+                    flair.flairText
+                      .toLowerCase()
+                      .includes(searchText.toLowerCase())
                 )
                 .map((flair, index) => (
-                  <FormCheck type={"radio"} key={flair.id} id={flair.id}>
+                  <FormCheck type={"radio"} key={flair._id} id={flair._id}>
                     <Form.Check.Input
                       type={"radio"}
                       name="flair"
-                      id={flair.id}
+                      id={flair._id}
                     />
-                    <FormCheckLabel
-                      onClick={() => {
-                        setFlairIndex(index);
-                        setFlairEditText(flairList[index].text);
-                      }}
-                    >
-                      <Flair
-                        color={flair.flairTextColor}
-                        backgroundColor={flair.flairBackGroundColor}
+                    {flairList[index].flairText && (
+                      <FormCheckLabel
+                        onClick={() => {
+                          setFlairIndex(index);
+                          setFlairEditText(flairList[index].flairText);
+                        }}
                       >
-                        {flair.text}
-                      </Flair>
-                    </FormCheckLabel>
+                        {flair.flairTextColor && flair.flairBackGround && (
+                          <Flair
+                            color={flair.flairTextColor}
+                            backgroundColor={flair.flairBackGround}
+                          >
+                            {flair.flairText}
+                          </Flair>
+                        )}
+                      </FormCheckLabel>
+                    )}
                   </FormCheck>
                 ))}
             </Form>
@@ -139,7 +150,7 @@ const FlairModal = ({
           empty={flairEditText.length === 0}
           flairSelected={flairIndex !== null}
         >
-          {flairIndex !== null && (
+          {flairIndex !== null && flairList && (
             <>
               <span className="edit-flair">EDIT FLAIR</span>
               <FlairParagraph>Allows text and up to 10 emojis</FlairParagraph>

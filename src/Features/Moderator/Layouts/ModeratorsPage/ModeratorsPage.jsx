@@ -12,10 +12,12 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 
+import InviteModeratorsModal from "../InviteModeratorsModal/InviteModeratorsModal";
+
 import {
   getModerators,
   leaveModerator,
-} from "Features/Moderator/Services/UserManagementApi/UserManagementApi";
+} from "Features/Moderator/Services/userManagementApi";
 
 import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
 
@@ -34,8 +36,11 @@ import {
  * @returns {React.Component}  ModeratorsPage Layout that is used in User management
  */
 
-const ModeratorsPage = ({ setModalShowInviteModerator }) => {
+const ModeratorsPage = () => {
   const communityName = "t5_imagePro235";
+
+  const [modalShowInviteModerator, setModalShowInviteModerator] =
+    useState(false);
 
   const [data, error, isLoading, dataFetch] = useFetchFunction();
 
@@ -61,45 +66,6 @@ const ModeratorsPage = ({ setModalShowInviteModerator }) => {
       auth.getToken()
     );
   };
-
-  // let Moderator = [
-  //   {
-  //     userName: "Romy",
-  //     date: "2022/011/15, 15:05:45",
-  //     photo:
-  //       "https://styles.redditmedia.com/t5_75g7xm/styles/profileIcon_snoo6422fdc6-0631-4a70-a9f3-36b423763138-headshot.png?width=256&height=256&crop=256:256,smart&s=e3461623660c1eeee9606f040eb23479ad255815",
-  //   },
-  //   {
-  //     userName: "Hamza",
-  //     date: "2022/011/15, 15:05:45",
-  //     photo:
-  //       "https://styles.redditmedia.com/t5_75g7xm/styles/profileIcon_snoo6422fdc6-0631-4a70-a9f3-36b423763138-headshot.png?width=256&height=256&crop=256:256,smart&s=e3461623660c1eeee9606f040eb23479ad255815",
-  //   },
-  //   {
-  //     userName: "Ziad",
-  //     date: "2022/011/15, 15:05:45",
-  //     photo:
-  //       "https://styles.redditmedia.com/t5_75g7xm/styles/profileIcon_snoo6422fdc6-0631-4a70-a9f3-36b423763138-headshot.png?width=256&height=256&crop=256:256,smart&s=e3461623660c1eeee9606f040eb23479ad255815",
-  //   },
-  //   {
-  //     userName: "Body",
-  //     date: "2022/011/15, 15:05:45",
-  //     photo:
-  //       "https://styles.redditmedia.com/t5_75g7xm/styles/profileIcon_snoo6422fdc6-0631-4a70-a9f3-36b423763138-headshot.png?width=256&height=256&crop=256:256,smart&s=e3461623660c1eeee9606f040eb23479ad255815",
-  //   },
-  //   {
-  //     userName: "Khaled",
-  //     date: "2022/011/15, 15:05:45",
-  //     photo:
-  //       "https://styles.redditmedia.com/t5_75g7xm/styles/profileIcon_snoo6422fdc6-0631-4a70-a9f3-36b423763138-headshot.png?width=256&height=256&crop=256:256,smart&s=e3461623660c1eeee9606f040eb23479ad255815",
-  //   },
-  //   {
-  //     userName: "Waleed",
-  //     date: "2022/011/15, 15:05:45",
-  //     photo:
-  //       "https://styles.redditmedia.com/t5_75g7xm/styles/profileIcon_snoo6422fdc6-0631-4a70-a9f3-36b423763138-headshot.png?width=256&height=256&crop=256:256,smart&s=e3461623660c1eeee9606f040eb23479ad255815",
-  //   },
-  // ];
 
   return (
     <>
@@ -139,10 +105,18 @@ const ModeratorsPage = ({ setModalShowInviteModerator }) => {
             <br></br>
             <EditMod>Invited moderators</EditMod>
             {!isLoading && data.users && (
-              <InvitedModerators Moderator={data.users}></InvitedModerators>
+              <InvitedModerators communityName={communityName} Moderator={data.users}></InvitedModerators>
             )}
           </InnerContainer>
         </Container>
+      )}
+
+      {modalShowInviteModerator && (
+        <InviteModeratorsModal
+          show={modalShowInviteModerator}
+          setModalShowInviteModerator={setModalShowInviteModerator}
+          onHide={() => setModalShowInviteModerator(false)}
+        />
       )}
     </>
   );

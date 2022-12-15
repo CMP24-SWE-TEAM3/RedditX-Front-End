@@ -4,12 +4,16 @@ import CollapsePostFooter from "Features/Post/Components/CollapsePostFooter/Coll
 
 import { Container, PostTitle } from "./CollapsePostContent.styled";
 import { useState } from "react";
-const CollapsePostContent = ({ fullPost, collapse, setCollapse }) => {
+const CollapsePostContent = ({ fullPost, collapse, setCollapse, post }) => {
   return (
     <Container>
       <PostTitle>Post title</PostTitle>
-      <PostPublisher fullPost={fullPost} />
-      <CollapsePostFooter collapse={collapse} setCollapse={setCollapse} />
+      <PostPublisher fullPost={fullPost} post={post} />
+      <CollapsePostFooter
+        collapse={collapse}
+        setCollapse={setCollapse}
+        post={post}
+      />
     </Container>
   );
 };

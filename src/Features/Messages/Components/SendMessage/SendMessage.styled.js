@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const Page = styled.div`
-  background: #edeff1;
-  color: #373c3f;
+  background:  ${({ theme }) => theme.lineColor.primary};
+  color:  ${({ theme }) => theme.color.primary};
+  transition: 0.3s;
   font: normal x-small verdana, arial, helvetica, sans-serif;
   z-index: 1;
   min-height: 550px;
@@ -16,8 +17,9 @@ export const Content = styled.div`
   margin: 00px auto;
   width: 70%;
   min-width: 700px;
-  background: #ffffff;
-  color: #373c3f;
+  background: ${({ theme }) => theme.background.primary};
+  color:  ${({ theme }) => theme.color.primary};
+  transition: 0.3s;
 `;
 
 export const Spacer = styled.div`
@@ -54,11 +56,12 @@ export const FromSelection = styled.select`
   padding: 3px;
   margin: 0 0 15px;
   border: 1px solid gray;
-  background-color: #fff;
+  transition: 0.3s;
 `;
 
 export const TitleDescription = styled.span`
-  color: #878a8c;
+  color: ${({ theme }) => theme.borderColor.primary};
+  transition: 0.3s;
   font-size: 14px;
 `;
 
@@ -72,7 +75,8 @@ export const Inputs = styled.input`
 
 export const MessageContainer = styled.div`
   width: 500px;
-  color: #373c3f;
+  color:  ${({ theme }) => theme.color.primary};
+  transition: 0.3s;
 `;
 
 export const Message = styled.textarea`
@@ -84,10 +88,11 @@ export const Message = styled.textarea`
 export const SendBtn = styled.button`
   display: inline-block;
   border-radius: 4px;
-  background-color: #0079d3;
-  border-color: #0079d3;
+  transition: 0.3s;
+  background-color: ${({ theme }) => theme.color.secondary};
+  border-color:  ${({ theme }) => theme.color.secondary};
   padding: 6px 16px 4px;
-  color: #ffffff;
+  color: ${({ theme }) => theme.btnColor.text};
   text-transform: uppercase;
   font-weight: bold;
   font-size: 12px;
@@ -102,7 +107,8 @@ export const Heading = styled.h1`
 `;
 export const Error = styled.span`
   display: none;
-  color: #ea0027;
+  color:  ${({ theme }) => theme.color.danger};
+  transition: 0.3s;
   font-size: 11px;
   margin-top: -8px;
   &.active {

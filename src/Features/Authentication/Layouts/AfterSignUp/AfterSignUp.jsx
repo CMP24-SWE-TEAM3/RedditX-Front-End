@@ -13,6 +13,11 @@ import uploadUserPhoto from "Features/Authentication/Services/uploadUserPhoto";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
+import {
+  setGenderFunction,
+  setInterestsFunction,
+} from "Features/Authentication/Services/authApi";
+
 /**
  * AfterSignUp component that appear to the user after he signed up
  * @returns {React.Component}  Signup component that appear to the user after he signed up
@@ -64,6 +69,22 @@ const AfterSignUp = ({ setModalAfterSignUp }) => {
     console.log(profilePhoto);
     uploadUserPhoto(dataFetch, bodyFormData, auth);
     // TODO: submit the form
+    setGenderFunction(
+      dataFetch,
+      {
+        type: "gender",
+        value: gender,
+      },
+      auth.getToken()
+    );
+
+    setInterestsFunction(
+      dataFetch,
+      {
+        categories: interests,
+      },
+      auth.getToken()
+    );
     // profilePhoto, interests, gender
     setGenderScreen(false);
     setInterestsScreen(false);

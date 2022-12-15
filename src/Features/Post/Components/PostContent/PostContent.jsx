@@ -10,6 +10,7 @@ import {
   Paragraph,
   ImageContainer,
   PostTitle,
+  CarouselItem,
 } from "./PostContent.styled";
 
 import { BASE_URL } from "API/axios";
@@ -46,16 +47,41 @@ const PostContent = ({ post }) => {
             onSelect={handleSelect}
             controls={post.attachments.length > 1}
             interval={null}
+            wrap={false}
+            nextIcon={
+              <span
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  setIndex(
+                    index < post.attachments.length - 1 ? index + 1 : index
+                  );
+                }}
+                aria-hidden="true"
+                className="carousel-control-next-icon"
+              />
+            }
+            prevIcon={
+              <span
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  setIndex(index > 0 ? index - 1 : index);
+                }}
+                aria-hidden="true"
+                className="carousel-control-prev-icon"
+              />
+            }
           >
             {post.attachments.map((attachment, index) => (
-              <Carousel.Item key={index}>
+              <CarouselItem key={index}>
                 <img
                   crossOrigin="anonymous"
                   className="d-block w-100"
                   src={`${BASE_URL}/posts/files/${attachment}`}
                   alt="First slide"
                 />
-              </Carousel.Item>
+              </CarouselItem>
             ))}
           </Carousel>
         </ImageContainer>

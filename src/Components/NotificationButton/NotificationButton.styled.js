@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  color: ${({ theme }) => theme.color.muted};
-
+  color: ${({ theme }) => theme.color.primary};
+  font-size: 20px;
 
   .popover {
     background-color: ${({ theme }) => theme.background.primary};
@@ -69,11 +69,10 @@ export const Container = styled.div`
     color: inherit;
     cursor: pointer;
     padding: initial;
-
   }
 
   i {
-    color: ${({ theme }) => theme.color.gray};
+    color: ${({ theme }) => theme.color.primary};
     font-size: 20px;
     font-weight: 400;
     height: 20px;
@@ -86,7 +85,6 @@ export const Container = styled.div`
     margin-left: 8px;
   }
 
-
   // body of notification
   .popover-body {
     //height: 77px;
@@ -95,7 +93,7 @@ export const Container = styled.div`
     overflow: hidden;
     overflow-y: auto;
     padding: 0;
-    transition: max-height .3s ease-out;
+    transition: max-height 0.3s ease-out;
   }
 
   .pop {
@@ -112,7 +110,6 @@ export const Container = styled.div`
 
   .content {
     position: relative;
-
 
     img {
       border-radius: 50%;
@@ -210,7 +207,7 @@ export const Container = styled.div`
     a {
       font-size: 14px;
       font-weight: 700;
-      letter-spacing: .5px;
+      letter-spacing: 0.5px;
       line-height: 32px;
       text-decoration: none;
       text-transform: uppercase;
@@ -220,4 +217,4 @@ export const Container = styled.div`
       color: #24a0ed;
     }
   }
-`
+`;

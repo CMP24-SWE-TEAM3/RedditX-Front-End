@@ -11,6 +11,15 @@ import Moment from "react-moment";
 import EditBanUserModal from "Features/Moderator/Layouts/EditBanUserModal/EditBanUserModal";
 
 import {
+  muteUser,
+  kickModerator,
+  kickMember,
+} from "Features/Moderator/Services/userManagementApi";
+
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import useFetchFunction from "Hooks/useFetchFunction";
+
+import {
   Container,
   ProfileContainer,
   Photo,
@@ -37,14 +46,24 @@ const ModeratorRow = ({
   approved,
   muted,
   banned,
+  communityName,
 }) => {
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
+
+  const auth = useAuth();
+
   const [photoUrl, setPhotoUrl] = useState("");
   /**
    * useEffect to get photo
    */
   useEffect(() => {
     setPhotoUrl("https://api.redditswe22.tech/users/files/" + Moderator.avatar);
+
+    console.log(photoUrl);
   }, []);
+
+  const url =
+    "https://api.redditswe22.tech/users/files/user-t2_moazMohamed-1670710644412.jpg";
 
   /**
    * state to handel more details dropdown for mutted
@@ -59,23 +78,27 @@ const ModeratorRow = ({
    */
   const [showEditModal, setShowEditModal] = useState(false);
 
-  const date = "2022/011/15, 15:05:45";
-
   return (
     <>
       <Container>
         <ProfileContainer>
           <PhotoAndUsername>
             <Photo>
-              <img crossOrigin="anonymous" src={photoUrl} alt="image" />
+              <img
+                crossOrigin="anonymous"
+                src={`${Moderator && Moderator.avatar ? `${photoUrl}` : url}`}
+                alt="image"
+              />
             </Photo>
-            <UserName>{Moderator._id.substring(3)}</UserName>
+            <UserName>
+              {Moderator && Moderator._id && Moderator._id.substring(3)}
+            </UserName>
           </PhotoAndUsername>
-          {/* <Date>
-            <Moment fromNow>{date}</Moment>
+          <Date>
+            <Moment fromNow>{Moderator && Moderator.date}</Moment>
 
-            {banned && <span> . {Moderator.bannedFor}</span>}
-          </Date> */}
+            {banned && <span> . {Moderator && Moderator.bannedFor}</span>}
+          </Date>
         </ProfileContainer>
         {!approved && !muted && !banned && (
           <Abilities>
@@ -86,7 +109,18 @@ const ModeratorRow = ({
               </Edit>
             )}{" "}
             {invited && (
-              <Edit>
+              <Edit
+                onClick={() => {
+                  kickModerator(
+                    dataFetch,
+                    {
+                      userID: Moderator._id,
+                    },
+                    communityName,
+                    auth.getToken()
+                  );
+                }}
+              >
                 <MdDelete />
               </Edit>
             )}
@@ -94,12 +128,40 @@ const ModeratorRow = ({
         )}
         {approved && (
           <ButtonsContainer>
-            <button>Send message</button> <button>Remove</button>
+            <button>Send message</button>{" "}
+            <button
+              onClick={() => {
+                kickMember(
+                  dataFetch,
+                  {
+                    userID: Moderator._id,
+                  },
+                  communityName,
+                  auth.getToken()
+                );
+              }}
+            >
+              Remove
+            </button>
           </ButtonsContainer>
         )}
         {muted && (
           <ButtonsContainer>
-            <button>Unmute</button>{" "}
+            <button
+              onClick={() => {
+                muteUser(
+                  dataFetch,
+                  {
+                    userID: Moderator._id,
+                    operation: "unmute",
+                  },
+                  communityName,
+                  auth.getToken()
+                );
+              }}
+            >
+              Unmute
+            </button>{" "}
             <button
               onClick={() => {
                 setShowDrop(!showDrop);
@@ -134,17 +196,17 @@ const ModeratorRow = ({
       {showDropBanned && (
         <MoreDetailsBanned>
           <ModNote>
-            <h3>MOD NOTE:</h3> <p>{Moderator.modNote}</p>
+            <h3>MOD NOTE:</h3> <p>{Moderator && Moderator.modNote}</p>
           </ModNote>{" "}
           <ModNote>
-            <h3>BANNED FOR:</h3> <p>{Moderator.bannedFor}</p>
+            <h3>BANNED FOR:</h3> <p>{Moderator && Moderator.bannedFor}</p>
           </ModNote>{" "}
         </MoreDetailsBanned>
       )}
 
       {banned && showEditModal && (
         <EditBanUserModal
-        setShowEditModal={setShowEditModal}
+          setShowEditModal={setShowEditModal}
           moderator={Moderator}
           show={banned && showEditModal}
           onHide={() => setShowEditModal(false)}

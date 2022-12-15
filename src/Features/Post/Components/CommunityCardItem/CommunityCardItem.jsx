@@ -31,7 +31,7 @@ const CommunityCardItem = ({
     fetchFunction({
       axiosInstance: axios,
       method: "POST",
-      url: "http://localhost:8000/Join",
+      url: "/api/user/subscribe/",
       requestConfig: {
         headers: {
           "Content-Language": "en-US",

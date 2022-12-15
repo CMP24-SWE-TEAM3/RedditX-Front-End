@@ -17,16 +17,18 @@ import {
  * @returns {React.Component}  ApprovedUsers component that is used in User management
  */
 
-const ApprovedUsers = ({ Moderator }) => {
+const ApprovedUsers = ({ Moderator, communityName }) => {
   const [searchField, setSearchField] = useState("");
   const [filteredMonsters, setFilterMonsters] = useState(Moderator);
 
   useEffect(() => {
     const newFilteredMonsters = Moderator.filter((mod) => {
-      return mod._id.substring(3).toLowerCase().includes(searchField);
+      return (
+        mod._id && mod._id.substring(3).toLowerCase().includes(searchField)
+      );
     });
     setFilterMonsters(newFilteredMonsters);
-  }, [Moderator,searchField]);
+  }, [Moderator, searchField]);
 
   const onSearchChange = (event) => {
     const searchFieldString = event.target.value.toLowerCase();
@@ -46,7 +48,12 @@ const ApprovedUsers = ({ Moderator }) => {
       </SearchContainer>
       <Container>
         {filteredMonsters.map((mod) => (
-          <ModeratorRow key={mod.userName} Moderator={mod} approved={true}></ModeratorRow>
+          <ModeratorRow
+            communityName={communityName}
+            key={mod.userName}
+            Moderator={mod}
+            approved={true}
+          ></ModeratorRow>
         ))}
       </Container>
     </>

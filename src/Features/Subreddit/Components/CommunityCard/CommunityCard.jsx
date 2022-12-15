@@ -7,6 +7,9 @@ import OnlineMembers from "../OnlineMembers/OnlineMembers";
 import UserFlairPreview from "../UserFlairPreview/UserFlairPreview";
 import { Container, Content, Separator } from "./CommunityCard.styled";
 import { useIsModerator } from "Features/Subreddit/Contexts/IsModeratorProvider";
+// import { useIsMuted } from "Features/Subreddit/Contexts/IsMutedProvider";
+import { useIsBanned } from "Features/Subreddit/Contexts/IsBannedProvider";
+
 
 /**
  * Community Card 
@@ -16,6 +19,9 @@ import { useIsModerator } from "Features/Subreddit/Contexts/IsModeratorProvider"
 const CommunityCard = () => {
 
   const {isMod} = useIsModerator();
+  // const {isMuted} = useIsMuted();
+  const {isBanned} = useIsBanned();
+
 
   return (
     <Container>
@@ -25,7 +31,7 @@ const CommunityCard = () => {
         <Separator />
         <OnlineMembers />
         {isMod && <CommunityTopics />}
-        <Separator />
+        {!isBanned && <Separator />}
         <UserFlairPreview />
         <CommunityOptions />
       </Content>

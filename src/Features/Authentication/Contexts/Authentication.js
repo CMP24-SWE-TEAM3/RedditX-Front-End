@@ -1,4 +1,5 @@
 import { createContext, useContext } from "react";
+import AddMinutes from "../Utils/AddMinutes";
 
 import useLocalStorage from "./useLocalStorage";
 
@@ -21,6 +22,9 @@ const AuthProvider = ({ children }) => {
    * @param user - The user object that is returned from the login function.
    */
   const login = async (user) => {
+    // Calculate token's expiration date
+    user.expiresIn = AddMinutes(new Date(), user.expiresIn / (60 * 60));
+    console.log(user.expiresIn, user.expiresIn / (60 * 60));
     setUser(JSON.stringify(user));
   };
 
@@ -31,9 +35,9 @@ const AuthProvider = ({ children }) => {
   };
 
   // Return user's username
-    const getUserName = () => {
-      return JSON.parse(user).username;
-    };
+  const getUserName = () => {
+    return JSON.parse(user).username;
+  };
 
   // Return user's token
   const getToken = () => {

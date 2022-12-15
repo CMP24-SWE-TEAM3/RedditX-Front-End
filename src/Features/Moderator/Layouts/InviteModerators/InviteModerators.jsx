@@ -4,7 +4,7 @@ import { useState } from "react";
 
 
 
-import { inviteModerator } from "Features/Moderator/Services/UserManagementApi/UserManagementApi";
+import { inviteModerator } from "Features/Moderator/Services/userManagementApi";
 
 import {
   Container,
@@ -63,7 +63,7 @@ const InviteModerators = ({setModalShowInviteModerator}) => {
   }, [userName]);
 
   /**
-   * Function to handle any change on the input field of the login form (check if the userName or the email or the password is valid or not)
+   * Function to handle any change on the input field 
    * @param {*} event
    */
 

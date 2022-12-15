@@ -4,7 +4,8 @@ import Modal from "react-bootstrap/Modal";
 export const StyledModal = styled(Modal)`
   margin: 0;
   padding: 0;
-  color: #f6f8f9;
+  color: ${({ theme }) => theme.background.lightMuted};
+  transition: 0.3s;
   font-family: IBMPlexSans, Arial, sans-serif;
   :root {
     --bg-color: ${({ theme }) => theme.background.primary};
@@ -19,7 +20,8 @@ export const StyledModal = styled(Modal)`
     padding: 0 24px 0 20px;
     font-weight: 700;
     font-size: 14px;
-    color: #7c7c7c;
+    color: ${({ theme }) => theme.color.muted};
+    transition: 0.3s;
   }
 
   .modal-body {
@@ -32,7 +34,8 @@ export const StyledModal = styled(Modal)`
     border: 0;
     vertical-align: baseline;
     font-size: 16px;
-    color: #1a1a1b;
+    color: ${({ theme }) => theme.color.titleText_of_link};
+    transition: 0.3s;
     line-height: 1.2;
     margin-top: 16px;
     margin-bottom: 8px;
@@ -50,7 +53,8 @@ export const StyledModal = styled(Modal)`
     cursor: pointer;
     border: 1px solid rgba(135, 138, 140, 0.2);
     border-radius: 20px;
-    color: #7c7c7c;
+    color: ${({ theme }) => theme.color.muted};
+    transition: 0.3s;
     font-weight: 500;
     margin: 0 0 8px 4px;
     overflow: hidden;
@@ -67,11 +71,11 @@ export const StyledModal = styled(Modal)`
   }
 
   .btn-div:hover {
-    color: #ffffff;
+    color: ${({ theme }) => theme.btnColor.text};
     background-color: #42adf0;
   }
   .btn-div:active {
-    color: #ffffff;
+    color: ${({ theme }) => theme.btnColor.text};
     background-color: #42adf0;
   }
   .not-sure-container {
@@ -89,13 +93,15 @@ export const StyledModal = styled(Modal)`
     font-size: 14px;
     line-height: 1.45;
     letter-spacing: -0.01em;
-    color: #7c7c7c;
+    color: ${({ theme }) => theme.color.muted};
+    transition: 0.3s;
   }
   .icon {
     flex: 0 0 20px;
     width: 20px;
     margin-right: 12px;
-    fill: #878a8c;
+    fill: ${({ theme }) => theme.borderColor.primary};
+    transition: 0.3s;
   }
   .modal-footer {
     box-shadow: 0 -1px 0 rgba(28, 28, 28, 0.03);
@@ -113,7 +119,8 @@ export const StyledModal = styled(Modal)`
     background: #2090d5;
     height: 31px;
     border-radius: 100px;
-    color: #fff;
+    color: ${({ theme }) => theme.btnColor.text};
+    transition: 0.3s;
     align-self: flex-end;
     margin-left: auto;
     font-size: 12px;

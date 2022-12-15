@@ -7,13 +7,14 @@ import {
   CoverImg,
 } from "./CommunityCard.styled";
 import { useNavigate } from "react-router-dom";
-import CommunityCardItem from "Components/CommunityCardItem/CommunityCardItem";
+// import CommunityCardItem from "Components/CommunityCardItemExplore/CommunityCardItemExplore";
 import randomCategories from "Services/randomCategories";
 import { Link } from "react-router-dom";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useEffect } from "react";
 import { BASE_URL } from "API/axios";
+import CommunityCardItem from "Components/CommunityCardItem/CommunityCardItem";
 
 /**
  * Component that links each  of community card item.

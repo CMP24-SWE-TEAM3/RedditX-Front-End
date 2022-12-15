@@ -101,12 +101,10 @@ const CommunityItem = ({
   return (
     <Container to={`/subreddit/${communityID}`} title="comm">
       <Flex>
-        {/* {communityIcon && (
-          <img src={require(`../../Assets/${communityIcon}`)} alt="" />
-        )} */}
         {communityIcon && (
           <Img
-            src={require(`../../Assets/${communityIcon}`)}
+            crossOrigin="anonynmous"
+            src={`https://api.redditswe22.tech/subreddits/files/${communityIcon}`}
             alt="Subreddit Icon"
           />
         )}

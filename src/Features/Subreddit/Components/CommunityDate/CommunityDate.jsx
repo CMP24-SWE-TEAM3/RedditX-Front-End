@@ -22,8 +22,22 @@ import {
   Private,
   SaveButton,
   StaticDescriptionContainer,
-  StaticDescriptionContent,
 } from "./CommunityDate.styled";
+
+// const MONTHS = [
+//   "Jan",
+//   "Feb",
+//   "Mar",
+//   "Apr",
+//   "May",
+//   "Jun",
+//   "Jul",
+//   "Aug",
+//   "Sep",
+//   "Oct",
+//   "Nov",
+//   "Dec",
+// ];
 
 /**
  * Component contains created date and description
@@ -35,19 +49,26 @@ const CommunityDate = () => {
   const [inputFocus, setInputFocus] = useState(false);
   const [dummyDescription, setDummyDescription] = useState(description);
   const [modalShow, setModalShow] = useState(false);
-  const {isMod} = useIsModerator();
-  const {communityID} = useSubRedditID();
+  const { isMod } = useIsModerator();
+  const { communityID } = useSubRedditID();
   const textAreaRef = useRef();
-  let isPrivate = true;
+  const [date, setDate] = useState(null);
+  const [isPrivate, setIsPrivate] = useState(false);
+  // let isPrivate = true;
 
   const { community } = useSubReddit();
   useEffect(() => {
+    community && community.description && setDescription(community.description);
     community &&
-      community.length &&
-      setDescription(community[0].communityDescription || "");
-    community &&
-      community.length &&
-      setDummyDescription(community[0].communityDescription || "");
+      community.description &&
+      setDummyDescription(community.description);
+
+    if (community && community.createdAt)
+      setDate(new Date(community.createdAt));
+    if (community && community.privacyType){
+      setIsPrivate(community.privacyType === "public" ? false : true);
+    }
+
   }, [community]);
 
   /**
@@ -160,7 +181,9 @@ const CommunityDate = () => {
       <StaticDescriptionContainer>
         <DescriptionContent>
           {description}
-          {!description && communityID && `Welcome to ${communityID.substring(3)}`}
+          {!description &&
+            communityID &&
+            `Welcome to ${communityID.substring(3)}`}
         </DescriptionContent>
       </StaticDescriptionContainer>
     );
@@ -170,7 +193,7 @@ const CommunityDate = () => {
     <>
       {!isMod && <StaticDescription />}
       {isMod && !inputFocus && !description && (
-        <AddDescription onClick={AddDescriptionHandler} title="add-description" >
+        <AddDescription onClick={AddDescriptionHandler} title="add-description">
           <div>Add description</div>
         </AddDescription>
       )}
@@ -205,7 +228,11 @@ const CommunityDate = () => {
       )}
       <OverlayTrigger
         placement={"bottom"}
-        overlay={<Tooltip><Moment fromNow>Oct 17, 2022</Moment></Tooltip>}
+        overlay={
+          <Tooltip>
+            <Moment fromNow>{date}</Moment>
+          </Tooltip>
+        }
         delay="200"
       >
         <BirthDay>
@@ -213,8 +240,12 @@ const CommunityDate = () => {
             <span className="icon">
               <TbCake />
             </span>
-
-            <span className="text">Created Oct 17, 2022</span>
+            {/* {date && <span className="text">{"created "+MONTHS[date.getMonth()]+" "+date.getDate()+", "+date.getFullYear() }</span>} */}
+            {date && (
+              <span className="text">
+                created <Moment format="MMM D YYYY">{date}</Moment>
+              </span>
+            )}
           </div>
         </BirthDay>
       </OverlayTrigger>

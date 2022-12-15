@@ -17,10 +17,12 @@ const SubRedditSideBar = () => {
     <Container>
       <InnerContainer>
         <CommunityCard />
-        {community && community.length && community.communityRules && (
-          <RulesWidget />
+        {community &&
+          community.communityRules &&
+          community.communityRules.length !== 0 && <RulesWidget />}
+        {community && community.flairList && community.flairList.length !== 0 && (
+          <FlairWidget />
         )}
-        <FlairWidget />
         <ModeratorWidget />
       </InnerContainer>
     </Container>
