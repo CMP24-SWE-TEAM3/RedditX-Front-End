@@ -30,6 +30,7 @@ const CommunityCardItem = ({
   srIcon,
   community,
 }) => {
+  console.log("community", communityUserName);
   // states
   const [btnContent, setBtnContent] = useState("Join");
   const [currentState, setCurrentState] = useState(null);
@@ -44,10 +45,9 @@ const CommunityCardItem = ({
   const auth = useAuth();
 
   // joined communities or unjonined
-  const handleJoining = ({ event, communityName, type }) => {
-    event.preventDefault();
+  const handleJoining = (communityName, type) => {
     joinCommunity(fetchData, auth, {
-      action: type === "joined" ? "sub" : "unsub",
+      action: type === "Joined" ? "unsub" : "sub",
       srName: `t5_${communityName}`,
     });
   };
@@ -57,9 +57,19 @@ const CommunityCardItem = ({
     getCommunities(fetchCommunities, auth);
   }, []);
 
+  // handle fetch joined communities
+  useEffect(() => {
+    if (subscribed && subscribed.communities) {
+      setCurrentState(
+        subscribed.communities.find(
+          ({ _id }) => _id.substring(3) === communityUserName
+        )
+      );
+    }
+  }, [subscribed]);
+
   // handle unjoined communities
-  const clickHandler = (e) => {
-    e.preventDefault();
+  const clickHandler = () => {
     if (currentState !== undefined) {
       setBtnContent("Joined");
     } else {
@@ -104,18 +114,16 @@ const CommunityCardItem = ({
             </CommunityNameContainer>
             <JoinContainer>
               <JoinBtn
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
                   clickHandler();
                   handleJoining(communityUserName, btnContent);
                 }}
                 onMouseEnter={mouseEnterHandler}
                 onMouseLeave={mouseLeaveHandler}
               >
-                {subscribed.length !== 0 &&
-                  subscribed.communities.find(({ _id }) =>
-                    setCurrentState(_id.substring(3) === communityUserName)
-                  ) &&
-                  btnContent}
+                {btnContent}
               </JoinBtn>
             </JoinContainer>
           </Item>
