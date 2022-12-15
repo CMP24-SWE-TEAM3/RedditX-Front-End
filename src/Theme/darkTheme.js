@@ -20,12 +20,16 @@ const darkTheme = {
     muted: "#7c7c7c",
     // The color of the links on the website
     link: "#0079d3",
+    //Blue Color of the Message Frame
+    frame: "#4fbcff",
     // The orange color of the website
     orange: "#d93a00",
     // The light orange color of the website
     lightOrange: "#ff585b",
     // The pink color of the website
     pink: "#fb133a",
+    // Color Of Header Navlinks
+    mutedLink: "#296081",
     // The color of the text of the main links of search page
     titleText_of_link: "#D7DADC",
     // color of paragraphs on the website
@@ -77,9 +81,6 @@ const darkTheme = {
     search_bar_background: "#272729",
     // hover_background_button_blue
     hover_background_button_blue: "#d7dadc",
-
-    // side bar of the post
-    sideBarPost: "#161617",
   },
   // Border colors
   borderColor: {
@@ -124,6 +125,9 @@ const darkTheme = {
     PostBorder: "#343536",
   },
   arrowColor: {
+    upvoted: "#ff8b60",
+    downvoted: "#9494ff",
+    arrow: "#dadada",
     up: "#46D160",
     down: "#EA2700",
   },

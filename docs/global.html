@@ -1848,6 +1848,112 @@
     
 
     
+    <h4 class="name" id="AllMessagesTypes"><span class="type-signature"></span>AllMessagesTypes<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Component that contains the All Messages Panel</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Messages_Layouts_AllMessages_AllMessage.jsx.html">Features/Messages/Layouts/AllMessages/AllMessage.jsx</a>, <a href="Features_Messages_Layouts_AllMessages_AllMessage.jsx.html#line67">line 67</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="App"><span class="type-signature"></span>App<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
     
 
@@ -1900,7 +2006,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="App.js.html">App.js</a>, <a href="App.js.html#line66">line 66</a>
+        <a href="App.js.html">App.js</a>, <a href="App.js.html#line69">line 69</a>
     </li></ul></dd>
     
 
@@ -4448,7 +4554,7 @@ Block styles like Header, ordered list, unordered list, etc.</p>
 
 
 <div class="description">
-    <p>Component that contains the header of the community leaderboard page</p>
+    <p>Component that contains the community items of the community leaderboard page</p>
 </div>
 
 
@@ -8560,6 +8666,207 @@ Component that displays a create post and community button on sidebar.</p>
     
 
     
+    <h4 class="name" id="downVote"><span class="type-signature"></span>downVote<span class="signature">(id, changeMessage, upvote)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Function that handles downvoting a Post Reply or a Username Mention</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>id of the message</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>changeMessage</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function that changes the contents of the current message</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>upvote</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Indicates Upvote status of the comment</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Messages_Utils_Downvote.js.html">Features/Messages/Utils/Downvote.js</a>, <a href="Features_Messages_Utils_Downvote.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="DraftEditor"><span class="type-signature"></span>DraftEditor<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
     
 
@@ -10227,7 +10534,7 @@ It appears when the user clicks on add link button in the draft editor controls<
     
 
     
-    <h4 class="name" id="fetchComments"><span class="type-signature"></span>fetchComments<span class="signature">(fetchFunction)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="fetchComments"><span class="type-signature"></span>fetchComments<span class="signature">(fetchFunction, fetchFunction)</span><span class="type-signature"></span></h4>
     
 
     
@@ -10291,6 +10598,29 @@ It appears when the user clicks on add link button in the draft editor controls<
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>fetchFunction</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">searchWord</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the word we search for</p></td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -10328,7 +10658,7 @@ It appears when the user clicks on add link button in the draft editor controls<
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Search_Services_fetchComments.js.html">Features/Search/Services/fetchComments.js</a>, <a href="Features_Search_Services_fetchComments.js.html#line7">line 7</a>
+        <a href="Features_Search_Services_fetchComments.js.html">Features/Search/Services/fetchComments.js</a>, <a href="Features_Search_Services_fetchComments.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -10364,7 +10694,7 @@ It appears when the user clicks on add link button in the draft editor controls<
     
 
     
-    <h4 class="name" id="fetchCommunities"><span class="type-signature"></span>fetchCommunities<span class="signature">(fetchFunction)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="fetchCommunities"><span class="type-signature"></span>fetchCommunities<span class="signature">(fetchFunction, fetchFunction)</span><span class="type-signature"></span></h4>
     
 
     
@@ -10428,6 +10758,29 @@ It appears when the user clicks on add link button in the draft editor controls<
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>fetchFunction</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">searchWord</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the word we search for</p></td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -10465,7 +10818,7 @@ It appears when the user clicks on add link button in the draft editor controls<
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Search_Services_fetchCommunities.js.html">Features/Search/Services/fetchCommunities.js</a>, <a href="Features_Search_Services_fetchCommunities.js.html#line8">line 8</a>
+        <a href="Features_Search_Services_fetchCommunities.js.html">Features/Search/Services/fetchCommunities.js</a>, <a href="Features_Search_Services_fetchCommunities.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -10844,7 +11197,7 @@ It appears when the user clicks on add link button in the draft editor controls<
     
 
     
-    <h4 class="name" id="fetchPeople"><span class="type-signature"></span>fetchPeople<span class="signature">(fetchFunction)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="fetchPeople"><span class="type-signature"></span>fetchPeople<span class="signature">(fetchFunction, fetchFunction)</span><span class="type-signature"></span></h4>
     
 
     
@@ -10908,6 +11261,29 @@ It appears when the user clicks on add link button in the draft editor controls<
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>fetchFunction</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">searchWord</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the word we search for</p></td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -10945,7 +11321,7 @@ It appears when the user clicks on add link button in the draft editor controls<
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Search_Services_fetchPeople.js.html">Features/Search/Services/fetchPeople.js</a>, <a href="Features_Search_Services_fetchPeople.js.html#line7">line 7</a>
+        <a href="Features_Search_Services_fetchPeople.js.html">Features/Search/Services/fetchPeople.js</a>, <a href="Features_Search_Services_fetchPeople.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -11118,7 +11494,7 @@ It appears when the user clicks on add link button in the draft editor controls<
     
 
     
-    <h4 class="name" id="fetchPosts"><span class="type-signature"></span>fetchPosts<span class="signature">(fetchFunction)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="fetchPosts"><span class="type-signature"></span>fetchPosts<span class="signature">(fetchFunction, fetchFunction)</span><span class="type-signature"></span></h4>
     
 
     
@@ -11182,6 +11558,29 @@ It appears when the user clicks on add link button in the draft editor controls<
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>fetchFunction</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">searchWord</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the word we search for</p></td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -11219,7 +11618,7 @@ It appears when the user clicks on add link button in the draft editor controls<
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Search_Services_fetchPosts.js.html">Features/Search/Services/fetchPosts.js</a>, <a href="Features_Search_Services_fetchPosts.js.html#line7">line 7</a>
+        <a href="Features_Search_Services_fetchPosts.js.html">Features/Search/Services/fetchPosts.js</a>, <a href="Features_Search_Services_fetchPosts.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -16435,7 +16834,7 @@ Inline styles like bold, italic, underline, etc.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Components_InputForm_InputForm.jsx.html">Components/InputForm/InputForm.jsx</a>, <a href="Components_InputForm_InputForm.jsx.html#line14">line 14</a>
+        <a href="Components_InputForm_InputForm.jsx.html">Components/InputForm/InputForm.jsx</a>, <a href="Components_InputForm_InputForm.jsx.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -19393,6 +19792,207 @@ Inline styles like bold, italic, underline, etc.</p>
     
 
     
+    <h4 class="name" id="markUnread"><span class="type-signature"></span>markUnread<span class="signature">(id, changeMessage, read)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Function that handles Marking a message as Unread</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>id of the message</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>changeMessage</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function that changes the contents of the current message</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>read</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Indicates whether the message was read or not</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Messages_Utils_MarkUnread.js.html">Features/Messages/Utils/MarkUnread.js</a>, <a href="Features_Messages_Utils_MarkUnread.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="Media"><span class="type-signature"></span>Media<span class="signature">(contentState, block)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
     
 
@@ -19736,6 +20336,709 @@ media controls like image &amp; video</p>
 </ul>
 </div>
 
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="MessageBannel"><span class="type-signature"></span>MessageBannel<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Component that contains the Messages Panel</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Messages_Layouts_Panel_MessagePanel.jsx.html">Features/Messages/Layouts/Panel/MessagePanel.jsx</a>, <a href="Features_Messages_Layouts_Panel_MessagePanel.jsx.html#line40">line 40</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="MessageBannelItem"><span class="type-signature"></span>MessageBannelItem<span class="signature">(changeMessage, aurthor, title, time, msg, admin, read, deleted, expanded, block, id)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Component that contains the message item of Message Panel</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>changeMessage</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function that changes the contents of the current message</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>aurthor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Message Sender</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Message Title</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>time</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Time the message was sent</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>msg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Message Text</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>admin</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether the message was sent by an admin</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>read</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether the message was read or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>deleted</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether the message was deleted or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>expanded</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether the message is expanded or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>block</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether the message was sent by a blocked user</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Id of the message</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Messages_Components_MessagesPanel_MessagePanelItem.jsx.html">Features/Messages/Components/MessagesPanel/MessagePanelItem.jsx</a>, <a href="Features_Messages_Components_MessagesPanel_MessagePanelItem.jsx.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="Messages"><span class="type-signature"></span>Messages<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Component that contains the Messages Page</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Messages_Pages_Messages.jsx.html">Features/Messages/Pages/Messages.jsx</a>, <a href="Features_Messages_Pages_Messages.jsx.html#line18">line 18</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="MessagesHeader"><span class="type-signature"></span>MessagesHeader<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Component that contains the header of the Messages page</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Messages_Components_Header_MessagesHeader.jsx.html">Features/Messages/Components/Header/MessagesHeader.jsx</a>, <a href="Features_Messages_Components_Header_MessagesHeader.jsx.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 
 
 <dl>
@@ -20746,6 +22049,368 @@ media controls like image &amp; video</p>
     <p>ForgetPassword component that is used in forget password page</p>
 </div>
 
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="NormalMessageAll"><span class="type-signature"></span>NormalMessageAll<span class="signature">(changeMessage, aurthor, title, time, msg, admin, read, deleted, block, id)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Component that contains the ordinary message item</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>changeMessage</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function that changes the contents of the current message</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>aurthor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Message Sender</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Message Title</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>time</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Time the message was sent</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>msg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Message Text</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>admin</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether the message was sent by an admin</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>read</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether the message was read or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>deleted</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether the message was deleted or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>block</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether the message was sent by a blocked user</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Id of the message</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Messages_Components_MessagesItems_AllMessageItem.jsx.html">Features/Messages/Components/MessagesItems/AllMessageItem.jsx</a>, <a href="Features_Messages_Components_MessagesItems_AllMessageItem.jsx.html#line38">line 38</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 
 
 <dl>
@@ -23689,7 +25354,7 @@ and &quot;Connect accounts to share your post&quot;</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Search_Components_Post_Post.jsx.html">Features/Search/Components/Post/Post.jsx</a>, <a href="Features_Search_Components_Post_Post.jsx.html#line14">line 14</a>
+        <a href="Features_Search_Components_Post_Post.jsx.html">Features/Search/Components/Post/Post.jsx</a>, <a href="Features_Search_Components_Post_Post.jsx.html#line16">line 16</a>
     </li></ul></dd>
     
 
@@ -23827,6 +25492,474 @@ and &quot;Connect accounts to share your post&quot;</p>
     <p>PostPublisher component</p>
 </div>
 
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="PostReplay"><span class="type-signature"></span>PostReplay<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Component that contains the Post Replies Panel</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Messages_Layouts_Posts_PostReply.jsx.html">Features/Messages/Layouts/Posts/PostReply.jsx</a>, <a href="Features_Messages_Layouts_Posts_PostReply.jsx.html#line36">line 36</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="PostReplayItem"><span class="type-signature"></span>PostReplayItem<span class="signature">(changeMessage, aurthor, title, time, msg, admin, read, upvote, block, id)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Component that contains the Post Reply item</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>changeMessage</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function that changes the contents of the current message</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>aurthor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Message Sender</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Message Title</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>time</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Time the message was sent</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>msg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Message Text</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>admin</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether the message was sent by an admin</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>read</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether the message was read or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>upvote</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Indicates Upvote status of the comment</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>block</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether the message was sent by a blocked user</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Id of the message</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Messages_Components_PostReply_PostReplyItem.jsx.html">Features/Messages/Components/PostReply/PostReplyItem.jsx</a>, <a href="Features_Messages_Components_PostReply_PostReplyItem.jsx.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 
 
 <dl>
@@ -24069,7 +26202,7 @@ and &quot;Connect accounts to share your post&quot;</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Search_Layouts_PostsPage_Posts.jsx.html">Features/Search/Layouts/PostsPage/Posts.jsx</a>, <a href="Features_Search_Layouts_PostsPage_Posts.jsx.html#line23">line 23</a>
+        <a href="Features_Search_Layouts_PostsPage_Posts.jsx.html">Features/Search/Layouts/PostsPage/Posts.jsx</a>, <a href="Features_Search_Layouts_PostsPage_Posts.jsx.html#line25">line 25</a>
     </li></ul></dd>
     
 
@@ -24357,7 +26490,7 @@ and &quot;Connect accounts to share your post&quot;</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Search_Components_Posts_PostsList.jsx.html">Features/Search/Components/Posts/PostsList.jsx</a>, <a href="Features_Search_Components_Posts_PostsList.jsx.html#line16">line 16</a>
+        <a href="Features_Search_Components_Posts_PostsList.jsx.html">Features/Search/Components/Posts/PostsList.jsx</a>, <a href="Features_Search_Components_Posts_PostsList.jsx.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -25039,6 +27172,207 @@ and &quot;Connect accounts to share your post&quot;</p>
     
 
     
+    <h4 class="name" id="readed"><span class="type-signature"></span>readed<span class="signature">(id, changeMessage, read)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Function that handles Marking a message as Read</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>id of the message</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>changeMessage</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function that changes the contents of the current message</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>read</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Indicates whether the message was read or not</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Messages_Utils_Read.js.html">Features/Messages/Utils/Read.js</a>, <a href="Features_Messages_Utils_Read.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="RecentPosts"><span class="type-signature"></span>RecentPosts<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
     
 
@@ -25092,6 +27426,112 @@ and &quot;Connect accounts to share your post&quot;</p>
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="Layouts_RecentPosts_RecentPosts.jsx.html">Layouts/RecentPosts/RecentPosts.jsx</a>, <a href="Layouts_RecentPosts_RecentPosts.jsx.html#line11">line 11</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="ReportModal"><span class="type-signature"></span>ReportModal<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Report Modal for Messages</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Messages_Components_ReportModal_ReportModal.jsx.html">Features/Messages/Components/ReportModal/ReportModal.jsx</a>, <a href="Features_Messages_Components_ReportModal_ReportModal.jsx.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -25777,6 +28217,161 @@ and &quot;Connect accounts to share your post&quot;</p>
     
 
     
+    <h4 class="name" id="SafeContextProvider"><span class="type-signature"></span>SafeContextProvider<span class="signature">(children)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Context for the safe search</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>children</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">React.Component</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Who can access this context</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Search_Contexts_SafeSearchContext_Safe-context.js.html">Features/Search/Contexts/SafeSearchContext/Safe-context.js</a>, <a href="Features_Search_Contexts_SafeSearchContext_Safe-context.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="SafeSearch"><span class="type-signature"></span>SafeSearch<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
     
 
@@ -25829,7 +28424,7 @@ and &quot;Connect accounts to share your post&quot;</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Search_Components_SafeSearch_SafeSearch.jsx.html">Features/Search/Components/SafeSearch/SafeSearch.jsx</a>, <a href="Features_Search_Components_SafeSearch_SafeSearch.jsx.html#line11">line 11</a>
+        <a href="Features_Search_Components_SafeSearch_SafeSearch.jsx.html">Features/Search/Components/SafeSearch/SafeSearch.jsx</a>, <a href="Features_Search_Components_SafeSearch_SafeSearch.jsx.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -26554,6 +29149,161 @@ and &quot;Connect accounts to share your post&quot;</p>
     
 
     
+    <h4 class="name" id="SearchContextProvider"><span class="type-signature"></span>SearchContextProvider<span class="signature">(children)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Context for the word we search for</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>children</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">React.Component</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Who can access this context</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Search_Contexts_SearchWordContext_Search-context.js.html">Features/Search/Contexts/SearchWordContext/Search-context.js</a>, <a href="Features_Search_Contexts_SearchWordContext_Search-context.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="SearchDropDown"><span class="type-signature"></span>SearchDropDown<span class="signature">(show)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
     
 
@@ -26848,6 +29598,488 @@ and &quot;Connect accounts to share your post&quot;</p>
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="Features_Subreddit_Components_SelectYourFlair_SelectYourFlair.jsx.html">Features/Subreddit/Components/SelectYourFlair/SelectYourFlair.jsx</a>, <a href="Features_Subreddit_Components_SelectYourFlair_SelectYourFlair.jsx.html#line32">line 32</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="SendAMessage"><span class="type-signature"></span>SendAMessage<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Component that contains Compose Message</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Messages_Components_SendMessage_SendMessage.jsx.html">Features/Messages/Components/SendMessage/SendMessage.jsx</a>, <a href="Features_Messages_Components_SendMessage_SendMessage.jsx.html#line27">line 27</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="SentMessageItem"><span class="type-signature"></span>SentMessageItem<span class="signature">(author, subject, time, msg, admin, id)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Component that contains the Sent Message item</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>author</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Message Sender</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subject</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Message Title</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>time</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Time the message was sent</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>msg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Message Text</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>admin</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether the message was sent by an admin</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Id of the message</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Messages_Components_SentMessageItem_SentMessageItem.jsx.html">Features/Messages/Components/SentMessageItem/SentMessageItem.jsx</a>, <a href="Features_Messages_Components_SentMessageItem_SentMessageItem.jsx.html#line27">line 27</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="SentMessages"><span class="type-signature"></span>SentMessages<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Component that contains the Sent Messages Panel</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Messages_Layouts_SentMessages_SentMessages.jsx.html">Features/Messages/Layouts/SentMessages/SentMessages.jsx</a>, <a href="Features_Messages_Layouts_SentMessages_SentMessages.jsx.html#line58">line 58</a>
     </li></ul></dd>
     
 
@@ -31952,6 +35184,112 @@ and &quot;Connect accounts to share your post&quot;</p>
     
 
     
+    <h4 class="name" id="Unread"><span class="type-signature"></span>Unread<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Component that contains the Unread Messages Panel</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Messages_Layouts_Unread_Unread.jsx.html">Features/Messages/Layouts/Unread/Unread.jsx</a>, <a href="Features_Messages_Layouts_Unread_Unread.jsx.html#line53">line 53</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="UploadedImage"><span class="type-signature"></span>UploadedImage<span class="signature">(file, deleteFile, isSelected, selectedImageId, id, handleClick)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
     
 
@@ -33192,6 +36530,207 @@ the draft editor when the user uploads media</p>
 </ul>
 </div>
 
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="upVote"><span class="type-signature"></span>upVote<span class="signature">(id, changeMessage, upvote)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Function that handles upvoting a Post Reply or a Username Mention</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>id of the message</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>changeMessage</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function that changes the contents of the current message</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>upvote</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Indicates Upvote status of the comment</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Messages_Utils_Upvote.js.html">Features/Messages/Utils/Upvote.js</a>, <a href="Features_Messages_Utils_Upvote.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 
 
 <dl>
@@ -34638,6 +38177,184 @@ the draft editor when the user uploads media</p>
     
 
     
+    <h4 class="name" id="useLocalStorage"><span class="type-signature"></span>useLocalStorage<span class="signature">(keyName, defaultValue)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Custom hook used to manage local storage using states</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>keyName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The key of local storage</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>defaultValue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The default value for the local storage</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Hooks_useLocalStorage.js.html">Hooks/useLocalStorage.js</a>, <a href="Hooks_useLocalStorage.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="useMedia"><span class="type-signature"></span>useMedia<span class="signature">(setFiles, files, editorState, setEditorState, EditorState, AtomicBlockUtils)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
@@ -35077,6 +38794,474 @@ the draft editor when the user uploads media</p>
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="Features_Subreddit_Components_UserFlairPreview_UserFlairPreview.jsx.html">Features/Subreddit/Components/UserFlairPreview/UserFlairPreview.jsx</a>, <a href="Features_Subreddit_Components_UserFlairPreview_UserFlairPreview.jsx.html#line26">line 26</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="UsernameMentionItem"><span class="type-signature"></span>UsernameMentionItem<span class="signature">(changeMessage, aurthor, title, time, msg, admin, read, upvote, block, id)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Component that contains the Username Mention item</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>changeMessage</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function that changes the contents of the current message</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>aurthor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Message Sender</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Message Title</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>time</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Time the message was sent</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>msg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Message Text</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>admin</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether the message was sent by an admin</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>read</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether the message was read or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>upvote</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Indicates Upvote status of the comment</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>block</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether the message was sent by a blocked user</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Id of the message</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Messages_Components_UsernameMentions_UsernameMentionsItem.jsx.html">Features/Messages/Components/UsernameMentions/UsernameMentionsItem.jsx</a>, <a href="Features_Messages_Components_UsernameMentions_UsernameMentionsItem.jsx.html#line45">line 45</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="UsernameMentions"><span class="type-signature"></span>UsernameMentions<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Component that contains the Username Mention Panel</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Messages_Layouts_Mentions_UsernameMentions.jsx.html">Features/Messages/Layouts/Mentions/UsernameMentions.jsx</a>, <a href="Features_Messages_Layouts_Mentions_UsernameMentions.jsx.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -35716,13 +39901,13 @@ the draft editor when the user uploads media</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abbreviate">abbreviate</a></li><li><a href="global.html#AboutCommunity">AboutCommunity</a></li><li><a href="global.html#AdvertiseButton">AdvertiseButton</a></li><li><a href="global.html#AfterSignUp">AfterSignUp</a></li><li><a href="global.html#AfterSignUpLoading">AfterSignUpLoading</a></li><li><a href="global.html#AfterSignUpModal">AfterSignUpModal</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#AuthProvider">AuthProvider</a></li><li><a href="global.html#Badge">Badge</a></li><li><a href="global.html#BlockStyleControls">BlockStyleControls</a></li><li><a href="global.html#BodyContent">BodyContent</a></li><li><a href="global.html#Button">Button</a></li><li><a href="global.html#Categories">Categories</a></li><li><a href="global.html#CategoryBar">CategoryBar</a></li><li><a href="global.html#CategoryButton">CategoryButton</a></li><li><a href="global.html#CategoryDropDown">CategoryDropDown</a></li><li><a href="global.html#ChatButton">ChatButton</a></li><li><a href="global.html#Checked">Checked</a></li><li><a href="global.html#ChooseCommunity">ChooseCommunity</a></li><li><a href="global.html#CoinButton">CoinButton</a></li><li><a href="global.html#Comment">Comment</a></li><li><a href="global.html#CommentBody">CommentBody</a></li><li><a href="global.html#CommentDraftEditor">CommentDraftEditor</a></li><li><a href="global.html#CommentsPage">CommentsPage</a></li><li><a href="global.html#CommunitiesPage">CommunitiesPage</a></li><li><a href="global.html#Community">Community</a></li><li><a href="global.html#CommunityCard">CommunityCard</a></li><li><a href="global.html#CommunityCardItem">CommunityCardItem</a></li><li><a href="global.html#CommunityDate">CommunityDate</a></li><li><a href="global.html#CommunityItem">CommunityItem</a></li><li><a href="global.html#CommunityLeaderBoard">CommunityLeaderBoard</a></li><li><a href="global.html#CommunityOptions">CommunityOptions</a></li><li><a href="global.html#CommunitySideCard">CommunitySideCard</a></li><li><a href="global.html#CommunitySideCardItem">CommunitySideCardItem</a></li><li><a href="global.html#CommunityTopics">CommunityTopics</a></li><li><a href="global.html#Container">Container</a></li><li><a href="global.html#ContextComponent">ContextComponent</a></li><li><a href="global.html#CreateCommunity">CreateCommunity</a></li><li><a href="global.html#CreatePost">CreatePost</a></li><li><a href="global.html#CreatePostAttachmentsProvider">CreatePostAttachmentsProvider</a></li><li><a href="global.html#CreatePostButton">CreatePostButton</a></li><li><a href="global.html#CreatePostFlagsProvider">CreatePostFlagsProvider</a></li><li><a href="global.html#CreatePostFlairsProvider">CreatePostFlairsProvider</a></li><li><a href="global.html#CreatePostSideBar">CreatePostSideBar</a></li><li><a href="global.html#CreatePostTextProvider">CreatePostTextProvider</a></li><li><a href="global.html#CreatePostTitleProvider">CreatePostTitleProvider</a></li><li><a href="global.html#CustomMenu">CustomMenu</a></li><li><a href="global.html#CustomToggle">CustomToggle</a></li><li><a href="global.html#darkTheme">darkTheme</a></li><li><a href="global.html#defaultTheme">defaultTheme</a></li><li><a href="global.html#DotButton">DotButton</a></li><li><a href="global.html#DraftEditor">DraftEditor</a></li><li><a href="global.html#DraftEditorForm">DraftEditorForm</a></li><li><a href="global.html#DraftEditorTab">DraftEditorTab</a></li><li><a href="global.html#DraftLinkForm">DraftLinkForm</a></li><li><a href="global.html#DragAndDropFile">DragAndDropFile</a></li><li><a href="global.html#DropDownItem">DropDownItem</a></li><li><a href="global.html#DropDownLeft">DropDownLeft</a></li><li><a href="global.html#DropDownMenu">DropDownMenu</a></li><li><a href="global.html#DropDownRightButton">DropDownRightButton</a></li><li><a href="global.html#EveryWhereButton">EveryWhereButton</a></li><li><a href="global.html#fetchComments">fetchComments</a></li><li><a href="global.html#fetchCommunities">fetchCommunities</a></li><li><a href="global.html#fetchIndexedCommunities">fetchIndexedCommunities</a></li><li><a href="global.html#fetchPeople">fetchPeople</a></li><li><a href="global.html#fetchPeopleFollowed">fetchPeopleFollowed</a></li><li><a href="global.html#fetchPosts">fetchPosts</a></li><li><a href="global.html#fetchRandomCommunities">fetchRandomCommunities</a></li><li><a href="global.html#fetchSubbcomm">fetchSubbcomm</a></li><li><a href="global.html#fetchSubbedCommunities">fetchSubbedCommunities</a></li><li><a href="global.html#FlairWidget">FlairWidget</a></li><li><a href="global.html#followPeople">followPeople</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#ForgetPassword">ForgetPassword</a></li><li><a href="global.html#forgetPasswordApi">forgetPasswordApi</a></li><li><a href="global.html#ForgetPasswordModal">ForgetPasswordModal</a></li><li><a href="global.html#ForgetPasswordPage">ForgetPasswordPage</a></li><li><a href="global.html#ForgetUserName">ForgetUserName</a></li><li><a href="global.html#forgetUserNameApi">forgetUserNameApi</a></li><li><a href="global.html#ForgetUserNameModal">ForgetUserNameModal</a></li><li><a href="global.html#ForgetUserNamePage">ForgetUserNamePage</a></li><li><a href="global.html#FormInput">FormInput</a></li><li><a href="global.html#FormInputPageCom">FormInputPageCom</a></li><li><a href="global.html#Gender">Gender</a></li><li><a href="global.html#GenderButton">GenderButton</a></li><li><a href="global.html#getCommunitiesList">getCommunitiesList</a></li><li><a href="global.html#GetPasswordStrength">GetPasswordStrength</a></li><li><a href="global.html#getPostFlairs">getPostFlairs</a></li><li><a href="global.html#getSubreddit">getSubreddit</a></li><li><a href="global.html#getSubredditHotPosts">getSubredditHotPosts</a></li><li><a href="global.html#getSubredditNewPosts">getSubredditNewPosts</a></li><li><a href="global.html#giveVote">giveVote</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#HotButton">HotButton</a></li><li><a href="global.html#ImageAndVideoForm">ImageAndVideoForm</a></li><li><a href="global.html#ImageButton">ImageButton</a></li><li><a href="global.html#ImagesAndVideosTab">ImagesAndVideosTab</a></li><li><a href="global.html#IndexContainer">IndexContainer</a></li><li><a href="global.html#IndexHeader">IndexHeader</a></li><li><a href="global.html#IndexPage">IndexPage</a></li><li><a href="global.html#InlineStyleControls">InlineStyleControls</a></li><li><a href="global.html#InputForm">InputForm</a></li><li><a href="global.html#InterestButton">InterestButton</a></li><li><a href="global.html#Interests">Interests</a></li><li><a href="global.html#isUserNameAvailable">isUserNameAvailable</a></li><li><a href="global.html#isValidUrl">isValidUrl</a></li><li><a href="global.html#joinCommunity">joinCommunity</a></li><li><a href="global.html#lightTheme">lightTheme</a></li><li><a href="global.html#LinkButton">LinkButton</a></li><li><a href="global.html#LinkControls">LinkControls</a></li><li><a href="global.html#LinkForm">LinkForm</a></li><li><a href="global.html#Links">Links</a></li><li><a href="global.html#LinkTab">LinkTab</a></li><li><a href="global.html#LoadingSpinner">LoadingSpinner</a></li><li><a href="global.html#LogIn">LogIn</a></li><li><a href="global.html#loginApi">loginApi</a></li><li><a href="global.html#LoginButton">LoginButton</a></li><li><a href="global.html#LogInPage">LogInPage</a></li><li><a href="global.html#LogInPageCom">LogInPageCom</a></li><li><a href="global.html#LogInScreen">LogInScreen</a></li><li><a href="global.html#LogInVerticalModal">LogInVerticalModal</a></li><li><a href="global.html#loginWithFacebook">loginWithFacebook</a></li><li><a href="global.html#loginWithGoogle">loginWithGoogle</a></li><li><a href="global.html#Main">Main</a></li><li><a href="global.html#makeFollow">makeFollow</a></li><li><a href="global.html#Media">Media</a></li><li><a href="global.html#MediaControls">MediaControls</a></li><li><a href="global.html#ModalCommunity">ModalCommunity</a></li><li><a href="global.html#ModeratorButton">ModeratorButton</a></li><li><a href="global.html#ModeratorWidget">ModeratorWidget</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#NavigationPost">NavigationPost</a></li><li><a href="global.html#NewButton">NewButton</a></li><li><a href="global.html#NewPasswordPage">NewPasswordPage</a></li><li><a href="global.html#NewPasswordPageCom">NewPasswordPageCom</a></li><li><a href="global.html#NotFound">NotFound</a></li><li><a href="global.html#NotificationButton">NotificationButton</a></li><li><a href="global.html#OnlineMembers">OnlineMembers</a></li><li><a href="global.html#PasswordStrength">PasswordStrength</a></li><li><a href="global.html#People">People</a></li><li><a href="global.html#PeopleCardItem">PeopleCardItem</a></li><li><a href="global.html#PeopleItem">PeopleItem</a></li><li><a href="global.html#PeoplePage">PeoplePage</a></li><li><a href="global.html#PopularButton">PopularButton</a></li><li><a href="global.html#PopularPost">PopularPost</a></li><li><a href="global.html#Post">Post</a></li><li><a href="global.html#PostBar">PostBar</a></li><li><a href="global.html#PostContent">PostContent</a></li><li><a href="global.html#PostFlagsWrapper">PostFlagsWrapper</a></li><li><a href="global.html#PostFooter">PostFooter</a></li><li><a href="global.html#PostFormFooter">PostFormFooter</a></li><li><a href="global.html#PostGuidelines">PostGuidelines</a></li><li><a href="global.html#PostHeader">PostHeader</a></li><li><a href="global.html#PostItem">PostItem</a></li><li><a href="global.html#PostPublisher">PostPublisher</a></li><li><a href="global.html#Posts">Posts</a></li><li><a href="global.html#PostShape">PostShape</a></li><li><a href="global.html#PostsList">PostsList</a></li><li><a href="global.html#PreviewImage">PreviewImage</a></li><li><a href="global.html#ProfilePostButton">ProfilePostButton</a></li><li><a href="global.html#pushNotifications">pushNotifications</a></li><li><a href="global.html#randomCategories">randomCategories</a></li><li><a href="global.html#recentPost">recentPost</a></li><li><a href="global.html#RecentPosts">RecentPosts</a></li><li><a href="global.html#RequireAuth">RequireAuth</a></li><li><a href="global.html#resetForgottenPassword">resetForgottenPassword</a></li><li><a href="global.html#ResponsiveNavbar">ResponsiveNavbar</a></li><li><a href="global.html#RightSection">RightSection</a></li><li><a href="global.html#RulesWidget">RulesWidget</a></li><li><a href="global.html#SafeSearch">SafeSearch</a></li><li><a href="global.html#SaveChangesModal">SaveChangesModal</a></li><li><a href="global.html#ScrollButton">ScrollButton</a></li><li><a href="global.html#Search">Search</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#SearchDropDown">SearchDropDown</a></li><li><a href="global.html#SelectYourFlair">SelectYourFlair</a></li><li><a href="global.html#SetSubReddit">SetSubReddit</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#signupApi">signupApi</a></li><li><a href="global.html#SignUpFirstScreen">SignUpFirstScreen</a></li><li><a href="global.html#SignUpPageFirstScreen">SignUpPageFirstScreen</a></li><li><a href="global.html#SignUpPageSecondScreen">SignUpPageSecondScreen</a></li><li><a href="global.html#SignUpSecondScreen">SignUpSecondScreen</a></li><li><a href="global.html#SignUpVerticalModal">SignUpVerticalModal</a></li><li><a href="global.html#signupWithFacebook">signupWithFacebook</a></li><li><a href="global.html#signupWithGoogle">signupWithGoogle</a></li><li><a href="global.html#StyleControlButton">StyleControlButton</a></li><li><a href="global.html#SubmitDestinationProvider">SubmitDestinationProvider</a></li><li><a href="global.html#submitPost">submitPost</a></li><li><a href="global.html#SubReddit">SubReddit</a></li><li><a href="global.html#SubRedditBody">SubRedditBody</a></li><li><a href="global.html#SubRedditHeader">SubRedditHeader</a></li><li><a href="global.html#SubRedditNoPosts">SubRedditNoPosts</a></li><li><a href="global.html#SubRedditSideBar">SubRedditSideBar</a></li><li><a href="global.html#SwitchButton">SwitchButton</a></li><li><a href="global.html#Tabs">Tabs</a></li><li><a href="global.html#TestingComponent">TestingComponent</a></li><li><a href="global.html#TopButton">TopButton</a></li><li><a href="global.html#TopCommunities">TopCommunities</a></li><li><a href="global.html#trendingSearch">trendingSearch</a></li><li><a href="global.html#UploadedImage">UploadedImage</a></li><li><a href="global.html#UploadedImagesContainer">UploadedImagesContainer</a></li><li><a href="global.html#UploadedMedia">UploadedMedia</a></li><li><a href="global.html#useAuth">useAuth</a></li><li><a href="global.html#useCreatePostAttachments">useCreatePostAttachments</a></li><li><a href="global.html#useCreatePostFlags">useCreatePostFlags</a></li><li><a href="global.html#useCreatePostFlairs">useCreatePostFlairs</a></li><li><a href="global.html#useCreatePostText">useCreatePostText</a></li><li><a href="global.html#useCreatePostTitle">useCreatePostTitle</a></li><li><a href="global.html#useFetch">useFetch</a></li><li><a href="global.html#useFetchFunction">useFetchFunction</a></li><li><a href="global.html#useLink">useLink</a></li><li><a href="global.html#useLocalStorage">useLocalStorage</a></li><li><a href="global.html#useMedia">useMedia</a></li><li><a href="global.html#UserFlairPreview">UserFlairPreview</a></li><li><a href="global.html#useSubmitDestination">useSubmitDestination</a></li><li><a href="global.html#VotingBar">VotingBar</a></li><li><a href="global.html#WidgetContainer">WidgetContainer</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abbreviate">abbreviate</a></li><li><a href="global.html#AboutCommunity">AboutCommunity</a></li><li><a href="global.html#AdvertiseButton">AdvertiseButton</a></li><li><a href="global.html#AfterSignUp">AfterSignUp</a></li><li><a href="global.html#AfterSignUpLoading">AfterSignUpLoading</a></li><li><a href="global.html#AfterSignUpModal">AfterSignUpModal</a></li><li><a href="global.html#AllMessagesTypes">AllMessagesTypes</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#AuthProvider">AuthProvider</a></li><li><a href="global.html#Badge">Badge</a></li><li><a href="global.html#BlockStyleControls">BlockStyleControls</a></li><li><a href="global.html#BodyContent">BodyContent</a></li><li><a href="global.html#Button">Button</a></li><li><a href="global.html#Categories">Categories</a></li><li><a href="global.html#CategoryBar">CategoryBar</a></li><li><a href="global.html#CategoryButton">CategoryButton</a></li><li><a href="global.html#CategoryDropDown">CategoryDropDown</a></li><li><a href="global.html#ChatButton">ChatButton</a></li><li><a href="global.html#Checked">Checked</a></li><li><a href="global.html#ChooseCommunity">ChooseCommunity</a></li><li><a href="global.html#CoinButton">CoinButton</a></li><li><a href="global.html#Comment">Comment</a></li><li><a href="global.html#CommentBody">CommentBody</a></li><li><a href="global.html#CommentDraftEditor">CommentDraftEditor</a></li><li><a href="global.html#CommentsPage">CommentsPage</a></li><li><a href="global.html#CommunitiesPage">CommunitiesPage</a></li><li><a href="global.html#Community">Community</a></li><li><a href="global.html#CommunityCard">CommunityCard</a></li><li><a href="global.html#CommunityCardItem">CommunityCardItem</a></li><li><a href="global.html#CommunityDate">CommunityDate</a></li><li><a href="global.html#CommunityItem">CommunityItem</a></li><li><a href="global.html#CommunityLeaderBoard">CommunityLeaderBoard</a></li><li><a href="global.html#CommunityOptions">CommunityOptions</a></li><li><a href="global.html#CommunitySideCard">CommunitySideCard</a></li><li><a href="global.html#CommunitySideCardItem">CommunitySideCardItem</a></li><li><a href="global.html#CommunityTopics">CommunityTopics</a></li><li><a href="global.html#Container">Container</a></li><li><a href="global.html#ContextComponent">ContextComponent</a></li><li><a href="global.html#CreateCommunity">CreateCommunity</a></li><li><a href="global.html#CreatePost">CreatePost</a></li><li><a href="global.html#CreatePostAttachmentsProvider">CreatePostAttachmentsProvider</a></li><li><a href="global.html#CreatePostButton">CreatePostButton</a></li><li><a href="global.html#CreatePostFlagsProvider">CreatePostFlagsProvider</a></li><li><a href="global.html#CreatePostFlairsProvider">CreatePostFlairsProvider</a></li><li><a href="global.html#CreatePostSideBar">CreatePostSideBar</a></li><li><a href="global.html#CreatePostTextProvider">CreatePostTextProvider</a></li><li><a href="global.html#CreatePostTitleProvider">CreatePostTitleProvider</a></li><li><a href="global.html#CustomMenu">CustomMenu</a></li><li><a href="global.html#CustomToggle">CustomToggle</a></li><li><a href="global.html#darkTheme">darkTheme</a></li><li><a href="global.html#defaultTheme">defaultTheme</a></li><li><a href="global.html#DotButton">DotButton</a></li><li><a href="global.html#downVote">downVote</a></li><li><a href="global.html#DraftEditor">DraftEditor</a></li><li><a href="global.html#DraftEditorForm">DraftEditorForm</a></li><li><a href="global.html#DraftEditorTab">DraftEditorTab</a></li><li><a href="global.html#DraftLinkForm">DraftLinkForm</a></li><li><a href="global.html#DragAndDropFile">DragAndDropFile</a></li><li><a href="global.html#DropDownItem">DropDownItem</a></li><li><a href="global.html#DropDownLeft">DropDownLeft</a></li><li><a href="global.html#DropDownMenu">DropDownMenu</a></li><li><a href="global.html#DropDownRightButton">DropDownRightButton</a></li><li><a href="global.html#EveryWhereButton">EveryWhereButton</a></li><li><a href="global.html#fetchComments">fetchComments</a></li><li><a href="global.html#fetchCommunities">fetchCommunities</a></li><li><a href="global.html#fetchIndexedCommunities">fetchIndexedCommunities</a></li><li><a href="global.html#fetchPeople">fetchPeople</a></li><li><a href="global.html#fetchPeopleFollowed">fetchPeopleFollowed</a></li><li><a href="global.html#fetchPosts">fetchPosts</a></li><li><a href="global.html#fetchRandomCommunities">fetchRandomCommunities</a></li><li><a href="global.html#fetchSubbcomm">fetchSubbcomm</a></li><li><a href="global.html#fetchSubbedCommunities">fetchSubbedCommunities</a></li><li><a href="global.html#FlairWidget">FlairWidget</a></li><li><a href="global.html#followPeople">followPeople</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#ForgetPassword">ForgetPassword</a></li><li><a href="global.html#forgetPasswordApi">forgetPasswordApi</a></li><li><a href="global.html#ForgetPasswordModal">ForgetPasswordModal</a></li><li><a href="global.html#ForgetPasswordPage">ForgetPasswordPage</a></li><li><a href="global.html#ForgetUserName">ForgetUserName</a></li><li><a href="global.html#forgetUserNameApi">forgetUserNameApi</a></li><li><a href="global.html#ForgetUserNameModal">ForgetUserNameModal</a></li><li><a href="global.html#ForgetUserNamePage">ForgetUserNamePage</a></li><li><a href="global.html#FormInput">FormInput</a></li><li><a href="global.html#FormInputPageCom">FormInputPageCom</a></li><li><a href="global.html#Gender">Gender</a></li><li><a href="global.html#GenderButton">GenderButton</a></li><li><a href="global.html#getCommunitiesList">getCommunitiesList</a></li><li><a href="global.html#GetPasswordStrength">GetPasswordStrength</a></li><li><a href="global.html#getPostFlairs">getPostFlairs</a></li><li><a href="global.html#getSubreddit">getSubreddit</a></li><li><a href="global.html#getSubredditHotPosts">getSubredditHotPosts</a></li><li><a href="global.html#getSubredditNewPosts">getSubredditNewPosts</a></li><li><a href="global.html#giveVote">giveVote</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#HotButton">HotButton</a></li><li><a href="global.html#ImageAndVideoForm">ImageAndVideoForm</a></li><li><a href="global.html#ImageButton">ImageButton</a></li><li><a href="global.html#ImagesAndVideosTab">ImagesAndVideosTab</a></li><li><a href="global.html#IndexContainer">IndexContainer</a></li><li><a href="global.html#IndexHeader">IndexHeader</a></li><li><a href="global.html#IndexPage">IndexPage</a></li><li><a href="global.html#InlineStyleControls">InlineStyleControls</a></li><li><a href="global.html#InputForm">InputForm</a></li><li><a href="global.html#InterestButton">InterestButton</a></li><li><a href="global.html#Interests">Interests</a></li><li><a href="global.html#isUserNameAvailable">isUserNameAvailable</a></li><li><a href="global.html#isValidUrl">isValidUrl</a></li><li><a href="global.html#joinCommunity">joinCommunity</a></li><li><a href="global.html#lightTheme">lightTheme</a></li><li><a href="global.html#LinkButton">LinkButton</a></li><li><a href="global.html#LinkControls">LinkControls</a></li><li><a href="global.html#LinkForm">LinkForm</a></li><li><a href="global.html#Links">Links</a></li><li><a href="global.html#LinkTab">LinkTab</a></li><li><a href="global.html#LoadingSpinner">LoadingSpinner</a></li><li><a href="global.html#LogIn">LogIn</a></li><li><a href="global.html#loginApi">loginApi</a></li><li><a href="global.html#LoginButton">LoginButton</a></li><li><a href="global.html#LogInPage">LogInPage</a></li><li><a href="global.html#LogInPageCom">LogInPageCom</a></li><li><a href="global.html#LogInScreen">LogInScreen</a></li><li><a href="global.html#LogInVerticalModal">LogInVerticalModal</a></li><li><a href="global.html#loginWithFacebook">loginWithFacebook</a></li><li><a href="global.html#loginWithGoogle">loginWithGoogle</a></li><li><a href="global.html#Main">Main</a></li><li><a href="global.html#makeFollow">makeFollow</a></li><li><a href="global.html#markUnread">markUnread</a></li><li><a href="global.html#Media">Media</a></li><li><a href="global.html#MediaControls">MediaControls</a></li><li><a href="global.html#MessageBannel">MessageBannel</a></li><li><a href="global.html#MessageBannelItem">MessageBannelItem</a></li><li><a href="global.html#Messages">Messages</a></li><li><a href="global.html#MessagesHeader">MessagesHeader</a></li><li><a href="global.html#ModalCommunity">ModalCommunity</a></li><li><a href="global.html#ModeratorButton">ModeratorButton</a></li><li><a href="global.html#ModeratorWidget">ModeratorWidget</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#NavigationPost">NavigationPost</a></li><li><a href="global.html#NewButton">NewButton</a></li><li><a href="global.html#NewPasswordPage">NewPasswordPage</a></li><li><a href="global.html#NewPasswordPageCom">NewPasswordPageCom</a></li><li><a href="global.html#NormalMessageAll">NormalMessageAll</a></li><li><a href="global.html#NotFound">NotFound</a></li><li><a href="global.html#NotificationButton">NotificationButton</a></li><li><a href="global.html#OnlineMembers">OnlineMembers</a></li><li><a href="global.html#PasswordStrength">PasswordStrength</a></li><li><a href="global.html#People">People</a></li><li><a href="global.html#PeopleCardItem">PeopleCardItem</a></li><li><a href="global.html#PeopleItem">PeopleItem</a></li><li><a href="global.html#PeoplePage">PeoplePage</a></li><li><a href="global.html#PopularButton">PopularButton</a></li><li><a href="global.html#PopularPost">PopularPost</a></li><li><a href="global.html#Post">Post</a></li><li><a href="global.html#PostBar">PostBar</a></li><li><a href="global.html#PostContent">PostContent</a></li><li><a href="global.html#PostFlagsWrapper">PostFlagsWrapper</a></li><li><a href="global.html#PostFooter">PostFooter</a></li><li><a href="global.html#PostFormFooter">PostFormFooter</a></li><li><a href="global.html#PostGuidelines">PostGuidelines</a></li><li><a href="global.html#PostHeader">PostHeader</a></li><li><a href="global.html#PostItem">PostItem</a></li><li><a href="global.html#PostPublisher">PostPublisher</a></li><li><a href="global.html#PostReplay">PostReplay</a></li><li><a href="global.html#PostReplayItem">PostReplayItem</a></li><li><a href="global.html#Posts">Posts</a></li><li><a href="global.html#PostShape">PostShape</a></li><li><a href="global.html#PostsList">PostsList</a></li><li><a href="global.html#PreviewImage">PreviewImage</a></li><li><a href="global.html#ProfilePostButton">ProfilePostButton</a></li><li><a href="global.html#pushNotifications">pushNotifications</a></li><li><a href="global.html#randomCategories">randomCategories</a></li><li><a href="global.html#readed">readed</a></li><li><a href="global.html#recentPost">recentPost</a></li><li><a href="global.html#RecentPosts">RecentPosts</a></li><li><a href="global.html#ReportModal">ReportModal</a></li><li><a href="global.html#RequireAuth">RequireAuth</a></li><li><a href="global.html#resetForgottenPassword">resetForgottenPassword</a></li><li><a href="global.html#ResponsiveNavbar">ResponsiveNavbar</a></li><li><a href="global.html#RightSection">RightSection</a></li><li><a href="global.html#RulesWidget">RulesWidget</a></li><li><a href="global.html#SafeContextProvider">SafeContextProvider</a></li><li><a href="global.html#SafeSearch">SafeSearch</a></li><li><a href="global.html#SaveChangesModal">SaveChangesModal</a></li><li><a href="global.html#ScrollButton">ScrollButton</a></li><li><a href="global.html#Search">Search</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#SearchContextProvider">SearchContextProvider</a></li><li><a href="global.html#SearchDropDown">SearchDropDown</a></li><li><a href="global.html#SelectYourFlair">SelectYourFlair</a></li><li><a href="global.html#SendAMessage">SendAMessage</a></li><li><a href="global.html#SentMessageItem">SentMessageItem</a></li><li><a href="global.html#SentMessages">SentMessages</a></li><li><a href="global.html#SetSubReddit">SetSubReddit</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#signupApi">signupApi</a></li><li><a href="global.html#SignUpFirstScreen">SignUpFirstScreen</a></li><li><a href="global.html#SignUpPageFirstScreen">SignUpPageFirstScreen</a></li><li><a href="global.html#SignUpPageSecondScreen">SignUpPageSecondScreen</a></li><li><a href="global.html#SignUpSecondScreen">SignUpSecondScreen</a></li><li><a href="global.html#SignUpVerticalModal">SignUpVerticalModal</a></li><li><a href="global.html#signupWithFacebook">signupWithFacebook</a></li><li><a href="global.html#signupWithGoogle">signupWithGoogle</a></li><li><a href="global.html#StyleControlButton">StyleControlButton</a></li><li><a href="global.html#SubmitDestinationProvider">SubmitDestinationProvider</a></li><li><a href="global.html#submitPost">submitPost</a></li><li><a href="global.html#SubReddit">SubReddit</a></li><li><a href="global.html#SubRedditBody">SubRedditBody</a></li><li><a href="global.html#SubRedditHeader">SubRedditHeader</a></li><li><a href="global.html#SubRedditNoPosts">SubRedditNoPosts</a></li><li><a href="global.html#SubRedditSideBar">SubRedditSideBar</a></li><li><a href="global.html#SwitchButton">SwitchButton</a></li><li><a href="global.html#Tabs">Tabs</a></li><li><a href="global.html#TestingComponent">TestingComponent</a></li><li><a href="global.html#TopButton">TopButton</a></li><li><a href="global.html#TopCommunities">TopCommunities</a></li><li><a href="global.html#trendingSearch">trendingSearch</a></li><li><a href="global.html#Unread">Unread</a></li><li><a href="global.html#UploadedImage">UploadedImage</a></li><li><a href="global.html#UploadedImagesContainer">UploadedImagesContainer</a></li><li><a href="global.html#UploadedMedia">UploadedMedia</a></li><li><a href="global.html#upVote">upVote</a></li><li><a href="global.html#useAuth">useAuth</a></li><li><a href="global.html#useCreatePostAttachments">useCreatePostAttachments</a></li><li><a href="global.html#useCreatePostFlags">useCreatePostFlags</a></li><li><a href="global.html#useCreatePostFlairs">useCreatePostFlairs</a></li><li><a href="global.html#useCreatePostText">useCreatePostText</a></li><li><a href="global.html#useCreatePostTitle">useCreatePostTitle</a></li><li><a href="global.html#useFetch">useFetch</a></li><li><a href="global.html#useFetchFunction">useFetchFunction</a></li><li><a href="global.html#useLink">useLink</a></li><li><a href="global.html#useLocalStorage">useLocalStorage</a></li><li><a href="global.html#useMedia">useMedia</a></li><li><a href="global.html#UserFlairPreview">UserFlairPreview</a></li><li><a href="global.html#UsernameMentionItem">UsernameMentionItem</a></li><li><a href="global.html#UsernameMentions">UsernameMentions</a></li><li><a href="global.html#useSubmitDestination">useSubmitDestination</a></li><li><a href="global.html#VotingBar">VotingBar</a></li><li><a href="global.html#WidgetContainer">WidgetContainer</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sat Dec 03 2022 20:35:07 GMT+0200 (Eastern European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Mon Dec 12 2022 01:45:54 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -13,7 +13,19 @@ export const CoverDiv = styled.div`
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   position: relative;
-  background-image: url(${web});
+
+  &:after {
+  content:'';
+  position:absolute;
+  left:0; 
+  top:0;
+  width:100%; 
+  height:100%;
+  display:inline-block;
+  background: linear-gradient(${({theme}) => theme.degree.gradient}deg,rgba(0,0,0,.5) 0,transparent);
+  transition: 0.3s;
+  }
+  /* background-image: url(${web}); */
 `;
 
 export const GradientDiv = styled.div`
@@ -32,6 +44,7 @@ export const LinkH2 = styled.h2`
   transition: 0.3s;
   left: 16px;
   position: absolute;
+  z-index: 1;
 
   & a {
     color: ${({theme}) => theme.color.sideBarHeader};
@@ -68,4 +81,13 @@ export const ViewAllBtn = styled.button`
     background-color: ${({ theme }) => theme.background.sideBtnHover};
     transition: 0.3s;
   }
+`;
+
+export const CoverImg = styled.img `
+  background-position: 50%;
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  position: relative;
 `;

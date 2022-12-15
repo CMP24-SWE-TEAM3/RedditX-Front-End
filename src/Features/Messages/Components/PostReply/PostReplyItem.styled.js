@@ -1,23 +1,7 @@
 import styled from "styled-components";
-import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 
 export const MessageWithAu = styled.div`
   padding-left: 35px;
-`;
-
-export const ArrowUp = styled(FaArrowUp)`
-  margin: 2px 0px 0px 0px;
-  width: 100%;
-  height: 14px;
-  display: block;
-  cursor: pointer;
-  width: 15px;
-  margin-left: auto;
-  margin-right: auto;
-  outline: none;
-  &.active {
-    color: #ff8b60;
-  }
 `;
 
 export const ArrowsDiv = styled.div`
@@ -27,51 +11,30 @@ export const ArrowsDiv = styled.div`
   background: transparent;
   overflow: hidden;
 `;
-export const ArrowDown = styled(FaArrowDown)`
-  margin: 2px 0px 0px 0px;
-  width: 100%;
-  height: 14px;
-  display: block;
-  cursor: pointer;
-  width: 15px;
-  margin-left: auto;
-  margin-right: auto;
-  outline: none;
-  &.active {
-    color: #9494ff;
-  }
-`;
-
-export const EmbeddedPage = styled.div`
-  margin: 0;
-  background: none;
-  z-index: 1;
-  min-height: 700px;
-  background: #edeff1;
-  color: #373c3f;
-  padding: 1px;
-`;
-
-export const PageContainer = styled.div`
-  margin: 20px auto;
-  width: 70%;
-  min-width: 700px;
-  background: #edeff1;
-  font: normal x-small verdana, arial, helvetica, sans-serif;
-`;
 
 export const OddItems = styled.div`
-  background-color: #f6f7f8;
+  /* background-color: ${({ theme }) => theme.background.lightMuted}; */
+  transition: 0.3s;
   margin: 0;
   padding: 10px 15px;
-  &.even {
-    background-color: #ffffff;
+  /* &.even {
+    background-color: ${({ theme }) => theme.background.primary};
+  } */
+
+  &:nth-child(odd){
+    background-color: ${({ theme }) => theme.background.lightMuted};
+  }
+
+  &:nth-child(even){
+    background-color: ${({ theme }) => theme.background.primary};
   }
 `;
+
 export const MessagesWithBtns = styled.div`
-  color: #373c3f;
+  color: ${({ theme }) => theme.color.primary};
   margin-left: 10px;
-  border-left: 2px dashed #e7e7e7;
+  border-left: 2px dashed ${({ theme }) => theme.color.initialBorderColor};
+  transition: 0.3s;
   padding-bottom: 10px;
   width: 100%;
   &.expanded {
@@ -81,11 +44,13 @@ export const MessagesWithBtns = styled.div`
     display: none;
   }
 `;
+
 export const Visted = styled.div`
   &.read-before {
-    background-color: #edeff1;
-    border-color: #edeff1;
-    color: #373c3f;
+    background-color: ${({ theme }) => theme.lineColor.primary};
+    border-color: ${({ theme }) => theme.lineColor.primary};
+    color: ${({ theme }) => theme.color.primary};
+    transition: 0.3s;
     width: 100%;
   }
 `;
@@ -105,7 +70,8 @@ export const BtnWarning = styled.span`
 export const ToggleExpan = styled.a`
   text-decoration: none;
   margin-right: 3px;
-  color: #0079d3;
+  color: ${({ theme }) => theme.color.frame};
+  transition: 0.3s;
   cursor: pointer;
 `;
 
@@ -163,7 +129,8 @@ export const Subject = styled.div`
 export const SubjectText = styled.span`
   font-weight: bold;
   font-size: larger;
-  color: #373c3f;
+  color: ${({ theme }) => theme.color.primary};
+  transition: 0.3s;
 `;
 
 export const Tagline = styled.p`
@@ -171,7 +138,8 @@ export const Tagline = styled.p`
   margin-bottom: 5px;
   padding-left: 14px;
   float: left;
-  color: #878a8c;
+  color: ${({ theme }) => theme.borderColor.primary};
+  transition: 0.3s;
   font-weight: inherit;
 `;
 export const TimeTag = styled(Tagline)`
@@ -189,16 +157,16 @@ export const Author = styled.a`
   margin-right: -15px;
   text-decoration: none;
   cursor: pointer;
-  color: #0079d3;
+  color: ${({ theme }) => theme.color.frame};
+  transition: 0.3s;
   &:hover {
+    color: ${({ theme }) => theme.color.frame};
     text-decoration: underline;
   }
   &.admin {
     color: #ff0011;
   }
-  &.visted {
-    color: #80bce9;
-  }
+
   &::before {
     content: "/u/";
   }
@@ -211,3 +179,66 @@ export const Expand = styled.a`
 export const MessageDetails = styled.div`
   padding: 10px 15px;
 `;
+
+export const ReplyDiv = styled.div`
+  margin-top: 10px;
+  margin-left: 12px;
+  font-size: small;
+  display: none;
+
+  &.active {
+    display: block;
+  }
+`;
+
+export const TextAreaDiv = styled.div`
+  unicode-bidi: isolate;
+  padding: 0 1px;
+  clear: left;
+  margin-top: 1.5em;
+  font-size: 12px;
+  width: 500px;
+`;
+
+export const MesssageDiv = styled.div`
+  display: block;
+  transition: 0.3s;
+  font-weight: 400;
+  margin-left: 15px;
+  color: ${({ theme }) => theme.color.primary};
+  margin-top: 5px;
+  margin-bottom: 5px;
+  max-width: 60em;
+  font-size: 1em;
+`;
+
+export const TextAreaElement = styled.textarea`
+  width: 500px;
+  height: 100px;
+  line-height: 1.5em;
+  margin-bottom: 0;
+  margin-top: 0;
+  font-size: 1em;
+`;
+
+export const ButtonsDiv = styled.div`
+  overflow: hidden;
+  width: 100%;
+`;
+
+export const SaveButton = styled.button`
+  display: inline-block;
+  transition: 0.3s;
+  border-radius: 4px;
+  background-color: ${({ theme }) => theme.color.secondary};
+  border-color: ${({ theme }) => theme.color.secondary};
+  padding: 6px 16px 4px;
+  color: ${({ theme }) => theme.btnColor.text};
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 5px 5px 10px 0;
+  cursor: pointer;
+`;
+
+
+

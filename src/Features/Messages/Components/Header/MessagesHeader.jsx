@@ -10,12 +10,19 @@ import {
   SecondaryLI,
   SecondaryLink,
   Body,
-} from "./Header.styled";
+} from "./MessagesHeader.styled";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 
-function Header() {
+/**
+ * Component that contains the header of the Messages page
+ *
+ * @Component
+ * @returns {React.Component}
+ */
+
+function MessagesHeader() {
   let location = useLocation();
   let type = location.pathname.split("/")[2];
   const [allHeader, setAllHeader] = useState(type === "sent" || type === "compose" ? false : true);
@@ -53,21 +60,21 @@ function Header() {
           <HeadSecondaryMargin>
             <HeadSecondaryUL>
               <SecondaryLI>
-                <SecondaryLink to={`/message/inbox`}>All</SecondaryLink>
+                <SecondaryLink to={`/message/inbox/all`}>All</SecondaryLink>
               </SecondaryLI>
               <SecondaryLI>
-                <SecondaryLink to={`/message/unread`}>Unread</SecondaryLink>
+                <SecondaryLink to={`/message/inbox/unread`}>Unread</SecondaryLink>
               </SecondaryLI>
               <SecondaryLI>
-                <SecondaryLink to={`/message/messages`}>Messages</SecondaryLink>
+                <SecondaryLink to={`/message/inbox/messages`}>Messages</SecondaryLink>
               </SecondaryLI>
               <SecondaryLI>
-                <SecondaryLink to={`/message/selfreply`}>
+                <SecondaryLink to={`/message/inbox/selfreply`}>
                   Post Replies
                 </SecondaryLink>
               </SecondaryLI>
               <SecondaryLI>
-                <SecondaryLink to={`/message/mentions`}>
+                <SecondaryLink to={`/message/inbox/mentions`}>
                   Username Mentions
                 </SecondaryLink>
               </SecondaryLI>
@@ -79,4 +86,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default MessagesHeader;

@@ -1,35 +1,28 @@
 import styled from "styled-components";
 
-export const EmbeddedPage = styled.div`
-  margin: 0;
-  background: none;
-  z-index: 1;
-  min-height: 700px;
-  background: #edeff1;
-  color: #373c3f;
-  padding: 1px;
-`;
-
-export const PageContainer = styled.div`
-  margin: 20px auto;
-  width: 70%;
-  min-width: 700px;
-  background: #edeff1;
-  font: normal x-small verdana, arial, helvetica, sans-serif;
-`;
-
 export const OddItems = styled.div`
-  background-color: #f6f7f8;
+  /* background-color: ${({ theme }) => theme.background.lightMuted}; */
+  transition: 0.3s;
   margin: 0;
   padding: 10px 15px;
-  &.even {
-    background-color: #ffffff;
+  /* &.even {
+    background-color: ${({ theme }) => theme.background.primary};
+  } */
+
+  &:nth-child(odd){
+    background-color: ${({ theme }) => theme.background.lightMuted};
+  }
+
+  &:nth-child(even){
+    background-color: ${({ theme }) => theme.background.primary};
   }
 `;
+
 export const MessagesWithBtns = styled.div`
-  color: #373c3f;
+  color: ${({ theme }) => theme.color.primary};
   margin-left: 10px;
-  border-left: 2px dashed #e7e7e7;
+  border-left: 2px dashed ${({ theme }) => theme.color.initialBorderColor};
+  transition: 0.3s;
   padding-bottom: 10px;
   width: 100%;
   &.expanded {
@@ -39,12 +32,14 @@ export const MessagesWithBtns = styled.div`
     display: none;
   }
 `;
+
 export const Visted = styled.div`
   &.read-before {
-    background-color: #edeff1;
-    border-color: #edeff1;
-    color: #373c3f;
+    background-color: ${({ theme }) => theme.lineColor.primary};
+    border-color: ${({ theme }) => theme.lineColor.primary};
+    color: ${({ theme }) => theme.color.primary};
     width: 100%;
+    transition: 0.3s;
   }
 `;
 
@@ -63,7 +58,8 @@ export const BtnWarning = styled.span`
 export const ToggleExpan = styled.a`
   text-decoration: none;
   margin-right: 3px;
-  color: #0079d3;
+  color: ${({ theme }) => theme.color.frame};
+  transition: 0.3s;
   cursor: pointer;
 `;
 
@@ -118,7 +114,8 @@ export const Subject = styled.div`
   font-size: larger;
 `;
 export const Frame = styled.span`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.background.primary};
+  transition: 0.3s;
   border: 1px solid #336699;
   color: #336699;
   display: inline-block;
@@ -130,7 +127,8 @@ export const Frame = styled.span`
 
 export const FrameText = styled.a`
   font-weight: inherit;
-  color: #0079d3;
+  color: ${({ theme }) => theme.color.frame};
+  transition: 0.3s;
   text-decoration: none;
   margin-right: 0.5em;
   cursor: pointer;
@@ -141,12 +139,13 @@ export const FrameText = styled.a`
     color: #ff0011;
   }
   &.visted {
-    color: #80bce9;
+    color:${({ theme }) => theme.color.mutedLink};
   }
 `;
 
 export const ExpanCollap = styled.a`
-  color: #0079d3;
+  color: ${({ theme }) => theme.color.frame};
+  transition: 0.3s;
   text-decoration: none;
   font-size: smaller;
   margin: 0px 5px;
@@ -158,7 +157,8 @@ export const ExpanCollap = styled.a`
 export const SubjectText = styled.span`
   font-weight: bold;
   font-size: larger;
-  color: #373c3f;
+  color: ${({ theme }) => theme.color.primary};
+  transition: 0.3s;
 `;
 
 export const Tagline = styled.p`
@@ -166,15 +166,17 @@ export const Tagline = styled.p`
   margin-bottom: 5px;
   padding-left: 14px;
   float: left;
-  color: #878a8c;
+  color: ${({ theme }) => theme.borderColor.primary};
+  transition: 0.3s;
   font-weight: inherit;
 `;
+
 export const TimeTag = styled(Tagline)`
   display: inline;
   float: none;
   margin: 0 5px;
 
-  &.active&::before {
+  &.active &::before {
     content: " [A]";
     margin: 0 5px;
     color: #ff0011;
@@ -185,16 +187,16 @@ export const Author = styled.a`
   margin-right: -15px;
   text-decoration: none;
   cursor: pointer;
-  color: #0079d3;
+  color: ${({ theme }) => theme.color.frame};
+  transition: 0.3s;
   &:hover {
+    color: ${({ theme }) => theme.color.frame};
     text-decoration: underline;
   }
   &.admin {
     color: #ff0011;
   }
-  &.visted {
-    color: #80bce9;
-  }
+  
   &::before {
     content: "/u/";
   }

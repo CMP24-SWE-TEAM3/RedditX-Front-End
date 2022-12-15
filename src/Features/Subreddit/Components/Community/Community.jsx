@@ -26,7 +26,7 @@ import {
 } from "./Community.styled";
 
 /**
- * Component that contains the header of the community leaderboard page
+ * Component that contains the community items of the community leaderboard page
  *
  * @Component
  * @param {boolean} isJoined - Boolean showing whether the user joined that community or not
@@ -47,7 +47,6 @@ import {
   const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
 
   
-
   useEffect(() => {
     setIsJoined(isJoined);
   }, [isJoined]); 
@@ -55,11 +54,9 @@ import {
   function changeButton() {
     let dataObject = {
       action: isJoinedstate ? "unsub" : "sub",
-      sr_name: "t5_imagePro235"
-      // sr_name: `t5_${title}`,
+      srName: `t5_${title}`
     }
     joinCommunity(fetchFunction, dataObject, auth);
-    
     setIsJoined((prevJoined) => !prevJoined);
   }
   const isRising = isJoinedstate;

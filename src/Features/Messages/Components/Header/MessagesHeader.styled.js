@@ -5,7 +5,7 @@ export const Body = styled.div`
   font: normal x-small verdana, arial, helvetica, sans-serif;
 `;
 export const HeadPrimary = styled.div`
-  background-color: #0079d3;
+  background-color: ${({ theme }) => theme.color.secondary};
   border-bottom: none;
   margin: 0;
   padding: 0;
@@ -34,15 +34,15 @@ export const PrimaryLinks = styled(NavLink)`
   font-size: larger;
   opacity: 0.8;
   background-color: transparent;
-  color: #edeff1;
+  color: ${({ theme }) => theme.lineColor.primary};
   text-transform: capitalize;
   border: none;
   text-decoration: none;
   cursor: pointer;
   &:hover {
-    color: #edeff1;
+    color: ${({ theme }) => theme.lineColor.primary};
   }
-  & .active {
+  &.active {
     color: #80bce9;
     opacity: 1;
   }
@@ -56,7 +56,7 @@ export const PrimaryLI = styled.li`
 export const HeadSecondary = styled.div`
   margin: 0;
   padding: 0;
-  background-color: #0079d3;
+  background-color: ${({ theme }) => theme.color.secondary};
   border-bottom: none;
 `;
 export const HeadSecondaryMargin = HeadPrimaryMargin;
@@ -76,7 +76,7 @@ export const SecondaryLink = styled(NavLink)`
   display: inline-block;
   margin: 0 10px;
   padding: 0 10px 5px;
-  color: #edeff1;
+  color: ${({ theme }) => theme.lineColor.primary};
   border-bottom: 2px transparent solid;
   background-color: transparent;
   text-transform: capitalize;
@@ -84,16 +84,16 @@ export const SecondaryLink = styled(NavLink)`
   cursor: pointer;
   text-decoration: none;
   &:hover {
-    color: #edeff1;
+    color: ${({ theme }) => theme.lineColor.primary};
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom-color: #ffffff;
+    border-bottom-color: ${({ theme }) => theme.background.primary};
   }
-  & .active {
+  &.active {
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom-color: #ffffff;
+    border-bottom-color: ${({ theme }) => theme.background.primary};
   }
 `;
