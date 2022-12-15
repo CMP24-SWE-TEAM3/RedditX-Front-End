@@ -1,6 +1,14 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import React from "react";
-import { SearchDropDownStyled } from "./SearchDropDown.styled";
+import {
+  SearchDropDownStyled,
+  Description,
+  HeaderName,
+  Arrow,
+  Footer,
+  AsideContainer,
+  LinkSide,
+} from "./SearchDropDown.styled";
 import { Link } from "react-router-dom";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 import { IoIosLink } from "react-icons/io";
@@ -20,46 +28,44 @@ const SearchDropDown = ({ show }) => {
 
   // Fetch trending posts
   const [trendingPostList, error, loading, fetchData] = useFetchFunction();
-  // useEffect(() => {
-  //   trendingSearch(fetchData,auth);
-  // }, []);
+  useEffect(() => {
+    trendingSearch(fetchData, auth);
+  }, []);
 
   return (
-    <SearchDropDownStyled show={show} autoClose={"outside"}>
+    <SearchDropDownStyled show={true} autoClose={"outside"}>
       <Dropdown.Header>trending today</Dropdown.Header>
       {!loading &&
         trendingPostList.map((recentPost) => {
           return (
             <>
               <Dropdown.Item eventKey={recentPost.id} disabled={false}>
-                <Link className={"content"}>
+                <Link>
                   <div>
                     <div>
-                      <div className={"header-name"}>
-                        <span className={"arrow"}>
+                      <HeaderName>
+                        <Arrow>
                           <BsArrowUpRightCircle />
-                        </span>
+                        </Arrow>
                         {recentPost.title}
-                      </div>
-                      <div className={"description"}>
-                        {recentPost.description}
-                      </div>
+                      </HeaderName>
+                      <Description>{recentPost.description}</Description>
                     </div>
-                    <footer>
+                    <Footer>
                       <img src={recentPost.cover} alt={"img-category"} />
                       <span>r/{recentPost.category} and more</span>
-                    </footer>
+                    </Footer>
                   </div>
-                  <aside>
-                    <div className={"link-side"}>
+                  <AsideContainer>
+                    <LinkSide>
                       <div>
                         <span>
                           {" "}
                           <IoIosLink />
                         </span>
                       </div>
-                    </div>
-                  </aside>
+                    </LinkSide>
+                  </AsideContainer>
                 </Link>
               </Dropdown.Item>
               <Dropdown.Divider />
