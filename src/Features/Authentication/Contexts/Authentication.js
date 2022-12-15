@@ -23,8 +23,7 @@ const AuthProvider = ({ children }) => {
    */
   const login = async (user) => {
     // Calculate token's expiration date
-    user.expiresIn = AddMinutes(new Date(), user.expiresIn / (60 * 60));
-    console.log(user.expiresIn, user.expiresIn / (60 * 60));
+    user.expiresIn = AddMinutes(new Date(), user.expiresIn / 60);
     setUser(JSON.stringify(user));
   };
 
