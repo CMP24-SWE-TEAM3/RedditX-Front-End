@@ -18,7 +18,7 @@ const AddFlair = (dataFetch, post, auth, communityName) => {
       data: post,
       headers: {
         "Content-Language": "en-US",
-        "Content-Type": "multipart/form-data",
+        // "Content-Type": "multipart/form-data",
         authorization: `Bearer ${auth.getToken()}`,
       },
     },

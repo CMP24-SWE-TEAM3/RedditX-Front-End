@@ -138,9 +138,11 @@ const FlairInfo = ({
     if (isNew) {
       ctx.AddHandler(false);
       const obj = {
-        text: text,
+        flairText: text,
         flairTextColor: color,
         flairBackGround: background,
+        flairModOnly: true,
+        flairAllowUserEdits: true,
       };
       AddFlair(fetchData, obj, auth, "ali");
       // console.log(Community, isLoading);

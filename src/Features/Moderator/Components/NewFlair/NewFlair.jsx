@@ -136,8 +136,8 @@ const NewFlair = () => {
               {flairList.flairs &&
                 flairList.flairs.map((item, index) => (
                   <Draggable
-                    key={item.id}
-                    draggableId={item.id}
+                    key={item._id}
+                    draggableId={item._id}
                     index={index}
                     isDragDisabled={!ctx.Reorder}
                   >

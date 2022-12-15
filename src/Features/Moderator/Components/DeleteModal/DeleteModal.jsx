@@ -22,7 +22,7 @@ const DeleteModal = ({ ShowModal, setShowModal, id }) => {
     setShowModal(false);
     console.log(id);
     const obj = {
-      id: id,
+      _id: id,
     };
     DeleteFlair(fetchData, obj, auth);
     if (!isLoading) {
