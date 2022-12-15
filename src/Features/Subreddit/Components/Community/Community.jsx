@@ -47,6 +47,7 @@ import {
   const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
 
   
+    
   useEffect(() => {
     setIsJoined(isJoined);
   }, [isJoined]); 

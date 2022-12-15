@@ -10,7 +10,7 @@ const getSubreddit = async (fetchData, comm ,auth) => {
     axiosInstance: axios,
     method: "GET",
     // url: "http://localhost:8000/Community/",
-    url: `/api/info?id=${comm}`,
+    url: `/api/r/info?id=${comm}`,
     requestConfig: {
       headers: {
         "Content-Language": "en-US",

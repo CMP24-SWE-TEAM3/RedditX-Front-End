@@ -4,6 +4,9 @@ import lightTheme from "Theme/lightTheme";
 import { BrowserRouter as Router } from "react-router-dom";
 import { SubRedditProvider } from "Features/Subreddit/Contexts/SubRedditProvider";
 import { SubRedditIDProvider } from "./Contexts/SubRedditIDProvider";
+import { IsModeratorProvider } from "Features/Subreddit/Contexts/IsModeratorProvider";
+import { IsBannedProvider } from "Features/Subreddit/Contexts/IsBannedProvider";
+import { IsMutedProvider } from "Features/Subreddit/Contexts/IsMutedProvider";
 
 const theme = { ...defaultTheme, ...lightTheme };
 
@@ -12,7 +15,13 @@ const SubredditTestingComponent = ({ children }) => {
     <Router>
       <ThemeProvider theme={theme}>
         <SubRedditProvider>
-          <SubRedditIDProvider>{children}</SubRedditIDProvider>
+          <SubRedditIDProvider>
+            <IsModeratorProvider>
+              <IsBannedProvider>
+                <IsMutedProvider>{children}</IsMutedProvider>
+              </IsBannedProvider>
+            </IsModeratorProvider>
+          </SubRedditIDProvider>
         </SubRedditProvider>
       </ThemeProvider>
     </Router>
