@@ -1,5 +1,5 @@
 // imports
-import React, { useState } from "react";
+import React from "react";
 import HotButton from "Components/HotButton/HotButton";
 import { Container } from "./PopularPosts.styled";
 import NewButton from "Components/NewButton/NewButton";
@@ -7,33 +7,23 @@ import TopButton from "Components/TopButton/TopButton";
 import DotButton from "Components/DotButton/DotButton";
 import ChooseDate from "Components/ChooseDate/ChooseDate";
 import BestButton from "Components/BestButton/BestButton";
-import { Navigate, Route, Routes, NavLink } from "react-router-dom";
-import HomePage from "Pages/HomePage/HomePage";
+import { useLocation } from "react-router-dom";
 
 /**
  * Component that displays a list of posts from a category list view
  * @returns {React.Component}
  */
 const PopularPost = () => {
-  const [showDate, setShowDate] = useState(true);
-  const [clickedBtn, setClickedBtn] = useState("1");
-  const handleClicked = (event) => {
-    setClickedBtn(event.target.id);
-    // console.log(event.target.id);
-  };
+  const location = useLocation();
+  const url = location.pathname;
+  const top = url.split("/")[1];
   return (
     <Container>
-      <Routes>
-        <Route path="/:hot" element={<HomePage />} />
-        {/* <Route path="/hot" element={<Navigate to={"/hot"} />} /> */}
-        {/* <Route path="/new" element={<Navigate to={"/new"} />} /> */}
-        {/* <Route path="/top" element={<Navigate to={"/top"} />} /> */}
-      </Routes>
-      <BestButton handleClicked={handleClicked} clickedBtn={clickedBtn} />
-      <HotButton handleClicked={handleClicked} clickedBtn={clickedBtn} />
-      <NewButton handleClicked={handleClicked} clickedBtn={clickedBtn} />
-      <TopButton handleClicked={handleClicked} clickedBtn={clickedBtn} />
-      {showDate && <ChooseDate />}
+      <BestButton top={top} />
+      <HotButton />
+      <NewButton />
+      <TopButton />
+      {top && top === "top" && <ChooseDate />}
       <DotButton />
     </Container>
   );
