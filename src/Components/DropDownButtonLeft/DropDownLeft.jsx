@@ -63,15 +63,17 @@ const DropDownLeft = () => {
               <h6>Home</h6>
             </span>
           </div>
+        </div>
+        <div>
           <SideBar
             showButton={show}
             showSideBar={showSideBar}
             setShowSideBar={setShowSideBar}
           />
+          <span className={"down-form"}>
+            <GrFormDown />
+          </span>
         </div>
-        <span className={"down-form"}>
-          <GrFormDown />
-        </span>
       </Dropdown.Toggle>
       {<DropDownMenu dropdownMenuRef={dropdownMenuRef} show={show} />}
     </DropDownLeftStyled>

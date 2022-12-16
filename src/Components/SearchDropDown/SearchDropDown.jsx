@@ -1,13 +1,23 @@
 import Dropdown from "react-bootstrap/Dropdown";
-import React from "react";
-import { SearchDropDownStyled } from "./SearchDropDown.styled";
+import React, { useEffect } from "react";
+import {
+  SearchDropDownStyled,
+  HeaderName,
+  Arrow,
+  Description,
+  Footer,
+  Aside,
+  LinkSide,
+  Child,
+  SubChild,
+} from "./SearchDropDown.styled";
 import { Link } from "react-router-dom";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 import { IoIosLink } from "react-icons/io";
 import trendingSearch from "Services/trendingSearch";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
-import { useEffect } from "react";
+import { BASE_URL } from "API/axios";
 
 /**
  * Component that displays a dropdown with a search bar inputForm
@@ -20,46 +30,50 @@ const SearchDropDown = ({ show }) => {
 
   // Fetch trending posts
   const [trendingPostList, error, loading, fetchData] = useFetchFunction();
-  // useEffect(() => {
-  //   trendingSearch(fetchData,auth);
-  // }, []);
+  useEffect(() => {
+    console.log("trendingPostsss===>", trendingPostList);
+    trendingSearch(fetchData, auth);
+  }, []);
 
   return (
     <SearchDropDownStyled show={show} autoClose={"outside"}>
       <Dropdown.Header>trending today</Dropdown.Header>
-      {!loading &&
+      {trendingPostList &&
+        trendingPostList.length !== 0 &&
         trendingPostList.map((recentPost) => {
           return (
             <>
-              <Dropdown.Item eventKey={recentPost.id} disabled={false}>
-                <Link className={"content"}>
+              <Dropdown.Item eventKey={recentPost._id} disabled={false}>
+                <Link>
                   <div>
                     <div>
-                      <div className={"header-name"}>
-                        <span className={"arrow"}>
+                      <HeaderName>
+                        <Arrow>
                           <BsArrowUpRightCircle />
-                        </span>
+                        </Arrow>
                         {recentPost.title}
-                      </div>
-                      <div className={"description"}>
-                        {recentPost.description}
-                      </div>
+                      </HeaderName>
+                      <Description>{recentPost.description}</Description>
                     </div>
-                    <footer>
-                      <img src={recentPost.cover} alt={"img-category"} />
+                    <Footer>
+                      <img
+                        crossOrigin="anonymous"
+                        src={`${BASE_URL}/subreddits/files/${recentPost.srIcon}`}
+                        alt={"img-category"}
+                      />
                       <span>r/{recentPost.category} and more</span>
-                    </footer>
+                    </Footer>
                   </div>
-                  <aside>
-                    <div className={"link-side"}>
-                      <div>
-                        <span>
+                  <Aside>
+                    <LinkSide>
+                      <Child>
+                        <SubChild>
                           {" "}
                           <IoIosLink />
-                        </span>
-                      </div>
-                    </div>
-                  </aside>
+                        </SubChild>
+                      </Child>
+                    </LinkSide>
+                  </Aside>
                 </Link>
               </Dropdown.Item>
               <Dropdown.Divider />

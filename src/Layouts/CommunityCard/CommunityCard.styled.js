@@ -21,6 +21,7 @@ export const CommunityContainer = styled.div`
     color: ${({ theme }) => theme.color.baseButtonColor};
     left: 16px;
     position: absolute;
+    z-index: 1;
   }
 
   h2 a {
@@ -96,11 +97,30 @@ export const CoverCommunity = styled.div`
   position: relative;
   text-align: center;
   color: white;
-`;
-export const Filter = styled.div`
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0, transparent);
-  width: 100%;
-  height: 100%;
+
+  height: 80px;
+  background-position: 50%;
+  text-align: left;
+  background-repeat: no-repeat;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background: linear-gradient(
+      ${({ theme }) => theme.degree.gradient}deg,
+      rgba(0, 0, 0, 0.5) 0,
+      transparent
+    );
+    transition: 0.3s;
+  }
 `;
 export const CoverImg = styled.img`
   background-position: 50%;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
-export const TopBtn = styled.button`
+export const TopBtn = styled(NavLink)`
   display: inline-flex;
   position: relative;
   width: 68.66px;
@@ -12,12 +13,8 @@ export const TopBtn = styled.button`
   padding: 6px 8px;
   margin: auto 10px auto 3px;
   border-radius: 1.5em;
-  background-color: ${({ theme, clickedBtn }) =>
-    clickedBtn === "4"
-      ? theme.background.post_background
-      : theme.background.primary};
-  color: ${({ theme, clickedBtn }) =>
-    clickedBtn === "4" ? theme.btnColor.primary : theme.color.muted};
+  color: ${({ theme }) => theme.color.muted};
+  background-color: ${({ theme }) => theme.background.primary};
 
   :hover {
     background-color: ${({ theme }) => theme.background.muted};
@@ -25,6 +22,14 @@ export const TopBtn = styled.button`
   @media (max-width: 1010px) {
     display: none;
   }
+  &.active {
+    background-color: ${({ theme }) => theme.background.post_background};
+    color: ${({ theme }) => theme.btnColor.primary};
+    :hover {
+      background-color: ${({ theme }) => theme.background.muted};
+    }
+  }
+  text-decoration: none;
 `;
 
 export const Word = styled.span`
