@@ -43,7 +43,9 @@ const DropDownRightButton = ({ toggleMode }) => {
             />
           </div>
           <div className="user-name-container">
-            <span className="user-name">{auth.getUserName().substring(3)}</span>
+            <span className="user-name">
+              {auth.isLoggedIn() ? auth.getUserName().substring(3):" "}
+            </span>
             <span className="karma">Karma</span>
           </div>
         </div>
