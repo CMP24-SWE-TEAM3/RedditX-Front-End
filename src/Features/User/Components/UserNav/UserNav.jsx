@@ -7,12 +7,15 @@ import {
 import { BsThreeDots } from "react-icons/bs";
 import { Dropdown } from "react-bootstrap";
 import { NavLink, useLocation } from "react-router-dom";
+import { useIsMe } from "Features/User/Contexts/IsMeProvider";
 
 const UserNav = () => {
   const location = useLocation();
   const url = location.pathname;
   const urlArr = url.split("/");
   const active = urlArr[3];
+
+  const { isMe } = useIsMe();
 
   const DropNav = () => {
     return (
@@ -32,21 +35,25 @@ const UserNav = () => {
           <Dropdown.Item as={NavLink} to="comments" className="comments">
             comments
           </Dropdown.Item>
-          <Dropdown.Item as={NavLink} to="history" className="history">
-            history
-          </Dropdown.Item>
-          <Dropdown.Item as={NavLink} to="saved" className="saved">
-            saved
-          </Dropdown.Item>
-          <Dropdown.Item as={NavLink} to="hidden" className="hidden">
-            hidden
-          </Dropdown.Item>
-          <Dropdown.Item as={NavLink} to="upvoted" className="up-vote">
-            upvoted
-          </Dropdown.Item>
-          <Dropdown.Item as={NavLink} to="downvoted" className="down-vote">
-            downvoted
-          </Dropdown.Item>
+          {isMe && (
+            <>
+              <Dropdown.Item as={NavLink} to="history" className="history">
+                history
+              </Dropdown.Item>
+              <Dropdown.Item as={NavLink} to="saved" className="saved">
+                saved
+              </Dropdown.Item>
+              <Dropdown.Item as={NavLink} to="hidden" className="hidden">
+                hidden
+              </Dropdown.Item>
+              <Dropdown.Item as={NavLink} to="upvoted" className="up-vote">
+                upvoted
+              </Dropdown.Item>
+              <Dropdown.Item as={NavLink} to="downvoted" className="down-vote">
+                downvoted
+              </Dropdown.Item>
+            </>
+          )}
         </Dropdown.Menu>
       </DotsDropdown>
     );
@@ -64,21 +71,25 @@ const UserNav = () => {
         <NavItem to="comments" className="comments">
           comments
         </NavItem>
-        <NavItem to="history" className="history">
-          history
-        </NavItem>
-        <NavItem to="saved" className="saved">
-          saved
-        </NavItem>
-        <NavItem to="hidden" className="hidden">
-          hidden
-        </NavItem>
-        <NavItem to="upvoted" className="up-vote">
-          upvoted
-        </NavItem>
-        <NavItem to="downvoted" className="down-vote">
-          downvoted
-        </NavItem>
+        {isMe && (
+          <>
+            <NavItem to="history" className="history">
+              history
+            </NavItem>
+            <NavItem to="saved" className="saved">
+              saved
+            </NavItem>
+            <NavItem to="hidden" className="hidden">
+              hidden
+            </NavItem>
+            <NavItem to="upvoted" className="up-vote">
+              upvoted
+            </NavItem>
+            <NavItem to="downvoted" className="down-vote">
+              downvoted
+            </NavItem>
+          </>
+        )}
         <DropNav />
       </InnerContainer>
     </Container>
