@@ -63,7 +63,9 @@ const DropDownRightButton = ({ toggleMode }) => {
             <SwitchButton />
           </span>
         </NavDropdown.Item>
-        <NavDropdown.Item onClick={() => navigate("/profile")}>
+        <NavDropdown.Item
+          onClick={() => navigate(`/user/${auth.getUserName()}`)}
+        >
           <span>Profile</span>
         </NavDropdown.Item>
         <NavDropdown.Item>

@@ -68,7 +68,7 @@ const HomePage = () => {
   useEffect(() => {
     getNewPosts(dataFetch, auth, 1, 50);
   }, []);
-  console.log("fetched posts", data);
+  // console.log("fetched posts", data);
 
   const [showPost, setShowPost] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
