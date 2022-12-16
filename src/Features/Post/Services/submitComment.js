@@ -8,9 +8,7 @@ import axios from "API/axios";
  * @param {Object} post - The post data
  */
 const submitComment = (dataFetch, comment, auth) => {
-  console.log("postpost", comment);
   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
-  console.log("postpost", comment);
   dataFetch({
     axiosInstance: axios,
     method: "post",

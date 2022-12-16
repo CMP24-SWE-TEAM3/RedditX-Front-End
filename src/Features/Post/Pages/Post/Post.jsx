@@ -37,7 +37,7 @@ const Post = ({ post, show, setShow }) => {
   const [text, setText] = useState("");
   // State for plain text of post
   const [htmlText, setHtmlText] = useState("");
-
+  const [commentRerendered, setCommentRerendered] = useState(false);
   const [data, error, isLoading, dataFetch] = useFetchFunction();
   const [comment, errorComment, isLoadingComment, dataSendComment] =
     useFetchFunction();
@@ -100,17 +100,18 @@ const Post = ({ post, show, setShow }) => {
       textHTML: "lorem ipsum dolor sit amet",
     },
   ];
-  console.log(post);
   useEffect(() => {
+    setCommentRerendered(false);
     if (post.communityID) getCommunityInfo(dataFetch, post.communityID, auth);
-    if (post && post.postComments) {
+    if (post && post.postComments && post.postComments.length > 0) {
+      setCommentRerendered(true);
       getCommunityInfo(
         dataFetchCommentList,
         post.postComments.map((comment) => "t1_" + comment).toString(),
         auth
       );
     }
-  }, []);
+  }, [post._id]);
   console.log("commentList", commentList);
   const handleSubmitComment = () => {
     submitComment(
@@ -123,6 +124,7 @@ const Post = ({ post, show, setShow }) => {
       auth
     );
   };
+  console.log("commentRerendered", commentRerendered);
   return (
     <Container show={show} onHide={setShow} backdrop={"true"}>
       <NavigationPost setHandleShowModal={setShow} />
@@ -143,7 +145,8 @@ const Post = ({ post, show, setShow }) => {
             />
           </DraftEditorContainer>
           <CommentsContainer>
-            {commentList &&
+            {commentRerendered &&
+              commentList &&
               commentList.things &&
               commentList.things.map((comment) => (
                 <Comment comment={comment} />
