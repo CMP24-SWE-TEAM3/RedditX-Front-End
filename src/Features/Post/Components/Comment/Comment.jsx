@@ -67,11 +67,11 @@ const Comment = ({ comment }) => {
         {expanded && <VerticalLine onClick={() => setExpanded(false)} />}
       </Left>
       <Right>
-        <Username>{comment.username}</Username>
+        <Username>{comment.authorId}</Username>
         <Time> . just now</Time>
         {expanded && (
           <>
-            <Body>{comment.body}</Body>
+            <Body>{comment.textHTML}</Body>
             {comment.replies &&
               comment.replies.map((comment) => <Comment comment={comment} />)}
             <Controls>

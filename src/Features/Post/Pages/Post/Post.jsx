@@ -22,6 +22,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import getCommunityInfo from "Features/Post/Services/getCommunityInfo";
 import CommunityCardPost from "Features/Post/Components/CommunityCardPost/CommunityCardPost";
+import submitComment from "Features/Post/Services/submitComment";
 /**
  *
  * Component that displays post with comments , likes displayed on show modal
@@ -34,62 +35,94 @@ const Post = ({ post, show, setShow }) => {
   const [files, setFiles] = useState([]);
   // State for text in draft editor
   const [text, setText] = useState("");
-  // State for handle show of modal window
+  // State for plain text of post
+  const [htmlText, setHtmlText] = useState("");
 
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
+  const [comment, errorComment, isLoadingComment, dataSendComment] =
+    useFetchFunction();
+  const [
+    commentList,
+    errorCommentList,
+    isLoadingCommentList,
+    dataFetchCommentList,
+  ] = useFetchFunction();
+  const auth = useAuth();
   const comments = [
     {
-      id: 1,
-      username: "u/username",
-      time: "1 hour ago",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit, voluptates laudantium mollitia aperiam nisi iste blanditiis amet doloribus dolorum libero exercitationem pariatur unde nostrum. Ab voluptatum architecto quis inventore.",
+      _id: 1,
+      authorId: "u/username",
+      createdAt: "1 hour ago",
+      textHTML:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit, voluptates laudantium mollitia aperiam nisi iste blanditiis amet doloribus dolorum libero exercitationem pariatur unde nostrum. Ab voluptatum architecto quis inventore.",
       replies: [
         {
-          id: 1,
-          username: "u/username",
-          time: "1 hour ago",
-          body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit, voluptates laudantium mollitia aperiam nisi iste blanditiis amet doloribus dolorum libero exercitationem pariatur unde nostrum. Ab voluptatum architecto quis inventore.",
+          _id: 1,
+          authorId: "u/username",
+          createdAt: "1 hour ago",
+          textHTML:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit, voluptates laudantium mollitia aperiam nisi iste blanditiis amet doloribus dolorum libero exercitationem pariatur unde nostrum. Ab voluptatum architecto quis inventore.",
           replies: [
             {
-              id: 1,
-              username: "u/username",
-              time: "1 hour ago",
-              body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit, voluptates laudantium mollitia aperiam nisi iste blanditiis amet doloribus dolorum libero exercitationem pariatur unde nostrum. Ab voluptatum architecto quis inventore.",
+              _id: 1,
+              authorId: "u/username",
+              createdAt: "1 hour ago",
+              textHTML:
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit, voluptates laudantium mollitia aperiam nisi iste blanditiis amet doloribus dolorum libero exercitationem pariatur unde nostrum. Ab voluptatum architecto quis inventore.",
             },
           ],
         },
         {
-          id: 1,
-          username: "u/username",
-          time: "1 hour ago",
-          body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit, voluptates laudantium mollitia aperiam nisi iste blanditiis amet doloribus dolorum libero exercitationem pariatur unde nostrum. Ab voluptatum architecto quis inventore.",
+          _id: 1,
+          authorId: "u/username",
+          createdAt: "1 hour ago",
+          textHTML:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit, voluptates laudantium mollitia aperiam nisi iste blanditiis amet doloribus dolorum libero exercitationem pariatur unde nostrum. Ab voluptatum architecto quis inventore.",
         },
         {
-          id: 1,
-          username: "u/username",
-          time: "1 hour ago",
-          body: "lorem ipsum dolor sit amet",
+          _id: 1,
+          authorId: "u/username",
+          createdAt: "1 hour ago",
+          textHTML: "lorem ipsum dolor sit amet",
         },
         {
-          id: 1,
-          username: "u/username",
-          time: "1 hour ago",
-          body: "lorem ipsum dolor sit amet",
+          _id: 1,
+          authorId: "u/username",
+          createdAt: "1 hour ago",
+          textHTML: "lorem ipsum dolor sit amet",
         },
       ],
     },
     {
-      id: 1,
-      username: "u/username",
-      time: "1 hour ago",
-      body: "lorem ipsum dolor sit amet",
+      _id: 1,
+      authorId: "u/username",
+      createdAt: "1 hour ago",
+      textHTML: "lorem ipsum dolor sit amet",
     },
   ];
-  console.log("postpost", post);
-  const [data, error, isLoading, dataFetch] = useFetchFunction();
-  const auth = useAuth();
+  console.log(post);
   useEffect(() => {
-    getCommunityInfo(dataFetch, "submitDestination", auth);
+    if (post.communityID) getCommunityInfo(dataFetch, post.communityID, auth);
+    if (post && post.postComments) {
+      getCommunityInfo(
+        dataFetchCommentList,
+        post.postComments.map((comment) => "t1_" + comment).toString(),
+        auth
+      );
+    }
   }, []);
+
+  const handleSubmitComment = () => {
+    submitComment(
+      dataSendComment,
+      {
+        postID: post._id,
+        textHTML: htmlText,
+        textJSON: text,
+      },
+      auth
+    );
+  };
   return (
     <Container show={show} onHide={setShow} backdrop={"true"}>
       <NavigationPost setHandleShowModal={setShow} />
@@ -105,12 +138,16 @@ const Post = ({ post, show, setShow }) => {
               setFiles={setFiles}
               text={text}
               setText={setText}
+              setTextHTML={setHtmlText}
+              submitComment={handleSubmitComment}
             />
           </DraftEditorContainer>
           <CommentsContainer>
-            {comments.map((comment) => (
-              <Comment comment={comment} />
-            ))}
+            {commentList &&
+              commentList.things &&
+              commentList.things.map((comment) => (
+                <Comment comment={comment} />
+              ))}
           </CommentsContainer>
         </PostContent>
         <AsidePost>
