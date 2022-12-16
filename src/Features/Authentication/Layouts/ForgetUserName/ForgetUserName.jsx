@@ -190,31 +190,19 @@ const ForgetUserName = () => {
 
         <br></br>
         <ButtonsContainer>
-          {!isLoading && !finishedLoading && (
-            <Button
-              id="reset-button"
-              page={true}
-              disabled={!validEmail || !notRobot}
-              valid={validEmail && notRobot}
-              type="submit"
-              onClick={() => {
-                setWantSubmit(true);
-              }}
-            >
-              EMAIL ME
-            </Button>
-          )}
-
-          {isLoading && (
-            <Button page={true} disabled valid={true} type="submit">
-              <LoadingSpinner></LoadingSpinner>
-            </Button>
-          )}
-          {!isLoading && finishedLoading && (
-            <Button page={true} disabled valid={true} type="submit">
-              <Checked></Checked>
-            </Button>
-          )}
+          <Button
+            id="reset-button"
+            page={true}
+            disabled={!validEmail || !notRobot}
+            valid={validEmail && notRobot}
+            type="submit"
+            onClick={() => {
+              setWantSubmit(true);
+            }}
+          >
+            {!isLoading && <span>EMAIL ME</span>}
+            {isLoading && <LoadingSpinner />}
+          </Button>
         </ButtonsContainer>
 
         {emailSent && (

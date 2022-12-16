@@ -151,7 +151,7 @@ const LogInPageCom = () => {
         setFinishedLoading(true);
         auth.login(data);
         navigate("/");
-      }
+      } 
     }
   }, [data]);
 
@@ -271,9 +271,9 @@ const LogInPageCom = () => {
                 Username must be between 3 and 20 characters
               </ErrorParagraph>
 
-              {error && (
+              {error && !isLoading && (
                 <ErrorParagraph id="username-error" valid={!error}>
-                  {error}
+                  {error} 
                 </ErrorParagraph>
               )}
 
