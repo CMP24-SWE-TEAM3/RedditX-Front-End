@@ -73,8 +73,8 @@ const FlairInfo = ({
   const [Black, setBlack] = useState(true);
   const [DisSave, setDisSave] = useState(false);
   const [PickColor, setPickColor] = useState(background);
-  const [Count, setCount] = useState(64 - text.trim().length);
-  console.log(text.trim().length);
+  const [Count, setCount] = useState(64 - text.length);
+  console.log(text.length);
 
   /**
    * function to handle change of color
@@ -164,7 +164,7 @@ const FlairInfo = ({
     }
   }, []);
   useEffect(() => {
-    setCount(64 - text.trim().length);
+    setCount(64 - text.length);
   }, [text]);
   console.log(Count);
   const onDiscard = () => {
@@ -198,22 +198,16 @@ const FlairInfo = ({
                     type="text"
                     value={text}
                     onChange={(e) => {
-                      if (
-                        Count > 0 &&
-                        e.target.value.trim().length > text.trim().length
-                      ) {
+                      if (Count > 0 && e.target.value.length > text.length) {
                         setTextState(e.target.value);
                         setCount(Count - 1);
                         setDisSave(false);
                       }
-                      if (
-                        Count <= 64 &&
-                        e.target.value.trim().length < text.trim().length
-                      ) {
+                      if (Count <= 64 && e.target.value.length < text.length) {
                         setTextState(e.target.value);
                         setCount(Count + 1);
                       }
-                      if (e.target.value.trim().length === 0) {
+                      if (e.target.value.length === 0) {
                         setDisSave(true);
                       }
                     }}

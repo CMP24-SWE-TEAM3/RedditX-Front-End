@@ -2,7 +2,9 @@ import SafeContext from "Features/Search/Contexts/SafeSearchContext/Safe-context
 import NotFound from "../NotFound/NotFound";
 import PostItem from "../Post/Post";
 import { ContainerPostsList } from "./PostsList.styled";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import Post from "Features/Post/Pages/Post/Post";
+
 /**
  * Component that contains the Postslist component and the PostslistItems.
  *
@@ -12,6 +14,11 @@ import { useContext } from "react";
  * @returns {React.Component}
  */
 const PostsList = ({ type, PostList }) => {
+  const [showPost, setShowPost] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
+  const handleRecentPosts = () => {
+    // localStorage.setItem("RecentPosts", JSON.stringify(recentPost));
+  };
   // console.log(PostList.results);
   const ctx = useContext(SafeContext);
   if (PostList.results) {
@@ -29,8 +36,19 @@ const PostsList = ({ type, PostList }) => {
           <div className="Sub-List">
             {PostsNumber !== 0 &&
               filteredPostList.map((post) => (
-                <PostItem post={post} key={post._id} />
+                <div
+                  onClick={() => {
+                    setShowPost(true);
+                    setSelectedPost(post);
+                    // handleRecentPosts();
+                  }}
+                >
+                  <PostItem post={post} key={post._id} />
+                </div>
               ))}
+            {selectedPost && (
+              <Post post={selectedPost} show={showPost} setShow={setShowPost} />
+            )}
             {PostsNumber === 0 && <NotFound />}
           </div>
         </div>

@@ -7,9 +7,10 @@ import {
   OuterContainer,
 } from "./Communities.styled";
 
-const Communities = ({ CommunityList, CommunitiesSub2 }) => {
-  if (CommunityList.results) {
+const Communities = ({ CommunityList, communityListSub }) => {
+  if (CommunityList.results && communityListSub) {
     console.log(CommunityList);
+    const CommunitiesSub2 = communityListSub.communities;
     const communitiesNumber = CommunityList.results.length;
     return (
       <OuterContainer>
@@ -17,7 +18,9 @@ const Communities = ({ CommunityList, CommunitiesSub2 }) => {
         <Container>
           <InnerContainer>
             {/* <CommunityItem /> */}
-            {communitiesNumber !== 0 &&
+            {CommunityList &&
+              communityListSub &&
+              communitiesNumber !== 0 &&
               CommunityList.results.map((Community) => (
                 <CommunityItem
                   communityIcon={Community.icon}
@@ -27,7 +30,7 @@ const Communities = ({ CommunityList, CommunitiesSub2 }) => {
                   membersCount={Community.membersCnt}
                   communityName={Community._id}
                   isJoined={CommunitiesSub2.find((element) => {
-                    return element.id === Community._id;
+                    return element._id === Community._id;
                   })}
                 />
               ))}
