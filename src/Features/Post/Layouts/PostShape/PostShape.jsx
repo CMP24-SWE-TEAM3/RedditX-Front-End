@@ -14,14 +14,18 @@ const PostShape = ({ fullPost, post }) => {
   const [makeHidden, setMakeHidden] = useState(false);
 
   return (
-    <Container fullPost={fullPost}>
-      <VotingBar number={post.votesCount} />
-      <ContentContainer>
-        <PostPublisher fullPost={fullPost} post={post} />
-        <PostContent post={post} />
-        <PostFooter post={post} />
-      </ContentContainer>
-    </Container>
+    <>
+      {!makeHidden && (
+        <Container fullPost={fullPost}>
+          <VotingBar number={post.votesCount} />
+          <ContentContainer>
+            <PostPublisher fullPost={fullPost} post={post} />
+            <PostContent post={post} />
+            <PostFooter post={post} setMakeHidden={setMakeHidden} />
+          </ContentContainer>
+        </Container>
+      )}
+    </>
   );
 };
 

@@ -100,6 +100,7 @@ const Post = ({ post, show, setShow }) => {
       textHTML: "lorem ipsum dolor sit amet",
     },
   ];
+  console.log("post", post);
   useEffect(() => {
     setCommentRerendered(false);
     if (post.communityID) getCommunityInfo(dataFetch, post.communityID, auth);

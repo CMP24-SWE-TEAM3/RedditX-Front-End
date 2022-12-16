@@ -12,6 +12,7 @@ import { hidePost } from "Features/Post/Services/postActions";
 import useFetchFunction from "Hooks/useFetchFunction";
 
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import submitSpam from "Features/Post/Services/submitSpam";
 
 /**
  * PostFooter Component that is in the side of Post
@@ -25,6 +26,27 @@ const PostFooter = ({ post, setMakeHidden }) => {
    */
   const [data, error, isLoading, dataFetch] = useFetchFunction();
 
+  const handleHide = () => {
+    setMakeHidden(true);
+    hidePost(
+      dataFetch,
+      {
+        linkID: `t3_${post._id}`,
+      },
+      auth.getToken()
+    );
+  };
+  const handleSpam = () => {
+    submitSpam(
+      dataFetch,
+      {
+        linkID: `t3_${post._id}`,
+        spamText: "I found that this content is showing violence",
+        spamType: "violent content",
+      },
+      auth
+    );
+  };
   return (
     <Container>
       <Comment onClick={(event) => {}}>
@@ -63,23 +85,12 @@ const PostFooter = ({ post, setMakeHidden }) => {
 
           <MyDropdown.Menu>
             <MyDropdown.Item href="#">
-              <span
-                onClick={() => {
-                  setMakeHidden(true);
-                  hidePost(
-                    dataFetch,
-                    {
-                      linkID: post._id,
-                    },
-                    auth.getToken()
-                  );
-                }}
-              >
+              <span onClick={handleHide}>
                 <BiHide /> Hide
               </span>
             </MyDropdown.Item>
             <MyDropdown.Item href="#">
-              <span>
+              <span onClick={handleSpam}>
                 <FiFlag /> Report
               </span>
             </MyDropdown.Item>
