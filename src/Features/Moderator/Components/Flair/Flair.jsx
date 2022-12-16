@@ -44,7 +44,7 @@ const Flair = ({ text, color, background, isNew, innerRef, id, ...rest }) => {
       ctx.EditHandler(true);
     }
   }, []);
-  console.log(id);
+  // console.log(id);
   return (
     <>
       {ShowModal && (
@@ -81,7 +81,7 @@ const Flair = ({ text, color, background, isNew, innerRef, id, ...rest }) => {
               disabled={Edit}
               onClick={() => {
                 setShowModal(true);
-                console.log("show");
+                // console.log("show");
               }}
               title="delete"
             >
