@@ -65,10 +65,10 @@ const Navigation = ({
                   <PopularButton />
                   <Span>Popular</Span>
                 </Nav.Link>
-                <Nav.Link>
+                {/* <Nav.Link>
                   <CoinButton />
                   <Span>Coin</Span>
-                </Nav.Link>
+                </Nav.Link> */}
                 {/* <Nav.Link>
               <StyledSeperator />
             </Nav.Link> */}
@@ -76,10 +76,10 @@ const Navigation = ({
                   <Moderator />
                   <Span>Moderator</Span>
                 </Nav.Link>
-                <Nav.Link>
+                {/* <Nav.Link>
                   <ChatButton />
                   <Span>Chat</Span>
-                </Nav.Link>
+                </Nav.Link> */}
                 <Nav.Link>
                   <NotificationButton />
                   <Span>Notification</Span>

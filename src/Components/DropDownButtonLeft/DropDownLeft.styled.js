@@ -7,9 +7,9 @@ export const DropDownLeftStyled = styled(Dropdown)`
     margin-block-start: 0.67em;
     margin-block-end: 0.67em;
     color: ${({ theme }) => theme.color.primary};
-    @media only screen and (max-width: 990px) {
+    /* @media only screen and (max-width: 990px) {
       display: none;
-    }
+    } */
   }
 
   .home-ico {
@@ -44,6 +44,7 @@ export const DropDownLeftStyled = styled(Dropdown)`
     border-radius: 4px 4px 0 0;
     border-color: ${({ theme }) => theme.lineColor.primary};
     display: flex;
+    justify-content: flex-start;
   }
 
   a:hover {
@@ -59,8 +60,8 @@ export const DropDownLeftStyled = styled(Dropdown)`
       }
     }
 
-    @media (max-width: 890px) {
+    /* @media (max-width: 890px) {
       display: none;
-    }
+    } */
   }
 `;
