@@ -111,7 +111,7 @@ const Post = ({ post, show, setShow }) => {
       );
     }
   }, []);
-
+  console.log("commentList", commentList);
   const handleSubmitComment = () => {
     submitComment(
       dataSendComment,

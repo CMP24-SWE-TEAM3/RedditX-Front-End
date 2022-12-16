@@ -20,15 +20,30 @@ import { FaRegCommentAlt } from "react-icons/fa";
 import { BsThreeDots } from "react-icons/bs";
 
 // Import hooks
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CommentDraftEditor from "../CommentDarftEditor/CommentDarftEditor";
+import getCommunityInfo from "Features/Post/Services/getCommunityInfo";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import useFetchFunction from "Hooks/useFetchFunction";
+import submitReply from "Features/Post/Services/submitReply";
 const Comment = ({ comment }) => {
-  const initialVotes = 0;
+  const initialVotes = comment.votesCount;
+  const [files, setFiles] = useState([]);
+  const [text, setText] = useState("");
+  const [htmlText, setHtmlText] = useState("");
   const [expanded, setExpanded] = useState(true);
-  const [votes, setVotes] = useState(0);
+  const [votes, setVotes] = useState(comment.votesCount);
   const [upVoted, setUpVoted] = useState(false);
   const [downVoted, setDownVoted] = useState(false);
   const [openReply, setOpenReply] = useState(false);
+  const auth = useAuth();
+  const [
+    repliesList,
+    errorRepliesList,
+    isLoadingRepliesList,
+    dataFetchRepliesList,
+  ] = useFetchFunction();
+  const [reply, errorReply, isLoadingReply, dataSendReply] = useFetchFunction();
   const upVote = () => {
     if (upVoted) {
       setVotes(initialVotes);
@@ -51,6 +66,27 @@ const Comment = ({ comment }) => {
     setDownVoted(true);
     setUpVoted(false);
   };
+  const handleSubmitReply = () => {
+    submitReply(
+      dataSendReply,
+      {
+        commentID: comment._id,
+        textHTML: htmlText,
+        textJSON: text,
+      },
+      auth
+    );
+  };
+  useEffect(() => {
+    if (comment && comment.replies) {
+      getCommunityInfo(
+        dataFetchRepliesList,
+        comment.replies.map((comment) => "t1_" + comment).toString(),
+        auth
+      );
+    }
+  }, []);
+  console.log("repliesList", repliesList);
   return (
     <Container>
       <Left>
@@ -67,13 +103,14 @@ const Comment = ({ comment }) => {
         {expanded && <VerticalLine onClick={() => setExpanded(false)} />}
       </Left>
       <Right>
-        <Username>{comment.authorId}</Username>
+        <Username>{comment.authorId.substring(3)}</Username>
         <Time> . just now</Time>
         {expanded && (
           <>
             <Body>{comment.textHTML}</Body>
-            {comment.replies &&
-              comment.replies.map((comment) => <Comment comment={comment} />)}
+            {!isLoadingRepliesList &&
+              repliesList.things &&
+              repliesList.things.map((reply) => <Comment comment={reply} />)}
             <Controls>
               <UpvoteIcon clicked={upVoted} onClick={upVote} size={25} />
               <VotesCount> {votes} </VotesCount>
@@ -87,7 +124,14 @@ const Comment = ({ comment }) => {
             {openReply && (
               <Left>
                 <VerticalLine />
-                <CommentDraftEditor />
+                <CommentDraftEditor
+                  files={files}
+                  setFiles={setFiles}
+                  text={text}
+                  setText={setText}
+                  setTextHTML={setHtmlText}
+                  submitComment={handleSubmitReply}
+                />
               </Left>
             )}
           </>
