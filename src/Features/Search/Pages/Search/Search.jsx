@@ -84,7 +84,7 @@ const Search = () => {
       fetchPosts(fetch, auth, ctx.word);
       fetchComments(fetchComment, auth, ctx.word);
     }
-    fetchCommunities(fetchCommunity, auth, ctx.word);
+    fetchCommunities(fetchCommunity, auth, "");
     fetchPeople(FB, auth, ctx.word);
     // fetchSubbcomm(reloadSubCommunities, auth);
     getCommunitiesList(fetchData, auth);
