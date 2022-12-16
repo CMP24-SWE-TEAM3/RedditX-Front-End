@@ -12,7 +12,7 @@ import ProfilePostButton from "Components/ProfilePostButton/ProfilePostButton";
  */
 const CreatePost = () => {
   return (
-    <Container >
+    <Container>
       <ProfilePostButton />
       <Post />
       <ImageButton />

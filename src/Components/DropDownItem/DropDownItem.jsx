@@ -37,7 +37,7 @@ const DropDownItem = ({ dropDownItemRef, setDisplayMenu }) => {
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                navigate(`subreddit/${community._id}`);
+                navigate(`/subreddit/${community._id}`);
               }}
             >{`r/${community._id.substring(3)}`}</Dropdown.Item>
           );

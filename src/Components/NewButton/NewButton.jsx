@@ -1,21 +1,21 @@
 // imports
 import React from "react";
 import { MdOutlineWbSunny } from "react-icons/md";
-import { NewBtn, Word, NavLinkBtn } from "./NewButton.styled";
+import { NewBtn, Word } from "./NewButton.styled";
 
 /**
  * Component that directs to New posts
  *
  * @returns {React.Component}
  */
-const NewButton = ({ clickedBtn, handleClicked }) => {
+const NewButton = () => {
   return (
-    <NewBtn key={3} id={"3"} onClick={handleClicked} clickedBtn={clickedBtn}>
-      <Word id={"3"}>
+    <NewBtn to="new" exact>
+      <Word>
         {" "}
-        <MdOutlineWbSunny id={"3"} size={21} />
+        <MdOutlineWbSunny size={21} />
       </Word>
-      <Word id={"3"}>New</Word>
+      <Word>New</Word>
     </NewBtn>
   );
 };
