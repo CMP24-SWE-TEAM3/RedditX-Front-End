@@ -13,6 +13,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
 
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import submitSpam from "Features/Post/Services/submitSpam";
+import submitDelete from "Features/Post/Services/submitDelete";
 
 /**
  * PostFooter Component that is in the side of Post
@@ -43,6 +44,16 @@ const PostFooter = ({ post, setMakeHidden }) => {
         linkID: `t3_${post._id}`,
         spamText: "I found that this content is showing violence",
         spamType: "violent content",
+      },
+      auth
+    );
+  };
+  const handleDelete = () => {
+    setMakeHidden(true);
+    submitDelete(
+      dataFetch,
+      {
+        linkID: post._id,
       },
       auth
     );
@@ -94,6 +105,13 @@ const PostFooter = ({ post, setMakeHidden }) => {
                 <FiFlag /> Report
               </span>
             </MyDropdown.Item>
+            {post.userID._id === auth.getUserName() && (
+              <MyDropdown.Item href="#">
+                <span onClick={handleDelete}>
+                  <FiFlag /> Delete
+                </span>
+              </MyDropdown.Item>
+            )}
           </MyDropdown.Menu>
         </MyDropdown>
       </Comment>

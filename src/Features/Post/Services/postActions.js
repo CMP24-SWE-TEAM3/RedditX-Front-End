@@ -24,7 +24,6 @@ export const giveVote = (dataFetch, objectData, token) => {
           data: objectData,
           headers: {
             "Content-Language": "en-US",
-            "Content-Type": "multipart/form-data",
             authorization: `bearer ${token}`,
           },
         },

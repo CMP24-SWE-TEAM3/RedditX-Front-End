@@ -17,7 +17,7 @@ const PostShape = ({ fullPost, post }) => {
     <>
       {!makeHidden && (
         <Container fullPost={fullPost}>
-          <VotingBar number={post.votesCount} />
+          <VotingBar number={post.votesCount} id={post._id} />
           <ContentContainer>
             <PostPublisher fullPost={fullPost} post={post} />
             <PostContent post={post} />
