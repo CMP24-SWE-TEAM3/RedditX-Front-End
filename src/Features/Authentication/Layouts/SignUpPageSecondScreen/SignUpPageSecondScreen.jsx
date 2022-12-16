@@ -291,7 +291,7 @@ const SignUpPageSecondScreen = ({
 
                 {error && (
                   <ErrorParagraph valid={!error}>
-                    username is taken
+                    {error}
                   </ErrorParagraph>
                 )}
                 {/* {!availableUserName && (

@@ -179,7 +179,7 @@ const ForgetUserNameModal = ({
 
           <form onSubmit={handleSubmit}>
             <FormInput
-            data-testid="email"
+              data-testid="email"
               id="email"
               valid={validEmail}
               initialFocus={initialFocus}
@@ -196,7 +196,11 @@ const ForgetUserNameModal = ({
             />
 
             {/* Show error message if the email is not valid and the user made a focus on the it's input field */}
-            <ErrorParagraph data-testid="email-error" id="emailError" valid={validEmail || initialFocus}>
+            <ErrorParagraph
+              data-testid="email-error"
+              id="emailError"
+              valid={validEmail || initialFocus}
+            >
               {/* {errMsg} */}
               Please enter an email address to continue
             </ErrorParagraph>
@@ -208,28 +212,17 @@ const ForgetUserNameModal = ({
             )}
 
             <ButtonsContainer>
-              {!isLoading && !finishedLoading && (
-                <Button
-                  disabled={!validEmail || !notRobot}
-                  valid={validEmail && notRobot}
-                  type="submit"
-                  onClick={() => {
-                    setWantSubmit(true);
-                  }}
-                >
-                  Email me
-                </Button>
-              )}
-              {isLoading && (
-                <Button disabled valid={true} type="submit">
-                  <LoadingSpinner></LoadingSpinner>
-                </Button>
-              )}
-              {!isLoading && finishedLoading && (
-                <Button disabled valid={true} type="submit">
-                  <Checked></Checked>
-                </Button>
-              )}
+              <Button
+                disabled={!validEmail || !notRobot}
+                valid={validEmail && notRobot}
+                type="submit"
+                onClick={() => {
+                  setWantSubmit(true);
+                }}
+              >
+                {!isLoading && <span>Email me</span>}
+                {isLoading && <LoadingSpinner />}
+              </Button>
             </ButtonsContainer>
 
             {emailSent && !error && (

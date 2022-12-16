@@ -17,6 +17,8 @@ import { useParams } from "react-router-dom";
 
 import useFetchFunction from "Hooks/useFetchFunction";
 
+import { useNavigate } from "react-router-dom";
+
 import {
   AuthContainer,
   ButtonsContainer,
@@ -40,6 +42,7 @@ const defaultFormFields = {
  */
 
 const NewPasswordPageCom = () => {
+  const navigate = useNavigate();
   const { token } = useParams();
 
   const [data, error, isLoading, dataFetch] = useFetchFunction();
@@ -207,30 +210,18 @@ const NewPasswordPageCom = () => {
           </ErrorParagraph>
 
           <ButtonsContainer>
-            {!isLoading && !finishedLoading && (
-              <Button
-                page={true}
-                disabled={!validPassword || !validConfirmPassword}
-                valid={validPassword && validConfirmPassword}
-                type="submit"
-                onClick={() => {
-                  setWantSubmit(true);
-                }}
-              >
-                SET PASSWORD
-              </Button>
-            )}
-
-            {isLoading && (
-              <Button page={true} disabled valid={true} type="submit">
-                <LoadingSpinner></LoadingSpinner>
-              </Button>
-            )}
-            {!isLoading && finishedLoading && (
-              <Button page={true} disabled valid={true} type="submit">
-                <Checked></Checked>
-              </Button>
-            )}
+            <Button
+              page={true}
+              disabled={!validPassword || !validConfirmPassword}
+              valid={validPassword && validConfirmPassword}
+              type="submit"
+              onClick={() => {
+                setWantSubmit(true);
+              }}
+            >
+              {!isLoading && <span> SET PASSWORD</span>}
+              {isLoading && <LoadingSpinner />}
+            </Button>
           </ButtonsContainer>
           <br></br>
 
@@ -243,8 +234,20 @@ const NewPasswordPageCom = () => {
           <br></br>
           <br></br>
           <Forget>
-            <span onClick={() => {}}>LOG IN</span>{" "}
-            <span onClick={() => {}}>{" . "}SIGN UP</span>{" "}
+            <span
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              LOG IN
+            </span>{" "}
+            <span
+              onClick={() => {
+                navigate("/register");
+              }}
+            >
+              {" . "}SIGN UP
+            </span>{" "}
           </Forget>
         </form>
       </AuthContainer>
