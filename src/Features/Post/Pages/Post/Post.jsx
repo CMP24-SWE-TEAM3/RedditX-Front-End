@@ -133,7 +133,10 @@ const Post = ({ post, show, setShow }) => {
         <PostContent>
           <PostShape post={post} fullPost={true} />
           <UserNameContainer>
-            Comment as <UserName>{auth.getUserName().substring(3)}</UserName>
+            Comment as{" "}
+            <UserName>
+              {auth.isLoggedIn() && auth.getUserName().substring(3)}
+            </UserName>
           </UserNameContainer>
           <DraftEditorContainer>
             <CommentDraftEditor
