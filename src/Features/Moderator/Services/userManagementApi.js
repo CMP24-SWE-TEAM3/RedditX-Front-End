@@ -1,5 +1,6 @@
 import axios from "API/axios";
 
+
 /**
  * Function to get the moderators of subreddit
  * @param {Function} dataFetch Coming from useFetchFunction custom hook
@@ -9,21 +10,28 @@ import axios from "API/axios";
 export const getModerators = (dataFetch, subredditName, token) => {
   //let searchSubredditName = "t5_" + subredditName;
   let finalUrl = "/api/r/" + subredditName + "/about/moderators";
-  if (subredditName?.length > 0) {
-    dataFetch({
-      axiosInstance: axios,
-      method: "get",
-      url: finalUrl,
+  if (
+    dataFetch !== undefined &&
+    subredditName !== undefined &&
+    token !== undefined
+  ) {
+    if (typeof subredditName === "string" && typeof token === "string") {
+      dataFetch({
+        axiosInstance: axios,
+        method: "get",
+        url: finalUrl,
 
-      requestConfig: {
-        headers: {
-          "Content-Language": "en-US",
-          Authorization: `Bearer ${token}`,
+        requestConfig: {
+          headers: {
+            "Content-Language": "en-US",
+            Authorization: `Bearer ${token}`,
+          },
         },
-      },
-    });
+      });
 
-    return true;
+      return true;
+    }
+    return false;
   }
 
   return false;
@@ -38,20 +46,27 @@ export const getModerators = (dataFetch, subredditName, token) => {
 export const getApproved = (dataFetch, subredditName, token) => {
   //let searchSubredditName = "t5_" + subredditName;
   let finalUrl = "/api/r/" + subredditName + "/about/members";
-  if (subredditName?.length > 0) {
-    dataFetch({
-      axiosInstance: axios,
-      method: "get",
-      url: finalUrl,
-      requestConfig: {
-        headers: {
-          "Content-Language": "en-US",
-          Authorization: `Bearer ${token}`,
+  if (
+    dataFetch !== undefined &&
+    subredditName !== undefined &&
+    token !== undefined
+  ) {
+    if (typeof subredditName === "string" && typeof token === "string") {
+      dataFetch({
+        axiosInstance: axios,
+        method: "get",
+        url: finalUrl,
+        requestConfig: {
+          headers: {
+            "Content-Language": "en-US",
+            Authorization: `Bearer ${token}`,
+          },
         },
-      },
-    });
+      });
 
-    return true;
+      return true;
+    }
+    return false;
   }
 
   return false;
@@ -65,14 +80,16 @@ export const getApproved = (dataFetch, subredditName, token) => {
  */
 export const inviteModerator = (dataFetch, objectData, token) => {
   if (
-    objectData.userID !== undefined &&
-    objectData.type !== undefined &&
-    objectData.communityID !== undefined
+    objectData?.userID !== undefined &&
+    objectData?.type !== undefined &&
+    objectData?.communityID !== undefined &&
+    token !== undefined
   ) {
     if (
       objectData.type === "moderator_invite" &&
       typeof objectData.userID === "string" &&
-      typeof objectData.communityID === "string"
+      typeof objectData.communityID === "string" &&
+      typeof token === "string"
     ) {
       dataFetch({
         axiosInstance: axios,
@@ -101,9 +118,18 @@ export const inviteModerator = (dataFetch, objectData, token) => {
  * @param {String} token The token of the user
  */
 export const leaveModerator = (dataFetch, objectData, subredditName, token) => {
-  if (objectData.userID !== undefined && subredditName?.length > 0) {
-    if (typeof objectData.userID === "string") {
-      let finalUrl = "/api/r/" + subredditName + "/leave-moderator";
+  if (
+    objectData?.userID !== undefined &&
+    dataFetch !== undefined &&
+    subredditName !== undefined &&
+    token !== undefined
+  ) {
+    let finalUrl = "/api/r/" + subredditName + "/leave-moderator";
+    if (
+      typeof objectData.userID === "string" &&
+      typeof subredditName === "string" &&
+      typeof token === "string"
+    ) {
       dataFetch({
         axiosInstance: axios,
         method: "POST",
@@ -131,8 +157,17 @@ export const leaveModerator = (dataFetch, objectData, subredditName, token) => {
  * @param {String} token The token of the user
  */
 export const kickModerator = (dataFetch, objectData, subredditName, token) => {
-  if (objectData.userID !== undefined && subredditName?.length > 0) {
-    if (typeof objectData.userID === "string") {
+  if (
+    objectData?.userID !== undefined &&
+    dataFetch !== undefined &&
+    subredditName !== undefined &&
+    token !== undefined
+  ) {
+    if (
+      typeof objectData.userID === "string" &&
+      typeof subredditName === "string" &&
+      typeof token === "string"
+    ) {
       let finalUrl = "/api/r/" + subredditName + "/kick-moderator";
       dataFetch({
         axiosInstance: axios,
@@ -161,8 +196,17 @@ export const kickModerator = (dataFetch, objectData, subredditName, token) => {
  * @param {String} token The token of the user
  */
 export const kickMember = (dataFetch, objectData, subredditName, token) => {
-  if (objectData.userID !== undefined && subredditName?.length > 0) {
-    if (typeof objectData.userID === "string") {
+  if (
+    objectData?.userID !== undefined &&
+    dataFetch !== undefined &&
+    subredditName !== undefined &&
+    token !== undefined
+  ) {
+    if (
+      typeof objectData.userID === "string" &&
+      typeof subredditName === "string" &&
+      typeof token === "string"
+    ) {
       let finalUrl = "/api/r/" + subredditName + "/kick-member";
       dataFetch({
         axiosInstance: axios,
@@ -191,22 +235,29 @@ export const kickMember = (dataFetch, objectData, subredditName, token) => {
  */
 export const getBanned = (dataFetch, subredditName, token) => {
   //let searchSubredditName = "t5_" + subredditName;
-  let finalUrl = "/api/r/" + subredditName + "/about/banned";
-  if (subredditName?.length > 0) {
-    dataFetch({
-      axiosInstance: axios,
-      method: "get",
-      url: finalUrl,
+  if (
+    dataFetch !== undefined &&
+    subredditName !== undefined &&
+    token !== undefined
+  ) {
+    let finalUrl = "/api/r/" + subredditName + "/about/banned";
+    if (typeof subredditName === "string" && typeof token === "string") {
+      dataFetch({
+        axiosInstance: axios,
+        method: "get",
+        url: finalUrl,
 
-      requestConfig: {
-        headers: {
-          "Content-Language": "en-US",
-          Authorization: `Bearer ${token}`,
+        requestConfig: {
+          headers: {
+            "Content-Language": "en-US",
+            Authorization: `Bearer ${token}`,
+          },
         },
-      },
-    });
+      });
 
-    return true;
+      return true;
+    }
+    return false;
   }
 
   return false;
@@ -221,21 +272,28 @@ export const getBanned = (dataFetch, subredditName, token) => {
 export const getMutted = (dataFetch, subredditName, token) => {
   //let searchSubredditName = "t5_" + subredditName;
   let finalUrl = "/api/r/" + subredditName + "/about/muted";
-  if (subredditName?.length > 0) {
-    dataFetch({
-      axiosInstance: axios,
-      method: "get",
-      url: finalUrl,
+  if (
+    dataFetch !== undefined &&
+    subredditName !== undefined &&
+    token !== undefined
+  ) {
+    if (typeof subredditName === "string" && typeof token === "string") {
+      dataFetch({
+        axiosInstance: axios,
+        method: "get",
+        url: finalUrl,
 
-      requestConfig: {
-        headers: {
-          "Content-Language": "en-US",
-          Authorization: `Bearer ${token}`,
+        requestConfig: {
+          headers: {
+            "Content-Language": "en-US",
+            Authorization: `Bearer ${token}`,
+          },
         },
-      },
-    });
+      });
 
-    return true;
+      return true;
+    }
+    return false;
   }
 
   return false;
@@ -250,12 +308,16 @@ export const getMutted = (dataFetch, subredditName, token) => {
  */
 export const banUser = (dataFetch, objectData, subredditName, token) => {
   if (
-    objectData.userID !== undefined &&
-    objectData.operation !== undefined &&
-    subredditName?.length > 0
+    objectData?.userID !== undefined &&
+    objectData?.operation !== undefined &&
+    dataFetch !== undefined &&
+    subredditName !== undefined &&
+    token !== undefined
   ) {
     if (
       typeof objectData.userID === "string" &&
+      typeof subredditName === "string" &&
+      typeof token === "string" &&
       (objectData.operation === "ban" || objectData.operation === "unban")
     ) {
       let finalUrl = "/api/r/" + subredditName + "/about/banned";
@@ -287,12 +349,16 @@ export const banUser = (dataFetch, objectData, subredditName, token) => {
  */
 export const muteUser = (dataFetch, objectData, subredditName, token) => {
   if (
-    objectData.userID !== undefined &&
-    objectData.operation !== undefined &&
-    subredditName?.length > 0
+    objectData?.userID !== undefined &&
+    objectData?.operation !== undefined &&
+    dataFetch !== undefined &&
+    subredditName !== undefined &&
+    token !== undefined
   ) {
     if (
       typeof objectData.userID === "string" &&
+      typeof subredditName === "string" &&
+      typeof token === "string" &&
       (objectData.operation === "mute" || objectData.operation === "unmute")
     ) {
       let finalUrl = "/api/r/" + subredditName + "/about/muted";

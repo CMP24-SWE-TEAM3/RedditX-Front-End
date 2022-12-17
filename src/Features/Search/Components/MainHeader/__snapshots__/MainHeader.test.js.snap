@@ -6,8 +6,11 @@ exports[`People Main Header this is a test for Main Header 1`] = `
     theme={
       Object {
         "arrowColor": Object {
+          "arrow": "#aaa",
           "down": "#EA2700",
+          "downvoted": "#9494ff",
           "up": "#46D160",
+          "upvoted": "#ff8b60",
         },
         "background": Object {
           "active": "#F6F7F8",
@@ -63,6 +66,7 @@ exports[`People Main Header this is a test for Main Header 1`] = `
           "btnHover": "#3293db",
           "danger": "#ea0027",
           "errorColor": "#ea0027",
+          "frame": "#0079d3",
           "gray": "#7c7c7c",
           "initialBorderColor": "#e6e6e5",
           "initialLabelColor": "#aeadad",
@@ -73,6 +77,7 @@ exports[`People Main Header this is a test for Main Header 1`] = `
           "mainInputBackGroundColor": "#f6f7f8",
           "mainInputColor": "black",
           "muted": "#7c7c7c",
+          "mutedLink": "#80bce9",
           "orHeaderColor": "#93908e",
           "orange": "#d93a00",
           "pink": "#fb133a",

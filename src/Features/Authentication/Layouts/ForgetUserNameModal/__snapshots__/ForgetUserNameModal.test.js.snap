@@ -47,7 +47,9 @@ exports[` 1`] = `
           type="submit"
           valid={false}
         >
-          Email me
+          <span>
+            Email me
+          </span>
         </Button>
       </styled.div>
       <styled.div
