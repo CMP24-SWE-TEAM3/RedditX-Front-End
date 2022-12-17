@@ -1,23 +1,23 @@
 import axios from "API/axios";
 
 /**
- * Function to issue a block user
+ * Function to issue mute user
  * @param {object} auth Context object coming from useAuth custom Hook
  * @param {Function} fetchFunction Coming from useFetchFunction custom hook
  * @param {object} dataObject The Data to be Sent in the POST request
  */
-const blockUser = (fetchData, auth, dataObject) => {
+const muteUser = (fetchData, auth, communityName, dataObject) => {
   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
 
-  if (dataObject.action !== undefined && dataObject.userID !== undefined) {
+  if (dataObject.userID !== undefined && dataObject.operation !== undefined) {
     if (
-      typeof dataObject.action === "boolean" &&
-      typeof dataObject.userID === "string"
+      typeof dataObject.userID === "string" &&
+      typeof dataObject.operation === "string"
     ) {
       fetchData({
         axiosInstance: axios,
         method: "post",
-        url: "/api/user/block-user",
+        url: `/api/r/${communityName}/about/muted`,
         requestConfig: {
           data: dataObject,
           headers: {
@@ -30,4 +30,4 @@ const blockUser = (fetchData, auth, dataObject) => {
   }
 };
 
-export default blockUser;
+export default muteUser;

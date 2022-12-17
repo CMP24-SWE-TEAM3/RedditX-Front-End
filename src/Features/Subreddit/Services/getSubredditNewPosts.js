@@ -5,8 +5,7 @@ import axios from "API/axios";
  *
  * @param {Function} fetchData - The function to make the request
  */
-const getSubredditNewPosts = async (fetchData, comm ,auth) => {
-  console.log(comm);
+const getSubredditNewPosts = async (fetchData, comm, auth) => {
   fetchData({
     axiosInstance: axios,
     method: "GET",
