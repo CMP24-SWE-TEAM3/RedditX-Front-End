@@ -80,13 +80,21 @@ const Post = ({ post, show, setShow }) => {
     setEditPost(true);
   };
   return (
-    <Container show={show} onHide={setShow} backdrop={"true"}>
+    <Container
+      show={show}
+      onHide={() => {
+        setShow(false);
+        setEditPost(false);
+      }}
+      backdrop={"true"}
+    >
       <NavigationPost setHandleShowModal={setShow} />
       <ModalBodyContainer>
         <PostContent>
           <PostShape
             handlePostEdit={handlePostEdit}
             editPost={editPost}
+            setEditPost={setEditPost}
             post={post}
             fullPost={true}
           />

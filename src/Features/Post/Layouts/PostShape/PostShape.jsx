@@ -25,7 +25,14 @@ import { useEffect } from "react";
  * PostShape Component
  * @returns {React.Component} PostShape component
  */
-const PostShape = ({ fullPost, post, fullWidth, handlePostEdit, editPost }) => {
+const PostShape = ({
+  fullPost,
+  post,
+  fullWidth,
+  handlePostEdit,
+  editPost,
+  setEditPost,
+}) => {
   const [makeHidden, setMakeHidden] = useState(false);
   const [editPostText, setEditPostText] = useState("");
   const [editPostHtmlText, setEditPostHtmlText] = useState("");
@@ -72,7 +79,9 @@ const PostShape = ({ fullPost, post, fullWidth, handlePostEdit, editPost }) => {
                 </DraftEditorContainer>
 
                 <ButtonsContainer>
-                  <CancelButton>Cancel</CancelButton>
+                  <CancelButton onClick={() => setEditPost(false)}>
+                    Cancel
+                  </CancelButton>
                   <SubmitButton onClick={editPostHandler}>
                     {!isLoading && "Save"} {isLoading && <Spinner />}
                   </SubmitButton>

@@ -10,7 +10,6 @@ import axios from "API/axios";
 const submitEditPost = (dataFetch, post, auth) => {
   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
 
-  console.log("submitPost", auth.getToken());
   dataFetch({
     axiosInstance: axios,
     method: "patch",
@@ -20,7 +19,6 @@ const submitEditPost = (dataFetch, post, auth) => {
       data: post,
       headers: {
         "Content-Language": "en-US",
-        "Content-Type": "multipart/form-data",
         authorization: `Bearer ${auth.getToken()}`,
       },
     },
