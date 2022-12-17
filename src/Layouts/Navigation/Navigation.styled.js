@@ -14,9 +14,13 @@ export const StyledNavbar = styled(Navbar)`
   margin-bottom: 0 !important;
   height: 49px;
   background: ${({ theme }) => theme.background.primary};
-  .navbar-toggler.collapsed {
+  .navbar-toggler.collapsed:f {
     height: 74% !important;
+    &:focus {
+      box-shadow: none !important;
+    }
   }
+
   @media (min-width: 992px) {
     max-width: 100%;
   }
@@ -85,9 +89,6 @@ export const NavBarContent = styled(Navbar)`
   --bs-navbar-toggler-border-color: unset !important;
   .navbar-toggler {
     background: white;
-  }
-  .navbar-toggler:focus {
-    box-shadow: none;
   }
 
   @media (min-width: 992px) {

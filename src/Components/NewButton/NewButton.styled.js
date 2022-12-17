@@ -15,9 +15,6 @@ export const NewBtn = styled(NavLink)`
   &:hover {
     background-color: ${(props) => props.theme.background.muted};
   }
-  @media (max-width: 1010px) {
-    display: none;
-  }
   &.active {
     .un-fill {
       display: none;
@@ -49,7 +46,4 @@ export const Word = styled.span`
   white-space: normal;
   text-align: left;
   padding-top: 6px;
-`;
-export const NavLinkBtn = styled(NavLink)`
-  text-decoration: none;
 `;

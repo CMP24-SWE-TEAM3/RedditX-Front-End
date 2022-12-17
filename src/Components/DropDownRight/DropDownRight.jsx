@@ -44,7 +44,9 @@ const DropDownRightButton = ({ toggleMode }) => {
           </div>
           <div className="user-name-container">
             <span className="user-name">
-              {auth.isLoggedIn() ? auth.getUserName().substring(3):" "}
+              {auth.isLoggedIn()
+                ? auth.getUserName().substring(3)
+                : "KarmaUser"}
             </span>
             <span className="karma">Karma</span>
           </div>
@@ -66,7 +68,9 @@ const DropDownRightButton = ({ toggleMode }) => {
           </span>
         </NavDropdown.Item>
         <NavDropdown.Item
-          onClick={() => navigate(`/user/${auth.getUserName()}`)}
+          onClick={() =>
+            navigate(`/user/${auth.isLoggedIn() ? auth.getUserName() : ""}`)
+          }
         >
           <span>Profile</span>
         </NavDropdown.Item>

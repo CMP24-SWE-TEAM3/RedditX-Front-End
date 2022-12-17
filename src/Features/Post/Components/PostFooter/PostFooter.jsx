@@ -105,7 +105,7 @@ const PostFooter = ({ post, setMakeHidden }) => {
                 <FiFlag /> Report
               </span>
             </MyDropdown.Item>
-            {post.userID._id === auth.getUserName() && (
+            {auth.isLoggedIn() && post.userID._id === auth.getUserName() && (
               <MyDropdown.Item href="#">
                 <span onClick={handleDelete}>
                   <FiFlag /> Delete
