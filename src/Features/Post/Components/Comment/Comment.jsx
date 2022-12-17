@@ -28,9 +28,12 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import submitReply from "Features/Post/Services/submitReply";
 import isJsonString from "Features/Post/Utils/isJsonString";
 import RichTextPostBody from "../RichTextPostBody/RichTextPostBody";
+import getUser from "Features/Post/Services/getUser";
+import { BASE_URL } from "API/axios";
+import { useNavigate } from "react-router-dom";
+import Moment from "react-moment";
 
 const Comment = ({ comment }) => {
-  console.log("comment = ", comment);
   const initialVotes = comment.votesCount;
   const [files, setFiles] = useState([]);
   const [text, setText] = useState("");
@@ -48,6 +51,12 @@ const Comment = ({ comment }) => {
     dataFetchRepliesList,
   ] = useFetchFunction();
   const [reply, errorReply, isLoadingReply, dataSendReply] = useFetchFunction();
+  const [
+    commentorData,
+    errorCommentorData,
+    isLoadingCommentorData,
+    dataSendUserData,
+  ] = useFetchFunction();
   const upVote = () => {
     if (upVoted) {
       setVotes(initialVotes);
@@ -89,8 +98,12 @@ const Comment = ({ comment }) => {
         auth
       );
     }
+    if (comment && comment.authorId) {
+      getUser(dataSendUserData, comment.authorId, auth);
+    }
   }, []);
-  console.log("repliesList", repliesList);
+  const navigate = useNavigate();
+  console.log("comment.createdAt", comment.createdAt);
   return (
     <Container>
       <Left>
@@ -98,8 +111,11 @@ const Comment = ({ comment }) => {
           <ExpandIcon size={15} onClick={() => setExpanded(true)} />
         )}
         <Image
+          crossOrigin="anonymous"
           src={
-            "https://styles.redditmedia.com/t5_75g7xm/styles/profileIcon_snoo6422fdc6-0631-4a70-a9f3-36b423763138-headshot.png?width=256&height=256&crop=256:256,smart&s=e3461623660c1eeee9606f040eb23479ad255815"
+            commentorData && commentorData.about && commentorData.about.user
+              ? `${BASE_URL}/users/files/${commentorData.about.user.avatar}`
+              : "https://styles.redditmedia.com/t5_75g7xm/styles/profileIcon_snoo6422fdc6-0631-4a70-a9f3-36b423763138-headshot.png?width=256&height=256&crop=256:256,smart&s=e3461623660c1eeee9606f040eb23479ad255815"
           }
           alt="user image"
         />
@@ -107,8 +123,16 @@ const Comment = ({ comment }) => {
         {expanded && <VerticalLine onClick={() => setExpanded(false)} />}
       </Left>
       <Right>
-        <Username>{comment.authorId.substring(3)}</Username>
-        <Time> . just now</Time>
+        <Username
+          onClick={(e) => {
+            navigate(`/user/${comment.authorId}/`);
+          }}
+        >
+          {comment.authorId.substring(3)}
+        </Username>
+        <Time>
+          . <Moment fromNow>{comment.createdAt}</Moment>
+        </Time>
         {expanded && (
           <>
             {!isJsonString(comment.textJSON) && <Body>{comment.textJSON}</Body>}

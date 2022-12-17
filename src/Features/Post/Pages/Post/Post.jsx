@@ -51,7 +51,6 @@ const Post = ({ post, show, setShow }) => {
     dataFetchCommentList,
   ] = useFetchFunction();
   const auth = useAuth();
-  console.log("post", post);
   useEffect(() => {
     setCommentRerendered(false);
     if (post.communityID) getCommunityInfo(dataFetch, post.communityID, auth);
@@ -64,7 +63,6 @@ const Post = ({ post, show, setShow }) => {
       );
     }
   }, [post._id]);
-  console.log("commentList", commentList);
   const handleSubmitComment = () => {
     submitComment(
       dataSendComment,

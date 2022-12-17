@@ -40,7 +40,6 @@ const PostShape = ({
   const [data, error, isLoading, dataFetch] = useFetchFunction();
   const navigate = useNavigate();
   const editPostHandler = () => {
-    console.log("editPostText");
     submitEditPost(
       dataFetch,
       {
