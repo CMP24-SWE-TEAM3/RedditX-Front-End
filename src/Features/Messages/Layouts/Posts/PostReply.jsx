@@ -36,6 +36,7 @@ const messagesData = [
 function PostReplay({replies}) {
   const [eachMessage, setEachMessage] = useState(messagesData);
   const Message = eachMessage.map((item) => {
+    if(!item.isDeleted) {
     return (
       <PostReplayItem
         changeMessage={setEachMessage}
@@ -50,7 +51,7 @@ function PostReplay({replies}) {
         block={item.block}
         key={item.id}
       />
-    );
+    );}
   });
   return (
     <EmbeddedPage>
