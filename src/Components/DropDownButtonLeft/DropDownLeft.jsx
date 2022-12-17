@@ -1,7 +1,13 @@
 // imports
 import React, { useEffect, useRef, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
-import { DropDownLeftStyled } from "./DropDownLeft.styled";
+import {
+  DropDownLeftStyled,
+  Icon,
+  Header,
+  DownForm,
+  DropContainer,
+} from "./DropDownLeft.styled";
 import { AiFillHome } from "react-icons/ai";
 import DropDownMenu from "Components/DropDownMenu/DropDownMenu";
 import CustomToggle from "Components/CustomToggle/CustomToggle";
@@ -54,25 +60,25 @@ const DropDownLeft = () => {
         onClick={handleToggle}
         ref={toggleDropdownRef}
       >
-        <div className={"all-drop"}>
-          <div className={"home-ico"}>
+        <DropContainer>
+          <Icon>
             <span>
               <AiFillHome />
             </span>
             <span>
-              <h6>Home</h6>
+              <Header>Home</Header>
             </span>
-          </div>
-        </div>
+          </Icon>
+        </DropContainer>
         <div>
           <SideBar
             showButton={show}
             showSideBar={showSideBar}
             setShowSideBar={setShowSideBar}
           />
-          <span className={"down-form"}>
+          <DownForm>
             <GrFormDown />
-          </span>
+          </DownForm>
         </div>
       </Dropdown.Toggle>
       {<DropDownMenu dropdownMenuRef={dropdownMenuRef} show={show} />}

@@ -44,14 +44,6 @@ export const StyledNavbar = styled(Navbar)`
     width: 15%;
     min-width: fit-content;
   }
-  /* .nav-link {
-    display: inherit;
-    align-items: center;
-  } */
-
-  /* .nav-dropdown .nav-link {
-    display: block !important;
-  } */
 `;
 
 export const Span = styled.span`
@@ -109,7 +101,6 @@ export const NavBarContent = styled(Navbar)`
 
 export const AppHeader = styled.header`
   background-color: ${({ theme }) => theme.canvas};
-  //min-height: 48vh;
   position: relative;
   display: flex;
   flex-direction: column;
