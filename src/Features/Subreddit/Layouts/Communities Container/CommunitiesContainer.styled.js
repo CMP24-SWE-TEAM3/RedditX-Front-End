@@ -46,7 +46,7 @@ export const CommunityHeader = styled.div`
   position: sticky;
   justify-content: space-between;
   padding: 0 16px;
-  top: 0;
+  top: 40px;
   z-index: 3;
 `;
 
