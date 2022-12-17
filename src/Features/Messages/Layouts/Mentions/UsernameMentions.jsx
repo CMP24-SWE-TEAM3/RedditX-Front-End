@@ -37,6 +37,7 @@ function UsernameMentions({mentions}) {
 
 
   const Message = eachMessage.map((item) => {
+    if(!item.isDeleted){
     return (
       <UsernameMentionItem
         changeMessage={setEachMessage}
@@ -51,7 +52,7 @@ function UsernameMentions({mentions}) {
         block={item.block}
         key={item.id}
       />
-    );
+    ); }
   });
   return ( 
     <EmbeddedPage>

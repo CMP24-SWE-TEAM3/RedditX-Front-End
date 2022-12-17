@@ -17,6 +17,8 @@ import {
   Error,
 } from "./SendMessage.styled";
 import { useState } from "react";
+import composeMessage from "../../Services/ComposeMessage";
+import useFetchFunction from "Hooks/useFetchFunction";
 
 /**
  * Component that contains Compose Message
@@ -25,6 +27,10 @@ import { useState } from "react";
  * @returns {React.Component}
  */
 function SendAMessage() {
+  const [composeRes, errorCompose, loadingCompose, fetchData] = useFetchFunction();
+  const [subjectErr, setSubjectErr] = useState(false);
+  const [messageErr, setMessageErr] = useState(false);
+  const [toErr, setToErr] = useState(false);
   const [formData, setFormData] = useState({
     from: "",
     to: "",
@@ -33,18 +39,60 @@ function SendAMessage() {
   });
   function handleChange(event) {
     const { from, to, subject, message } = event.target;
+
+    if(formData.to!=="" && toErr) {   //Input changed and we already have an error
+      setToErr(false);
+    }
+    if(formData.message!=="" && messageErr) {
+      setMessageErr(false);
+    }
+    if(formData.subject!=="" && subjectErr) {
+      setSubjectErr(false);
+    }
+
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
         [event.target.name]: event.target.value,
       };
     });
+
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
     event.target.reset();
-    console.log(formData);
+
+    //Check Each Error Type and increment errors [Errors should be 0 to submit]
+    let errors = 0;
+    if(formData.to==="") {
+      setToErr(true);
+      errors++;
+    }
+    if (formData.subject==="") {
+      setSubjectErr(true);
+      errors++;
+    }
+    if (formData.message==="") {
+      setMessageErr(true);
+      errors++;
+    }
+    if(errors===0) 
+    {
+      let dataObject = {
+        toID: `t3_${formData.to}`,
+        subject: formData.subject,
+        text: formData.message
+      };
+      composeMessage(fetchData, dataObject);
+      
+      //Clearing form on successfull submission
+      setFormData({from:""});
+      setFormData({to:""});
+      setFormData({subject:""});
+      setFormData({message:""});
+      console.log(formData);
+    }
   };
 
   return (
@@ -76,7 +124,7 @@ function SendAMessage() {
               <FieldDiv>
                 <Title>to
                   <TitleDescription>
-                    (username, or /r/name for that subreddit's moderators)
+                   (username, or /r/name for that subreddit's moderators)
                   </TitleDescription>
                 </Title>
                 
@@ -85,9 +133,8 @@ function SendAMessage() {
                   onChange={handleChange}
                   value={formData.to}
                   name="to"
-                  required
                 />
-                <Error className={formData.to !== "" ? "" : "active"}>
+                <Error className={toErr? "active" : ""}>
                   please enter a username
                 </Error>
               </FieldDiv>
@@ -100,9 +147,8 @@ function SendAMessage() {
                   onChange={handleChange}
                   value={formData.subject}
                   name="subject"
-                  required
                 />
-                <Error className={formData.subject !== "" ? "" : "active"}>
+                <Error className={subjectErr ? "active" : ""}>
                   please enter a subject
                 </Error>
               </FieldDiv>
@@ -116,9 +162,8 @@ function SendAMessage() {
                     onChange={handleChange}
                     value={formData.message}
                     name="message"
-                    required
                   />
-                  <Error className={formData.message !== "" ? "" : "active"}>
+                  <Error className={messageErr? "active" : ""}>
                     we need something here
                   </Error>
                 </MessageContainer>

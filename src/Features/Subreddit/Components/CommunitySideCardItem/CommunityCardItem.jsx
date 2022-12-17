@@ -5,6 +5,7 @@ CommunityIndex,
 Arrow,
 CommunityImg,
 TitleParagraph,
+EmptyImagePadding,
 } from "./CommunityCardItem.styled";
 
 /**
@@ -21,11 +22,15 @@ const CommunitySideCardItem = ({index, title, img}) => {
         <Container>
             <CommunityA to={`/subreddit/*`}>
                 <CommunityIndex>{index}</CommunityIndex>
-                <Arrow />
-                 <CommunityImg
+                <Arrow className={img? "": "push"}/>
+                {!img &&
+                <EmptyImagePadding />}
+
+                {img &&
+                <CommunityImg
                     crossOrigin="anonynmous"
                     src={`${BASE_URL}/subreddits/files/${img}`}
-                ></CommunityImg>
+                ></CommunityImg>}
                 <TitleParagraph>r/{title}</TitleParagraph> 
             </CommunityA>
         </Container>

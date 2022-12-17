@@ -69,6 +69,7 @@ function AllMessagesTypes({messages}) {
   const Message = eachMessage.map((item) => {
     switch (item.type) {
       case "usernameMention":
+        if(!item.delete) {
         return (
           <UsernameMentionItem
             changeMessage={setEachMessage}
@@ -83,9 +84,10 @@ function AllMessagesTypes({messages}) {
             block={item.block}
             key={item.id}
           />
-        );
+        );}
         break;
       case "postReply":
+        if(!item.delete) {
         return (
           <PostReplayItem
             changeMessage={setEachMessage}
@@ -100,7 +102,7 @@ function AllMessagesTypes({messages}) {
             block={item.block}
             key={item.id}
           />
-        );
+        );}
         break;
       default:
         if(!item.delete) {
