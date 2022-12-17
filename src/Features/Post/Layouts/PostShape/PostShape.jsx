@@ -10,13 +10,13 @@ import { useState } from "react";
  * PostShape Component
  * @returns {React.Component} PostShape component
  */
-const PostShape = ({ fullPost, post }) => {
+const PostShape = ({ fullPost, post,fullWidth }) => {
   const [makeHidden, setMakeHidden] = useState(false);
 
   return (
     <>
       {!makeHidden && (
-        <Container fullPost={fullPost}>
+        <Container fullWidth={fullWidth} fullPost={fullPost}>
           <VotingBar number={post.votesCount} id={post._id} />
           <ContentContainer>
             <PostPublisher fullPost={fullPost} post={post} />

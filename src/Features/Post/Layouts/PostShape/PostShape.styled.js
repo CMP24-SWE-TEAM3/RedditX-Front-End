@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   background-color: #cccccc2b;
   height: auto;
-  width: 650px;
+  width: ${({ fullWidth }) => (fullWidth ? "100%" : "650px")};
   max-width: 100%;
   margin: 0 auto;
   border-radius: 5px;

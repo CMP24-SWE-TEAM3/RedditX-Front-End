@@ -16,6 +16,7 @@ import {
 import { BASE_URL } from "API/axios";
 import RichTextPostBody from "../RichTextPostBody/RichTextPostBody";
 import { useEffect } from "react";
+import isJsonString from "Features/Post/Utils/isJsonString";
 /**
  * PostContent Component that is in the side of Post
  * @returns {React.Component} PostContent component
@@ -27,14 +28,7 @@ const PostContent = ({ post }) => {
     setIndex(selectedIndex);
   };
 
-  function isJsonString(str) {
-    try {
-      JSON.parse(str);
-    } catch (e) {
-      return false;
-    }
-    return true;
-  }
+
   return (
     <Container>
       <PostTitle>{post.title}</PostTitle>

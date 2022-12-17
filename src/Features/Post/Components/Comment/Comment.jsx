@@ -26,6 +26,9 @@ import getCommunityInfo from "Features/Post/Services/getCommunityInfo";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 import submitReply from "Features/Post/Services/submitReply";
+import isJsonString from "Features/Post/Utils/isJsonString";
+import RichTextPostBody from "../RichTextPostBody/RichTextPostBody";
+
 const Comment = ({ comment }) => {
   const initialVotes = comment.votesCount;
   const [files, setFiles] = useState([]);
@@ -107,7 +110,10 @@ const Comment = ({ comment }) => {
         <Time> . just now</Time>
         {expanded && (
           <>
-            <Body>{comment.textHTML}</Body>
+            {!isJsonString(comment.textJSON) && <Body>{comment.textJSON}</Body>}
+            {isJsonString(comment.textJSON) && (
+              <RichTextPostBody post={comment} />
+            )}
             {!isLoadingRepliesList &&
               repliesList.things &&
               repliesList.things.map((reply) => <Comment comment={reply} />)}
