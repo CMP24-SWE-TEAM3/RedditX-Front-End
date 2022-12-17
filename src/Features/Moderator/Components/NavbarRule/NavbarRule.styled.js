@@ -11,8 +11,14 @@ export const Container = styled.div`
   position: fixed;
   right: 0;
   z-index: 3;
+  @media (max-width: 568px) {
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 export const ReorderBtn = styled.button`
+  position: relative;
   font-family: Noto Sans, Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -40,6 +46,7 @@ export const ReorderBtn = styled.button`
   }
 `;
 export const AddRuleBtn = styled.button`
+  position: relative;
   font-family: Noto Sans, Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
