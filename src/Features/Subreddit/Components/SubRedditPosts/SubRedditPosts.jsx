@@ -8,9 +8,9 @@ import SubRedditNoPosts from "Features/Subreddit/Components/SubRedditNoPosts/Sub
 import PostShape from "Features/Post/Layouts/PostShape/PostShape";
 
 const SubRedditPosts = ({ type }) => {
-  const [pgNum, setPgNum] = useState(1);
-  const [p, setP] = useState([]);
-  const location = useLocation();
+  const [pgNum, setPgNum] = useState(1);   //Page Number
+  const [p, setP] = useState([]);          //Posts
+  const location = useLocation();     
   const queryParam = new URLSearchParams(location.search);
   const time = queryParam.get("t");
   const auth = useAuth();

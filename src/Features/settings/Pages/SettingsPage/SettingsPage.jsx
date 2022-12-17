@@ -70,6 +70,7 @@ const SettingsPage = () => {
                 <EmailsPage 
                   emailSubscribe = {data.prefs.user.emailUnsubscripeAll}
                   Request = {data.prefs.user.emailMessages}
+                  Followers = {data.prefs.user.enableFollowers}
                 />} />
               <Route
                 path="/settings"

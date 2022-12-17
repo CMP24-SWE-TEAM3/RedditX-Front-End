@@ -38,7 +38,7 @@ const EmailsPage = ({emailSubscribe, Followers, Request}) => {
     //To Be Done
     setFollowers((prev)=>!prev);
     let dataObject = {
-      emailUnsubscripeAll: e
+      enableFollowers: e
     };
     setToggledPrefs(fetchDataFollowers, dataObject, auth);
   }
