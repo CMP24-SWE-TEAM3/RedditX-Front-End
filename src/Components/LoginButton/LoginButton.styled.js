@@ -6,22 +6,23 @@ export const LoginStyled = styled(Button)`
   border: none !important;
   background-color: ${({ theme }) => theme.color.secondary};
   width: 120px;
-  // margin: 15px;
+  margin: 5px 10px 5px 10px;
   height: 32px;
-  padding:0 10px;
+  padding: 0 10px;
   &:hover {
-    background-color: ${({ theme }) => theme.background.hover_background_button_blue} !important;
+    background-color: ${({ theme }) =>
+      theme.background.hover_background_button_blue} !important;
     color: ${({ theme }) => theme.background.primary};
-    border:none !important;
+    border: none !important;
   }
   &:active {
     background-color: ${({ theme }) => theme.btnColor.primary} !important;
     color: ${({ theme }) => theme.background.primary} !important;
   }
-  :focus-visible{
+  :focus-visible {
     box-shadow: none;
     background: unset !important;
   }
 
-  font-weight:bold;
-`
+  font-weight: bold;
+`;
