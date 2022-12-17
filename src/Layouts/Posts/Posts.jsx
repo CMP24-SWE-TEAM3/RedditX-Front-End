@@ -8,7 +8,7 @@ import PostsList from "Components/PostsList/PostsList";
 // import TopCommunities from "Features/Search/Components/CommunityCard/TopCommunities";
 import { Cards, Layout, PostsPart } from "./Posts.styled";
 
-const Posts = ({ CommunityList, CommunitiesSub2, PostList }) => {
+const Posts = ({ CommunityList, communityListSub, PostList }) => {
   if (PostList.results && CommunityList) {
     return (
       <>
@@ -20,7 +20,7 @@ const Posts = ({ CommunityList, CommunitiesSub2, PostList }) => {
           <Layout>
             <TopCommunities
               CommunityList={CommunityList}
-              CommunitiesSub2={CommunitiesSub2}
+              communityListSub={communityListSub}
             />
           </Layout>
         </Cards>

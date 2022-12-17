@@ -1,5 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Container } from "./RecentPosts.styled";
+import {
+  Container,
+  Content,
+  HeadContainer,
+  Dots,
+  Cover,
+  CoverChild,
+  Description,
+  Details,
+  ClearBtn,
+  ImageContainer,
+} from "./RecentPosts.styled";
 import imagePost from "Assets/Images/cats.png";
 import { Link } from "react-router-dom";
 
@@ -30,45 +41,39 @@ const RecentPosts = () => {
       {showRecentPosts && (
         <Container id={"recent-post-container"}>
           <div>
-            <div className="head">
+            <HeadContainer>
               <div>Recent Posts</div>
-            </div>
+            </HeadContainer>
             {recentPostList.map((recentPost) => {
               return (
-                <div className="content" key={recentPost.id}>
-                  <div className="cover">
-                    <div className={"child-1"}>
+                <Content key={recentPost.id}>
+                  <Cover>
+                    <CoverChild>
                       <Link href={"https://i.redd.it/kfjabyn5tdy91.png"}>
-                        <div className={"post-img"}>
-                          <img src={imagePost} alt={"recent post img"} />
-                        </div>
+                        <ImageContainer>
+                          <img src={imagePost} alt="img" />
+                        </ImageContainer>
                       </Link>
-                    </div>
-                  </div>
+                    </CoverChild>
+                  </Cover>
 
-                  <div className="description">
+                  <Description>
                     <p>{recentPost.description}</p>
-                    <div className="details">
+                    <Details>
                       <div>
                         <span>{recentPost.points} points</span>
-                        <span className={"dots"}>
-                          {recentPost.comments} comments
-                        </span>
-                        <span className={"dots"}>{recentPost.hours}h</span>
+                        <Dots>{recentPost.comments} comments</Dots>
+                        <Dots>{recentPost.hours}h</Dots>
                       </div>
-                    </div>
-                  </div>
-                </div>
+                    </Details>
+                  </Description>
+                </Content>
               );
             })}
           </div>
-          <button
-            id={"recent-post-button"}
-            className={"but"}
-            onClick={deleteRecentPosts}
-          >
+          <ClearBtn id={"recent-post-button"} onClick={deleteRecentPosts}>
             Clear
-          </button>
+          </ClearBtn>
         </Container>
       )}
     </>

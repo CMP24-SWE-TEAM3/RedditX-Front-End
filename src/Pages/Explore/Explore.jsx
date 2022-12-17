@@ -16,6 +16,7 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useContext } from "react";
 import CategoryContext from "Contexts/CategoryContext/Category-context.js";
 import fetchPosts from "Features/Search/Services/fetchPosts.js";
+import getCommunitiesList from "Features/Post/Services/getCommunitiesList.js";
 const Explore = () => {
   const auth = useAuth();
   const [Active, setActive] = useState("Posts");
@@ -28,19 +29,28 @@ const Explore = () => {
     reloadSubCommunities,
   ] = useFetchFunction();
   const [PostList, error, loading, fetch] = useFetchFunction();
-  console.log(PostList);
+  // console.log(PostList);
+  // // Fetch communities
+  let [communityListSub, errorSub, isLoadingSub, fetchData] =
+    useFetchFunction();
 
+  // const auth = useAuth();
+  // useEffect(() => {
+  //   getCommunitiesList(fetchData, auth);
+  // }, []);
   const ctx = useContext(CategoryContext);
   const location = useLocation();
   const url = location.pathname;
   const top = url.split("/")[3];
-  console.log(top);
+  // console.log(top);
   useEffect(() => {
     ctx.CategoryHandler(top);
     fetchCommunities(fetchCommunity, auth, top);
-    fetchSubbcomm(reloadSubCommunities, auth);
+    // fetchSubbcomm(reloadSubCommunities, auth);
+    getCommunitiesList(fetchData, auth);
     fetchPosts(fetch, auth, top);
   }, [top]); // Only re-run the effect if count changes
+  console.log(communityListSub);
   return (
     <Container>
       <OuterContainer>
@@ -52,7 +62,7 @@ const Explore = () => {
               element={
                 <Posts
                   CommunityList={CommunityList}
-                  CommunitiesSub2={CommunitiesSub2}
+                  communityListSub={communityListSub}
                   PostList={PostList}
                 />
               }
@@ -62,7 +72,7 @@ const Explore = () => {
               element={
                 <Communities
                   CommunityList={CommunityList}
-                  CommunitiesSub2={CommunitiesSub2}
+                  communityListSub={communityListSub}
                 />
               }
             />

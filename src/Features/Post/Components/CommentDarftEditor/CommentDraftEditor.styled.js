@@ -91,3 +91,13 @@ export const StyledPopover = styled(Popover)`
 export const StyledLink = styled.a`
   color: ${({ theme }) => theme.color.link};
 `;
+
+export const SubmitButton = styled.button`
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 4px 8px;
+  border-radius: 9999px;
+  border: none;
+  background-color: ${({ theme }) => theme.color.secondary};
+  color: ${({ theme }) => theme.background.primary};
+`;

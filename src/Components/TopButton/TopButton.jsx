@@ -8,14 +8,14 @@ import { AiOutlineToTop } from "react-icons/ai";
  *
  * @returns {React.Component}
  */
-const TopButton = ({ clickedBtn, handleClicked }) => {
+const TopButton = () => {
   return (
-    <TopBtn key={4} id={"4"} clickedBtn={clickedBtn} onClick={handleClicked}>
-      <span id={"4"}>
+    <TopBtn to="top">
+      <span>
         {" "}
-        <AiOutlineToTop id={"4"} size={22} />
+        <AiOutlineToTop size={22} />
       </span>
-      <Word id={"4"}>Top</Word>
+      <Word>Top</Word>
     </TopBtn>
   );
 };

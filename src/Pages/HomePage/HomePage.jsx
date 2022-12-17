@@ -1,5 +1,5 @@
 // imports
-import React, { useState } from "react";
+import React from "react";
 import {
   Container,
   MainContainer,
@@ -20,62 +20,20 @@ import CreatePostSideBar from "Layouts/CreatePostSideBar/CreatePostSideBar";
 import Footer from "Layouts/Footer/Footer";
 import ScrollButton from "Components/ScrollButton/ScrollButton";
 import RecentPosts from "Layouts/RecentPosts/RecentPosts";
-import PostShape from "Features/Post/Layouts/PostShape/PostShape";
-import Post from "Features/Post/Pages/Post/Post";
 import useDocumentTitle from "Hooks/useDocumentTitle";
-import { useEffect } from "react";
-import getNewPosts from "Services/getNewPosts";
-import { useAuth } from "Features/Authentication/Contexts/Authentication";
-import useFetchFunction from "Hooks/useFetchFunction";
-import ChooseDate from "../../Components/ChooseDate/ChooseDate";
-import CollapsePost from "Features/Post/Layouts/CollapsePost/CollapsePost";
+// import PushNotification from "Components/PushNotification/PushNotification";
+import { Routes, Route } from "react-router-dom";
+import ShowPosts from "Layouts/ShowPosts/ShowPosts";
 
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
  *
  * @returns {React.Component} returns an instance of HomePage with a list of layouts created
  */
-let recentPost = [
-  {
-    id: "1",
-    description: "new news in CUFE",
-    points: "10",
-    comments: "4",
-    hours: "7",
-  },
-  {
-    id: "2",
-    description: "new news in reddit",
-    points: "9",
-    comments: "2",
-    hours: "11",
-  },
-  {
-    id: "3",
-    description: "announcements updated in reddit",
-    points: "5",
-    comments: "7",
-    hours: "1",
-  },
-];
 
 const HomePage = () => {
   // Change document title
   useDocumentTitle("Reddit - Dive into anything");
-  const [data, error, isLoading, dataFetch] = useFetchFunction();
-  const auth = useAuth();
-  useEffect(() => {
-    getNewPosts(dataFetch, auth, 1, 50);
-  }, []);
-  console.log("fetched posts", data);
-
-  const [showPost, setShowPost] = useState(false);
-  const [selectedPost, setSelectedPost] = useState(null);
-  // TODO: replace dummy data with post data
-  // handle recent posts to append and delete from local storage
-  const handleRecentPosts = () => {
-    localStorage.setItem("RecentPosts", JSON.stringify(recentPost));
-  };
   return (
     <AppContainer>
       <AppHeader>
@@ -85,29 +43,13 @@ const HomePage = () => {
             <ContentPost>
               <CreatePost />
               <PopularPosts />
-              <div>
-                {!isLoading &&
-                  data.posts &&
-                  data.posts.map((post) => (
-                    <div
-                      onClick={() => {
-                        setShowPost(true);
-                        setSelectedPost(post);
-                        handleRecentPosts();
-                      }}
-                    >
-                      <PostShape post={post} />
-                      <CollapsePost post={post} />
-                    </div>
-                  ))}
-              </div>
-              {selectedPost && (
-                <Post
-                  post={selectedPost}
-                  show={showPost}
-                  setShow={setShowPost}
-                />
-              )}
+              <Routes>
+                <Route path="" element={<ShowPosts type="best" />} />
+                <Route path="best" element={<ShowPosts type="best" />} />
+                <Route path="hot" element={<ShowPosts type="hot" />} />
+                <Route path="new" element={<ShowPosts type="new" />} />
+                <Route path="top" element={<ShowPosts type="top" />} />
+              </Routes>
             </ContentPost>
             <aside>
               <Sidebar>

@@ -66,6 +66,7 @@ import SettingsPage from "Features/settings/Pages/SettingsPage/SettingsPage";
 import Notifications from "Features/Notifications/Pages/Notifications/Notifications";
 import Explore from "Pages/Explore/Explore";
 import { CategoryContextProvider } from "Contexts/CategoryContext/Category-context";
+import PostPreview from "Features/Post/Pages/PostPreview/PostPreview";
 
 /**
  * The main app of our application it handles routing
@@ -135,7 +136,7 @@ function App() {
                   />
                   <Routes>
                     <Route
-                      path="/"
+                      path="/*"
                       element={
                         <>
                           <Navigation
@@ -261,20 +262,22 @@ function App() {
                     />
                     <Route path="*" element={<NotFound />} />
                     <Route
-                      path="post"
+                      path="post-preview/:postId"
                       element={
                         <>
-                          <Navigation
-                            toggleMode={handleToggleTheme}
-                            theme={JSON.parse(theme).id}
-                            modalShowLogIn={modalShowLogIn}
-                            setModalShowLogIn={setModalShowLogIn}
-                            modalShowSignUp={modalShowSignUp}
-                            setModalShowSignUp={setModalShowSignUp}
-                            modalAfterSignUp={modalAfterSignUp}
-                            setModalAfterSignUp={setModalAfterSignUp}
-                          />
-                          <Post />
+                          <RequireAuth>
+                            <Navigation
+                              toggleMode={handleToggleTheme}
+                              theme={JSON.parse(theme).id}
+                              modalShowLogIn={modalShowLogIn}
+                              setModalShowLogIn={setModalShowLogIn}
+                              modalShowSignUp={modalShowSignUp}
+                              setModalShowSignUp={setModalShowSignUp}
+                              modalAfterSignUp={modalAfterSignUp}
+                              setModalAfterSignUp={setModalAfterSignUp}
+                            />
+                            <PostPreview />
+                          </RequireAuth>
                         </>
                       }
                     />
@@ -282,17 +285,19 @@ function App() {
                       path="subreddit/:subredditId/moderator/:moderatorId/"
                       element={
                         <>
-                          <Navigation
-                            toggleMode={handleToggleTheme}
-                            theme={JSON.parse(theme).id}
-                            modalShowLogIn={modalShowLogIn}
-                            setModalShowLogIn={setModalShowLogIn}
-                            modalShowSignUp={modalShowSignUp}
-                            setModalShowSignUp={setModalShowSignUp}
-                            modalAfterSignUp={modalAfterSignUp}
-                            setModalAfterSignUp={setModalAfterSignUp}
-                          />
-                          <Moderator />
+                          <RequireAuth>
+                            <Navigation
+                              toggleMode={handleToggleTheme}
+                              theme={JSON.parse(theme).id}
+                              modalShowLogIn={modalShowLogIn}
+                              setModalShowLogIn={setModalShowLogIn}
+                              modalShowSignUp={modalShowSignUp}
+                              setModalShowSignUp={setModalShowSignUp}
+                              modalAfterSignUp={modalAfterSignUp}
+                              setModalAfterSignUp={setModalAfterSignUp}
+                            />
+                            <Moderator />
+                          </RequireAuth>
                         </>
                       }
                     />
@@ -300,17 +305,19 @@ function App() {
                       path="/user/:userId/*"
                       element={
                         <>
-                          <Navigation
-                            toggleMode={handleToggleTheme}
-                            theme={JSON.parse(theme).id}
-                            modalShowLogIn={modalShowLogIn}
-                            setModalShowLogIn={setModalShowLogIn}
-                            modalShowSignUp={modalShowSignUp}
-                            setModalShowSignUp={setModalShowSignUp}
-                            modalAfterSignUp={modalAfterSignUp}
-                            setModalAfterSignUp={setModalAfterSignUp}
-                          />
-                          <User />
+                          <RequireAuth>
+                            <Navigation
+                              toggleMode={handleToggleTheme}
+                              theme={JSON.parse(theme).id}
+                              modalShowLogIn={modalShowLogIn}
+                              setModalShowLogIn={setModalShowLogIn}
+                              modalShowSignUp={modalShowSignUp}
+                              setModalShowSignUp={setModalShowSignUp}
+                              modalAfterSignUp={modalAfterSignUp}
+                              setModalAfterSignUp={setModalAfterSignUp}
+                            />
+                            <User />
+                          </RequireAuth>
                         </>
                       }
                     />
@@ -318,17 +325,19 @@ function App() {
                       path="settings/*"
                       element={
                         <>
-                          <Navigation
-                            toggleMode={handleToggleTheme}
-                            theme={JSON.parse(theme).id}
-                            modalShowLogIn={modalShowLogIn}
-                            setModalShowLogIn={setModalShowLogIn}
-                            modalShowSignUp={modalShowSignUp}
-                            setModalShowSignUp={setModalShowSignUp}
-                            modalAfterSignUp={modalAfterSignUp}
-                            setModalAfterSignUp={setModalAfterSignUp}
-                          />
-                          <SettingsPage />
+                          <RequireAuth>
+                            <Navigation
+                              toggleMode={handleToggleTheme}
+                              theme={JSON.parse(theme).id}
+                              modalShowLogIn={modalShowLogIn}
+                              setModalShowLogIn={setModalShowLogIn}
+                              modalShowSignUp={modalShowSignUp}
+                              setModalShowSignUp={setModalShowSignUp}
+                              modalAfterSignUp={modalAfterSignUp}
+                              setModalAfterSignUp={setModalAfterSignUp}
+                            />
+                            <SettingsPage />
+                          </RequireAuth>
                         </>
                       }
                     />
@@ -354,17 +363,19 @@ function App() {
                       path="/notifications"
                       element={
                         <>
-                          <Navigation
-                            toggleMode={handleToggleTheme}
-                            theme={JSON.parse(theme).id}
-                            modalShowLogIn={modalShowLogIn}
-                            setModalShowLogIn={setModalShowLogIn}
-                            modalShowSignUp={modalShowSignUp}
-                            setModalShowSignUp={setModalShowSignUp}
-                            modalAfterSignUp={modalAfterSignUp}
-                            setModalAfterSignUp={setModalAfterSignUp}
-                          />
-                          <Notifications />
+                          <RequireAuth>
+                            <Navigation
+                              toggleMode={handleToggleTheme}
+                              theme={JSON.parse(theme).id}
+                              modalShowLogIn={modalShowLogIn}
+                              setModalShowLogIn={setModalShowLogIn}
+                              modalShowSignUp={modalShowSignUp}
+                              setModalShowSignUp={setModalShowSignUp}
+                              modalAfterSignUp={modalAfterSignUp}
+                              setModalAfterSignUp={setModalAfterSignUp}
+                            />
+                            <Notifications />
+                          </RequireAuth>
                         </>
                       }
                     />

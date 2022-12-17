@@ -1,7 +1,6 @@
 import {
   CommunityContainer,
   CoverCommunity,
-  Filter,
   RowBtn,
   SubBtn,
   ViewAllBtn,
@@ -41,20 +40,17 @@ const CommunityCard = () => {
     <CommunityContainer>
       {communityList.length !== 0 && (
         <CoverCommunity>
-          <Filter>
-            <CoverImg
-              crossOrigin="anonymous"
-              src={`${BASE_URL}/subreddits/files/${communityList.communities[0].banner}`}
-            />
-
-            <h2>
-              <Link href={"https://www.reddit.com/subreddits/leaderboard/"}>
-                Top
-                <span> Gaming </span>
-                Communities
-              </Link>
-            </h2>
-          </Filter>
+          <CoverImg
+            crossOrigin="anonymous"
+            src={`${BASE_URL}/subreddits/files/${communityList.communities[0].banner}`}
+          />
+          <h2>
+            <Link href={"https://www.reddit.com/subreddits/leaderboard/"}>
+              Top
+              <span> Gaming </span>
+              Communities
+            </Link>
+          </h2>
         </CoverCommunity>
       )}
       {communityList &&
@@ -65,9 +61,8 @@ const CommunityCard = () => {
               <CommunityCardItem
                 key={community._id}
                 srIcon={community.icon}
-                communityUserName={community._id.substring(3, 15)}
+                communityUserName={community._id}
                 communityId={index + 1}
-                community={`subreddit/${community._id}`}
               />
             );
           }

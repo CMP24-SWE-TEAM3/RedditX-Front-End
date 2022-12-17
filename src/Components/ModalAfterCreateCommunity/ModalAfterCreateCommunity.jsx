@@ -6,7 +6,11 @@ import {
   ButtonModal,
 } from "./ModalAfterCreateCommunity.styled";
 
-const ModalAfterCreateCommunity = ({ showModal, setShowWelcomeModal }) => {
+const ModalAfterCreateCommunity = ({
+  showModal,
+  setShowWelcomeModal,
+  community,
+}) => {
   const handleClose = () => setShowWelcomeModal(false);
   const navigate = useNavigate();
 
@@ -21,11 +25,17 @@ const ModalAfterCreateCommunity = ({ showModal, setShowWelcomeModal }) => {
         <Modal.Title>Create your first post</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        Welcome to your new community, r/mangaaaae! Set the tone for your
+        Welcome to your new community, r/{community}! Set the tone for your
         community and welcome new members with a post.
       </Modal.Body>
       <Modal.Footer>
-        <ButtonModal show={false} onClick={handleClose}>
+        <ButtonModal
+          show={false}
+          onClick={() => {
+            handleClose();
+            navigate(`/subreddit/t5_${community}`);
+          }}
+        >
           Continue
         </ButtonModal>
         <ButtonModal onClick={() => navigate("/submit")} show={true}>

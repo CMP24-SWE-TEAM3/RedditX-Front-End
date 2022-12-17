@@ -21,6 +21,7 @@ import {
   StyledPopoverBody,
   StyledPopover,
   StyledLink,
+  SubmitButton,
 } from "./CommentDraftEditor.styled";
 
 // Import hooks
@@ -29,6 +30,7 @@ import useMedia from "Features/Post/Hooks/useMedia";
 
 // Import bootstrap components
 import { OverlayTrigger, Popover } from "react-bootstrap";
+import { convertToHTML } from "draft-convert";
 
 // Extract Draft variables
 const {
@@ -82,10 +84,18 @@ const Link = (props) => {
 };
 
 /**
- * DraftEditor component
- * @returns {React.Component} DraftEditor
+ * CommentDraftEditor component
+ * @returns {React.Component} CommentDraftEditor
  */
-const CommentDraftEditor = ({ files, setFiles, text, setText }) => {
+const CommentDraftEditor = ({
+  files,
+  setFiles,
+  text,
+  setText,
+  load,
+  setTextHTML,
+  submitComment,
+}) => {
   const decorator = new CompositeDecorator([
     {
       strategy: findLinkEntities,
@@ -95,7 +105,9 @@ const CommentDraftEditor = ({ files, setFiles, text, setText }) => {
 
   // State for draft editor
   const [editorState, setEditorState] = useState(
-    EditorState.createEmpty(decorator)
+    load
+      ? EditorState.createWithContent(convertFromRaw(JSON.parse(load)))
+      : EditorState.createEmpty(decorator)
   );
 
   // Ref for draft editor
@@ -147,7 +159,9 @@ const CommentDraftEditor = ({ files, setFiles, text, setText }) => {
   const onChange = (editorState) => {
     setEditorState(editorState);
     const raw = convertToRaw(editorState.getCurrentContent());
-    setText(raw);
+    setText(JSON.stringify(raw));
+    setTextHTML(editorState.getCurrentContent().getPlainText());
+    console.log(raw);
   };
 
   /**
@@ -204,6 +218,20 @@ const CommentDraftEditor = ({ files, setFiles, text, setText }) => {
   return (
     <DraftEditorContainer>
       <>
+        <Controls>
+          <InlineStyleControls
+            editorState={editorState}
+            onToggle={toggleInlineStyle}
+          />
+          <LinkControls promptForLink={promptForLink} />
+          <Separator />
+          <BlockStyleControls
+            editorState={editorState}
+            onToggle={toggleBlockType}
+          />
+          <Separator />
+          <SubmitButton onClick={submitComment}>Comment</SubmitButton>
+        </Controls>
         <OverlayTrigger
           trigger="click"
           placement="bottom-start"
@@ -229,27 +257,13 @@ const CommentDraftEditor = ({ files, setFiles, text, setText }) => {
               handleKeyCommand={handleKeyCommand}
               keyBindingFn={mapKeyToEditorCommand}
               onChange={onChange}
-              placeholder="What are your thoughts?"
+              placeholder="Text (optional)"
               ref={editorRef}
               spellCheck={true}
               blockRendererFn={mediaBlockRenderer}
             />
           </RichEditorEditor>
         </OverlayTrigger>
-        <Controls>
-          <InlineStyleControls
-            editorState={editorState}
-            onToggle={toggleInlineStyle}
-          />
-          <LinkControls promptForLink={promptForLink} />
-          <Separator />
-          <BlockStyleControls
-            editorState={editorState}
-            onToggle={toggleBlockType}
-          />
-          <Separator />
-          <MediaControls addImage={addImage} addVideo={addVideo} />
-        </Controls>
       </>
     </DraftEditorContainer>
   );

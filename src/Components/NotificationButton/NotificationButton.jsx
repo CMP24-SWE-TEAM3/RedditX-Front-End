@@ -4,7 +4,26 @@ import { GlobalButtonStyled } from "Components/GlobalButton/GlobalButton.styled"
 import React, { useState, useRef, useEffect } from "react";
 import Overlay from "react-bootstrap/Overlay";
 import Popover from "react-bootstrap/Popover";
-import { Container } from "./NotificationButton.styled";
+import {
+  Container,
+  Content,
+  Child,
+  SubChild,
+  DotBtn,
+  PopContainer,
+  Word,
+  InfoChild,
+  RightSide,
+  Message,
+  Symbol,
+  ContentSymbol,
+  Time,
+  Dot,
+  ImageContainer,
+  Info,
+  SpanContainer,
+  Footer,
+} from "./NotificationButton.styled";
 import { BsThreeDots, BsClipboardCheck } from "react-icons/bs";
 import { FiSettings } from "react-icons/fi";
 import link from "Assets/Images/link.png";
@@ -14,6 +33,7 @@ import { Link } from "react-router-dom";
 import pushNotifications from "Services/pushNotifications";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import { useNavigate } from "react-router-dom";
 
 /**
  * Component that displays notifications about changes in the state of the application
@@ -85,16 +105,18 @@ const NotificationButton = () => {
     pushNotifications(fetchData, auth);
   }, []);
 
+  const navigate = useNavigate();
   return (
     <Container ref={ref}>
       <OverlayTrigger
         key={"bottom"}
         placement={"bottom"}
+        delay={250}
         overlay={<Tooltip id={`tooltip-bottom`}>Notification</Tooltip>}
       >
         <GlobalButtonStyled
           data-testid="notificationButtonId"
-          id={"notification-box"}
+          id="notification-box"
           onClick={handleClick}
         >
           <IoMdNotificationsOutline />
@@ -109,75 +131,60 @@ const NotificationButton = () => {
       >
         <Popover id="popover-contained">
           <Popover.Header>
-            <span className={"word"}>Notifications</span>
-            <span className={"right-side"}>
-              <span className={"message"}>
-                <Link href={"https://www.reddit.com/message/messages"}>
-                  Messages{" "}
-                </Link>
-              </span>
-
-              <button className={"but"}>
-                <i>
+            <Word>Notifications</Word>
+            <RightSide>
+              <Message onClick={() => navigate("/message")}>
+                <Link>Messages </Link>
+              </Message>
+              <DotBtn>
+                <Symbol>
                   <BsClipboardCheck />
-                </i>
-              </button>
-              <Link
-                className={"setting"}
-                href={"https://www.reddit.com/settings/notifications"}
-              >
-                <i>
+                </Symbol>
+              </DotBtn>
+              <Link className={"setting"}>
+                <Symbol>
                   <FiSettings />
-                </i>
+                </Symbol>
               </Link>
-            </span>
+            </RightSide>
           </Popover.Header>
           <Popover.Body data-testid={"notificationListId"}>
-            <div className={"pop"} />
-            <div className={"content"}>
+            <PopContainer />
+            <Content>
               {notificationList &&
-                notificationList.length != 0 &&
+                notificationList.length !== 0 &&
                 notificationList.notifications.map((comment, index) => {
                   return (
-                    <i className={"content-i"} key={index}>
-                      <Link
-                        className={"content-a"}
-                        href={
-                          "https://www.reddit.com/r/Eln2aa4yn/comments/yi1rd4/ccccc/"
-                        }
-                      >
-                        <span className={"a-span"}>
+                    <ContentSymbol key={index}>
+                      <Link>
+                        <ImageContainer>
                           <img src={link} alt={"community-name"} />
-                        </span>
-                        <span className={"span-info"}>
-                          <span className={"child"}>
-                            <span className={"sub-child"}>
-                              <span className={"info"} key={comment._id}>
-                                Now {comment.title}
-                              </span>
-                              <span className={"dot"}>.</span>
-                              <span className={"time"}>
-                                {comment.createdAt}h
-                              </span>
-                            </span>
-                            <button className={"dot"}>
-                              <i>
+                        </ImageContainer>
+                        <SpanContainer>
+                          <Child>
+                            <SubChild>
+                              <Info key={comment._id}>Now {comment.title}</Info>
+                              <Dot>.</Dot>
+                              <Time>{comment.createdAt}h</Time>
+                            </SubChild>
+                            <DotBtn>
+                              <DotBtn>
                                 <BsThreeDots />
-                              </i>
-                            </button>
-                          </span>
-                          <span className={"info-child"}>{comment.text}</span>
-                        </span>
+                              </DotBtn>
+                            </DotBtn>
+                          </Child>
+                          <InfoChild>{comment.text}</InfoChild>
+                        </SpanContainer>
                       </Link>
-                    </i>
+                    </ContentSymbol>
                   );
                 })}
-            </div>
+            </Content>
           </Popover.Body>
 
-          <footer>
-            <Link href={"https://www.reddit.com/notifications"}>See All</Link>
-          </footer>
+          <Footer onClick={() => navigate("/notifications")}>
+            <Link>See All</Link>
+          </Footer>
         </Popover>
       </Overlay>
     </Container>

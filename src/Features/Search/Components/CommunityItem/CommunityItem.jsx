@@ -18,6 +18,7 @@ import axios from "API/axios";
 import useFetchFunction from "Hooks/useFetchFunction";
 import useFetch from "Hooks/useFetch";
 import joinCommunity from "Features/Search/Services/joinCommunity";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 /**
  * Component that render the Community item Elements.
@@ -41,7 +42,19 @@ const CommunityItem = ({
 }) => {
   const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
   const [isJoinedstate, setisJoined] = useState(false);
+  const [joiningResponse, errorJoining, loadingJoining, fetchData] =
+    useFetchFunction();
 
+  // authorization
+  const auth = useAuth();
+
+  // joined communities or unjonined
+  const handleJoining = (communityName, type) => {
+    joinCommunity(fetchData, auth, {
+      action: !type ? "unsub" : "sub",
+      srName: `${communityName}`,
+    });
+  };
   // the initialState of operations of join
   const initialState = `${isJoined !== undefined ? "Joined" : "Join"}`;
   // the state of the buuton
@@ -72,11 +85,12 @@ const CommunityItem = ({
     } else {
       btnState = false;
     }
-    let dataObj = {
-      action: !btnState ? "unsub" : "sub",
-      sr_name: `${communityName}`,
-    };
-    joinCommunity(fetchFunction, dataObj);
+    // let dataObj = {
+    //   action: !btnState ? "unsub" : "sub",
+    //   sr_name: `${communityName}`,
+    // };
+    // joinCommunity(fetchFunction, dataObj);
+    handleJoining(communityName, btnState);
   };
   /**
    * it is the function that handle the state of the button when mouseEnter on it.
