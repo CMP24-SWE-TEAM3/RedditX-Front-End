@@ -5,6 +5,7 @@ export const SignUpStyled = styled(Button)`
   color: ${({ theme }) => theme.color.secondary};
   border-color: ${({ theme }) => theme.color.secondary};
   width: 118px;
+  margin: 5px 10px 5px 10px;
   height: 32px;
   padding: 0 15px;
   font-size: 14px;
