@@ -9,7 +9,7 @@ import {
   PostContent,
   AsidePostChild,
   AsidePost,
-} from "./Post.styled";
+} from "./PostPreview.styled";
 import NavigationPost from "Features/Post/Components/NavigationPost/NavigationPost";
 import PostShape from "Features/Post/Layouts/PostShape/PostShape";
 import RulesWidget from "Features/Post/Components/RulesWidget/RulesWidget";
@@ -23,6 +23,7 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import getCommunityInfo from "Features/Post/Services/getCommunityInfo";
 import CommunityCardPost from "Features/Post/Components/CommunityCardPost/CommunityCardPost";
 import submitComment from "Features/Post/Services/submitComment";
+import { useParams } from "react-router-dom";
 /**
  *
  * Component that displays post with comments , likes displayed on show modal
@@ -30,15 +31,17 @@ import submitComment from "Features/Post/Services/submitComment";
  * @param setShow
  * @return {React.Component}
  */
-const Post = ({ post, show, setShow }) => {
+const PostPreview = () => {
   // State for files in drat editor
   const [files, setFiles] = useState([]);
   // State for text in draft editor
   const [text, setText] = useState("");
   // State for plain text of post
   const [htmlText, setHtmlText] = useState("");
+  const { postId } = useParams();
   const [commentRerendered, setCommentRerendered] = useState(false);
   const [data, error, isLoading, dataFetch] = useFetchFunction();
+  const [post, errorPost, isLoadingPost, dataFetchPost] = useFetchFunction();
   const [comment, errorComment, isLoadingComment, dataSendComment] =
     useFetchFunction();
   const [
@@ -48,90 +51,52 @@ const Post = ({ post, show, setShow }) => {
     dataFetchCommentList,
   ] = useFetchFunction();
   const auth = useAuth();
-  const comments = [
-    {
-      _id: 1,
-      authorId: "u/username",
-      createdAt: "1 hour ago",
-      textHTML:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit, voluptates laudantium mollitia aperiam nisi iste blanditiis amet doloribus dolorum libero exercitationem pariatur unde nostrum. Ab voluptatum architecto quis inventore.",
-      replies: [
-        {
-          _id: 1,
-          authorId: "u/username",
-          createdAt: "1 hour ago",
-          textHTML:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit, voluptates laudantium mollitia aperiam nisi iste blanditiis amet doloribus dolorum libero exercitationem pariatur unde nostrum. Ab voluptatum architecto quis inventore.",
-          replies: [
-            {
-              _id: 1,
-              authorId: "u/username",
-              createdAt: "1 hour ago",
-              textHTML:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit, voluptates laudantium mollitia aperiam nisi iste blanditiis amet doloribus dolorum libero exercitationem pariatur unde nostrum. Ab voluptatum architecto quis inventore.",
-            },
-          ],
-        },
-        {
-          _id: 1,
-          authorId: "u/username",
-          createdAt: "1 hour ago",
-          textHTML:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit, voluptates laudantium mollitia aperiam nisi iste blanditiis amet doloribus dolorum libero exercitationem pariatur unde nostrum. Ab voluptatum architecto quis inventore.",
-        },
-        {
-          _id: 1,
-          authorId: "u/username",
-          createdAt: "1 hour ago",
-          textHTML: "lorem ipsum dolor sit amet",
-        },
-        {
-          _id: 1,
-          authorId: "u/username",
-          createdAt: "1 hour ago",
-          textHTML: "lorem ipsum dolor sit amet",
-        },
-      ],
-    },
-    {
-      _id: 1,
-      authorId: "u/username",
-      createdAt: "1 hour ago",
-      textHTML: "lorem ipsum dolor sit amet",
-    },
-  ];
+
+  useEffect(() => {
+    getCommunityInfo(dataFetchPost, "t3_" + postId, auth);
+  }, []);
+  console.log("postId", postId);
   console.log("post", post);
   useEffect(() => {
     setCommentRerendered(false);
-    if (post.communityID) getCommunityInfo(dataFetch, post.communityID, auth);
-    if (post && post.postComments && post.postComments.length > 0) {
+    if (post && post.things && post.things[0].communityID)
+      getCommunityInfo(dataFetch, post.things[0].communityID, auth);
+    if (
+      post &&
+      post.things &&
+      post.things[0].postComments &&
+      post.things[0].postComments.length > 0
+    ) {
       setCommentRerendered(true);
       getCommunityInfo(
         dataFetchCommentList,
-        post.postComments.map((comment) => "t1_" + comment).toString(),
+        post.things[0].postComments
+          .map((comment) => "t1_" + comment)
+          .toString(),
         auth
       );
     }
-  }, [post._id]);
+  }, [post]);
   console.log("commentList", commentList);
   const handleSubmitComment = () => {
     submitComment(
       dataSendComment,
       {
-        postID: post._id,
+        postID: post.things[0]._id,
         textHTML: htmlText,
         textJSON: text,
       },
       auth
     );
   };
-  console.log("commentRerendered", commentRerendered);
   return (
-    <Container show={show} onHide={setShow} backdrop={"true"}>
-      <NavigationPost setHandleShowModal={setShow} />
+    <Container>
+      {/* <NavigationPost setHandleShowModal={setShow} /> */}
       <ModalBodyContainer>
         <PostContent>
-          <PostShape post={post} fullPost={true} />
+          {!isLoadingPost && post.things && (
+            <PostShape fullWidth={true} post={post.things[0]} fullPost={true} />
+          )}
           <UserNameContainer>
             Comment as <UserName>{auth.getUserName().substring(3)}</UserName>
           </UserNameContainer>
@@ -156,10 +121,10 @@ const Post = ({ post, show, setShow }) => {
         </PostContent>
         <AsidePost>
           <AsidePostChild>
-            {data && data.things && data.things[0] && !isLoading && (
+            {!isLoading && data && data.things && data.things[0] && (
               <CommunityCardPost communityInfo={data.things[0]} />
             )}
-            {data && data.things && data.things[0] && !isLoading && (
+            {!isLoading && data && data.things && data.things[0] && (
               <RulesWidget
                 rules={data.things[0].communityRules}
                 communityId={data.things[0]._id}
@@ -174,4 +139,4 @@ const Post = ({ post, show, setShow }) => {
   );
 };
 
-export default Post;
+export default PostPreview;

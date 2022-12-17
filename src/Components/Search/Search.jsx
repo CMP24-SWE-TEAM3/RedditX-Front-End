@@ -8,6 +8,7 @@ import { useContext, useEffect } from "react";
 import SearchContext from "Features/Search/Contexts/SearchWordContext/Search-context";
 import fetchCommunities from "Features/Search/Services/fetchCommunities";
 import fetchPeople from "Features/Search/Services/fetchPeople";
+import SearchDropDown from "Components/SearchDropDown/SearchDropDown";
 
 /**
  * Component that displays the search results for a given search term.
@@ -18,9 +19,8 @@ const Search = () => {
   const auth = useAuth();
 
   // fetch communities
-  let [CommunityList, errorCommunity, loadingCommunity, fetchCommunity] =
+  let [communityList, errorCommunity, loadingCommunity, fetchCommunity] =
     useFetchFunction();
-  console.log("communities", CommunityList);
 
   // fetch People
   let [PeopleList, errorPeople, loadingPeople, FB] = useFetchFunction();
@@ -31,11 +31,16 @@ const Search = () => {
   ctx.wordHandler(searchWord);
   useEffect(() => {
     fetchCommunities(fetchCommunity, auth, ctx.word);
-    fetchPeople(FB, auth, ctx.word);
-  }, [ctx.word]);
+    console.log("mnagaaa==>", communityList);
+    // fetchPeople(FB, auth, ctx.word);
+  }, []);
 
   const formatResult = (item) => {
-    return <ItemContainer>{item.name}</ItemContainer>;
+    return (
+      <>
+        <SearchDropDown />
+      </>
+    );
   };
 
   // dummy data
@@ -71,13 +76,14 @@ const Search = () => {
   ];
   return (
     <SearchItem>
-      <ReactSearchAutocomplete
-        placeholder="Search Reddit"
-        styling={SearchItem}
-        items={items}
-        autoFocus
-        formatResult={formatResult}
-      />
+      {communityList && (
+        <ReactSearchAutocomplete
+          placeholder="Search Reddit"
+          items={communityList.results}
+          autoFocus
+          formatResult={formatResult}
+        />
+      )}
     </SearchItem>
   );
 };

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-export const HotBtn = styled.button`
+export const HotBtn = styled(NavLink)`
   display: inline-flex;
   position: relative;
   width: 70px;
@@ -13,20 +13,22 @@ export const HotBtn = styled.button`
   padding: 6px 8px;
   margin-right: 8px;
   border-radius: 1.5em;
-  background-color: ${({ theme, clickedBtn }) =>
-    clickedBtn === "2"
-      ? theme.background.post_background
-      : theme.background.primary};
-  color: ${({ theme, clickedBtn }) =>
-    clickedBtn === "2" ? theme.btnColor.primary : theme.color.muted};
+  color: ${({ theme }) => theme.color.muted};
+  background-color: ${({ theme }) => theme.background.primary};
 
   &:hover {
     background-color: ${({ theme }) => theme.background.muted};
   }
+
+  &.active {
+    background-color: ${({ theme }) => theme.background.post_background};
+    color: ${({ theme }) => theme.btnColor.primary};
+    &:hover {
+      background-color: ${({ theme }) => theme.background.muted};
+    }
+  }
+  text-decoration: none;
 `;
 export const Word = styled.span`
   font-weight: 700;
-`;
-export const NavLinkBtn = styled(NavLink)`
-  text-decoration: none;
 `;

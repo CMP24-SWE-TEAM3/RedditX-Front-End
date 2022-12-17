@@ -3,11 +3,36 @@ import styled from "styled-components";
 
 // Import bootstrap components
 import Tab from "react-bootstrap/Tab";
-import { Col, Row } from "react-bootstrap";
+import { Col, Dropdown, Row } from "react-bootstrap";
 
 // Import react-router-dom components
 import { NavLink } from "react-router-dom";
 
+export const DropdownMenu = styled(Dropdown.Menu)`
+  width: 100%;
+  overflow: auto;
+  height: 80vh;
+`;
+export const StyledDropdown = styled(Dropdown)`
+  display: none !important;
+  @media (max-width: 933px) {
+    display: block !important;
+  }
+  color: ${({ theme }) => theme.color.primary};
+  z-index: 25;
+  top: 89px;
+  position: sticky;
+  width: 98%;
+  margin: auto;
+`;
+
+export const DropdownToggle = styled(Dropdown.Toggle)`
+  width: 100%;
+  background-color: ${({ theme }) => theme.color.secondary};
+  &:hover {
+    background-color: ${({ theme }) => theme.color.secondary};
+  }
+`;
 export const TabContainer = styled(Tab.Container)`
   .row {
     overflow: auto;
@@ -20,6 +45,9 @@ export const TabContainer = styled(Tab.Container)`
   }
 `;
 export const TabsCol = styled(Col)`
+  @media (max-width: 933px) {
+    display: none;
+  }
   overflow: auto;
   padding-top: 16px;
   padding-bottom: 32px;
@@ -34,6 +62,9 @@ export const TabsCol = styled(Col)`
 `;
 
 export const ContentCol = styled(Col)`
+  @media (max-width: 933px) {
+    padding-left: 0;
+  }
   padding-left: 280px;
   padding-right: 0;
   margin-top: 40px;

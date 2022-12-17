@@ -18,6 +18,8 @@ import { useCreatePostAttachments } from "Features/Post/Contexts/createPostAttac
 import submitPost from "Features/Post/Services/submitPost";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useSubmitDestination } from "Features/Post/Contexts/submitDestination";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 /**
  * Main component (the main section in the create post page)
@@ -67,6 +69,14 @@ const Main = () => {
     // Call the submit post api (Service)
     submitPost(dataFetch, bodyFormData, auth);
   };
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLoading && data && data._id) {
+      navigate(`/post-preview/${data._id}`);
+    }
+  }, [data]);
+
   return (
     <Container>
       <Title>

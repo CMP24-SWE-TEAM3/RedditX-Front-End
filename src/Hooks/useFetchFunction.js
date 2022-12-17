@@ -34,7 +34,7 @@ const useFetchFunction = () => {
       setResponse(res.data);
       setError(null);
     } catch (err) {
-      setError(err.message);
+      setError(err.response.data.error ? err.response.data.error : err.message);
     } finally {
       setLoading(false);
     }

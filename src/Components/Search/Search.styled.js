@@ -17,13 +17,14 @@ export const SearchItem = styled.div`
     box-shadow: none;
     border-radius: 20px;
     font-size: 14px;
+    box-shadow: 0 0 !important;
+    ul {
+      background-color: ${({ theme }) => theme.background.primary};
+    }
 
     ::placeholder {
       font-size: 14px;
       color: ${({ theme }) => theme.lineColor.secondary};
-    }
-
-      box-shadow: 0 0 !important;
     }
   }
 `;

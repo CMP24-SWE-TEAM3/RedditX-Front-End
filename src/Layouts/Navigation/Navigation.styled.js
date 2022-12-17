@@ -24,7 +24,7 @@ export const StyledNavbar = styled(Navbar)`
 
   .navbar-collapse {
     justify-content: flex-end;
-    @media (max-width: 768px) {
+    @media (max-width: 769px) {
       background: ${({ theme }) => theme.background.primary};
       width: 100%;
       position: fixed;
@@ -40,15 +40,10 @@ export const StyledNavbar = styled(Navbar)`
       align-items: flex-start;
     }
   }
-
-  /* .nav-link {
-    display: inherit;
-    align-items: center;
-  } */
-
-  /* .nav-dropdown .nav-link {
-    display: block !important;
-  } */
+  .drop-caret.navbar-brand {
+    width: 15%;
+    min-width: fit-content;
+  }
 `;
 
 export const Span = styled.span`
@@ -106,7 +101,6 @@ export const NavBarContent = styled(Navbar)`
 
 export const AppHeader = styled.header`
   background-color: ${({ theme }) => theme.canvas};
-  //min-height: 48vh;
   position: relative;
   display: flex;
   flex-direction: column;

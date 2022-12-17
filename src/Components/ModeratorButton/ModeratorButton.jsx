@@ -7,6 +7,7 @@ import { TbBoxModel2 } from "react-icons/tb";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { FiMail } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 /**
  * Component to display the dropdown button with dropdown results
@@ -14,6 +15,7 @@ import { FiMail } from "react-icons/fi";
  * @returns {React.Component}
  */
 const ModeratorButton = () => {
+  const navigate = useNavigate();
   return (
     <>
       <OverlayTrigger
@@ -28,7 +30,7 @@ const ModeratorButton = () => {
               <span>
                 <TbBoxModel2 />
               </span>
-              <span>Mod Queue</span>
+              <span onClick={() => navigate("/queues")}>Mod Queue</span>
             </Dropdown.Item>
             <Dropdown.Item href="#">
               <span>
