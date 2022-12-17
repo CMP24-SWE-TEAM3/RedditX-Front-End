@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../Features/Search/Assets/CommunityImage.png";
 // import { Container, ContainerAlibash } from "./CommunityCardItem.styled";
@@ -14,6 +14,8 @@ import useFetchFunction from "Hooks/useFetchFunction";
 // import useFetchFunction from "Hooks/useFetchFunction";
 import joinCommunity from "Features/Search/Services/joinCommunity";
 import { ContainerAlibash } from "./CommunityCardItemExplore.styled";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import CategoryContext from "Contexts/CategoryContext/Category-context";
 /**
  * Component that contains the CommunityCardItem and manage the state of the button join.
  *
@@ -35,13 +37,25 @@ const CommunityCardItem = ({
 }) => {
   const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
   const [isJoinedstate, setisJoined] = useState(false);
+  const [joiningResponse, errorJoining, loadingJoining, fetchData] =
+    useFetchFunction();
 
+  // authorization
+  const auth = useAuth();
+
+  // joined communities or unjonined
+  const handleJoining = (communityName, type) => {
+    joinCommunity(fetchData, auth, {
+      action: !type ? "unsub" : "sub",
+      srName: `${communityName}`,
+    });
+  };
   const initialState = `${isJoined !== undefined ? "Joined" : "Join"}`;
   // the state of the buuton
   const [btnContent, setBtnContent] = useState(
     isJoined !== undefined ? "Joined" : "Join"
   );
-
+  const ctx = useContext(CategoryContext);
   /**
    * it is the function that handle the state of the button when click on it.
    *
@@ -63,11 +77,15 @@ const CommunityCardItem = ({
     } else {
       btnState = false;
     }
-    let dataObj = {
-      action: !btnState ? "unsub" : "sub",
-      sr_name: `${communityName}`,
-    };
-    joinCommunity(fetchFunction, dataObj);
+    // let dataObj = {
+    //   action: !btnState ? "unsub" : "sub",
+    //   sr_name: `${communityName}`,
+    // };
+    // joinCommunity(fetchFunction, dataObj);
+    handleJoining(communityName, btnState);
+    if (!loadingJoining) {
+      ctx.ReFetchHandler(!ctx.ReFetch);
+    }
   };
   /**
    * it is the function that handle the state of the button when mouseEnter on it.

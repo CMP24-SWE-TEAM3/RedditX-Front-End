@@ -24,13 +24,7 @@ import { FaAngleUp } from "react-icons/fa";
  * Component that  shows random categories
  * @returns {Component.React}
  */
-const CommunityCardItem = ({
-  communityId,
-  communityUserName,
-  srIcon,
-  community,
-}) => {
-  console.log("community", communityUserName);
+const CommunityCardItem = ({ communityId, communityUserName, srIcon }) => {
   // states
   const [btnContent, setBtnContent] = useState("");
   const [currentState, setCurrentState] = useState(null);
@@ -48,7 +42,7 @@ const CommunityCardItem = ({
   const handleJoining = (communityName, type) => {
     joinCommunity(fetchData, auth, {
       action: type === "Leave" ? "unsub" : "sub",
-      srName: `t5_${communityName}`,
+      srName: communityName,
     });
   };
 
@@ -61,9 +55,7 @@ const CommunityCardItem = ({
   useEffect(() => {
     if (subscribed && subscribed.communities) {
       setCurrentState(
-        subscribed.communities.find(
-          ({ _id }) => _id.substring(3) === communityUserName
-        )
+        subscribed.communities.find(({ _id }) => _id === communityUserName)
       );
       if (currentState !== undefined) {
         setBtnContent("Joined");
@@ -94,7 +86,7 @@ const CommunityCardItem = ({
   return (
     <>
       <Container>
-        <Link to={community}>
+        <Link to={`subreddit/${communityUserName}`}>
           <Item>
             <Number>{communityId}</Number>
             <Caret>
@@ -109,7 +101,7 @@ const CommunityCardItem = ({
             )}
             <CommunityNameContainer>
               <CommunityNameChild>
-                <h6>r/{communityUserName}</h6>
+                <h6>r/{communityUserName.substring(3)}</h6>
               </CommunityNameChild>
             </CommunityNameContainer>
             <JoinContainer>

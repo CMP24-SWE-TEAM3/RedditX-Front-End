@@ -15,20 +15,29 @@ export const NewBtn = styled(NavLink)`
   &:hover {
     background-color: ${(props) => props.theme.background.muted};
   }
-  @media (max-width: 1010px) {
-    display: none;
-  }
   &.active {
+    .un-fill {
+      display: none;
+    }
+    .fill {
+      display: initial;
+    }
     background-color: ${({ theme }) => theme.background.post_background};
     color: ${({ theme }) => theme.btnColor.primary};
     &:hover {
       background-color: ${({ theme }) => theme.background.muted};
     }
   }
+  .fill {
+    display: none;
+  }
+  .un-fill {
+    display: initial;
+  }
   text-decoration: none;
 `;
 export const Word = styled.span`
-  padding-left: 4px;
+  padding-left: 6px;
   font-size: 14px;
   font-weight: 500;
   text-transform: capitalize;
@@ -37,7 +46,4 @@ export const Word = styled.span`
   white-space: normal;
   text-align: left;
   padding-top: 6px;
-`;
-export const NavLinkBtn = styled(NavLink)`
-  text-decoration: none;
 `;

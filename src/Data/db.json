@@ -4309,12 +4309,9 @@
       "block": false
     }
   ],
-  "delete-message": [
-    {
-      "msgID": "t4_1",
-      "id": 1
-    }
-  ],
+  "delete-message": [],
   "unread-message": [],
-  "vote-message": []
+  "vote-message": [],
+  "compose-message": [
+  ]
 }

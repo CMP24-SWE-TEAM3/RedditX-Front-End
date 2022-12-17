@@ -28,6 +28,9 @@ import {
   CategoryTitle,
   StyledRow,
   BackButton,
+  StyledDropdown,
+  DropdownToggle,
+  DropdownMenu,
 } from "./LayoutTabs.styled";
 import { useState } from "react";
 import Rules from "Features/Moderator/Pages/Rules/Rules";
@@ -43,6 +46,7 @@ import EditedQueue from "../EditedQueue/EditedQueue";
 import UnmoderatedQueue from "../UnmoderatedQueue/UnmoderatedQueue";
 import CommunitySettingsPage from "../CommunitySettingsPage/CommunitySettingsPage";
 import PostsAndCommentsPage from "../PostsAndCommentsPage/PostsAndCommentsPage";
+import { Dropdown } from "react-bootstrap";
 
 const paths = {
   Spam: "spam",
@@ -72,6 +76,167 @@ function LayoutTabs({
   return (
     <TabContainer fluid={true}>
       <StyledRow>
+        <StyledDropdown
+          variant="white"
+          className="d-inline mx-2"
+          autoClose="inside"
+        >
+          <DropdownToggle id="dropdown-autoclose-inside">
+            {moderatorId}
+          </DropdownToggle>
+
+          <DropdownMenu>
+            {isCommunitySettings && (
+              <Nav variant="pills" className="flex-column">
+                <BackButton
+                  to={getPath(paths.spam)}
+                  onClick={() => setIsCommunitySettings(false)}
+                >
+                  <MdKeyboardArrowLeft size={30} />
+                  <span> Back to mod tools </span>
+                </BackButton>
+                <Nav.Item>
+                  <StyledNavLink
+                    to={getPath(paths.Community)}
+                    selected={moderatorId === paths.Community}
+                  >
+                    Community
+                  </StyledNavLink>
+                </Nav.Item>
+                <Nav.Item>
+                  <StyledNavLink
+                    to={getPath(paths.PostsAndComments)}
+                    selected={moderatorId === paths.PostsAndComments}
+                  >
+                    Posts and Comments
+                  </StyledNavLink>
+                </Nav.Item>
+              </Nav>
+            )}
+            {!isCommunitySettings && (
+              <Nav variant="pills" className="flex-column">
+                <CategoryTitle first={true}>
+                  <MdOutlineLibraryBooks size={22} />
+                  <span> Queues </span>
+                </CategoryTitle>
+                <Nav.Item>
+                  <StyledNavLink
+                    to={getPath(paths.Spam)}
+                    selected={moderatorId === paths.Spam}
+                  >
+                    Spam
+                  </StyledNavLink>
+                </Nav.Item>
+                <Nav.Item>
+                  <StyledNavLink
+                    to={getPath(paths.Edited)}
+                    selected={moderatorId === paths.Edited}
+                  >
+                    Edited
+                  </StyledNavLink>
+                </Nav.Item>
+                <Nav.Item>
+                  <StyledNavLink
+                    to={getPath(paths.Unmoderated)}
+                    selected={moderatorId === paths.Unmoderated}
+                  >
+                    Unmoderated
+                  </StyledNavLink>
+                </Nav.Item>
+
+                <CategoryTitle>
+                  <AiOutlineUser size={22} />
+                  <span> User management</span>
+                </CategoryTitle>
+                <Nav.Item>
+                  <StyledNavLink
+                    to={getPath(paths.Banned)}
+                    selected={moderatorId === paths.Banned}
+                  >
+                    Banned
+                  </StyledNavLink>
+                </Nav.Item>
+                <Nav.Item>
+                  <StyledNavLink
+                    to={getPath(paths.Muted)}
+                    selected={moderatorId === paths.Muted}
+                  >
+                    Muted
+                  </StyledNavLink>
+                </Nav.Item>
+                <Nav.Item>
+                  <StyledNavLink
+                    to={getPath(paths.Approved)}
+                    selected={moderatorId === paths.Approved}
+                  >
+                    Approved
+                  </StyledNavLink>
+                </Nav.Item>
+                <Nav.Item>
+                  <StyledNavLink
+                    to={getPath(paths.Moderators)}
+                    selected={moderatorId === paths.Moderators}
+                  >
+                    Moderators
+                  </StyledNavLink>
+                </Nav.Item>
+
+                <CategoryTitle>
+                  <IoPricetagOutline size={22} />
+                  <span> Flairs & emojis </span>
+                </CategoryTitle>
+                <Nav.Item>
+                  <StyledNavLink
+                    to={getPath(paths.PostFlair)}
+                    selected={moderatorId === paths.PostFlair}
+                  >
+                    Post flair
+                  </StyledNavLink>
+                </Nav.Item>
+
+                <CategoryTitle>
+                  <IoMdPaper size={22} />
+                  <span> Rules and regulations </span>
+                </CategoryTitle>
+                <Nav.Item>
+                  <StyledNavLink
+                    to={getPath(paths.Rules)}
+                    selected={moderatorId === paths.Rules}
+                  >
+                    Rules
+                  </StyledNavLink>
+                </Nav.Item>
+
+                <CategoryTitle>
+                  <FiSettings size={22} />
+                  <span> Other </span>
+                </CategoryTitle>
+                <Nav.Item>
+                  <StyledNavLink
+                    to={getPath(paths.Community)}
+                    onClick={() => setIsCommunitySettings(true)}
+                  >
+                    Community settings
+                    <MdKeyboardArrowRight size={22} />
+                  </StyledNavLink>
+                </Nav.Item>
+
+                <CategoryTitle>
+                  <ImStatsBars size={22} />
+                  <span> Community activity </span>
+                </CategoryTitle>
+                <Nav.Item>
+                  <StyledNavLink
+                    to={getPath(paths.TrafficStates)}
+                    selected={moderatorId === paths.TrafficStates}
+                  >
+                    Traffic states
+                  </StyledNavLink>
+                </Nav.Item>
+              </Nav>
+            )}
+          </DropdownMenu>
+        </StyledDropdown>
         <TabsCol sm="3">
           {isCommunitySettings && (
             <Nav variant="pills" className="flex-column">

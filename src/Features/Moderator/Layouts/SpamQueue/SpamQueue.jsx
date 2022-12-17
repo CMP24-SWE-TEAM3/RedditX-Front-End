@@ -7,14 +7,17 @@ import { useEffect, useState } from "react";
 import getNewPosts from "Services/getNewPosts";
 import Post from "Features/Post/Pages/Post/Post";
 import SpamPost from "Features/Post/Layouts/SpamPost/SpamPost";
+import getSpammedPosts from "Features/Moderator/Services/getSpammedPosts";
+import { useParams } from "react-router-dom";
 
 const SpamQueue = () => {
   const [data, error, isLoading, dataFetch] = useFetchFunction();
   const auth = useAuth();
   const [showPost, setShowPost] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
+  const { subredditId } = useParams();
   useEffect(() => {
-    getNewPosts(dataFetch, auth, 1, 10);
+    getSpammedPosts(dataFetch, auth, subredditId);
   }, []);
   return (
     <Container>

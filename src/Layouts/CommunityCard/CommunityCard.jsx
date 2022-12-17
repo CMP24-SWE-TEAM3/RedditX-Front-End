@@ -61,9 +61,8 @@ const CommunityCard = () => {
               <CommunityCardItem
                 key={community._id}
                 srIcon={community.icon}
-                communityUserName={community._id.substring(3)}
+                communityUserName={community._id}
                 communityId={index + 1}
-                community={`subreddit/${community._id}`}
               />
             );
           }

@@ -19,7 +19,7 @@ import NotFound from "Features/Search/Components/NotFound/NotFound";
  */
 
 const CommunitiesPage = ({ CommunityList, CommunitiesSub2 }) => {
-  if (CommunityList.results) {
+  if (CommunityList.results && CommunitiesSub2) {
     const communitiesNumber = CommunityList.results.length;
     return (
       <Container>
@@ -27,6 +27,8 @@ const CommunitiesPage = ({ CommunityList, CommunitiesSub2 }) => {
           <InnerContainer>
             <List>
               {communitiesNumber !== 0 &&
+                CommunityList &&
+                CommunitiesSub2 &&
                 CommunityList.results.map((Community) => (
                   <CommunityItem
                     communityIcon={Community.icon}
@@ -35,8 +37,8 @@ const CommunitiesPage = ({ CommunityList, CommunitiesSub2 }) => {
                     communityDescription={Community.description}
                     membersCount={Community.membersCnt}
                     communityName={Community._id}
-                    isJoined={CommunitiesSub2.find((element) => {
-                      return element.id === Community._id;
+                    isJoined={CommunitiesSub2.communities.find((element) => {
+                      return element._id === Community._id;
                     })}
                   />
                 ))}

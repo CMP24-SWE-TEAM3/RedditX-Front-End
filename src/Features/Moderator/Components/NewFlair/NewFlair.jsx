@@ -86,13 +86,17 @@ const NewFlair = () => {
   const auth = useAuth();
   const ctx = useContext(FlairContext);
   const [flairList, error, loading, fetch] = useFetchFunction();
-  console.log(flairList.flairs, "jjjjj");
+  // console.log(flairList.flairs, "jjjjj");
   // console.log(flairList);
+  const [items, setItems] = useState([]);
+  let initial;
   useEffect(() => {
     fetchFlairs(fetch, auth, "gg");
   }, [ctx.ChangeFetch]);
-  const [items, setItems] = useState([]);
-  const initial = items;
+  if (!loading) {
+    initial = flairList.flairs;
+    console.log("hhhhhh");
+  }
   console.log(initial, "initial");
   useEffect(() => {
     ctx.flairsDataHandler(flairList.flairs);
@@ -120,7 +124,7 @@ const NewFlair = () => {
       result.destination.index
     );
 
-    console.log({ reorderedItems });
+    // console.log({ reorderedItems });
     setItems(reorderedItems);
   };
   return (
@@ -133,8 +137,8 @@ const NewFlair = () => {
               ref={provided.innerRef}
               // style={getListStyle(snapshot.isDraggingOver)}
             >
-              {flairList.flairs &&
-                flairList.flairs.map((item, index) => (
+              {items &&
+                items.map((item, index) => (
                   <Draggable
                     key={item._id}
                     draggableId={item._id}

@@ -175,25 +175,27 @@ const Posts = ({
                     </div>
                   )}
                 </div>
-                <div className="x">
-                  <PostsList type={Sort} PostList={PostList} />
-                  <div className="side-cards">
-                    {!ctx.isSubreddit && (
-                      <>
-                        <TopCommunities
-                          CommunityList={CommunityList}
-                          CommunitiesSub2={CommunitiesSub2}
-                        />
-                        <People
-                          PeopleList={PeopleList}
-                          PeopleFollow={PeopleFollow}
-                        />
-                        <CreateCommunity />
-                      </>
-                    )}
-                    {ctx.isSubreddit && <CommunityCard />}
+                {PostList.results && (
+                  <div className="x">
+                    <PostsList type={Sort} PostList={PostList} />
+                    <div className="side-cards">
+                      {!ctx.isSubreddit && (
+                        <>
+                          <TopCommunities
+                            CommunityList={CommunityList}
+                            CommunitiesSub2={CommunitiesSub2}
+                          />
+                          <People
+                            PeopleList={PeopleList}
+                            PeopleFollow={PeopleFollow}
+                          />
+                          <CreateCommunity />
+                        </>
+                      )}
+                      {ctx.isSubreddit && <CommunityCard />}
+                    </div>
                   </div>
-                </div>
+                )}
               </ContainerPosts>
             </IsModeratorProvider>
           </SubRedditIDProvider>

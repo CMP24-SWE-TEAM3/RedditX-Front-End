@@ -21,6 +21,7 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import SearchContext from "Features/Search/Contexts/SearchWordContext/Search-context";
 import fetchPostsCommunity from "Features/Search/Services/fetchPostsCommunity";
 import fetchCommentsCommunity from "Features/Search/Services/fetchCommentsCommunity";
+import getCommunitiesList from "Features/Post/Services/getCommunitiesList";
 
 /**
  * Component that contains the Search Page and the Main Links component and routes for the four pages Posts page, Comments page, Community page and People page.
@@ -44,7 +45,7 @@ const Search = () => {
   //   fetchPosts(fetch);
   // }, []); // Only re-run the effect if count changes
   // Fetch Posts
-  // console.log(PostList);
+  console.log(PostList);
   // fetch Communities
   let [CommunityList, errorCommunity, loadingCommunity, fetchCommunity] =
     useFetchFunction();
@@ -69,12 +70,8 @@ const Search = () => {
 
   // fetch communities subscribe
 
-  let [
-    CommunitiesSub2,
-    errorSubCommunities,
-    loadingSubCommunities,
-    reloadSubCommunities,
-  ] = useFetchFunction();
+  let [communityListSub, errorSubs, isLoadingSubs, fetchData] =
+    useFetchFunction();
 
   // fetch communities subscribe
   // const searchWord = "text";
@@ -87,11 +84,13 @@ const Search = () => {
       fetchPosts(fetch, auth, ctx.word);
       fetchComments(fetchComment, auth, ctx.word);
     }
-    fetchCommunities(fetchCommunity, auth, ctx.word);
+    fetchCommunities(fetchCommunity, auth, "");
     fetchPeople(FB, auth, ctx.word);
-    fetchSubbcomm(reloadSubCommunities, auth);
+    // fetchSubbcomm(reloadSubCommunities, auth);
+    getCommunitiesList(fetchData, auth);
     fetchPeopleFollowed(fetchSub);
   }, [ctx.word, ctx.isSubreddit, ctx.community]); // Only re-run the effect if count changes
+
   return (
     <Container>
       <div className="outer-container">
@@ -104,12 +103,12 @@ const Search = () => {
                 element={
                   PostList &&
                   PeopleFollow &&
-                  CommunitiesSub2 &&
+                  communityListSub &&
                   CommunityList &&
                   PeopleList &&
                   !loading &&
                   !loadingCommunity &&
-                  !loadingSubCommunities &&
+                  !isLoadingSubs &&
                   !loadingSub &&
                   !loadingPeople && (
                     <Posts
@@ -117,7 +116,7 @@ const Search = () => {
                       CommunityList={CommunityList}
                       PeopleList={PeopleList}
                       PeopleFollow={PeopleFollow}
-                      CommunitiesSub2={CommunitiesSub2}
+                      CommunitiesSub2={communityListSub}
                       OnSort={OnSort}
                     />
                   )
@@ -135,13 +134,13 @@ const Search = () => {
               <Route
                 path="communities"
                 element={
-                  CommunitiesSub2 &&
+                  communityListSub &&
                   CommunityList &&
                   !loadingCommunity &&
-                  !loadingSubCommunities && (
+                  !isLoadingSubs && (
                     <CommunitiesPage
                       CommunityList={CommunityList}
-                      CommunitiesSub2={CommunitiesSub2}
+                      CommunitiesSub2={communityListSub}
                     />
                   )
                 }

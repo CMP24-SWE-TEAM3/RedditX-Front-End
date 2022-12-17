@@ -19,9 +19,7 @@ export const TopBtn = styled(NavLink)`
   :hover {
     background-color: ${({ theme }) => theme.background.muted};
   }
-  @media (max-width: 1010px) {
-    display: none;
-  }
+
   &.active {
     background-color: ${({ theme }) => theme.background.post_background};
     color: ${({ theme }) => theme.btnColor.primary};

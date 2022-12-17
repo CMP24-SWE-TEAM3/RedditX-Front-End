@@ -44,7 +44,7 @@ const HomePage = () => {
               <CreatePost />
               <PopularPosts />
               <Routes>
-                <Route path="" element={<ShowPosts type="best" />} />
+                <Route path="" element={<ShowPosts type="random" />} />
                 <Route path="best" element={<ShowPosts type="best" />} />
                 <Route path="hot" element={<ShowPosts type="hot" />} />
                 <Route path="new" element={<ShowPosts type="new" />} />

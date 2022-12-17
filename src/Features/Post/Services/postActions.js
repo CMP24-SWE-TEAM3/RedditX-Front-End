@@ -6,7 +6,6 @@ import axios from "API/axios";
  * @param {Object} objectData Object that contains the data that will be sent to the api
  */
 export const giveVote = (dataFetch, objectData, token) => {
-
   console.log(objectData);
 
   if (objectData.id !== undefined && objectData.dir !== undefined) {
@@ -25,7 +24,6 @@ export const giveVote = (dataFetch, objectData, token) => {
           data: objectData,
           headers: {
             "Content-Language": "en-US",
-            "Content-Type": "multipart/form-data",
             authorization: `bearer ${token}`,
           },
         },
@@ -74,9 +72,7 @@ export const makeFollow = (dataFetch, objectData, token) => {
  */
 export const hidePost = (dataFetch, objectData, token) => {
   if (objectData.linkID !== undefined) {
-    if (
-      typeof objectData.linkID === "string" 
-    ) {
+    if (typeof objectData.linkID === "string") {
       dataFetch({
         axiosInstance: axios,
         method: "post",

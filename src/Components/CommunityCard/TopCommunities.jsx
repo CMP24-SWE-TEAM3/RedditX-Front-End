@@ -9,7 +9,7 @@ import useFetch from "Hooks/useFetch";
  * @Component
  * @returns {React.Component}
  */
-const TopCommunities = ({ CommunityList, CommunitiesSub2 }) => {
+const TopCommunities = ({ CommunityList, communityListSub }) => {
   // let [CommunityList, error, loading, reload] = useFetch({
   //   axiosInstance: axios,
   //   method: "GET",
@@ -20,7 +20,7 @@ const TopCommunities = ({ CommunityList, CommunitiesSub2 }) => {
   //     },
   //   },
   // });
-  if (CommunityList.results) {
+  if (CommunityList.results && communityListSub) {
     const arr = CommunityList.results;
     console.log(arr);
     const communitiesNumber = CommunityList.results.length;
@@ -29,6 +29,8 @@ const TopCommunities = ({ CommunityList, CommunitiesSub2 }) => {
         <p className="title">Top Communities</p>
 
         {communitiesNumber !== 0 &&
+          CommunityList &&
+          communityListSub &&
           CommunityList.results.slice(0, 8).map((Community) => (
             <CommunityCardItem
               communityIcon={Community.icon}
@@ -37,8 +39,8 @@ const TopCommunities = ({ CommunityList, CommunitiesSub2 }) => {
               communityDescription={Community.description}
               membersCount={Community.membersCnt}
               communityName={Community._id}
-              isJoined={CommunitiesSub2.find((element) => {
-                return element.id === Community._id;
+              isJoined={communityListSub.communities.find((element) => {
+                return element._id === Community._id;
               })}
             />
           ))}

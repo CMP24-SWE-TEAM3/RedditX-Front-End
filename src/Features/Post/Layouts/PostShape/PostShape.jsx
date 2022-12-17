@@ -3,25 +3,91 @@ import PostPublisher from "Features/Post/Components/PostPublisher/PostPublisher"
 import PostContent from "Features/Post/Components/PostContent/PostContent";
 import PostFooter from "Features/Post/Components/PostFooter/PostFooter";
 
-import { Container, ContentContainer } from "./PostShape.styled";
+import {
+  Container,
+  ContentContainer,
+  DraftEditorContainerOuter,
+  CancelButton,
+  SubmitButton,
+  ButtonsContainer,
+} from "./PostShape.styled";
 
 import { useState } from "react";
+import { DraftEditorContainer } from "Features/Post/Components/DraftEditor/DraftEditor.styled";
+import DraftEditor from "Features/Post/Components/DraftEditor/DraftEditor";
+import submitEditPost from "Features/Post/Services/submitEditPost";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { Spinner } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 /**
  * PostShape Component
  * @returns {React.Component} PostShape component
  */
-const PostShape = ({ fullPost, post }) => {
+const PostShape = ({ fullPost, post, fullWidth, handlePostEdit, editPost }) => {
   const [makeHidden, setMakeHidden] = useState(false);
-
+  const [editPostText, setEditPostText] = useState("");
+  const [editPostHtmlText, setEditPostHtmlText] = useState("");
+  const auth = useAuth();
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
+  const navigate = useNavigate();
+  const editPostHandler = () => {
+    console.log("editPostText");
+    submitEditPost(
+      dataFetch,
+      {
+        linkID: "t3_" + post._id,
+        textHTML: editPostText,
+        textJSON: editPostHtmlText,
+      },
+      auth
+    );
+  };
+  useEffect(() => {
+    if (!isLoading && data && data._id) {
+      navigate(`/post-preview/${data._id}`);
+    }
+  }, [data]);
   return (
-    <Container fullPost={fullPost}>
-      <VotingBar number={post.votesCount} />
-      <ContentContainer>
-        <PostPublisher fullPost={fullPost} post={post} />
-        <PostContent post={post} />
-        <PostFooter post={post} />
-      </ContentContainer>
-    </Container>
+    <>
+      {!makeHidden && (
+        <Container fullWidth={fullWidth} fullPost={fullPost}>
+          <VotingBar
+            number={post.votesCount ? post.votesCount : 0}
+            id={post._id}
+          />
+          <ContentContainer>
+            <PostPublisher fullPost={fullPost} post={post} />
+            {!editPost && <PostContent post={post} />}
+            {editPost && (
+              <DraftEditorContainerOuter>
+                <DraftEditorContainer>
+                  <DraftEditor
+                    text={editPostText}
+                    setText={setEditPostText}
+                    setTextHTML={setEditPostHtmlText}
+                    load={post.textJSON}
+                  />
+                </DraftEditorContainer>
+
+                <ButtonsContainer>
+                  <CancelButton>Cancel</CancelButton>
+                  <SubmitButton onClick={editPostHandler}>
+                    {!isLoading && "Save"} {isLoading && <Spinner />}
+                  </SubmitButton>
+                </ButtonsContainer>
+              </DraftEditorContainerOuter>
+            )}
+            <PostFooter
+              handlePostEdit={handlePostEdit}
+              post={post}
+              setMakeHidden={setMakeHidden}
+            />
+          </ContentContainer>
+        </Container>
+      )}
+    </>
   );
 };
 

@@ -26,7 +26,7 @@ const NavbarRule = ({ setShowModal, setShowDragDrop }) => {
       <AddRuleBtn showReorder={showReorder} onClick={() => setShowModal(true)}>
         Add rule
       </AddRuleBtn>
-      <CancelBtn    
+      <CancelBtn
         onClick={() => {
           handleShow();
           setShowDragDrop(false);

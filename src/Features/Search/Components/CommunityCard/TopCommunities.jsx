@@ -13,7 +13,7 @@ import CommunityCardItem from "../CommunityCardItem/CommunityCardItem";
 const TopCommunities = ({ CommunityList, CommunitiesSub2 }) => {
   // console.log(CommunityList.results);
 
-  if (CommunityList.results) {
+  if (CommunityList.results && CommunitiesSub2.communities) {
     const arr = CommunityList.results;
     const communitiesNumber = CommunityList.results.length;
 
@@ -21,6 +21,8 @@ const TopCommunities = ({ CommunityList, CommunitiesSub2 }) => {
       <CommunityContainer>
         <p className="title">Communities</p>
         {communitiesNumber !== 0 &&
+          CommunitiesSub2.communities &&
+          CommunityList &&
           CommunityList.results.slice(0, 5).map((Community) => (
             <CommunityCardItem
               communityIcon={Community.icon}
@@ -29,8 +31,8 @@ const TopCommunities = ({ CommunityList, CommunitiesSub2 }) => {
               communityDescription={Community.description}
               membersCount={Community.membersCnt}
               communityName={Community._id}
-              isJoined={CommunitiesSub2.find((element) => {
-                return element.id === Community._id;
+              isJoined={CommunitiesSub2.communities.find((element) => {
+                return element._id === Community._id;
               })}
             />
           ))}

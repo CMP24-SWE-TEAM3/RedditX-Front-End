@@ -3,19 +3,15 @@ import React from "react";
 import { OffcanvasBody } from "./SideBar.styled";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { AiOutlineContainer } from "react-icons/ai";
-import { ButtonStyled } from "./SideBar.styled";
-import DropDownItem from "../DropDownItem/DropDownItem";
+import { ButtonStyled, OpenSide } from "./SideBar.styled";
+import DropDownItem from "Components/DropDownItem/DropDownItem";
 import { GrFormPrevious } from "react-icons/gr";
 
 /**
  * Component that displays a sidebar which includes a dropdown menu in it
  * @returns {React.Component}
  */
-const SideBar = ({
-  showButton,
-  showSideBar,
-  setShowSideBar,
-}) => {
+const SideBar = ({ showButton, showSideBar, setShowSideBar }) => {
   const handleClose = () => setShowSideBar(false);
   const handleShow = () => {
     setShowSideBar(true);
@@ -24,11 +20,15 @@ const SideBar = ({
   return (
     <>
       {showButton && (
-        <ButtonStyled onClick={handleShow}>
-          <div id={"side-bar-action"} className={"open-side"}>
-            <AiOutlineContainer />
-            <GrFormPrevious />
-          </div>
+        <ButtonStyled Styled onClick={handleShow}>
+          <OpenSide id={"side-bar-action"}>
+            <span>
+              <AiOutlineContainer />
+            </span>
+            <span>
+              <GrFormPrevious />
+            </span>
+          </OpenSide>
         </ButtonStyled>
       )}
 
@@ -43,7 +43,7 @@ const SideBar = ({
           <Offcanvas.Header closeButton>
             <Offcanvas.Title />
           </Offcanvas.Header>
-          <DropDownItem  />
+          <DropDownItem />
         </Offcanvas.Body>
       </OffcanvasBody>
     </>
