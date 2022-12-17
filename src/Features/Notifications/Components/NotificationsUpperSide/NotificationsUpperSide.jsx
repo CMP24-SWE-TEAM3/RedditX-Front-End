@@ -8,8 +8,17 @@ import {
 } from "./NotificationsUpperSide.styled";
 import { RiHome8Line } from "react-icons/ri";
 import { FiSettings } from "react-icons/fi";
+import markAllAsRead from "Features/Notifications/Services/MarkAllAsRead";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 const NotificationsUpperSide = () => {
+  const auth = useAuth();
+  const [markReadRes, errorMarkRead, loadingMarkRead, fetchData] = useFetchFunction();
+
+  function handleReadNotifications(){
+    markAllAsRead(fetchData, auth);
+  }
   return (
     <ContainerUpper>
       <ContainerUpperHeader>Notifications</ContainerUpperHeader>
@@ -22,27 +31,19 @@ const NotificationsUpperSide = () => {
               </Link>
             </ContainerUpperLI>
             <ContainerUpperLI>
-              <Link className="another" to={"/notifications"}>
+              <Link className="another" to={"/message/"}>
                 Messages
               </Link>
             </ContainerUpperLI>
           </div>
           <ContainerUpperLI>
-            <Link className="another" to={"/notifications"}>
+            <Link onClick={handleReadNotifications} className="another" to={"/notifications"}>
               <span className="Icon">
                 <RiHome8Line />
               </span>
               Mark as read
             </Link>
           </ContainerUpperLI>
-          {/* <ContainerUpperLI>
-            <Link className="another" to={"/notifications"}>
-              <span className="Icon">
-                <FiSettings />
-              </span>
-              Settings
-            </Link>
-          </ContainerUpperLI> */}
         </ContainerUpperUL>
       </ContainerUpperNav>
     </ContainerUpper>

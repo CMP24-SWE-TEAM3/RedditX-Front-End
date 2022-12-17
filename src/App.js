@@ -11,7 +11,13 @@ import TestModeratorsModals from "Features/Moderator/Pages/TestModeratorsModals/
 //////////////////////////////////////////////////////////////
 
 // Import react router dom
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Outlet,
+  Route,
+  Routes,
+} from "react-router-dom";
 
 // Import themes
 import darkTheme from "Theme/darkTheme";
@@ -136,7 +142,7 @@ function App() {
                   />
                   <Routes>
                     <Route
-                      path="/*"
+                      path=""
                       element={
                         <>
                           <Navigation
@@ -149,105 +155,137 @@ function App() {
                             modalAfterSignUp={modalAfterSignUp}
                             setModalAfterSignUp={setModalAfterSignUp}
                           />
-                          <HomePage
-                            handleToggleTheme={handleToggleTheme}
-                            theme={JSON.parse(theme).id}
-                          />
+                          <Outlet />
                         </>
                       }
-                    />
-                    <Route
-                      path="subreddit/:id/*"
-                      element={
-                        <RequireAuth>
-                          <Navigation
-                            toggleMode={handleToggleTheme}
-                            theme={JSON.parse(theme).id}
-                            modalShowLogIn={modalShowLogIn}
-                            setModalShowLogIn={setModalShowLogIn}
-                            modalShowSignUp={modalShowSignUp}
-                            setModalShowSignUp={setModalShowSignUp}
-                            modalAfterSignUp={modalAfterSignUp}
-                            setModalAfterSignUp={setModalAfterSignUp}
-                          />
-                          <SubReddit />
-                        </RequireAuth>
-                      }
-                    />
-                    <Route
-                      path="category/:categoryType/*"
-                      element={
-                        <RequireAuth>
-                          <Navigation
-                            toggleMode={handleToggleTheme}
-                            theme={JSON.parse(theme).id}
-                            modalShowLogIn={modalShowLogIn}
-                            setModalShowLogIn={setModalShowLogIn}
-                            modalShowSignUp={modalShowSignUp}
-                            setModalShowSignUp={setModalShowSignUp}
-                            modalAfterSignUp={modalAfterSignUp}
-                            setModalAfterSignUp={setModalAfterSignUp}
-                          />
-                          <CommunityLeaderBoard />
-                        </RequireAuth>
-                      }
-                    />
-                    <Route
-                      path="index-page/:indexLetter/*"
-                      element={
-                        <RequireAuth>
-                          <Navigation
-                            toggleMode={handleToggleTheme}
-                            theme={JSON.parse(theme).id}
-                            modalShowLogIn={modalShowLogIn}
-                            setModalShowLogIn={setModalShowLogIn}
-                            modalShowSignUp={modalShowSignUp}
-                            setModalShowSignUp={setModalShowSignUp}
-                            modalAfterSignUp={modalAfterSignUp}
-                            setModalAfterSignUp={setModalAfterSignUp}
-                          />
-                          <IndexPage />
-                        </RequireAuth>
-                      }
-                    />
-                    <Route
-                      path="search/*"
-                      element={
-                        <RequireAuth>
-                          <Navigation
-                            toggleMode={handleToggleTheme}
-                            theme={JSON.parse(theme).id}
-                            modalShowLogIn={modalShowLogIn}
-                            setModalShowLogIn={setModalShowLogIn}
-                            modalShowSignUp={modalShowSignUp}
-                            setModalShowSignUp={setModalShowSignUp}
-                            modalAfterSignUp={modalAfterSignUp}
-                            setModalAfterSignUp={setModalAfterSignUp}
-                          />
-                          <Search />
-                        </RequireAuth>
-                      }
-                    />
-                    <Route
-                      path="submit"
-                      element={
-                        <RequireAuth>
-                          <Navigation
-                            toggleMode={handleToggleTheme}
-                            theme={JSON.parse(theme).id}
-                            modalShowLogIn={modalShowLogIn}
-                            setModalShowLogIn={setModalShowLogIn}
-                            modalShowSignUp={modalShowSignUp}
-                            setModalShowSignUp={setModalShowSignUp}
-                            modalAfterSignUp={modalAfterSignUp}
-                            setModalAfterSignUp={setModalAfterSignUp}
-                          />
-                          <CreatePost />
-                        </RequireAuth>
-                      }
-                    />
+                    >
+                      <Route path="" element={<Navigate to="/new" />} />
+                      <Route
+                        path="/*"
+                        element={
+                          <>
+                            <HomePage
+                              handleToggleTheme={handleToggleTheme}
+                              theme={JSON.parse(theme).id}
+                            />
+                          </>
+                        }
+                      />
+                      <Route
+                        path="subreddit/:id/*"
+                        element={
+                          <RequireAuth>
+                            <SubReddit />
+                          </RequireAuth>
+                        }
+                      />
+                      <Route
+                        path="category/:categoryType/*"
+                        element={
+                          <RequireAuth>
+                            <CommunityLeaderBoard />
+                          </RequireAuth>
+                        }
+                      />
+                      <Route
+                        path="index-page/:indexLetter/*"
+                        element={
+                          <RequireAuth>
+                            <IndexPage />
+                          </RequireAuth>
+                        }
+                      />
+                      <Route
+                        path="search/*"
+                        element={
+                          <RequireAuth>
+                            <Search />
+                          </RequireAuth>
+                        }
+                      />
+                      <Route
+                        path="submit"
+                        element={
+                          <RequireAuth>
+                            <CreatePost />
+                          </RequireAuth>
+                        }
+                      />
+                      <Route path="*" element={<NotFound />} />
+                      <Route
+                        path="post-preview/:postId"
+                        element={
+                          <>
+                            <RequireAuth>
+                              <PostPreview />
+                            </RequireAuth>
+                          </>
+                        }
+                      />
+                      <Route
+                        path="subreddit/:subredditId/moderator/:moderatorId/"
+                        element={
+                          <>
+                            <RequireAuth>
+                              <Moderator />
+                            </RequireAuth>
+                          </>
+                        }
+                      />
+                      <Route
+                        path="/user/:userId/*"
+                        element={
+                          <>
+                            <RequireAuth>
+                              <User />
+                            </RequireAuth>
+                          </>
+                        }
+                      />
+                      <Route
+                        path="settings/*"
+                        element={
+                          <>
+                            <RequireAuth>
+                              <SettingsPage />
+                            </RequireAuth>
+                          </>
+                        }
+                      />
+                      <Route
+                        path="message/*"
+                        element={
+                          <RequireAuth>
+                            <Messages />
+                          </RequireAuth>
+                        }
+                      />
+                      <Route
+                        path="/notifications"
+                        element={
+                          <>
+                            <RequireAuth>
+                              <Notifications />
+                            </RequireAuth>
+                          </>
+                        }
+                      />
+                      <Route
+                        path="/explore/*"
+                        element={
+                          <>
+                            <Explore />
+                          </>
+                        }
+                      />
+                    </Route>
                     <Route path="login" element={<LogInPage />} />
-                    <Route path="register" element={<SignUpPage />} />
+                    <Route
+                      path="register"
+                      element={
+                        <SignUpPage setModalAfterSignUp={setModalAfterSignUp} />
+                      }
+                    />
                     <Route
                       path="forget-password"
                       element={<ForgetPasswordPage />}
@@ -259,143 +297,6 @@ function App() {
                     <Route
                       path="user/reset-password/:token"
                       element={<NewPasswordPage />}
-                    />
-                    <Route path="*" element={<NotFound />} />
-                    <Route
-                      path="post-preview/:postId"
-                      element={
-                        <>
-                          <RequireAuth>
-                            <Navigation
-                              toggleMode={handleToggleTheme}
-                              theme={JSON.parse(theme).id}
-                              modalShowLogIn={modalShowLogIn}
-                              setModalShowLogIn={setModalShowLogIn}
-                              modalShowSignUp={modalShowSignUp}
-                              setModalShowSignUp={setModalShowSignUp}
-                              modalAfterSignUp={modalAfterSignUp}
-                              setModalAfterSignUp={setModalAfterSignUp}
-                            />
-                            <PostPreview />
-                          </RequireAuth>
-                        </>
-                      }
-                    />
-                    <Route
-                      path="subreddit/:subredditId/moderator/:moderatorId/"
-                      element={
-                        <>
-                          <RequireAuth>
-                            <Navigation
-                              toggleMode={handleToggleTheme}
-                              theme={JSON.parse(theme).id}
-                              modalShowLogIn={modalShowLogIn}
-                              setModalShowLogIn={setModalShowLogIn}
-                              modalShowSignUp={modalShowSignUp}
-                              setModalShowSignUp={setModalShowSignUp}
-                              modalAfterSignUp={modalAfterSignUp}
-                              setModalAfterSignUp={setModalAfterSignUp}
-                            />
-                            <Moderator />
-                          </RequireAuth>
-                        </>
-                      }
-                    />
-                    <Route
-                      path="/user/:userId/*"
-                      element={
-                        <>
-                          <RequireAuth>
-                            <Navigation
-                              toggleMode={handleToggleTheme}
-                              theme={JSON.parse(theme).id}
-                              modalShowLogIn={modalShowLogIn}
-                              setModalShowLogIn={setModalShowLogIn}
-                              modalShowSignUp={modalShowSignUp}
-                              setModalShowSignUp={setModalShowSignUp}
-                              modalAfterSignUp={modalAfterSignUp}
-                              setModalAfterSignUp={setModalAfterSignUp}
-                            />
-                            <User />
-                          </RequireAuth>
-                        </>
-                      }
-                    />
-                    <Route
-                      path="settings/*"
-                      element={
-                        <>
-                          <RequireAuth>
-                            <Navigation
-                              toggleMode={handleToggleTheme}
-                              theme={JSON.parse(theme).id}
-                              modalShowLogIn={modalShowLogIn}
-                              setModalShowLogIn={setModalShowLogIn}
-                              modalShowSignUp={modalShowSignUp}
-                              setModalShowSignUp={setModalShowSignUp}
-                              modalAfterSignUp={modalAfterSignUp}
-                              setModalAfterSignUp={setModalAfterSignUp}
-                            />
-                            <SettingsPage />
-                          </RequireAuth>
-                        </>
-                      }
-                    />
-                    <Route
-                      path="message/*"
-                      element={
-                        <RequireAuth>
-                          <Navigation
-                            toggleMode={handleToggleTheme}
-                            theme={JSON.parse(theme).id}
-                            modalShowLogIn={modalShowLogIn}
-                            setModalShowLogIn={setModalShowLogIn}
-                            modalShowSignUp={modalShowSignUp}
-                            setModalShowSignUp={setModalShowSignUp}
-                            modalAfterSignUp={modalAfterSignUp}
-                            setModalAfterSignUp={setModalAfterSignUp}
-                          />
-                          <Messages />
-                        </RequireAuth>
-                      }
-                    />
-                    <Route
-                      path="/notifications"
-                      element={
-                        <>
-                          <RequireAuth>
-                            <Navigation
-                              toggleMode={handleToggleTheme}
-                              theme={JSON.parse(theme).id}
-                              modalShowLogIn={modalShowLogIn}
-                              setModalShowLogIn={setModalShowLogIn}
-                              modalShowSignUp={modalShowSignUp}
-                              setModalShowSignUp={setModalShowSignUp}
-                              modalAfterSignUp={modalAfterSignUp}
-                              setModalAfterSignUp={setModalAfterSignUp}
-                            />
-                            <Notifications />
-                          </RequireAuth>
-                        </>
-                      }
-                    />
-                    <Route
-                      path="/explore/*"
-                      element={
-                        <>
-                          <Navigation
-                            toggleMode={handleToggleTheme}
-                            theme={JSON.parse(theme).id}
-                            modalShowLogIn={modalShowLogIn}
-                            setModalShowLogIn={setModalShowLogIn}
-                            modalShowSignUp={modalShowSignUp}
-                            setModalShowSignUp={setModalShowSignUp}
-                            modalAfterSignUp={modalAfterSignUp}
-                            setModalAfterSignUp={setModalAfterSignUp}
-                          />
-                          <Explore />
-                        </>
-                      }
                     />
                   </Routes>
                 </BrowserRouter>
