@@ -30,6 +30,7 @@ import isJsonString from "Features/Post/Utils/isJsonString";
 import RichTextPostBody from "../RichTextPostBody/RichTextPostBody";
 
 const Comment = ({ comment }) => {
+  console.log("comment = ", comment);
   const initialVotes = comment.votesCount;
   const [files, setFiles] = useState([]);
   const [text, setText] = useState("");

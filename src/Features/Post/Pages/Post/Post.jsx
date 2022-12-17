@@ -149,9 +149,9 @@ const Post = ({ post, show, setShow }) => {
             {commentRerendered &&
               commentList &&
               commentList.things &&
-              commentList.things.map((comment) => (
-                <Comment comment={comment} />
-              ))}
+              commentList.things.map(
+                (comment) => comment && <Comment comment={comment} />
+              )}
           </CommentsContainer>
         </PostContent>
         <AsidePost>
