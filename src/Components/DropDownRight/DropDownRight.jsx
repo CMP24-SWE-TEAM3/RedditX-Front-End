@@ -33,7 +33,7 @@ const DropDownRightButton = ({ toggleMode }) => {
   useEffect(() => {
     getUser(fetchData, auth);
     console.log(userInfo);
-  }, [userInfo]);
+  }, []);
 
   const navigate = useNavigate();
   const LoginHandler = () => {
