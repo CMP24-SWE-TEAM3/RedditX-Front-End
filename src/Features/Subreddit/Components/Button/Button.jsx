@@ -13,7 +13,7 @@ import { useSubRedditID } from "Features/Subreddit/Contexts/SubRedditIDProvider"
  */
 const Button = ({ isJoined, onJoin }) => {
   // states
-  const [btnContent, setBtnContent] = useState("");
+  const [btnContent, setBtnContent] = useState("Join");
   const [currentState, setCurrentState] = useState(null);
 
   // useFetchFunction

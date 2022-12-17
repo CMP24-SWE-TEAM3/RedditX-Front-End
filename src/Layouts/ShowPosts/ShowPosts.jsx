@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import getNewPosts from "Services/getNewPosts";
+import { useEffect, useState, useCallback, useRef } from "react";
+import { useLocation } from "react-router-dom";
+import getPosts from "Services/getPosts";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 import PostShape from "Features/Post/Layouts/PostShape/PostShape";
@@ -30,15 +31,51 @@ let recentPost = [
   },
 ];
 
-const ShowPosts = () => {
-  const [data, error, isLoading, dataFetch] = useFetchFunction();
-  const auth = useAuth();
-  useEffect(() => {
-    getNewPosts(dataFetch, auth, 1, 50);
-  }, []);
-
+const ShowPosts = ({ type }) => {
+  // states
   const [showPost, setShowPost] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
+  const [pgNum, setPgNum] = useState(1);
+  const [posts, setPosts] = useState([]);
+
+  const location = useLocation();
+  const queryParam = new URLSearchParams(location.search);
+  const time = queryParam.get("t");
+
+  // fetch data
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
+
+  useEffect(() => {
+    setPgNum(1);
+    setPosts([]);
+  }, [type, time]);
+  const auth = useAuth();
+  useEffect(() => {
+    getPosts(dataFetch, auth, type, time, pgNum, 10);
+  }, [pgNum, time, type]);
+
+  useEffect(() => {
+    data.posts &&
+      setPosts((prev) => {
+        return [...prev, ...data.posts];
+      });
+  }, [data.posts]);
+
+  const observer = useRef();
+  const lastPostElementRef = useCallback(
+    (node) => {
+      if (isLoading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && data.posts.length !== 0) {
+          setPgNum((prevPageNumber) => prevPageNumber + 1);
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [isLoading, data.posts]
+  );
+
   // TODO: replace dummy data with post data
   // handle recent posts to append and delete from local storage
   const handleRecentPosts = () => {
@@ -48,20 +85,40 @@ const ShowPosts = () => {
   return (
     <>
       <div>
-        {!isLoading &&
-          data.posts &&
-          data.posts.map((post) => (
-            <div
-              onClick={() => {
-                setShowPost(true);
-                setSelectedPost(post);
-                handleRecentPosts();
-              }}
-            >
-              <PostShape post={post} />
-              <CollapsePost post={post} />
-            </div>
-          ))}
+        {posts &&
+          posts.length !== 0 &&
+          posts.map((post, index) => {
+            if (posts.length === index + 1) {
+              return (
+                <div
+                  key={index}
+                  ref={lastPostElementRef}
+                  onClick={() => {
+                    setShowPost(true);
+                    setSelectedPost(post);
+                    handleRecentPosts();
+                  }}
+                >
+                  <PostShape post={post} />
+                  <CollapsePost post={post} />
+                </div>
+              );
+            } else {
+              return (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setShowPost(true);
+                    setSelectedPost(post);
+                    handleRecentPosts();
+                  }}
+                >
+                  <PostShape post={post} />
+                  <CollapsePost post={post} />
+                </div>
+              );
+            }
+          })}
       </div>
       {selectedPost && (
         <Post post={selectedPost} show={showPost} setShow={setShowPost} />

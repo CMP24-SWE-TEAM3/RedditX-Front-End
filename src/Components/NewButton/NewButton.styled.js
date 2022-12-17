@@ -19,16 +19,28 @@ export const NewBtn = styled(NavLink)`
     display: none;
   }
   &.active {
+    .un-fill {
+      display: none;
+    }
+    .fill {
+      display: initial;
+    }
     background-color: ${({ theme }) => theme.background.post_background};
     color: ${({ theme }) => theme.btnColor.primary};
     &:hover {
       background-color: ${({ theme }) => theme.background.muted};
     }
   }
+  .fill {
+    display: none;
+  }
+  .un-fill {
+    display: initial;
+  }
   text-decoration: none;
 `;
 export const Word = styled.span`
-  padding-left: 4px;
+  padding-left: 6px;
   font-size: 14px;
   font-weight: 500;
   text-transform: capitalize;
