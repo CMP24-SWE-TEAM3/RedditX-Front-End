@@ -44,8 +44,8 @@ const PostShape = ({
       dataFetch,
       {
         linkID: "t3_" + post._id,
-        textHTML: editPostText,
-        textJSON: editPostHtmlText,
+        textHTML: editPostHtmlText,
+        textJSON: editPostText,
       },
       auth
     );

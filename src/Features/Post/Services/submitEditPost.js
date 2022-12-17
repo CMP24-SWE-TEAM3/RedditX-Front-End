@@ -12,7 +12,7 @@ const submitEditPost = (dataFetch, post, auth) => {
 
   dataFetch({
     axiosInstance: axios,
-    method: "patch",
+    method: "post",
     // url: "https://localhost:8000/submit/",
     url: "/api/listing/edit-user-text/",
     requestConfig: {
