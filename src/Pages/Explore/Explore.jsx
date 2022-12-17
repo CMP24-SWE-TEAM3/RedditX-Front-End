@@ -47,9 +47,13 @@ const Explore = () => {
     ctx.CategoryHandler(top);
     fetchCommunities(fetchCommunity, auth, top);
     // fetchSubbcomm(reloadSubCommunities, auth);
-    getCommunitiesList(fetchData, auth);
+
     fetchPosts(fetch, auth, top);
   }, [top]); // Only re-run the effect if count changes
+
+  useEffect(() => {
+    getCommunitiesList(fetchData, auth);
+  }, [top, ctx.ReFetch]); // Only re-run the effect if count changes
   console.log(communityListSub);
   return (
     <Container>

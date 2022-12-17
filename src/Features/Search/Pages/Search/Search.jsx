@@ -56,7 +56,7 @@ const Search = () => {
   // fetch Comments
   let [CommentLists, errorComment, loadingComment, fetchComment] =
     useFetchFunction();
-  // console.log(CommentLists);
+  console.log(CommentLists);
   // fetch Comments
 
   // fetch People
@@ -90,6 +90,7 @@ const Search = () => {
     getCommunitiesList(fetchData, auth);
     fetchPeopleFollowed(fetchSub);
   }, [ctx.word, ctx.isSubreddit, ctx.community]); // Only re-run the effect if count changes
+
   return (
     <Container>
       <div className="outer-container">
