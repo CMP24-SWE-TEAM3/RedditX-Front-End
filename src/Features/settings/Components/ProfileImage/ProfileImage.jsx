@@ -22,8 +22,17 @@ import { TbCameraPlus } from "react-icons/tb";
 import logo from "./../../Assets/prof.png";
 import { useState } from "react";
 import { useRef } from "react";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import useFetchFunction from "Hooks/useFetchFunction";
+import uploadUserPhoto from "Features/Authentication/Services/uploadUserPhoto";
+import { useEffect } from "react";
 
 const ProfileImage = () => {
+  /**
+   * state to store user's uploaded profile photo
+   */
+  const [profilePhoto, setProfilePhoto] = useState(null);
+
   const imgg = useRef();
   const toggleHandler = (state) => {
     console.log(state);
@@ -32,9 +41,28 @@ const ProfileImage = () => {
   // Use dropzone hook
 
   ////////////////////////////////
+  const auth = useAuth();
 
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
   const [selectedImage, setSelectedImage] = useState(null);
-  console.log(selectedImage);
+  const bodyFormData = new FormData();
+  // if (selectedImage != null) {
+  //   // console.log(selectedImage);
+  //   bodyFormData.append("action", "upload");
+  //   bodyFormData.append("attachment", selectedImage, selectedImage.path);
+  //   uploadUserPhoto(dataFetch, bodyFormData, auth);
+  //   // console.log(selectedImage);
+  // }
+  useEffect(() => {
+    // uploadUserPhoto(dataFetch, bodyFormData, auth);
+    if (selectedImage != null) {
+      // console.log(selectedImage);
+      bodyFormData.append("action", "upload");
+      bodyFormData.append("attachment", selectedImage, selectedImage.path);
+      uploadUserPhoto(dataFetch, bodyFormData, auth);
+      // console.log(selectedImage);
+    }
+  }, [selectedImage]);
   return (
     <>
       <OuterOne>
