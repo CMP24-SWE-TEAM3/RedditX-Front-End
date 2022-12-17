@@ -30,7 +30,7 @@ const ProfilePostButton = () => {
   useEffect(() => {
     getUser(fetchData, auth);
     console.log(userInfo);
-  }, [userInfo]);
+  }, []);
 
   return (
     <ProfileButtonStyled>
