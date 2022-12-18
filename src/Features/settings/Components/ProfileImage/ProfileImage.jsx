@@ -51,10 +51,10 @@ const ProfileImage = () => {
   }, []);
 
   useEffect(() => {
-    console.log("meeeeeeeeeeeeeeeee",userData);
+    console.log("meeeeeeeeeeeeeeeee", userData);
   }, [userData]);
 
-  const {meInfo} = userData;
+  const { meInfo } = userData;
 
   const [data, error, isLoading, dataFetch] = useFetchFunction();
   const [selectedImage, setSelectedImage] = useState(null);
@@ -111,8 +111,20 @@ const ProfileImage = () => {
                   <Imagerelative>
                     <ImagerelativeInner>
                       <ImageModel></ImageModel>
-                      <ImageExact selectedImage={selectedImage}>
-                        {!selectedImage && <img crossOrigin="anonymous" src={ meInfo?meInfo.user?`https://api.redditswe22.tech/users/files/${meInfo.user.avatar}`:logo:logo} alt="" />}
+                      <ImageExact selectedImage={true}>
+                        {!selectedImage && (
+                          <img
+                            crossOrigin="anonymous"
+                            src={
+                              meInfo
+                                ? meInfo.user
+                                  ? `https://api.redditswe22.tech/users/files/${meInfo.user.avatar}`
+                                  : logo
+                                : logo
+                            }
+                            alt=""
+                          />
+                        )}
                         {selectedImage && (
                           <ImageSelected
                             src={URL.createObjectURL(selectedImage)}
