@@ -29,7 +29,6 @@ const ProfilePostButton = () => {
   const [userInfo, error, isLoading, fetchData] = useFetchFunction();
   useEffect(() => {
     getUser(fetchData, auth);
-    console.log(userInfo);
   }, []);
 
   return (

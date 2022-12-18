@@ -32,7 +32,6 @@ const DropDownRightButton = ({ toggleMode }) => {
   const [userInfo, error, isLoading, fetchData] = useFetchFunction();
   useEffect(() => {
     getUser(fetchData, auth);
-    console.log(userInfo);
   }, []);
 
   const navigate = useNavigate();

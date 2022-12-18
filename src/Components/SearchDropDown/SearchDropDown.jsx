@@ -10,33 +10,43 @@ import {
   LinkSide,
   Child,
   SubChild,
+  CommunitiesText,
+  ImageContainer,
+  SubText,
+  CommunityContainer,
+  Members,
+  Container,
+  FirstChild,
+  SecondChild,
+  Dot,
+  DropMenuContainer,
 } from "./SearchDropDown.styled";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "API/axios";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 import { IoIosLink } from "react-icons/io";
+import { BsDot } from "react-icons/bs";
 import trendingSearch from "Services/trendingSearch";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
-import { BASE_URL } from "API/axios";
 
 /**
  * Component that displays a dropdown with a search bar inputForm
  * @param show
  * @return {React.Component}
  */
-const SearchDropDown = ({ show }) => {
+const SearchDropDown = ({ searchItems }) => {
   // authorization user
   const auth = useAuth();
 
   // Fetch trending posts
   const [trendingPostList, error, loading, fetchData] = useFetchFunction();
   useEffect(() => {
-    console.log("trendingPostsss===>", trendingPostList);
     trendingSearch(fetchData, auth);
   }, []);
 
   return (
-    <SearchDropDownStyled show={show} autoClose={"outside"}>
+    <SearchDropDownStyled autoClose={"outside"}>
       <Dropdown.Header>trending today</Dropdown.Header>
       {trendingPostList &&
         trendingPostList.length !== 0 &&
@@ -84,4 +94,84 @@ const SearchDropDown = ({ show }) => {
   );
 };
 
-export default SearchDropDown;
+export { SearchDropDown };
+
+const SearchBody = ({
+  searchItemsCommunities,
+  searchItemsPeople,
+  avatars,
+  cntAndIcon,
+  showResults,
+  setShowResults,
+}) => {
+  return (
+    <DropMenuContainer show={showResults}>
+      {searchItemsCommunities.length > 1 && (
+        <Container onClick={() => setShowResults(false)}>
+          <CommunitiesText>Communtities</CommunitiesText>
+          {searchItemsCommunities.map((Community, index) => {
+            if (index < 3) {
+              return (
+                <SubText to={`/search/posts/${Community}`}>
+                  <ImageContainer>
+                    <img
+                      crossOrigin="anonymous"
+                      src={`${BASE_URL}/subreddits/files/${cntAndIcon[index][1]}`}
+                      alt=""
+                    />
+                  </ImageContainer>
+                  <div>
+                    <CommunityContainer>
+                      r/{Community.substring(3)}
+                    </CommunityContainer>
+                    <Members>
+                      <FirstChild>Community</FirstChild>
+                      <Dot>
+                        <BsDot />
+                      </Dot>
+                      <SecondChild>{cntAndIcon[index][0]} members</SecondChild>
+                    </Members>
+                  </div>
+                </SubText>
+              );
+            }
+          })}
+        </Container>
+      )}
+
+      {searchItemsPeople.length > 0 && (
+        <Container onClick={() => setShowResults(false)}>
+          <CommunitiesText>People</CommunitiesText>
+          {searchItemsPeople.map((searchItem, index) => {
+            if (index < 3) {
+              return (
+                <SubText to={`/search/posts/${searchItem}`}>
+                  <ImageContainer>
+                    <img
+                      crossOrigin="anonymous"
+                      src={`${BASE_URL}/users/files/${avatars[index]}`}
+                      alt=""
+                    />
+                  </ImageContainer>
+                  <div>
+                    <CommunityContainer>
+                      u/{searchItem.substring(3)}
+                    </CommunityContainer>
+                    <Members>
+                      <FirstChild>User</FirstChild>
+                      <Dot>
+                        <BsDot />
+                      </Dot>
+                      <SecondChild>1 karma</SecondChild>
+                    </Members>
+                  </div>
+                </SubText>
+              );
+            }
+          })}
+        </Container>
+      )}
+    </DropMenuContainer>
+  );
+};
+export default SearchBody;
