@@ -51,8 +51,8 @@ const PostShape = ({
     );
   };
   useEffect(() => {
-    if (!isLoading && data && data._id) {
-      navigate(`/post-preview/${data._id}`);
+    if (!isLoading && data && data.response && data.response._id) {
+      navigate(`/post-preview/${data.response._id}`);
     }
   }, [data]);
   return (
