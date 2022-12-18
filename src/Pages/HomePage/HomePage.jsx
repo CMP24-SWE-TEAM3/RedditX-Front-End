@@ -1,5 +1,5 @@
 // imports
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Container,
   MainContainer,
@@ -24,6 +24,11 @@ import useDocumentTitle from "Hooks/useDocumentTitle";
 // import PushNotification from "Components/PushNotification/PushNotification";
 import { Routes, Route } from "react-router-dom";
 import ShowPosts from "Layouts/ShowPosts/ShowPosts";
+import { Button } from "react-bootstrap";
+
+//////////////////////////////////////////////////////////////
+import { onForegroundMessage } from "PushNotification/messaging_init_in_sw";
+//////////////////////////////////////////////////////////////
 
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
@@ -32,8 +37,25 @@ import ShowPosts from "Layouts/ShowPosts/ShowPosts";
  */
 
 const HomePage = () => {
-  // Change document title
-  useDocumentTitle("Reddit - Dive into anything");
+  const [notifications, setNotifications] = React.useState([]);
+  console.log("notifications: ", notifications);
+  useEffect(() => {
+    onForegroundMessage()
+      .then((payload) => {
+        console.log("Received foreground message: ", payload);
+        const {
+          notification: { title, body },
+        } = payload;
+        setNotifications([...notifications, { title, body }]);
+        console.log("title: ", title, "body: ", body);
+      })
+      .catch((err) =>
+        console.log(
+          "An error occured while retrieving foreground message. ",
+          err
+        )
+      );
+  });
   return (
     <AppContainer>
       <AppHeader>
@@ -53,6 +75,7 @@ const HomePage = () => {
             </ContentPost>
             <aside>
               <Sidebar>
+                {/* <Button onClick={requestPermission}>push</Button> */}
                 <CommunityCard />
 
                 <CreateCommunity>

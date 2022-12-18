@@ -17,7 +17,6 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
  * @returns {React.Component} VotingBar component
  */
 const VotingBar = ({ number, id }) => {
-  console.log("id = ", id);
   const [giveUp, setGiveUp] = useState(false);
   const [giveDown, setGiveDown] = useState(false);
   const [count, setCount] = useState(number);
@@ -40,7 +39,6 @@ const VotingBar = ({ number, id }) => {
         choosed={giveUp}
         onClick={(event) => {
           event.stopPropagation();
-          console.log("up");
           handleUp(
             giveUp,
             giveDown,

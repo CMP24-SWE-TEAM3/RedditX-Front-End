@@ -2,14 +2,6 @@
 // Import react and hooks
 import React, { useState } from "react";
 
-//////////////////////////////////////////////////////////////
-
-//Dummy imports
-
-import TestModeratorsModals from "Features/Moderator/Pages/TestModeratorsModals/TestModeratorsModals";
-
-//////////////////////////////////////////////////////////////
-
 // Import react router dom
 import {
   BrowserRouter,
