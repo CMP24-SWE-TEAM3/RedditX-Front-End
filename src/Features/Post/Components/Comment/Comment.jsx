@@ -33,7 +33,7 @@ import { BASE_URL } from "API/axios";
 import { useNavigate } from "react-router-dom";
 import Moment from "react-moment";
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment, postID }) => {
   const initialVotes = comment.votesCount;
   const [files, setFiles] = useState([]);
   const [text, setText] = useState("");
@@ -90,6 +90,14 @@ const Comment = ({ comment }) => {
       auth
     );
   };
+
+  useEffect(() => {
+    if (!isLoadingReply && reply && reply._id) {
+      console.log("reply", postID);
+      navigate(`/post-preview/${postID}`);
+    }
+  }, [reply]);
+
   useEffect(() => {
     if (comment && comment.replies) {
       getCommunityInfo(

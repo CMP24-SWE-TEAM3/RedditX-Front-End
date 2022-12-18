@@ -24,6 +24,7 @@ import getCommunityInfo from "Features/Post/Services/getCommunityInfo";
 import CommunityCardPost from "Features/Post/Components/CommunityCardPost/CommunityCardPost";
 import submitComment from "Features/Post/Services/submitComment";
 import DraftEditor from "Features/Post/Components/DraftEditor/DraftEditor";
+import { useNavigate } from "react-router-dom";
 /**
  *
  * Component that displays post with comments , likes displayed on show modal
@@ -74,6 +75,12 @@ const Post = ({ post, show, setShow }) => {
       auth
     );
   };
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!isLoadingComment && comment && comment._id && post && post._id) {
+      navigate(`/post-preview/${post._id}`);
+    }
+  }, [comment]);
   const handlePostEdit = () => {
     setEditPost(true);
   };
@@ -118,7 +125,8 @@ const Post = ({ post, show, setShow }) => {
               commentList &&
               commentList.things &&
               commentList.things.map(
-                (comment) => comment && <Comment comment={comment} />
+                (comment) =>
+                  comment && <Comment comment={comment} postID={post._id} />
               )}
           </CommentsContainer>
         </PostContent>

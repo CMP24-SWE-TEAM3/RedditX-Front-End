@@ -23,7 +23,8 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import getCommunityInfo from "Features/Post/Services/getCommunityInfo";
 import CommunityCardPost from "Features/Post/Components/CommunityCardPost/CommunityCardPost";
 import submitComment from "Features/Post/Services/submitComment";
-import { useParams } from "react-router-dom";
+import DraftEditor from "Features/Post/Components/DraftEditor/DraftEditor";
+import { useNavigate, useParams } from "react-router-dom";
 /**
  *
  * Component that displays post with comments , likes displayed on show modal
@@ -38,6 +39,7 @@ const PostPreview = () => {
   const [text, setText] = useState("");
   // State for plain text of post
   const [htmlText, setHtmlText] = useState("");
+  const [editPost, setEditPost] = useState(false);
   const { postId } = useParams();
   const [commentRerendered, setCommentRerendered] = useState(false);
   const [data, error, isLoading, dataFetch] = useFetchFunction();
@@ -89,13 +91,29 @@ const PostPreview = () => {
       auth
     );
   };
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!isLoadingComment && comment && comment._id && post && post._id) {
+      navigate(`/post-preview/${post._id}`);
+    }
+  }, [comment]);
+  const handlePostEdit = () => {
+    setEditPost(true);
+  };
   return (
     <Container>
       {/* <NavigationPost setHandleShowModal={setShow} /> */}
       <ModalBodyContainer>
         <PostContent>
           {!isLoadingPost && post.things && (
-            <PostShape fullWidth={true} post={post.things[0]} fullPost={true} />
+            <PostShape
+              handlePostEdit={handlePostEdit}
+              editPost={editPost}
+              setEditPost={setEditPost}
+              fullWidth={true}
+              post={post.things[0]}
+              fullPost={true}
+            />
           )}
           <UserNameContainer>
             Comment as <UserName>{auth.getUserName().substring(3)}</UserName>
@@ -114,9 +132,10 @@ const PostPreview = () => {
             {commentRerendered &&
               commentList &&
               commentList.things &&
-              commentList.things.map((comment) => (
-                <Comment comment={comment} />
-              ))}
+              commentList.things.map(
+                (comment) =>
+                  comment && <Comment comment={comment} postID={postId} />
+              )}
           </CommentsContainer>
         </PostContent>
         <AsidePost>
