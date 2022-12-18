@@ -26,6 +26,7 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 import uploadUserPhoto from "Features/Authentication/Services/uploadUserPhoto";
 import { useEffect } from "react";
+import getUser from "Features/settings/Services/getMine";
 
 const ProfileImage = () => {
   /**
@@ -43,6 +44,18 @@ const ProfileImage = () => {
   ////////////////////////////////
   const auth = useAuth();
 
+  const [userData, userError, userIsLoading, userFetch] = useFetchFunction();
+
+  useEffect(() => {
+    getUser(userFetch, auth);
+  }, []);
+
+  useEffect(() => {
+    console.log("meeeeeeeeeeeeeeeee",userData);
+  }, [userData]);
+
+  const {meInfo} = userData;
+
   const [data, error, isLoading, dataFetch] = useFetchFunction();
   const [selectedImage, setSelectedImage] = useState(null);
   const bodyFormData = new FormData();
@@ -58,7 +71,7 @@ const ProfileImage = () => {
     if (selectedImage != null) {
       // console.log(selectedImage);
       bodyFormData.append("action", "upload");
-      bodyFormData.append("attachment", selectedImage, selectedImage.path);
+      bodyFormData.append("attachment", selectedImage, selectedImage.name);
       uploadUserPhoto(dataFetch, bodyFormData, auth);
       // console.log(selectedImage);
     }
@@ -99,7 +112,7 @@ const ProfileImage = () => {
                     <ImagerelativeInner>
                       <ImageModel></ImageModel>
                       <ImageExact selectedImage={selectedImage}>
-                        {!selectedImage && <img src={logo} alt="" />}
+                        {!selectedImage && <img crossOrigin="anonymous" src={ meInfo?meInfo.user?`https://api.redditswe22.tech/users/files/${meInfo.user.avatar}`:logo:logo} alt="" />}
                         {selectedImage && (
                           <ImageSelected
                             src={URL.createObjectURL(selectedImage)}
