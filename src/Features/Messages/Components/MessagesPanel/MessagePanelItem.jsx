@@ -171,7 +171,7 @@ const MessageBannelItem = ({
   function handleUnread(){
     setLocalRead(false);
     let dataObject = {
-      msgID: `t4_${id}`
+      msgID: `${id}`
     };
     unreadMessages(fetchDataUnread, dataObject, auth);
   }

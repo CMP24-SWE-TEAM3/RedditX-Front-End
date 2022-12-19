@@ -72,7 +72,7 @@ function MessageBannel({data}) {
 
   if(eachMessage && eachMessage.length!==0) {
     Message = eachMessage.map((item) => {
-      if(!item.delete) {
+      if(!item.isDeleted) {
       return (
         <MessageBannelItem
           changeMessage={setEachMessage}

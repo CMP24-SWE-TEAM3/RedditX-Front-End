@@ -82,9 +82,9 @@ function AllMessagesTypes({data}) {
   }, [data]);
 
   if(eachMessage && eachMessage.length!==0) {
-
+    let type = 'message';
     Message = eachMessage.map((item) => {
-      switch (item.type) {
+      switch (type) {
         case "usernameMention":
           if(!item.delete) {
           return (
@@ -126,16 +126,16 @@ function AllMessagesTypes({data}) {
           return (
             <NormalMessageAll
               changeMessage={setEachMessage}
-              aurthor={item.aurthor}
-              title={item.title}
-              time={item.time}
-              msg={item.msg}
+              aurthor={item.fromID.substring(3)}
+              title={item.subject}
+              time={item.createdAt}
+              msg={item.text}
               admin={item.admin}
-              read={item.read}
-              id={item.id}
+              read={item.unread_status}
+              id={item._id}
               deleted={item.delete}
               block={item.block}
-              key={item.id}
+              key={item._id}
             />
           );
           }

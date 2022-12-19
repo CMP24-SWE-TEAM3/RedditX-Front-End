@@ -141,6 +141,10 @@ const darkTheme = {
     text: "#d7dadc",
     hover: "#272729",
   },
+  reportModalExp: {
+    text: "#9a9b9c",
+    headline: "#d7dadc",
+  },
   degree: {
     gradient: 180,
   },
