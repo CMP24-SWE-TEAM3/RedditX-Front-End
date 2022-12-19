@@ -6,17 +6,17 @@ import axios from "API/axios";
  * @param {Function} fetchFunction Coming from useFetchFunction custom hook
  * @param {object} dataObject The Data to be Sent in the POST request
  */
-const blockUser = (fetchFunction, dataObject) => {
-//   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
+const blockUser = (fetchFunction, dataObject, auth) => {
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
     fetchFunction({
       axiosInstance: axios,
       method: "POST",
-      url: "http://localhost:8000/delete-message",
+      url: "/api/user/block-user",
       requestConfig: {
         data: dataObject,
         headers: {
           "Content-Language": "en-US",
-        //   Authorization: `Bearer ${auth.getToken()}`,
+          Authorization: `Bearer ${auth.getToken()}`,
         },
       },
     });

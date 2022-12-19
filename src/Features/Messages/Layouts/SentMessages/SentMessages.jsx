@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
+import useFetchFunction from "Hooks/useFetchFunction";
 import SentMessageItem from "../../Components/SentMessageItem/SentMessageItem";
 import { EmbeddedPage, Empty, EmptyMessage, PageContainer } from "./SentMessages.styled";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import fetchSentMessage from "../../Services/fetchSentMessage";
 const messagesData = [
     {
       author: "Mohamed",
       title: "Greeting",
-      time: "2022, 11, 29",
+      time: "2022-11-29T",
       text: "Hello Hello",
       read: false,
       admin: false,
@@ -14,7 +17,7 @@ const messagesData = [
     {
       author: "Ahmed",
       title: "Mod",
-      time: "2022, 11, 29",
+      time: "2022-11-29T",
       text: "You are Mod",
       read: false,
       admin: false,
@@ -23,7 +26,7 @@ const messagesData = [
     {
       author: "Jacob",
       title: "Broken",
-      time: "2022, 11, 29",
+      time: "2022-11-29T",
       text: "It Is Broken Now",
       read: false,
       admin: true,
@@ -32,7 +35,7 @@ const messagesData = [
     {
       author: "Joanne",
       title: "Greeting",
-      time: "2022, 11, 29",
+      time: "2022-11-29T",
       text: "Henlo",
       read: false,
       admin: false,
@@ -41,7 +44,7 @@ const messagesData = [
     {
       author: "Arabella",
       title: "Hmmmm...",
-      time: "2022, 11, 29",
+      time: "2022-11-29T",
       text: "Hi.",
       read: false,
       admin: true,
@@ -55,9 +58,16 @@ const messagesData = [
  * @Component
  * @returns {React.Component}
  */
-const SentMessages = ({sent})=>{
+const SentMessages = ()=>{
+  const auth = useAuth();
+  const [sent, errorSentMessages, loadingSentMessages, fetchSent] = useFetchFunction();
+
+  useEffect(()=>{
+    fetchSentMessage(fetchSent, auth);
+  }, []);
+  
+  console.log(`Done:`);
   console.log(sent);
-const [eachMessage, setEachMessage] = useState(messagesData);
 
 let Message = (
   <Empty>
@@ -67,31 +77,38 @@ let Message = (
   </Empty>
 );
 
-useEffect(()=>{
-  if(sent&& sent.messages &&sent.messages.length!==0) {
-    setEachMessage(sent.messages);
-  }
-}, [sent]);
+const [eachMessage, setEachMessage] = useState(messagesData);
 
-if(eachMessage && eachMessage.length!==0){
-  Message = eachMessage.map((item) => {
-    return(
-      <SentMessageItem
-        key = {item.id.toString()}
-        id = {item.id}
-        author = {item.author}
-        subject = {item.title}
-        time = {item.time}
-        msg = {item.text}
-        admin = {item.admin}
-      />
-    )
+
+
+// useEffect(()=>{
+//   if(sent&& sent.messages &&sent.messages.length!==0) {
+//     setEachMessage(sent.messages);
+//   }
+// }, [sent]);
+
+if(sent&& sent.messages &&sent.messages.length!==0) {
+
+  Message = sent.messages.map((item) => {
+    if(!item.isDeleted) {
+      return(
+        <SentMessageItem
+          key = {item._id}
+          id = {item._id}
+          author = {item.toID.substring(3)}
+          subject = {item.subject}
+          time = {item.createdAt}
+          msg = {item.text}
+          admin = {item.admin}
+        />
+      );
+    }
   });
 }
 
 return (
   <EmbeddedPage>
-    <PageContainer className="try">{Message}</PageContainer>
+    <PageContainer>{Message}</PageContainer>
   </EmbeddedPage>
 );
 }

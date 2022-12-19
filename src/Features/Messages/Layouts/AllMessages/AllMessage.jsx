@@ -9,7 +9,7 @@ const messagesData = [
     aurthor: "Mohamed",
     title: "Greeting",
     type: "usernameMention",
-    time: "2022, 11, 30",
+    time: "2022-11-30T",
     msg: "Hello Hello",
     upvote: "neutral",
     admin: true,
@@ -22,7 +22,7 @@ const messagesData = [
     aurthor: "Ahmed",
     title: "Mod",
     type: "usernameMention",
-    time: "2022, 11, 29",
+    time: "2022-11-29T",
     msg: "You are Mod",
     upvote: "neutral",
     admin: false,
@@ -35,7 +35,7 @@ const messagesData = [
     aurthor: "Mohamed",
     title: "Greeting",
     type: "postReply",
-    time: "2022, 11, 30",
+    time: "2022-11-30T",
     msg: "Hello Hello",
     upvote: "neutral",
     admin: true,
@@ -48,7 +48,7 @@ const messagesData = [
     aurthor: "Ahmed",
     title: "Mod",
     type: "normal",
-    time: "2022, 11, 29",
+    time: "2022-11-29T",
     msg: "You are Mod",
     admin: false,
     read: false,
@@ -82,9 +82,9 @@ function AllMessagesTypes({data}) {
   }, [data]);
 
   if(eachMessage && eachMessage.length!==0) {
-
+    let type = 'message';
     Message = eachMessage.map((item) => {
-      switch (item.type) {
+      switch (type) {
         case "usernameMention":
           if(!item.delete) {
           return (
@@ -126,16 +126,16 @@ function AllMessagesTypes({data}) {
           return (
             <NormalMessageAll
               changeMessage={setEachMessage}
-              aurthor={item.aurthor}
-              title={item.title}
-              time={item.time}
-              msg={item.msg}
+              aurthor={item.fromID.substring(3)}
+              title={item.subject}
+              time={item.createdAt}
+              msg={item.text}
               admin={item.admin}
-              read={item.read}
-              id={item.id}
+              read={item.unread_status}
+              id={item._id}
               deleted={item.delete}
               block={item.block}
-              key={item.id}
+              key={item._id}
             />
           );
           }

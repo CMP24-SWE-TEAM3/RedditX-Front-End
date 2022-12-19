@@ -5,7 +5,7 @@ const messagesData = [
   {
     aurthor: "Mohamed",
     title: "Greeting",
-    time: "2022, 11, 29",
+    time: "2022-11-29T",
     msg: "Hello Hello",
     upvote: "neutral",
     admin: true,
@@ -16,7 +16,7 @@ const messagesData = [
   {
     aurthor: "Ahmed",
     title: "Mod",
-    time: "2022, 11, 29",
+    time: "2022-11-29T",
     msg: "You are Mod",
     upvote: "neutral",
     admin: false,

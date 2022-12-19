@@ -1,4 +1,4 @@
-import { Container, UpVotedContainer } from "./UserUpVoted.styled";
+import { Container, UpVotedContainer, StyledDiv } from "./UserUpVoted.styled";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 import getUpVotedPosts from "Features/User/Services/getUpVotedPosts";
@@ -6,8 +6,11 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import CollapsePost from "Features/Post/Layouts/CollapsePost/CollapsePost";
 import { useUserID } from "Features/User/Contexts/UserIDProvider";
 import UserNoPosts from "Features/User/Components/UserNoPosts/UserNoPosts";
+import Post from "Features/Post/Pages/Post/Post";
 
 const UserUpVoted = () => {
+  const [showPost, setShowPost] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
   const [pgNum, setPgNum] = useState(1);
   const [p, setP] = useState([]);
   const auth = useAuth();
@@ -67,22 +70,40 @@ const UserUpVoted = () => {
               p.map((post, i) => {
                 if (p.length === i + 1) {
                   return (
-                    <div ref={lastPostElementRef} key={i}>
+                    <StyledDiv
+                      ref={lastPostElementRef}
+                      key={i}
+                      onClick={() => {
+                        setShowPost(true);
+                        setSelectedPost(post);
+                      }}
+                    >
                       {/* {post.title} */}
                       <CollapsePost post={post} />
-                    </div>
+                    </StyledDiv>
                   );
                 } else {
                   return (
-                    <div key={i}>
+                    <StyledDiv
+                      key={i}
+                      onClick={() => {
+                        setShowPost(true);
+                        setSelectedPost(post);
+                      }}
+                    >
                       <CollapsePost post={post} />
-                    </div>
+                    </StyledDiv>
                   );
                 }
               })}
-            {p && p.length === 0 && !isLoading && <UserNoPosts
+            {p && p.length === 0 && !isLoading && (
+              <UserNoPosts
                 text={`hmm... looks like you haven't upvoted anything yet`}
-              />}
+              />
+            )}
+            {selectedPost && (
+              <Post post={selectedPost} show={showPost} setShow={setShowPost} />
+            )}
           </>
         }
       </UpVotedContainer>

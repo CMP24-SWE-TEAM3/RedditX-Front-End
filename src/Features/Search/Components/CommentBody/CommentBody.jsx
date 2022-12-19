@@ -30,11 +30,14 @@ import { Link } from "react-router-dom";
  */
 const CommentBody = ({ commentBody }) => {
   if (commentBody) {
+    console.log(commentBody.CommentUserImage);
     return (
       <Container>
         <FirstText>
           <Link to="#">
-            <FirstTextStyle>{commentBody.postContent}</FirstTextStyle>
+            {commentBody.postContent && (
+              <FirstTextStyle>{commentBody.postContent}</FirstTextStyle>
+            )}
           </Link>
         </FirstText>
         <InnerBody>
@@ -42,14 +45,13 @@ const CommentBody = ({ commentBody }) => {
             <ImageAlign>
               <Link to="#">
                 <div>
-                  {/* <CommentImage
-                    src={require(`../../Assets/${commentBody.commentUserImage}`)}
-                    alt="Comment User Image"
-                  /> */}
-                  <CommentImage
-                    src={CommentUserImage}
-                    alt="Comment User Image"
-                  />
+                  {commentBody.CommentUserImage && (
+                    <CommentImage
+                      crossOrigin="anonymous"
+                      src={`https://api.redditswe22.tech/users/files/${commentBody.CommentUserImage}`}
+                      alt="People Icon"
+                    />
+                  )}
                 </div>
               </Link>
             </ImageAlign>

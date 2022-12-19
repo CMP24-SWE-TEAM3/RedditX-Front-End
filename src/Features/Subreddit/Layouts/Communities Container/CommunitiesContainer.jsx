@@ -85,16 +85,16 @@ import { useCallback } from "react";
     fetchCommunities(fetchFunction, auth, currCategory, pgNum);
   },[pgNum]);
 
-  console.log(communitiesList);
-
-  const { commun } = communitiesList;
+  // const { commun } = communitiesList;
 
   useEffect(() => {
-    commun &&
+    console.log(communitiesList.communities);
+    communitiesList.communities &&
       setComs((prev) => {
-        return [...prev, ...commun];
+        return [...prev, ...communitiesList.communities];
       });
-  }, [commun]);
+    console.log(coms);
+  }, [communitiesList.communities]);
 
 
   const observer = useRef();
@@ -103,20 +103,20 @@ import { useCallback } from "react";
       if (loading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && commun.length !== 0 /*&& hasMore*/) {
+        if (entries[0].isIntersecting && communitiesList.communities.length !== 0 /*&& hasMore*/) {
           setPgNum((prevPageNumber) => prevPageNumber + 1);
         }
       });
       if (node) observer.current.observe(node);
     },
-    [loading, commun]
+    [loading, communitiesList.communities]
   );
 
 let communities;
 
 if(coms && coms.length!==0)
 {
-     communities = communitiesList.map((community, index) => {
+     communities = communitiesList.communities.map((community, index) => {
     if (coms.length === index + 1) { 
         return (
         <li ref={lastPostElementRef} key={community.id.toString()}>
@@ -128,7 +128,7 @@ if(coms && coms.length!==0)
             isJoined={subscribed.find((element) => {
               return element.id === community.id;
             })}
-            members={community.stats.members}
+            members={community.members.length}
             description={community.description}
             rankChange={community.rankChange}
           />
