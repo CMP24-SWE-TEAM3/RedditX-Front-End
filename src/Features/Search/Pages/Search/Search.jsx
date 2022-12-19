@@ -47,7 +47,7 @@ const Search = () => {
   //   fetchPosts(fetch);
   // }, []); // Only re-run the effect if count changes
   // Fetch Posts
-  // console.log(PostList);
+  // console.log(PostList, "jjj");
   // fetch Communities
   let [CommunityList, errorCommunity, loadingCommunity, fetchCommunity] =
     useFetchFunction();
@@ -58,7 +58,7 @@ const Search = () => {
   // fetch Comments
   let [CommentLists, errorComment, loadingComment, fetchComment] =
     useFetchFunction();
-  console.log(CommentLists);
+  console.log(CommentLists, "jjjj");
   // fetch Comments
 
   // fetch People
