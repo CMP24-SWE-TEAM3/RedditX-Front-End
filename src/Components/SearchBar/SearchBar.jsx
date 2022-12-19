@@ -47,7 +47,7 @@ const SearchBar = () => {
   if (communityList && communityList.length !== 0) {
     for (let i = 0; i < communityList.results.length; i++) {
       cntAndIcon.push([
-        communityList.results[i].membersCnt,
+        communityList.results[i].members.length,
         communityList.results[i].icon,
       ]);
       communityResults.push(communityList.results[i]._id);
