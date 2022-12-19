@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import DropdownMenu from "react-bootstrap/DropdownMenu";
 import { Link } from "react-router-dom";
+import { Dropdown } from "react-bootstrap";
+
+
 export const SearchDropDownStyled = styled(DropdownMenu)`
   z-index: 100;
-  left: unset !important;
   margin-left: 5px;
   top: 44.5px;
   width: 40.5%;
@@ -211,7 +213,6 @@ export const DropMenuContainer = styled(DropdownMenu)`
   z-index: 100;
   left: 423px;
   top: 44.5px;
-  width: 580px;
   overflow: auto;
   border-top-width: 0;
   border-radius: 0 0 4px 4px;

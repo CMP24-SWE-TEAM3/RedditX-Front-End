@@ -18,6 +18,7 @@ import { FollowersProvider } from "Features/User/Contexts/FollowersProvider";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useEffect, useState } from "react";
 import useDocumentTitle from "Hooks/useDocumentTitle";
+import Followers from "Features/User/Layouts/Followers/Followers";
 
 const User = () => {
   const [me, setMe] = useState(false);
@@ -52,6 +53,7 @@ const User = () => {
                         <Route path="hidden" element={<UserHidden />} />
                         <Route path="upvoted" element={<UserUpVoted />} />
                         <Route path="downvoted" element={<UserDownVoted />} />
+                        <Route path="followers" element={<Followers />} />
                       </>
                     )}
                   </Routes>
