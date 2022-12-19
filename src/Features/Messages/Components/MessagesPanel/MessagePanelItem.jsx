@@ -39,6 +39,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import deleteMessage from "Features/Messages/Services/DeleteMessage";
 import unreadMessages from "Features/Messages/Services/UnreadMessage";
 import composeMessage from "../../Services/ComposeMessage";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 /**
  * Component that contains the message item of Message Panel
  *

@@ -14,7 +14,8 @@ const fetchCommunities = (fetchFunction, auth, category, pgNum) => {
     fetchFunction({
       axiosInstance: axios,
       method: 'GET',
-      url: `/api/get_specific_category/?category=${category}&page=${pgNum}&limit=12`,
+      // url: `/api/get_specific_category/?category=${category}&page=${pgNum}&limit=12`,
+      url: `/api/r/random-category`,
       requestConfig: {
         headers: {
           "Content-Language": "en-US",

@@ -6,12 +6,12 @@ import axios from "API/axios";
  * @param {object} auth Context object coming from useAuth custom Hook
  * @param {Function} fetchFunction Coming from useFetchFunction custom hook
  */
-const fetchMessages = (fetchFunction, auth) => {
+const fetchSentMessages = (fetchFunction, auth) => {
   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
     fetchFunction({
       axiosInstance: axios,
       method: "GET",
-      url: "/api/message/inbox",
+      url: "/api/message/sent",
       requestConfig: {
         headers: {
           "Content-Language": "en-US",
@@ -21,4 +21,4 @@ const fetchMessages = (fetchFunction, auth) => {
     });
 };
 
-export default fetchMessages;
+export default fetchSentMessages;
