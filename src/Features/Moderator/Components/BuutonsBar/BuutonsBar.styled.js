@@ -13,6 +13,11 @@ export const ContainerFlairButtons = styled.div`
   position: fixed;
   right: 0;
   z-index: 3;
+  @media (max-width: 932px) {
+    width: 100%;
+    left: 0;
+    /* right: 0; */
+  }
 `;
 export const ReorderButton = styled.button`
   margin-left: 8px;

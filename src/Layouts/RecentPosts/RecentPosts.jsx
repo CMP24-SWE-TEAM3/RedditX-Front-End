@@ -13,6 +13,8 @@ import {
 } from "./RecentPosts.styled";
 import imagePost from "Assets/Images/cats.png";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import RecentContext from "Contexts/RecentContext";
 
 /**
  * Component that displays a list of recent posts from homepage
@@ -21,7 +23,12 @@ import { Link } from "react-router-dom";
  */
 const RecentPosts = () => {
   //TODO: using caching recent posts after each clicked on a specific post instead of fetching data from server
-  let recentPostList = JSON.parse(localStorage.getItem("RecentPosts"));
+  // let recentPostList = JSON.parse(localStorage.getItem("RecentPosts"));
+  const [recentPostList, setrecentPostList] = useState([]);
+  const ctx = useContext(RecentContext);
+  useEffect(() => {
+    setrecentPostList(JSON.parse(localStorage.getItem("RecentPosts")));
+  }, [ctx.Posts]);
   useEffect(() => {
     if (recentPostList) setShowRecentPosts(true);
   }, [recentPostList]);
@@ -44,32 +51,34 @@ const RecentPosts = () => {
             <HeadContainer>
               <div>Recent Posts</div>
             </HeadContainer>
-            {recentPostList.map((recentPost) => {
-              return (
-                <Content key={recentPost.id}>
-                  <Cover>
-                    <CoverChild>
-                      <Link href={"https://i.redd.it/kfjabyn5tdy91.png"}>
-                        <ImageContainer>
-                          <img src={imagePost} alt="img" />
-                        </ImageContainer>
-                      </Link>
-                    </CoverChild>
-                  </Cover>
+            {recentPostList.length !== 0 &&
+              recentPostList &&
+              recentPostList.slice(0, 3).map((recentPost) => {
+                return (
+                  <Content key={recentPost.id}>
+                    <Cover>
+                      <CoverChild>
+                        <Link href={"https://i.redd.it/kfjabyn5tdy91.png"}>
+                          <ImageContainer>
+                            <img src={imagePost} alt="img" />
+                          </ImageContainer>
+                        </Link>
+                      </CoverChild>
+                    </Cover>
 
-                  <Description>
-                    <p>{recentPost.description}</p>
-                    <Details>
-                      <div>
-                        <span>{recentPost.points} points</span>
-                        <Dots>{recentPost.comments} comments</Dots>
-                        <Dots>{recentPost.hours}h</Dots>
-                      </div>
-                    </Details>
-                  </Description>
-                </Content>
-              );
-            })}
+                    <Description>
+                      <p>{recentPost.communityID}</p>
+                      <Details>
+                        <div>
+                          <span>{recentPost.userID._id} points</span>
+                          <Dots>{recentPost.comments} comments</Dots>
+                          <Dots>{recentPost.hours}h</Dots>
+                        </div>
+                      </Details>
+                    </Description>
+                  </Content>
+                );
+              })}
           </div>
           <ClearBtn id={"recent-post-button"} onClick={deleteRecentPosts}>
             Clear

@@ -29,6 +29,7 @@ const CommunitiesPage = ({ CommunityList, CommunitiesSub2 }) => {
               {communitiesNumber !== 0 &&
                 CommunityList &&
                 CommunitiesSub2 &&
+                CommunitiesSub2.communities &&
                 CommunityList.results.map((Community) => (
                   <CommunityItem
                     communityIcon={Community.icon}

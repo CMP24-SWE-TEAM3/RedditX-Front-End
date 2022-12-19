@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback, useRef, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import getPosts from "Services/getPosts";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
@@ -6,30 +6,31 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import PostShape from "Features/Post/Layouts/PostShape/PostShape";
 import Post from "Features/Post/Pages/Post/Post";
 import CollapsePost from "Features/Post/Layouts/CollapsePost/CollapsePost";
+import RecentContext from "Contexts/RecentContext";
 
-let recentPost = [
-  {
-    id: "1",
-    description: "new news in CUFE",
-    points: "10",
-    comments: "4",
-    hours: "7",
-  },
-  {
-    id: "2",
-    description: "new news in reddit",
-    points: "9",
-    comments: "2",
-    hours: "11",
-  },
-  {
-    id: "3",
-    description: "announcements updated in reddit",
-    points: "5",
-    comments: "7",
-    hours: "1",
-  },
-];
+// let recentPost = [
+//   {
+//     id: "1",
+//     description: "new news in CUFE",
+//     points: "10",
+//     comments: "4",
+//     hours: "7",
+//   },
+//   {
+//     id: "2",
+//     description: "new news in reddit",
+//     points: "9",
+//     comments: "2",
+//     hours: "11",
+//   },
+//   {
+//     id: "3",
+//     description: "announcements updated in reddit",
+//     points: "5",
+//     comments: "7",
+//     hours: "1",
+//   },
+// ];
 
 const ShowPosts = ({ type }) => {
   // states
@@ -37,7 +38,7 @@ const ShowPosts = ({ type }) => {
   const [selectedPost, setSelectedPost] = useState(null);
   const [pgNum, setPgNum] = useState(1);
   const [posts, setPosts] = useState([]);
-
+  const [recentPost, setrecentPost] = useState([]);
   const location = useLocation();
   const queryParam = new URLSearchParams(location.search);
   const time = queryParam.get("t");
@@ -75,13 +76,24 @@ const ShowPosts = ({ type }) => {
     },
     [isLoading, data.posts]
   );
-
+  const ctx = useContext(RecentContext);
+  // useEffect(() => {
+  //   ctx.PostsHandler()
+  // }, []);
+  useEffect(() => {
+    setrecentPost(ctx.Posts);
+  }, [ctx.Posts]);
   // TODO: replace dummy data with post data
   // handle recent posts to append and delete from local storage
   const handleRecentPosts = () => {
     localStorage.setItem("RecentPosts", JSON.stringify(recentPost));
   };
-
+  console.log(recentPost);
+  const AddPost = (post) => {
+    if (post._id !== ctx.Posts[0]._id) {
+      ctx.PostsHandler([post, ...ctx.Posts]);
+    }
+  };
   return (
     <>
       <div>
@@ -96,6 +108,8 @@ const ShowPosts = ({ type }) => {
                   onClick={() => {
                     setShowPost(true);
                     setSelectedPost(post);
+                    // ctx.PostsHandler([post, ...ctx.Posts]);
+                    AddPost(post);
                     handleRecentPosts();
                   }}
                 >
@@ -110,6 +124,8 @@ const ShowPosts = ({ type }) => {
                   onClick={() => {
                     setShowPost(true);
                     setSelectedPost(post);
+                    // ctx.PostsHandler([post, ...ctx.Posts]);
+                    AddPost(post);
                     handleRecentPosts();
                   }}
                 >

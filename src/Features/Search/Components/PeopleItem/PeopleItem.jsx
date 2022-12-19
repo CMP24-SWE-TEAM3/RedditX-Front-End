@@ -17,6 +17,8 @@ import useFetch from "Hooks/useFetch";
 import PeopleImage from "../../Assets/People_Image.jpg";
 import useFetchFunction from "Hooks/useFetchFunction.js";
 import followPeople from "Features/Search/Services/followPeople.js";
+import { useAuth } from "Features/Authentication/Contexts/Authentication.js";
+import joinCommunity from "Services/joinCommunity.js";
 /**
  * Component that contains the PeopleItem and manage the state of the button Follow.
  *
@@ -39,7 +41,16 @@ const PeopleItem = ({
 }) => {
   const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
   const [isJoinedstate, setisJoined] = useState(false);
+  const [joiningResponse, errorJoining, loadingJoining, fetchData] =
+    useFetchFunction();
+  const auth = useAuth();
 
+  const handleJoining = (communityName, type) => {
+    joinCommunity(fetchData, auth, {
+      action: !type ? "unsub" : "sub",
+      srName: `${communityName}`,
+    });
+  };
   // // initialState for the following operations
   // const initialState = `${isFollow !== undefined ? "Following" : "Follow"}`;
   // the state of the buuton
@@ -65,11 +76,12 @@ const PeopleItem = ({
     } else {
       btnState = false;
     }
-    let dataObj = {
-      action: btnState ? "Follow" : "unFollow",
-      userName: `${username.slice(1)}`,
-    };
-    followPeople(fetchFunction, dataObj);
+    // let dataObj = {
+    //   action: btnState ? "Follow" : "unFollow",
+    //   userName: `${username.slice(1)}`,
+    // };
+    // followPeople(fetchFunction, dataObj);
+    handleJoining(username, btnState);
   }
   /**
    * it is the function that handle the state of the button when mouseEnter on it.

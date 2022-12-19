@@ -34,7 +34,8 @@ const PostsList = ({ type, PostList }) => {
       <ContainerPostsList>
         <div className="Posts-List">
           <div className="Sub-List">
-            {PostsNumber !== 0 &&
+            {PostList.results &&
+              PostsNumber !== 0 &&
               filteredPostList.map((post) => (
                 <div
                   onClick={() => {

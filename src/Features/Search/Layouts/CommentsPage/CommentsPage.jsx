@@ -37,6 +37,7 @@ const CommentsPage = ({ CommentLists }) => {
                 <InnerContainer>
                   <List>
                     {CommentsNumber !== 0 &&
+                      CommentLists.results &&
                       CommentLists.results.map((comment) => (
                         <Comment comment={comment} key={comment._id} />
                       ))}

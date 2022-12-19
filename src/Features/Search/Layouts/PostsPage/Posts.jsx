@@ -46,163 +46,167 @@ const Posts = ({
   const ctx = useContext(SearchContext);
   // const ctx = useContext(SafeContext);
   // console.log(ctx.safe);
-  if (PostList) {
-    // const filteredPostList = PostList.results.filter((post) => {
-    //   return post.nsfw === ctx.safe;
-    // });
-    return (
-      <>
-        <SubRedditProvider>
-          <SubRedditIDProvider>
-            <IsModeratorProvider>
-              <ContainerPosts>
-                <div className="subnav">
-                  <div className="sort">
+  // if (PostList) {
+  // const filteredPostList = PostList.results.filter((post) => {
+  //   return post.nsfw === ctx.safe;
+  // });
+  return (
+    <>
+      <SubRedditProvider>
+        <SubRedditIDProvider>
+          <IsModeratorProvider>
+            <ContainerPosts>
+              <div className="subnav">
+                <div className="sort">
+                  <StyledDropdown
+                    id="dropdown-basic-button"
+                    title={SortName}
+                    variant="transparent"
+                    className="sort"
+                  >
+                    <Dropdown.Item
+                      href="#"
+                      onClick={() => {
+                        setSort("Relevance");
+                        OnSort("Relevance");
+                        setSortName("Relevance");
+                        ctx.SortHandler("relevance");
+                      }}
+                    >
+                      Relevance
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={() => {
+                        setSort("Hot");
+                        OnSort("hot");
+                        setSortName("Hot");
+                        ctx.SortHandler("hot");
+                      }}
+                    >
+                      Hot
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      href="#"
+                      onClick={() => {
+                        setSort("Top");
+                        OnSort("top");
+                        setSortName("Top");
+                        ctx.SortHandler("top");
+                      }}
+                    >
+                      Top
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      href="#"
+                      onClick={() => {
+                        setSort("New");
+                        OnSort("new");
+                        setSortName("New");
+                        ctx.SortHandler("new");
+                      }}
+                    >
+                      New
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      href="#"
+                      onClick={() => {
+                        setSort("Most comments");
+                        OnSort("most Comments");
+                        setSortName("Most Comments");
+                        ctx.SortHandler("most Comments");
+                      }}
+                    >
+                      Most comments
+                    </Dropdown.Item>
+                  </StyledDropdown>
+                </div>
+                {Sort !== "Hot" && Sort !== "New" && (
+                  <div className="time">
                     <StyledDropdown
                       id="dropdown-basic-button"
-                      title={SortName}
+                      title={TimeName}
                       variant="transparent"
-                      className="sort"
+                      className="time"
                     >
                       <Dropdown.Item
                         href="#"
                         onClick={() => {
-                          setSort("Relevance");
-                          OnSort("Relevance");
-                          setSortName("Relevance");
+                          setTimeName("All time");
                         }}
                       >
-                        Relevance
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => {
-                          setSort("Hot");
-                          OnSort("Hot");
-                          setSortName("Hot");
-                        }}
-                      >
-                        Hot
+                        All time
                       </Dropdown.Item>
                       <Dropdown.Item
                         href="#"
                         onClick={() => {
-                          setSort("Top");
-                          OnSort("Top");
-                          setSortName("Top");
+                          setTimeName("Past Year");
                         }}
                       >
-                        Top
+                        Past Year
                       </Dropdown.Item>
                       <Dropdown.Item
                         href="#"
                         onClick={() => {
-                          setSort("New");
-                          OnSort("New");
-                          setSortName("New");
+                          setTimeName("Past Month");
                         }}
                       >
-                        New
+                        Past Month
                       </Dropdown.Item>
                       <Dropdown.Item
                         href="#"
                         onClick={() => {
-                          setSort("Most comments");
-                          OnSort("Most Comments");
-                          setSortName("Most Comments");
+                          setTimeName("Past week");
                         }}
                       >
-                        Most comments
+                        Past week
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        href="#"
+                        onClick={() => {
+                          setTimeName("Past 24 Hours");
+                        }}
+                      >
+                        Most 24 Hours
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        href="#"
+                        onClick={() => {
+                          setTimeName("Past Hour");
+                        }}
+                      >
+                        Most Hour
                       </Dropdown.Item>
                     </StyledDropdown>
                   </div>
-                  {Sort !== "Hot" && Sort !== "New" && (
-                    <div className="time">
-                      <StyledDropdown
-                        id="dropdown-basic-button"
-                        title={TimeName}
-                        variant="transparent"
-                        className="time"
-                      >
-                        <Dropdown.Item
-                          href="#"
-                          onClick={() => {
-                            setTimeName("All time");
-                          }}
-                        >
-                          All time
-                        </Dropdown.Item>
-                        <Dropdown.Item
-                          href="#"
-                          onClick={() => {
-                            setTimeName("Past Year");
-                          }}
-                        >
-                          Past Year
-                        </Dropdown.Item>
-                        <Dropdown.Item
-                          href="#"
-                          onClick={() => {
-                            setTimeName("Past Month");
-                          }}
-                        >
-                          Past Month
-                        </Dropdown.Item>
-                        <Dropdown.Item
-                          href="#"
-                          onClick={() => {
-                            setTimeName("Past week");
-                          }}
-                        >
-                          Past week
-                        </Dropdown.Item>
-                        <Dropdown.Item
-                          href="#"
-                          onClick={() => {
-                            setTimeName("Past 24 Hours");
-                          }}
-                        >
-                          Most 24 Hours
-                        </Dropdown.Item>
-                        <Dropdown.Item
-                          href="#"
-                          onClick={() => {
-                            setTimeName("Past Hour");
-                          }}
-                        >
-                          Most Hour
-                        </Dropdown.Item>
-                      </StyledDropdown>
-                    </div>
-                  )}
-                </div>
-                {PostList.results && (
-                  <div className="x">
-                    <PostsList type={Sort} PostList={PostList} />
-                    <div className="side-cards">
-                      {!ctx.isSubreddit && (
-                        <>
-                          <TopCommunities
-                            CommunityList={CommunityList}
-                            CommunitiesSub2={CommunitiesSub2}
-                          />
-                          <People
-                            PeopleList={PeopleList}
-                            PeopleFollow={PeopleFollow}
-                          />
-                          <CreateCommunity />
-                        </>
-                      )}
-                      {ctx.isSubreddit && <CommunityCard />}
-                    </div>
-                  </div>
                 )}
-              </ContainerPosts>
-            </IsModeratorProvider>
-          </SubRedditIDProvider>
-        </SubRedditProvider>
-      </>
-    );
-  }
+              </div>
+              {/* {PostList.results && ( */}
+              <div className="x">
+                <PostsList type={Sort} PostList={PostList} />
+                <div className="side-cards">
+                  {!ctx.isSubreddit && (
+                    <>
+                      <TopCommunities
+                        CommunityList={CommunityList}
+                        CommunitiesSub2={CommunitiesSub2}
+                      />
+                      <People
+                        PeopleList={PeopleList}
+                        PeopleFollow={PeopleFollow}
+                      />
+                      <CreateCommunity />
+                    </>
+                  )}
+                  {ctx.isSubreddit && <CommunityCard />}
+                </div>
+              </div>
+            </ContainerPosts>
+          </IsModeratorProvider>
+        </SubRedditIDProvider>
+      </SubRedditProvider>
+    </>
+  );
+  // }
 };
 
 export default Posts;
