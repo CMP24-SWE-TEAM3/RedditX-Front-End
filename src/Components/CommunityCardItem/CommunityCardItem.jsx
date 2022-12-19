@@ -41,7 +41,7 @@ const CommunityCardItem = ({ communityId, communityUserName, srIcon }) => {
   // joined communities or unjonined
   const handleJoining = (communityName, type) => {
     joinCommunity(fetchData, auth, {
-      action: type === "Leave" ? "unsub" : "sub",
+      action: type === "Leave" || type === "Joined" ? "unsub" : "sub",
       srName: communityName,
     });
   };

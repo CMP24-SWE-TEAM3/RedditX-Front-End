@@ -30,7 +30,7 @@ const Button = ({ isJoined, onJoin }) => {
   // joined communities or unjonined
   const handleJoining = (type) => {
     joinCommunity(fetchData, auth, {
-      action: type === "Leave" ? "unsub" : "sub",
+      action: type === "Leave" || type === "Joined" ? "unsub" : "sub",
       srName: communityID,
     });
   };
