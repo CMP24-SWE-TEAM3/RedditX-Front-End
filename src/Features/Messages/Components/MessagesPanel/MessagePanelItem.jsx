@@ -40,6 +40,7 @@ import deleteMessage from "Features/Messages/Services/DeleteMessage";
 import unreadMessages from "Features/Messages/Services/UnreadMessage";
 import composeMessage from "../../Services/ComposeMessage";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import blockUser from "../../Services/BlockUser";
 /**
  * Component that contains the message item of Message Panel
  *
@@ -52,7 +53,6 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
  * @param {boolean} admin - Whether the message was sent by an admin
  * @param {boolean} read - Whether the message was read or not
  * @param {boolean} deleted - Whether the message was deleted or not
- * @param {boolean} expanded - Whether the message is expanded or not
  * @param {boolean} block - Whether the message was sent by a blocked user
  * @param {number} id - Id of the message
  * @returns {React.Component}
@@ -63,24 +63,26 @@ const MessageBannelItem = ({
   title,
   time,
   msg,
-  expanded,
   admin,
   read,
   id,
   deleted,
   block,
 }) => {
+  const auth = useAuth();
   const [unreadMessageRes, errorUnreadMessage, loadingUnreadMessage, fetchDataUnread ] = useFetchFunction();
   const [deleteMessageRes, errorDeleteMessage, loadingDeleteMessage, fetchData ] = useFetchFunction();
+  const [blockRes, errorBlock, loadingBlock, fetchDataBlock ] = useFetchFunction();
   const [composeRes, errorCompose, loadingCompose, fetchDataSend] = useFetchFunction();
+  const [localRead, setLocalRead] = useState(read);
+  const [expanded, setExpanded] = useState(true);
   const [deletePrompt, setDeletePrompt] = useState(false);
   const [replyPrompt, setReplyPrompt] = useState(false);
+  const [blockPrompt, setBlockPrompt] = useState(false);
   const [err, setErr] = useState(false);
   const [formData, setFormData] = useState({
     message: "",
   });
-  
-
   
 
   //For Text Area
@@ -96,35 +98,17 @@ const MessageBannelItem = ({
   }
 
 
-  function collapseAll(name) {
-    changeMessage((message) => {
-      return message.map((prevState) => {
-        return prevState.aurthor === name
-          ? { ...prevState, expanded: false }
-          : prevState;
-      });
-    });
+  function collapseAll() {
+    setExpanded(false);
   }
 
-  function expandAll(name) {
-    changeMessage((message) => {
-      return message.map((prevState) => {
-        return prevState.aurthor === name
-          ? { ...prevState, expanded: true }
-          : prevState;
-      });
-    });
+  function expandAll() {
+    setExpanded(true);
   }
 
 
-  function handleClick(id) {
-    changeMessage((message) => {
-      return message.map((prevState) => {
-        return prevState.id === id
-          ? { ...prevState, expanded: !prevState.expanded }
-          : prevState;
-      });
-    });
+  function handleClick(id) {    //For Expansion
+    setExpanded((prev)=>!prev);
   }
 
   
@@ -144,17 +128,12 @@ const MessageBannelItem = ({
     let dataObject = {
       msgID: `t4_${id}`
     };
-    deleteMessage(fetchData, dataObject);
+    deleteMessage(fetchData, dataObject, auth);
+    setDeletePrompt(false);
   }
 
-  function toggleBlockWarning(id) {
-    changeMessage((message) => {
-      return message.map((prevState) => {
-        return prevState.id === id
-          ? { ...prevState, block: !prevState.block }
-          : prevState;
-      });
-    });
+  function toggleBlockWarning() {
+    setBlockPrompt((prev)=>!prev);
   }
 
   function toggleReplyOn() {
@@ -167,7 +146,7 @@ const MessageBannelItem = ({
     event.preventDefault();
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event) => {  //For Reply
     event.preventDefault();
     event.target.reset();
     
@@ -177,27 +156,41 @@ const MessageBannelItem = ({
     }
     else {
     let dataObject = {
-      toID: `t3_${aurthor}`,
+      fromID: auth.getUserName(),
+      toID: `t2_${aurthor}`,
       subject: `Reply to ${aurthor}'s Message`,
       text: formData.message
     };
-    composeMessage(fetchDataSend, dataObject);
+    composeMessage(fetchDataSend, dataObject, auth);
     }
     setFormData({message:""});
+    setReplyPrompt(false);
+    setErr(false);
   };
 
   function handleUnread(){
+    setLocalRead(false);
     let dataObject = {
       msgID: `t4_${id}`
     };
-    unreadMessages(fetchDataUnread, dataObject);
+    unreadMessages(fetchDataUnread, dataObject, auth);
+  }
+
+  function handleBlock(){
+    let dataObject = {
+      userID: `t2_${aurthor}`,
+      action: true
+    };
+
+    blockUser(fetchDataBlock, dataObject, auth);
+    setBlockPrompt(false);
   }
 
   return (
     <OddItems className={id % 2 === 0 ? "even" : ""} key={id}>
       <MessageDetails
         onClick={() => {
-          readed(id, changeMessage);
+          setLocalRead(true);
         }}
       >
         <Subject>
@@ -207,25 +200,19 @@ const MessageBannelItem = ({
           <SubjectText>{title}:</SubjectText>
           <br />
           <ExpanCollap
-            onClick={() => {
-              expandAll(aurthor);
-            }}
+            onClick={expandAll}
           >
             expand all
           </ExpanCollap>
           <ExpanCollap
-            onClick={() => {
-              collapseAll(aurthor);
-            }}
+            onClick={collapseAll}
           >
             collapse all
           </ExpanCollap>
         </Subject>
         <Tagline>
           <ToggleExpan
-            onClick={() => {
-              handleClick(id);
-            }}
+            onClick={handleClick}
           >
             {expanded ? `[-]` : `[+]`}
           </ToggleExpan>
@@ -235,12 +222,12 @@ const MessageBannelItem = ({
           </TimeTag>
         </Tagline>
         <MessagesWithBtns className={expanded ? "expanded" : "collapsed"}>
-          <Visted className={read ? "" : "read-before"}>
+          <Visted className={localRead ? "" : "read-before"}>
             <Msg>{msg}</Msg>
             <ListBtns>
               <Btns>
                 <BtnsLinks
-                  className={deleted ? "active" : ""}
+                  className={deletePrompt ? "active" : ""}
                   onClick={() => {
                     toggleDeleteWarning();
                   }}
@@ -275,33 +262,28 @@ const MessageBannelItem = ({
               {!admin && (
                 <Btns>
                   <BtnsLinks
-                    className={block ? "active" : ""}
-                    onClick={() => {
-                      toggleBlockWarning(id);
-                    }}
+                    className={blockPrompt ? "active" : ""}
+                    onClick={toggleBlockWarning}
                   >
                     Block User
                   </BtnsLinks>
-                  <AreYouSure className={block ? "active" : ""}>
+                  <AreYouSure className={blockPrompt ? "active" : ""}>
                     <BtnWarning> Are You Sure </BtnWarning>
-                    <BtnsLinks>Yes</BtnsLinks>
+                    <BtnsLinks onClick={handleBlock}>Yes</BtnsLinks>
                     <BtnWarning> / </BtnWarning>
                     <BtnsLinks
-                      onClick={() => {
-                        toggleBlockWarning(id);
-                      }}
+                      onClick={toggleBlockWarning}
                     >
                       No
                     </BtnsLinks>
                   </AreYouSure>
                 </Btns>
               )}
-              {read && (
+              {localRead && (
                 <Btns>
                   <BtnsLinks
                     onClick={(e) => {
                       e.stopPropagation();
-                      markUnread(id, changeMessage);
                       handleUnread();
                     }}
                   >
@@ -319,7 +301,7 @@ const MessageBannelItem = ({
         </MessagesWithBtns>
       </MessageDetails>
       <form onSubmit={handleSubmit}>      
-        <ReplyDiv className={replyPrompt?"active": ""}>
+        <ReplyDiv className={replyPrompt? "active": ""}>
           <TextAreaDiv>
             <MesssageDiv>
               <TextAreaElement 

@@ -157,31 +157,32 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
     setSignupSubmit(true);
   }, []);
 
+  console.log(currentRadioValue);
   useEffect(() => {
     if (signupSubmit) {
       setSignupSubmit(false);
-      setCountry(data.region);
-      setAddedTopics(data.categories);
-      setWelcome(data.welcomeMessage);
-      setReason(data.description);
-      setAdultContent(data.nsfw);
-      setCurrentRadioValue(data.privacyType);
+      setCountry(data?.region);
+      setAddedTopics(data?.categories);
+      setWelcome(data?.welcomeMessage);
+      setReason(data?.description);
+      setAdultContent(data?.nsfw);
+      setCurrentRadioValue(data?.privacyType);
     }
 
-    console.log(data);
+    
   }, [data]);
 
   /**
    * useEffect for reason field to check the lenght of the reason
    */
   useEffect(() => {
-    setReasonLength(reason.length);
+    setReasonLength(reason?.length);
   }, [reason]);
   /**
    * useEffect for welcom field to check the lenght of the welcome
    */
   useEffect(() => {
-    setWelcomeLength(welcome.length);
+    setWelcomeLength(welcome?.length);
   }, [welcome]);
 
   /**
@@ -240,7 +241,7 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
         categories: addedTopics,
         description: reason,
       },
-      communityName,
+      "t5_" +communityName,
       auth.getToken()
     );
   };
@@ -409,7 +410,7 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
                   onChange={(e) => {
                     setCurrentRadioValue(e.target.value);
                   }}
-                  defaultChecked={currentRadioValue === "public"}
+                  checked={currentRadioValue === "public"}
                 />
                 <LabelForm for="public">
                   <Ico>
@@ -432,7 +433,7 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
                   onChange={(e) => {
                     setCurrentRadioValue(e.target.value);
                   }}
-                  defaultChecked={currentRadioValue === "restricted"}
+                  checked={currentRadioValue === "restricted"}
                 />
                 <LabelForm for="restricted">
                   <Ico>
@@ -455,7 +456,7 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
                   onChange={(e) => {
                     setCurrentRadioValue(e.target.value);
                   }}
-                  defaultChecked={currentRadioValue === "private"}
+                  checked={currentRadioValue === "private"}
                 />
                 <LabelForm for="private">
                   <Ico>

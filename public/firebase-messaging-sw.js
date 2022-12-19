@@ -6,13 +6,12 @@ importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js");
 
 // Initialize the Firebase app in the service worker by passing the generated config
 const firebaseConfig = {
-  apiKey: "AIzaSyCFihY47mFGarGMJsT6BZLxSlwk4l5QKpE",
-  authDomain: "reddit-3d725.firebaseapp.com",
-  projectId: "reddit-3d725",
-  storageBucket: "reddit-3d725.appspot.com",
-  messagingSenderId: "294678106759",
-  appId: "1:294678106759:web:4e91d5ecc5682f23345e22",
-  measurementId: "G-RJ30EYDC4X",
+  apiKey: "AIzaSyClEjbza4FfTRtOzhH68lmeKIbQi7wvlFE",
+  authDomain: "reddit-f129b.firebaseapp.com",
+  projectId: "reddit-f129b",
+  storageBucket: "reddit-f129b.appspot.com",
+  messagingSenderId: "46502148210",
+  appId: "1:46502148210:web:b89ed82ad9caadd3c46aeb",
 };
 
 // eslint-disable-next-line no-undef

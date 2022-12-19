@@ -89,11 +89,16 @@ const ShowPosts = ({ type }) => {
     localStorage.setItem("RecentPosts", JSON.stringify(recentPost));
   };
   console.log(recentPost);
-  const AddPost = (post) => {
-    if (post._id !== ctx.Posts[0]._id) {
-      ctx.PostsHandler([post, ...ctx.Posts]);
-    }
-  };
+  // const AddPost = (post) => {
+  //   console.log("Here");
+  //   if (ctx.Posts && ctx.Posts[0] && post._id !== ctx.Posts[0]._id) {
+  //     console.log("not same post");
+  //     ctx.PostsHandler([post, ...ctx.Posts]);
+  //   } else {
+  //     console.log("same post");
+  //     ctx.PostsHandler([post, ...ctx.Posts]);
+  //   }
+  // };
   return (
     <>
       <div>
@@ -109,7 +114,7 @@ const ShowPosts = ({ type }) => {
                     setShowPost(true);
                     setSelectedPost(post);
                     // ctx.PostsHandler([post, ...ctx.Posts]);
-                    AddPost(post);
+                    // AddPost(post);
                     handleRecentPosts();
                   }}
                 >
@@ -125,7 +130,7 @@ const ShowPosts = ({ type }) => {
                     setShowPost(true);
                     setSelectedPost(post);
                     // ctx.PostsHandler([post, ...ctx.Posts]);
-                    AddPost(post);
+                    // AddPost(post);
                     handleRecentPosts();
                   }}
                 >

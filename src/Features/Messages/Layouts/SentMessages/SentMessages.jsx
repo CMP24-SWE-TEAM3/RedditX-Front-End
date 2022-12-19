@@ -5,7 +5,7 @@ const messagesData = [
     {
       author: "Mohamed",
       title: "Greeting",
-      time: "2022, 11, 29",
+      time: "2022-11-29T",
       text: "Hello Hello",
       read: false,
       admin: false,
@@ -14,7 +14,7 @@ const messagesData = [
     {
       author: "Ahmed",
       title: "Mod",
-      time: "2022, 11, 29",
+      time: "2022-11-29T",
       text: "You are Mod",
       read: false,
       admin: false,
@@ -23,7 +23,7 @@ const messagesData = [
     {
       author: "Jacob",
       title: "Broken",
-      time: "2022, 11, 29",
+      time: "2022-11-29T",
       text: "It Is Broken Now",
       read: false,
       admin: true,
@@ -32,7 +32,7 @@ const messagesData = [
     {
       author: "Joanne",
       title: "Greeting",
-      time: "2022, 11, 29",
+      time: "2022-11-29T",
       text: "Henlo",
       read: false,
       admin: false,
@@ -41,7 +41,7 @@ const messagesData = [
     {
       author: "Arabella",
       title: "Hmmmm...",
-      time: "2022, 11, 29",
+      time: "2022-11-29T",
       text: "Hi.",
       read: false,
       admin: true,
@@ -56,6 +56,7 @@ const messagesData = [
  * @returns {React.Component}
  */
 const SentMessages = ({sent})=>{
+  console.log(`Done:`);
   console.log(sent);
 const [eachMessage, setEachMessage] = useState(messagesData);
 
@@ -77,11 +78,11 @@ if(eachMessage && eachMessage.length!==0){
   Message = eachMessage.map((item) => {
     return(
       <SentMessageItem
-        key = {item.id.toString()}
-        id = {item.id}
-        author = {item.author}
-        subject = {item.title}
-        time = {item.time}
+        key = {item._id.toString()}
+        id = {item._id}
+        author = {item.fromID.substring(3)}
+        subject = {item.subject}
+        time = {item.createdAt}
         msg = {item.text}
         admin = {item.admin}
       />
@@ -91,7 +92,7 @@ if(eachMessage && eachMessage.length!==0){
 
 return (
   <EmbeddedPage>
-    <PageContainer className="try">{Message}</PageContainer>
+    <PageContainer>{Message}</PageContainer>
   </EmbeddedPage>
 );
 }

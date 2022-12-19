@@ -52,6 +52,7 @@ const messagesData = [
  * @returns {React.Component}
  */
 function MessageBannel({data}) {
+  console.log(data);
   let Message = (
   <Empty>
     <EmptyMessage>
@@ -60,10 +61,11 @@ function MessageBannel({data}) {
   </Empty>
   );
 
-  const [eachMessage, setEachMessage] = useState(messagesData);
+  const [eachMessage, setEachMessage] = useState();
 
   useEffect(()=>{
-    if(data&& data.messages && data.messages.length!==0) {
+    console.log(data);
+    if(data && data.messages && data.messages.length!==0) {
       setEachMessage(data.messages);
     }
   }, [data]);
@@ -74,17 +76,16 @@ function MessageBannel({data}) {
       return (
         <MessageBannelItem
           changeMessage={setEachMessage}
-          aurthor={item.aurthor}
-          title={item.title}
-          time={item.time}
-          msg={item.msg}
-          expanded={item.expanded}
-          admin={item.admin}
-          read={item.read}
-          id={item.id}
-          deleted={item.delete}
-          block={item.block}
-          key={item.id}
+          aurthor={item.fromID.substring(3)}
+          title={item.subject}
+          time={item.createdAt}
+          msg={item.text}
+          admin={item.admin}        //Not Done
+          read={item.unread_status}
+          id={item._id}
+          deleted={item.isDeleted}
+          block={item.block}        //Ignore Anyway
+          key={item._id}
         />
       );
       }
