@@ -1,12 +1,15 @@
-import { Container, SavedContainer } from "./UserSaved.styled";
+import { Container, SavedContainer, StyledDiv } from "./UserSaved.styled";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useEffect, useRef, useState, useCallback } from "react";
 import useFetchFunction from "Hooks/useFetchFunction";
 import getSavedPosts from "Features/User/Services/getSavedPosts";
 import CollapsePost from "Features/Post/Layouts/CollapsePost/CollapsePost";
 import UserNoPosts from "Features/User/Components/UserNoPosts/UserNoPosts";
+import Post from "Features/Post/Pages/Post/Post";
 
 const UserSaved = () => {
+  const [showPost, setShowPost] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
   const [pgNum, setPgNum] = useState(1);
   const [p, setP] = useState([]);
   const auth = useAuth();
@@ -65,16 +68,29 @@ const UserSaved = () => {
               p.map((post, i) => {
                 if (p.length === i + 1) {
                   return (
-                    <div ref={lastPostElementRef} key={i}>
+                    <StyledDiv
+                      ref={lastPostElementRef}
+                      key={i}
+                      onClick={() => {
+                        setShowPost(true);
+                        setSelectedPost(post);
+                      }}
+                    >
                       {/* {post.title} */}
                       <CollapsePost post={post} />
-                    </div>
+                    </StyledDiv>
                   );
                 } else {
                   return (
-                    <div key={i}>
+                    <StyledDiv
+                      key={i}
+                      onClick={() => {
+                        setShowPost(true);
+                        setSelectedPost(post);
+                      }}
+                    >
                       <CollapsePost post={post} />
-                    </div>
+                    </StyledDiv>
                   );
                 }
               })}
@@ -82,6 +98,9 @@ const UserSaved = () => {
               <UserNoPosts
                 text={`hmm... looks like you haven't saved anything yet`}
               />
+            )}
+            {selectedPost && (
+              <Post post={selectedPost} show={showPost} setShow={setShowPost} />
             )}
           </>
         }

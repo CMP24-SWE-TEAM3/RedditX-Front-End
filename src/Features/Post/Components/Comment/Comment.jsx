@@ -160,8 +160,8 @@ const Comment = ({ comment, postID }) => {
         auth
       );
     }
-    if (comment && comment.authorId) {
-      getUser(dataSendUserData, comment.authorId, auth);
+    if (comment && comment.authorId._id) {
+      getUser(dataSendUserData, comment.authorId._id, auth);
     }
   }, []);
   const handleSave = () => {
@@ -209,10 +209,10 @@ const Comment = ({ comment, postID }) => {
       <Right>
         <Username
           onClick={(e) => {
-            navigate(`/user/${comment.authorId}/`);
+            navigate(`/user/${comment.authorId._id}/`);
           }}
         >
-          {comment.authorId.substring(3)}
+          {comment.authorId._id.substring(3)}
         </Username>
         <Time>
           . <Moment fromNow>{comment.createdAt}</Moment>

@@ -27,7 +27,10 @@ import ShowPosts from "Layouts/ShowPosts/ShowPosts";
 import { Button } from "react-bootstrap";
 
 //////////////////////////////////////////////////////////////
-import { onForegroundMessage } from "PushNotification/messaging_init_in_sw";
+import {
+  onForegroundMessage,
+  requestPermission,
+} from "PushNotification/messaging_init_in_sw";
 //////////////////////////////////////////////////////////////
 
 /**
@@ -82,9 +85,7 @@ const HomePage = () => {
                   <CreatePostSideBar />
                 </CreateCommunity>
                 <RecentPostsContainer>
-                  <div>
-                    <RecentPosts />
-                  </div>
+                  <div>{/* <RecentPosts /> */}</div>
                 </RecentPostsContainer>
                 <footer>
                   <ChildFooter>

@@ -9,3 +9,9 @@ export const HistoryContainer = styled.div`
   width: 100%;
   min-height: 1000px;
 `;
+
+export const StyledDiv = styled.div`
+  & > div:first-child {
+    width: 100%;
+  }
+`;

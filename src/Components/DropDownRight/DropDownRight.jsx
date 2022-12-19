@@ -49,15 +49,16 @@ const DropDownRightButton = ({ toggleMode }) => {
           <div>
             {userInfo &&
               userInfo.length !== 0 &&
-              userInfo.meInfo.user.hasOwnProperty("avatar") && (
+              // &&userInfo.meInfo.user.hasOwnProperty("avatar") && 
+              (
                 <img
                   crossOrigin="anonymous"
-                  src={`${BASE_URL}/users/files/${userInfo.meInfo.user.avatar}`}
+                  src={`${BASE_URL}/users/files/${userInfo?.meInfo?.user?.avatar}`}
                   alt="Avatar"
                   className="avatar"
                 />
               )}
-            {userInfo &&
+            {/* {userInfo &&
               userInfo.length !== 0 &&
               !userInfo.meInfo.user.hasOwnProperty("avatar") && (
                 <img
@@ -66,7 +67,7 @@ const DropDownRightButton = ({ toggleMode }) => {
                   alt="Avatar"
                   className="avatar"
                 />
-              )}
+              )} */}
           </div>
           <div className="user-name-container">
             <span className="user-name">

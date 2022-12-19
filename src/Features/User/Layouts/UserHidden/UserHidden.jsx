@@ -1,4 +1,4 @@
-import { Container, HiddenContainer } from "./UserHidden.styled";
+import { Container, HiddenContainer, StyledDiv } from "./UserHidden.styled";
 import UserNoPosts from "Features/User/Components/UserNoPosts/UserNoPosts";
 
 const UserHidden = () => {
