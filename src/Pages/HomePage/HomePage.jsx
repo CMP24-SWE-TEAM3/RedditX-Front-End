@@ -27,7 +27,10 @@ import ShowPosts from "Layouts/ShowPosts/ShowPosts";
 import { Button } from "react-bootstrap";
 
 //////////////////////////////////////////////////////////////
-import { onForegroundMessage, requestPermission } from "PushNotification/messaging_init_in_sw";
+import {
+  onForegroundMessage,
+  requestPermission,
+} from "PushNotification/messaging_init_in_sw";
 //////////////////////////////////////////////////////////////
 
 /**
@@ -75,16 +78,14 @@ const HomePage = () => {
             </ContentPost>
             <aside>
               <Sidebar>
-                <Button onClick={requestPermission}>push</Button>
+                {/* <Button onClick={requestPermission}>push</Button> */}
                 <CommunityCard />
 
                 <CreateCommunity>
                   <CreatePostSideBar />
                 </CreateCommunity>
                 <RecentPostsContainer>
-                  <div>
-                    {/* <RecentPosts /> */}
-                  </div>
+                  <div>{/* <RecentPosts /> */}</div>
                 </RecentPostsContainer>
                 <footer>
                   <ChildFooter>
