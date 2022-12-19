@@ -4,14 +4,16 @@ import axios from "API/axios";
  *
  * @param {Function} fetchFunction - The function to make the request
  */
-const fetchPeopleFollowed = (fetchFunction) => {
+const fetchPeopleFollowed = (fetchFunction, auth) => {
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
   fetchFunction({
     axiosInstance: axios,
     method: "GET",
-    url: "http://localhost:8000/PeopleFollow",
+    url: "/api/user/me/followers",
     requestConfig: {
       headers: {
         "Content-Language": "en-US",
+        Authorization: ` Bearer ${auth.getToken()}`,
       },
     },
   });

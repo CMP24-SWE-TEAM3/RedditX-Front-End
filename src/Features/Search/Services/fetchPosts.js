@@ -5,13 +5,13 @@ import axios from "API/axios";
  * @param {Function} fetchFunction - The function to make the request
  * @param {searchWord} fetchFunction - the word we search for
  */
-const fetchPosts = (fetchFunction, auth, searchWord) => {
+const fetchPosts = (fetchFunction, auth, searchWord, Sort) => {
   // console.log("Fetching posts", searchWord);
   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
   fetchFunction({
     axiosInstance: axios,
     method: "GET",
-    url: `/api/search/r?type=post&q=${searchWord}`,
+    url: `/api/search/r?type=post&q=${searchWord}&sort='new'`,
     requestConfig: {
       headers: {
         "Content-Language": "en-US",

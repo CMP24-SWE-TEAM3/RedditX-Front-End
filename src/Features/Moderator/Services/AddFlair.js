@@ -13,7 +13,7 @@ const AddFlair = (dataFetch, post, auth, communityName) => {
   dataFetch({
     axiosInstance: axios,
     method: "post",
-    url: `/api/r/t5_imagePro235/api/flair`,
+    url: `/api/r/t5_imagePro235/flair`,
     requestConfig: {
       data: post,
       headers: {
