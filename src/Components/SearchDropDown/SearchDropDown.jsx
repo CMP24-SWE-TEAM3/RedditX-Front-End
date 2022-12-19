@@ -28,6 +28,8 @@ import { IoIosLink } from "react-icons/io";
 import { BsDot } from "react-icons/bs";
 import trendingSearch from "Services/trendingSearch";
 import useFetchFunction from "Hooks/useFetchFunction";
+import { useContext } from "react";
+import SearchContext from "Features/Search/Contexts/SearchWordContext/Search-context";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 /**
@@ -102,9 +104,17 @@ const SearchBody = ({
   avatars,
   cntAndIcon,
   setQuery,
+  query,
   showResults,
   setShowResults,
 }) => {
+  const ctx = useContext(SearchContext);
+  const handleSearch = (event, query) => {
+    event.preventDefault();
+    ctx.wordHandler(query);
+    ctx.isSubredditHandler(true);
+    ctx.communityHandler(query);
+  };
   return (
     <>
       {(searchItemsCommunities.length > 0 || searchItemsPeople.length > 0) && (
@@ -113,6 +123,7 @@ const SearchBody = ({
             <Container
               onClick={() => {
                 setShowResults(false);
+                // handleSearch(query);
                 setQuery("");
               }}
             >
@@ -153,6 +164,7 @@ const SearchBody = ({
             <Container
               onClick={() => {
                 setShowResults(false);
+                // handleSearch(query);
                 setQuery("");
               }}
             >

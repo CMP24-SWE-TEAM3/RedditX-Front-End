@@ -92,25 +92,22 @@ const SearchBar = () => {
   /**
    * state of search field that show trending posts
    */
-  const navigate = useNavigate();
-  const ctx = useContext(SearchContext);
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      // Cancel the default action, if needed
-      event.preventDefault();
-      ctx.wordHandler(event.target.value);
-      ctx.isSubredditHandler(true);
-      ctx.communityHandler("t5_imagePro235");
-      navigate("/search/posts");
-    }
-  };
+  // const navigate = useNavigate();
+  // const ctx = useContext(SearchContext);
+  // const handleKeyDown = (event) => {
+  //   // Cancel the default action, if needed
+  //   event.preventDefault();
+  //   ctx.wordHandler(event.target.value);
+  //   ctx.isSubredditHandler(true);
+  //   ctx.communityHandler("t5_imagePro235");
+  //   navigate("/search/posts");
+  // };
 
   return (
     <StyledSearchButton>
       <StyledSearchIcon size={22} />
       <StyledSearcherInput
         id={"search-input"}
-        onKeyDown={handleKeyDown}
         type="text"
         placeholder={"Search Reddit"}
         value={query}
