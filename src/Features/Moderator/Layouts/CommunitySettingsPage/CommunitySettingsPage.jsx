@@ -136,7 +136,7 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
   const [region, setRegion] = useState();
 
   // state store type of community
-  const [currentRadioValue, setCurrentRadioValue] = useState();
+  const [currentRadioValue, setCurrentRadioValue] = useState("public");
 
   // state for disc
   const [reason, setReason] = useState("public");

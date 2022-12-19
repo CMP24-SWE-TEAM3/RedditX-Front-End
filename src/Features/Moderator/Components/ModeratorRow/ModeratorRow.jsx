@@ -81,135 +81,145 @@ const ModeratorRow = ({
 
   return (
     <>
-      <Container>
-        <ProfileContainer>
-          <PhotoAndUsername>
-            <Photo>
-              <img
-                crossOrigin="anonymous"
-                src={`${Moderator && Moderator.avatar ? `${photoUrl}` : url}`}
-                alt="image"
-              />
-            </Photo>
-            <UserName>{Moderator._id?.substring(3)}</UserName>
-          </PhotoAndUsername>
-          <Date>
-            <Moment fromNow>{Moderator && Moderator.date}</Moment>
+      {Moderator && (
+        <>
+          <Container>
+            <ProfileContainer>
+              <PhotoAndUsername>
+                <Photo>
+                  <img
+                    crossOrigin="anonymous"
+                    src={`${
+                      Moderator && Moderator.avatar ? `${photoUrl}` : url
+                    }`}
+                    alt="image"
+                  />
+                </Photo>
+                <UserName>{Moderator._id?.substring(3)}</UserName>
+              </PhotoAndUsername>
+              <Date>
+                <Moment fromNow>{Moderator && Moderator.date}</Moment>
 
-            {banned && <span> . {Moderator && Moderator.bannedFor}</span>}
-          </Date>
-        </ProfileContainer>
-        {!approved && !muted && !banned && (
-          <Abilities>
-            Everything{" "}
-            {edit && (
-              <Edit>
-                <MdEdit />
-              </Edit>
-            )}{" "}
-            {invited && Moderator?._id !== auth.getUserName() && Moderator?.role !== "creator" &&(
-              <Edit
-                onClick={() => {
-                  leaveModerator(
-                    dataFetch,
-                    {
-                      userID: Moderator._id,
-                    },
-                    communityName,
-                    auth.getToken()
-                  );
-                }}
-              >
-                <MdDelete />
-              </Edit>
+                {banned && <span> . {Moderator && Moderator.bannedFor}</span>}
+              </Date>
+            </ProfileContainer>
+            {!approved && !muted && !banned && (
+              <Abilities>
+                Everything{" "}
+                {edit && (
+                  <Edit>
+                    <MdEdit />
+                  </Edit>
+                )}{" "}
+                {invited &&
+                  Moderator?._id !== auth.getUserName() &&
+                  Moderator?.role !== "creator" && (
+                    <Edit
+                      onClick={() => {
+                        leaveModerator(
+                          dataFetch,
+                          {
+                            userID: Moderator._id,
+                          },
+                          communityName,
+                          auth.getToken()
+                        );
+                      }}
+                    >
+                      <MdDelete />
+                    </Edit>
+                  )}
+              </Abilities>
             )}
-          </Abilities>
-        )}
-        {approved && Moderator?._id !== auth.getUserName()  &&(
-          <ButtonsContainer>
-            <button>Send message</button>
-            {Moderator?.role !== "creator" &&<button
-              onClick={() => {
-                kickMember(
-                  dataFetch,
-                  {
-                    userID: Moderator._id,
-                  },
-                  communityName,
-                  auth.getToken()
-                );
-              }}
-            >
-              Remove
-            </button>}
-          </ButtonsContainer>
-        )}
-        {muted && (
-          <ButtonsContainer>
-            <button
-              onClick={() => {
-                muteUser(
-                  dataFetch,
-                  {
-                    userID: Moderator._id,
-                    operation: "unmute",
-                  },
-                  communityName,
-                  auth.getToken()
-                );
-              }}
-            >
-              Unmute
-            </button>{" "}
-            <button
-              onClick={() => {
-                setShowDrop(!showDrop);
-              }}
-            >
-              More Details {!showDrop && <IoIosArrowDown />}{" "}
-              {showDrop && <IoIosArrowUp />}
-            </button>
-          </ButtonsContainer>
-        )}
-        {banned && (
-          <ButtonsContainer>
-            <button
-              onClick={() => {
-                setShowEditModal(true);
-              }}
-            >
-              Edit
-            </button>{" "}
-            <button
-              onClick={() => {
-                setShowDropBanned(!showDropBanned);
-              }}
-            >
-              More Details {!showDrop && <IoIosArrowDown />}{" "}
-              {showDrop && <IoIosArrowUp />}
-            </button>
-          </ButtonsContainer>
-        )}
-      </Container>
-      {showDrop && <MoreDetails>No mod note.</MoreDetails>}
-      {showDropBanned && (
-        <MoreDetailsBanned>
-          <ModNote>
-            <h3>MOD NOTE:</h3> <p>{Moderator && Moderator.modNote}</p>
-          </ModNote>{" "}
-          <ModNote>
-            <h3>BANNED FOR:</h3> <p>{Moderator && Moderator.bannedFor}</p>
-          </ModNote>{" "}
-        </MoreDetailsBanned>
-      )}
+            {approved && Moderator?._id !== auth.getUserName() && (
+              <ButtonsContainer>
+                <button>Send message</button>
+                {Moderator?.role !== "creator" && (
+                  <button
+                    onClick={() => {
+                      kickMember(
+                        dataFetch,
+                        {
+                          userID: Moderator._id,
+                        },
+                        communityName,
+                        auth.getToken()
+                      );
+                    }}
+                  >
+                    Remove
+                  </button>
+                )}
+              </ButtonsContainer>
+            )}
+            {muted && (
+              <ButtonsContainer>
+                <button
+                  onClick={() => {
+                    muteUser(
+                      dataFetch,
+                      {
+                        userID: Moderator._id,
+                        operation: "unmute",
+                      },
+                      communityName,
+                      auth.getToken()
+                    );
+                  }}
+                >
+                  Unmute
+                </button>{" "}
+                <button
+                  onClick={() => {
+                    setShowDrop(!showDrop);
+                  }}
+                >
+                  More Details {!showDrop && <IoIosArrowDown />}{" "}
+                  {showDrop && <IoIosArrowUp />}
+                </button>
+              </ButtonsContainer>
+            )}
+            {banned && (
+              <ButtonsContainer>
+                <button
+                  onClick={() => {
+                    setShowEditModal(true);
+                  }}
+                >
+                  Edit
+                </button>{" "}
+                <button
+                  onClick={() => {
+                    setShowDropBanned(!showDropBanned);
+                  }}
+                >
+                  More Details {!showDrop && <IoIosArrowDown />}{" "}
+                  {showDrop && <IoIosArrowUp />}
+                </button>
+              </ButtonsContainer>
+            )}
+          </Container>
+          {showDrop && <MoreDetails>No mod note.</MoreDetails>}
+          {showDropBanned && (
+            <MoreDetailsBanned>
+              <ModNote>
+                <h3>MOD NOTE:</h3> <p>{Moderator && Moderator.modNote}</p>
+              </ModNote>{" "}
+              <ModNote>
+                <h3>BANNED FOR:</h3> <p>{Moderator && Moderator.bannedFor}</p>
+              </ModNote>{" "}
+            </MoreDetailsBanned>
+          )}
 
-      {banned && showEditModal && (
-        <EditBanUserModal
-          setShowEditModal={setShowEditModal}
-          moderator={Moderator}
-          show={banned && showEditModal}
-          onHide={() => setShowEditModal(false)}
-        />
+          {banned && showEditModal && (
+            <EditBanUserModal
+              setShowEditModal={setShowEditModal}
+              moderator={Moderator}
+              show={banned && showEditModal}
+              onHide={() => setShowEditModal(false)}
+            />
+          )}
+        </>
       )}
     </>
   );
