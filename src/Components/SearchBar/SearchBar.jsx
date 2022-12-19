@@ -4,6 +4,7 @@ import {
   StyledSearchButton,
   StyledSearchIcon,
   StyledSearcherInput,
+  ClearBtn,
 } from "./SearchBar.styled";
 import { useNavigate } from "react-router-dom/dist";
 import SearchContext from "Features/Search/Contexts/SearchWordContext/Search-context";
@@ -13,6 +14,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import { useContext, useEffect } from "react";
 import fetchCommunities from "Features/Search/Services/fetchCommunities";
 import fetchPeople from "Features/Search/Services/fetchPeople";
+import { CiCircleRemove } from "react-icons/ci";
 
 /**
  * Component that displays the search results for a given search term.
@@ -114,6 +116,16 @@ const SearchBar = () => {
         value={query}
         onChange={onChangeText}
       />
+      <ClearBtn
+        textValue={query.length}
+        onClick={() => {
+          setQuery("");
+          setShowResults(false);
+        }}
+      >
+        <CiCircleRemove size={22} />
+      </ClearBtn>
+
       <BodySearch
         searchItemsCommunities={communityResults}
         searchItemsPeople={peopleResults}

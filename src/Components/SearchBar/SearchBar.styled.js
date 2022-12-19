@@ -43,3 +43,17 @@ export const StyledSearcherInput = styled.input`
   text-indent: 30px;
   padding: 15px;
 `;
+export const ClearBtn = styled.button`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2px;
+  align-items: center;
+  visibility: ${({ textValue }) => (textValue > 0 ? "visible" : "hidden")};
+  margin-right: 16px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  vertical-align: middle;
+  border: none;
+  background: none;
+`;
