@@ -105,12 +105,13 @@ const SignUpPageSecondScreen = ({
   setSug3,
   setSug4,
   setSug5,
-  setModalAfterSignUp
+  setModalAfterSignUp,
 }) => {
   const auth = useAuth();
   const { email, userName, password } = formFields;
 
   const [data, error, isLoading, dataFetch] = useFetchFunction();
+  const [data2, error2, isLoading2, dataFetch2] = useFetchFunction();
 
   /**
    * state to know what error message should be shown
@@ -143,7 +144,7 @@ const SignUpPageSecondScreen = ({
       signupApi(dataFetch, {
         type: "bare email",
         email: email,
-        username: "t2_"+userName,
+        username: "t2_" + userName,
         password: password,
       });
       setSignupSubmit(true);
@@ -164,13 +165,13 @@ const SignUpPageSecondScreen = ({
     if (validUserName && canReqAvailableUserName) {
       setCanReqAvailableUserName(false);
 
-      isUserNameAvailable(dataFetch, userName);
+      isUserNameAvailable(dataFetch2, userName);
 
-      if (data.response === "Not Avaliable") {
+      if (data2.response === "Not Avaliable") {
         setAvailableUserName(false);
       }
 
-      if (!error) {
+      if (!error2) {
         setAvailableUserName(true);
       } else {
         setAvailableUserName(false);
@@ -194,10 +195,10 @@ const SignUpPageSecondScreen = ({
   useEffect(() => {
     if (signupSubmit) {
       setSignupSubmit(false);
-     // console.log("out useEffect", data);
+      // console.log("out useEffect", data);
 
       if (!error && data.token) {
-       // console.log("useEffect", data);
+        // console.log("useEffect", data);
         setFinishedLoading(true);
         auth.login(data);
         // console.log(auth.getToken());
@@ -266,7 +267,7 @@ const SignUpPageSecondScreen = ({
                   <FormInputPageCom
                     data-testid="username"
                     id="userNameFieldSignUp"
-                    valid={validUserName && availableUserName}
+                    valid={validUserName && availableUserName && !error2}
                     initialFocus={initialFocus}
                     label="USERNAME"
                     type="text"
@@ -290,8 +291,13 @@ const SignUpPageSecondScreen = ({
                 </ErrorParagraph>
 
                 {error && (
-                  <ErrorParagraph valid={!error}>
-                    username is taken
+                  <ErrorParagraph valid={!error}>{error}</ErrorParagraph>
+                )}
+                {error2 && (
+                  <ErrorParagraph valid={!error2}>
+                    {error2 === "Request failed with status code 404" && (
+                      <span>Username is taken</span>
+                    )}
                   </ErrorParagraph>
                 )}
                 {/* {!availableUserName && (
@@ -299,10 +305,10 @@ const SignUpPageSecondScreen = ({
                     Username is taken
                   </ErrorParagraph>
                 )} */}
-                {availableUserName && validUserName && (
+                {availableUserName && validUserName && !error2 && (
                   <ErrorParagraph
-                    validColor={availableUserName && validUserName}
-                    valid={!availableUserName}
+                    validColor={true}
+                    valid={!(availableUserName && validUserName)}
                   >
                     Nice username!
                   </ErrorParagraph>
@@ -420,7 +426,7 @@ const SignUpPageSecondScreen = ({
                 BACK
               </BackButton>
               <ButtonsContainer>
-                {!finishedLoading && (
+                {
                   <Button
                     id="signUpButton"
                     page={true}
@@ -434,20 +440,10 @@ const SignUpPageSecondScreen = ({
                     type="submit"
                     onClick={() => setWantSubmit(true)}
                   >
-                    SIGN UP
+                    {!isLoading && <span> SIGN UP</span>}
+                    {isLoading && <LoadingSpinner />}
                   </Button>
-                )}
-
-                {/* {isLoading && !finishedLoading && availableUserName &&(
-                  <Button page={true} disabled valid={true} type="submit">
-                    <LoadingSpinner></LoadingSpinner>
-                  </Button>
-                )} */}
-                {finishedLoading && (
-                  <Button page={true} disabled valid={true} type="submit">
-                    <Checked></Checked>
-                  </Button>
-                )}
+                }
               </ButtonsContainer>
             </LastDiv>
           </form>

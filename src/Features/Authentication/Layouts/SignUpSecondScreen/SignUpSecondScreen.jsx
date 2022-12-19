@@ -89,6 +89,7 @@ const SignUpSecondScreen = ({
   const auth = useAuth();
 
   const [data, error, isLoading, dataFetch] = useFetchFunction();
+  const [data2, error2, isLoading2, dataFetch2] = useFetchFunction();
   /**
    * state to know what error message should be shown
    */
@@ -136,8 +137,8 @@ const SignUpSecondScreen = ({
     if (validUserName && canReqAvailableUserName) {
       setCanReqAvailableUserName(false);
 
-      isUserNameAvailable(dataFetch, userName);
-      if (!error) {
+      isUserNameAvailable(dataFetch2, userName);
+      if (!error2) {
         setAvailableUserName(true);
       } else {
         setAvailableUserName(false);
@@ -152,7 +153,7 @@ const SignUpSecondScreen = ({
       //console.log("out useEffect", data);
 
       if (!error && data.token) {
-       // console.log("useEffect", data);
+        // console.log("useEffect", data);
         setFinishedLoading(true);
         auth.login(data);
         navigate("/");
@@ -182,7 +183,7 @@ const SignUpSecondScreen = ({
       signupApi(dataFetch, {
         type: "bare email",
         email: email,
-        username: "t2_"+userName,
+        username: "t2_" + userName,
         password: password,
       });
       setSignupSubmit(true);
@@ -250,7 +251,7 @@ const SignUpSecondScreen = ({
               <FormInput
                 data-testid="username"
                 id="userNameFieldSignUpModal"
-                valid={validUserName && availableUserName}
+                valid={validUserName && availableUserName && !error2}
                 initialFocus={initialFocus}
                 label="Username"
                 type="text"
@@ -280,9 +281,19 @@ const SignUpSecondScreen = ({
               {errMsg}
             </ErrorParagraph>
 
-            {error && (
+            {error2 && (
               <ErrorParagraph
                 id="userNameErrorFromBackendSignUpModal"
+                valid={!error2}
+              >
+                {error2 === "Request failed with status code 404" && (
+                  <span>Username is taken</span>
+                )}
+              </ErrorParagraph>
+            )}
+            {error && (
+              <ErrorParagraph
+                id="duplicatedEmail"
                 valid={!error}
               >
                 {error}
@@ -295,10 +306,10 @@ const SignUpSecondScreen = ({
               </ErrorParagraph>
             )} */}
 
-            {availableUserName && validUserName && !error && (
+            {availableUserName && validUserName && !error2 && (
               <ErrorParagraph
-                validColor={availableUserName && validUserName}
-                valid={!availableUserName}
+                validColor={true}
+                valid={!(availableUserName && validUserName)}
               >
                 Nice username!
               </ErrorParagraph>
@@ -338,7 +349,7 @@ const SignUpSecondScreen = ({
               password should contain 8 to 20 characters
             </ErrorParagraph>
             <ButtonsContainer>
-              {!finishedLoading && (
+              {
                 <Button
                   id="signUpButtonModal"
                   disabled={
@@ -358,20 +369,10 @@ const SignUpSecondScreen = ({
                     setWantSubmit(true);
                   }}
                 >
-                  Continue
+                  {!isLoading && <span>Continue</span>}
+                  {isLoading  && <LoadingSpinner />}
                 </Button>
-              )}
-
-              {/* {isLoading && !finishedLoading && (
-                <Button disabled valid={true} type="submit">
-                  <LoadingSpinner></LoadingSpinner>
-                </Button>
-              )} */}
-              {finishedLoading && (
-                <Button disabled valid={true} type="submit">
-                  <Checked></Checked>
-                </Button>
-              )}
+              }
             </ButtonsContainer>
           </form>
 

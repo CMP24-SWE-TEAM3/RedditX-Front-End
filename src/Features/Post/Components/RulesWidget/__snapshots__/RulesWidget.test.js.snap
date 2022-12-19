@@ -2,28 +2,6 @@
 
 exports[`widget show rules should render without crashing 1`] = `
 <WidgetContainer
-  headerText="r/Egypt Rules"
->
-  <Rule
-    description="d1"
-    index={1}
-    key="t1"
-    len={3}
-    title="t1"
-  />
-  <Rule
-    description="d2"
-    index={2}
-    key="t2"
-    len={3}
-    title="t2"
-  />
-  <Rule
-    description=""
-    index={3}
-    key="t3"
-    len={3}
-    title="t3"
-  />
-</WidgetContainer>
+  headerText="r/undefined"
+/>
 `;
