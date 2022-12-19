@@ -33,7 +33,9 @@ import { BASE_URL } from "API/axios";
 import { useNavigate } from "react-router-dom";
 import Moment from "react-moment";
 import { handleUp, handleDown } from "Features/Post/Utils/upAndDownVoting";
-import { giveVote } from "Features/Post/Services/postActions";
+import { giveVote, makeFollow } from "Features/Post/Services/postActions";
+import submitSpam from "Features/Post/Services/submitSpam";
+import submitSave from "Features/Post/Services/submitSave";
 const Comment = ({ comment, postID }) => {
   const auth = useAuth();
 
@@ -73,6 +75,10 @@ const Comment = ({ comment, postID }) => {
     dataSendUserData,
   ] = useFetchFunction();
   const [voteData, errorVoteData, isLoadingVoteData, dataSendVoteData] =
+    useFetchFunction();
+  const [saveData, errorSaveData, isLoadingSaveData, dataSendSaveData] =
+    useFetchFunction();
+  const [spamData, errorSpamData, isLoadingSpamData, dataSendSpamData] =
     useFetchFunction();
   const upVote = () => {
     if (upVoted) {
@@ -158,6 +164,29 @@ const Comment = ({ comment, postID }) => {
       getUser(dataSendUserData, comment.authorId, auth);
     }
   }, []);
+  const handleSave = () => {
+    if (!auth.isLoggedIn()) return;
+    submitSave(
+      dataSendSaveData,
+      {
+        linkID: "t1_" + comment._id,
+      },
+      auth
+    );
+  };
+  const handleReport = () => {
+    if (!auth.isLoggedIn()) return;
+    submitSpam(
+      dataSendSpamData,
+      {
+        linkID: "t1_" + comment._id,
+        spamText: "I found that this content is showing violence",
+        spamType: "violent content",
+      },
+      auth
+    );
+  };
+
   const navigate = useNavigate();
   return (
     <Container>
@@ -205,7 +234,12 @@ const Comment = ({ comment, postID }) => {
                 <FaRegCommentAlt size={20} />
                 <span>Reply</span>
               </Reply>
-              <BsThreeDots size={20} />
+              <Reply onClick={handleReport}>
+                <span>Report</span>
+              </Reply>
+              <Reply onClick={handleSave}>
+                <span>Save</span>
+              </Reply>
             </Controls>
             {openReply && (
               <Left>

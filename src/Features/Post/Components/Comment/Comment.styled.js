@@ -59,6 +59,7 @@ export const Username = styled.span`
 export const Controls = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   color: ${({ theme }) => theme.color.muted};
   & > * {
     &:hover {
@@ -87,11 +88,11 @@ export const VotesCount = styled.span`
 
 export const Reply = styled.span`
   display: inline-block;
-  margin-left: 8px;
-  margin-right: 8px;
+  /* margin-left: 8px; */
+  /* margin-right: 8px; */
   padding: 4px;
   span {
-    margin-left: 8px;
+    margin-left: 2px;
   }
 `;
 

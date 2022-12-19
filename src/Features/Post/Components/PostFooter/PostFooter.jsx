@@ -14,6 +14,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import submitSpam from "Features/Post/Services/submitSpam";
 import submitDelete from "Features/Post/Services/submitDelete";
+import submitSave from "Features/Post/Services/submitSave";
 
 /**
  * PostFooter Component that is in the side of Post
@@ -26,7 +27,8 @@ const PostFooter = ({ post, setMakeHidden, handlePostEdit }) => {
    * Custom hook
    */
   const [data, error, isLoading, dataFetch] = useFetchFunction();
-
+  const [saveData, errorSaveData, isLoadingSaveData, dataSendSaveData] =
+    useFetchFunction();
   const handleHide = () => {
     setMakeHidden(true);
     hidePost(
@@ -58,6 +60,16 @@ const PostFooter = ({ post, setMakeHidden, handlePostEdit }) => {
       auth
     );
   };
+  const handleSave = () => {
+    if (!auth.isLoggedIn()) return;
+    submitSave(
+      dataSendSaveData,
+      {
+        linkID: "t3_" + post._id,
+      },
+      auth
+    );
+  };
   return (
     <Container>
       <Comment onClick={(event) => {}}>
@@ -80,6 +92,7 @@ const PostFooter = ({ post, setMakeHidden, handlePostEdit }) => {
       <Comment
         onClick={(event) => {
           event.stopPropagation();
+          handleSave();
         }}
       >
         <TbBadge /> Save
