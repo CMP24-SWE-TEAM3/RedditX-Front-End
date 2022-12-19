@@ -35,7 +35,7 @@ const PostPublisher = ({ fullPost, post }) => {
   const url =
     "https://i.pinimg.com/originals/58/2d/96/582d96a1df2d94bb439af1594639ccfe.jpg";
   const communityName = post.communityID
-    ? post.communityID.substring(3)
+    ? post.communityID._id.substring(3)
     : post.userID._id.substring(3);
 
   const [follow, setFollow] = useState(

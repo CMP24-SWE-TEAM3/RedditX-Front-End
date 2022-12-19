@@ -17,6 +17,7 @@ const People = ({ PeopleList, PeopleFollow }) => {
       <PeopleContainer>
         <p className="title">People</p>
         {peopleNumber !== 0 &&
+          PeopleFollow.followers &&
           PeopleList.results.slice(0, 5).map((People) => (
             <PeopleCardItem
               avatar={People.avatar}
@@ -25,8 +26,8 @@ const People = ({ PeopleList, PeopleFollow }) => {
               about={People.about}
               totalKarmas={People.karma}
               username={People._id}
-              isFollow={PeopleFollow.find((element) => {
-                return element.id === People._id;
+              isFollow={PeopleFollow.followers.find((element) => {
+                return element._id === People._id;
               })}
             />
           ))}
