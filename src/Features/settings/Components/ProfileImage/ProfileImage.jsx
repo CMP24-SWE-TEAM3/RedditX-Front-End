@@ -22,8 +22,18 @@ import { TbCameraPlus } from "react-icons/tb";
 import logo from "./../../Assets/prof.png";
 import { useState } from "react";
 import { useRef } from "react";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import useFetchFunction from "Hooks/useFetchFunction";
+import uploadUserPhoto from "Features/Authentication/Services/uploadUserPhoto";
+import { useEffect } from "react";
+import getUser from "Features/settings/Services/getMine";
 
 const ProfileImage = () => {
+  /**
+   * state to store user's uploaded profile photo
+   */
+  const [profilePhoto, setProfilePhoto] = useState(null);
+
   const imgg = useRef();
   const toggleHandler = (state) => {
     console.log(state);
@@ -32,9 +42,40 @@ const ProfileImage = () => {
   // Use dropzone hook
 
   ////////////////////////////////
+  const auth = useAuth();
 
+  const [userData, userError, userIsLoading, userFetch] = useFetchFunction();
+
+  useEffect(() => {
+    getUser(userFetch, auth);
+  }, []);
+
+  useEffect(() => {
+    console.log("meeeeeeeeeeeeeeeee", userData);
+  }, [userData]);
+
+  const { meInfo } = userData;
+
+  const [data, error, isLoading, dataFetch] = useFetchFunction();
   const [selectedImage, setSelectedImage] = useState(null);
-  console.log(selectedImage);
+  const bodyFormData = new FormData();
+  // if (selectedImage != null) {
+  //   // console.log(selectedImage);
+  //   bodyFormData.append("action", "upload");
+  //   bodyFormData.append("attachment", selectedImage, selectedImage.path);
+  //   uploadUserPhoto(dataFetch, bodyFormData, auth);
+  //   // console.log(selectedImage);
+  // }
+  useEffect(() => {
+    // uploadUserPhoto(dataFetch, bodyFormData, auth);
+    if (selectedImage != null) {
+      // console.log(selectedImage);
+      bodyFormData.append("action", "upload");
+      bodyFormData.append("attachment", selectedImage, selectedImage.name);
+      uploadUserPhoto(dataFetch, bodyFormData, auth);
+      // console.log(selectedImage);
+    }
+  }, [selectedImage]);
   return (
     <>
       <OuterOne>
@@ -70,8 +111,20 @@ const ProfileImage = () => {
                   <Imagerelative>
                     <ImagerelativeInner>
                       <ImageModel></ImageModel>
-                      <ImageExact selectedImage={selectedImage}>
-                        {!selectedImage && <img src={logo} alt="" />}
+                      <ImageExact selectedImage={true}>
+                        {!selectedImage && (
+                          <img
+                            crossOrigin="anonymous"
+                            src={
+                              meInfo
+                                ? meInfo.user
+                                  ? `https://api.redditswe22.tech/users/files/${meInfo.user.avatar}`
+                                  : logo
+                                : logo
+                            }
+                            alt=""
+                          />
+                        )}
                         {selectedImage && (
                           <ImageSelected
                             src={URL.createObjectURL(selectedImage)}
