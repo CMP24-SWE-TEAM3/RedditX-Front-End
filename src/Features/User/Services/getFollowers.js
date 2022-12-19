@@ -1,15 +1,17 @@
 import axios from "API/axios";
 
 /**
- * A service to handle retrieval of New posts of specific subreddit
+ * A service to handle getting followers of user
  *
  * @param {Function} fetchData - The function to make the request
  */
-const getSubredditNewPosts = async (fetchData, comm, auth) => {
+const getFollowers = async (fetchData, auth) => {
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
+
   fetchData({
     axiosInstance: axios,
     method: "GET",
-    url: `/api/listing/posts/r/${comm}/new?page=1&limit=5`,
+    url: `/api/user/me/followers`,
     requestConfig: {
       headers: {
         "Content-Language": "en-US",
@@ -19,4 +21,4 @@ const getSubredditNewPosts = async (fetchData, comm, auth) => {
   });
 };
 
-export default getSubredditNewPosts;
+export default getFollowers;
