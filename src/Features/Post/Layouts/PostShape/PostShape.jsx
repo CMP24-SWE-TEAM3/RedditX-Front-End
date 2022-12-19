@@ -33,7 +33,6 @@ const PostShape = ({
   editPost,
   setEditPost,
 }) => {
-  console.log(post);
   const [makeHidden, setMakeHidden] = useState(false);
   const [editPostText, setEditPostText] = useState("");
   const [editPostHtmlText, setEditPostHtmlText] = useState("");

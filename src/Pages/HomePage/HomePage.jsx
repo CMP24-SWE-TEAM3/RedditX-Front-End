@@ -83,7 +83,7 @@ const HomePage = () => {
                 </CreateCommunity>
                 <RecentPostsContainer>
                   <div>
-                    <RecentPosts />
+                    {/* <RecentPosts /> */}
                   </div>
                 </RecentPostsContainer>
                 <footer>
