@@ -1,4 +1,4 @@
-import { Container, HistoryContainer } from "./UserHistory.styled";
+import { Container, HistoryContainer, StyledDiv } from "./UserHistory.styled";
 import UserNoPosts from "Features/User/Components/UserNoPosts/UserNoPosts";
 
 const UserHistory = () => {
