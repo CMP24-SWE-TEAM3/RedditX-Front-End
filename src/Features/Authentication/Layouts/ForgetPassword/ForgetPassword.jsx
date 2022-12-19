@@ -113,7 +113,7 @@ const ForgetPassword = () => {
     if (wantSubmit) {
       forgetPasswordApi(dataFetch, {
         email: email,
-        username: "t2_"+userName,
+        username: "t2_" + userName,
         operation: false,
       });
 
@@ -174,15 +174,14 @@ const ForgetPassword = () => {
           />
 
           {/* Show error message if the userName is not valid and the user made a focus on the it's input field */}
-         
-            <ErrorParagraph
-              data-testid="username-error"
-              id="username-error"
-              valid={validName || initialFocus}
-            >
-              Username must be between 3 and 20 characters
-            </ErrorParagraph>
-         
+
+          <ErrorParagraph
+            data-testid="username-error"
+            id="username-error"
+            valid={validName || initialFocus}
+          >
+            Username must be between 3 and 20 characters
+          </ErrorParagraph>
 
           {error && (
             <ErrorParagraph valid={!error || initialFocus}>
@@ -207,42 +206,28 @@ const ForgetPassword = () => {
 
           {/* Show error message if the email is not valid and the user made a focus on the it's input field */}
 
-         
-            <ErrorParagraph
-              data-testid="email-error"
-              id="email-error"
-              valid={validEmail || initialFocus2}
-            >
-              not a valid email
-            </ErrorParagraph>
-         
+          <ErrorParagraph
+            data-testid="email-error"
+            id="email-error"
+            valid={validEmail || initialFocus2}
+          >
+            not a valid email
+          </ErrorParagraph>
 
           <ButtonsContainer>
-            {!isLoading && !finishedLoading && (
-              <Button
-                id="reset"
-                page={true}
-                disabled={!validName || !validEmail}
-                valid={validName && validEmail}
-                type="submit"
-                onClick={() => {
-                  setWantSubmit(true);
-                }}
-              >
-                RESET PASSWORD
-              </Button>
-            )}
-
-            {isLoading && (
-              <Button page={true} disabled valid={true} type="submit">
-                <LoadingSpinner></LoadingSpinner>
-              </Button>
-            )}
-            {!isLoading && finishedLoading && (
-              <Button page={true} disabled valid={true} type="submit">
-                <Checked></Checked>
-              </Button>
-            )}
+            <Button
+              id="reset"
+              page={true}
+              disabled={!validName || !validEmail}
+              valid={validName && validEmail}
+              type="submit"
+              onClick={() => {
+                setWantSubmit(true);
+              }}
+            >
+              {!isLoading && <span>RESET PASSWORD</span>}
+              {isLoading && <LoadingSpinner />}
+            </Button>
           </ButtonsContainer>
           <br></br>
           {emailSent && (
@@ -272,7 +257,9 @@ const ForgetPassword = () => {
           <br></br>
           <br></br>
           <Forget>
-            <span data-testid="login" onClick={() => navigate("/login")}>LOG IN</span>{" "}
+            <span data-testid="login" onClick={() => navigate("/login")}>
+              LOG IN
+            </span>{" "}
             <span onClick={() => navigate("/register")}>{" . "}SIGN UP</span>{" "}
           </Forget>
         </form>

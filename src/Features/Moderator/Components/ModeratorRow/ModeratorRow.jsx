@@ -14,6 +14,7 @@ import {
   muteUser,
   kickModerator,
   kickMember,
+  leaveModerator,
 } from "Features/Moderator/Services/userManagementApi";
 
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
@@ -90,9 +91,7 @@ const ModeratorRow = ({
                 alt="image"
               />
             </Photo>
-            <UserName>
-              {Moderator && Moderator._id && Moderator._id.substring(3)}
-            </UserName>
+            <UserName>{Moderator._id?.substring(3)}</UserName>
           </PhotoAndUsername>
           <Date>
             <Moment fromNow>{Moderator && Moderator.date}</Moment>
@@ -108,10 +107,10 @@ const ModeratorRow = ({
                 <MdEdit />
               </Edit>
             )}{" "}
-            {invited && (
+            {invited && Moderator?._id !== auth.getUserName() && Moderator?.role !== "creator" &&(
               <Edit
                 onClick={() => {
-                  kickModerator(
+                  leaveModerator(
                     dataFetch,
                     {
                       userID: Moderator._id,
@@ -126,10 +125,10 @@ const ModeratorRow = ({
             )}
           </Abilities>
         )}
-        {approved && (
+        {approved && Moderator?._id !== auth.getUserName()  &&(
           <ButtonsContainer>
-            <button>Send message</button>{" "}
-            <button
+            <button>Send message</button>
+            {Moderator?.role !== "creator" &&<button
               onClick={() => {
                 kickMember(
                   dataFetch,
@@ -142,7 +141,7 @@ const ModeratorRow = ({
               }}
             >
               Remove
-            </button>
+            </button>}
           </ButtonsContainer>
         )}
         {muted && (

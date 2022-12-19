@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 const CategoryContext = React.createContext({
   Category: "",
   CategoryHandler: (Category) => {},
+  ReFetch: false,
+  ReFetchHandler: (ReFetch) => {},
 });
 /**
  * Context for the Category Selected
@@ -12,6 +14,8 @@ const CategoryContext = React.createContext({
  */
 export function CategoryContextProvider(props) {
   const [Category, setCategory] = useState("");
+  const [ReFetch, setReFetch] = useState(false);
+
   /**
    * Function for the Category Selected
    *
@@ -21,12 +25,22 @@ export function CategoryContextProvider(props) {
     setCategory(Category);
     // console.log(Category);
   };
-
+  /**
+   * Function for the refetch
+   *
+   * @param {boolean} ReFetch  - which indicates if the ReFetch is changed
+   */
+  const ReFetchHandler = (ReFetch) => {
+    setReFetch(ReFetch);
+    // console.log(ReFetch);
+  };
   return (
     <CategoryContext.Provider
       value={{
         Category: Category,
         CategoryHandler: CategoryHandler,
+        ReFetch: ReFetch,
+        ReFetchHandler: ReFetchHandler,
       }}
     >
       {props.children}

@@ -16,6 +16,11 @@ import { GiSixEyes } from "react-icons/gi";
 import { MdDoNotDisturbAlt } from "react-icons/md";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useNavigate } from "react-router-dom";
+import Profile from "Assets/Images/profile.ico";
+import getUser from "Features/User/Services/getMine";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { BASE_URL } from "API/axios";
+import React, { useEffect } from "react";
 /**
  * Component that  shows all stuff and options to user.
  *
@@ -23,6 +28,12 @@ import { useNavigate } from "react-router-dom";
  */
 const DropDownRightButton = ({ toggleMode }) => {
   const auth = useAuth();
+
+  const [userInfo, error, isLoading, fetchData] = useFetchFunction();
+  useEffect(() => {
+    getUser(fetchData, auth);
+  }, []);
+
   const navigate = useNavigate();
   const LoginHandler = () => {
     auth.logout();
@@ -36,11 +47,26 @@ const DropDownRightButton = ({ toggleMode }) => {
       title={
         <div className="avatar-container">
           <div>
-            <img
-              src="https://styles.redditmedia.com/t5_75g7xm/styles/profileIcon_snoo6422fdc6-0631-4a70-a9f3-36b423763138-headshot.png?width=256&height=256&frame=1&crop=256:256,smart&v=enabled&s=152682da18e53c50b9f18fc2b7fdd03ee3d9e6ec"
-              alt="Avatar"
-              className="avatar"
-            />
+            {userInfo &&
+              userInfo.length !== 0 &&
+              userInfo.meInfo.user.hasOwnProperty("avatar") && (
+                <img
+                  crossOrigin="anonymous"
+                  src={`${BASE_URL}/users/files/${userInfo.meInfo.user.avatar}`}
+                  alt="Avatar"
+                  className="avatar"
+                />
+              )}
+            {userInfo &&
+              userInfo.length !== 0 &&
+              !userInfo.meInfo.user.hasOwnProperty("avatar") && (
+                <img
+                  crossOrigin="anonymous"
+                  src={Profile}
+                  alt="Avatar"
+                  className="avatar"
+                />
+              )}
           </div>
           <div className="user-name-container">
             <span className="user-name">

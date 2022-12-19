@@ -2,15 +2,9 @@
 
 exports[`Footer Component this is a test for Footer Component 1`] = `
 <styled.div>
-  <div
-    className="content"
-  >
-    <div
-      className="menu-1"
-    >
-      <div
-        className="sec"
-      >
+  <styled.div>
+    <styled.div>
+      <styled.div>
         <Link
           href="https://www.redditinc.com/policies/user-agreement"
         >
@@ -22,10 +16,8 @@ exports[`Footer Component this is a test for Footer Component 1`] = `
         >
           Privacy Policy
         </Link>
-      </div>
-      <div
-        className="sec"
-      >
+      </styled.div>
+      <styled.div>
         <Link
           href="https://www.redditinc.com/policies/user-agreement"
         >
@@ -37,14 +29,10 @@ exports[`Footer Component this is a test for Footer Component 1`] = `
         >
           Moderator Code of Conduct
         </Link>
-      </div>
-    </div>
-    <div
-      className="menu-1"
-    >
-      <div
-        className="sec"
-      >
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.div>
         <Link
           href="https://www.redditinc.com/policies/user-agreement"
         >
@@ -61,10 +49,8 @@ exports[`Footer Component this is a test for Footer Component 1`] = `
         >
           Italiano
         </Link>
-      </div>
-      <div
-        className="sec"
-      >
+      </styled.div>
+      <styled.div>
         <Link
           href="https://www.redditinc.com/policies/privacy-policy"
         >
@@ -80,13 +66,11 @@ exports[`Footer Component this is a test for Footer Component 1`] = `
         >
           Português
         </Link>
-      </div>
-    </div>
-    <div
-      className="inc"
-    >
+      </styled.div>
+    </styled.div>
+    <styled.div>
       Reddit Inc © 2022. All rights reserved
-    </div>
-  </div>
+    </styled.div>
+  </styled.div>
 </styled.div>
 `;

@@ -18,6 +18,7 @@ import { BsFillBellFill } from "react-icons/bs";
 import { BASE_URL } from "API/axios";
 
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import { useNavigate } from "react-router-dom";
 
 /**
  * PostPublisher Component that is in the side of Post
@@ -33,9 +34,17 @@ const PostPublisher = ({ fullPost, post }) => {
 
   const url =
     "https://i.pinimg.com/originals/58/2d/96/582d96a1df2d94bb439af1594639ccfe.jpg";
-  const communityName = "hello world ";
+  const communityName = post.communityID
+    ? post.communityID.substring(3)
+    : post.userID._id.substring(3);
 
-  const [follow, setFollow] = useState(false);
+  const [follow, setFollow] = useState(
+    auth.isLoggedIn()
+      ? post.followers.findIndex(
+          (follower) => follower === auth.getUserName()
+        ) !== -1
+      : false
+  );
 
   const handleFollow = () => {
     setFollow(!follow);
@@ -49,7 +58,7 @@ const PostPublisher = ({ fullPost, post }) => {
       auth.getToken()
     );
   };
-
+  const navigate = useNavigate();
   return (
     <Container>
       <InfoContainer>
@@ -61,9 +70,25 @@ const PostPublisher = ({ fullPost, post }) => {
               : url
           }`}
           alt="user"
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate(`/user/${post.userID._id}/`);
+          }}
         ></Photo>
-        <Community>{communityName}</Community>
-        <PublishBy>
+        <Community
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate(`/subreddit/${communityName}/`);
+          }}
+        >
+          {communityName}
+        </Community>
+        <PublishBy
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate(`/user/${post.userID._id}/`);
+          }}
+        >
           . Posted by {post.userID._id.substring(3)}{" "}
           <Moment fromNow>{post.createdAt}</Moment>
         </PublishBy>

@@ -9,14 +9,14 @@ import { Container, ContentContainer } from "./SpamPost.styled";
  * SpamPost Component
  * @returns {React.Component} SpamPost component
  */
-const SpamPost = ({ fullPost, post }) => {
+const SpamPost = ({ fullPost, post, handlerApprove }) => {
   return (
     <Container fullPost={fullPost}>
       <VotingBar number={post.votesCount} />
       <ContentContainer>
         <PostPublisher fullPost={fullPost} post={post} />
         <PostContent post={post} />
-        <SpamPostFooter post={post} />
+        <SpamPostFooter post={post} handlerApprove={handlerApprove} />
       </ContentContainer>
     </Container>
   );

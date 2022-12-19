@@ -120,7 +120,7 @@ const ForgetPasswordModal = ({
     if (wantSubmit) {
       forgetPasswordApi(dataFetch, {
         email: email,
-        username: "t2_"+userName,
+        username: "t2_" + userName,
         operation: false,
       });
 
@@ -187,7 +187,6 @@ const ForgetPasswordModal = ({
               Username must be between 3 and 20 characters
             </ErrorParagraph>
 
-
             {error && (
               <ErrorParagraph valid={!error || initialFocus}>
                 {error}
@@ -233,28 +232,17 @@ const ForgetPasswordModal = ({
             </Forget>
 
             <ButtonsContainer>
-              {!isLoading && !finishedLoading && (
-                <Button
-                  disabled={!validName || !validEmail}
-                  valid={validName && validEmail}
-                  type="submit"
-                  onClick={() => {
-                    setWantSubmit(true);
-                  }}
-                >
-                  Reset password
-                </Button>
-              )}
-              {isLoading && (
-                <Button disabled valid={true} type="submit">
-                  <LoadingSpinner></LoadingSpinner>
-                </Button>
-              )}
-              {!isLoading && finishedLoading && (
-                <Button disabled valid={true} type="submit">
-                  <Checked></Checked>
-                </Button>
-              )}
+              <Button
+                disabled={!validName || !validEmail}
+                valid={validName && validEmail}
+                type="submit"
+                onClick={() => {
+                  setWantSubmit(true);
+                }}
+              >
+                {!isLoading && <span> Reset password</span>}
+                {isLoading && <LoadingSpinner />}
+              </Button>
             </ButtonsContainer>
             <br></br>
             {emailSent && (

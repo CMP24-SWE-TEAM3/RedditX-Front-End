@@ -20,15 +20,23 @@ import {
   Title,
 } from "./SettingsPage.styled";
 import SettingModal from "../../Components/SettingModal/SettingModal";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useEffect } from "react";
+import fetchPrefs from "../../Services/FetchPrefs";
+import {useAuth} from "Features/Authentication/Contexts/Authentication";
 
 const SettingsPage = () => {
+  const auth = useAuth();
+  const [data, error, loading, fetchData] = useFetchFunction();
+  
+  useEffect(()=>{
+    fetchPrefs(fetchData, auth);
+  },[]);
+  console.log(data);
   const toggleHandler = (p) => {
     console.log(p);
   };
-  // console.log(window.location.pathname);
-  // const current = window.location.pathname;
   const location = useLocation();
-  console.log("hh", location.pathname);
 
   return (
     <ContainerSettings>
@@ -53,8 +61,17 @@ const SettingsPage = () => {
               <Route path="Account" element={<AccountPage />} />
               <Route path="Profile" element={<ProfilePage />} />
               <Route path="privacy" element={<PrivacyPage />} />
-              <Route path="feed" element={<FeedPage />} />
-              <Route path="emails" element={<EmailsPage />} />
+              
+              <Route path="feed" element={!loading && data.prefs && <FeedPage 
+                adult = {data.prefs.user.searchIncludeOver18}
+                />} />
+                
+              <Route path="emails" element={!loading && data.prefs && 
+                <EmailsPage 
+                  emailSubscribe = {data.prefs.user.emailUnsubscripeAll}
+                  Request = {data.prefs.user.emailMessages}
+                  Followers = {data.prefs.user.enableFollowers}
+                />} />
               <Route
                 path="/settings"
                 element={<Navigate to={"/settings/Account"} />}
