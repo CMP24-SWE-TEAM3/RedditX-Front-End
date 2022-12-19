@@ -31,9 +31,10 @@ const PostItem = ({ post }) => {
       Comments: post.insightCnt,
     };
     const postHeader = {
-      headerImage: post.userID.avatar,
-      communityName: post.communityID,
-      communityID: post.communityID,
+      headerImage: post.communityID.icon,
+      communityName: post.communityID._id,
+      // communityicon: post.communityID.icon,
+      communityID: post.communityID._id,
       userName: post.userID._id,
       userID: post.userID._id,
       time: post.createdAt,
