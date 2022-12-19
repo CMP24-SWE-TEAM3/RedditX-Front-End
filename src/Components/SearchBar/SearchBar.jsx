@@ -130,6 +130,7 @@ const SearchBar = () => {
         searchItemsCommunities={communityResults}
         searchItemsPeople={peopleResults}
         query={query}
+        setQuery={setQuery}
         showResults={showResults}
         cntAndIcon={cntAndIcon}
         avatars={avatar}

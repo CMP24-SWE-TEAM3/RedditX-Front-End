@@ -101,77 +101,94 @@ const SearchBody = ({
   searchItemsPeople,
   avatars,
   cntAndIcon,
+  setQuery,
   showResults,
   setShowResults,
 }) => {
   return (
-    <DropMenuContainer show={showResults}>
-      {searchItemsCommunities.length > 1 && (
-        <Container onClick={() => setShowResults(false)}>
-          <CommunitiesText>Communtities</CommunitiesText>
-          {searchItemsCommunities.map((Community, index) => {
-            if (index < 3) {
-              return (
-                <SubText to={`/search/posts/${Community}`}>
-                  <ImageContainer>
-                    <img
-                      crossOrigin="anonymous"
-                      src={`${BASE_URL}/subreddits/files/${cntAndIcon[index][1]}`}
-                      alt=""
-                    />
-                  </ImageContainer>
-                  <div>
-                    <CommunityContainer>
-                      r/{Community.substring(3)}
-                    </CommunityContainer>
-                    <Members>
-                      <FirstChild>Community</FirstChild>
-                      <Dot>
-                        <BsDot />
-                      </Dot>
-                      <SecondChild>{cntAndIcon[index][0]} members</SecondChild>
-                    </Members>
-                  </div>
-                </SubText>
-              );
-            }
-          })}
-        </Container>
-      )}
+    <>
+      {(searchItemsCommunities.length > 0 || searchItemsPeople.length > 0) && (
+        <DropMenuContainer show={showResults}>
+          {searchItemsCommunities.length > 1 && (
+            <Container
+              onClick={() => {
+                setShowResults(false);
+                setQuery("");
+              }}
+            >
+              <CommunitiesText>Communtities</CommunitiesText>
+              {searchItemsCommunities.map((Community, index) => {
+                if (index < 3) {
+                  return (
+                    <SubText to={`/search/posts/${Community}`}>
+                      <ImageContainer>
+                        <img
+                          crossOrigin="anonymous"
+                          src={`${BASE_URL}/subreddits/files/${cntAndIcon[index][1]}`}
+                          alt=""
+                        />
+                      </ImageContainer>
+                      <div>
+                        <CommunityContainer>
+                          r/{Community.substring(3)}
+                        </CommunityContainer>
+                        <Members>
+                          <FirstChild>Community</FirstChild>
+                          <Dot>
+                            <BsDot size={22} />
+                          </Dot>
+                          <SecondChild>
+                            {cntAndIcon[index][0]} members
+                          </SecondChild>
+                        </Members>
+                      </div>
+                    </SubText>
+                  );
+                }
+              })}
+            </Container>
+          )}
 
-      {searchItemsPeople.length > 0 && (
-        <Container onClick={() => setShowResults(false)}>
-          <CommunitiesText>People</CommunitiesText>
-          {searchItemsPeople.map((searchItem, index) => {
-            if (index < 3) {
-              return (
-                <SubText to={`/search/posts/${searchItem}`}>
-                  <ImageContainer>
-                    <img
-                      crossOrigin="anonymous"
-                      src={`${BASE_URL}/users/files/${avatars[index]}`}
-                      alt=""
-                    />
-                  </ImageContainer>
-                  <div>
-                    <CommunityContainer>
-                      u/{searchItem.substring(3)}
-                    </CommunityContainer>
-                    <Members>
-                      <FirstChild>User</FirstChild>
-                      <Dot>
-                        <BsDot />
-                      </Dot>
-                      <SecondChild>1 karma</SecondChild>
-                    </Members>
-                  </div>
-                </SubText>
-              );
-            }
-          })}
-        </Container>
+          {searchItemsPeople.length > 0 && (
+            <Container
+              onClick={() => {
+                setShowResults(false);
+                setQuery("");
+              }}
+            >
+              <CommunitiesText>People</CommunitiesText>
+              {searchItemsPeople.map((searchItem, index) => {
+                if (index < 3) {
+                  return (
+                    <SubText to={`/search/posts/${searchItem}`}>
+                      <ImageContainer>
+                        <img
+                          crossOrigin="anonymous"
+                          src={`${BASE_URL}/users/files/${avatars[index]}`}
+                          alt=""
+                        />
+                      </ImageContainer>
+                      <div>
+                        <CommunityContainer>
+                          u/{searchItem.substring(3)}
+                        </CommunityContainer>
+                        <Members>
+                          <FirstChild>User</FirstChild>
+                          <Dot>
+                            <BsDot size={22} />
+                          </Dot>
+                          <SecondChild>1 karma</SecondChild>
+                        </Members>
+                      </div>
+                    </SubText>
+                  );
+                }
+              })}
+            </Container>
+          )}
+        </DropMenuContainer>
       )}
-    </DropMenuContainer>
+    </>
   );
 };
 export default SearchBody;

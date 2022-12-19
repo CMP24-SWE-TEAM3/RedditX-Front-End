@@ -155,6 +155,9 @@ export const SubText = styled(Link)`
   display: flex;
   padding: 12px 16px;
   align-items: center;
+  :hover {
+    background-color: ${({ theme }) => theme.lineColor.primary};
+  }
 `;
 export const ImageContainer = styled.div`
   display: inline-flex;
@@ -197,9 +200,8 @@ export const SecondChild = styled.div`
   color: ${({ theme }) => theme.color.muted};
 `;
 export const Dot = styled.span`
-  margin-right: 4px;
-  margin-left: 4px;
   color: ${({ theme }) => theme.color.muted};
+  font-weight: 500;
 `;
 export const Container = styled.div`
   border-top: 2px solid ${({ theme }) => theme.lineColor.primary};
