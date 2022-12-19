@@ -7,17 +7,17 @@ import axios from "API/axios";
  * @param {Function} fetchFunction Coming from useFetchFunction custom hook
  * @param {object} dataObject The Data to be Sent in the POST request
  */
-const unreadMessages = (fetchFunction, dataObject) => {
-//   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
+const unreadMessages = (fetchFunction, dataObject, auth) => {
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
     fetchFunction({
       axiosInstance: axios,
       method: "POST",
-      url: "http://localhost:8000/unread-message",
+      url: "/api/message/unread",
       requestConfig: {
         data: dataObject,
         headers: {
           "Content-Language": "en-US",
-        //   Authorization: `Bearer ${auth.getToken()}`,
+          Authorization: `Bearer ${auth.getToken()}`,
         },
       },
     });

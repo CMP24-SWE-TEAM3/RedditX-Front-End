@@ -66,15 +66,15 @@ function Messages() {
         }
         
         <Route path="/inbox" >
-          <Route path="/inbox" element={<MessageItem messages={messagesAll}/> } />
+          <Route path="/inbox" element={<MessageItem data={messagesAll}/> } />
           {!loadingMessagesAll &&
-          <Route path="/inbox/all" element={<MessageItem messages={messagesAll}/> }/>}
+          <Route path="/inbox/all" element={<MessageItem data={messagesAll}/> }/>}
           {!loadingMessages &&
-          <Route path="/inbox/messages" element={<MessageBannel messages={messages}/> }/>}
+          <Route path="/inbox/messages" element={<MessageBannel data={messages}/> }/>}
           {!loadingMentions && 
           <Route path="/inbox/mentions"element={ <UserMentions mentions={mentions}/> } />}
           {!loadingMessagesAll &&
-          <Route path="/inbox/unread" element={ <Unread messages={unread}/> }/>}
+          <Route path="/inbox/unread" element={ <Unread Unreadmessages={unread}/> }/>}
           {!loadingReplies &&
           <Route path="/inbox/selfreply" element={<PostReplay replies={replies}/> }/>}
         </Route>
