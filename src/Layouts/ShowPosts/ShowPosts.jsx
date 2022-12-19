@@ -90,9 +90,9 @@ const ShowPosts = ({ type }) => {
   };
   console.log(recentPost);
   const AddPost = (post) => {
-    if (post._id !== ctx.Posts[0]._id) {
+    if (ctx.Posts && post._id !== ctx.Posts[0]._id) {
       ctx.PostsHandler([post, ...ctx.Posts]);
-    }
+    } else ctx.PostsHandler([post, ...ctx.Posts]);
   };
   return (
     <>

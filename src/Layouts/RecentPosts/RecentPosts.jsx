@@ -43,6 +43,7 @@ const RecentPosts = () => {
     localStorage.removeItem("RecentPosts");
     setShowRecentPosts(false);
   };
+  console.log("recentPostList = ", recentPostList);
   return (
     <>
       {showRecentPosts && (
@@ -51,7 +52,8 @@ const RecentPosts = () => {
             <HeadContainer>
               <div>Recent Posts</div>
             </HeadContainer>
-            {recentPostList.length !== 0 &&
+            {recentPostList &&
+              recentPostList.length !== 0 &&
               recentPostList &&
               recentPostList.slice(0, 3).map((recentPost) => {
                 return (
@@ -70,7 +72,9 @@ const RecentPosts = () => {
                       <p>{recentPost.communityID}</p>
                       <Details>
                         <div>
-                          <span>{recentPost.userID._id} points</span>
+                          <span>
+                            {recentPost.userID && recentPost.userID._id} points
+                          </span>
                           <Dots>{recentPost.comments} comments</Dots>
                           <Dots>{recentPost.hours}h</Dots>
                         </div>
