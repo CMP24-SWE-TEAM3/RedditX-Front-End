@@ -105,6 +105,7 @@ export const Heading = styled.h1`
   margin-top: auto;
   text-transform: capitalize;
 `;
+
 export const Error = styled.span`
   display: none;
   color:  ${({ theme }) => theme.color.danger};

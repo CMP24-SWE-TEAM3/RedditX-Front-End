@@ -31,19 +31,6 @@ export const HeaderDiv = styled.span`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 4px;
-
-  /* .dropdown{
-        display: none;
-        position: relative;
-        right: 10px;
-    }
-
-    .dropdown-active{
-        display: block;
-        position: relative;
-        right: 10px;
-        top: 5px;
-    } */
   position: relative;
 `;
 
@@ -85,7 +72,7 @@ export const DotsButton = styled.div`
   /* Default */
   background: transparent;
   border: none;
-  color: inherit;
+  color: ${({ theme }) => theme.color.primary};
   cursor: pointer;
   padding: initial;
 
@@ -145,13 +132,7 @@ export const Arrow = styled(HiOutlineReply)`
   line-height: 15px;
   padding-right: 8px;
 `;
-// export const StyledPopup = styled(Popup)`
-//   .popup-content,
-//   [role="tooltip"].popup-content {
-//     background-color: #000 !important;
-//     position: relative !important;
-//   }
-// `;
+
 export const HideButton = styled.div`
   font-size: 14px;
   font-weight: 500;

@@ -114,7 +114,7 @@ const ChooseCommunity = () => {
                   setSubmitDestination({
                     _id: auth.getUserName(),
                     icon: Image,
-                    type: "Features/Post/Assets/Images/Post-guidelines.png",
+                    type: "user",
                   });
                   setSearchText(auth.getUserName().substring(3));
                   setShowMenu(false);
@@ -149,7 +149,10 @@ const ChooseCommunity = () => {
                       <DropdownItem
                         key={community._id}
                         onClick={() => {
-                          setSubmitDestination(community);
+                          setSubmitDestination({
+                            ...community,
+                            type: "subreddit",
+                          });
                           setSearchText(community._id.substring(3));
                           setShowMenu(false);
                         }}

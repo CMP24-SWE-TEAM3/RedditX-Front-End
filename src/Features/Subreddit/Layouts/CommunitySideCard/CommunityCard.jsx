@@ -39,7 +39,7 @@ const CommunitySideCard = ({communityList}) => {
             return (
                 <li key={community._id}>
                     <CommunitySideCardItem
-                    title = {community.description}
+                    title = {community._id.substring(3)}
                     img = {community.icon}
                     index = {index+1}/>
                 </li>

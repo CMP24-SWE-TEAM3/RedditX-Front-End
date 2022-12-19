@@ -28,19 +28,39 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import submitReply from "Features/Post/Services/submitReply";
 import isJsonString from "Features/Post/Utils/isJsonString";
 import RichTextPostBody from "../RichTextPostBody/RichTextPostBody";
+import getUser from "Features/Post/Services/getUser";
+import { BASE_URL } from "API/axios";
+import { useNavigate } from "react-router-dom";
+import Moment from "react-moment";
+import { handleUp, handleDown } from "Features/Post/Utils/upAndDownVoting";
+import { giveVote, makeFollow } from "Features/Post/Services/postActions";
+import submitSpam from "Features/Post/Services/submitSpam";
+import submitSave from "Features/Post/Services/submitSave";
+const Comment = ({ comment, postID }) => {
+  const auth = useAuth();
 
-const Comment = ({ comment }) => {
-  console.log("comment = ", comment);
   const initialVotes = comment.votesCount;
   const [files, setFiles] = useState([]);
   const [text, setText] = useState("");
   const [htmlText, setHtmlText] = useState("");
   const [expanded, setExpanded] = useState(true);
   const [votes, setVotes] = useState(comment.votesCount);
-  const [upVoted, setUpVoted] = useState(false);
-  const [downVoted, setDownVoted] = useState(false);
+  const [upVoted, setUpVoted] = useState(
+    auth.isLoggedIn()
+      ? comment.voters.findIndex(
+          (voter) => voter.userID === auth.getUserName() && voter.voteType === 1
+        ) !== -1
+      : false
+  );
+  const [downVoted, setDownVoted] = useState(
+    auth.isLoggedIn()
+      ? comment.voters.findIndex(
+          (voter) =>
+            voter.userID === auth.getUserName() && voter.voteType === -1
+        ) !== -1
+      : false
+  );
   const [openReply, setOpenReply] = useState(false);
-  const auth = useAuth();
   const [
     repliesList,
     errorRepliesList,
@@ -48,27 +68,71 @@ const Comment = ({ comment }) => {
     dataFetchRepliesList,
   ] = useFetchFunction();
   const [reply, errorReply, isLoadingReply, dataSendReply] = useFetchFunction();
+  const [
+    commentorData,
+    errorCommentorData,
+    isLoadingCommentorData,
+    dataSendUserData,
+  ] = useFetchFunction();
+  const [voteData, errorVoteData, isLoadingVoteData, dataSendVoteData] =
+    useFetchFunction();
+  const [saveData, errorSaveData, isLoadingSaveData, dataSendSaveData] =
+    useFetchFunction();
+  const [spamData, errorSpamData, isLoadingSpamData, dataSendSpamData] =
+    useFetchFunction();
   const upVote = () => {
     if (upVoted) {
       setVotes(initialVotes);
       setUpVoted(false);
+      giveVote(
+        dataSendVoteData,
+        {
+          id: "t1_" + comment._id,
+          dir: 0,
+        },
+        auth.getToken()
+      );
       return;
     }
 
     setVotes(initialVotes + 1);
     setUpVoted(true);
     setDownVoted(false);
+    giveVote(
+      dataSendVoteData,
+      {
+        id: "t1_" + comment._id,
+        dir: 1,
+      },
+      auth.getToken()
+    );
   };
   const downVote = () => {
     if (downVoted) {
       setVotes(initialVotes);
       setDownVoted(false);
+      giveVote(
+        dataSendVoteData,
+        {
+          id: "t1_" + comment._id,
+          dir: 2,
+        },
+        auth.getToken()
+      );
       return;
     }
 
     setVotes(initialVotes - 1);
     setDownVoted(true);
     setUpVoted(false);
+    giveVote(
+      dataSendVoteData,
+      {
+        id: "t1_" + comment._id,
+        dir: -1,
+      },
+      auth.getToken()
+    );
   };
   const handleSubmitReply = () => {
     submitReply(
@@ -81,6 +145,13 @@ const Comment = ({ comment }) => {
       auth
     );
   };
+
+  useEffect(() => {
+    if (!isLoadingReply && reply && reply._id) {
+      navigate(`/post-preview/${postID}`);
+    }
+  }, [reply]);
+
   useEffect(() => {
     if (comment && comment.replies) {
       getCommunityInfo(
@@ -89,8 +160,34 @@ const Comment = ({ comment }) => {
         auth
       );
     }
+    if (comment && comment.authorId) {
+      getUser(dataSendUserData, comment.authorId, auth);
+    }
   }, []);
-  console.log("repliesList", repliesList);
+  const handleSave = () => {
+    if (!auth.isLoggedIn()) return;
+    submitSave(
+      dataSendSaveData,
+      {
+        linkID: "t1_" + comment._id,
+      },
+      auth
+    );
+  };
+  const handleReport = () => {
+    if (!auth.isLoggedIn()) return;
+    submitSpam(
+      dataSendSpamData,
+      {
+        linkID: "t1_" + comment._id,
+        spamText: "I found that this content is showing violence",
+        spamType: "violent content",
+      },
+      auth
+    );
+  };
+
+  const navigate = useNavigate();
   return (
     <Container>
       <Left>
@@ -98,8 +195,11 @@ const Comment = ({ comment }) => {
           <ExpandIcon size={15} onClick={() => setExpanded(true)} />
         )}
         <Image
+          crossOrigin="anonymous"
           src={
-            "https://styles.redditmedia.com/t5_75g7xm/styles/profileIcon_snoo6422fdc6-0631-4a70-a9f3-36b423763138-headshot.png?width=256&height=256&crop=256:256,smart&s=e3461623660c1eeee9606f040eb23479ad255815"
+            commentorData && commentorData.about && commentorData.about.user
+              ? `${BASE_URL}/users/files/${commentorData.about.user.avatar}`
+              : "https://styles.redditmedia.com/t5_75g7xm/styles/profileIcon_snoo6422fdc6-0631-4a70-a9f3-36b423763138-headshot.png?width=256&height=256&crop=256:256,smart&s=e3461623660c1eeee9606f040eb23479ad255815"
           }
           alt="user image"
         />
@@ -107,8 +207,16 @@ const Comment = ({ comment }) => {
         {expanded && <VerticalLine onClick={() => setExpanded(false)} />}
       </Left>
       <Right>
-        <Username>{comment.authorId.substring(3)}</Username>
-        <Time> . just now</Time>
+        <Username
+          onClick={(e) => {
+            navigate(`/user/${comment.authorId}/`);
+          }}
+        >
+          {comment.authorId.substring(3)}
+        </Username>
+        <Time>
+          . <Moment fromNow>{comment.createdAt}</Moment>
+        </Time>
         {expanded && (
           <>
             {!isJsonString(comment.textJSON) && <Body>{comment.textJSON}</Body>}
@@ -126,7 +234,12 @@ const Comment = ({ comment }) => {
                 <FaRegCommentAlt size={20} />
                 <span>Reply</span>
               </Reply>
-              <BsThreeDots size={20} />
+              <Reply onClick={handleReport}>
+                <span>Report</span>
+              </Reply>
+              <Reply onClick={handleSave}>
+                <span>Save</span>
+              </Reply>
             </Controls>
             {openReply && (
               <Left>

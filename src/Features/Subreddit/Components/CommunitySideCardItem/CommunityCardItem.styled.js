@@ -5,6 +5,10 @@ import { NavLink } from "react-router-dom";
 export const Arrow = styled(FaAngleUp)`
   color: #46D160;
   margin-left: 8px;
+
+  &.push {
+    margin-left: 12px;
+  }
 `;
 
 export const Container = styled.div`
@@ -62,5 +66,10 @@ export const TitleParagraph = styled.p`
   &:hover + div {
     display: inline-block;
   }
+`;
+
+export const EmptyImagePadding = styled.div`
+  padding-left: 16px;
+
 `;
 

@@ -5,7 +5,7 @@ import axios from "API/axios";
  *
  * @param {Function} fetchData - The function to make the request
  */
-const getUser = async (fetchData, auth) => {
+const getMyData = async (fetchData, auth) => {
   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
 
   fetchData({
@@ -21,4 +21,4 @@ const getUser = async (fetchData, auth) => {
   });
 };
 
-export default getUser;
+export default getMyData;

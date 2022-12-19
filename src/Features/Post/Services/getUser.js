@@ -5,13 +5,13 @@ import axios from "API/axios";
  *
  * @param {Function} fetchData - The function to make the request
  */
-const getUser = async (fetchData, auth) => {
+const getUser = async (fetchData, userName, auth) => {
   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
 
   fetchData({
     axiosInstance: axios,
     method: "GET",
-    url: `/api/user/me/`,
+    url: `/api/user/${userName}/about`,
     requestConfig: {
       headers: {
         "Content-Language": "en-US",
