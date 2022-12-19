@@ -40,6 +40,7 @@ import deleteMessage from "Features/Messages/Services/DeleteMessage";
 import unreadMessages from "Features/Messages/Services/UnreadMessage";
 import composeMessage from "../../Services/ComposeMessage";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import blockUser from "../../Services/BlockUser";
 /**
  * Component that contains the message item of Message Panel
  *
@@ -71,21 +72,17 @@ const MessageBannelItem = ({
   const auth = useAuth();
   const [unreadMessageRes, errorUnreadMessage, loadingUnreadMessage, fetchDataUnread ] = useFetchFunction();
   const [deleteMessageRes, errorDeleteMessage, loadingDeleteMessage, fetchData ] = useFetchFunction();
+  const [blockRes, errorBlock, loadingBlock, fetchDataBlock ] = useFetchFunction();
   const [composeRes, errorCompose, loadingCompose, fetchDataSend] = useFetchFunction();
   const [localRead, setLocalRead] = useState(read);
   const [expanded, setExpanded] = useState(true);
   const [deletePrompt, setDeletePrompt] = useState(false);
   const [replyPrompt, setReplyPrompt] = useState(false);
+  const [blockPrompt, setBlockPrompt] = useState(false);
   const [err, setErr] = useState(false);
   const [formData, setFormData] = useState({
     message: "",
   });
-  
-  useEffect(()=>{
-    let dataObject = {
-
-    }
-  },[localRead]);
   
 
   //For Text Area
@@ -131,17 +128,12 @@ const MessageBannelItem = ({
     let dataObject = {
       msgID: `t4_${id}`
     };
-    deleteMessage(fetchData, dataObject);
+    deleteMessage(fetchData, dataObject, auth);
+    setDeletePrompt(false);
   }
 
-  function toggleBlockWarning(id) {
-    changeMessage((message) => {
-      return message.map((prevState) => {
-        return prevState.id === id
-          ? { ...prevState, block: !prevState.block }
-          : prevState;
-      });
-    });
+  function toggleBlockWarning() {
+    setBlockPrompt((prev)=>!prev);
   }
 
   function toggleReplyOn() {
@@ -182,6 +174,16 @@ const MessageBannelItem = ({
       msgID: `t4_${id}`
     };
     unreadMessages(fetchDataUnread, dataObject, auth);
+  }
+
+  function handleBlock(){
+    let dataObject = {
+      userID: `t2_${aurthor}`,
+      action: true
+    };
+
+    blockUser(fetchDataBlock, dataObject, auth);
+    setBlockPrompt(false);
   }
 
   return (
@@ -225,7 +227,7 @@ const MessageBannelItem = ({
             <ListBtns>
               <Btns>
                 <BtnsLinks
-                  className={deleted ? "active" : ""}
+                  className={deletePrompt ? "active" : ""}
                   onClick={() => {
                     toggleDeleteWarning();
                   }}
@@ -260,21 +262,17 @@ const MessageBannelItem = ({
               {!admin && (
                 <Btns>
                   <BtnsLinks
-                    className={block ? "active" : ""}
-                    onClick={() => {
-                      toggleBlockWarning(id);
-                    }}
+                    className={blockPrompt ? "active" : ""}
+                    onClick={toggleBlockWarning}
                   >
                     Block User
                   </BtnsLinks>
-                  <AreYouSure className={block ? "active" : ""}>
+                  <AreYouSure className={blockPrompt ? "active" : ""}>
                     <BtnWarning> Are You Sure </BtnWarning>
-                    <BtnsLinks>Yes</BtnsLinks>
+                    <BtnsLinks onClick={handleBlock}>Yes</BtnsLinks>
                     <BtnWarning> / </BtnWarning>
                     <BtnsLinks
-                      onClick={() => {
-                        toggleBlockWarning(id);
-                      }}
+                      onClick={toggleBlockWarning}
                     >
                       No
                     </BtnsLinks>
@@ -303,7 +301,7 @@ const MessageBannelItem = ({
         </MessagesWithBtns>
       </MessageDetails>
       <form onSubmit={handleSubmit}>      
-        <ReplyDiv className={replyPrompt?"active": ""}>
+        <ReplyDiv className={replyPrompt? "active": ""}>
           <TextAreaDiv>
             <MesssageDiv>
               <TextAreaElement 

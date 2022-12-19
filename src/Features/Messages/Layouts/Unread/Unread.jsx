@@ -5,7 +5,7 @@ const messagesData = [
     {
       author: "Mohamed",
       title: "Greeting",
-      time: "2022, 11, 30",
+      time: "2022-11-30T",
       text: "Hello Hello",
       read: false,
       id: 1,
@@ -13,7 +13,7 @@ const messagesData = [
     {
       author: "Ahmed",
       title: "Mod",
-      time: "2022, 11, 29",
+      time: "2022-11-29T",
       text: "You are Mod",
       read: false,
       id: 2,
@@ -21,7 +21,7 @@ const messagesData = [
     {
       author: "Jacob",
       title: "Broken",
-      time: "2022, 11, 29",
+      time: "2022-11-29T",
       text: "It Is Broken Now",
       read: false,
       id: 3,
@@ -29,7 +29,7 @@ const messagesData = [
     {
       author: "Joanne",
       title: "Greeting",
-      time: "2022, 11, 29",
+      time: "2022-11-29T",
       text: "Henlo",
       read: false,
       id: 4,
@@ -37,7 +37,7 @@ const messagesData = [
     {
       author: "Arabella",
       title: "Hmmmm...",
-      time: "2022, 11, 29",
+      time: "2022-11-29T",
       text: "Hi.",
       read: false,
       id: 5,

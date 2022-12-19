@@ -58,6 +58,9 @@ export const BtnsLinks = styled.a`
     color: #888;
     text-decoration: underline;
   }
+  &.active {
+    display: none;
+  }
 `;
 
 export const Subject = styled.div`

@@ -137,7 +137,7 @@ const NormalMessageAll = ({
           <ListBtns>
             <Btns>
               <BtnsLinks
-                className={deleted ? "active" : ""}
+                className={deletePrompt ? "active" : ""}
                 onClick={() => {
                   toggleDeleteWarning();
                 }}
@@ -173,7 +173,7 @@ const NormalMessageAll = ({
             {!admin && (
               <Btns>
                 <BtnsLinks
-                  className={block ? "active" : ""}
+                  className={blockPrompt ? "active" : ""}
                   onClick={() => {
                     toggleBlockWarning();
                   }}
