@@ -1,12 +1,20 @@
 import styled from "styled-components";
 import { CiSearch } from "react-icons/ci";
+import { Dropdown } from "react-bootstrap";
+
+export const StyledDropdown = styled(Dropdown)`
+  width: 100%;
+  height: 100%;
+`;
 
 export const StyledSearchButton = styled.div`
   display: flex;
   border-radius: 20px;
+  position: relative;
   height: 40px;
   background: ${({ theme }) => theme.background.post_background};
   margin: auto;
+  width: 100%;
   @media (min-width: 1286px) {
     min-width: 616px;
   }
@@ -23,6 +31,7 @@ export const StyledSearcherInput = styled.input`
   background-color: ${({ theme }) => theme.background.post_background};
   color: ${({ theme }) => theme.color.primary};
   font-size: 14px;
+  width: 100%;
   border: 1px solid ${({ theme }) => theme.background.primary};
   width: 100%;
   &:active,
@@ -46,6 +55,9 @@ export const StyledSearcherInput = styled.input`
 export const ClearBtn = styled.button`
   display: flex;
   justify-content: flex-end;
+  position: absolute;
+  top: 7px;
+  right: 0;
   /* position: absolute; */
   margin-top: 2px;
   align-items: center;

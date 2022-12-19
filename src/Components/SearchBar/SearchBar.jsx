@@ -5,6 +5,7 @@ import {
   StyledSearchIcon,
   StyledSearcherInput,
   ClearBtn,
+  StyledDropdown,
 } from "./SearchBar.styled";
 import { useNavigate } from "react-router-dom/dist";
 import SearchContext from "Features/Search/Contexts/SearchWordContext/Search-context";
@@ -15,6 +16,7 @@ import { useContext, useEffect } from "react";
 import fetchCommunities from "Features/Search/Services/fetchCommunities";
 import fetchPeople from "Features/Search/Services/fetchPeople";
 import { CiCircleRemove } from "react-icons/ci";
+import { Dropdown } from "react-bootstrap";
 
 /**
  * Component that displays the search results for a given search term.

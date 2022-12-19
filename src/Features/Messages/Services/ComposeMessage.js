@@ -6,17 +6,18 @@ import axios from "API/axios";
  * @param {Function} fetchFunction Coming from useFetchFunction custom hook
  * @param {object} dataObject The Data to be Sent in the POST request
  */
-const composeMessage = (fetchFunction, dataObject) => {
-//   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
+const composeMessage = (fetchFunction, dataObject, auth) => {
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
+    console.log(`In Compose: ${dataObject}`);
     fetchFunction({
       axiosInstance: axios,
       method: "POST",
-      url: "http://localhost:8000/compose-message",
+      url: "/api/message/compose",
       requestConfig: {
         data: dataObject,
         headers: {
           "Content-Language": "en-US",
-        //   Authorization: `Bearer ${auth.getToken()}`,
+          Authorization: `Bearer ${auth.getToken()}`,
         },
       },
     });

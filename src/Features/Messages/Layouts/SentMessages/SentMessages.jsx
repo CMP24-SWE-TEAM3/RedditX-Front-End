@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SentMessageItem from "../../Components/SentMessageItem/SentMessageItem";
-import { EmbeddedPage, PageContainer } from "./SentMessages.styled";
+import { EmbeddedPage, Empty, EmptyMessage, PageContainer } from "./SentMessages.styled";
 const messagesData = [
     {
       author: "Mohamed",
@@ -55,22 +55,39 @@ const messagesData = [
  * @Component
  * @returns {React.Component}
  */
-const SentMessages = ()=>{
+const SentMessages = ({sent})=>{
+  console.log(sent);
 const [eachMessage, setEachMessage] = useState(messagesData);
 
-const Message = eachMessage.map((item) => {
-  return(
-    <SentMessageItem
-      key = {item.id.toString()}
-      id = {item.id}
-      author = {item.author}
-      subject = {item.title}
-      time = {item.time}
-      msg = {item.text}
-      admin = {item.admin}
-    />
-  )
-});
+let Message = (
+  <Empty>
+    <EmptyMessage>
+      there doesn't seem to be anything here
+    </EmptyMessage>
+  </Empty>
+);
+
+useEffect(()=>{
+  if(sent&& sent.messages &&sent.messages.length!==0) {
+    setEachMessage(sent.messages);
+  }
+}, [sent]);
+
+if(eachMessage && eachMessage.length!==0){
+  Message = eachMessage.map((item) => {
+    return(
+      <SentMessageItem
+        key = {item.id.toString()}
+        id = {item.id}
+        author = {item.author}
+        subject = {item.title}
+        time = {item.time}
+        msg = {item.text}
+        admin = {item.admin}
+      />
+    )
+  });
+}
 
 return (
   <EmbeddedPage>

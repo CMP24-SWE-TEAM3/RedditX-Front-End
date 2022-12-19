@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PostReplayItem from "../../Components/PostReply/PostReplyItem";
-import { PageContainer, EmbeddedPage } from "./PostReply.styled";
+import { PageContainer, EmbeddedPage, Empty, EmptyMessage } from "./PostReply.styled";
 
 const messagesData = [
   {
@@ -35,24 +35,41 @@ const messagesData = [
  */
 function PostReplay({replies}) {
   const [eachMessage, setEachMessage] = useState(messagesData);
-  const Message = eachMessage.map((item) => {
-    if(!item.isDeleted) {
-    return (
-      <PostReplayItem
-        changeMessage={setEachMessage}
-        aurthor={item.aurthor}
-        title={item.title}
-        time={item.time}
-        msg={item.msg}
-        upvote={item.upvote}
-        admin={item.admin}
-        read={item.read}
-        id={item.id}
-        block={item.block}
-        key={item.id}
-      />
-    );}
-  });
+  let Message = (
+    <Empty>
+      <EmptyMessage>
+        there doesn't seem to be anything here
+      </EmptyMessage>
+    </Empty>
+  );
+  
+  useEffect(()=>{
+    if(replies&& replies.messages &&replies.messages.length!==0) {
+      setEachMessage(replies.messages);
+    }
+  }, [replies]);
+
+  if(eachMessage && eachMessage.length!==0){
+    Message = eachMessage.map((item) => {
+      if(!item.isDeleted) {
+      return (
+        <PostReplayItem
+          changeMessage={setEachMessage}
+          aurthor={item.aurthor}
+          title={item.title}
+          time={item.time}
+          msg={item.msg}
+          upvote={item.upvote}
+          admin={item.admin}
+          read={item.read}
+          id={item.id}
+          block={item.block}
+          key={item.id}
+        />
+      );}
+    });
+  }
+
   return (
     <EmbeddedPage>
       <PageContainer>{Message}</PageContainer>

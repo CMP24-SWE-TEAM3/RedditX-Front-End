@@ -114,7 +114,7 @@ const ShowPosts = ({ type }) => {
                   }}
                 >
                   <PostShape post={post} />
-                  <CollapsePost post={post} />
+                  {/* <CollapsePost post={post} /> */}
                 </div>
               );
             } else {
@@ -130,7 +130,7 @@ const ShowPosts = ({ type }) => {
                   }}
                 >
                   <PostShape post={post} />
-                  <CollapsePost post={post} />
+                  {/* <CollapsePost post={post} /> */}
                 </div>
               );
             }

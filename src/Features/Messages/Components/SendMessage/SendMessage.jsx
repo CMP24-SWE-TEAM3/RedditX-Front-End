@@ -19,7 +19,7 @@ import {
 import { useState } from "react";
 import composeMessage from "../../Services/ComposeMessage";
 import useFetchFunction from "Hooks/useFetchFunction";
-
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 /**
  * Component that contains Compose Message
  *
@@ -27,6 +27,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
  * @returns {React.Component}
  */
 function SendAMessage() {
+  const auth = useAuth();
   const [composeRes, errorCompose, loadingCompose, fetchData] = useFetchFunction();
   const [subjectErr, setSubjectErr] = useState(false);
   const [messageErr, setMessageErr] = useState(false);
@@ -79,12 +80,15 @@ function SendAMessage() {
     }
     if(errors===0) 
     {
+      console.log(formData.to);
+      console.log(auth.getUserName());
       let dataObject = {
-        toID: `t3_${formData.to}`,
+        fromID: auth.getUserName(),
+        toID: `t2_${formData.to}`,
         subject: formData.subject,
         text: formData.message
       };
-      composeMessage(fetchData, dataObject);
+      composeMessage(fetchData, dataObject, auth);
       
       //Clearing form on successfull submission
       setFormData({from:""});
@@ -103,23 +107,7 @@ function SendAMessage() {
             <Heading>Send A Private Message</Heading>
           </Spacer>
           <FormField onSubmit={handleSubmit}>
-            <Spacer>
-              <FieldDiv>
-                <Title>From</Title>
-                <FieldContent>
-                  <FromSelection
-                    onChange={handleChange}
-                    value={formData.from}
-                    name="from"
-                    required
-                  >
-                    <option value={"--Choose--"}>--Choose--</option>
-                    <option value={"mohamed"}>mohamed</option>
-                    <option value={"ahmed"}>ahmed</option>
-                  </FromSelection>
-                </FieldContent>
-              </FieldDiv>
-            </Spacer>
+            
             <Spacer>
               <FieldDiv>
                 <Title>to
