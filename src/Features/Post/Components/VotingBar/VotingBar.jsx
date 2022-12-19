@@ -16,12 +16,25 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
  * VotingBar Component that is in the side of Post Container
  * @returns {React.Component} VotingBar component
  */
-const VotingBar = ({ number, id }) => {
-  const [giveUp, setGiveUp] = useState(false);
-  const [giveDown, setGiveDown] = useState(false);
+const VotingBar = ({ number, id, voters }) => {
+  const auth = useAuth();
+  const [giveUp, setGiveUp] = useState(
+    auth.isLoggedIn() && voters
+      ? voters.findIndex(
+          (voter) => voter.userID === auth.getUserName() && voter.voteType === 1
+        ) !== -1
+      : false
+  );
+  const [giveDown, setGiveDown] = useState(
+    auth.isLoggedIn() && voters
+      ? voters.findIndex(
+          (voter) =>
+            voter.userID === auth.getUserName() && voter.voteType === -1
+        ) !== -1
+      : false
+  );
   const [count, setCount] = useState(number);
   const [countStr, setCountStr] = useState("");
-  const auth = useAuth();
 
   /**
    * Custom hook

@@ -33,6 +33,7 @@ const PostShape = ({
   editPost,
   setEditPost,
 }) => {
+  console.log(post);
   const [makeHidden, setMakeHidden] = useState(false);
   const [editPostText, setEditPostText] = useState("");
   const [editPostHtmlText, setEditPostHtmlText] = useState("");
@@ -62,6 +63,7 @@ const PostShape = ({
           <VotingBar
             number={post.votesCount ? post.votesCount : 0}
             id={post._id}
+            voters={post.voters ? post.voters : []}
           />
           <ContentContainer>
             <PostPublisher fullPost={fullPost} post={post} />

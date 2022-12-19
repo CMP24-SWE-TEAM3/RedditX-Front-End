@@ -32,18 +32,33 @@ import getUser from "Features/Post/Services/getUser";
 import { BASE_URL } from "API/axios";
 import { useNavigate } from "react-router-dom";
 import Moment from "react-moment";
-
+import { handleUp, handleDown } from "Features/Post/Utils/upAndDownVoting";
+import { giveVote } from "Features/Post/Services/postActions";
 const Comment = ({ comment, postID }) => {
+  const auth = useAuth();
+
   const initialVotes = comment.votesCount;
   const [files, setFiles] = useState([]);
   const [text, setText] = useState("");
   const [htmlText, setHtmlText] = useState("");
   const [expanded, setExpanded] = useState(true);
   const [votes, setVotes] = useState(comment.votesCount);
-  const [upVoted, setUpVoted] = useState(false);
-  const [downVoted, setDownVoted] = useState(false);
+  const [upVoted, setUpVoted] = useState(
+    auth.isLoggedIn()
+      ? comment.voters.findIndex(
+          (voter) => voter.userID === auth.getUserName() && voter.voteType === 1
+        ) !== -1
+      : false
+  );
+  const [downVoted, setDownVoted] = useState(
+    auth.isLoggedIn()
+      ? comment.voters.findIndex(
+          (voter) =>
+            voter.userID === auth.getUserName() && voter.voteType === -1
+        ) !== -1
+      : false
+  );
   const [openReply, setOpenReply] = useState(false);
-  const auth = useAuth();
   const [
     repliesList,
     errorRepliesList,
@@ -57,27 +72,61 @@ const Comment = ({ comment, postID }) => {
     isLoadingCommentorData,
     dataSendUserData,
   ] = useFetchFunction();
+  const [voteData, errorVoteData, isLoadingVoteData, dataSendVoteData] =
+    useFetchFunction();
   const upVote = () => {
     if (upVoted) {
       setVotes(initialVotes);
       setUpVoted(false);
+      giveVote(
+        dataSendVoteData,
+        {
+          id: "t1_" + comment._id,
+          dir: 0,
+        },
+        auth.getToken()
+      );
       return;
     }
 
     setVotes(initialVotes + 1);
     setUpVoted(true);
     setDownVoted(false);
+    giveVote(
+      dataSendVoteData,
+      {
+        id: "t1_" + comment._id,
+        dir: 1,
+      },
+      auth.getToken()
+    );
   };
   const downVote = () => {
     if (downVoted) {
       setVotes(initialVotes);
       setDownVoted(false);
+      giveVote(
+        dataSendVoteData,
+        {
+          id: "t1_" + comment._id,
+          dir: 2,
+        },
+        auth.getToken()
+      );
       return;
     }
 
     setVotes(initialVotes - 1);
     setDownVoted(true);
     setUpVoted(false);
+    giveVote(
+      dataSendVoteData,
+      {
+        id: "t1_" + comment._id,
+        dir: -1,
+      },
+      auth.getToken()
+    );
   };
   const handleSubmitReply = () => {
     submitReply(
@@ -93,7 +142,6 @@ const Comment = ({ comment, postID }) => {
 
   useEffect(() => {
     if (!isLoadingReply && reply && reply._id) {
-      console.log("reply", postID);
       navigate(`/post-preview/${postID}`);
     }
   }, [reply]);
@@ -111,7 +159,6 @@ const Comment = ({ comment, postID }) => {
     }
   }, []);
   const navigate = useNavigate();
-  console.log("comment.createdAt", comment.createdAt);
   return (
     <Container>
       <Left>

@@ -38,7 +38,13 @@ const PostPublisher = ({ fullPost, post }) => {
     ? post.communityID.substring(3)
     : post.userID._id.substring(3);
 
-  const [follow, setFollow] = useState(false);
+  const [follow, setFollow] = useState(
+    auth.isLoggedIn()
+      ? post.followers.findIndex(
+          (follower) => follower === auth.getUserName()
+        ) !== -1
+      : false
+  );
 
   const handleFollow = () => {
     setFollow(!follow);
