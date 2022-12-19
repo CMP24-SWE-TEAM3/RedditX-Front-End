@@ -9,6 +9,7 @@ import { useUserID } from "Features/User/Contexts/UserIDProvider";
 import { useFollowers } from "Features/User/Contexts/FollowersProvider";
 import UserNotFound from "../UserNotFound/UserNotFound";
 import AdultPage from "../AdultPage/AdultPage";
+import Followers from "Features/User/Layouts/Followers/Followers";
 
 const SetUser = ({ userId, children }) => {
   const auth = useAuth();
@@ -76,9 +77,10 @@ const SetUser = ({ userId, children }) => {
     return <UserNotFound />;
   }
 
-  if (true) {
+  if (false) {
     return <AdultPage />;
   }
+
 
   return <>{children}</>;
 };

@@ -21,7 +21,7 @@ const AdultPage = () => {
         <InnerContainer>
           <StyledImg src={nsfw} alt="nsfw" />
           <StyledHeader>
-            {`You must be 18+ to view this community`}
+            {`You must be 18+ to view this User`}
           </StyledHeader>
           <StyledText>
             You must be at least eighteen years old to view this content. Are
