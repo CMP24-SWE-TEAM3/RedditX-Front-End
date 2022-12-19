@@ -123,7 +123,7 @@ const SearchBody = ({
             <Container
               onClick={() => {
                 setShowResults(false);
-                // handleSearch(query);
+                handleSearch(query);
                 setQuery("");
               }}
             >
@@ -131,7 +131,7 @@ const SearchBody = ({
               {searchItemsCommunities.map((Community, index) => {
                 if (index < 3) {
                   return (
-                    <SubText to={`/search/posts/${Community}`}>
+                    <SubText to={`/search/posts`}>
                       <ImageContainer>
                         <img
                           crossOrigin="anonymous"
@@ -164,7 +164,7 @@ const SearchBody = ({
             <Container
               onClick={() => {
                 setShowResults(false);
-                // handleSearch(query);
+                handleSearch(query);
                 setQuery("");
               }}
             >
@@ -172,7 +172,7 @@ const SearchBody = ({
               {searchItemsPeople.map((searchItem, index) => {
                 if (index < 3) {
                   return (
-                    <SubText to={`/search/posts/${searchItem}`}>
+                    <SubText to={`/search/posts`}>
                       <ImageContainer>
                         <img
                           crossOrigin="anonymous"

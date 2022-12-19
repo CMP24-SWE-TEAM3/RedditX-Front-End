@@ -46,6 +46,7 @@ export const StyledSearcherInput = styled.input`
 export const ClearBtn = styled.button`
   display: flex;
   justify-content: flex-end;
+  /* position: absolute; */
   margin-top: 2px;
   align-items: center;
   visibility: ${({ textValue }) => (textValue > 0 ? "visible" : "hidden")};
