@@ -10,24 +10,27 @@ export const getCommunitySettings = (dataFetch, subredditName, token) => {
   //let searchSubredditName = "t5_" + subredditName;
   let finalUrl = "/api/r/" + subredditName + "/about/edit";
 
-  console.log(token);
-
-  if (subredditName?.length > 0) {
-    dataFetch({
-      axiosInstance: axios,
-      method: "get",
-      url: finalUrl,
-      requestConfig: {
-        headers: {
-          "Content-Language": "en-US",
-          Authorization: `Bearer ${token}`,
+  if (
+    dataFetch !== undefined &&
+    subredditName !== undefined &&
+    token !== undefined
+  ) {
+    if (typeof subredditName === "string" && typeof token === "string") {
+      dataFetch({
+        axiosInstance: axios,
+        method: "get",
+        url: finalUrl,
+        requestConfig: {
+          headers: {
+            "Content-Language": "en-US",
+            Authorization: `Bearer ${token}`,
+          },
         },
-      },
-    });
+      });
+      return true;
+    }
 
-    console.log(subredditName);
-
-    return true;
+    return false;
   }
 
   return false;
@@ -42,20 +45,28 @@ export const getCommunitySettings = (dataFetch, subredditName, token) => {
  */
 export const updateSettings = (dataFetch, objectData, subredditName, token) => {
   let finalUrl = "/api/r/" + subredditName + "/site-admin";
-  if (subredditName?.length > 0) {
-    dataFetch({
-      axiosInstance: axios,
-      method: "POST",
-      url: finalUrl,
-      requestConfig: {
-        data: objectData,
-        headers: {
-          "Content-Language": "en-US",
-          Authorization: `Bearer ${token}`,
+  if (
+    dataFetch !== undefined &&
+    subredditName !== undefined &&
+    token !== undefined &&
+    objectData !== undefined
+  ) {
+    if (typeof subredditName === "string" && typeof token === "string") {
+      dataFetch({
+        axiosInstance: axios,
+        method: "POST",
+        url: finalUrl,
+        requestConfig: {
+          data: objectData,
+          headers: {
+            "Content-Language": "en-US",
+            Authorization: `Bearer ${token}`,
+          },
         },
-      },
-    });
-    return true;
+      });
+      return true;
+    }
+    return false;
   }
   return false;
 };

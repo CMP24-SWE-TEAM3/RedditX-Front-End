@@ -14,6 +14,7 @@ import {
   CommunityH3,
   CommunityOl,
 } from "./CommunitiesContainer.styled";
+import { useCallback } from "react";
 
 /*TODO: const*/
 
@@ -25,6 +26,9 @@ import {
  * @returns {React.Component}
  */
  const Container = ({subscribed }) => {
+  const [pgNum, setPgNum] = useState(1);   //Page Number
+  const [coms, setComs] = useState([]);          //communities
+  
   let [communitiesList, error, loading, fetchFunction] = useFetchFunction();
   const auth = useAuth();
   const {categoryType} = useParams();
@@ -47,7 +51,7 @@ import {
       setCurrCategory("Growing");
       if(currCategory!==prevCategory) {
         setPrevCategory(currCategory);
-        fetchCommunities(fetchFunction, auth, currCategory);
+        fetchCommunities(fetchFunction, auth, currCategory, pgNum);
       }
         
       return;
@@ -56,7 +60,7 @@ import {
       setCurrCategory("Growing");
       if(currCategory!==prevCategory) {
         setPrevCategory(currCategory);
-        fetchCommunities(fetchFunction, auth, currCategory);
+        fetchCommunities(fetchFunction, auth, currCategory, pgNum);
       }
       return;
     }
@@ -64,42 +68,93 @@ import {
       setCurrCategory("Local");
       if(currCategory!==prevCategory) {
         setPrevCategory(currCategory);
-        fetchCommunities(fetchFunction, auth, currCategory);
+        fetchCommunities(fetchFunction, auth, currCategory, pgNum);
       }
       return; 
     }
     setCurrCategory(categoryType);
     if(currCategory!==prevCategory) {
       setPrevCategory(currCategory);
-      fetchCommunities(fetchFunction, auth, currCategory);
+      fetchCommunities(fetchFunction, auth, currCategory, pgNum);
       
     }
     
-  }, [categoryType, currCategory])
+  }, [categoryType, currCategory]);
+
+  useEffect(()=>{
+    fetchCommunities(fetchFunction, auth, currCategory, pgNum);
+  },[pgNum]);
 
   console.log(communitiesList);
-  communitiesList = communitiesWithCategory;
 
-  
-  
-  const communities = communitiesList.map((community, index) => {
-    return (
-      <li key={community.id.toString()}>
-        <Community
-          id={community.id}
-          index={index + 1}
-          img={community.coverImg}
-          title={community.title}
-          isJoined={subscribed.find((element) => {
-            return element.id === community.id;
-          })}
-          members={community.stats.members}
-          description={community.description}
-          rankChange={community.rankChange}
-        />
-      </li>
-    );
+  const { commun } = communitiesList;
+
+  useEffect(() => {
+    commun &&
+      setComs((prev) => {
+        return [...prev, ...commun];
+      });
+  }, [commun]);
+
+
+  const observer = useRef();
+  const lastPostElementRef = useCallback(
+    (node) => {
+      if (loading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && commun.length !== 0 /*&& hasMore*/) {
+          setPgNum((prevPageNumber) => prevPageNumber + 1);
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [loading, commun]
+  );
+
+let communities;
+
+if(coms && coms.length!==0)
+{
+     communities = communitiesList.map((community, index) => {
+    if (coms.length === index + 1) { 
+        return (
+        <li ref={lastPostElementRef} key={community.id.toString()}>
+          <Community
+            id={community.id}
+            index={index + 1}
+            img={community.coverImg}
+            title={community.title}
+            isJoined={subscribed.find((element) => {
+              return element.id === community.id;
+            })}
+            members={community.stats.members}
+            description={community.description}
+            rankChange={community.rankChange}
+          />
+        </li>
+        );
+    }
+    else {
+      return (
+        <li key={community.id.toString()}>
+          <Community
+            id={community.id}
+            index={index + 1}
+            img={community.coverImg}
+            title={community.title}
+            isJoined={subscribed.find((element) => {
+              return element.id === community.id;
+            })}
+            members={community.stats.members}
+            description={community.description}
+            rankChange={community.rankChange}
+          />
+        </li>
+        );
+    }
   });
+}
   return (
     <CommunityContainer>
       <AllCommunities>

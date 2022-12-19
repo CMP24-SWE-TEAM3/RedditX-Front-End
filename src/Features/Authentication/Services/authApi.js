@@ -296,7 +296,7 @@ export const setGenderFunction = (dataFetch, objectData, token) => {
   if (objectData.type !== undefined && objectData.value !== undefined) {
     if (
       objectData.type === "gender" &&
-      (objectData.value === "Man" || objectData.value === "Woman")
+      (objectData.value === "male" || objectData.value === "female")
     ) {
       console.log("Entered setGender");
       dataFetch({

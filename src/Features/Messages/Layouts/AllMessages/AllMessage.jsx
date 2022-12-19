@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { PageContainer, EmbeddedPage } from "./AllMessage.styled";
+import { useEffect, useState } from "react";
+import { PageContainer, EmbeddedPage, Empty, EmptyMessage } from "./AllMessage.styled";
 import NormalMessageAll from "../../Components/MessagesItems/AllMessageItem";
 import PostReplayItem from "../../Components/PostReply/PostReplyItem";
 import UsernameMentionItem from "../../Components/UsernameMentions/UsernameMentionsItem";
@@ -64,64 +64,84 @@ const messagesData = [
  * @Component
  * @returns {React.Component}
  */
-function AllMessagesTypes({messages}) {
+function AllMessagesTypes({data}) {
   const [eachMessage, setEachMessage] = useState(messagesData);
-  const Message = eachMessage.map((item) => {
-    switch (item.type) {
-      case "usernameMention":
-        return (
-          <UsernameMentionItem
-            changeMessage={setEachMessage}
-            aurthor={item.aurthor}
-            title={item.title}
-            time={item.time}
-            msg={item.msg}
-            upvote={item.upvote}
-            admin={item.admin}
-            read={item.read}
-            id={item.id}
-            block={item.block}
-            key={item.id}
-          />
-        );
-        break;
-      case "postReply":
-        return (
-          <PostReplayItem
-            changeMessage={setEachMessage}
-            aurthor={item.aurthor}
-            title={item.title}
-            time={item.time}
-            msg={item.msg}
-            upvote={item.upvote}
-            admin={item.admin}
-            read={item.read}
-            id={item.id}
-            block={item.block}
-            key={item.id}
-          />
-        );
-        break;
-      default:
-        if(!item.delete) {
-        return (
-          <NormalMessageAll
-            changeMessage={setEachMessage}
-            aurthor={item.aurthor}
-            title={item.title}
-            time={item.time}
-            msg={item.msg}
-            admin={item.admin}
-            read={item.read}
-            id={item.id}
-            deleted={item.delete}
-            block={item.block}
-            key={item.id}
-          />
-        );
-        }
+
+  let Message = (
+    <Empty>
+      <EmptyMessage>
+        there doesn't seem to be anything here
+      </EmptyMessage>
+    </Empty>
+  );
+  
+  useEffect(()=>{
+    if(data&& data.messages &&data.messages.length!==0) {
+      setEachMessage(data.messages);
     }
-  });
+  }, [data]);
+
+  if(eachMessage && eachMessage.length!==0) {
+
+    Message = eachMessage.map((item) => {
+      switch (item.type) {
+        case "usernameMention":
+          if(!item.delete) {
+          return (
+            <UsernameMentionItem
+              changeMessage={setEachMessage}
+              aurthor={item.aurthor}
+              title={item.title}
+              time={item.time}
+              msg={item.msg}
+              upvote={item.upvote}
+              admin={item.admin}
+              read={item.read}
+              id={item.id}
+              block={item.block}
+              key={item.id}
+            />
+          );}
+          break;
+        case "postReply":
+          if(!item.delete) {
+          return (
+            <PostReplayItem
+              changeMessage={setEachMessage}
+              aurthor={item.aurthor}
+              title={item.title}
+              time={item.time}
+              msg={item.msg}
+              upvote={item.upvote}
+              admin={item.admin}
+              read={item.read}
+              id={item.id}
+              block={item.block}
+              key={item.id}
+            />
+          );}
+          break;
+        default:
+          if(!item.delete) {
+          return (
+            <NormalMessageAll
+              changeMessage={setEachMessage}
+              aurthor={item.aurthor}
+              title={item.title}
+              time={item.time}
+              msg={item.msg}
+              admin={item.admin}
+              read={item.read}
+              id={item.id}
+              deleted={item.delete}
+              block={item.block}
+              key={item.id}
+            />
+          );
+          }
+      }
+    });
+}
 
   return (
     <EmbeddedPage>

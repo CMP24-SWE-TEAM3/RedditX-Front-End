@@ -6,7 +6,7 @@ import { IoMdShareAlt } from "react-icons/io";
 import { TbBadge } from "react-icons/tb";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { BiHide } from "react-icons/bi";
-import { FiFlag } from "react-icons/fi";
+import { FiFlag, FiEdit2 } from "react-icons/fi";
 
 import { hidePost } from "Features/Post/Services/postActions";
 import useFetchFunction from "Hooks/useFetchFunction";
@@ -14,19 +14,21 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import submitSpam from "Features/Post/Services/submitSpam";
 import submitDelete from "Features/Post/Services/submitDelete";
+import submitSave from "Features/Post/Services/submitSave";
 
 /**
  * PostFooter Component that is in the side of Post
  * @returns {React.Component} PostFooter component
  */
-const PostFooter = ({ post, setMakeHidden }) => {
+const PostFooter = ({ post, setMakeHidden, handlePostEdit }) => {
   const auth = useAuth();
 
   /**
    * Custom hook
    */
   const [data, error, isLoading, dataFetch] = useFetchFunction();
-
+  const [saveData, errorSaveData, isLoadingSaveData, dataSendSaveData] =
+    useFetchFunction();
   const handleHide = () => {
     setMakeHidden(true);
     hidePost(
@@ -58,6 +60,16 @@ const PostFooter = ({ post, setMakeHidden }) => {
       auth
     );
   };
+  const handleSave = () => {
+    if (!auth.isLoggedIn()) return;
+    submitSave(
+      dataSendSaveData,
+      {
+        linkID: "t3_" + post._id,
+      },
+      auth
+    );
+  };
   return (
     <Container>
       <Comment onClick={(event) => {}}>
@@ -80,6 +92,7 @@ const PostFooter = ({ post, setMakeHidden }) => {
       <Comment
         onClick={(event) => {
           event.stopPropagation();
+          handleSave();
         }}
       >
         <TbBadge /> Save
@@ -106,12 +119,27 @@ const PostFooter = ({ post, setMakeHidden }) => {
               </span>
             </MyDropdown.Item>
             {auth.isLoggedIn() && post.userID._id === auth.getUserName() && (
-              <MyDropdown.Item href="#">
-                <span onClick={handleDelete}>
+              <MyDropdown.Item href="#" onClick={handleDelete}>
+                <span>
                   <FiFlag /> Delete
                 </span>
               </MyDropdown.Item>
             )}
+            {auth.isLoggedIn() &&
+              post.userID._id === auth.getUserName() &&
+              post.type === "linkWithImage" && (
+                <MyDropdown.Item
+                  href="#"
+                  onClick={() => {
+                    console.log("edit");
+                    handlePostEdit();
+                  }}
+                >
+                  <span>
+                    <FiEdit2 /> Edit
+                  </span>
+                </MyDropdown.Item>
+              )}
           </MyDropdown.Menu>
         </MyDropdown>
       </Comment>

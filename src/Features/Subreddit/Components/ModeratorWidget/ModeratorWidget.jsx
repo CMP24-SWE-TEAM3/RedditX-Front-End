@@ -3,6 +3,7 @@ import { useState } from "react";
 import { BiEnvelope } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
+import { useSubRedditID } from "Features/Subreddit/Contexts/SubRedditIDProvider";
 import WidgetContainer from "../WidgetContainer/WidgetContainer";
 import {
   Message,
@@ -40,6 +41,7 @@ const ModeratorWidget = () => {
   // ];
 
   const { community } = useSubReddit();
+  const { communityID } = useSubRedditID();
 
   useEffect(() => {
     community &&
@@ -87,7 +89,7 @@ const ModeratorWidget = () => {
   const ViewAllModerators = () => {
     return (
       <ViewModeratorsContainer>
-        <ViewAllModeratorsLink to="#">
+        <ViewAllModeratorsLink to={`/subreddit/${communityID}/moderator/spam`}>
           View All Moderators
         </ViewAllModeratorsLink>
       </ViewModeratorsContainer>

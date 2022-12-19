@@ -27,17 +27,19 @@ exports[`Drop Down list Component this is a test for Drop Down list Component 1`
           </h6>
         </span>
       </div>
+    </div>
+    <div>
       <SideBar
         setShowSideBar={[Function]}
         showButton={false}
         showSideBar={false}
       />
+      <span
+        className="down-form"
+      >
+        <GrFormDown />
+      </span>
     </div>
-    <span
-      className="down-form"
-    >
-      <GrFormDown />
-    </span>
   </DropdownToggle>
   <DropDownMenu
     dropdownMenuRef={

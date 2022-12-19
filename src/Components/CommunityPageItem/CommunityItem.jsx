@@ -11,7 +11,7 @@ import {
 } from "./CommunityItem.styled";
 // import logo from ".././../.././Search/Assets/download.jpg";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "API/axios";
 // import CommImage from "../../Assets/CommunityImage.png";
 import useFetchFunction from "Hooks/useFetchFunction";
@@ -19,6 +19,7 @@ import useFetch from "Hooks/useFetch";
 import joinCommunity from "Features/Search/Services/joinCommunity";
 import { useEffect } from "react";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import CategoryContext from "Contexts/CategoryContext/Category-context";
 const CommunityItem = ({
   communityIcon,
   communityDescription,
@@ -32,7 +33,7 @@ const CommunityItem = ({
   const [isJoinedstate, setisJoined] = useState(false);
   const [joiningResponse, errorJoining, loadingJoining, fetchData] =
     useFetchFunction();
-
+  const ctx = useContext(CategoryContext);
   // authorization
   const auth = useAuth();
 
@@ -78,6 +79,9 @@ const CommunityItem = ({
     //   sr_name: `${communityName}`,
     // };
     handleJoining(communityName, btnState);
+    if (!loadingJoining) {
+      ctx.ReFetchHandler(!ctx.ReFetch);
+    }
   };
   /**
    * it is the function that handle the state of the button when mouseEnter on it.

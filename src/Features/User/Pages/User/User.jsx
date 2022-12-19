@@ -14,9 +14,11 @@ import SetUser from "Features/User/Components/SetUser/SetUser";
 import { IsMeProvider } from "Features/User/Contexts/IsMeProvider";
 import { UserAboutProvider } from "Features/User/Contexts/UserAboutProvider";
 import { UserIDProvider } from "Features/User/Contexts/UserIDProvider";
+import { FollowersProvider } from "Features/User/Contexts/FollowersProvider";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useEffect, useState } from "react";
 import useDocumentTitle from "Hooks/useDocumentTitle";
+import Followers from "Features/User/Layouts/Followers/Followers";
 
 const User = () => {
   const [me, setMe] = useState(false);
@@ -35,28 +37,31 @@ const User = () => {
     <IsMeProvider>
       <UserIDProvider>
         <UserAboutProvider>
-          <SetUser userId={userId}>
-            <Container>
-              <UserNav />
-              <InnerContainer>
-                <Routes>
-                  <Route path="" element={<Overview />} exact />
-                  <Route path="submitted" element={<UserPosts />} />
-                  <Route path="comments" element={<UserComments />} />
-                  {me && (
-                    <>
-                      <Route path="history" element={<UserHistory />} />
-                      <Route path="saved" element={<UserSaved />} />
-                      <Route path="hidden" element={<UserHidden />} />
-                      <Route path="upvoted" element={<UserUpVoted />} />
-                      <Route path="downvoted" element={<UserDownVoted />} />
-                    </>
-                  )}
-                </Routes>
-                <UserSideBar />
-              </InnerContainer>
-            </Container>
-          </SetUser>
+          <FollowersProvider>
+            <SetUser userId={userId}>
+              <Container>
+                <UserNav />
+                <InnerContainer>
+                  <Routes>
+                    <Route path="" element={<Overview />} exact />
+                    <Route path="submitted" element={<UserPosts />} />
+                    <Route path="comments" element={<UserComments />} />
+                    {me && (
+                      <>
+                        <Route path="history" element={<UserHistory />} />
+                        <Route path="saved" element={<UserSaved />} />
+                        <Route path="hidden" element={<UserHidden />} />
+                        <Route path="upvoted" element={<UserUpVoted />} />
+                        <Route path="downvoted" element={<UserDownVoted />} />
+                        <Route path="followers" element={<Followers />} />
+                      </>
+                    )}
+                  </Routes>
+                  <UserSideBar />
+                </InnerContainer>
+              </Container>
+            </SetUser>
+          </FollowersProvider>
         </UserAboutProvider>
       </UserIDProvider>
     </IsMeProvider>

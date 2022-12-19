@@ -1,4 +1,7 @@
 import { useState } from "react";
+import useFetchFunction from "Hooks/useFetchFunction";
+import {useAuth} from "Features/Authentication/Contexts/Authentication";
+import blockUser from "../../Services/BlockUser";
 import {
   BlockUserButton,
   BlockUserContainer,
@@ -10,10 +13,20 @@ import {
 } from "./BlockPeople.styled";
 
 const BlockPeople = () => {
+  const auth = useAuth();
+  const [res, error, loading, fetchData] = useFetchFunction();
   const [name, setName] = useState("");
 
   function changeNameHandler(e) {
     setName(e.target.value);
+  }
+
+  function handleBlock() {
+    let dataObject = {
+      userID : `t2_${name}`,
+      action: true      
+    }
+    blockUser(fetchData, dataObject, auth);
   }
 
   return (
@@ -30,7 +43,7 @@ const BlockPeople = () => {
           onChange={changeNameHandler}
         />
         <InputLabel>Block new user</InputLabel>
-        <BlockUserButton text={name}>ADD</BlockUserButton>
+        <BlockUserButton text={name} onClick={handleBlock}>ADD</BlockUserButton>
       </BlockUserContainer>
     </Container>
   );

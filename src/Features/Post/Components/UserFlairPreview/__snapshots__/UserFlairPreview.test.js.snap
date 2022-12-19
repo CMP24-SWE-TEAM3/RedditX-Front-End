@@ -6,34 +6,7 @@ exports[`preview of selected flair should render without crashing 1`] = `
   <FlairModal
     error=""
     flairIndex={null}
-    flairList={
-      Array [
-        Object {
-          "allowUserEdits": true,
-          "flairBackGroundColor": "rgb(70, 209, 96)",
-          "flairTextColor": "rgb(255, 255, 255)",
-          "id": "t7_63248d012f459a937e2684fd",
-          "modOnly": true,
-          "text": "Flair 1 text",
-        },
-        Object {
-          "allowUserEdits": true,
-          "flairBackGroundColor": "blue",
-          "flairTextColor": "rgb(255, 255, 255)",
-          "id": "t7_63248d012f459a937e1223123d",
-          "modOnly": true,
-          "text": "Flair 2 text",
-        },
-        Object {
-          "allowUserEdits": true,
-          "flairBackGroundColor": "red",
-          "flairTextColor": "rgb(70, 209, 96)",
-          "id": "t1_632012f459a937e1223123d",
-          "modOnly": true,
-          "text": "Flair 3 text",
-        },
-      ]
-    }
+    flairList={Array []}
     isLoading={false}
     onHide={[Function]}
     postOrUser="user"

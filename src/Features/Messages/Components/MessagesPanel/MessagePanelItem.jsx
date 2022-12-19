@@ -18,6 +18,7 @@ import {
   Visted,
   AreYouSure,
   BtnWarning,
+  Error
 } from "./MessagePanelItem.styled";
 
 import { 
@@ -33,10 +34,12 @@ import ReportModal from "../ReportModal/ReportModal";
 import markUnread from "../../Utils/MarkUnread";
 import readed from "../../Utils/Read";
 import compareDate from "../../Utils/ParseDate";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useFetchFunction from "Hooks/useFetchFunction";
 import deleteMessage from "Features/Messages/Services/DeleteMessage";
 import unreadMessages from "Features/Messages/Services/UnreadMessage";
+import composeMessage from "../../Services/ComposeMessage";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 /**
  * Component that contains the message item of Message Panel
  *
@@ -69,8 +72,30 @@ const MessageBannelItem = ({
 }) => {
   const [unreadMessageRes, errorUnreadMessage, loadingUnreadMessage, fetchDataUnread ] = useFetchFunction();
   const [deleteMessageRes, errorDeleteMessage, loadingDeleteMessage, fetchData ] = useFetchFunction();
+  const [composeRes, errorCompose, loadingCompose, fetchDataSend] = useFetchFunction();
   const [deletePrompt, setDeletePrompt] = useState(false);
   const [replyPrompt, setReplyPrompt] = useState(false);
+  const [err, setErr] = useState(false);
+  const [formData, setFormData] = useState({
+    message: "",
+  });
+  
+
+  
+
+  //For Text Area
+  function handleChange(event) {
+    const { message } = event.target;
+    setErr(false);  //To Remove the Error Message once we start writing
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [event.target.name]: event.target.value,
+      };
+    });
+  }
+
+
   function collapseAll(name) {
     changeMessage((message) => {
       return message.map((prevState) => {
@@ -136,9 +161,30 @@ const MessageBannelItem = ({
     setReplyPrompt(true);
   }
 
-  function toggleReplyOff() {
+  function toggleReplyOff(event) {
     setReplyPrompt(false);
+    setErr(false);
+    event.preventDefault();
   }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    event.target.reset();
+    
+    
+    if(formData.message==="") {
+      setErr(true);
+    }
+    else {
+    let dataObject = {
+      toID: `t3_${aurthor}`,
+      subject: `Reply to ${aurthor}'s Message`,
+      text: formData.message
+    };
+    composeMessage(fetchDataSend, dataObject);
+    }
+    setFormData({message:""});
+  };
 
   function handleUnread(){
     let dataObject = {
@@ -272,20 +318,30 @@ const MessageBannelItem = ({
           </Visted>
         </MessagesWithBtns>
       </MessageDetails>
-      <ReplyDiv className={replyPrompt?"active": ""}>
-        <TextAreaDiv>
-          <MesssageDiv>
-            <TextAreaElement />
-          </MesssageDiv>
-          <ButtonsDiv>
-            <SaveButton>Save</SaveButton>
-            <SaveButton
-              onClick={toggleReplyOff}
-            >
-              Cancel</SaveButton>
-          </ButtonsDiv>
-        </TextAreaDiv>
-      </ReplyDiv>
+      <form onSubmit={handleSubmit}>      
+        <ReplyDiv className={replyPrompt?"active": ""}>
+          <TextAreaDiv>
+            <MesssageDiv>
+              <TextAreaElement 
+              type="text"
+              onChange={handleChange}
+              value={formData.message}
+              name="message"
+              />
+              <Error className={err? "active" : ""}>
+                    we need something here
+              </Error>
+            </MesssageDiv>
+            <ButtonsDiv>
+              <SaveButton>Save</SaveButton>
+              <SaveButton
+                onClick={toggleReplyOff}
+              >
+                Cancel</SaveButton>
+            </ButtonsDiv>
+          </TextAreaDiv>
+        </ReplyDiv>
+      </form>
     </OddItems>
   );
 };

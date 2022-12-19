@@ -13,10 +13,17 @@ import { BsThreeDots } from "react-icons/bs";
  * SpamPostFooter Component that is in the side of Post
  * @returns {React.Component} SpamPostFooter component
  */
-const SpamPostFooter = ({ post }) => {
+const SpamPostFooter = ({ post, handlerApprove }) => {
   return (
     <Container>
-      <ApproveButton variant="white" onClick={(e) => e.preventDefault()}>
+      <ApproveButton
+        variant="white"
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          handlerApprove(post);
+        }}
+      >
         <IoMdCheckmark size={18} />
         <span>Approve</span>
       </ApproveButton>

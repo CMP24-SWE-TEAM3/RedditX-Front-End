@@ -244,7 +244,7 @@ const DraftEditor = ({ files, setFiles, text, setText, load, setTextHTML }) => {
             onToggle={toggleBlockType}
           />
           <Separator />
-          <MediaControls addImage={addImage} addVideo={addVideo} />
+          {!load && <MediaControls addImage={addImage} addVideo={addVideo} />}
         </Controls>
         <OverlayTrigger
           trigger="click"

@@ -28,13 +28,14 @@ function Messages() {
   const [replies, errorReplies, loadingReplies, fetchReplies ] = useFetchFunction();
   const [messages, errorMessages, loadingMessages, fetchMessagesData ] = useFetchFunction();
   const [messagesAll, errorMessagesAll, loadingMessagesAll, fetchMessagesAll ] = useFetchFunction();
-
+  const [sentMessages, errorSentMessages, loadingSentMessages, fetchSentMessages] = useFetchFunction();
 
   useEffect(()=>{
     fetchUsernameMentions(fetchMentions, auth);
     fetchPostReplies(fetchReplies, auth);
-    fetchMessages(fetchMessagesData);
-    fetchAllMessages(fetchMessagesAll)
+    fetchMessages(fetchMessagesData, auth);
+    fetchAllMessages(fetchMessagesAll);
+    fetchSentMessages(fetchSentMessages, auth);
   }, []);
 
   const unread =[]
@@ -86,14 +87,8 @@ function Messages() {
             </>
           }
         />
-        <Route
-          path="/sent"
-          element={
-            <>
-              <SentMessages />
-            </>
-          }
-        />
+        {!loadingSentMessages && 
+        <Route path="/sent" element={ <SentMessages sent={sentMessages} />  } /> }
         
 
         {/* <Footer /> */}

@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   PageContainer,
   EmbeddedPage,
+  Empty,
+  EmptyMessage,
 } from "./MessagePanel.styled";
 import MessageBannelItem from "../../Components/MessagesPanel/MessagePanelItem";
 const messagesData = [
@@ -49,30 +51,46 @@ const messagesData = [
  * @Component
  * @returns {React.Component}
  */
-function MessageBannel({messages}) {
+function MessageBannel({data}) {
+  let Message = (
+  <Empty>
+    <EmptyMessage>
+      there doesn't seem to be anything here
+    </EmptyMessage>
+  </Empty>
+  );
+
   const [eachMessage, setEachMessage] = useState(messagesData);
 
-  const Message = eachMessage.map((item) => {
-    if(!item.delete) {
-    return (
-      <MessageBannelItem
-        changeMessage={setEachMessage}
-        aurthor={item.aurthor}
-        title={item.title}
-        time={item.time}
-        msg={item.msg}
-        expanded={item.expanded}
-        admin={item.admin}
-        read={item.read}
-        id={item.id}
-        deleted={item.delete}
-        block={item.block}
-        key={item.id}
-      />
-    );
+  useEffect(()=>{
+    if(data&& data.messages && data.messages.length!==0) {
+      setEachMessage(data.messages);
     }
-  });
+  }, [data]);
 
+  if(eachMessage && eachMessage.length!==0) {
+    Message = eachMessage.map((item) => {
+      if(!item.delete) {
+      return (
+        <MessageBannelItem
+          changeMessage={setEachMessage}
+          aurthor={item.aurthor}
+          title={item.title}
+          time={item.time}
+          msg={item.msg}
+          expanded={item.expanded}
+          admin={item.admin}
+          read={item.read}
+          id={item.id}
+          deleted={item.delete}
+          block={item.block}
+          key={item.id}
+        />
+      );
+      }
+    });
+  }
+  
   return (
     <EmbeddedPage>
       <PageContainer>{Message}</PageContainer>

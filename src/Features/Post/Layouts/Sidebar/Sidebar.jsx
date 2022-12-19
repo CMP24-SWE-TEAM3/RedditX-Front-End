@@ -14,6 +14,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useEffect } from "react";
 import getCommunityInfo from "Features/Post/Services/getCommunityInfo";
+import UserSideBar from "Features/Post/Components/UserSideBar/UserSideBar";
 /**
  * Sidebar component (The sidebar in the create post page)
  *
@@ -28,10 +29,9 @@ const Sidebar = () => {
       submitDestination._id &&
       getCommunityInfo(dataFetch, submitDestination._id, auth);
   }, [submitDestination]);
-
   return (
     <Container>
-      {submitDestination && (
+      {submitDestination && submitDestination.type === "subreddit" && (
         <div data-testid="community-data">
           {data && data.things && data.things[0] && !isLoading && (
             <CommunityCard communityInfo={data.things[0]} />
@@ -43,6 +43,9 @@ const Sidebar = () => {
             />
           )}
         </div>
+      )}
+      {submitDestination && submitDestination.type === "user" && (
+        <UserSideBar />
       )}
       <PostGuidelines />
 

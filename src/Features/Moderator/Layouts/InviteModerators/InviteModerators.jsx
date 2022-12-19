@@ -2,8 +2,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-
-
 import { inviteModerator } from "Features/Moderator/Services/userManagementApi";
 
 import {
@@ -35,8 +33,7 @@ const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
  * @returns {React.Component}  InviteModerators Layout that is used in User management
  */
 
-const InviteModerators = ({setModalShowInviteModerator}) => {
-
+const InviteModerators = ({ setModalShowInviteModerator }) => {
   const communityName = "t5_imagePro235";
 
   const [data, error, isLoading, dataFetch] = useFetchFunction();
@@ -63,7 +60,7 @@ const InviteModerators = ({setModalShowInviteModerator}) => {
   }, [userName]);
 
   /**
-   * Function to handle any change on the input field 
+   * Function to handle any change on the input field
    * @param {*} event
    */
 
@@ -77,11 +74,15 @@ const InviteModerators = ({setModalShowInviteModerator}) => {
    * Function to handle Invite user
    */
   const handleInvite = () => {
-    inviteModerator(dataFetch, {
-      userID: "t2_"+userName,
-      type: "moderator_invite",
-      communityID: communityName,
-    })
+    inviteModerator(
+      dataFetch,
+      {
+        userID: "t2_" + userName,
+        type: "moderator_invite",
+        communityID: communityName,
+      },
+      auth.getToken()
+    );
 
     setModalShowInviteModerator(false);
   };
@@ -100,7 +101,13 @@ const InviteModerators = ({setModalShowInviteModerator}) => {
         <GiveAccess>Give them access to...</GiveAccess>
         <AbilityContainer>
           <CheckBox>
-          <input className="form-check-input w-5vm" type="checkbox" id="Everything" value="Everything" name="Everything"/>
+            <input
+              className="form-check-input w-5vm"
+              type="checkbox"
+              id="Everything"
+              value="Everything"
+              name="Everything"
+            />
           </CheckBox>
           <Ability>
             <Head>Everything</Head>
@@ -114,7 +121,7 @@ const InviteModerators = ({setModalShowInviteModerator}) => {
         <AbilityContainer>
           <CheckBox>
             <input
-            className="form-check-input w-5vm"
+              className="form-check-input w-5vm"
               type="checkbox"
               id="EveryThing"
               name="EveryThing"
@@ -131,7 +138,7 @@ const InviteModerators = ({setModalShowInviteModerator}) => {
         <AbilityContainer>
           <CheckBox>
             <input
-            className="form-check-input w-5vm"
+              className="form-check-input w-5vm"
               type="checkbox"
               id="EveryThing"
               name="EveryThing"
@@ -146,7 +153,7 @@ const InviteModerators = ({setModalShowInviteModerator}) => {
         <AbilityContainer>
           <CheckBox>
             <input
-            className="form-check-input w-5vm"
+              className="form-check-input w-5vm"
               type="checkbox"
               id="EveryThing"
               name="EveryThing"
@@ -164,7 +171,7 @@ const InviteModerators = ({setModalShowInviteModerator}) => {
         <AbilityContainer>
           <CheckBox>
             <input
-            className="form-check-input w-5vm"
+              className="form-check-input w-5vm"
               type="checkbox"
               id="EveryThing"
               name="EveryThing"
@@ -179,7 +186,7 @@ const InviteModerators = ({setModalShowInviteModerator}) => {
         <AbilityContainer>
           <CheckBox>
             <input
-            className="form-check-input w-5vm"
+              className="form-check-input w-5vm"
               type="checkbox"
               id="EveryThing"
               name="EveryThing"
@@ -194,7 +201,7 @@ const InviteModerators = ({setModalShowInviteModerator}) => {
         <AbilityContainer>
           <CheckBox>
             <input
-            className="form-check-input w-5vm"
+              className="form-check-input w-5vm"
               type="checkbox"
               id="EveryThing"
               name="EveryThing"
@@ -212,7 +219,7 @@ const InviteModerators = ({setModalShowInviteModerator}) => {
         <AbilityContainer>
           <CheckBox>
             <input
-            className="form-check-input w-5vm"
+              className="form-check-input w-5vm"
               type="checkbox"
               id="EveryThing"
               name="EveryThing"
@@ -238,9 +245,13 @@ const InviteModerators = ({setModalShowInviteModerator}) => {
           >
             Cancel
           </ButtonOne> */}
-          <ButtonTwo disabled={!validName} valid={validName} onClick={() => {
-            handleInvite();
-          }}>
+          <ButtonTwo
+            disabled={!validName}
+            valid={validName}
+            onClick={() => {
+              handleInvite();
+            }}
+          >
             Invite
           </ButtonTwo>
         </ButtonsContainer>
