@@ -371,10 +371,14 @@ export const BlockedButton = styled.button`
 export const StyledFollowButton = styled.button`
   width: 100%;
   position: relative;
-  background-color: ${({ theme, text }) =>text==="Follow"?theme.color.secondary:theme.background.primary};
-  border: ${({theme, text})=>text==="Follow"?"none":"1px solid"+theme.color.secondary} ;
-  color: ${({ theme, text }) =>text==="Followed"?theme.background.primary:theme.color.secondary};
-  fill: ${({ theme, text }) =>text==="Followed"?theme.background.primary:theme.color.secondary};
+  background-color: ${({ theme, text }) =>
+    text === "Follow" ? theme.color.secondary : theme.background.primary};
+  border: ${({ theme, text }) =>
+    text === "Follow" ? "none" : "1px solid" + theme.color.secondary};
+  color: ${({ theme, text }) =>
+    text === "Unfollow" ? theme.color.secondary : theme.background.primary};
+  fill: ${({ theme, text }) =>
+    text === "Unfollow" ? theme.color.secondary : theme.background.primary};
   font-family: "Noto Sans", Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -394,8 +398,10 @@ export const StyledFollowButton = styled.button`
   text-decoration: none;
   cursor: pointer;
   &:hover {
-    background-color: ${({ theme, text }) => text ==="Follow"?
-      theme.background.hover_background_button_blue: theme.background.primary};
+    background-color: ${({ theme, text }) =>
+      text === "Follow"
+        ? theme.background.hover_background_button_blue
+        : theme.background.primary};
     /* color: ${({ theme }) => theme.background.primary}; */
   }
 `;
