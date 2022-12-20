@@ -20,7 +20,7 @@ const CommunitySideCardItem = ({index, title, img}) => {
     
     return (
         <Container>
-            <CommunityA to={`/subreddit/t2_${title}`}>
+            <CommunityA to={`/subreddit/t5_${title}`}>
                 <CommunityIndex>{index}</CommunityIndex>
                 <Arrow className={img? "": "push"}/>
                 {!img &&

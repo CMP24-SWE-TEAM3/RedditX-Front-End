@@ -42,6 +42,7 @@ import {
 const HomePage = () => {
   const [notifications, setNotifications] = React.useState([]);
   console.log("notifications: ", notifications);
+  useDocumentTitle("reddit.com: Welcome back");
   useEffect(() => {
     onForegroundMessage()
       .then((payload) => {

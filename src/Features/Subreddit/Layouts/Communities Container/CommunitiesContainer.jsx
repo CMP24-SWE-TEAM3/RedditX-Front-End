@@ -25,7 +25,7 @@ import { useCallback } from "react";
  * @param {object} subscribed - array that contains all the subscribed communities
  * @returns {React.Component}
  */
- const Container = ({subscribed, Rerender }) => {
+ const Container = ({subscribed }) => {
   const [pgNum, setPgNum] = useState(1);   //Page Number
   const [coms, setComs] = useState([]);          //communities
   // const [reRender, setRerender] = useState(false);

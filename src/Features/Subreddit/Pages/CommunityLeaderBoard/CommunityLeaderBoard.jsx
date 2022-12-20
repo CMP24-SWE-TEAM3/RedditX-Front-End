@@ -44,6 +44,7 @@ const CommunityLeaderBoard = () => {
 //  }
   
 
+  console.log(communityList); 
 
   const [category, setCategory] = useState(data);
   const providedData = { category, setCategory };
@@ -75,7 +76,7 @@ const CommunityLeaderBoard = () => {
                   <CategoryDropDown />
                 </DropDown>
               </DataContext.Provider>
-              <Container  subscribed={CommunitiesSub.communities} Rerender = {setRerender} />
+              <Container  subscribed={CommunitiesSub.communities} />
               <RightSection communityList = {communityList}/>
             </>
             } 
