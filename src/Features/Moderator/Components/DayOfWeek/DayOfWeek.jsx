@@ -9,6 +9,7 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 const DayOfWeek = () => {
   const { subredditId } = useParams();
+
   // authorization's user
   const auth = useAuth();
 
@@ -39,6 +40,9 @@ const DayOfWeek = () => {
   // get member counts
   useEffect(() => {
     getMembersCount(fetchMemberCountsJoined, auth, subredditId, "joined");
+  }, []);
+  // get member counts
+  useEffect(() => {
     getMembersCount(fetchMemberCountsLeft, auth, subredditId, "left");
   }, []);
 
@@ -46,46 +50,67 @@ const DayOfWeek = () => {
   const [days, setDays] = useState([
     {
       Day: "Sunday",
-      PAGEVIEWS: pageViews.days && pageViews.days[0] ? pageViews.days[0] : 32,
-      UNIQUES: 4,
-      MEMBERS_JOINED: 2,
+      PAGEVIEWS:
+        pageViews && pageViews.days && pageViews.days[0]
+          ? pageViews.days[0]
+          : 0,
+      MEMBERS_LEFT: 0,
+      MEMBERS_JOINED: 0,
     },
     {
       Day: "Monday",
-      PAGEVIEWS: pageViews.days && pageViews.days[1] ? pageViews.days[1] : 45,
-      UNIQUES: 4,
-      MEMBERS_JOINED: 2,
+      PAGEVIEWS:
+        pageViews && pageViews.days && pageViews.days[1]
+          ? pageViews.days[1]
+          : 45,
+      MEMBERS_LEFT: 0,
+      MEMBERS_JOINED: 0,
     },
 
     {
       Day: "Tuesday",
-      PAGEVIEWS: pageViews.days && pageViews.days[2] ? pageViews.days[2] : 70,
-      UNIQUES: 41,
-      MEMBERS_JOINED: 20,
+      PAGEVIEWS:
+        pageViews && pageViews.days && pageViews.days[2]
+          ? pageViews.days[2]
+          : 70,
+      MEMBERS_LEFT: 0,
+      MEMBERS_JOINED: 0,
     },
     {
       Day: "Wednesday",
-      PAGEVIEWS: pageViews.days && pageViews.days[3] ? pageViews.days[3] : 92,
-      UNIQUES: 1,
-      MEMBERS_JOINED: 5,
+      PAGEVIEWS:
+        pageViews && pageViews.days && pageViews.days[3]
+          ? pageViews.days[3]
+          : 0,
+      MEMBERS_LEFT: 1,
+      MEMBERS_JOINED: 0,
     },
     {
       Day: "Thursday",
-      PAGEVIEWS: pageViews.days && pageViews.days[4] ? pageViews.days[4] : 7,
-      UNIQUES: 4,
-      MEMBERS_JOINED: 2,
+      PAGEVIEWS:
+        pageViews && pageViews.days && pageViews.days[4]
+          ? pageViews.days[4]
+          : 0,
+      MEMBERS_LEFT: 0,
+      MEMBERS_JOINED: 0,
     },
     {
       Day: "Friday",
-      PAGEVIEWS: pageViews.days && pageViews.days[5] ? pageViews.days[5] : 43,
-      UNIQUES: 12,
-      MEMBERS_JOINED: 8,
+      PAGEVIEWS:
+        pageViews && pageViews.days && pageViews.days[5]
+          ? pageViews.days[5]
+          : 0,
+      MEMBERS_LEFT: 0,
+      MEMBERS_JOINED: 0,
     },
     {
       Day: "Saturday",
-      PAGEVIEWS: pageViews.days && pageViews.days[6] ? pageViews.days[6] : 7,
-      UNIQUES: 4,
-      MEMBERS_JOINED: 2,
+      PAGEVIEWS:
+        pageViews && pageViews.days && pageViews.days[6]
+          ? pageViews.days[6]
+          : 7,
+      MEMBERS_LEFT: 0,
+      MEMBERS_JOINED: 0,
     },
   ]);
   useEffect(() => {
@@ -93,59 +118,61 @@ const DayOfWeek = () => {
       pageViews !== null &&
       pageViews.days &&
       pageViews.days.length !== 0 &&
-      fetchMemberCountsJoined.days &&
-      fetchMemberCountsJoined.days.length !== 0 &&
-      fetchMemberCountsLeft &&
-      fetchMemberCountsLeft.days.length !== 0
+      membersCountJoined &&
+      membersCountJoined.days &&
+      membersCountJoined.days.length !== 0 &&
+      membersCountLeft &&
+      membersCountLeft.days &&
+      membersCountLeft.days.length !== 0
     ) {
+      console.log(pageViews);
       setDays([
         {
           Day: "Sunday",
           PAGEVIEWS: pageViews.days[0],
-          UNIQUES: 4,
+          MEMBERS_LEFT: membersCountLeft.days[0],
           MEMBERS_JOINED: membersCountJoined.days[0],
         },
         {
           Day: "Monday",
           PAGEVIEWS: pageViews.days[1],
-          UNIQUES: 4,
+          MEMBERS_LEFT: membersCountLeft.days[1],
           MEMBERS_JOINED: membersCountJoined.days[1],
         },
 
         {
           Day: "Tuesday",
           PAGEVIEWS: pageViews.days[2],
-          UNIQUES: 41,
+          MEMBERS_LEFT: membersCountLeft.days[2],
           MEMBERS_JOINED: membersCountJoined.days[2],
         },
         {
           Day: "Wednesday",
           PAGEVIEWS: pageViews.days[3],
-          UNIQUES: 1,
+          MEMBERS_LEFT: membersCountLeft.days[3],
           MEMBERS_JOINED: membersCountJoined.days[3],
         },
         {
           Day: "Thursday",
           PAGEVIEWS: pageViews.days[4],
-          UNIQUES: 4,
+          MEMBERS_LEFT: membersCountLeft.days[4],
           MEMBERS_JOINED: membersCountJoined.days[4],
         },
         {
           Day: "Friday",
           PAGEVIEWS: pageViews.days[5],
-          UNIQUES: 12,
+          MEMBERS_LEFT: membersCountLeft.days[5],
           MEMBERS_JOINED: membersCountJoined.days[5],
         },
         {
           Day: "Saturday",
           PAGEVIEWS: pageViews.days[6],
-          UNIQUES: 4,
+          MEMBERS_LEFT: membersCountLeft.days[6],
           MEMBERS_JOINED: membersCountJoined.days[6],
         },
       ]);
     }
   }, [membersCountJoined, pageViews, membersCountLeft]);
-  // console.log("Mangaa==>", pageViews);
 
   // reverse page views
   const revertDays = () => {
@@ -172,7 +199,7 @@ const DayOfWeek = () => {
             </SortIcon>
           </th>
           <th>PAGEVIEWS</th>
-          <th>UNIQUES</th>
+          <th>MEMBERS LEFT</th>
           <th>MEMBERS JOINED</th>
         </tr>
       </thead>
@@ -181,43 +208,43 @@ const DayOfWeek = () => {
           <tr>
             <td>{days[0].Day}</td>
             <td>{days[0].PAGEVIEWS}</td>
-            <td>{days[0].UNIQUES}</td>
+            <td>{days[0].MEMBERS_LEFT}</td>
             <td>{days[0].MEMBERS_JOINED}</td>
           </tr>
           <tr>
             <td>{days[1].Day}</td>
             <td>{days[1].PAGEVIEWS}</td>
-            <td>{days[1].UNIQUES}</td>
+            <td>{days[1].MEMBERS_LEFT}</td>
             <td>{days[1].MEMBERS_JOINED}</td>
           </tr>
           <tr>
             <td>{days[2].Day}</td>
             <td>{days[2].PAGEVIEWS}</td>
-            <td>{days[2].UNIQUES}</td>
+            <td>{days[2].MEMBERS_LEFT}</td>
             <td>{days[2].MEMBERS_JOINED}</td>
           </tr>
           <tr>
             <td>{days[3].Day}</td>
             <td>{days[3].PAGEVIEWS}</td>
-            <td>{days[3].UNIQUES}</td>
+            <td>{days[3].MEMBERS_LEFT}</td>
             <td>{days[3].MEMBERS_JOINED}</td>
           </tr>
           <tr>
             <td>{days[4].Day}</td>
             <td>{days[4].PAGEVIEWS}</td>
-            <td>{days[4].UNIQUES}</td>
+            <td>{days[4].MEMBERS_LEFT}</td>
             <td>{days[4].MEMBERS_JOINED}</td>
           </tr>
           <tr>
             <td>{days[5].Day}</td>
             <td>{days[5].PAGEVIEWS}</td>
-            <td>{days[5].UNIQUES}</td>
+            <td>{days[5].MEMBERS_LEFT}</td>
             <td>{days[5].MEMBERS_JOINED}</td>
           </tr>
           <tr>
             <td>{days[6].Day}</td>
             <td>{days[6].PAGEVIEWS}</td>
-            <td>{days[6].UNIQUES}</td>
+            <td>{days[6].MEMBERS_LEFT}</td>
             <td>{days[6].MEMBERS_JOINED}</td>
           </tr>
         </tbody>
