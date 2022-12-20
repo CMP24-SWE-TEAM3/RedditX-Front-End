@@ -81,6 +81,8 @@ const darkTheme = {
     search_bar_background: "#272729",
     // hover_background_button_blue
     hover_background_button_blue: "#d7dadc",
+    // comment overview background
+    comment_overview_background: "#242426",
   },
   // Border colors
   borderColor: {
