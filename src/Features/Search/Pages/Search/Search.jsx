@@ -52,30 +52,22 @@ const Search = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   console.log(searchParams.get("query"), searchParams.get("destination"));
-  // useEffect(() => {
-  //   fetchPosts(fetch);
-  // }, []); // Only re-run the effect if count changes
-  // Fetch Posts
+  const query = searchParams.get("query");
+  const destination = searchParams.get("destination");
+
   console.log(PostList, "pppp");
-  // fetch Communities
   let [CommunityList, errorCommunity, loadingCommunity, fetchCommunity] =
     useFetchFunction();
-  // console.log(CommunityList);
 
   // fetch Communities
 
-  // fetch Comments
   let [CommentLists, errorComment, loadingComment, fetchComment] =
     useFetchFunction();
+
   console.log(CommentLists, "jjjj");
-  // fetch Comments
 
-  // fetch People
   let [PeopleList, errorPeople, loadingPeople, FB] = useFetchFunction();
-  // console.log(PeopleList);
-  // fetch People
 
-  // fetch people follow
   let [PeopleFollow, errorSub, loadingSub, fetchSub] = useFetchFunction();
   // fetch people follow
   // console.log(PeopleFollow, "hhhhhhhhhhhhhh");
@@ -87,27 +79,40 @@ const Search = () => {
   // fetch communities subscribe
   // const searchWord = "text";
   const ctx = useContext(SearchContext);
-
   useEffect(() => {
-    if (ctx.isSubreddit) {
-      // fetchPostsCommunity(fetch, auth, ctx.word, ctx.community);
-      fetchCommentsCommunity(fetchComment, auth, ctx.word);
+    ctx.wordHandler(query);
+    if (destination) {
+      ctx.isSubredditHandler(true);
+      ctx.communityHandler(destination);
     } else {
-      // fetchPosts(fetch, auth, ctx.word, Sort);
-      fetchComments(fetchComment, auth, ctx.word);
+      ctx.isSubredditHandler(false);
+      ctx.communityHandler(undefined);
     }
-    fetchCommunities(fetchCommunity, auth, "");
-    fetchPeople(FB, auth, "");
-    // fetchSubbcomm(reloadSubCommunities, auth);
-    getCommunitiesList(fetchData, auth);
-    fetchPeopleFollowed(fetchSub, auth);
+  }, [query, destination]);
+  useEffect(() => {
+    if (ctx.word !== "") {
+      if (ctx.isSubreddit && ctx.word !== "") {
+        // fetchPostsCommunity(fetch, auth, ctx.word, ctx.community);
+        fetchCommentsCommunity(fetchComment, auth, ctx.word, ctx.community);
+      } else if (ctx.word !== "") {
+        // fetchPosts(fetch, auth, ctx.word, Sort);
+        fetchComments(fetchComment, auth, ctx.word);
+      }
+      fetchCommunities(fetchCommunity, auth, ctx.word);
+      fetchPeople(FB, auth, "");
+      // fetchSubbcomm(reloadSubCommunities, auth);
+      getCommunitiesList(fetchData, auth);
+      fetchPeopleFollowed(fetchSub, auth);
+    }
   }, [ctx.word, ctx.isSubreddit, ctx.community]); // Only re-run the effect if count changes
 
   useEffect(() => {
-    if (ctx.isSubreddit) {
-      fetchPostsCommunity(fetch, auth, ctx.word, ctx.community);
-    } else {
-      fetchPosts(fetch, auth, "ronal", ctx.Sort);
+    if (ctx.word !== "") {
+      if (ctx.isSubreddit && ctx.word !== "") {
+        fetchPostsCommunity(fetch, auth, ctx.word, ctx.community);
+      } else if (ctx.word !== "") {
+        fetchPosts(fetch, auth, ctx.word, ctx.Sort);
+      }
     }
   }, [ctx.word, ctx.isSubreddit, ctx.community, ctx.Sort]); // Only re-run the effect if count changes
 

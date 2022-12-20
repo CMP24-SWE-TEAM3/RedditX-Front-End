@@ -96,7 +96,7 @@ const SearchBar = () => {
   const submitSearch = (event) => {
     if (event.which === 13) {
       navigate({
-        pathname: "/search",
+        pathname: "/search/posts",
         search: `?query=${event.target.value}${
           location.pathname.search("subreddit") !== -1
             ? `&destination=${id}`
