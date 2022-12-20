@@ -7,13 +7,14 @@ import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 export const InnerContainer = styled.div`
   padding: 20px;
   background-color: ${({ theme }) => theme.background.primary};
   margin: 20px;
   border-radius: 5px;
-  width: 70%;
+  
 `;
 
 export const ButtonsContainer = styled.div`

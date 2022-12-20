@@ -40,6 +40,7 @@ const RuleModal = ({
   const [description, setDescription] = useState(
     ruleData !== null ? ruleData.reason : ""
   );
+  const [ruleId, setRuleId] = useState(ruleData !== null ? ruleData._id : "");
   // state store type of community
   const [currentRadioValue, setCurrentRadioValue] = useState("posts-comments");
   // state for rule is used or not
@@ -50,6 +51,7 @@ const RuleModal = ({
       setRule(ruleData.title);
       setDescription(ruleData.description);
       setReasonRule(ruleData.reason);
+      setRuleId(ruleData._id);
     }
   }, [ruleData]);
 
@@ -71,7 +73,7 @@ const RuleModal = ({
   ] = useFetchFunction();
 
   useEffect(() => {
-    getSubreddit(fetchRules, subredditId, auth);
+    getSubreddit(fetchRules, `t5_${subredditId}`, auth);
   }, []);
 
   useEffect(() => {
@@ -84,7 +86,7 @@ const RuleModal = ({
     ) {
       let result = rulesList.things[0].communityRules;
       result.map((el) => {
-        if (el.title === rule && rule !== "") {
+        if (el.title === rule && rule !== "" && ruleData.title !== el.title) {
           setIsUsedRule(true);
           flag = 1;
         }
@@ -99,7 +101,7 @@ const RuleModal = ({
   const handleCreateRule = () => {
     if (!isUsedRule) {
       createRule(fetchData, auth, {
-        srName: subredditId,
+        srName: `t5_${subredditId}`,
         rule: {
           title: rule,
           description: description,
@@ -111,17 +113,35 @@ const RuleModal = ({
     }
   };
 
+  // handle edit rule
   const handleEditRule = () => {
-    editRule(fetcEdithData, auth);
+    if (
+      (ruleData.title !== rule && rule !== "") ||
+      ruleData.description !== description ||
+      ruleData.reason !== reasonRule
+    ) {
+      editRule(fetcEdithData, auth, {
+        srName: `t5_${subredditId}`,
+        rule: {
+          title: rule,
+          description: description,
+          reason: reasonRule,
+          id: ruleId,
+        },
+      });
+      closeModal();
+    }
   };
 
   // function that reset all values in modal
   const resetModal = () => {
-    setRule("");
-    setDescription("");
-    setReasonRule("");
-    setCurrentRadioValue("posts-comments");
-    setShowEditModal(false);
+    if (ruleData === null) {
+      setRule("");
+      setDescription("");
+      setReasonRule("");
+      setCurrentRadioValue("posts-comments");
+      setShowEditModal(false);
+    }
   };
 
   /**
@@ -263,7 +283,10 @@ const RuleModal = ({
           </AddRuleBtn>
         )}
         {showEditModal && (
-          <AddRuleBtn onClick={handleEditRule} addRule={rule.length}>
+          <AddRuleBtn
+            onClick={handleEditRule}
+            addRule={rule !== ruleData.title}
+          >
             Save
           </AddRuleBtn>
         )}

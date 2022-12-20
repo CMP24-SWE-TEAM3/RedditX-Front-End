@@ -100,7 +100,7 @@ export const AddRuleBtn = styled.button`
   font-weight: 700;
   letter-spacing: unset;
   background-color: ${({ addRule, theme }) =>
-    addRule > 0 ? theme.color.secondary : theme.borderColor.muted};
+    addRule ? theme.color.secondary : theme.borderColor.muted};
   line-height: 17px;
   text-transform: unset;
   min-height: 32px;

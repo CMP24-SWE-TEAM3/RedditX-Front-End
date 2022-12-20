@@ -33,7 +33,7 @@ const ReorderRules = ({ showDragDrop }) => {
   };
 
   useEffect(() => {
-    getSubreddit(fetchData, subredditId, auth);
+    getSubreddit(fetchData, `t5_${subredditId}`, auth);
   }, []);
 
   if (
@@ -42,7 +42,7 @@ const ReorderRules = ({ showDragDrop }) => {
     rulesList.things &&
     rulesList.things[0].communityRules
   ) {
-    for (let i = 0; i < rulesList.things[0].communityRules.length; i++) {
+    for (let i = 0; i < rulesList.things[0].communityRules?.length; i++) {
       Rules.push(
         <RuleTab
           showDragDrop={true}
