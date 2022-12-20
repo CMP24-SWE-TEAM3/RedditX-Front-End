@@ -48,7 +48,7 @@ const SetUser = ({ userId, children }) => {
 
   useEffect(() => {
     getFollowers(followersFetchData, auth);
-  }, []);
+  }, [userId]);
   console.log(
     followersData,
     "followers",
@@ -80,7 +80,7 @@ const SetUser = ({ userId, children }) => {
 
   useEffect(() => {
     fetchPeopleFollowed(fetchFollowing, auth);
-  }, []);
+  }, [userId]);
 
   const { setFollowing } = useFollowing();
 

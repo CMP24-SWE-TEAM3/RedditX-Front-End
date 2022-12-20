@@ -5,11 +5,14 @@ import ProfileNsfw from "Features/settings/Components/ProfileNsfw/ProfileNsfw";
 // import SettingsComponent from "Features/settings/Components/SettingsComponent/SettingsComponent";
 import { HeaderPage } from "./ProfilePage.styled";
 
-const ProfilePage = () => {
+const ProfilePage = ({prefs}) => {
+
+  console.log("from profile",prefs)
+
   return (
     <>
       <HeaderPage>Customize profile</HeaderPage>
-      <ProfileInformation />
+      <ProfileInformation prefs={prefs} />
       <ProfileImage />
       <ProfileNsfw />
       <FollowProfile />
