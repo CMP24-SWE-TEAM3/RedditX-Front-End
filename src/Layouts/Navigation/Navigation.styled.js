@@ -11,6 +11,11 @@ export const StyledContainer = styled(Container)`
 `;
 
 export const StyledNavbar = styled(Navbar)`
+  button.navbar-toggler.collapsed {
+    height: 74% !important;
+    position: relative;
+    top: -6px;
+  }
   margin-bottom: 0 !important;
   height: 49px;
   background: ${({ theme }) => theme.background.primary};

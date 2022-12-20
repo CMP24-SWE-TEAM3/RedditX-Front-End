@@ -84,7 +84,7 @@ const Main = () => {
       </Title>
       <ChooseCommunity />
       {error}
-      <Tabs submitPost={handleSubmit} />
+      <Tabs submitPost={handleSubmit} isLoading={isLoading} />
     </Container>
   );
 };

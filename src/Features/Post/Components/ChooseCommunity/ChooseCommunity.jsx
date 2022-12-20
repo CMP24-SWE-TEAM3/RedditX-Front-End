@@ -66,7 +66,8 @@ const ChooseCommunity = () => {
   return (
     <Container>
       <ModalCommunity
-        show={showCommunityModal}
+        showModal={showCommunityModal}
+        setShowModal={setShowCommunityModal}
         close={() => setShowCommunityModal(false)}
       />
       <Dropdown show={showMenu}>
