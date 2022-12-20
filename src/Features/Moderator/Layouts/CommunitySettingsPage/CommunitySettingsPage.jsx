@@ -98,6 +98,7 @@ const mainTopics = [
   "Videos",
   "Vroom",
   "Wholesome",
+  "Local",
 ];
 
 /**
