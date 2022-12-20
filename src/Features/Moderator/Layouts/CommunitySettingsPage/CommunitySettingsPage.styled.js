@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Form from "react-bootstrap/Form";
 import ReactLanguageSelect from "react-languages-select";
+import Dropdown from "react-bootstrap/Dropdown";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
 export const Container = styled.div`
@@ -301,4 +302,25 @@ export const NSFW = styled.span`
   padding: 0 4px;
   color: ${({ theme }) => theme.background.primary} !important;
   margin: 0 4px 0 8px;
+`;
+
+export const MyDropdown = styled(Dropdown)`
+  button {
+    margin-bottom: 10px;
+    width: 200px;
+    background-color: ${({ theme }) => theme.background.primary} !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: ${({ theme }) => theme.color.secondary};
+    border: 1px solid ${({ theme }) => theme.borderColor.primary}; !important;
+
+    &:hover {
+        border: 1px solid ${({ theme }) =>
+          theme.borderColor.primary}; !important;
+
+          color: ${({ theme }) => theme.color.secondary};
+    }
+    
+  }
 `;

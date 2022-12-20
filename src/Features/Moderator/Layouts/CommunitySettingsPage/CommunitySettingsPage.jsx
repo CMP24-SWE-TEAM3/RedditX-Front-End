@@ -55,7 +55,7 @@ import {
   LabelForm,
   Ico,
   FormCheckLabel,
-  Adult,
+  MyDropdown,
   AdultCheck,
   NSFW,
 } from "./CommunitySettingsPage.styled";
@@ -67,6 +67,39 @@ const defaultFormFields = {
   welcome: "Welcome message",
 };
 
+const mainTopics = [
+  "Gaming",
+  "Sports",
+  "News",
+  "Tv",
+  "Education",
+  "Memes",
+  "Pics",
+  "Travel",
+  "Tech",
+  "Music",
+  "Art",
+  "Beauty",
+  "Books",
+  "Crypto",
+  "Discussion",
+  "E3",
+  "Fashion",
+  "Finance",
+  "Food",
+  "Health",
+  "Learning",
+  "Mindblowing",
+  "Outdoors",
+  "Parenting",
+  "Photography",
+  "Relationships",
+  "Science",
+  "Videos",
+  "Vroom",
+  "Wholesome",
+];
+
 /**
  * CommunitySettingsPage Layout that is used in Community settings
  * @returns {React.Component}  CommunitySettingsPage Layout that is used in Community settings
@@ -75,7 +108,7 @@ const defaultFormFields = {
 const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
   //const communityName = "t5_imagePro235";
 
-  const {subredditId}  = useParams()
+  const { subredditId } = useParams();
 
   const [data, error, isLoading, dataFetch] = useFetchFunction();
   const [data2, error2, isLoading2, dataFetch2] = useFetchFunction();
@@ -121,6 +154,11 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
    * state to handel show of add topics
    */
   const [addedTopics, setAddedTopics] = useState([]);
+
+  /**
+   * state to handel show of add topics
+   */
+  const [mainTopic, setMainTopic] = useState("Gaming");
 
   /**
    * useEffect to update the value of addedTopics
@@ -172,9 +210,8 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
       setReason(data?.description);
       setAdultContent(data?.nsfw);
       setCurrentRadioValue(data?.privacyType);
+      setMainTopic(data?.category);
     }
-
-    
   }, [data]);
 
   /**
@@ -218,6 +255,14 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
   };
 
   /**
+   * Function to change the main topic
+   * @param {String} topic topic to add
+   */
+  const handleMainTopic = (topic) => {
+    setMainTopic(topic);
+  };
+
+  /**
    * Function to add topic to the list
    * @param {String} topic topic to remove
    */
@@ -245,8 +290,9 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
         name: "t5_" + communityName,
         categories: addedTopics,
         description: reason,
+        category: mainTopic,
       },
-      "t5_" +subredditId,
+      "t5_" + subredditId,
       auth.getToken()
     );
   };
@@ -283,6 +329,23 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
               This will help Reddit recommend your community to relevant users
               and other discovery experiences.
             </Par>
+            <MyDropdown>
+              <MyDropdown.Toggle variant="success" id="dropdown-basic">
+                {mainTopic}
+              </MyDropdown.Toggle>
+
+              <MyDropdown.Menu>
+                {mainTopics.map((mod) => (
+                  <MyDropdown.Item
+                    onClick={() => {
+                      handleMainTopic(mod);
+                    }}
+                  >
+                    {mod}
+                  </MyDropdown.Item>
+                ))}
+              </MyDropdown.Menu>
+            </MyDropdown>
             <TopicsContainer>
               <SelectedTopics>
                 {addedTopics.map((topic) => (

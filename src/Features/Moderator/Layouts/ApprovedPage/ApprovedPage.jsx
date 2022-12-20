@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import {useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import ApprovedUsers from "Features/Moderator/Components/ApprovedUsers/ApprovedUsers";
 
@@ -30,7 +30,7 @@ import ApproveUserModal from "../ApproveUserModal/ApproveUserModal";
 
 const ApprovedPage = () => {
   //const communityName = "t5_imagePro235";
-  const {subredditId}  = useParams()
+  const { subredditId } = useParams();
   const [data, error, isLoading, dataFetch] = useFetchFunction();
 
   const auth = useAuth();
@@ -39,7 +39,7 @@ const ApprovedPage = () => {
    * useEffect to get all moderators
    */
   useEffect(() => {
-    getApproved(dataFetch, "t5_"+subredditId, auth.getToken());
+    getApproved(dataFetch, "t5_" + subredditId, auth?.getToken());
   }, []);
 
   const [modalShowApproveUser, setModalShowApproveUser] = useState(false);
@@ -47,28 +47,30 @@ const ApprovedPage = () => {
   return (
     <>
       {isLoading && <LoadingSpinner />}
-      {!isLoading && data.users && (
-        <Container>
-          <ButtonsContainer>
-            <ButtonTwo
-              onClick={() => {
-                setModalShowApproveUser(true);
-              }}
-            >
-              Approve user
-            </ButtonTwo>
-          </ButtonsContainer>
-          <InnerContainer>
-            <NameHeader>
-              Approved users <AiOutlineInfoCircle></AiOutlineInfoCircle>
-            </NameHeader>
+      <Container>
+        <ButtonsContainer>
+          <ButtonTwo
+            data-testid="aproveUser"
+            onClick={() => {
+              setModalShowApproveUser(true);
+            }}
+          >
+            Approve user
+          </ButtonTwo>
+        </ButtonsContainer>
+        <InnerContainer>
+          <NameHeader>
+            Approved users <AiOutlineInfoCircle></AiOutlineInfoCircle>
+          </NameHeader>
 
-            {!isLoading && data.users && (
-              <ApprovedUsers communityName={subredditId} Moderator={data.users}></ApprovedUsers>
-            )}
-          </InnerContainer>
-        </Container>
-      )}
+          {!isLoading && data.users && (
+            <ApprovedUsers
+              communityName={subredditId}
+              Moderator={data.users}
+            ></ApprovedUsers>
+          )}
+        </InnerContainer>
+      </Container>
       {modalShowApproveUser && (
         <ApproveUserModal
           show={modalShowApproveUser}
