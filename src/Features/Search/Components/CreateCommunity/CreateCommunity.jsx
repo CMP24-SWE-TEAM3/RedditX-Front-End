@@ -23,7 +23,11 @@ const CreateCommunity = () => {
           <button onClick={() => setShow(true)}>Create Community</button>
         </div>
       </div>
-      <ModalCommunity show={show} close={() => setShow(false)} />
+      <ModalCommunity
+        showModal={show}
+        setShowModal={setShow}
+        close={() => setShow(false)}
+      />
     </ContainerCreateComm>
   );
 };

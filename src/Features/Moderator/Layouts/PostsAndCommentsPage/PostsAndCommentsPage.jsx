@@ -11,6 +11,8 @@ import "react-languages-select/css/react-languages-select.css";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 
+import { useParams } from "react-router-dom";
+
 import {
   getCommunitySettings,
   updateSettings,
@@ -40,7 +42,9 @@ import {
  */
 
 const PostsAndCommentsPage = ({ setModalShowBaneUser }) => {
-  const communityName = "t5_imagePro235";
+  //const communityName = "t5_imagePro235";
+
+  const {subredditId}  = useParams()
 
   const [data, error, isLoading, dataFetch] = useFetchFunction();
   const [data2, error2, isLoading2, dataFetch2] = useFetchFunction();
@@ -69,7 +73,7 @@ const PostsAndCommentsPage = ({ setModalShowBaneUser }) => {
    * useEffect to get community settings
    */
   useEffect(() => {
-    getCommunitySettings(dataFetch, communityName, auth.getToken());
+    getCommunitySettings(dataFetch, "t5_"+subredditId, auth.getToken());
     setSignupSubmit(true);
   }, []);
 
@@ -99,7 +103,7 @@ const PostsAndCommentsPage = ({ setModalShowBaneUser }) => {
           suggestedCommentSort: selectSort,
         },
       },
-      communityName,
+      "t5_"+subredditId,
       auth.getToken()
     );
   };
