@@ -13,10 +13,16 @@ import {
   Reply,
   UpvoteIcon,
   DownvoteIcon,
+  ButtonsContainer,
+  SubmitButton,
+  CancelButton,
+  DraftEditorContainerOuter,
 } from "./Comment.styled";
+import { DraftEditorContainer } from "Features/Post/Components/DraftEditor/DraftEditor.styled";
 
 // Import icons
 import { FaRegCommentAlt } from "react-icons/fa";
+import { FiEdit2 } from "react-icons/fi";
 import { BsThreeDots } from "react-icons/bs";
 
 // Import hooks
@@ -36,6 +42,9 @@ import { handleUp, handleDown } from "Features/Post/Utils/upAndDownVoting";
 import { giveVote, makeFollow } from "Features/Post/Services/postActions";
 import submitSpam from "Features/Post/Services/submitSpam";
 import submitSave from "Features/Post/Services/submitSave";
+import DraftEditor from "../DraftEditor/DraftEditor";
+import { Spinner } from "react-bootstrap";
+import submitEditPost from "Features/Post/Services/submitEditPost";
 const Comment = ({ comment, postID }) => {
   const auth = useAuth();
 
@@ -44,6 +53,9 @@ const Comment = ({ comment, postID }) => {
   const [text, setText] = useState("");
   const [htmlText, setHtmlText] = useState("");
   const [expanded, setExpanded] = useState(true);
+  const [editPostText, setEditPostText] = useState("");
+  const [editPostHtmlText, setEditPostHtmlText] = useState("");
+  const [editComment, setEditComment] = useState(false);
   const [votes, setVotes] = useState(comment.votesCount);
   const [upVoted, setUpVoted] = useState(
     auth.isLoggedIn()
@@ -79,6 +91,8 @@ const Comment = ({ comment, postID }) => {
   const [saveData, errorSaveData, isLoadingSaveData, dataSendSaveData] =
     useFetchFunction();
   const [spamData, errorSpamData, isLoadingSpamData, dataSendSpamData] =
+    useFetchFunction();
+  const [editData, errorEditData, isLoadingEditData, dataSendEditData] =
     useFetchFunction();
   const upVote = () => {
     if (upVoted) {
@@ -187,6 +201,18 @@ const Comment = ({ comment, postID }) => {
     );
   };
 
+  const editCommentHandler = () => {
+    console.log("edit");
+    submitEditPost(
+      dataSendEditData,
+      {
+        linkID: "t3_" + comment._id,
+        textHTML: editPostHtmlText,
+        textJSON: editPostText,
+      },
+      auth
+    );
+  };
   const navigate = useNavigate();
   return (
     <Container>
@@ -219,9 +245,33 @@ const Comment = ({ comment, postID }) => {
         </Time>
         {expanded && (
           <>
-            {!isJsonString(comment.textJSON) && <Body>{comment.textJSON}</Body>}
-            {isJsonString(comment.textJSON) && (
+            {!editComment && !isJsonString(comment.textJSON) && (
+              <Body>{comment.textJSON}</Body>
+            )}
+            {!editComment && isJsonString(comment.textJSON) && (
               <RichTextPostBody post={comment} />
+            )}
+            {editComment && (
+              <DraftEditorContainerOuter>
+                <DraftEditorContainer>
+                  <DraftEditor
+                    text={editPostText}
+                    setText={setEditPostText}
+                    setTextHTML={setEditPostHtmlText}
+                    load={comment.textJSON}
+                  />
+                </DraftEditorContainer>
+
+                <ButtonsContainer>
+                  <CancelButton onClick={() => setEditComment(false)}>
+                    Cancel
+                  </CancelButton>
+                  <SubmitButton onClick={editCommentHandler}>
+                    {!isLoadingEditData && "Save"}
+                    {isLoadingEditData && <Spinner />}
+                  </SubmitButton>
+                </ButtonsContainer>
+              </DraftEditorContainerOuter>
             )}
             {!isLoadingRepliesList &&
               repliesList.things &&
@@ -239,6 +289,10 @@ const Comment = ({ comment, postID }) => {
               </Reply>
               <Reply onClick={handleSave}>
                 <span>Save</span>
+              </Reply>
+              <Reply onClick={() => setEditComment(true)}>
+                <FiEdit2 />
+                <span>Edit</span>
               </Reply>
             </Controls>
             {openReply && (

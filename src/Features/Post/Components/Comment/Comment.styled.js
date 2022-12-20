@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 // Import icons
 import { CgArrowsExpandLeft } from "react-icons/cg";
 import { TbArrowBigTop, TbArrowBigDown } from "react-icons/tb";
+import { Button } from "react-bootstrap";
 
 export const Container = styled.div`
   padding: 8px 0 0 8px;
@@ -110,4 +111,36 @@ export const DownvoteIcon = styled(TbArrowBigDown)`
     css`
       color: #7193ff;
     `};
+`;
+export const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+`;
+export const SubmitButton = styled(Button)`
+  background-color: ${({ theme }) => theme.color.secondary};
+  color: ${({ theme }) => theme.background.primary};
+  margin-left: 10px;
+  border-radius: 9999px;
+  font-size: 14px;
+  border: none;
+  font-weight: 700;
+`;
+
+export const CancelButton = styled(Button)`
+  background-color: ${({ theme }) => theme.background.primary};
+  color: ${({ theme }) => theme.color.secondary};
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  &:hover {
+    background-color: ${({ theme }) => theme.background.muted};
+    color: ${({ theme }) => theme.color.secondary};
+  }
+`;
+
+export const DraftEditorContainerOuter = styled.div`
+  margin: 50px 5px;
+  background-color: ${({ theme }) => theme.background.lightMuted};
 `;

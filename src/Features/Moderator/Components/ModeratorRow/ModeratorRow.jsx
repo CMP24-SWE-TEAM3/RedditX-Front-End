@@ -9,6 +9,7 @@ import { IoIosArrowUp } from "react-icons/io";
 import Moment from "react-moment";
 
 import EditBanUserModal from "Features/Moderator/Layouts/EditBanUserModal/EditBanUserModal";
+import { useNavigate } from "react-router-dom";
 
 import {
   muteUser,
@@ -49,6 +50,8 @@ const ModeratorRow = ({
   banned,
   communityName,
 }) => {
+  const navigate = useNavigate();
+
   const [data, error, isLoading, dataFetch] = useFetchFunction();
 
   const auth = useAuth();
@@ -85,7 +88,11 @@ const ModeratorRow = ({
         <>
           <Container>
             <ProfileContainer>
-              <PhotoAndUsername>
+              <PhotoAndUsername
+                onClick={() => {
+                  navigate("/user/" + Moderator._id);
+                }}
+              >
                 <Photo>
                   <img
                     crossOrigin="anonymous"
@@ -133,7 +140,18 @@ const ModeratorRow = ({
             )}
             {approved && Moderator?._id !== auth.getUserName() && (
               <ButtonsContainer>
-                <button>Send message</button>
+                <button
+                  onClick={() => {
+                    navigate(
+                      "/message/compose/?from=" +
+                        auth.getUserName().substring(3) +
+                        "?to=" +
+                        Moderator._id.substring(3)
+                    );
+                  }}
+                >
+                  Send message
+                </button>
                 {Moderator?.role !== "creator" && (
                   <button
                     onClick={() => {

@@ -32,9 +32,7 @@ const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
  * @returns {React.Component}  MuteUser Layout that is used in User management
  */
 
-const MuteUser = ({ communityName }) => {
-
-
+const MuteUser = ({ communityName, setModalShowApproveUser }) => {
   const [data, error, isLoading, dataFetch] = useFetchFunction();
 
   const auth = useAuth();
@@ -95,9 +93,7 @@ const MuteUser = ({ communityName }) => {
         <AbilityContainer>
           <Ability>
             <Head>Note about why they are muted</Head>
-            <Par>
-            Only visible to other moderators. Not visible to user
-            </Par>
+            <Par>Only visible to other moderators. Not visible to user</Par>
           </Ability>
         </AbilityContainer>
 
@@ -117,12 +113,22 @@ const MuteUser = ({ communityName }) => {
           >
             Cancel
           </ButtonOne> */}
-          <ButtonTwo disabled={!validName} valid={validName} onClick={() => {
-            muteUser(dataFetch, {
-              userID: "t2_"+userName,
-              operation: "mute",
-            }, communityName, auth.getToken())
-          }}>
+          <ButtonTwo
+            disabled={!validName}
+            valid={validName}
+            onClick={() => {
+              muteUser(
+                dataFetch,
+                {
+                  userID: "t2_" + userName,
+                  operation: "mute",
+                },
+                communityName,
+                auth.getToken()
+              );
+              setModalShowApproveUser(false);
+            }}
+          >
             Mute user
           </ButtonTwo>
         </ButtonsContainer>
