@@ -32,7 +32,7 @@ const CommunitySideCard = ({communityList}) => {
     let cat = 'Growing';    //Assign Random Category  [Can change to be a prop to change shown random among the two cards]
     let com; 
 
-    if(communityList && communityList.length!==0) {
+    if(communityList && communityList.communities &&communityList.length!==0) {
         
         cat = communityList.communities[0]['category'];   //Assign the Random Category to be shown [can call two requests in leaderboard Page, to have different radnoms in both cards]
         com = communityList.communities.slice(0,5).map((community, index) => {
@@ -53,7 +53,7 @@ const CommunitySideCard = ({communityList}) => {
               <CoverDiv>
                   <CoverImg
                     crossOrigin="anonynmous"
-                    src={`${BASE_URL}/subreddits/files/${communityList.communities[0].banner}`}
+                    src={`${BASE_URL}/subreddits/files/${communityList.communities[1].banner}`}
                   />
                   <LinkH2>
                       <Link href={"https://www.reddit.com/subreddits/leaderboard/"}>Top

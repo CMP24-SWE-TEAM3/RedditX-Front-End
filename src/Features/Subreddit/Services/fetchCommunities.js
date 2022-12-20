@@ -14,7 +14,8 @@ const fetchCommunities = (fetchFunction, auth, category, pgNum) => {
     fetchFunction({
       axiosInstance: axios,
       method: 'GET',
-      url: `https://api.redditswe22.tech/api/r/get-specific-category/?category=${category}&page=1&limit=12`,
+      url:(category!=="Growing")? `https://api.redditswe22.tech/api/r/get-specific-category/?category=${category}&page=1&limit=12`
+      :`/api/r/random-category` ,
       // url: `/api/r/random-category`,
       requestConfig: {
         headers: {
