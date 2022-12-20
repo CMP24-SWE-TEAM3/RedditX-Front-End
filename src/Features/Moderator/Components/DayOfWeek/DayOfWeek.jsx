@@ -4,9 +4,12 @@ import { useState } from "react";
 import getPageViews from "Features/Moderator/Services/getPageViews";
 import getMembersCount from "Features/Moderator/Services/getMembersCount";
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import getSubreddit from "Features/Subreddit/Services/getSubreddit";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 const DayOfWeek = () => {
+  const { subredditId } = useParams();
   // authorization's user
   const auth = useAuth();
 
@@ -68,12 +71,12 @@ const DayOfWeek = () => {
 
   // get page views
   useEffect(() => {
-    getPageViews(fetchPages, auth);
+    getPageViews(fetchPages, auth, subredditId);
   }, []);
 
   // get member counts
   useEffect(() => {
-    getMembersCount(fetchMemberCounts, auth);
+    getMembersCount(fetchMemberCounts, auth, subredditId);
   }, []);
 
   // reverse page views
