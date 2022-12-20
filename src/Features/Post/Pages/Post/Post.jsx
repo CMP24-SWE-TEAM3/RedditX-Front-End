@@ -81,7 +81,7 @@ const Post = ({ post, show, setShow }) => {
   useEffect(() => {
     console.log(" assadasd", comment, post);
     if (!isLoadingComment && comment && comment._id && post && post._id) {
-      navigate(`/post-preview/${post._id}/${comment._id}`);
+      navigate(`/post-preview/${post._id}`);
     }
   }, [comment]);
   const handlePostEdit = () => {
