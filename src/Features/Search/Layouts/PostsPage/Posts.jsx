@@ -198,7 +198,7 @@ const Posts = ({
                       <CreateCommunity />
                     </>
                   )}
-                  {ctx.isSubreddit && <CommunityCard />}
+                  {/* {ctx.isSubreddit && <CommunityCard />} */}
                 </div>
               </div>
             </ContainerPosts>

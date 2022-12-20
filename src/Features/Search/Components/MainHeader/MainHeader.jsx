@@ -17,11 +17,14 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 const Links = ({ ActiveLink, setActiveLink }) => {
   const ctx = useContext(SearchContext);
   const navigate = useNavigate();
+  console.log(ctx);
   return (
     <MainLinks>
       <div className="links">
         <div className="inner-links">
-          <NavLink to="/search/posts">
+          <NavLink
+            to={`/search/posts?query=${ctx.word}&destination=${ctx.community}`}
+          >
             <button
               onClick={() => {
                 setActiveLink("Posts");
@@ -30,7 +33,9 @@ const Links = ({ ActiveLink, setActiveLink }) => {
               Posts
             </button>
           </NavLink>
-          <NavLink to="/search/comments">
+          <NavLink
+            to={`/search/comments?query=${ctx.word}&destination=${ctx.community}`}
+          >
             <button
               onClick={() => {
                 setActiveLink("Comments");
@@ -40,7 +45,9 @@ const Links = ({ ActiveLink, setActiveLink }) => {
             </button>
           </NavLink>
           {!ctx.isSubreddit && (
-            <NavLink to="/search/communities">
+            <NavLink
+              to={`/search/communities?query=${ctx.word}&destination=${ctx.community}`}
+            >
               <button
                 onClick={() => {
                   setActiveLink("Communities");
@@ -51,7 +58,9 @@ const Links = ({ ActiveLink, setActiveLink }) => {
             </NavLink>
           )}
           {!ctx.isSubreddit && (
-            <NavLink to="/search/people">
+            <NavLink
+              to={`/search/people?query=${ctx.word}&destination=${ctx.community}`}
+            >
               <button
                 onClick={() => {
                   setActiveLink("People");
@@ -70,7 +79,8 @@ const Links = ({ ActiveLink, setActiveLink }) => {
               onClick={(e) => {
                 e.preventDefault();
                 ctx.isSubredditHandler(false);
-                navigate("/search/posts");
+                ctx.communityHandler("aaa");
+                navigate(`/search/posts?query=${ctx.word}`);
               }}
             >
               <span className="isSubSpan1">Show results from</span>

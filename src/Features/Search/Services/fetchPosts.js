@@ -7,11 +7,12 @@ import axios from "API/axios";
  */
 const fetchPosts = (fetchFunction, auth, searchWord, Sort) => {
   // console.log("Fetching posts", searchWord);
-  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
+  if (!auth || !auth.isLoggedIn() || !auth.getToken() || searchWord === "")
+    return;
   fetchFunction({
     axiosInstance: axios,
     method: "GET",
-    url: `/api/search/r?type=post&q=${searchWord}&sort='new'`,
+    url: `/api/search/r?type=post&q=${searchWord}&sort=${Sort}`,
     requestConfig: {
       headers: {
         "Content-Language": "en-US",
