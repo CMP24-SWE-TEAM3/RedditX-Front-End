@@ -115,9 +115,8 @@ export const AddRuleBtn = styled.button`
   }
 
   color: ${({ theme, addRule }) =>
-    addRule > 0 ? theme.lineColor.primary : theme.color.muted};
-  cursor: ${({ addRule }) =>
-    addRule > 0 ? "pointer" : "not-allowed"} !important;
+    addRule ? theme.lineColor.primary : theme.color.muted};
+  cursor: ${({ addRule }) => (addRule ? "pointer" : "not-allowed")} !important;
   border: 1px solid ${({ theme }) => theme.btnColor.primary};
   margin-left: 16px;
   position: relative;
@@ -191,4 +190,12 @@ export const DeleteBtn = styled.button`
   :hover {
     background-color: ${({ theme }) => theme.borderColor.muted};
   }
+`;
+export const UsedBefore = styled.span`
+  font-family: Noto Sans, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #ea0027;
+  padding-top: 5px;
 `;
