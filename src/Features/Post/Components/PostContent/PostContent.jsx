@@ -11,6 +11,7 @@ import {
   ImageContainer,
   PostTitle,
   CarouselItem,
+  Flair,
 } from "./PostContent.styled";
 
 import { BASE_URL } from "API/axios";
@@ -27,11 +28,13 @@ const PostContent = ({ post }) => {
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
-
-
+  console.log(post.flairTextColor, post.flairBackGround, post.flairText);
   return (
     <Container>
       <PostTitle>{post.title}</PostTitle>
+      <Flair color={post.flairTextColor} backgroundColor={post.flairBackGround}>
+        {post.flairText}
+      </Flair>
       {!isJsonString(post.textJSON) && <Paragraph>{post.textJSON}</Paragraph>}
       {isJsonString(post.textJSON) && <RichTextPostBody post={post} />}
       {!isJsonString(post.textJSON) && (

@@ -110,9 +110,7 @@ const PostFlagsWrapper = ({
         data-testid="flair-button"
         disabled={!submitDestination}
         selected={createPostFlairs}
-        background={
-          createPostFlairs ? createPostFlairs.flairBackGroundColor : null
-        }
+        background={createPostFlairs ? createPostFlairs.flairBackGround : null}
         color={createPostFlairs ? createPostFlairs.flairTextColor : null}
         /*disabled={true}*/
         onClick={flairHandler}

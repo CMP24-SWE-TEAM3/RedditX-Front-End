@@ -55,8 +55,10 @@ const Main = () => {
     var bodyFormData = new FormData();
     submitDestination.type !== "user" &&
       bodyFormData.append("communityID", submitDestination._id);
-    console.log("flair", createPostFlairs);
-    // bodyFormData.append("flair", createPostFlairs);
+    bodyFormData.append("flairTextColor", createPostFlairs.flairTextColor);
+    bodyFormData.append("flairText", createPostFlairs.flairText);
+    bodyFormData.append("flairBackGround", createPostFlairs.flairBackGround);
+    bodyFormData.append("flairID", createPostFlairs._id);
     bodyFormData.append("title", createPostTitle);
     bodyFormData.append("textJSON", textJSON);
     bodyFormData.append("textHTML", textHTML);
