@@ -11,7 +11,7 @@ const getPageViews = async (fetchData, auth, subreddit) => {
   fetchData({
     axiosInstance: axios,
     method: "GET",
-    url: `/api/r/t5_${subreddit}/page-views`,
+    url: `/api/r/${subreddit}/page-views`,
     requestConfig: {
       headers: {
         "Content-Language": "en-US",

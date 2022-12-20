@@ -32,7 +32,7 @@ import {
 const BannedPage = () => {
   //const communityName = "t5_imagePro235";
 
-  const {subredditId}  = useParams()
+  const { subredditId } = useParams();
   const [data, error, isLoading, dataFetch] = useFetchFunction();
 
   const auth = useAuth();
@@ -41,7 +41,7 @@ const BannedPage = () => {
    * useEffect to get all moderators
    */
   useEffect(() => {
-    getBanned(dataFetch, "t5_"+subredditId, auth.getToken());
+    getBanned(dataFetch, "t5_" + subredditId, auth?.getToken());
   }, []);
 
   const [modalShowBaneUser, setModalShowBaneUser] = useState(false);
@@ -49,28 +49,28 @@ const BannedPage = () => {
   return (
     <>
       {isLoading && <LoadingSpinner />}
-      {!isLoading && data.users && (
-        <Container>
-          <ButtonsContainer>
-            <ButtonTwo
-              onClick={() => {
-                setModalShowBaneUser(true);
-              }}
-            >
-              Ban user
-            </ButtonTwo>
-          </ButtonsContainer>
-          <InnerContainer>
-            <NameHeader>
-              Banned users <AiOutlineInfoCircle></AiOutlineInfoCircle>
-            </NameHeader>
 
-            {!isLoading && data.users && (
-              <BannedUsers Moderator={data.users}></BannedUsers>
-            )}
-          </InnerContainer>
-        </Container>
-      )}
+      <Container>
+        <ButtonsContainer>
+          <ButtonTwo
+            data-testid="banUser"
+            onClick={() => {
+              setModalShowBaneUser(true);
+            }}
+          >
+            Ban user
+          </ButtonTwo>
+        </ButtonsContainer>
+        <InnerContainer>
+          <NameHeader>
+            Banned users <AiOutlineInfoCircle></AiOutlineInfoCircle>
+          </NameHeader>
+
+          {!isLoading && data.users && (
+            <BannedUsers Moderator={data.users}></BannedUsers>
+          )}
+        </InnerContainer>
+      </Container>
 
       {modalShowBaneUser && (
         <BanUserModal

@@ -13,7 +13,7 @@ import { RulesContainer, RuleTabContainer } from "./Rules.styled";
 
 const Rules = () => {
   const { subredditId } = useParams();
-  // console.log("IDDDDD===>", subredditId);
+  const [editor, setEditor] = useState(null);
 
   // authorization's user
   const auth = useAuth();
@@ -47,22 +47,25 @@ const Rules = () => {
           rulesList.length !== 0 &&
           rulesList.things &&
           rulesList.things[0].communityRules.length !== 0 &&
-          rulesList.things[0].communityRules.map((rule) => {
-            console.log(rule);
+          rulesList.things[0].communityRules.map((rule, index) => {
             return (
               <RuleTab
+                ruleData={rule}
+                setEditor={setEditor}
                 setShowEditModal={setShowEditModal}
                 showDragDrop={showDragDrop}
                 setShowModal={setShowModal}
                 ruleTitle={rule.title}
                 ruleDescription={rule.description}
                 ruleReason={rule.reason}
+                number={index + 1}
               />
             );
           })}
       </RuleTabContainer>
       <ReorderRules showDragDrop={showDragDrop} />
       <RuleModal
+        ruleData={editor}
         setShowEditModal={setShowEditModal}
         showEditModal={showEditModal}
         showModal={showModal}

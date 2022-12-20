@@ -109,6 +109,7 @@ export const CommentBodyContainer = styled.div`
     border-right: 1px solid ${({ theme }) => theme.color.titleText_of_link};
     border-left: 1px solid ${({ theme }) => theme.color.titleText_of_link};
   }
+  margin-bottom: 6px;
 `;
 
 export const CommentBodyInnerContainer = styled.div`
@@ -135,6 +136,10 @@ export const DashedLine = styled.div`
 export const CommentBodyInfoContainer = styled.div`
   flex: 1 1 auto;
   margin-bottom: -4px;
+  background-color: ${({ theme, overview }) =>
+    overview ? theme.background.comment_overview_background : ""};
+  padding: 3px 6px;
+  border-radius: 4px;
 `;
 
 export const CommentBodyInfoInnerContainer = styled.div`

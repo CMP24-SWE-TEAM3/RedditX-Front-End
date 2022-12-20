@@ -6,6 +6,7 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import getSubreddit from "Features/Subreddit/Services/getSubreddit";
 import { useParams } from "react-router-dom";
 import createRule from "Features/Moderator/Services/createRule";
+import editRule from "Features/Moderator/Services/editRule";
 import {
   Characters,
   FormCheck,
@@ -27,17 +28,30 @@ const RuleModal = ({
   setShowModal,
   showEditModal,
   setShowEditModal,
+  ruleData,
 }) => {
   // get name of community
   const { subredditId } = useParams();
   // const [show, setShow] = useState(false);
-  const [rule, setRule] = useState("");
-  const [reasonRule, setReasonRule] = useState("");
-  const [description, setDescription] = useState("");
+  const [rule, setRule] = useState(ruleData !== null ? ruleData.title : "");
+  const [reasonRule, setReasonRule] = useState(
+    ruleData !== null ? ruleData.description : ""
+  );
+  const [description, setDescription] = useState(
+    ruleData !== null ? ruleData.reason : ""
+  );
   // state store type of community
   const [currentRadioValue, setCurrentRadioValue] = useState("posts-comments");
   // state for rule is used or not
   const [isUsedRule, setIsUsedRule] = useState(false);
+
+  useEffect(() => {
+    if (ruleData !== null) {
+      setRule(ruleData.title);
+      setDescription(ruleData.description);
+      setReasonRule(ruleData.reason);
+    }
+  }, [ruleData]);
 
   // authorization's user
   const auth = useAuth();
@@ -49,6 +63,12 @@ const RuleModal = ({
   const [rulesList, error, isLoading, fetchRules] = useFetchFunction();
   const [ruleResponse, errorResponse, isLoadingResponse, fetchData] =
     useFetchFunction();
+  const [
+    editRuleResponse,
+    errorEditResponse,
+    isLoadingEditResponse,
+    fetcEdithData,
+  ] = useFetchFunction();
 
   useEffect(() => {
     getSubreddit(fetchRules, subredditId, auth);
@@ -75,6 +95,7 @@ const RuleModal = ({
     }
   }, [rule]);
 
+  // create new rule
   const handleCreateRule = () => {
     if (!isUsedRule) {
       createRule(fetchData, auth, {
@@ -89,6 +110,12 @@ const RuleModal = ({
       closeModal();
     }
   };
+
+  const handleEditRule = () => {
+    editRule(fetcEdithData, auth);
+  };
+
+  // function that reset all values in modal
   const resetModal = () => {
     setRule("");
     setDescription("");
@@ -132,7 +159,7 @@ const RuleModal = ({
               rows={2}
               value={rule}
               onChange={handlerRules}
-              maxlength="100"
+              maxLength="100"
             />
 
             {isUsedRule && (
@@ -201,7 +228,7 @@ const RuleModal = ({
               rows={2}
               placeholder='Reason rule is broken (eg "This is a photo")'
               onChange={handleReason}
-              maxlength="100"
+              maxLength="100"
               value={reasonRule}
             />
             <Characters alarmValue={100 - reasonRule.length}>
@@ -216,7 +243,7 @@ const RuleModal = ({
               rows={3}
               placeholder="Enter the full description of the rule"
               onChange={handleDescription}
-              maxlength="500"
+              maxLength="500"
               value={description}
             />
             <Characters alarmValue={500 - description.length}>
@@ -235,7 +262,11 @@ const RuleModal = ({
             Add new rule
           </AddRuleBtn>
         )}
-        {showEditModal && <AddRuleBtn addRule={rule.length}>Save</AddRuleBtn>}
+        {showEditModal && (
+          <AddRuleBtn onClick={handleEditRule} addRule={rule.length}>
+            Save
+          </AddRuleBtn>
+        )}
         <CancelBtn
           onClick={() => {
             resetModal();

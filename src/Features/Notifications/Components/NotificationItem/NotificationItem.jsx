@@ -27,7 +27,10 @@ const NotificationItem = ({ id, header, content, date, img, fileSrc }) => {
   const auth = useAuth();
   const [hideNotifRes, errorHideNotif, loadingHideNotif, fetchData] = useFetchFunction();
   function handleHide() {
-    hideNotification(fetchData, auth);
+    let dataObject = {
+      notificationID: id,
+    };
+    hideNotification(fetchData, dataObject ,auth);
   }
 
   return (
@@ -38,9 +41,10 @@ const NotificationItem = ({ id, header, content, date, img, fileSrc }) => {
       }}
     >
       <LeftDiv>
-        {img&&<ProfileImage 
-        crossOrigin="anonynmous"
-        src={`${BASE_URL}/${fileSrc}/files/${img}`} />}
+        {img&&
+        <ProfileImage 
+          crossOrigin="anonynmous"
+          src={`${BASE_URL}/${fileSrc}/files/${img}`} />}
       </LeftDiv>
 
       <RightDiv>

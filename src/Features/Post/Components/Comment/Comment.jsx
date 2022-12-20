@@ -213,6 +213,7 @@ const Comment = ({ comment, postID }) => {
       auth
     );
   };
+  console.log(comment);
   const navigate = useNavigate();
   return (
     <Container>

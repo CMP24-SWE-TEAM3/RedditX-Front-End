@@ -9,7 +9,8 @@ import { useUserID } from "Features/User/Contexts/UserIDProvider";
 import { useFollowers } from "Features/User/Contexts/FollowersProvider";
 import UserNotFound from "../UserNotFound/UserNotFound";
 import AdultPage from "../AdultPage/AdultPage";
-import Followers from "Features/User/Layouts/Followers/Followers";
+import fetchPeopleFollowed from "Features/Search/Services/fetchPeopleFollowed";
+import { useFollowing } from "Features/User/Contexts/FollowingProvider";
 
 const SetUser = ({ userId, children }) => {
   const [show, setShow] = useState(false);
@@ -73,6 +74,23 @@ const SetUser = ({ userId, children }) => {
       setUserAbout(userInfo.about.user);
     }
   }, [userInfo, setUserAbout]);
+
+  const [followingData, followingError, followingIsLoading, fetchFollowing] =
+    useFetchFunction();
+
+  useEffect(() => {
+    fetchPeopleFollowed(fetchFollowing, auth);
+  }, []);
+
+  const { setFollowing } = useFollowing();
+
+  useEffect(() => {
+    if (followingData) {
+      setFollowing(followingData.following);
+    }
+  }, [followingData, setFollowing]);
+
+  console.log("following", followingData);
 
   if (
     (userInfo && !isLoading && userInfo.about && !userInfo.about.user) ||

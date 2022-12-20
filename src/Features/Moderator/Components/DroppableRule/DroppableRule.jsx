@@ -11,14 +11,14 @@ const DroppableRule = ({ rules, showDragDrop }) => {
     ));
   };
   return (
-    <Droppable droppableId={rules.id}>
+    <Droppable droppableId={'1'}>
       {(provided) => (
         <DroppableContainer
           showDragDrop={showDragDrop}
           ref={provided.innerRef}
           {...provided.droppableProps}
         >
-          {droppableHandler(rules.list)}
+          {droppableHandler(rules)}
           {provided.placeholder}
         </DroppableContainer>
       )}

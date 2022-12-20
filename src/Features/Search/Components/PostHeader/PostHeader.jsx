@@ -9,6 +9,7 @@ import {
   UserName,
   Flair,
 } from "./PostHeader.styled";
+import moment from "moment";
 
 /**
  * Component that contains the Post Header element.
@@ -18,7 +19,6 @@ import {
  * @returns {React.Component}
  */
 const PostHeader = ({ postheader }) => {
-  // console.log(postheader.headerImage);
   if (postheader) {
     return (
       <PostHeaderStyle>

@@ -34,7 +34,7 @@ const CommentBody = ({ commentBody, comment }) => {
   console.log(commentBody, "com");
   console.log(comment, "commmm");
   if (commentBody) {
-    console.log(commentBody.CommentUserImage);
+    // console.log(commentBody.CommentUserImage);
     return (
       <Container>
         <FirstText>

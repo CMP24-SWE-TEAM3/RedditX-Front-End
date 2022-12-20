@@ -67,10 +67,10 @@ const Search = () => {
   console.log(CommentLists, "jjjj");
 
   let [PeopleList, errorPeople, loadingPeople, FB] = useFetchFunction();
-
+  console.log(PeopleList);
   let [PeopleFollow, errorSub, loadingSub, fetchSub] = useFetchFunction();
   // fetch people follow
-  // console.log(PeopleFollow, "hhhhhhhhhhhhhh");
+  console.log(PeopleFollow, "hhhhhhhhhhhhhh");
   // fetch communities subscribe
 
   let [communityListSub, errorSubs, isLoadingSubs, fetchData] =
@@ -86,20 +86,20 @@ const Search = () => {
       ctx.communityHandler(destination);
     } else {
       ctx.isSubredditHandler(false);
-      ctx.communityHandler(undefined);
+      ctx.communityHandler("");
     }
   }, [query, destination]);
   useEffect(() => {
     if (ctx.word !== "") {
-      if (ctx.isSubreddit && ctx.word !== "") {
+      if (ctx.isSubreddit) {
         // fetchPostsCommunity(fetch, auth, ctx.word, ctx.community);
         fetchCommentsCommunity(fetchComment, auth, ctx.word, ctx.community);
-      } else if (ctx.word !== "") {
+      } else {
         // fetchPosts(fetch, auth, ctx.word, Sort);
         fetchComments(fetchComment, auth, ctx.word);
       }
       fetchCommunities(fetchCommunity, auth, ctx.word);
-      fetchPeople(FB, auth, "");
+      fetchPeople(FB, auth, ctx.word);
       // fetchSubbcomm(reloadSubCommunities, auth);
       getCommunitiesList(fetchData, auth);
       fetchPeopleFollowed(fetchSub, auth);
@@ -108,9 +108,9 @@ const Search = () => {
 
   useEffect(() => {
     if (ctx.word !== "") {
-      if (ctx.isSubreddit && ctx.word !== "") {
-        fetchPostsCommunity(fetch, auth, ctx.word, ctx.community);
-      } else if (ctx.word !== "") {
+      if (ctx.isSubreddit) {
+        fetchPostsCommunity(fetch, auth, ctx.word, ctx.community, ctx.Sort);
+      } else {
         fetchPosts(fetch, auth, ctx.word, ctx.Sort);
       }
     }

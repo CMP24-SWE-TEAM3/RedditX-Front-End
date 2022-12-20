@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import useFetchFunction from "Hooks/useFetchFunction";
 import joinCommunity from "Features/Subreddit/Services/joinCommunity";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
-
+import { BASE_URL } from "API/axios";
 import {
   CommunityItem,
   CommunityA,
@@ -35,9 +35,10 @@ import {
  * @param {string} description - Subreddit Description to show in hover box
  * @param {number} index - Subreddit index among fetched data to index the list
  * @param {number} members - Subreddit Member count
+ * @param {number} rankChange - Subreddit Rank Change
  * @returns {React.Component}
  */
- const Community = ({isJoined, img, title, description, index, members}) => {
+ const Community = ({isJoined, img, title, description, index, members, rankChange}) => {
 
   const auth = useAuth();
   const [isJoinedstate, setIsJoined] = useState(
@@ -55,32 +56,33 @@ import {
   function changeButton() {
     let dataObject = {
       action: isJoinedstate ? "unsub" : "sub",
-      srName: `t5_${title}`
+      srName: `${title}`
     }
     joinCommunity(fetchFunction, dataObject, auth);
     setIsJoined((prevJoined) => !prevJoined);
   }
-  const isRising = isJoinedstate;
   return (
     
     <CommunityItem>
       <HoverDiv>
         <CommunityA to={`/subreddit/*`}>
           <CommunityIndex>{index}</CommunityIndex>
-          <Arrow up={isRising? "true": "false"}></Arrow>
+          <Arrow up={rankChange>=0 || !rankChange?"true":"false"}></Arrow>
           <CommunityImg
-            src={require(`../../Assets/images/${img}`)}
-            alt="logo"
+            crossOrigin="anonynmous"
+            src={`${BASE_URL}/subreddits/files/${img}`}
           ></CommunityImg>
-          <TitleParagraph>{title}</TitleParagraph>
+          <TitleParagraph>{title.substring(3)}</TitleParagraph>
           
         </CommunityA>
         <CommunityCard className="hover-card">
           <ForPadding>
             <HoverItem>
               <ImgTitle>
-                <HoverImg src={require(`../../Assets/images/${img}`)} />
-                <HoverTitle to={'/subreddit/*'}>{title}</HoverTitle>
+                <HoverImg 
+                  crossOrigin="anonynmous"
+                  src={`${BASE_URL}/subreddits/files/${img}`}/>
+                <HoverTitle to={'/subreddit/*'}>{title.substring(3)}</HoverTitle>
               </ImgTitle>
               <MembersOnline>
                 <Members>
@@ -88,7 +90,7 @@ import {
                   <HoverP>Members</HoverP>
                 </Members>
               </MembersOnline>
-              <HoverDescription>{description}</HoverDescription>
+              {description && <HoverDescription>{description}</HoverDescription> }
               <HoverButton>View Community</HoverButton>
             </HoverItem>
           </ForPadding>
