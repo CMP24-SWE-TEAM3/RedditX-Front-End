@@ -33,14 +33,14 @@ const UserComments = () => {
     console.log("comments", data);
   }, [data]);
 
-  // const { posts } = data;
+  const { comments } = data;
 
-  // useEffect(() => {
-  //   posts &&
-  //     setP((prev) => {
-  //       return [...prev, ...posts];
-  //     });
-  // }, [posts]);
+  useEffect(() => {
+    comments &&
+      setP((prev) => {
+        return [...prev, ...comments];
+      });
+  }, [comments]);
 
   useEffect(() => {
     console.log("posts", p);
@@ -48,25 +48,25 @@ const UserComments = () => {
     console.log("comments data", data);
   }, [p, pgNum]);
 
-  // const observer = useRef();
-  // const lastPostElementRef = useCallback(
-  //   (node) => {
-  //     if (isLoading) return;
-  //     if (observer.current) observer.current.disconnect();
-  //     observer.current = new IntersectionObserver((entries) => {
-  //       console.log(
-  //         entries[0].isIntersecting,
-  //         "ddd",
-  //         posts && posts.length !== 0
-  //       );
-  //       if (entries[0].isIntersecting && posts.length !== 0 /*&& hasMore*/) {
-  //         setPgNum((prevPageNumber) => prevPageNumber + 1);
-  //       }
-  //     });
-  //     if (node) observer.current.observe(node);
-  //   },
-  //   [isLoading, posts]
-  // );
+  const observer = useRef();
+  const lastPostElementRef = useCallback(
+    (node) => {
+      if (isLoading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        console.log(
+          entries[0].isIntersecting,
+          "ddd",
+          comments && comments.length !== 0
+        );
+        if (entries[0].isIntersecting && comments.length !== 0 /*&& hasMore*/) {
+          setPgNum((prevPageNumber) => prevPageNumber + 1);
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [isLoading, comments]
+  );
 
   return (
     <Container>
@@ -81,14 +81,14 @@ const UserComments = () => {
               p.map((post, i) => {
                 if (p.length === i + 1) {
                   return (
-                    <div /*ref={lastPostElementRef}*/ key={i}>
-                      <UserComment />
+                    <div ref={lastPostElementRef} key={i}>
+                      <UserComment comment={post} overview={false} />
                     </div>
                   );
                 } else {
                   return (
                     <div key={i}>
-                      <UserComment />
+                      <UserComment comment={post} overview={false} />
                     </div>
                   );
                 }
