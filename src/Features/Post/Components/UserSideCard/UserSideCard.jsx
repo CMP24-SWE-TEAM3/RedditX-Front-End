@@ -28,7 +28,8 @@ import getMyData from "Features/Post/Services/getMyData";
 import { BASE_URL } from "API/axios";
 import getUser from "Features/Post/Services/getUser";
 
-const UserSideCard = () => {
+const UserSideCard = ({ userId }) => {
+  console.log("userId", userId);
   const [toggle, setToggle] = useState(false);
   const location = useLocation();
   const url = location.pathname;
@@ -39,7 +40,7 @@ const UserSideCard = () => {
   console.log(userData);
   const auth = useAuth();
   useEffect(() => {
-    getUser(dataFetchUserData, auth.getUserName(), auth);
+    getUser(dataFetchUserData, userId || auth.getUserName(), auth);
   }, []);
   function toggleHandler() {
     setToggle((prev) => !prev);
@@ -119,15 +120,17 @@ const UserSideCard = () => {
           </SettingsLink>
         }
         <ProfilePic />
-        <UserName>{auth.isLoggedIn() && auth.getUserName()}</UserName>
+        <UserName>
+          {userId || (auth.isLoggedIn() && auth.getUserName())}
+        </UserName>
         {active && (
           <UsernameLink to="" display={active}>{`u/${
-            auth.isLoggedIn() && auth.getUserName()
+            userId || (auth.isLoggedIn() && auth.getUserName())
           } . 5d`}</UsernameLink>
         )}
         {!active && (
           <UsernameSpan>{`u/${
-            auth.isLoggedIn() && auth.getUserName()
+            userId || (auth.isLoggedIn() && auth.getUserName())
           } . 5d`}</UsernameSpan>
         )}
         <KarmaCake />

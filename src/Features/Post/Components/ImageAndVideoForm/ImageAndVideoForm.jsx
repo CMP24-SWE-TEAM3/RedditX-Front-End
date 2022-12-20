@@ -112,6 +112,7 @@ const ImageAndVideoForm = ({ submitPost, isLoadingSubmit }) => {
    * Handle form submit
    */
   const submitForm = () => {
+    console.log("submit");
     setCreatePostAttachments(files);
     submitPost({ type: "image", attachments: files });
   };
