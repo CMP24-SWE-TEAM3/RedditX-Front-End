@@ -3,6 +3,10 @@ import { useState, useEffect } from "react";
 const SafeContext = React.createContext({
   safe: false,
   safeHandler: (safe) => {},
+  Refetch: false,
+  RefetchHandler: (Refetch) => {},
+  RefetchPep: false,
+  RefetchPepHandler: (RefetchPep) => {},
 });
 /**
  * Context for the safe search
@@ -12,6 +16,8 @@ const SafeContext = React.createContext({
  */
 export function SafeContextProvider(props) {
   const [safe, setsafe] = useState(false);
+  const [Refetch, setRefetch] = useState(false);
+  const [RefetchPep, setRefetchPep] = useState(false);
   /**
    * Function for the safe search
    *
@@ -21,12 +27,23 @@ export function SafeContextProvider(props) {
     setsafe(safe);
     // console.log(safe);
   };
-
+  const RefetchHandler = (Refetch) => {
+    setRefetch(Refetch);
+    // console.log(safe);
+  };
+  const RefetchPepHandler = (RefetchPep) => {
+    setRefetchPep(RefetchPep);
+    // console.log(safe);
+  };
   return (
     <SafeContext.Provider
       value={{
         safe: safe,
         safeHandler: safeHandler,
+        Refetch: Refetch,
+        RefetchHandler: RefetchHandler,
+        RefetchPep: RefetchPep,
+        RefetchPepHandler: RefetchPepHandler,
       }}
     >
       {props.children}

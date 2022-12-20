@@ -89,7 +89,7 @@ const ModeratorWidget = () => {
   const ViewAllModerators = () => {
     return (
       <ViewModeratorsContainer>
-        <ViewAllModeratorsLink to={`/subreddit/${communityID}/moderator/spam`}>
+        <ViewAllModeratorsLink to={`/subreddit/${communityID.substring(3)}/moderator/spam`}>
           View All Moderators
         </ViewAllModeratorsLink>
       </ViewModeratorsContainer>
