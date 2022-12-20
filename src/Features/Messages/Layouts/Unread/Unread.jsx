@@ -66,15 +66,15 @@ useEffect(()=>{
   }
 }, [Unreadmessages]);
 
-if(eachMessage && eachMessage.length!==0){
-  Message = eachMessage.map((item) => {
+if(Unreadmessages && Unreadmessages.length!==0){
+  Message = Unreadmessages.map((item) => {
     return(
       <SentMessageItem
-        key = {item.id.toString()}
-        id = {item.id}
-        author = {item.author}
-        subject = {item.title}
-        time = {item.time}
+        key = {item._id}
+        id = {item._id}
+        author = {item.fromID}
+        subject = {item.subject}
+        time = {item.createdAt}
         msg = {item.text}
       />
     )

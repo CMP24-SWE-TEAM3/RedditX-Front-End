@@ -31,7 +31,6 @@ function Messages() {
   const [messagesAll, errorMessagesAll, loadingMessagesAll, fetchMessagesAll ] = useFetchFunction();
 
   useEffect(()=>{
-    console.log('before Sent');
     fetchMessages(fetchMessagesData, auth);
     // fetchUsernameMentions(fetchMentions, auth);
     // fetchPostReplies(fetchReplies, auth);
@@ -44,7 +43,7 @@ function Messages() {
   // console.log(`All is: `);
   if(messages && messages.messages && messages.messages.length!==0) {
     mapping = messages.messages.map((item) => {
-      if(item.read===false) {
+      if(item.unread_status===true) {
         unread.push(item);
         return true;
       }
@@ -60,24 +59,24 @@ function Messages() {
     <>
       <MessagesHeader />
       <Routes>
-        {!loadingMessagesAll &&
+        {!loadingMessages &&
         <Route
           path="/"
           element={
-              <MessageItem messages={messagesAll}/>
+              <MessageItem data={messages}/>
           }
         />
         }
         
         <Route path="/inbox" >
           <Route path="/inbox" element={<MessageItem data={messages}/> } />
-          {!loadingMessagesAll &&
+          {!loadingMessages &&
           <Route path="/inbox/all" element={<MessageItem data={messages}/> }/>}
           {!loadingMessages &&
           <Route path="/inbox/messages" element={<MessageBannel data={messages}/> }/>}
           {!loadingMentions && 
           <Route path="/inbox/mentions"element={ <UserMentions mentions={mentions}/> } />}
-          {!loadingMessagesAll &&
+          {!loadingMessages &&
           <Route path="/inbox/unread" element={ <Unread Unreadmessages={unread}/> }/>}
           {!loadingReplies &&
           <Route path="/inbox/selfreply" element={<PostReplay replies={replies}/> }/>}

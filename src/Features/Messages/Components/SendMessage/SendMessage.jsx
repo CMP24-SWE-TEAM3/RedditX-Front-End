@@ -20,6 +20,7 @@ import { useState } from "react";
 import composeMessage from "../../Services/ComposeMessage";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import { useLocation } from "react-router-dom";
 /**
  * Component that contains Compose Message
  *
@@ -27,17 +28,24 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
  * @returns {React.Component}
  */
 function SendAMessage() {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const receiver = queryParams.get("to");
+  const sender = queryParams.get("from");
+
   const auth = useAuth();
   const [composeRes, errorCompose, loadingCompose, fetchData] = useFetchFunction();
   const [subjectErr, setSubjectErr] = useState(false);
   const [messageErr, setMessageErr] = useState(false);
   const [toErr, setToErr] = useState(false);
   const [formData, setFormData] = useState({
+
     from: "",
-    to: "",
+    to: receiver? receiver:"",
     subject: "",
     message: "",
   });
+  
   function handleChange(event) {
     const { from, to, subject, message } = event.target;
 
@@ -107,7 +115,23 @@ function SendAMessage() {
             <Heading>Send A Private Message</Heading>
           </Spacer>
           <FormField onSubmit={handleSubmit}>
-            
+            <Spacer>
+              <FieldDiv>
+                <Title>From</Title>
+                <FieldContent>
+                  <FromSelection
+                    onChange={handleChange}
+                    value={formData.from}
+                    name="from"
+                    required
+                  >
+                    <option value={"--Choose--"}>--Choose--</option>
+                    <option value={"mohamed"}>mohamed</option>
+                    <option value={"ahmed"}>ahmed</option>
+                  </FromSelection>
+                </FieldContent>
+              </FieldDiv>
+            </Spacer>
             <Spacer>
               <FieldDiv>
                 <Title>to

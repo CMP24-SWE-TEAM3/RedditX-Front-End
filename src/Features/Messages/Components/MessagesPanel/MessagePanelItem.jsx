@@ -74,7 +74,7 @@ const MessageBannelItem = ({
   const [deleteMessageRes, errorDeleteMessage, loadingDeleteMessage, fetchData ] = useFetchFunction();
   const [blockRes, errorBlock, loadingBlock, fetchDataBlock ] = useFetchFunction();
   const [composeRes, errorCompose, loadingCompose, fetchDataSend] = useFetchFunction();
-  const [localRead, setLocalRead] = useState(read);
+  const [localRead, setLocalRead] = useState(!read);
   const [expanded, setExpanded] = useState(true);
   const [deletePrompt, setDeletePrompt] = useState(false);
   const [replyPrompt, setReplyPrompt] = useState(false);
@@ -126,7 +126,7 @@ const MessageBannelItem = ({
     });
 
     let dataObject = {
-      msgID: `t4_${id}`
+      msgID: `${id}`
     };
     deleteMessage(fetchData, dataObject, auth);
     setDeletePrompt(false);
@@ -195,7 +195,7 @@ const MessageBannelItem = ({
       >
         <Subject>
           <Frame>
-            <FrameText>{title}</FrameText>
+            <FrameText>{aurthor}</FrameText>
           </Frame>
           <SubjectText>{title}:</SubjectText>
           <br />
