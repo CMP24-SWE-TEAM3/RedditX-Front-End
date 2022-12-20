@@ -145,7 +145,7 @@ const ModeratorRow = ({
                     navigate(
                       "/message/compose/?from=" +
                         auth.getUserName().substring(3) +
-                        "?to=" +
+                        "&to=" +
                         Moderator._id.substring(3)
                     );
                   }}
