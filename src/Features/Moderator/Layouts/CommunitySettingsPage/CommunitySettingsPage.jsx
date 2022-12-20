@@ -23,6 +23,8 @@ import "react-languages-select/css/react-languages-select.css";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 
+import { useParams } from "react-router-dom";
+
 import {
   Container,
   ButtonsContainer,
@@ -59,7 +61,7 @@ import {
 } from "./CommunitySettingsPage.styled";
 
 const defaultFormFields = {
-  communityName: "imagePro235",
+  communityName: "",
   topicToAdd: "",
   reason: "",
   welcome: "Welcome message",
@@ -72,6 +74,8 @@ const defaultFormFields = {
 
 const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
   //const communityName = "t5_imagePro235";
+
+  const {subredditId}  = useParams()
 
   const [data, error, isLoading, dataFetch] = useFetchFunction();
   const [data2, error2, isLoading2, dataFetch2] = useFetchFunction();
@@ -153,7 +157,8 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
    * useEffect to get community settings
    */
   useEffect(() => {
-    getCommunitySettings(dataFetch, "t5_" + communityName, auth.getToken());
+    getCommunitySettings(dataFetch, "t5_" + subredditId, auth.getToken());
+    setFormFields({ ...formFields, ["communityName"]: subredditId });
     setSignupSubmit(true);
   }, []);
 
@@ -241,7 +246,7 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
         categories: addedTopics,
         description: reason,
       },
-      "t5_" +communityName,
+      "t5_" +subredditId,
       auth.getToken()
     );
   };
