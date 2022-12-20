@@ -48,7 +48,7 @@ const Explore = () => {
     fetchCommunities(fetchCommunity, auth, top);
     // fetchSubbcomm(reloadSubCommunities, auth);
 
-    fetchPosts(fetch, auth, top);
+    fetchPosts(fetch, auth, top, "Relevance");
   }, [top]); // Only re-run the effect if count changes
 
   useEffect(() => {

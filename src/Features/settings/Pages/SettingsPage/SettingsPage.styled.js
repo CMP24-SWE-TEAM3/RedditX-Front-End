@@ -1,9 +1,8 @@
 import styled from "styled-components";
 export const ContainerSettings = styled.div`
   transition: margin-top 0.3s ease;
-  padding-bottom: 40px;
-  min-height: calc(100vh - 88px);
-  margin-left: calc(100vw - 100%);
+  min-height: 100vh;
+  background-color: ${({ theme }) => theme.background.primary};
 `;
 export const InnerContainerSettings = styled.div`
   box-sizing: border-box;
