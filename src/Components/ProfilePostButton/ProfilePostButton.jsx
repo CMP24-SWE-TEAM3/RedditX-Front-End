@@ -12,6 +12,7 @@ import Profile from "Assets/Images/profile.ico";
 import getUser from "Features/User/Services/getMine";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { BASE_URL } from "API/axios";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 /**
@@ -31,27 +32,26 @@ const ProfilePostButton = () => {
     getUser(fetchData, auth);
   }, []);
 
+  const navigate = useNavigate();
+
   return (
     <ProfileButtonStyled>
       <CapContainer>
-        <Cover>
+        <Cover
+          onClick={() =>
+            navigate(`/user/${auth.isLoggedIn() ? auth.getUserName() : ""}`)
+          }
+        >
           <LastContainer />
           <ProfileContainer>
             {userInfo &&
               userInfo.length !== 0 &&
-              userInfo.meInfo.user.hasOwnProperty("avatar") && (
+              userInfo.meInfo &&
+              userInfo.meInfo.user &&
+              userInfo.meInfo.user.avatar && (
                 <ProfileLogoStyled
                   crossOrigin="anonymous"
                   src={`${BASE_URL}/users/files/${userInfo.meInfo.user.avatar}`}
-                  alt={""}
-                />
-              )}
-            {userInfo &&
-              userInfo.length !== 0 &&
-              !userInfo.meInfo.user.hasOwnProperty("avatar") && (
-                <ProfileLogoStyled
-                  crossOrigin="anonymous"
-                  src={Profile}
                   alt={""}
                 />
               )}
