@@ -14,6 +14,10 @@ export const GlobalButtonStyled = styled.button`
   }
 
   color: ${({ theme }) => theme.color.primary};
+
+   @media (max-width: 768px) {
+    margin: 0px;
+  }
 `;
 export const ButtonsGroupStyled = styled.div`
   display: inline-block;

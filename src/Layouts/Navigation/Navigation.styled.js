@@ -1,5 +1,7 @@
 import { Container, Navbar } from "react-bootstrap";
+import Nav from "react-bootstrap/Nav";
 import styled from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 export const StyledContainer = styled(Container)`
   position: fixed;
@@ -124,3 +126,23 @@ export const AppContainer = styled.div`
   text-align: center;
   height: 49px;
 `;
+
+// export const MyNav = styled(Nav)`
+//   a .nav-link {
+//     display: flex !important;
+//     align-items: center !important;
+//   }
+// `;
+
+const GlobalStyle = createGlobalStyle`
+ .nav-link {
+  display: flex !important;
+  align-items: center !important;
+
+  @media (max-width: 768px) {
+    margin: 3px 0;
+  }
+}
+`;
+
+export default GlobalStyle;
