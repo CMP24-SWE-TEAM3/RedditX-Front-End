@@ -143,10 +143,10 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
   const [currentRadioValue, setCurrentRadioValue] = useState("public");
 
   // state for disc
-  const [reason, setReason] = useState("public");
+  const [reason, setReason] = useState("");
 
   // state for welcome message
-  const [welcome, setWelcome] = useState("public");
+  const [welcome, setWelcome] = useState("");
 
   // state to know if the data arrived or not
   const [signupSubmit, setSignupSubmit] = useState(false);

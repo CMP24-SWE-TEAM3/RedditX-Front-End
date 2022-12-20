@@ -7,6 +7,8 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 
 import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
 
+import { useParams } from "react-router-dom";
+
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 
@@ -28,7 +30,9 @@ import {
  */
 
 const MutedPage = () => {
-  const communityName = "t5_imagePro235";
+  //const communityName = "t5_imagePro235";
+
+  const {subredditId}  = useParams()
 
   const [data, error, isLoading, dataFetch] = useFetchFunction();
 
@@ -38,7 +42,7 @@ const MutedPage = () => {
    * useEffect to get all moderators
    */
   useEffect(() => {
-    getMutted(dataFetch, communityName, auth.getToken());
+    getMutted(dataFetch, "t5_"+subredditId, auth.getToken());
   }, []);
 
   const [modalShowMuteUser, setModalShowMuteUser] = useState(false);
@@ -63,14 +67,14 @@ const MutedPage = () => {
             </NameHeader>
 
             {!isLoading && data.users && (
-              <MutedUsers communityName={communityName} Moderator={data.users}></MutedUsers>
+              <MutedUsers communityName={subredditId} Moderator={data.users}></MutedUsers>
             )}
           </InnerContainer>
         </Container>
       )}
       {modalShowMuteUser && (
         <MuteUserModal
-          communityName={communityName}
+          communityName={subredditId}
           show={modalShowMuteUser}
           onHide={() => setModalShowMuteUser(false)}
         />

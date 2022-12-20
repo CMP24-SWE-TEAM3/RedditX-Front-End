@@ -128,7 +128,7 @@ const ModeratorRow = ({
                           {
                             userID: Moderator._id,
                           },
-                          communityName,
+                          "t5_" + communityName,
                           auth.getToken()
                         );
                       }}
@@ -160,7 +160,7 @@ const ModeratorRow = ({
                         {
                           userID: Moderator._id,
                         },
-                        communityName,
+                        "t5_" + communityName,
                         auth.getToken()
                       );
                     }}
@@ -180,7 +180,7 @@ const ModeratorRow = ({
                         userID: Moderator._id,
                         operation: "unmute",
                       },
-                      communityName,
+                      "t5_" + communityName,
                       auth.getToken()
                     );
                   }}

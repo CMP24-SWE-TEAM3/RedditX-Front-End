@@ -48,7 +48,7 @@ const MutedUsers = ({ Moderator, communityName }) => {
       <Container>
         {filteredMonsters.map((mod) => (
           <ModeratorRow
-          communityName={communityName}
+            communityName={communityName}
             key={mod._id}
             Moderator={mod}
             muted={true}

@@ -123,7 +123,7 @@ const MuteUser = ({ communityName, setModalShowApproveUser }) => {
                   userID: "t2_" + userName,
                   operation: "mute",
                 },
-                communityName,
+                "t5_" + communityName,
                 auth.getToken()
               );
               setModalShowApproveUser(false);

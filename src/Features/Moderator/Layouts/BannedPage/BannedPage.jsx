@@ -7,6 +7,8 @@ import BanUserModal from "../BanUserModal/BanUserModal";
 
 import { AiOutlineInfoCircle } from "react-icons/ai";
 
+import { useParams } from "react-router-dom";
+
 import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
 
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
@@ -28,8 +30,9 @@ import {
  */
 
 const BannedPage = () => {
-  const communityName = "t5_imagePro235";
+  //const communityName = "t5_imagePro235";
 
+  const {subredditId}  = useParams()
   const [data, error, isLoading, dataFetch] = useFetchFunction();
 
   const auth = useAuth();
@@ -38,7 +41,7 @@ const BannedPage = () => {
    * useEffect to get all moderators
    */
   useEffect(() => {
-    getBanned(dataFetch, communityName, auth.getToken());
+    getBanned(dataFetch, "t5_"+subredditId, auth.getToken());
   }, []);
 
   const [modalShowBaneUser, setModalShowBaneUser] = useState(false);
