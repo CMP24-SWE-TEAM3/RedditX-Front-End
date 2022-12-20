@@ -5,6 +5,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { useParams } from "react-router-dom";
 import Flair from "../Flair/Flair";
 
 // const data = [
@@ -86,12 +87,13 @@ const NewFlair = () => {
   const auth = useAuth();
   const ctx = useContext(FlairContext);
   const [flairList, error, loading, fetch] = useFetchFunction();
+  const { subredditId } = useParams();
   // console.log(flairList.flairs, "jjjjj");
   // console.log(flairList);
   const [items, setItems] = useState([]);
   let initial;
   useEffect(() => {
-    fetchFlairs(fetch, auth, "gg");
+    fetchFlairs(fetch, auth, subredditId);
   }, [ctx.ChangeFetch]);
   if (!loading) {
     initial = flairList.flairs;

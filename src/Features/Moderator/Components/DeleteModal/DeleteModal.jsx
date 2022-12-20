@@ -5,6 +5,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useParams } from "react-router-dom";
 import { CancelButton, DeleteButton, StyledModal } from "./DeleteModal.styled";
 const DeleteModal = ({ ShowModal, setShowModal, id }) => {
   console.log(ShowModal);
@@ -24,7 +25,8 @@ const DeleteModal = ({ ShowModal, setShowModal, id }) => {
     const obj = {
       id: id,
     };
-    DeleteFlair(fetchData, obj, auth);
+    const { subredditId } = useParams();
+    DeleteFlair(fetchData, obj, auth, subredditId);
     if (!isLoading) {
       ctx.ChangeFetchHandler(!ctx.ChangeFetch);
     }

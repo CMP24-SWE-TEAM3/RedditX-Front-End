@@ -32,7 +32,8 @@ import CancelModal from "../CancelModal/CancelModal";
 import AddFlair from "Features/Moderator/Services/AddFlair";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
-
+import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 /**
  * Component that contains the Postslist component and the PostslistItems.
  *
@@ -126,6 +127,7 @@ const FlairInfo = ({
    * function to handle Save operation
    * @param {object} e -  event object
    */
+  const { subredditId } = useParams();
   const auth = useAuth();
   const saveHandler = (e) => {
     // e.preventDefault();
@@ -144,7 +146,8 @@ const FlairInfo = ({
         flairModOnly: true,
         flairAllowUserEdits: true,
       };
-      AddFlair(fetchData, obj, auth, "ali");
+      // const { subredditId } = useParams();
+      AddFlair(fetchData, obj, auth, subredditId);
       // console.log(Community, isLoading);
       if (!isLoading) {
         ctx.ChangeFetchHandler(!ctx.ChangeFetch);
