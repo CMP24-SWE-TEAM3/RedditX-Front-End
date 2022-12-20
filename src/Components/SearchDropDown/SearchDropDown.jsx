@@ -115,6 +115,7 @@ const SearchBody = ({
     ctx.isSubredditHandler(true);
     ctx.communityHandler(query);
   };
+
   return (
     <>
       {(searchItemsCommunities.length > 0 || searchItemsPeople.length > 0) && (
@@ -131,7 +132,7 @@ const SearchBody = ({
               {searchItemsCommunities.map((Community, index) => {
                 if (index < 3) {
                   return (
-                    <SubText to={`/search/posts`}>
+                    <SubText to={`/subreddit/${Community}`}>
                       <ImageContainer>
                         <img
                           crossOrigin="anonymous"
@@ -172,7 +173,7 @@ const SearchBody = ({
               {searchItemsPeople.map((searchItem, index) => {
                 if (index < 3) {
                   return (
-                    <SubText to={`/search/posts`}>
+                    <SubText to={`/user/${searchItem}`}>
                       <ImageContainer>
                         <img
                           crossOrigin="anonymous"
