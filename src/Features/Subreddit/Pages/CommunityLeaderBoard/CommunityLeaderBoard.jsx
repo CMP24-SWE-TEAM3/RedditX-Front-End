@@ -29,7 +29,7 @@ const CommunityLeaderBoard = () => {
 
   // Fetch communities
   const [communityList, errorRandom, loadingRandom, fetchFunction] = useFetchFunction();
-
+  const [reRender, setRerender] = useState(false);
   const {categoryType} = useParams();
   const auth = useAuth();
   
@@ -75,7 +75,7 @@ const CommunityLeaderBoard = () => {
                   <CategoryDropDown />
                 </DropDown>
               </DataContext.Provider>
-              <Container  subscribed={CommunitiesSub.communities} />
+              <Container  subscribed={CommunitiesSub.communities} Rerender = {setRerender} />
               <RightSection communityList = {communityList}/>
             </>
             } 

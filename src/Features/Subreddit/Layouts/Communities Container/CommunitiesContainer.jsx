@@ -25,10 +25,10 @@ import { useCallback } from "react";
  * @param {object} subscribed - array that contains all the subscribed communities
  * @returns {React.Component}
  */
- const Container = ({subscribed }) => {
+ const Container = ({subscribed, Rerender }) => {
   const [pgNum, setPgNum] = useState(1);   //Page Number
   const [coms, setComs] = useState([]);          //communities
-  
+  // const [reRender, setRerender] = useState(false);
   let [communitiesList, error, loading, fetchFunction] = useFetchFunction();
   const auth = useAuth();
   const {categoryType} = useParams();
@@ -44,12 +44,12 @@ import { useCallback } from "react";
   }
   const [currCategory, setCurrCategory] = useState(categoryType==="*"? "Growing": initial);
   const [prevCategory, setPrevCategory] = useState();
-
+  
   useEffect(()=> {
     
     if(categoryType==="All Communities") {
       setCurrCategory("Growing");
-      if(currCategory!==prevCategory) {
+      if(currCategory!==prevCategory ) {
         setPrevCategory(currCategory);
         fetchCommunities(fetchFunction, auth, currCategory, pgNum);
       }

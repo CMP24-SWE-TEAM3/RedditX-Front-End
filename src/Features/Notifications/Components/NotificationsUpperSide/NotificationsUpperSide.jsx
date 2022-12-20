@@ -12,13 +12,22 @@ import markAllAsRead from "Features/Notifications/Services/MarkAllAsRead";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
-const NotificationsUpperSide = () => {
+const NotificationsUpperSide = ({notifs}) => {
   const auth = useAuth();
   const [markReadRes, errorMarkRead, loadingMarkRead, fetchData] =
     useFetchFunction();
 
   function handleReadNotifications() {
-    // markAllAsRead(fetchData, auth);
+    let mapping;
+    if(notifs && notifs.length!==0) {
+      mapping = notifs.map((item)=> {
+        let dataObject = {
+          notificationID: item._id,
+        }
+        markAllAsRead(fetchData, auth, dataObject);
+      });
+    }
+
   }
   return (
     <ContainerUpper>
