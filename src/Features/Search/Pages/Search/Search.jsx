@@ -28,7 +28,7 @@ import SearchContext from "Features/Search/Contexts/SearchWordContext/Search-con
 import fetchPostsCommunity from "Features/Search/Services/fetchPostsCommunity";
 import fetchCommentsCommunity from "Features/Search/Services/fetchCommentsCommunity";
 import getCommunitiesList from "Features/Post/Services/getCommunitiesList";
-
+import SafeContext from "Features/Search/Contexts/SafeSearchContext/Safe-context";
 /**
  * Component that contains the Search Page and the Main Links component and routes for the four pages Posts page, Comments page, Community page and People page.
  *
@@ -36,6 +36,7 @@ import getCommunitiesList from "Features/Post/Services/getCommunitiesList";
  * @returns {React.Component}
  */
 const Search = () => {
+  const ctx2 = useContext(SafeContext);
   // const [Sort, setSort] = useState("Relevance");
   /**
    * Function take the SortItem And Handle it
@@ -105,7 +106,23 @@ const Search = () => {
       fetchPeopleFollowed(fetchSub, auth);
     }
   }, [ctx.word, ctx.isSubreddit, ctx.community]); // Only re-run the effect if count changes
-
+  //////////////////////////////
+  useEffect(() => {
+    if (ctx.word !== "") {
+      fetchCommunities(fetchCommunity, auth, ctx.word);
+      getCommunitiesList(fetchData, auth);
+    }
+  }, [ctx.word, ctx.isSubreddit, ctx.community, ctx2.Refetch]); // Only re-run the effect if count changes
+  ///////////////////
+  /////////////////////////////
+  useEffect(() => {
+    if (ctx.word !== "") {
+      // fetchPeople(FB, auth, ctx.word);
+      // fetchSubbcomm(reloadSubCommunities, auth);
+      fetchPeopleFollowed(fetchSub, auth);
+    }
+  }, [ctx.word, ctx.isSubreddit, ctx.community, ctx2.RefetchPep]); // Only re-run the effect if count changes
+  ///////////////////////////
   useEffect(() => {
     if (ctx.word !== "") {
       if (ctx.isSubreddit) {

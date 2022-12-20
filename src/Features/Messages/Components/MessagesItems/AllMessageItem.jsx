@@ -29,13 +29,14 @@ import ReportModal from "../ReportModal/ReportModal";
 import markUnread from "../../Utils/MarkUnread";
 import readed from "../../Utils/Read";
 import compareDate from "../../Utils/ParseDate";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import deleteMessage from "Features/Messages/Services/DeleteMessage";
 import useFetchFunction from "Hooks/useFetchFunction";
 import unreadMessages from "Features/Messages/Services/UnreadMessage";
 import blockUser from "../../Services/BlockUser";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import composeMessage from "../../Services/ComposeMessage";
+import moderatorCheck from "../../Services/ModeratorCheck";
 /**
  * Component that contains the ordinary message item
  *
@@ -58,11 +59,11 @@ const NormalMessageAll = ({
   title,
   time,
   msg,
-  admin,
   read,
   id,
   deleted,
   block,
+  admin,
   reRender,
 }) => {
   const auth = useAuth();
@@ -70,7 +71,6 @@ const NormalMessageAll = ({
   const [unreadMessageRes, errorUnreadMessage, loadingUnreadMessage, fetchDataUnread ] = useFetchFunction();
   const [blockRes, errorBlock, loadingBlock, fetchDataBlock ] = useFetchFunction();
   const [composeRes, errorCompose, loadingCompose, fetchDataSend] = useFetchFunction();
-
   const [deletePrompt, setDeletePrompt] = useState(false);
   const [blockPrompt, setBlockPrompt] = useState(false);
   const [replyPrompt, setReplyPrompt] = useState(false);
@@ -79,6 +79,7 @@ const NormalMessageAll = ({
   const [formData, setFormData] = useState({
     message: "",
   });
+
 
   //For Text Area
   function handleChange(event) {
@@ -144,6 +145,7 @@ const NormalMessageAll = ({
     };
     composeMessage(fetchDataSend, dataObject, auth);
     }
+    reRender((prev)=>!prev);
     setFormData({message:""});
     setReplyPrompt(false);
     setErr(false);

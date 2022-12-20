@@ -7,13 +7,14 @@ import axios from "API/axios";
  * @param {Function} fetchFunction Coming from useFetchFunction custom hook
  */
 
-const markAllAsRead = async (fetchData, auth) => {
+const markAllAsRead = async (fetchData, auth, dataObject) => {
   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
   fetchData({
     axiosInstance: axios,
     method: "POST",
-    // url: "/api/message/read-all-messages",
+    url: "/api/message/read-all-messages",
     requestConfig: {
+      data: dataObject,
       headers: {
         "Content-Language": "en-US",
         Authorization: `Bearer ${auth.getToken()}`,

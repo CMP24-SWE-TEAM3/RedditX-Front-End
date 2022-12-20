@@ -23,15 +23,15 @@ import SettingModal from "../../Components/SettingModal/SettingModal";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useEffect } from "react";
 import fetchPrefs from "../../Services/FetchPrefs";
-import {useAuth} from "Features/Authentication/Contexts/Authentication";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 const SettingsPage = () => {
   const auth = useAuth();
   const [data, error, loading, fetchData] = useFetchFunction();
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     fetchPrefs(fetchData, auth);
-  },[]);
+  }, []);
   console.log(data);
   const toggleHandler = (p) => {
     console.log(p);
@@ -43,10 +43,10 @@ const SettingsPage = () => {
       <InnerContainerSettings>
         <Title>User settings</Title>
         <SettingsNav>
-          {location.pathname !== "/settings/" && (
+          {location.pathname !== "/settings" && (
             <NavLink to={"/settings/Account"}>Account</NavLink>
           )}
-          {location.pathname === "/settings/" && (
+          {location.pathname === "/settings" && (
             <NavLink to={"/settings/"}>Account</NavLink>
           )}
           <NavLink to={"/settings/Profile"}>Profile</NavLink>
@@ -61,17 +61,30 @@ const SettingsPage = () => {
               <Route path="Account" element={<AccountPage />} />
               <Route path="Profile" element={<ProfilePage />} />
               <Route path="privacy" element={<PrivacyPage />} />
-              
-              <Route path="feed" element={!loading && data.prefs && <FeedPage 
-                adult = {data.prefs.user.searchIncludeOver18}
-                />} />
-                
-              <Route path="emails" element={!loading && data.prefs && 
-                <EmailsPage 
-                  emailSubscribe = {data.prefs.user.emailUnsubscripeAll}
-                  Request = {data.prefs.user.emailMessages}
-                  Followers = {data.prefs.user.enableFollowers}
-                />} />
+
+              <Route
+                path="feed"
+                element={
+                  !loading &&
+                  data.prefs && (
+                    <FeedPage adult={data.prefs.user.searchIncludeOver18} />
+                  )
+                }
+              />
+
+              <Route
+                path="emails"
+                element={
+                  !loading &&
+                  data.prefs && (
+                    <EmailsPage
+                      emailSubscribe={data.prefs.user.emailUnsubscripeAll}
+                      Request={data.prefs.user.emailMessages}
+                      Followers={data.prefs.user.enableFollowers}
+                    />
+                  )
+                }
+              />
               <Route
                 path="/settings"
                 element={<Navigate to={"/settings/Account"} />}

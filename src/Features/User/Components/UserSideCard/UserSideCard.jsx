@@ -51,6 +51,8 @@ import { MdChevronRight } from "react-icons/md";
 import { BsFillPersonFill } from "react-icons/bs";
 import BlockModal from "Features/User/Components/BlockModal/BlockModal";
 import blockUser from "Features/User/Services/blockUser";
+import { useFollowing } from "Features/User/Contexts/FollowingProvider";
+import followUser from "Features/User/Services/followUser";
 
 const MONTHS = [
   "Jan",
@@ -68,6 +70,7 @@ const MONTHS = [
 ];
 
 const UserSideCard = () => {
+  const [isFollowing, setIsFollowing] = useState(false);
   const [toggle, setToggle] = useState(false);
   const [date, setDate] = useState(null);
   const [show, setShow] = useState(false);
@@ -194,8 +197,9 @@ const UserSideCard = () => {
             {userAbout && userAbout.totalKarma && (
               <span className="number"> {userAbout.totalKarma} </span>
             )}
-            {((userAbout && !userAbout.totalKarma) ||!userAbout ) &&
-              (<span className="number"> 0 </span>)}
+            {((userAbout && !userAbout.totalKarma) || !userAbout) && (
+              <span className="number"> 0 </span>
+            )}
           </KarmaNo>
         </KarmaContainer>
         <KarmaContainer>
@@ -322,8 +326,46 @@ const UserSideCard = () => {
   }
 
   const FollowButton = () => {
-    return <StyledFollowButton></StyledFollowButton>;
+    return (
+      <StyledFollowButton
+        text={isFollowing ? "Unfollow" : "Follow"}
+        onClick={followingHandler}
+      >
+        {isFollowing ? "unFollow" : "Follow"}
+      </StyledFollowButton>
+    );
   };
+
+  const { following } = useFollowing();
+
+  const [
+    followingResponse,
+    followingError,
+    followingIsLoading,
+    fetchFollowing,
+  ] = useFetchFunction();
+
+  const handleFollowing = (type) => {
+    followUser(fetchFollowing, auth, {
+      action: type ? "unsub" : "sub",
+      srName: userID,
+    });
+  };
+
+  useEffect(() => {
+    if (following && following.length !== 0) {
+      setIsFollowing(() => {
+        return following.find((element) => {
+          return element._id === userID;
+        });
+      });
+    }
+  }, [following, userID]);
+
+  function followingHandler() {
+    setIsFollowing((prev) => !prev);
+    handleFollowing(isFollowing);
+  }
 
   return (
     <Container>
@@ -378,7 +420,7 @@ const UserSideCard = () => {
         <ButtonContainer>
           {isMe && <LinkButton to={"/submit"}> {`New Post`} </LinkButton>}
           {false && <UnBlockButton />}
-          {false && <FollowButton />}
+          {!isMe && <FollowButton />}
         </ButtonContainer>
         {toggle && <MoreOptionsContent />}
         <MoreOptions />

@@ -39,16 +39,16 @@ const MonthState = () => {
 
   // get page views
   useEffect(() => {
-    getPageViews(fetchPages, auth, subredditId);
+    getPageViews(fetchPages, auth, `t5_${subredditId}`);
   }, []);
 
   // get member counts
   useEffect(() => {
-    getMembersCount(fetchMemberCountsJoined, auth, subredditId, "joined");
+    getMembersCount(fetchMemberCountsJoined, auth, `t5_${subredditId}`, "joined");
   }, []);
   // get member counts
   useEffect(() => {
-    getMembersCount(fetchMemberCountsLeft, auth, subredditId, "left");
+    getMembersCount(fetchMemberCountsLeft, auth, `t5_${subredditId}`, "left");
   }, []);
 
   const [months, setMonth] = useState([

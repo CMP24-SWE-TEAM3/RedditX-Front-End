@@ -240,5 +240,13 @@ export const SaveButton = styled.button`
   cursor: pointer;
 `;
 
-
+export const Error = styled.span`
+  display: none;
+  color:  ${({ theme }) => theme.color.danger};
+  transition: 0.3s;
+  font-size: 11px;
+  &.active {
+    display: block;
+  }
+`;
 

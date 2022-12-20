@@ -36,6 +36,7 @@ import {
  * @param {number} index - Subreddit index among fetched data to index the list
  * @param {number} members - Subreddit Member count
  * @param {number} rankChange - Subreddit Rank Change
+ * @param {Function} reRender - Function to rerender parent
  * @returns {React.Component}
  */
  const Community = ({isJoined, img, title, description, index, members, rankChange}) => {
@@ -65,7 +66,7 @@ import {
     
     <CommunityItem>
       <HoverDiv>
-        <CommunityA to={`/subreddit/*`}>
+        <CommunityA to={`/subreddit/${title}`}>
           <CommunityIndex>{index}</CommunityIndex>
           <Arrow up={rankChange>=0 || !rankChange?"true":"false"}></Arrow>
           <CommunityImg
@@ -82,7 +83,7 @@ import {
                 <HoverImg 
                   crossOrigin="anonynmous"
                   src={`${BASE_URL}/subreddits/files/${img}`}/>
-                <HoverTitle to={'/subreddit/*'}>{title.substring(3)}</HoverTitle>
+                <HoverTitle to={`/subreddit/${title}`}>{title.substring(3)}</HoverTitle>
               </ImgTitle>
               <MembersOnline>
                 <Members>
