@@ -1,7 +1,14 @@
 import SettingsChange from "../../Components/SettingChange/SettingChange";
 import CountryChange from "../../Components/CountrySetting/CountrySetting";
 import PasswordChange from "../../Components/PasswordChange/PasswordChange";
-import { SignInWithGoogle } from "Features/Authentication/Layouts/LogInPageCom/LogInPageCom.styled";
+
+import {
+  GoogleContainer,
+  Text,
+  Header,
+  Par,
+  SignInWithGoogle,
+} from "./AccountPage.styled";
 import { FcGoogle } from "react-icons/fc";
 import {
   signInWithGooglePopup,
@@ -37,14 +44,6 @@ const AccountPage = () => {
     });
 
     setSignupSubmit(true);
-
-    // console.log("data from google : " + data);
-
-    // if (!error) {
-    //   setFinishedLoading(true);
-    //   auth.login(data);
-    //   navigate("/");
-    // }
   };
 
   return (
@@ -64,15 +63,18 @@ const AccountPage = () => {
         content={"This is your primary location."}
       ></CountryChange>
 
-      
+      <GoogleContainer>
+        <Text>
+          <Header>Connect to Google</Header>
+          <Par>Connect account to log in to Reddit with Google</Par>
+        </Text>
         <SignInWithGoogle>
-          {/* <div id="signInDiv"></div> */}
           <button onClick={() => logGoogleUser()}>
             <FcGoogle size={22} />
             <span> CONTINUE WITH GOOGLE</span>
           </button>
         </SignInWithGoogle>
-
+      </GoogleContainer>
     </>
   );
 };
