@@ -47,9 +47,11 @@ export const StyledSpan = styled.span`
 export const FollowButton = styled.button`
   min-width: 112px;
   position: relative;
-  background-color: ${({ theme }) => theme.background.primary};
+  background-color: ${({ theme, isFollowing }) =>
+    isFollowing ? "transparent" : theme.background.lightMuted};
   border: 1px solid transparent;
-  color: ${({ theme }) => theme.color.secondary};
+  color: ${({ theme, isFollowing }) =>
+    isFollowing ? theme.borderColor.primary : theme.color.secondary};
   font-family: "Noto Sans", Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -65,4 +67,9 @@ export const FollowButton = styled.button`
   width: auto;
   display: flex;
   justify-content: center;
+
+  &:hover {
+    background-color: ${({ isFollowing }) =>
+      isFollowing ? "#ececec" : "#e1ecf4"};
+  }
 `;
