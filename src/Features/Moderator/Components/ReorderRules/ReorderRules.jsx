@@ -18,7 +18,7 @@ const ReorderRules = ({ showDragDrop }) => {
   // Error: Contains error message when the request is failed
   // Data: the response data
   const [rulesList, error, isLoading, fetchData] = useFetchFunction();
-
+  console.log(subredditId);
   const onDragEnd = (result) => {
     if (!result.destination) {
       return;
@@ -33,23 +33,24 @@ const ReorderRules = ({ showDragDrop }) => {
   };
 
   useEffect(() => {
-    getSubreddit(fetchData, subredditId, auth);
+    getSubreddit(fetchData,  subredditId, auth);
   }, []);
 
-  if (
-    rulesList &&
-    rulesList.length !== 0 &&
-    rulesList.things &&
-    rulesList.things[0].communityRules
-  ) {
-    for (let i = 0; i < rulesList.things[0].communityRules?.length; i++) {
-      Rules.push(
-        <RuleTab
-          showDragDrop={true}
-          number={i + 1}
-          ruleTitle={rulesList.things[0].communityRules[i].title}
-        />
-      );
+  if (rulesList) {
+    if (
+      rulesList?.length !== 0 &&
+      rulesList?.things &&
+      rulesList?.things[0].communityRules
+    ) {
+      for (let i = 0; i < rulesList?.things[0].communityRules?.length; i++) {
+        Rules.push(
+          <RuleTab
+            showDragDrop={true}
+            number={i + 1}
+            ruleTitle={rulesList.things[0].communityRules[i].title}
+          />
+        );
+      }
     }
   }
 
