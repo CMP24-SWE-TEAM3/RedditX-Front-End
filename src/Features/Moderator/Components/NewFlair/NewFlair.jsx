@@ -92,6 +92,9 @@ const NewFlair = () => {
   // console.log(flairList);
   const [items, setItems] = useState([]);
   let initial;
+  ////////////////////////////////////
+  // Featch
+  /////////////////////////
   useEffect(() => {
     fetchFlairs(fetch, auth, subredditId);
   }, [ctx.ChangeFetch]);
