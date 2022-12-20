@@ -9,10 +9,10 @@ import { DraftEditorTabContainer } from "./DraftEditorTab.styled";
  * @param {Function} submitPost - Function to submit the post
  * @returns {React.Component} Draft Editor Tab component (The tab that contains the draft editor in create post page)
  */
-const DraftEditorTab = ({ submitPost }) => {
+const DraftEditorTab = ({ submitPost, isLoading }) => {
   return (
     <DraftEditorTabContainer>
-      <DraftEditorForm submitPost={submitPost} />
+      <DraftEditorForm submitPost={submitPost} isLoadingSubmit={isLoading} />
     </DraftEditorTabContainer>
   );
 };

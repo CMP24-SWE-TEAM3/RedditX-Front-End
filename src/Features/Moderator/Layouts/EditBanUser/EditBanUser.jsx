@@ -132,7 +132,7 @@ const EditBanUser = ({ moderator, setShowEditModal, userName }) => {
     banUser(
       dataFetch,
       {
-        userID: "t2_" + userName,
+        userID: userName,
         operation: op,
       },
       communityName,

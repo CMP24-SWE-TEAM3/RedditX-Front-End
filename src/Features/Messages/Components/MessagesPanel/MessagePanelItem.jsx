@@ -74,7 +74,7 @@ const MessageBannelItem = ({
   const [deleteMessageRes, errorDeleteMessage, loadingDeleteMessage, fetchData ] = useFetchFunction();
   const [blockRes, errorBlock, loadingBlock, fetchDataBlock ] = useFetchFunction();
   const [composeRes, errorCompose, loadingCompose, fetchDataSend] = useFetchFunction();
-  const [localRead, setLocalRead] = useState(read);
+  const [localRead, setLocalRead] = useState(!read);
   const [expanded, setExpanded] = useState(true);
   const [deletePrompt, setDeletePrompt] = useState(false);
   const [replyPrompt, setReplyPrompt] = useState(false);
@@ -120,13 +120,13 @@ const MessageBannelItem = ({
     changeMessage((message) => {
       return message.map((prevState) => {
         return prevState.id === id
-          ? { ...prevState, delete: !prevState.delete }
+          ? { ...prevState, isDeleted: !prevState.isDeleted }
           : prevState;
       });
     });
 
     let dataObject = {
-      msgID: `t4_${id}`
+      msgID: `${id}`
     };
     deleteMessage(fetchData, dataObject, auth);
     setDeletePrompt(false);
@@ -171,7 +171,7 @@ const MessageBannelItem = ({
   function handleUnread(){
     setLocalRead(false);
     let dataObject = {
-      msgID: `t4_${id}`
+      msgID: `${id}`
     };
     unreadMessages(fetchDataUnread, dataObject, auth);
   }
@@ -195,7 +195,7 @@ const MessageBannelItem = ({
       >
         <Subject>
           <Frame>
-            <FrameText>{title}</FrameText>
+            <FrameText>{aurthor}</FrameText>
           </Frame>
           <SubjectText>{title}:</SubjectText>
           <br />

@@ -65,7 +65,7 @@ const messagesData = [
  * @returns {React.Component}
  */
 function AllMessagesTypes({data}) {
-  const [eachMessage, setEachMessage] = useState(messagesData);
+  const [eachMessage, setEachMessage] = useState(data.messages);
 
   let Message = (
     <Empty>
@@ -75,18 +75,18 @@ function AllMessagesTypes({data}) {
     </Empty>
   );
   
-  useEffect(()=>{
-    if(data&& data.messages &&data.messages.length!==0) {
-      setEachMessage(data.messages);
-    }
-  }, [data]);
+  // useEffect(()=>{
+  //   if(data&& data.messages &&data.messages.length!==0) {
+  //     setEachMessage(data.messages);
+  //   }
+  // }, [data]);
 
-  if(eachMessage && eachMessage.length!==0) {
-
-    Message = eachMessage.map((item) => {
-      switch (item.type) {
+  if(data&& data.messages &&data.messages.length!==0) {
+    let type = 'message';
+    Message = data.messages.map((item) => {
+      switch (type) {
         case "usernameMention":
-          if(!item.delete) {
+          if(!item.isDeleted) {
           return (
             <UsernameMentionItem
               changeMessage={setEachMessage}
@@ -104,7 +104,7 @@ function AllMessagesTypes({data}) {
           );}
           break;
         case "postReply":
-          if(!item.delete) {
+          if(!item.isDeleted) {
           return (
             <PostReplayItem
               changeMessage={setEachMessage}
@@ -122,20 +122,20 @@ function AllMessagesTypes({data}) {
           );}
           break;
         default:
-          if(!item.delete) {
+          if(!item.isDeleted) {
           return (
             <NormalMessageAll
               changeMessage={setEachMessage}
-              aurthor={item.aurthor}
-              title={item.title}
-              time={item.time}
-              msg={item.msg}
+              aurthor={item.fromID.substring(3)}
+              title={item.subject}
+              time={item.createdAt}
+              msg={item.text}
               admin={item.admin}
-              read={item.read}
-              id={item.id}
-              deleted={item.delete}
+              read={item.unread_status}
+              id={item._id}
+              deleted={item.isDeleted}
               block={item.block}
-              key={item.id}
+              key={item._id}
             />
           );
           }

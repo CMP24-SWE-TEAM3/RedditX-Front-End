@@ -33,6 +33,10 @@ const FlairWidget = () => {
     community && community.flairList && setFlairList(community.flairList);
   }, [community]);
 
+  useEffect(() => {
+    console.log(flairList);
+  }, [flairList]);
+
   /**
    * handler on click show more
    */

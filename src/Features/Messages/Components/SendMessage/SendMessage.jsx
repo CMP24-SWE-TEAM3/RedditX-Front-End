@@ -20,6 +20,7 @@ import { useState } from "react";
 import composeMessage from "../../Services/ComposeMessage";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import { useLocation } from "react-router-dom";
 /**
  * Component that contains Compose Message
  *
@@ -27,17 +28,24 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
  * @returns {React.Component}
  */
 function SendAMessage() {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const receiver = queryParams.get("to");
+  const sender = queryParams.get("from");
+  
   const auth = useAuth();
   const [composeRes, errorCompose, loadingCompose, fetchData] = useFetchFunction();
   const [subjectErr, setSubjectErr] = useState(false);
   const [messageErr, setMessageErr] = useState(false);
   const [toErr, setToErr] = useState(false);
   const [formData, setFormData] = useState({
+
     from: "",
-    to: "",
+    to: receiver? receiver:"",
     subject: "",
     message: "",
   });
+  
   function handleChange(event) {
     const { from, to, subject, message } = event.target;
 
@@ -82,12 +90,24 @@ function SendAMessage() {
     {
       console.log(formData.to);
       console.log(auth.getUserName());
-      let dataObject = {
-        fromID: auth.getUserName(),
-        toID: `t2_${formData.to}`,
-        subject: formData.subject,
-        text: formData.message
-      };
+      let dataObject;
+      if(sender && receiver) {
+        dataObject = {
+          fromID: `t2_${sender}`,
+          toID: `t2_${receiver}`,
+          subject: formData.subject,
+          text: formData.message
+        }
+      }
+      else {
+        dataObject = {
+          fromID: auth.getUserName(),
+          toID: `t2_${formData.to}`,
+          subject: formData.subject,
+          text: formData.message
+        };
+      }
+      
       composeMessage(fetchData, dataObject, auth);
       
       //Clearing form on successfull submission
@@ -107,7 +127,6 @@ function SendAMessage() {
             <Heading>Send A Private Message</Heading>
           </Spacer>
           <FormField onSubmit={handleSubmit}>
-            
             <Spacer>
               <FieldDiv>
                 <Title>to

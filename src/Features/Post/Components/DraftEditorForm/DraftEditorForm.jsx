@@ -38,7 +38,7 @@ import { useCreatePostText } from "Features/Post/Contexts/createPostText";
  * @param {Function} submitPost - Function to submit the post
  * @returns {React.Component} - Draft editor Form component (The form that appears when you click on the post tab in main section)
  */
-const DraftEditorForm = ({ submitPost }) => {
+const DraftEditorForm = ({ submitPost, isLoadingSubmit }) => {
   // State for flair modal
   const [modalShow, setModalShow] = useState(false);
 
@@ -173,7 +173,8 @@ const DraftEditorForm = ({ submitPost }) => {
             onClick={submitForm}
             id="post"
           >
-            Post
+            {!isLoadingSubmit && "Post"}
+            {isLoadingSubmit && <Spinner animation="border" variant="light" />}
           </PostButton>
         </SubmitButtons>
       </StyledDraftEditorForm>

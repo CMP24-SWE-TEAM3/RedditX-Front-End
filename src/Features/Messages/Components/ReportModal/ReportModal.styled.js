@@ -69,12 +69,14 @@ export const StyledModal = styled(Modal)`
     font: inherit;
     vertical-align: baseline;
   }
-
+  .btn-div input {
+    display: none;
+  }
   .btn-div:hover {
     color: ${({ theme }) => theme.btnColor.text};
     background-color: #42adf0;
   }
-  .btn-div:active {
+  .btn-div input:checked + label {
     color: ${({ theme }) => theme.btnColor.text};
     background-color: #42adf0;
   }
@@ -129,7 +131,20 @@ export const StyledModal = styled(Modal)`
     letter-spacing: 0.05em;
     outline: none;
   }
-  
+  .exp {
+    margin-left: 20px;
+  }
+  .exp-headline {
+    font-size: 18px;
+    line-height: 1.25;
+    font-weight: 700;
+    margin-bottom: 2px;
+    color: ${({ theme }) => theme.color.primary};
+  }
+  .exp-paragraph {
+    font-size: 14px;
+    color: ${({ theme }) => theme.color.modalColor};
+  }
 `;
 
 export const Report = styled.a`

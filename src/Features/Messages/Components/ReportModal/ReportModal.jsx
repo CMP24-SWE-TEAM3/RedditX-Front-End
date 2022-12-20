@@ -5,7 +5,6 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { StyledModal, Report } from "./ReportModal.styled";
 
-
 /**
  * Report Modal for Messages
  *
@@ -14,9 +13,63 @@ import { StyledModal, Report } from "./ReportModal.styled";
  */
 const ReportModal = () => {
   const [show, setShow] = useState(false);
-
+  const [active, setActive] = useState("");
+  function handleChange(event) {
+    const { id, checked } = event.target;
+    setActive(id);
+  }
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const explanation = [
+    {
+      title: "Harassment",
+      exp: "Harassing, bullying, intimidating, or abusing an individual or group of people with the result of discouraging them from participating.",
+    },
+    {
+      title: "Threatening violence",
+      exp: "Encouraging, glorifying, or inciting violence or physical harm against individuals or groups of people, places, or animals.",
+    },
+    {
+      title: "Hate",
+      exp: "Promoting hate or inciting violence based on identity or vulnerability.",
+    },
+    {
+      title: "Sexualization of minors",
+      exp: "Soliciting, sharing, or encouraging the sharing of sexual or suggestive content involving minors or people who appear to be minors.",
+    },
+    {
+      title: "Sharing personal information",
+      exp: "Sharing or threatening to share private, personal, or confidential information about someone.",
+    },
+    {
+      title: "Prohibited transaction",
+      exp: "Soliciting or facilitating transactions or gifts of illegal or prohibited goods and services.",
+    },
+    {
+      title: "Impersonation",
+      exp: "Impersonating an individual or entity in a misleading or deceptive way. This includes deepfakes, manipulated content, or false attributions.",
+    },
+    {
+      title: "Copyright violation",
+      exp: "Content posted to Reddit that infringes a copyright you own or control. (Note: Only the copyright owner or an authorized representative can submit a report.)",
+    },
+    {
+      title: "Trademark violation",
+      exp: "Content posted to Reddit that infringes a trademark you own or control. (Note: Only the trademark owner or an authorized representative can submit a report.)",
+    },
+    {
+      title: "Self-harm or suicide",
+      exp: "Behavior or comments that make you think someone may be considering suicide or seriously hurting themselves.",
+    },
+    {
+      title: "Spam",
+      exp: "Repeated, unwanted, or unsolicited manual or automated actions that negatively affect redditors, communities, and the Reddit platform.",
+    },
+    {
+      title: "Misinformation",
+      exp: "Spreading false information such as content that undermines civic processes or provides dangerous health misinformation.",
+    },
+  ];
 
   return (
     <>
@@ -34,43 +87,160 @@ const ReportModal = () => {
           </p>
           <div className="btn-container">
             <div className="btn-div">
-              <label className="btn-label">Harassment</label>
+              <input
+                id="0"
+                style={{ backgroundImage: "none" }}
+                value="HARASSMENT"
+                type="radio"
+                name="categoryOrRule"
+                onClick={handleChange}
+              />
+              <label className="btn-label" htmlFor="0">
+                Harassment
+              </label>
             </div>
             <div className="btn-div">
-              <label className="btn-label">Threating violence</label>
+              <input
+                id="1"
+                style={{ backgroundImage: "none" }}
+                value="VIOLLENCE"
+                type="radio"
+                name="categoryOrRule"
+                onClick={handleChange}
+              />
+              <label className="btn-label" htmlFor="1">
+                Threating violence
+              </label>
             </div>
             <div className="btn-div">
-              <label className="btn-label">Hate</label>
+              <input
+                id="2"
+                style={{ backgroundImage: "none" }}
+                value="HATE"
+                type="radio"
+                name="categoryOrRule"
+                onClick={handleChange}
+              />
+              <label className="btn-label" htmlFor="2">
+                Hate
+              </label>
             </div>
             <div className="btn-div">
-              <label className="btn-label">Sexualization of minors</label>
+              <input
+                id="3"
+                style={{ backgroundImage: "none" }}
+                value="MINOR_S"
+                type="radio"
+                name="categoryOrRule"
+                onClick={handleChange}
+              />
+              <label className="btn-label" htmlFor="3">
+                Sexualization of minors
+              </label>
             </div>
             <div className="btn-div">
-              <label className="btn-label">Sharing personal information</label>
+              <input
+                id="4"
+                style={{ backgroundImage: "none" }}
+                value="PII"
+                type="radio"
+                name="categoryOrRule"
+                onClick={handleChange}
+              />
+              <label className="btn-label" htmlFor="4">
+                Sharing personal information
+              </label>
             </div>
             <div className="btn-div">
-              <label className="btn-label">Non-consensual intimate media</label>
+              <input
+                id="5"
+                style={{ backgroundImage: "none" }}
+                value="PROHIBITED_SALES"
+                type="radio"
+                name="categoryOrRule"
+                onClick={handleChange}
+              />
+              <label className="btn-label" htmlFor="5">
+                Prohibited transaction
+              </label>
             </div>
             <div className="btn-div">
-              <label className="btn-label">Prohibited transaction</label>
+              <input
+                id="6"
+                style={{ backgroundImage: "none" }}
+                value="IMPEROSNATION"
+                type="radio"
+                name="categoryOrRule"
+                onClick={handleChange}
+              />
+              <label className="btn-label" htmlFor="6">
+                Imperosnation
+              </label>
             </div>
             <div className="btn-div">
-              <label className="btn-label">Imperosnation</label>
+              <input
+                id="7"
+                style={{ backgroundImage: "none" }}
+                value="COPYRIGHT"
+                type="radio"
+                name="categoryOrRule"
+                onClick={handleChange}
+              />
+              <label className="btn-label" htmlFor="7">
+                Copyright violation
+              </label>
             </div>
             <div className="btn-div">
-              <label className="btn-label">Copyright violation</label>
+              <input
+                id="8"
+                style={{ backgroundImage: "none" }}
+                value="TRADEMARK"
+                type="radio"
+                name="categoryOrRule"
+                onClick={handleChange}
+              />
+              <label className="btn-label" htmlFor="8">
+                Trademark violation
+              </label>
             </div>
             <div className="btn-div">
-              <label className="btn-label">Trademark violation</label>
+              <input
+                id="9"
+                style={{ backgroundImage: "none" }}
+                value="SUICIDE"
+                type="radio"
+                name="categoryOrRule"
+                onClick={handleChange}
+              />
+              <label className="btn-label" htmlFor="9">
+                Self-harm or suicide
+              </label>
             </div>
             <div className="btn-div">
-              <label className="btn-label">Self-harm or suicide</label>
+              <input
+                id="10"
+                style={{ backgroundImage: "none" }}
+                value="SPAM"
+                type="radio"
+                name="categoryOrRule"
+                onClick={handleChange}
+              />
+              <label className="btn-label" htmlFor="10">
+                Spam
+              </label>
             </div>
             <div className="btn-div">
-              <label className="btn-label">Spam</label>
-            </div>
-            <div className="btn-div">
-              <label className="btn-label">Misinforamtion</label>
+              <input
+                id="11"
+                style={{ backgroundImage: "none" }}
+                value="MISINFORMATION"
+                type="radio"
+                name="categoryOrRule"
+                onClick={handleChange}
+              />
+              <label className="btn-label" htmlFor="11">
+                Misinformation
+              </label>
             </div>
           </div>
         </Modal.Body>
@@ -90,12 +260,25 @@ const ReportModal = () => {
               <a className="review-policy"> Review Reddit's Content Policy</a>
             </p>
           </div>
-          <Button className="submit" variant="primary" onClick={handleClose}>
+          <div className="exp">
+            {active !== "" && (
+              <h3 className="exp-headline">{explanation[active].title}</h3>
+            )}
+            {active !== "" && (
+              <p className="exp-paragraph">{explanation[active].exp}</p>
+            )}
+          </div>
+          <Button
+            type="submit"
+            className="submit"
+            variant="primary"
+            onClick={handleClose}
+          >
             Submit
           </Button>
         </Modal.Footer>
       </StyledModal>
     </>
   );
-}
+};
 export default ReportModal;

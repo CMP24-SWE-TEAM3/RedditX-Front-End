@@ -147,6 +147,10 @@ const lightTheme = {
     text: "#1c1c1c",
     hover: "#f6f7f8",
   },
+  reportModalExp: {
+    text: "#9fa1a3",
+    headline: "#1c1c1c",
+  },
   //To change Linear Gradient Degree according to theme
   degree: {
     gradient: 0,
