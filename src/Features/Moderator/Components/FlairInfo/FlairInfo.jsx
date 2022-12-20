@@ -148,8 +148,8 @@ const FlairInfo = ({
     ctx.EditHandler(false);
     const obj = {
       flairText: text,
-      flairTextColor: color,
-      flairBackGround: background,
+      flairTextColor: color || "#000",
+      flairBackGround: background || "#fff",
       flairModOnly: true,
       flairAllowUserEdits: true,
     };

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { BsCheck } from "react-icons/bs";
@@ -7,6 +7,8 @@ import { HiOutlinePencil } from "react-icons/hi";
 import { MdOutlineClear } from "react-icons/md";
 import { RiArrowDownSLine } from "react-icons/ri";
 import SaveChangesModal from "../SaveChangesModal/SaveChangesModal";
+import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
+import { useSubRedditID } from "Features/Subreddit/Contexts/SubRedditIDProvider";
 import {
   AddSubTopic,
   AddSubTopicContainer,
@@ -27,6 +29,9 @@ import {
   SuggestedTopicsContainer,
   TopicsBlockHandle,
 } from "./CommunityTopics.styled";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { updateSettings } from "Features/Moderator/Services/communitySettingsApi";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 /**
  * Community topic and subtopics
@@ -51,6 +56,9 @@ const CommunityTopics = () => {
   //state that show the modal on blur
   const [modalShow, setModalShow] = useState(false);
   //
+  const { community } = useSubReddit();
+  const { communityID } = useSubRedditID();
+  const auth = useAuth();
 
   //topics and suggested topics
   let topics = [
@@ -78,10 +86,42 @@ const CommunityTopics = () => {
     { topic: "History" },
     { topic: "Hobbies" },
     { topic: "Home and Garden" },
-
+    { topic: "Internet Culture and Memes" },
+    { topic: "Law" },
+    { topic: "Learning and Education" },
+    { topic: "Movies" },
+    { topic: "Music" },
+    { topic: "Place" },
+    { topic: "Programming" },
+    { topic: "Science" },
+    { topic: "Sports" },
+    { topic: "Television" },
   ];
 
-  //useEffect();
+  useEffect(() => {
+    community && community.category && setTopic(community.category);
+    community && community.categories && setSubtopics(community.categories);
+  }, [community]);
+
+  const [topicData, topicError, topicLoading, fetchTopic] = useFetchFunction();
+
+  function handleTopic(topic) {
+    updateSettings(
+      fetchTopic,
+      { category: topic },
+      communityID,
+      auth.getToken()
+    );
+  }
+
+  function handleSubTopics(subtopics) {
+    updateSettings(
+      fetchTopic,
+      { categories: subtopics },
+      communityID,
+      auth.getToken()
+    );
+  }
 
   /**
    * handler on change of the input form of subtopic
@@ -99,6 +139,7 @@ const CommunityTopics = () => {
    */
   function DropItemHandler(event) {
     setTopic(event.target.innerText);
+    handleTopic(event.target.innerText);
     //to hide drop menu
     setViewTopics(false);
   }
@@ -191,6 +232,7 @@ const CommunityTopics = () => {
   function saveHandler() {
     setFocus(false);
     setModalShow(false);
+    handleSubTopics(subtopics);
     setLastSubtopics(subtopics);
   }
 

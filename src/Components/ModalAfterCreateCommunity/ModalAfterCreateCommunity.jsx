@@ -38,7 +38,10 @@ const ModalAfterCreateCommunity = ({
         >
           Continue
         </ButtonModal>
-        <ButtonModal onClick={() => navigate("/submit")} show={true}>
+        <ButtonModal
+          onClick={() => navigate(`/submit/t5_${community}`)}
+          show={true}
+        >
           Create A Post
         </ButtonModal>
       </Modal.Footer>

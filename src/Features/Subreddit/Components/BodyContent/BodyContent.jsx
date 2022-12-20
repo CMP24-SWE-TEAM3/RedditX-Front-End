@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import CreatePost from "Layouts/CreatePost/CreatePost";
+import CreatePost from "Features/Subreddit/Layouts/CreatePost/CreatePost";
 import CategoryBar from "../CategoryBar/CategoryBar";
 import { Container } from "./BodyContent.styled";
 import SubRedditPosts from "Features/Subreddit/Components/SubRedditPosts/SubRedditPosts";
