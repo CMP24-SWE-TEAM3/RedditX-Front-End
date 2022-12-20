@@ -10,6 +10,7 @@ const fetchPeopleFollowed = (fetchFunction, auth) => {
     axiosInstance: axios,
     method: "GET",
     url: "/api/user/me/following",
+    // /api/user/me/followers
     requestConfig: {
       headers: {
         "Content-Language": "en-US",

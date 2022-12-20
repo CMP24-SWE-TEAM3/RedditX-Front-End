@@ -30,6 +30,7 @@ const TopCommunities = ({ CommunityList, communityListSub }) => {
 
         {communitiesNumber !== 0 &&
           CommunityList &&
+          CommunityList.results &&
           communityListSub &&
           CommunityList.results.slice(0, 8).map((Community) => (
             <CommunityCardItem
@@ -45,9 +46,6 @@ const TopCommunities = ({ CommunityList, communityListSub }) => {
             />
           ))}
         {communitiesNumber === 0 && <p className="NoResults">No results</p>}
-        {/* <Link to="#">
-        <p className="more">See more</p>
-      </Link> */}
         {communitiesNumber !== 0 && (
           <Link to="/explore/Communities">
             <p className="more">See more</p>

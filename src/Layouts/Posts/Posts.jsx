@@ -9,7 +9,7 @@ import PostsList from "Components/PostsList/PostsList";
 import { Cards, Layout, PostsPart } from "./Posts.styled";
 
 const Posts = ({ CommunityList, communityListSub, PostList }) => {
-  if (PostList.results && CommunityList) {
+  if (CommunityList) {
     return (
       <>
         <PostsPart>

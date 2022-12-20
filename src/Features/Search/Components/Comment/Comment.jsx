@@ -11,12 +11,12 @@ import { Container, Layout } from "./Comment.styled";
  * @returns {React.Component}
  */
 const Comment = ({ comment }) => {
-  if (comment && comment.authorId.avatar) {
+  if (comment && comment.postID) {
     console.log(comment);
     const commentBody = {
-      postContent: "comment.replyingTo.title",
+      postContent: comment.postID.title,
       commentUserImage: comment.authorId.avatar,
-      userName: comment.authorId._id,
+      userName: comment.authorId,
       time: comment.createdAt,
       bodyContent: comment.textJSON,
       postFooter: {
@@ -24,27 +24,29 @@ const Comment = ({ comment }) => {
         // Comments: comment.replyingTo.commentsNum,
       },
     };
-    // const postfooter = {
-    //   upVotes: comment.replyingTo.votesCount,
-    //   Comments: comment.replyingTo.commentsNum,
-    // };
-    // const postHeader = {
-    //   headerImage: "People_Image.jpg",
-    //   // headerImage: comment.replyingTo.communityID.icon,
-    //   communityName: comment.replyingTo.communityID._id,
-    //   communityID: comment.replyingTo.communityID._id,
-    //   userName: comment.replyingTo.userID._id,
-    //   userID: comment.replyingTo.userID._id,
-    //   nsfw: comment.replyingTo.nsfw,
-    //   time: comment.replyingTo.createdAt,
-    // };
-    console.log(comment.authorId.avatar, "asdfghj");
+    const postFooter = {
+      upVotes: comment.postID.votesCount,
+      Comments: comment.postID.commentsNum,
+    };
+    const postHeader = {
+      headerImage:
+        comment.postID.communityID && comment.postID.communityID.icon,
+      communityName:
+        comment.postID.communityID && comment.postID.communityID._id,
+      communityID: comment.postID.communityID && comment.postID.communityID._id,
+      userName: comment.postID.userID._id,
+      userID: comment.postID.userID._id,
+      time: comment.postID.createdAt,
+
+      nsfw: false,
+    };
+    // console.log(comment.authorId.avatar, "asdfghj");
     return (
       <Container title="comment">
         <Layout>
-          {/* <PostHeader postheader={postHeader} /> */}
+          <PostHeader postheader={postHeader} />
           {<CommentBody commentBody={commentBody} comment={comment} />}
-          {/* <PostFooter postfooter={postfooter} /> */}
+          <PostFooter postfooter={postFooter} />
         </Layout>
       </Container>
     );

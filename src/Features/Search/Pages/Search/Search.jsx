@@ -67,10 +67,10 @@ const Search = () => {
   console.log(CommentLists, "jjjj");
 
   let [PeopleList, errorPeople, loadingPeople, FB] = useFetchFunction();
-
+  console.log(PeopleList);
   let [PeopleFollow, errorSub, loadingSub, fetchSub] = useFetchFunction();
   // fetch people follow
-  // console.log(PeopleFollow, "hhhhhhhhhhhhhh");
+  console.log(PeopleFollow, "hhhhhhhhhhhhhh");
   // fetch communities subscribe
 
   let [communityListSub, errorSubs, isLoadingSubs, fetchData] =

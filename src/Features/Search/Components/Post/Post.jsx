@@ -28,7 +28,7 @@ const PostItem = ({ post }) => {
     };
     const postFooter = {
       upVotes: post.votesCount,
-      Comments: post.insightCnt,
+      Comments: post.commentsNum,
     };
     const postHeader = {
       headerImage: post.communityID && post.communityID.icon,
