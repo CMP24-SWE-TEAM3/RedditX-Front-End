@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AllModerators Component this is a test for AllModerators Component 1`] = `
+<Fragment>
+  <styled.div>
+    <styled.input
+      onChange={[Function]}
+      placeholder="Search for a user"
+    />
+    <styled.div>
+      <BiSearch />
+    </styled.div>
+  </styled.div>
+  <styled.div>
+    <ModeratorRow
+      Moderator={
+        Object {
+          "_id": "mohamedRomee",
+        }
+      }
+    />
+  </styled.div>
+</Fragment>
+`;

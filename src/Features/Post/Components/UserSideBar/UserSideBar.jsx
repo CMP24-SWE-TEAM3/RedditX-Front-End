@@ -1,11 +1,11 @@
 import UserSideCard from "../UserSideCard/UserSideCard";
 import { Container, InnerContainer } from "./UserSideBar.styled";
 
-const UserSideBar = () => {
+const UserSideBar = ({userId}) => {
   return (
     <Container>
       <InnerContainer>
-        <UserSideCard />
+        <UserSideCard userId={userId} />
       </InnerContainer>
     </Container>
   );
