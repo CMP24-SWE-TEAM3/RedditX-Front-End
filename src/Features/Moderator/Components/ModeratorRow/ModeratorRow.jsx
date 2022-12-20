@@ -140,7 +140,18 @@ const ModeratorRow = ({
             )}
             {approved && Moderator?._id !== auth.getUserName() && (
               <ButtonsContainer>
-                <button>Send message</button>
+                <button
+                  onClick={() => {
+                    navigate(
+                      "/message/compose/?from=" +
+                        auth.getUserName().substring(3) +
+                        "?to=" +
+                        Moderator._id.substring(3)
+                    );
+                  }}
+                >
+                  Send message
+                </button>
                 {Moderator?.role !== "creator" && (
                   <button
                     onClick={() => {
