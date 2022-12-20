@@ -205,6 +205,14 @@ function App() {
                             </RequireAuth>
                           }
                         />
+                        <Route
+                          path="submit/:destinationId"
+                          element={
+                            <RequireAuth>
+                              <CreatePost />
+                            </RequireAuth>
+                          }
+                        />
                         <Route path="*" element={<NotFound />} />
                         <Route
                           path="post-preview/:postId"

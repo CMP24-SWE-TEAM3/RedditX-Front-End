@@ -83,7 +83,10 @@ const PostShape = ({
                     Cancel
                   </CancelButton>
                   <SubmitButton onClick={editPostHandler}>
-                    {!isLoading && "Save"} {isLoading && <Spinner />}
+                    {!isLoading && "Save"}
+                    {isLoading && (
+                      <Spinner animation="border" variant="light" />
+                    )}
                   </SubmitButton>
                 </ButtonsContainer>
               </DraftEditorContainerOuter>
