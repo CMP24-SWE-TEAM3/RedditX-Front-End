@@ -32,8 +32,7 @@ function SendAMessage() {
   const queryParams = new URLSearchParams(location.search);
   const receiver = queryParams.get("to");
   const sender = queryParams.get("from");
-  console.log(receiver);
-  console.log(sender);
+  
   const auth = useAuth();
   const [composeRes, errorCompose, loadingCompose, fetchData] = useFetchFunction();
   const [subjectErr, setSubjectErr] = useState(false);
