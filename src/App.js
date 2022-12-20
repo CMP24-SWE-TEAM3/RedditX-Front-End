@@ -67,6 +67,7 @@ import { CategoryContextProvider } from "Contexts/CategoryContext/Category-conte
 import PostPreview from "Features/Post/Pages/PostPreview/PostPreview";
 import { RecentContextProvider } from "Contexts/RecentContext";
 import ErrorBoundary from "Pages/ErrorBoundary/ErrorBoundary";
+import PostPreviewComment from "Features/Post/Pages/PreviewPostComment/PreviewPostComment";
 
 /**
  * The main app of our application it handles routing
@@ -222,6 +223,16 @@ function App() {
                               <>
                                 <RequireAuth>
                                   <PostPreview />
+                                </RequireAuth>
+                              </>
+                            }
+                          />
+                          <Route
+                            path="post-preview/:postId/:commentId"
+                            element={
+                              <>
+                                <RequireAuth>
+                                  <PostPreviewComment />
                                 </RequireAuth>
                               </>
                             }
