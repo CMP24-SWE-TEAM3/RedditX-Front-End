@@ -2,8 +2,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-
-
 import {
   Container,
   SearchContainer,
@@ -24,7 +22,7 @@ const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
  * @returns {React.Component}  ApproveUser Layout that is used in User management
  */
 
-const ApproveUser = ({ setModalShowApproveUser }) => {
+const ApproveUser = () => {
   /**
    * state to handel any change the user make in the input fields
    */
@@ -74,7 +72,11 @@ const ApproveUser = ({ setModalShowApproveUser }) => {
           >
             Cancel
           </ButtonOne> */}
-          <ButtonTwo disabled={!validName} valid={validName}>
+          <ButtonTwo
+            data-testid="addUser"
+            disabled={!validName}
+            valid={validName}
+          >
             Add user
           </ButtonTwo>
         </ButtonsContainer>
