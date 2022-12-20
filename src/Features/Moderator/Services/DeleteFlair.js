@@ -7,13 +7,12 @@ import axios from "API/axios";
  * @param {Function} dataFetch - The function to make the request
  * @param {Object} post - The post data
  */
-const DeleteFlair = (dataFetch, post, auth) => {
+const DeleteFlair = (dataFetch, post, auth, community) => {
   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
-  //   communityName = "t5_imagePro235";
   dataFetch({
     axiosInstance: axios,
     method: "post",
-    url: `/api/r/t5_imagePro235/delete-flair`,
+    url: `/api/r/t5_${community}/delete-flair`,
     requestConfig: {
       data: post,
       headers: {

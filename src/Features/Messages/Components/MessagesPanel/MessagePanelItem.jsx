@@ -120,7 +120,7 @@ const MessageBannelItem = ({
     changeMessage((message) => {
       return message.map((prevState) => {
         return prevState.id === id
-          ? { ...prevState, delete: !prevState.delete }
+          ? { ...prevState, isDeleted: !prevState.isDeleted }
           : prevState;
       });
     });
