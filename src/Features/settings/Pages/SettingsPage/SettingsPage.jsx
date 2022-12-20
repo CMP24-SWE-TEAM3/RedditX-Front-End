@@ -40,7 +40,6 @@ const SettingsPage = () => {
     }
   }, [data]);
 
-  console.log(data);
   const toggleHandler = (p) => {
     console.log(p);
   };
@@ -74,10 +73,14 @@ const SettingsPage = () => {
                 path="feed"
                 element={
                   !loading &&
-                  prefs &&
-                  prefs.user &&
-                  prefs.user.searchIncludeOver18 && (
-                    <FeedPage adult={prefs.user.searchIncludeOver18} />
+                  prefs && prefs.prefs &&
+                  prefs.prefs.userPrefs &&
+                  prefs.prefs.userPrefs.prefs &&
+                  prefs.prefs.userPrefs.prefs.searchIncludeOver18 && (
+                    <FeedPage 
+                      adult={prefs.prefs.userPrefs.prefs.searchIncludeOver18} 
+                      autoPlay= {prefs.prefs.userPrefs.prefs.searchIncludeOver18} 
+                      />
                   )
                 }
               />
@@ -85,18 +88,9 @@ const SettingsPage = () => {
               <Route
                 path="emails"
                 element={
-                  !loading &&
-                  prefs &&
-                  prefs.user &&
-                  prefs.user.emailUnsubscripeAll &&
-                  prefs.user.emailMessages &&
-                  prefs.user.enableFollowers && (
                     <EmailsPage
-                      emailSubscribe={prefs.user.emailUnsubscripeAll}
-                      Request={prefs.user.emailMessages}
-                      Followers={prefs.user.enableFollowers}
                     />
-                  )
+    
                 }
               />
               <Route
