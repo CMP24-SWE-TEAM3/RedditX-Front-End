@@ -8,6 +8,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 
 // import components
 import Nav from "react-bootstrap/Nav";
+import   GlobalStyle  from "./Navigation.styled";
 import Navbar from "react-bootstrap/Navbar";
 import NotificationButton from "Components/NotificationButton/NotificationButton";
 import Moderator from "Components/ModeratorButton/ModeratorButton";
@@ -48,6 +49,7 @@ const Navigation = ({
   const expand = "md";
   return (
     <>
+      <GlobalStyle />
       <StyledNavbar key={expand} expand={expand} className="mb-3">
         <StyledContainer fluid>
           <Navbar.Brand>

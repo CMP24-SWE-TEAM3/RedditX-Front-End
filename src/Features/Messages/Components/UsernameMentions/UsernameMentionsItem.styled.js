@@ -213,3 +213,13 @@ export const Expand = styled.a`
 export const MessageDetails = styled.div`
   padding: 10px 15px;
 `;
+
+export const Error = styled.span`
+  display: none;
+  color:  ${({ theme }) => theme.color.danger};
+  transition: 0.3s;
+  font-size: 11px;
+  &.active {
+    display: block;
+  }
+`;
