@@ -51,7 +51,7 @@ const messagesData = [
  * @Component
  * @returns {React.Component}
  */
-function MessageBannel({data}) {
+function MessageBannel({data, Rerender}) {
   console.log(data);
   let Message = (
   <Empty>
@@ -76,6 +76,7 @@ function MessageBannel({data}) {
       return (
         <MessageBannelItem
           changeMessage={setEachMessage}
+          reRender={Rerender}
           aurthor={item.fromID.substring(3)}
           title={item.subject}
           time={item.createdAt}

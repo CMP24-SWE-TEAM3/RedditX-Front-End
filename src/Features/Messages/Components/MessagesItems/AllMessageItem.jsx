@@ -63,6 +63,7 @@ const NormalMessageAll = ({
   id,
   deleted,
   block,
+  reRender,
 }) => {
   const auth = useAuth();
   const [deleteMessageRes, errorDeleteMessage, loadingDeleteMessage, fetchData ] = useFetchFunction();
@@ -108,6 +109,7 @@ const NormalMessageAll = ({
       msgID: `${id}`
     };
     deleteMessage(fetchData, dataObject, auth);
+    reRender((prev)=>!prev);
     setDeletePrompt(false);
   }
 

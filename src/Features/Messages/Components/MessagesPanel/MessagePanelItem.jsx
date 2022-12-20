@@ -68,6 +68,7 @@ const MessageBannelItem = ({
   id,
   deleted,
   block,
+  reRender,
 }) => {
   const auth = useAuth();
   const [unreadMessageRes, errorUnreadMessage, loadingUnreadMessage, fetchDataUnread ] = useFetchFunction();
@@ -116,7 +117,7 @@ const MessageBannelItem = ({
     setDeletePrompt((prev)=>!prev);
   }
 
-  function Delete(id) {
+  function Delete() {
     changeMessage((message) => {
       return message.map((prevState) => {
         return prevState.id === id
@@ -129,6 +130,7 @@ const MessageBannelItem = ({
       msgID: `${id}`
     };
     deleteMessage(fetchData, dataObject, auth);
+    reRender((prev)=>!prev);
     setDeletePrompt(false);
   }
 
@@ -238,7 +240,7 @@ const MessageBannelItem = ({
                   <BtnWarning> Are You Sure </BtnWarning>
                   <BtnsLinks
                       onClick={() => {
-                        Delete(id);
+                        Delete();
                       }}              
                   >Yes</BtnsLinks>
                   <BtnWarning> / </BtnWarning>

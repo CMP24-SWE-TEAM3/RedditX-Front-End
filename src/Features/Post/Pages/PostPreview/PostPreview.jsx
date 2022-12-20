@@ -25,6 +25,7 @@ import CommunityCardPost from "Features/Post/Components/CommunityCardPost/Commun
 import submitComment from "Features/Post/Services/submitComment";
 import DraftEditor from "Features/Post/Components/DraftEditor/DraftEditor";
 import { useNavigate, useParams } from "react-router-dom";
+import UserSideBar from "Features/Post/Components/UserSideBar/UserSideBar";
 /**
  *
  * Component that displays post with comments , likes displayed on show modal
@@ -144,14 +145,25 @@ const PostPreview = () => {
             {!isLoading && data && data.things && data.things[0] && (
               <CommunityCardPost communityInfo={data.things[0]} />
             )}
+            {!isLoading &&
+              post &&
+              post.things &&
+              post.things[0] &&
+              !post.things[0].communityID &&
+              post.things[0].userID &&
+              post.things[0].userID._id && (
+                <UserSideBar userId={post.things[0].userID._id} />
+              )}
             {!isLoading && data && data.things && data.things[0] && (
-              <RulesWidget
-                rules={data.things[0].communityRules}
-                communityId={data.things[0]._id}
-              />
+              <>
+                <RulesWidget
+                  rules={data.things[0].communityRules}
+                  communityId={data.things[0]._id}
+                />
+                <RelatedCommunities />
+                <ModeratorWidget />
+              </>
             )}
-            <RelatedCommunities />
-            <ModeratorWidget />
           </AsidePostChild>
         </AsidePost>
       </ModalBodyContainer>

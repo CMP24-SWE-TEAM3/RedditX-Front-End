@@ -119,11 +119,12 @@ const ModeratorRow = ({
                   </Edit>
                 )}{" "}
                 {invited &&
-                  Moderator?._id !== auth.getUserName() &&
+                  Moderator?._id !== auth?.getUserName() &&
                   Moderator?.role !== "creator" && (
                     <Edit
+                      data-testid="deleteMod"
                       onClick={() => {
-                        leaveModerator(
+                        kickModerator(
                           dataFetch,
                           {
                             userID: Moderator._id,
@@ -138,9 +139,10 @@ const ModeratorRow = ({
                   )}
               </Abilities>
             )}
-            {approved && Moderator?._id !== auth.getUserName() && (
+            {approved && Moderator?._id !== auth?.getUserName() && (
               <ButtonsContainer>
                 <button
+                  data-testid="sendMessage"
                   onClick={() => {
                     navigate(
                       "/message/compose/?from=" +
@@ -173,6 +175,7 @@ const ModeratorRow = ({
             {muted && (
               <ButtonsContainer>
                 <button
+                  data-testid="unMuteUser"
                   onClick={() => {
                     muteUser(
                       dataFetch,
@@ -200,6 +203,7 @@ const ModeratorRow = ({
             {banned && (
               <ButtonsContainer>
                 <button
+                  data-testid="unBanUser"
                   onClick={() => {
                     setShowEditModal(true);
                   }}

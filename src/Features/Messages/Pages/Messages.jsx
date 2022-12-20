@@ -11,7 +11,7 @@ import PostReplay from "../Layouts/Posts/PostReply";
 
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import fetchUsernameMentions from "Features/Messages/Services/fetchUsernameMentions";
 import fetchPostReplies from "../Services/fetchPostReplies";
 import fetchMessages from "../Services/fetchMessages";
@@ -29,14 +29,14 @@ function Messages() {
   const [replies, errorReplies, loadingReplies, fetchReplies ] = useFetchFunction();
   const [messages, errorMessages, loadingMessages, fetchMessagesData ] = useFetchFunction();
   const [messagesAll, errorMessagesAll, loadingMessagesAll, fetchMessagesAll ] = useFetchFunction();
-
+  const [reRender, setReRender] = useState(false);
   useEffect(()=>{
     fetchMessages(fetchMessagesData, auth);
     // fetchUsernameMentions(fetchMentions, auth);
     // fetchPostReplies(fetchReplies, auth);
     // fetchAllMessages(fetchMessagesAll);
     
-  }, []);
+  }, [reRender]);
 
   let mapping;
   const unread = [];
@@ -63,17 +63,17 @@ function Messages() {
         <Route
           path="/"
           element={
-              <MessageItem data={messages}/>
+              <MessageItem data={messages} Rerender={setReRender}/>
           }
         />
         }
         
         <Route path="/inbox" >
-          <Route path="/inbox" element={<MessageItem data={messages}/> } />
+          <Route path="/inbox" element={<MessageItem data={messages} Rerender={setReRender}/> } />
           {!loadingMessages &&
-          <Route path="/inbox/all" element={<MessageItem data={messages}/> }/>}
+          <Route path="/inbox/all" element={<MessageItem data={messages} Rerender={setReRender}/> }/>}
           {!loadingMessages &&
-          <Route path="/inbox/messages" element={<MessageBannel data={messages}/> }/>}
+          <Route path="/inbox/messages" element={<MessageBannel data={messages} Rerender={setReRender}/> }/>}
           {!loadingMentions && 
           <Route path="/inbox/mentions"element={ <UserMentions mentions={mentions}/> } />}
           {!loadingMessages &&
@@ -86,7 +86,7 @@ function Messages() {
           path="/compose"
           element={
             <>
-              <SendAMessage />
+              <SendAMessage Rerender = {setReRender}/>
             </>
           }
         />
