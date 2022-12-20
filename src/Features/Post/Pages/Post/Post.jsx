@@ -25,6 +25,7 @@ import CommunityCardPost from "Features/Post/Components/CommunityCardPost/Commun
 import submitComment from "Features/Post/Services/submitComment";
 import DraftEditor from "Features/Post/Components/DraftEditor/DraftEditor";
 import { useNavigate } from "react-router-dom";
+import UserSideBar from "Features/Post/Components/UserSideBar/UserSideBar";
 /**
  *
  * Component that displays post with comments , likes displayed on show modal
@@ -54,7 +55,8 @@ const Post = ({ post, show, setShow }) => {
   const auth = useAuth();
   useEffect(() => {
     setCommentRerendered(false);
-    if (post.communityID) getCommunityInfo(dataFetch, post.communityID, auth);
+    if (post.communityID && post.communityID._id)
+      getCommunityInfo(dataFetch, post.communityID._id, auth);
     if (post && post.postComments && post.postComments.length > 0) {
       setCommentRerendered(true);
       getCommunityInfo(
@@ -84,6 +86,7 @@ const Post = ({ post, show, setShow }) => {
   const handlePostEdit = () => {
     setEditPost(true);
   };
+  console.log(post);
   return (
     <Container
       show={show}
@@ -133,17 +136,27 @@ const Post = ({ post, show, setShow }) => {
         </PostContent>
         <AsidePost>
           <AsidePostChild>
+            {data &&
+              data.things &&
+              data.things[0] &&
+              !isLoading &&
+              post.communityID && (
+                <CommunityCardPost communityInfo={data.things[0]} />
+              )}
+            {!isLoading &&
+              !post.communityID &&
+              post.userID &&
+              post.userID._id && <UserSideBar userId={post.userID._id} />}
             {data && data.things && data.things[0] && !isLoading && (
-              <CommunityCardPost communityInfo={data.things[0]} />
+              <>
+                <RulesWidget
+                  rules={data.things[0].communityRules}
+                  communityId={data.things[0]._id}
+                />
+                <RelatedCommunities />
+                <ModeratorWidget />
+              </>
             )}
-            {data && data.things && data.things[0] && !isLoading && (
-              <RulesWidget
-                rules={data.things[0].communityRules}
-                communityId={data.things[0]._id}
-              />
-            )}
-            <RelatedCommunities />
-            <ModeratorWidget />
           </AsidePostChild>
         </AsidePost>
       </ModalBodyContainer>

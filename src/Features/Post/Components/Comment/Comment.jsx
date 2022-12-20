@@ -213,6 +213,7 @@ const Comment = ({ comment, postID }) => {
       auth
     );
   };
+  console.log(comment);
   const navigate = useNavigate();
   return (
     <Container>
@@ -238,7 +239,7 @@ const Comment = ({ comment, postID }) => {
             navigate(`/user/${comment.authorId._id}/`);
           }}
         >
-          {comment.authorId._id.substring(3)}
+          {comment.authorId.substring(3)}
         </Username>
         <Time>
           . <Moment fromNow>{comment.createdAt}</Moment>
