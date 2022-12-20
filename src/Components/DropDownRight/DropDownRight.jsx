@@ -49,20 +49,12 @@ const DropDownRightButton = ({ toggleMode }) => {
           <div>
             {userInfo &&
               userInfo.length !== 0 &&
-              userInfo.meInfo.user.hasOwnProperty("avatar") && (
+              userInfo.meInfo &&
+              userInfo.meInfo.user &&
+              userInfo.meInfo.user.avatar && (
                 <img
                   crossOrigin="anonymous"
-                  src={`${BASE_URL}/users/files/${userInfo.meInfo.user.avatar}`}
-                  alt="Avatar"
-                  className="avatar"
-                />
-              )}
-            {userInfo &&
-              userInfo.length !== 0 &&
-              !userInfo.meInfo.user.hasOwnProperty("avatar") && (
-                <img
-                  crossOrigin="anonymous"
-                  src={Profile}
+                  src={`${BASE_URL}/users/files/${userInfo?.meInfo?.user?.avatar}`}
                   alt="Avatar"
                   className="avatar"
                 />

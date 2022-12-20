@@ -14,14 +14,19 @@ import {
 } from "./AdultPage.styled";
 import nsfw from "Features/User/Assets/images/nsfw.png";
 
-const AdultPage = () => {
+const AdultPage = ({onHide}) => {
+
+  const handleYes = () => {
+    onHide(true);
+  };
+
   return (
     <PrivatePageContainer>
       <div>
         <InnerContainer>
           <StyledImg src={nsfw} alt="nsfw" />
           <StyledHeader>
-            {`You must be 18+ to view this community`}
+            {`You must be 18+ to view this User`}
           </StyledHeader>
           <StyledText>
             You must be at least eighteen years old to view this content. Are
@@ -29,7 +34,7 @@ const AdultPage = () => {
           </StyledText>
           <ButtonsContainer>
             <StyledLink to="/">No</StyledLink>
-            <StyledButton>Yes</StyledButton>
+            <StyledButton onClick={handleYes} >Yes</StyledButton>
           </ButtonsContainer>
         </InnerContainer>
       </div>

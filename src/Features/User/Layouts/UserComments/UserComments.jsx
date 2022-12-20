@@ -29,6 +29,10 @@ const UserComments = () => {
     getUserComments(fetchData, userID, auth, time, pgNum);
   }, [userID, pgNum, time]);
 
+  useEffect(() => {
+    console.log("comments", data);
+  }, [data]);
+
   // const { posts } = data;
 
   // useEffect(() => {

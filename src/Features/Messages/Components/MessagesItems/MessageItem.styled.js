@@ -58,6 +58,9 @@ export const BtnsLinks = styled.a`
     color: #888;
     text-decoration: underline;
   }
+  &.active {
+    display: none;
+  }
 `;
 
 export const Subject = styled.div`
@@ -140,5 +143,15 @@ export const Visted = styled.div`
     color: ${({ theme }) => theme.color.primary};
     width: 100%;
     transition: 0.3s;
+  }
+`;
+
+export const Error = styled.span`
+  display: none;
+  color:  ${({ theme }) => theme.color.danger};
+  transition: 0.3s;
+  font-size: 11px;
+  &.active {
+    display: block;
   }
 `;

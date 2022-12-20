@@ -4,9 +4,11 @@ const SearchContext = React.createContext({
   word: "",
   isSubreddit: "",
   community: "",
+  Sort: "Relevance",
   communityHandler: (community) => {},
   wordHandler: (word) => {},
   isSubredditHandler: (isSubreddit) => {},
+  SortHandler: (Sort) => {},
 });
 /**
  * Context for the word we search for
@@ -18,6 +20,7 @@ export function SearchContextProvider(props) {
   const [word, setword] = useState("");
   const [isSubreddit, setisSubreddit] = useState("");
   const [community, setcommunity] = useState("");
+  const [Sort, setSort] = useState("Relevance");
   const wordHandler = (word) => {
     setword(word);
     // console.log(word);
@@ -38,6 +41,14 @@ export function SearchContextProvider(props) {
     setcommunity(community);
     console.log(community);
   };
+  /**
+   * Function for is the search for Subreddit
+   * @param {string} community  - which indicates the Subreddit we search for.
+   */
+  const SortHandler = (Sort) => {
+    setSort(Sort);
+    console.log(Sort);
+  };
   return (
     <SearchContext.Provider
       value={{
@@ -47,6 +58,8 @@ export function SearchContextProvider(props) {
         isSubreddit: isSubreddit,
         community: community,
         communityHandler: communityHandler,
+        Sort: Sort,
+        SortHandler: SortHandler,
       }}
     >
       {props.children}

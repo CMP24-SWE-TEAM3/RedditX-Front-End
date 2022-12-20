@@ -26,13 +26,14 @@ import { useCreatePostText } from "Features/Post/Contexts/createPostText";
 import getPostFlairs from "Features/Post/Services/getFlairs";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import { Spinner } from "react-bootstrap";
 
 /**
  * The form of link in create post page (Link tab)
  * @param {Function} submitPost - Function to submit the post
  * @returns {React.Component} - Link Form component (The form that appears when you click on the link tab in main section)
  */
-const LinkForm = ({ submitPost }) => {
+const LinkForm = ({ submitPost, isLoadingSubmit }) => {
   // State for flair modal
   const [modalShow, setModalShow] = useState(false);
 
@@ -154,7 +155,8 @@ const LinkForm = ({ submitPost }) => {
             onClick={submitForm}
             id="post"
           >
-            Post
+            {!isLoadingSubmit && "Post"}
+            {isLoadingSubmit && <Spinner animation="border" variant="light" />}
           </PostButton>
         </SubmitButtons>
       </StyledLinkForm>

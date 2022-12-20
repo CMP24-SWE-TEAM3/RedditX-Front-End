@@ -9,11 +9,10 @@ import axios from "API/axios";
  */
 const AddFlair = (dataFetch, post, auth, communityName) => {
   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
-  communityName = "t5_imagePro235";
   dataFetch({
     axiosInstance: axios,
     method: "post",
-    url: `/api/r/t5_imagePro235/api/flair`,
+    url: `/api/r/t5_${communityName}/flair`,
     requestConfig: {
       data: post,
       headers: {

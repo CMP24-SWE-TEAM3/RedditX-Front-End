@@ -3,8 +3,10 @@ import FlairContext from "Features/Moderator/Contexts/Safe-context";
 import DeleteFlair from "Features/Moderator/Services/DeleteFlair";
 import useFetchFunction from "Hooks/useFetchFunction";
 import React, { useContext, useState } from "react";
+import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useParams } from "react-router-dom";
 import { CancelButton, DeleteButton, StyledModal } from "./DeleteModal.styled";
 const DeleteModal = ({ ShowModal, setShowModal, id }) => {
   console.log(ShowModal);
@@ -17,17 +19,19 @@ const DeleteModal = ({ ShowModal, setShowModal, id }) => {
   const auth = useAuth();
   const [Community, error, isLoading, fetchData] = useFetchFunction();
   const handleShow = () => setShow(true);
+  const { subredditId } = useParams();
+  useEffect(() => {
+    console.log("Community = = = ", Community);
+  }, [Community]);
   const DeleteHandler = () => {
     setShow(false);
     setShowModal(false);
     console.log(id);
     const obj = {
-      _id: id,
+      id: id,
     };
-    DeleteFlair(fetchData, obj, auth);
-    if (!isLoading) {
-      ctx.ChangeFetchHandler(!ctx.ChangeFetch);
-    }
+    DeleteFlair(fetchData, obj, auth, subredditId);
+    ctx.ChangeFetchHandler(!ctx.ChangeFetch);
   };
   return (
     <>

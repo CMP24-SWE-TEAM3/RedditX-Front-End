@@ -21,6 +21,8 @@ import Moment from "react-moment";
 import CommentUserImage from "../../Assets/People_Image.jpg";
 import PostFooter from "../PostFooter/PostFooter";
 import { Link } from "react-router-dom";
+import isJsonString from "Features/Post/Utils/isJsonString";
+import RichTextPostBody from "Features/Post/Components/RichTextPostBody/RichTextPostBody";
 /**
  * Component that render the CommentBody.
  *
@@ -28,13 +30,18 @@ import { Link } from "react-router-dom";
  * @param {object} commentBody - contain commentBody
  * @returns {React.Component}
  */
-const CommentBody = ({ commentBody }) => {
+const CommentBody = ({ commentBody, comment }) => {
+  console.log(commentBody, "com");
+  console.log(comment, "commmm");
   if (commentBody) {
+    console.log(commentBody.CommentUserImage);
     return (
       <Container>
         <FirstText>
           <Link to="#">
-            <FirstTextStyle>{commentBody.postContent}</FirstTextStyle>
+            {commentBody.postContent && (
+              <FirstTextStyle>{commentBody.postContent}</FirstTextStyle>
+            )}
           </Link>
         </FirstText>
         <InnerBody>
@@ -42,14 +49,13 @@ const CommentBody = ({ commentBody }) => {
             <ImageAlign>
               <Link to="#">
                 <div>
-                  {/* <CommentImage
-                    src={require(`../../Assets/${commentBody.commentUserImage}`)}
-                    alt="Comment User Image"
-                  /> */}
-                  <CommentImage
-                    src={CommentUserImage}
-                    alt="Comment User Image"
-                  />
+                  {commentBody.CommentUserImage && (
+                    <CommentImage
+                      crossOrigin="anonymous"
+                      src={`https://api.redditswe22.tech/users/files/${commentBody.CommentUserImage}`}
+                      alt="People Icon"
+                    />
+                  )}
                 </div>
               </Link>
             </ImageAlign>
@@ -76,7 +82,13 @@ const CommentBody = ({ commentBody }) => {
                     className="comment-content"
                     title="CommentBody"
                   >
-                    {commentBody.bodyContent}
+                    {/* {commentBody.bodyContent} */}
+                    {!isJsonString(comment.textJSON) && comment && (
+                      <p>{comment.textJSON}</p>
+                    )}
+                    {isJsonString(comment.textJSON) && (
+                      <RichTextPostBody post={comment} />
+                    )}
                   </BodyTextStylePlace>
                 </BodyTextStyle>
               </BodyText>

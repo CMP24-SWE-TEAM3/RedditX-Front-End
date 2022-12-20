@@ -38,6 +38,8 @@ import getCommunitiesList from "Features/Post/Services/getCommunitiesList";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import ModalCommunity from "Components/ModalCommunity/ModalCommunity";
 import { BASE_URL } from "API/axios";
+import { useParams } from "react-router-dom";
+import getUser from "Features/Post/Services/getUser";
 
 /**
  *
@@ -59,14 +61,39 @@ const ChooseCommunity = () => {
   // Fetch communities
   let [communityList, error, isLoading, fetchData] = useFetchFunction();
 
+  const [userInfo, errorInfo, isLoadingInfo, fetchDataInfo] =
+    useFetchFunction();
+  const { destinationId } = useParams();
   const auth = useAuth();
   useEffect(() => {
     getCommunitiesList(fetchData, auth);
+    getUser(fetchDataInfo, auth.getUserName(), auth);
+    if (destinationId === "me") {
+      setSubmitDestination({
+        _id: auth.getUserName(),
+        icon: Image,
+        type: "user",
+      });
+      setSearchText(auth.getUserName().substring(3));
+    }
   }, []);
+  console.log("userInfo", userInfo);
+  useEffect(() => {
+    if (communityList && communityList.communities && destinationId !== "me") {
+      const community = communityList.communities.find(
+        (community) => community._id === destinationId
+      );
+      if (community) {
+        setSubmitDestination({ ...community, type: "subreddit" });
+        setSearchText(community._id.substring(3));
+      }
+    }
+  }, [communityList]);
   return (
     <Container>
       <ModalCommunity
-        show={showCommunityModal}
+        showModal={showCommunityModal}
+        setShowModal={setShowCommunityModal}
         close={() => setShowCommunityModal(false)}
       />
       <Dropdown show={showMenu}>
@@ -83,7 +110,11 @@ const ChooseCommunity = () => {
             <UserImage
               data-testid="user-image"
               crossOrigin="anonymous"
-              src={`${BASE_URL}/subreddits/files/${submitDestination.icon}`}
+              src={`${BASE_URL}${
+                submitDestination.type === "user"
+                  ? "/users/files/"
+                  : "/subreddits/files/"
+              }${submitDestination.icon}`}
               alt={submitDestination._id}
               as={`${submitDestination.icon ? "img" : "div"}`}
             />
@@ -113,14 +144,18 @@ const ChooseCommunity = () => {
                 onClick={() => {
                   setSubmitDestination({
                     _id: auth.getUserName(),
-                    icon: Image,
+                    icon: `${userInfo?.about?.user?.avatar}`,
                     type: "user",
                   });
                   setSearchText(auth.getUserName().substring(3));
                   setShowMenu(false);
                 }}
               >
-                <UserImage src={Image} alt="post guidelines" />
+                <UserImage
+                  crossOrigin="anonymous"
+                  src={`${BASE_URL}/users/files/${userInfo?.about?.user?.avatar}`}
+                  alt="post guidelines"
+                />
                 u/{auth.getUserName().substring(3)}
               </DropdownItem>
             </ItemsGroup>

@@ -6,16 +6,16 @@ import axios from "API/axios";
  * @param {object} auth Context object coming from useAuth custom Hook
  * @param {Function} fetchFunction Coming from useFetchFunction custom hook
  */
-const fetchMessages = (fetchFunction) => {
-//   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
+const fetchMessages = (fetchFunction, auth) => {
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
     fetchFunction({
       axiosInstance: axios,
       method: "GET",
-      url: "http://localhost:8000/messages-panel",
+      url: "/api/message/inbox",
       requestConfig: {
         headers: {
           "Content-Language": "en-US",
-        //   Authorization: `Bearer ${auth.getToken()}`,
+          Authorization: `Bearer ${auth.getToken()}`,
         },
       },
     });

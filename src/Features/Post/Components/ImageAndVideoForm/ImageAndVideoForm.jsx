@@ -32,13 +32,14 @@ import { useCreatePostAttachments } from "Features/Post/Contexts/createPostAttac
 
 // Import hooks
 import { useEffect } from "react";
+import { Spinner } from "react-bootstrap";
 
 /**
  * Image and video form component (The form that appears when you click on the image and video tab in main section)
  * @param {Function} submitPost - Function to submit the post
  * @returns {React.Component} - Image and video form component (The form that appears when you click on the image and video tab in main section)
  */
-const ImageAndVideoForm = ({ submitPost }) => {
+const ImageAndVideoForm = ({ submitPost, isLoadingSubmit }) => {
   // State for flair modal
   const [modalShow, setModalShow] = useState(false);
 
@@ -150,7 +151,8 @@ const ImageAndVideoForm = ({ submitPost }) => {
             onClick={submitForm}
             id="post"
           >
-            Post
+            {!isLoadingSubmit && "Post"}
+            {isLoadingSubmit && <Spinner animation="border" variant="light" />}
           </PostButton>
         </SubmitButtons>
       </StyledImageAndVideoFrom>

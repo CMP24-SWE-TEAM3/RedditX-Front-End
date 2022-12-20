@@ -11,7 +11,7 @@ const LayoutHeader = () => {
   return (
     <Container>
       <FcReddit size={25} />
-      <StyledLink to={`/subreddit/${subredditId}`}>R/{subredditId}</StyledLink>
+      <StyledLink to={`/subreddit/t5_${subredditId}`}>R/{subredditId}</StyledLink>
       <span>/ {moderatorId}</span>
     </Container>
   );

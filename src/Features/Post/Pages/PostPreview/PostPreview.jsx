@@ -126,6 +126,7 @@ const PostPreview = () => {
               setText={setText}
               setTextHTML={setHtmlText}
               submitComment={handleSubmitComment}
+              isLoading={isLoadingComment}
             />
           </DraftEditorContainer>
           <CommentsContainer>

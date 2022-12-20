@@ -11,65 +11,44 @@ import { Container, Layout } from "./Comment.styled";
  * @returns {React.Component}
  */
 const Comment = ({ comment }) => {
-  // const commentBody = {
-  //   id: comment._id,
-  //   postFooter: {
-  //     upVotes: comment.votesCount,
-  //     Comments: "",
-  //   },
-  //   postHeader: {
-  //     headerImage: "People_Image.jpg",
-  //     communityName: "WallStreetRiches",
-  //     userName: "t2_North-Situation4034",
-  //     time: "5 days ago",
-  //     flair: {
-  //       flairText: "go",
-  //       flairColor: "green",
-  //       flairBackgroundColor: "red",
-  //     },
-  //   },
-  //   commentBody: {
-  //     postContent:
-  //       "[WP] They tell you the warmachines aren't sentient, being kind to them does nothing. But at the same time, it seems funny to you that their targets often seems the be the ones currently shooting at you.",
-  //     commentUserImage: "download.jpg",
-  //     userName: comment.authorId,
-  //     time: comment.createdAt,
-  //     bodyContent: comment.text,
-  //   },
-  // };
-  const commentBody = {
-    postContent:
-      "[WP] They tell you the warmachines aren't sentient, being kind to them does nothing. But at the same time, it seems funny to you that their targets often seems the be the ones currently shooting at you.",
-    commentUserImage: "download.jpg",
-    userName: comment.authorId,
-    time: comment.createdAt,
-    bodyContent: comment.text,
-    postFooter: {
-      upVotes: comment.votesCount,
-      Comments: "",
-    },
-  };
-  const postfooter = {
-    upVotes: 1000,
-    Comments: "",
-  };
-  const postHeader = {
-    headerImage: "People_Image.jpg",
-    communityName: "t2_egypt",
-    userName: "t2_Ali",
-    time: "12/10/2021",
-    nsfw: false,
-  };
-  // console.log(comment);
-  return (
-    <Container title="comment">
-      <Layout>
-        <PostHeader postheader={postHeader} />
-        <CommentBody commentBody={commentBody} />
-        <PostFooter postfooter={postfooter} />
-      </Layout>
-    </Container>
-  );
+  if (comment && comment.authorId.avatar) {
+    console.log(comment);
+    const commentBody = {
+      postContent: "comment.replyingTo.title",
+      commentUserImage: comment.authorId.avatar,
+      userName: comment.authorId._id,
+      time: comment.createdAt,
+      bodyContent: comment.textJSON,
+      postFooter: {
+        upVotes: comment.votesCount,
+        // Comments: comment.replyingTo.commentsNum,
+      },
+    };
+    // const postfooter = {
+    //   upVotes: comment.replyingTo.votesCount,
+    //   Comments: comment.replyingTo.commentsNum,
+    // };
+    // const postHeader = {
+    //   headerImage: "People_Image.jpg",
+    //   // headerImage: comment.replyingTo.communityID.icon,
+    //   communityName: comment.replyingTo.communityID._id,
+    //   communityID: comment.replyingTo.communityID._id,
+    //   userName: comment.replyingTo.userID._id,
+    //   userID: comment.replyingTo.userID._id,
+    //   nsfw: comment.replyingTo.nsfw,
+    //   time: comment.replyingTo.createdAt,
+    // };
+    console.log(comment.authorId.avatar, "asdfghj");
+    return (
+      <Container title="comment">
+        <Layout>
+          {/* <PostHeader postheader={postHeader} /> */}
+          {<CommentBody commentBody={commentBody} comment={comment} />}
+          {/* <PostFooter postfooter={postfooter} /> */}
+        </Layout>
+      </Container>
+    );
+  }
 };
 
 export default Comment;

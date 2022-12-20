@@ -194,8 +194,8 @@ const UserSideCard = () => {
             {userAbout && userAbout.totalKarma && (
               <span className="number"> {userAbout.totalKarma} </span>
             )}
-            {(userAbout && !userAbout.totalKarma) ||
-              (!userAbout && <span className="number"> 0 </span>)}
+            {((userAbout && !userAbout.totalKarma) ||!userAbout ) &&
+              (<span className="number"> 0 </span>)}
           </KarmaNo>
         </KarmaContainer>
         <KarmaContainer>

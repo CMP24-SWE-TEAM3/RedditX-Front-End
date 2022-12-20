@@ -15,6 +15,7 @@ export const InnerContainer = styled.div`
   justify-content: center;
   margin: 0 auto;
   background: ${({ theme }) => theme.canvas};
+  height: 100%;
 
   @media (max-width: 768px) {
     flex-direction: column-reverse;

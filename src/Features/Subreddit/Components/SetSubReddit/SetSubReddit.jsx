@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
 import { useSubRedditID } from "Features/Subreddit/Contexts/SubRedditIDProvider";
@@ -9,6 +9,9 @@ import PrivatePage from "../PrivatePage/PrivatePage";
 import { useIsBanned } from "Features/Subreddit/Contexts/IsBannedProvider";
 import { useIsMuted } from "Features/Subreddit/Contexts/IsMutedProvider";
 import NoSubReddit from "../NoSubReddit/NoSubReddit";
+import getBannedUsers from "Features/Subreddit/Services/getBannedUsers";
+import getMutedUsers from "Features/Subreddit/Services/getMutedUsers";
+
 /**
  *
  * @param {string} comName - community name to fitch its data
@@ -16,7 +19,8 @@ import NoSubReddit from "../NoSubReddit/NoSubReddit";
  * @returns {React.Component}
  */
 const SetSubReddit = ({ comm, children }) => {
-  const { setCommunity } = useSubReddit();
+  const { community, setCommunity } = useSubReddit();
+  const [isJoined, setIsJoined] = useState(false);
   const auth = useAuth();
 
   const { setCommunityID } = useSubRedditID();
@@ -26,25 +30,16 @@ const SetSubReddit = ({ comm, children }) => {
   }, [comm, setCommunityID]);
 
   const { setIsMod } = useIsModerator();
-  useEffect(() => {
-    setIsMod(false);
-  }, [setIsMod]);
 
   const { setIsBanned } = useIsBanned();
-  useEffect(() => {
-    setIsBanned(false);
-  }, [setIsBanned]);
 
   const { setIsMuted } = useIsMuted();
-  useEffect(() => {
-    setIsMuted(false);
-  }, [setIsMuted]);
 
   const [Community, error, isLoading, fetchData] = useFetchFunction();
   useEffect(() => {
     getSubreddit(fetchData, comm, auth);
-  }, []);
-  console.log(Community && Community.things, "__", error, "__", isLoading);
+  }, [comm]);
+  console.log(Community && Community.things, "_com_", error, "__", isLoading);
 
   useEffect(() => {
     Community &&
@@ -53,11 +48,73 @@ const SetSubReddit = ({ comm, children }) => {
       setCommunity(Community.things[0]);
   }, [Community]);
 
-  if (false) {
+  useEffect(() => {
+    if (community && community.moderators && auth) {
+      community.moderators.forEach((mod) => {
+        if (mod.userID === auth.getUserName()) {
+          setIsMod(true);
+        }
+      });
+    } else setIsMod(false);
+  }, [setIsMod, community, auth]);
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+  const [bannedList, errorBanned, isLoadingBanned, fetchDataBanned] =
+    useFetchFunction();
+  useEffect(() => {
+    getBannedUsers(fetchDataBanned, auth, comm);
+  }, [comm]);
+  console.log(bannedList, "_banned_", errorBanned, "_banned_", isLoadingBanned);
+  ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+  const [mutedList, errorMuted, isLoadingMuted, fetchDataMuted] =
+    useFetchFunction();
+  useEffect(() => {
+    getMutedUsers(fetchDataMuted, auth, comm);
+  }, [comm]);
+  console.log(mutedList, "_muted_", errorMuted, "_muted_", isLoadingMuted);
+
+  useEffect(() => {
+    if (bannedList && bannedList.users && auth) {
+      bannedList.users.forEach((banned) => {
+        if (banned._id === auth.getUserName()) {
+          setIsBanned(true);
+        }
+      });
+    } else setIsBanned(false);
+  }, [setIsBanned, bannedList, auth]);
+
+  useEffect(() => {
+    if (mutedList && mutedList.users && auth) {
+      mutedList.users.forEach((muted) => {
+        if (muted._id === auth.getUserName()) {
+          setIsMuted(true);
+        }
+      });
+    } else setIsMuted(false);
+  }, [setIsMuted, mutedList, auth]);
+
+  useEffect(() => {
+    if (community && community.members && auth) {
+      community.members.forEach((user) => {
+        if (user._id === auth.getUserName()) {
+          setIsJoined(true);
+        }
+      });
+    } else setIsJoined(false);
+  }, [community]);
+
+  if (
+    community &&
+    community.communityOptions &&
+    community.communityOptions.privacyType === "private" &&
+    !isJoined
+  ) {
     return <PrivatePage />;
   }
 
-  if (false) {
+  if (!community & !isLoading) {
     return <NoSubReddit />;
   }
 

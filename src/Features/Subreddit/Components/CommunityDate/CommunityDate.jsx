@@ -9,6 +9,9 @@ import { HiOutlinePencil } from "react-icons/hi";
 import { TbCake } from "react-icons/tb";
 import Moment from "react-moment";
 import SaveChangesModal from "../SaveChangesModal/SaveChangesModal";
+import { updateSettings } from "Features/Moderator/Services/communitySettingsApi";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import {
   AddDescription,
   BirthDay,
@@ -54,7 +57,23 @@ const CommunityDate = () => {
   const textAreaRef = useRef();
   const [date, setDate] = useState(null);
   const [isPrivate, setIsPrivate] = useState(false);
+  const auth = useAuth();
   // let isPrivate = true;
+
+  const [descData, descError, descLoading, descFetch] = useFetchFunction();
+
+  const handleSaving = (desc) => {
+    updateSettings(
+      descFetch,
+      { description: desc },
+      communityID,
+      auth.getToken()
+    );
+  };
+
+  useEffect(() => {
+    console.log(descData);
+  }, [descData]);
 
   const { community } = useSubReddit();
   useEffect(() => {
@@ -65,10 +84,15 @@ const CommunityDate = () => {
 
     if (community && community.createdAt)
       setDate(new Date(community.createdAt));
-    if (community && community.privacyType){
-      setIsPrivate(community.privacyType === "public" ? false : true);
+    if (
+      community &&
+      community.communityOptions &&
+      community.communityOptions.privacyType
+    ) {
+      setIsPrivate(
+        community.communityOptions.privacyType === "public" ? false : true
+      );
     }
-
   }, [community]);
 
   /**
@@ -135,6 +159,7 @@ const CommunityDate = () => {
    */
   function saveHandler() {
     setDummyDescription(description);
+    handleSaving(description);
     setInputFocus(false);
   }
 

@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import getSubreddit from "Features/Subreddit/Services/getSubreddit";
+import { useParams } from "react-router-dom";
+import createRule from "Features/Moderator/Services/createRule";
 import {
   Characters,
   FormCheck,
@@ -13,6 +18,7 @@ import {
   AddRuleBtn,
   CancelBtn,
   DeleteBtn,
+  UsedBefore,
 } from "./RuleModal.styled";
 
 const RuleModal = ({
@@ -22,12 +28,74 @@ const RuleModal = ({
   showEditModal,
   setShowEditModal,
 }) => {
+  // get name of community
+  const { subredditId } = useParams();
   // const [show, setShow] = useState(false);
   const [rule, setRule] = useState("");
   const [reasonRule, setReasonRule] = useState("");
   const [description, setDescription] = useState("");
   // state store type of community
   const [currentRadioValue, setCurrentRadioValue] = useState("posts-comments");
+  // state for rule is used or not
+  const [isUsedRule, setIsUsedRule] = useState(false);
+
+  // authorization's user
+  const auth = useAuth();
+  // Fetch communities
+  // Call useFetchFunction hook to handle states: loading, error, data
+  // Loading: Boolean to tell if the request has been sent, or it's still loading
+  // Error: Contains error message when the request is failed
+  // Data: the response data
+  const [rulesList, error, isLoading, fetchRules] = useFetchFunction();
+  const [ruleResponse, errorResponse, isLoadingResponse, fetchData] =
+    useFetchFunction();
+
+  useEffect(() => {
+    getSubreddit(fetchRules, subredditId, auth);
+  }, []);
+
+  useEffect(() => {
+    let flag = 0;
+    if (
+      !isLoading &&
+      rulesList &&
+      rulesList.things &&
+      rulesList.things[0].communityRules
+    ) {
+      let result = rulesList.things[0].communityRules;
+      result.map((el) => {
+        if (el.title === rule && rule !== "") {
+          setIsUsedRule(true);
+          flag = 1;
+        }
+      });
+      if (!flag) {
+        setIsUsedRule(false);
+      }
+    }
+  }, [rule]);
+
+  const handleCreateRule = () => {
+    if (!isUsedRule) {
+      createRule(fetchData, auth, {
+        srName: subredditId,
+        rule: {
+          title: rule,
+          description: description,
+          reason: reasonRule,
+        },
+      });
+      resetModal();
+      closeModal();
+    }
+  };
+  const resetModal = () => {
+    setRule("");
+    setDescription("");
+    setReasonRule("");
+    setCurrentRadioValue("posts-comments");
+    setShowEditModal(false);
+  };
 
   /**
    * function that controls length of string in modal's inputForm
@@ -46,12 +114,8 @@ const RuleModal = ({
     <ModalContainer
       show={showModal}
       onHide={() => {
+        resetModal();
         closeModal();
-        setRule("");
-        setDescription("");
-        setReasonRule("");
-        setCurrentRadioValue("posts-comments");
-        setShowEditModal(false);
       }}
     >
       <Modal.Header closeButton>
@@ -70,6 +134,12 @@ const RuleModal = ({
               onChange={handlerRules}
               maxlength="100"
             />
+
+            {isUsedRule && (
+              <UsedBefore>
+                You have another rule with this title. Please change.
+              </UsedBefore>
+            )}
             <Characters alarmValue={100 - rule.length}>
               {" "}
               {100 - rule.length} Characters remaining
@@ -158,11 +228,17 @@ const RuleModal = ({
       </Modal.Body>
       <Footer>
         {!showEditModal && (
-          <AddRuleBtn addRule={rule.length}>Add new rule</AddRuleBtn>
+          <AddRuleBtn
+            onClick={handleCreateRule}
+            addRule={rule.length > 0 && !isUsedRule}
+          >
+            Add new rule
+          </AddRuleBtn>
         )}
         {showEditModal && <AddRuleBtn addRule={rule.length}>Save</AddRuleBtn>}
         <CancelBtn
           onClick={() => {
+            resetModal();
             setShowModal(false);
             setShowEditModal(false);
           }}

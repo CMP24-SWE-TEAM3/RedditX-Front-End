@@ -12,6 +12,8 @@ import { getApproved } from "Features/Moderator/Services/userManagementApi";
 
 import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
 
+import { useParams } from "react-router-dom";
+
 import {
   Container,
   ButtonsContainer,
@@ -27,8 +29,8 @@ import ApproveUserModal from "../ApproveUserModal/ApproveUserModal";
  */
 
 const ApprovedPage = () => {
-  const communityName = "t5_imagePro235";
-
+  //const communityName = "t5_imagePro235";
+  const {subredditId}  = useParams()
   const [data, error, isLoading, dataFetch] = useFetchFunction();
 
   const auth = useAuth();
@@ -37,7 +39,7 @@ const ApprovedPage = () => {
    * useEffect to get all moderators
    */
   useEffect(() => {
-    getApproved(dataFetch, communityName, auth.getToken());
+    getApproved(dataFetch, "t5_"+subredditId, auth.getToken());
   }, []);
 
   const [modalShowApproveUser, setModalShowApproveUser] = useState(false);
@@ -62,7 +64,7 @@ const ApprovedPage = () => {
             </NameHeader>
 
             {!isLoading && data.users && (
-              <ApprovedUsers communityName={communityName} Moderator={data.users}></ApprovedUsers>
+              <ApprovedUsers communityName={subredditId} Moderator={data.users}></ApprovedUsers>
             )}
           </InnerContainer>
         </Container>

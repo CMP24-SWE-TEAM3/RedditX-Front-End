@@ -16,6 +16,7 @@ import fetchUsernameMentions from "Features/Messages/Services/fetchUsernameMenti
 import fetchPostReplies from "../Services/fetchPostReplies";
 import fetchMessages from "../Services/fetchMessages";
 import fetchAllMessages from "../Services/fetchallMessages";
+import fetchSentMessage from "../Services/fetchSentMessage";
 /**
  * Component that contains the Messages Page
  *
@@ -29,51 +30,54 @@ function Messages() {
   const [messages, errorMessages, loadingMessages, fetchMessagesData ] = useFetchFunction();
   const [messagesAll, errorMessagesAll, loadingMessagesAll, fetchMessagesAll ] = useFetchFunction();
 
-
   useEffect(()=>{
-    fetchUsernameMentions(fetchMentions, auth);
-    fetchPostReplies(fetchReplies, auth);
-    fetchMessages(fetchMessagesData);
-    fetchAllMessages(fetchMessagesAll)
+    fetchMessages(fetchMessagesData, auth);
+    // fetchUsernameMentions(fetchMentions, auth);
+    // fetchPostReplies(fetchReplies, auth);
+    // fetchAllMessages(fetchMessagesAll);
+    
   }, []);
 
-  const unread =[]
+  let mapping;
+  const unread = [];
   // console.log(`All is: `);
-  // console.log(messagesAll);
-  const mapping = messagesAll.map((item) => {
-    if(item.read===false) {
-      unread.push(item);
-      return true;
-    }
-    else {
-      return false;
-    }
-  });
+  if(messages && messages.messages && messages.messages.length!==0) {
+    mapping = messages.messages.map((item) => {
+      if(item.unread_status===true) {
+        unread.push(item);
+        return true;
+      }
+      else {
+        return false;
+      }
+    });
+  }
+  
 
 
   return (
     <>
       <MessagesHeader />
       <Routes>
-        {!loadingMessagesAll &&
+        {!loadingMessages &&
         <Route
           path="/"
           element={
-              <MessageItem messages={messagesAll}/>
+              <MessageItem data={messages}/>
           }
         />
         }
         
         <Route path="/inbox" >
-          <Route path="/inbox" element={<MessageItem messages={messagesAll}/> } />
-          {!loadingMessagesAll &&
-          <Route path="/inbox/all" element={<MessageItem messages={messagesAll}/> }/>}
+          <Route path="/inbox" element={<MessageItem data={messages}/> } />
           {!loadingMessages &&
-          <Route path="/inbox/messages" element={<MessageBannel messages={messages}/> }/>}
+          <Route path="/inbox/all" element={<MessageItem data={messages}/> }/>}
+          {!loadingMessages &&
+          <Route path="/inbox/messages" element={<MessageBannel data={messages}/> }/>}
           {!loadingMentions && 
           <Route path="/inbox/mentions"element={ <UserMentions mentions={mentions}/> } />}
-          {!loadingMessagesAll &&
-          <Route path="/inbox/unread" element={ <Unread messages={unread}/> }/>}
+          {!loadingMessages &&
+          <Route path="/inbox/unread" element={ <Unread Unreadmessages={unread}/> }/>}
           {!loadingReplies &&
           <Route path="/inbox/selfreply" element={<PostReplay replies={replies}/> }/>}
         </Route>
@@ -86,14 +90,7 @@ function Messages() {
             </>
           }
         />
-        <Route
-          path="/sent"
-          element={
-            <>
-              <SentMessages />
-            </>
-          }
-        />
+        <Route path="/sent" element={ <SentMessages/>  } />
         
 
         {/* <Footer /> */}

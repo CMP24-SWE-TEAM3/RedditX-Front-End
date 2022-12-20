@@ -19,7 +19,8 @@ import {
 import { useState } from "react";
 import composeMessage from "../../Services/ComposeMessage";
 import useFetchFunction from "Hooks/useFetchFunction";
-
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import { useLocation } from "react-router-dom";
 /**
  * Component that contains Compose Message
  *
@@ -27,16 +28,24 @@ import useFetchFunction from "Hooks/useFetchFunction";
  * @returns {React.Component}
  */
 function SendAMessage() {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const receiver = queryParams.get("to");
+  const sender = queryParams.get("from");
+  
+  const auth = useAuth();
   const [composeRes, errorCompose, loadingCompose, fetchData] = useFetchFunction();
   const [subjectErr, setSubjectErr] = useState(false);
   const [messageErr, setMessageErr] = useState(false);
   const [toErr, setToErr] = useState(false);
   const [formData, setFormData] = useState({
+
     from: "",
-    to: "",
+    to: receiver? receiver:"",
     subject: "",
     message: "",
   });
+  
   function handleChange(event) {
     const { from, to, subject, message } = event.target;
 
@@ -79,12 +88,27 @@ function SendAMessage() {
     }
     if(errors===0) 
     {
-      let dataObject = {
-        toID: `t3_${formData.to}`,
-        subject: formData.subject,
-        text: formData.message
-      };
-      composeMessage(fetchData, dataObject);
+      console.log(formData.to);
+      console.log(auth.getUserName());
+      let dataObject;
+      if(sender && receiver) {
+        dataObject = {
+          fromID: `t2_${sender}`,
+          toID: `t2_${receiver}`,
+          subject: formData.subject,
+          text: formData.message
+        }
+      }
+      else {
+        dataObject = {
+          fromID: auth.getUserName(),
+          toID: `t2_${formData.to}`,
+          subject: formData.subject,
+          text: formData.message
+        };
+      }
+      
+      composeMessage(fetchData, dataObject, auth);
       
       //Clearing form on successfull submission
       setFormData({from:""});
@@ -103,23 +127,6 @@ function SendAMessage() {
             <Heading>Send A Private Message</Heading>
           </Spacer>
           <FormField onSubmit={handleSubmit}>
-            <Spacer>
-              <FieldDiv>
-                <Title>From</Title>
-                <FieldContent>
-                  <FromSelection
-                    onChange={handleChange}
-                    value={formData.from}
-                    name="from"
-                    required
-                  >
-                    <option value={"--Choose--"}>--Choose--</option>
-                    <option value={"mohamed"}>mohamed</option>
-                    <option value={"ahmed"}>ahmed</option>
-                  </FromSelection>
-                </FieldContent>
-              </FieldDiv>
-            </Spacer>
             <Spacer>
               <FieldDiv>
                 <Title>to

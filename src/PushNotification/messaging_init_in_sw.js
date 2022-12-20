@@ -4,13 +4,12 @@ import { getMessaging, getToken, onMessage } from "firebase/messaging";
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://firebase.google.com/docs/web/learn-more#config-object
 const firebaseConfig = {
-  apiKey: "AIzaSyCFihY47mFGarGMJsT6BZLxSlwk4l5QKpE",
-  authDomain: "reddit-3d725.firebaseapp.com",
-  projectId: "reddit-3d725",
-  storageBucket: "reddit-3d725.appspot.com",
-  messagingSenderId: "294678106759",
-  appId: "1:294678106759:web:4e91d5ecc5682f23345e22",
-  measurementId: "G-RJ30EYDC4X",
+  apiKey: "AIzaSyClEjbza4FfTRtOzhH68lmeKIbQi7wvlFE",
+  authDomain: "reddit-f129b.firebaseapp.com",
+  projectId: "reddit-f129b",
+  storageBucket: "reddit-f129b.appspot.com",
+  messagingSenderId: "46502148210",
+  appId: "1:46502148210:web:b89ed82ad9caadd3c46aeb",
 };
 
 // Initialize Firebase
@@ -27,7 +26,7 @@ function requestPermission() {
 
       getToken(messaging, {
         vapidKey:
-          "BLcskxFWeIoSYu1dpYhP50fBUpxAtsErOIXJRxQZzk24ytsFCe1KbeBdFJ3GQehwoWctpwrMbpNY-j6M6Flhgok",
+          "BM65GEnHhG6thx79-Y4J8bKEyep7_qSjxcT3Sg1zmigJ5ZhNUM7TZtoklSiyEAXU3XwH17alRi10D0DPkiHQPvU",
       }).then((currentToken) => {
         if (currentToken) {
           console.log("current token for client: ", currentToken);

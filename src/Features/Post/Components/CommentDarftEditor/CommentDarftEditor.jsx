@@ -29,7 +29,7 @@ import useLink from "Features/Post/Hooks/useLink";
 import useMedia from "Features/Post/Hooks/useMedia";
 
 // Import bootstrap components
-import { OverlayTrigger, Popover } from "react-bootstrap";
+import { OverlayTrigger, Popover, Spinner } from "react-bootstrap";
 import { convertToHTML } from "draft-convert";
 
 // Extract Draft variables
@@ -95,6 +95,7 @@ const CommentDraftEditor = ({
   load,
   setTextHTML,
   submitComment,
+  isLoading,
 }) => {
   const decorator = new CompositeDecorator([
     {
@@ -230,7 +231,10 @@ const CommentDraftEditor = ({
             onToggle={toggleBlockType}
           />
           <Separator />
-          <SubmitButton onClick={submitComment}>Comment</SubmitButton>
+          <SubmitButton onClick={submitComment}>
+            {!isLoading && "Comment"}
+            {isLoading && <Spinner animation="border" size="sm" />}
+          </SubmitButton>
         </Controls>
         <OverlayTrigger
           trigger="click"

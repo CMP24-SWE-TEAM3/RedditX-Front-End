@@ -65,6 +65,7 @@ import Notifications from "Features/Notifications/Pages/Notifications/Notificati
 import Explore from "Pages/Explore/Explore";
 import { CategoryContextProvider } from "Contexts/CategoryContext/Category-context";
 import PostPreview from "Features/Post/Pages/PostPreview/PostPreview";
+import { RecentContextProvider } from "Contexts/RecentContext";
 
 /**
  * The main app of our application it handles routing
@@ -111,191 +112,203 @@ function App() {
   return (
     <ThemeProvider theme={JSON.parse(theme)}>
       <AuthProvider>
-        <SearchContextProvider>
-          <CategoryContextProvider>
-            <SafeContextProvider>
-              <EditContextProvider>
-                <BrowserRouter>
-                  <LogInVerticalModal
-                    show={modalShowLogIn}
-                    onHide={() => setModalShowLogIn(false)}
-                    setModalShowLogIn={setModalShowLogIn}
-                  />
-                  <SignUpVerticalModal
-                    show={modalShowSignUp}
-                    onHide={() => setModalShowSignUp(false)}
-                    setModalShowSignUp={setModalShowSignUp}
-                    setModalAfterSignUp={setModalAfterSignUp}
-                  />
-                  <AfterSignUpModal
-                    show={modalAfterSignUp}
-                    setModalAfterSignUp={setModalAfterSignUp}
-                    onHide={() => setModalAfterSignUp(false)}
-                  />
-                  <Routes>
-                    <Route
-                      path=""
-                      element={
-                        <>
-                          <Navigation
-                            toggleMode={handleToggleTheme}
-                            theme={JSON.parse(theme).id}
-                            modalShowLogIn={modalShowLogIn}
-                            setModalShowLogIn={setModalShowLogIn}
-                            modalShowSignUp={modalShowSignUp}
-                            setModalShowSignUp={setModalShowSignUp}
-                            modalAfterSignUp={modalAfterSignUp}
+        <RecentContextProvider>
+          <SearchContextProvider>
+            <CategoryContextProvider>
+              <SafeContextProvider>
+                <EditContextProvider>
+                  <BrowserRouter>
+                    <LogInVerticalModal
+                      show={modalShowLogIn}
+                      onHide={() => setModalShowLogIn(false)}
+                      setModalShowLogIn={setModalShowLogIn}
+                    />
+                    <SignUpVerticalModal
+                      show={modalShowSignUp}
+                      onHide={() => setModalShowSignUp(false)}
+                      setModalShowSignUp={setModalShowSignUp}
+                      setModalAfterSignUp={setModalAfterSignUp}
+                    />
+                    <AfterSignUpModal
+                      show={modalAfterSignUp}
+                      setModalAfterSignUp={setModalAfterSignUp}
+                      onHide={() => setModalAfterSignUp(false)}
+                    />
+                    <Routes>
+                      <Route
+                        path=""
+                        element={
+                          <>
+                            <Navigation
+                              toggleMode={handleToggleTheme}
+                              theme={JSON.parse(theme).id}
+                              modalShowLogIn={modalShowLogIn}
+                              setModalShowLogIn={setModalShowLogIn}
+                              modalShowSignUp={modalShowSignUp}
+                              setModalShowSignUp={setModalShowSignUp}
+                              modalAfterSignUp={modalAfterSignUp}
+                              setModalAfterSignUp={setModalAfterSignUp}
+                            />
+                            <Outlet />
+                          </>
+                        }
+                      >
+                        <Route path="" element={<Navigate to="/new" />} />
+                        <Route
+                          path="/*"
+                          element={
+                            <>
+                              <HomePage
+                                handleToggleTheme={handleToggleTheme}
+                                theme={JSON.parse(theme).id}
+                              />
+                            </>
+                          }
+                        />
+                        <Route
+                          path="subreddit/:id/*"
+                          element={
+                            <RequireAuth>
+                              <SubReddit />
+                            </RequireAuth>
+                          }
+                        />
+                        <Route
+                          path="category/:categoryType/*"
+                          element={
+                            <RequireAuth>
+                              <CommunityLeaderBoard />
+                            </RequireAuth>
+                          }
+                        />
+                        <Route
+                          path="index-page/:indexLetter/*"
+                          element={
+                            <RequireAuth>
+                              <IndexPage />
+                            </RequireAuth>
+                          }
+                        />
+                        <Route
+                          path="search/*"
+                          element={
+                            <RequireAuth>
+                              <Search />
+                            </RequireAuth>
+                          }
+                        />
+                        <Route
+                          path="submit"
+                          element={
+                            <RequireAuth>
+                              <CreatePost />
+                            </RequireAuth>
+                          }
+                        />
+                        <Route
+                          path="submit/:destinationId"
+                          element={
+                            <RequireAuth>
+                              <CreatePost />
+                            </RequireAuth>
+                          }
+                        />
+                        <Route path="*" element={<NotFound />} />
+                        <Route
+                          path="post-preview/:postId"
+                          element={
+                            <>
+                              <RequireAuth>
+                                <PostPreview />
+                              </RequireAuth>
+                            </>
+                          }
+                        />
+                        <Route
+                          path="subreddit/:subredditId/moderator/:moderatorId/"
+                          element={
+                            <>
+                              <RequireAuth>
+                                <Moderator />
+                              </RequireAuth>
+                            </>
+                          }
+                        />
+                        <Route
+                          path="/user/:userId/*"
+                          element={
+                            <>
+                              <RequireAuth>
+                                <User />
+                              </RequireAuth>
+                            </>
+                          }
+                        />
+                        <Route
+                          path="settings/*"
+                          element={
+                            <>
+                              <RequireAuth>
+                                <SettingsPage />
+                              </RequireAuth>
+                            </>
+                          }
+                        />
+                        <Route
+                          path="message/*"
+                          element={
+                            <RequireAuth>
+                              <Messages />
+                            </RequireAuth>
+                          }
+                        />
+                        <Route
+                          path="/notifications"
+                          element={
+                            <>
+                              <RequireAuth>
+                                <Notifications />
+                              </RequireAuth>
+                            </>
+                          }
+                        />
+                        <Route
+                          path="/explore/*"
+                          element={
+                            <>
+                              <Explore />
+                            </>
+                          }
+                        />
+                      </Route>
+                      <Route path="login" element={<LogInPage />} />
+                      <Route
+                        path="register"
+                        element={
+                          <SignUpPage
                             setModalAfterSignUp={setModalAfterSignUp}
                           />
-                          <Outlet />
-                        </>
-                      }
-                    >
-                      <Route path="" element={<Navigate to="/new" />} />
-                      <Route
-                        path="/*"
-                        element={
-                          <>
-                            <HomePage
-                              handleToggleTheme={handleToggleTheme}
-                              theme={JSON.parse(theme).id}
-                            />
-                          </>
                         }
                       />
                       <Route
-                        path="subreddit/:id/*"
-                        element={
-                          <RequireAuth>
-                            <SubReddit />
-                          </RequireAuth>
-                        }
+                        path="forget-password"
+                        element={<ForgetPasswordPage />}
                       />
                       <Route
-                        path="category/:categoryType/*"
-                        element={
-                          <RequireAuth>
-                            <CommunityLeaderBoard />
-                          </RequireAuth>
-                        }
+                        path="forget-username"
+                        element={<ForgetUserNamePage />}
                       />
                       <Route
-                        path="index-page/:indexLetter/*"
-                        element={
-                          <RequireAuth>
-                            <IndexPage />
-                          </RequireAuth>
-                        }
+                        path="user/reset-password/:token"
+                        element={<NewPasswordPage />}
                       />
-                      <Route
-                        path="search/*"
-                        element={
-                          <RequireAuth>
-                            <Search />
-                          </RequireAuth>
-                        }
-                      />
-                      <Route
-                        path="submit"
-                        element={
-                          <RequireAuth>
-                            <CreatePost />
-                          </RequireAuth>
-                        }
-                      />
-                      <Route path="*" element={<NotFound />} />
-                      <Route
-                        path="post-preview/:postId"
-                        element={
-                          <>
-                            <RequireAuth>
-                              <PostPreview />
-                            </RequireAuth>
-                          </>
-                        }
-                      />
-                      <Route
-                        path="subreddit/:subredditId/moderator/:moderatorId/"
-                        element={
-                          <>
-                            <RequireAuth>
-                              <Moderator />
-                            </RequireAuth>
-                          </>
-                        }
-                      />
-                      <Route
-                        path="/user/:userId/*"
-                        element={
-                          <>
-                            <RequireAuth>
-                              <User />
-                            </RequireAuth>
-                          </>
-                        }
-                      />
-                      <Route
-                        path="settings/*"
-                        element={
-                          <>
-                            <RequireAuth>
-                              <SettingsPage />
-                            </RequireAuth>
-                          </>
-                        }
-                      />
-                      <Route
-                        path="message/*"
-                        element={
-                          <RequireAuth>
-                            <Messages />
-                          </RequireAuth>
-                        }
-                      />
-                      <Route
-                        path="/notifications"
-                        element={
-                          <>
-                            <RequireAuth>
-                              <Notifications />
-                            </RequireAuth>
-                          </>
-                        }
-                      />
-                      <Route
-                        path="/explore/*"
-                        element={
-                          <>
-                            <Explore />
-                          </>
-                        }
-                      />
-                    </Route>
-                    <Route path="login" element={<LogInPage />} />
-                    <Route
-                      path="register"
-                      element={
-                        <SignUpPage setModalAfterSignUp={setModalAfterSignUp} />
-                      }
-                    />
-                    <Route
-                      path="forget-password"
-                      element={<ForgetPasswordPage />}
-                    />
-                    <Route
-                      path="forget-username"
-                      element={<ForgetUserNamePage />}
-                    />
-                    <Route
-                      path="user/reset-password/:token"
-                      element={<NewPasswordPage />}
-                    />
-                  </Routes>
-                </BrowserRouter>
-              </EditContextProvider>
-            </SafeContextProvider>
-          </CategoryContextProvider>
-        </SearchContextProvider>
+                    </Routes>
+                  </BrowserRouter>
+                </EditContextProvider>
+              </SafeContextProvider>
+            </CategoryContextProvider>
+          </SearchContextProvider>
+        </RecentContextProvider>
       </AuthProvider>
     </ThemeProvider>
   );

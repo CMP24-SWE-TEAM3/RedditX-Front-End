@@ -14,10 +14,11 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 const NotificationsUpperSide = () => {
   const auth = useAuth();
-  const [markReadRes, errorMarkRead, loadingMarkRead, fetchData] = useFetchFunction();
+  const [markReadRes, errorMarkRead, loadingMarkRead, fetchData] =
+    useFetchFunction();
 
-  function handleReadNotifications(){
-    markAllAsRead(fetchData, auth);
+  function handleReadNotifications() {
+    // markAllAsRead(fetchData, auth);
   }
   return (
     <ContainerUpper>
@@ -37,7 +38,11 @@ const NotificationsUpperSide = () => {
             </ContainerUpperLI>
           </div>
           <ContainerUpperLI>
-            <Link onClick={handleReadNotifications} className="another" to={"/notifications"}>
+            <Link
+              onClick={handleReadNotifications}
+              className="another"
+              to={"/notifications"}
+            >
               <span className="Icon">
                 <RiHome8Line />
               </span>

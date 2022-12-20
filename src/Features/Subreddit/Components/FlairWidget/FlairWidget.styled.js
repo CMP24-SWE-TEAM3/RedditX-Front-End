@@ -23,7 +23,7 @@ export const ListItem = styled.li`
   margin-right: 5px;
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled.div`
   text-decoration: none;
   border-radius: 20px;
   font-size: 14px;

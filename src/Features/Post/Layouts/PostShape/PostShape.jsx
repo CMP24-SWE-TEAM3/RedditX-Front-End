@@ -33,7 +33,6 @@ const PostShape = ({
   editPost,
   setEditPost,
 }) => {
-  console.log(post);
   const [makeHidden, setMakeHidden] = useState(false);
   const [editPostText, setEditPostText] = useState("");
   const [editPostHtmlText, setEditPostHtmlText] = useState("");
@@ -84,7 +83,10 @@ const PostShape = ({
                     Cancel
                   </CancelButton>
                   <SubmitButton onClick={editPostHandler}>
-                    {!isLoading && "Save"} {isLoading && <Spinner />}
+                    {!isLoading && "Save"}
+                    {isLoading && (
+                      <Spinner animation="border" variant="light" />
+                    )}
                   </SubmitButton>
                 </ButtonsContainer>
               </DraftEditorContainerOuter>

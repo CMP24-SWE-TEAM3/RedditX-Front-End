@@ -2,17 +2,19 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import getUser from "Features/User/Services/getUser";
 import getFollowers from "Features/User/Services/getFollowers";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useIsMe } from "Features/User/Contexts/IsMeProvider";
 import { useUserAbout } from "Features/User/Contexts/UserAboutProvider";
 import { useUserID } from "Features/User/Contexts/UserIDProvider";
 import { useFollowers } from "Features/User/Contexts/FollowersProvider";
 import UserNotFound from "../UserNotFound/UserNotFound";
 import AdultPage from "../AdultPage/AdultPage";
+import Followers from "Features/User/Layouts/Followers/Followers";
 
 const SetUser = ({ userId, children }) => {
+  const [show, setShow] = useState(false);
   const auth = useAuth();
-  const { setIsMe } = useIsMe();
+  const { setIsMe, isMe } = useIsMe();
   const { setUserAbout } = useUserAbout();
   const { setUserID } = useUserID();
   const { setFollowers } = useFollowers();
@@ -72,12 +74,28 @@ const SetUser = ({ userId, children }) => {
     }
   }, [userInfo, setUserAbout]);
 
-  if (false) {
+  if (
+    (userInfo && !isLoading && userInfo.about && !userInfo.about.user) ||
+    (!isLoading &&
+      userInfo &&
+      userInfo.about &&
+      userInfo.about.user &&
+      userInfo.about.user.isBlocked) ||
+    error
+  ) {
     return <UserNotFound />;
   }
 
-  if (true) {
-    return <AdultPage />;
+  if (
+    !isLoading &&
+    userInfo &&
+    userInfo.about &&
+    userInfo.about.user &&
+    userInfo.about.user.over18 &&
+    !show &&
+    !isMe
+  ) {
+    return <AdultPage onHide={setShow} />;
   }
 
   return <>{children}</>;

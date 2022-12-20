@@ -1,7 +1,13 @@
 import CommentsPage from "Features/Search/Layouts/CommentsPage/CommentsPage";
 import CommunitiesPage from "Features/Search/Layouts/CommunitiesPage/CommunitiesPage";
 import PeoplePage from "Features/Search/Layouts/PeoplePage/PeoplePage";
-import { Navigate, Outlet, Route, Routes } from "react-router-dom";
+import {
+  Navigate,
+  Outlet,
+  Route,
+  Routes,
+  useSearchParams,
+} from "react-router-dom";
 import React from "react";
 // import Form from "react-bootstrap/Form";
 import Links from "../../Components/MainHeader/MainHeader";
@@ -30,44 +36,41 @@ import getCommunitiesList from "Features/Post/Services/getCommunitiesList";
  * @returns {React.Component}
  */
 const Search = () => {
+  // const [Sort, setSort] = useState("Relevance");
   /**
    * Function take the SortItem And Handle it
    * @param {String} SortItem
    */
   function OnSort(SortItem) {
-    // console.log(SortItem);
+    // // console.log(SortItem);
+    // setSort(SortItem);
   }
   const auth = useAuth();
   const [ActiveLink, setActiveLink] = useState("posts");
   // Fetch Posts
   const [PostList, error, loading, fetch] = useFetchFunction();
-  // useEffect(() => {
-  //   fetchPosts(fetch);
-  // }, []); // Only re-run the effect if count changes
-  // Fetch Posts
-  console.log(PostList);
-  // fetch Communities
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  console.log(searchParams.get("query"), searchParams.get("destination"));
+  const query = searchParams.get("query");
+  const destination = searchParams.get("destination");
+
+  console.log(PostList, "pppp");
   let [CommunityList, errorCommunity, loadingCommunity, fetchCommunity] =
     useFetchFunction();
-  // console.log(CommunityList);
 
   // fetch Communities
 
-  // fetch Comments
   let [CommentLists, errorComment, loadingComment, fetchComment] =
     useFetchFunction();
-  console.log(CommentLists);
-  // fetch Comments
 
-  // fetch People
+  console.log(CommentLists, "jjjj");
+
   let [PeopleList, errorPeople, loadingPeople, FB] = useFetchFunction();
-  // console.log(PeopleList);
-  // fetch People
 
-  // fetch people follow
   let [PeopleFollow, errorSub, loadingSub, fetchSub] = useFetchFunction();
   // fetch people follow
-
+  // console.log(PeopleFollow, "hhhhhhhhhhhhhh");
   // fetch communities subscribe
 
   let [communityListSub, errorSubs, isLoadingSubs, fetchData] =
@@ -77,19 +80,41 @@ const Search = () => {
   // const searchWord = "text";
   const ctx = useContext(SearchContext);
   useEffect(() => {
-    if (ctx.isSubreddit) {
-      fetchPostsCommunity(fetch, auth, ctx.word, ctx.community);
-      fetchCommentsCommunity(fetchComment, auth, ctx.word);
+    ctx.wordHandler(query);
+    if (destination) {
+      ctx.isSubredditHandler(true);
+      ctx.communityHandler(destination);
     } else {
-      fetchPosts(fetch, auth, ctx.word);
-      fetchComments(fetchComment, auth, ctx.word);
+      ctx.isSubredditHandler(false);
+      ctx.communityHandler(undefined);
     }
-    fetchCommunities(fetchCommunity, auth, "");
-    fetchPeople(FB, auth, ctx.word);
-    // fetchSubbcomm(reloadSubCommunities, auth);
-    getCommunitiesList(fetchData, auth);
-    fetchPeopleFollowed(fetchSub);
+  }, [query, destination]);
+  useEffect(() => {
+    if (ctx.word !== "") {
+      if (ctx.isSubreddit && ctx.word !== "") {
+        // fetchPostsCommunity(fetch, auth, ctx.word, ctx.community);
+        fetchCommentsCommunity(fetchComment, auth, ctx.word, ctx.community);
+      } else if (ctx.word !== "") {
+        // fetchPosts(fetch, auth, ctx.word, Sort);
+        fetchComments(fetchComment, auth, ctx.word);
+      }
+      fetchCommunities(fetchCommunity, auth, ctx.word);
+      fetchPeople(FB, auth, "");
+      // fetchSubbcomm(reloadSubCommunities, auth);
+      getCommunitiesList(fetchData, auth);
+      fetchPeopleFollowed(fetchSub, auth);
+    }
   }, [ctx.word, ctx.isSubreddit, ctx.community]); // Only re-run the effect if count changes
+
+  useEffect(() => {
+    if (ctx.word !== "") {
+      if (ctx.isSubreddit && ctx.word !== "") {
+        fetchPostsCommunity(fetch, auth, ctx.word, ctx.community);
+      } else if (ctx.word !== "") {
+        fetchPosts(fetch, auth, ctx.word, ctx.Sort);
+      }
+    }
+  }, [ctx.word, ctx.isSubreddit, ctx.community, ctx.Sort]); // Only re-run the effect if count changes
 
   return (
     <Container>
@@ -101,62 +126,58 @@ const Search = () => {
               <Route
                 path="posts"
                 element={
-                  PostList &&
-                  PeopleFollow &&
-                  communityListSub &&
-                  CommunityList &&
-                  PeopleList &&
-                  !loading &&
-                  !loadingCommunity &&
-                  !isLoadingSubs &&
-                  !loadingSub &&
-                  !loadingPeople && (
-                    <Posts
-                      PostList={PostList}
-                      CommunityList={CommunityList}
-                      PeopleList={PeopleList}
-                      PeopleFollow={PeopleFollow}
-                      CommunitiesSub2={communityListSub}
-                      OnSort={OnSort}
-                    />
-                  )
+                  // PostList &&
+                  // PeopleFollow &&
+                  // communityListSub &&
+                  // CommunityList &&
+                  // PeopleList &&
+                  // !loading &&
+                  // !loadingCommunity &&
+                  // !isLoadingSubs &&
+                  // !loadingSub &&
+                  // !loadingPeople &&
+                  <Posts
+                    PostList={PostList}
+                    CommunityList={CommunityList}
+                    PeopleList={PeopleList}
+                    PeopleFollow={PeopleFollow}
+                    CommunitiesSub2={communityListSub}
+                    OnSort={OnSort}
+                  />
                 }
               />
               <Route
                 path="comments"
                 element={
-                  CommentLists &&
-                  !loadingComment && (
-                    <CommentsPage CommentLists={CommentLists} />
-                  )
+                  // CommentLists &&
+                  // !loadingComment &&
+                  <CommentsPage CommentLists={CommentLists} />
                 }
               />
               <Route
                 path="communities"
                 element={
-                  communityListSub &&
-                  CommunityList &&
-                  !loadingCommunity &&
-                  !isLoadingSubs && (
-                    <CommunitiesPage
-                      CommunityList={CommunityList}
-                      CommunitiesSub2={communityListSub}
-                    />
-                  )
+                  // communityListSub &&
+                  // CommunityList &&
+                  // !loadingCommunity &&
+                  // !isLoadingSubs &&
+                  <CommunitiesPage
+                    CommunityList={CommunityList}
+                    CommunitiesSub2={communityListSub}
+                  />
                 }
               />
               <Route
                 path="people"
                 element={
-                  PeopleFollow &&
-                  PeopleList &&
-                  !loadingSub &&
-                  !loadingPeople && (
-                    <PeoplePage
-                      PeopleList={PeopleList}
-                      PeopleFollow={PeopleFollow}
-                    />
-                  )
+                  // PeopleFollow &&
+                  // PeopleList &&
+                  // !loadingSub &&
+                  // !loadingPeople &&
+                  <PeoplePage
+                    PeopleList={PeopleList}
+                    PeopleFollow={PeopleFollow}
+                  />
                 }
               />
               <Route

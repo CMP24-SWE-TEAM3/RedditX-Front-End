@@ -41,6 +41,7 @@ const FlairModal = ({
   isLoading,
   postOrUser,
 }) => {
+  console.log("flairList submit", flairList);
   // Context for create post flairs
   const { createPostFlairs, setCreatePostFlairs } = useCreatePostFlairs();
 

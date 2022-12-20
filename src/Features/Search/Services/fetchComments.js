@@ -10,7 +10,7 @@ const fetchComments = (fetchFunction, auth, searchWord) => {
   fetchFunction({
     axiosInstance: axios,
     method: "GET",
-    url: `/api/search/r?type=comment&q=${searchWord}`,
+    url: `/api/search/r/?type=comment&q=${searchWord}`,
     requestConfig: {
       headers: {
         "Content-Language": "en-US",

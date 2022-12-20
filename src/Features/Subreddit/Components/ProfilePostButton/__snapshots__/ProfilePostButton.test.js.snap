@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile Post button Component this is a test for Profile Post Button Component 1`] = `
+<styled.button>
+  <styled.div>
+    <styled.div>
+      <styled.div />
+      <styled.div>
+        <styled.img
+          alt="Profile Picture"
+          src="profile.ico"
+        />
+      </styled.div>
+    </styled.div>
+  </styled.div>
+</styled.button>
+`;

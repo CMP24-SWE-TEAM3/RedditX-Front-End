@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   PageContainer,
   EmbeddedPage,
+  Empty,
+  EmptyMessage,
 } from "./MessagePanel.styled";
 import MessageBannelItem from "../../Components/MessagesPanel/MessagePanelItem";
 const messagesData = [
@@ -49,30 +51,47 @@ const messagesData = [
  * @Component
  * @returns {React.Component}
  */
-function MessageBannel({messages}) {
-  const [eachMessage, setEachMessage] = useState(messagesData);
+function MessageBannel({data}) {
+  console.log(data);
+  let Message = (
+  <Empty>
+    <EmptyMessage>
+      there doesn't seem to be anything here
+    </EmptyMessage>
+  </Empty>
+  );
 
-  const Message = eachMessage.map((item) => {
-    if(!item.delete) {
-    return (
-      <MessageBannelItem
-        changeMessage={setEachMessage}
-        aurthor={item.aurthor}
-        title={item.title}
-        time={item.time}
-        msg={item.msg}
-        expanded={item.expanded}
-        admin={item.admin}
-        read={item.read}
-        id={item.id}
-        deleted={item.delete}
-        block={item.block}
-        key={item.id}
-      />
-    );
+  const [eachMessage, setEachMessage] = useState();
+
+  useEffect(()=>{
+    console.log(data);
+    if(data && data.messages && data.messages.length!==0) {
+      setEachMessage(data.messages);
     }
-  });
+  }, [data]);
 
+  if(eachMessage && eachMessage.length!==0) {
+    Message = eachMessage.map((item) => {
+      if(!item.isDeleted) {
+      return (
+        <MessageBannelItem
+          changeMessage={setEachMessage}
+          aurthor={item.fromID.substring(3)}
+          title={item.subject}
+          time={item.createdAt}
+          msg={item.text}
+          admin={item.admin}        //Not Done
+          read={item.unread_status}
+          id={item._id}
+          deleted={item.isDeleted}
+          block={item.block}        //Ignore Anyway
+          key={item._id}
+        />
+      );
+      }
+    });
+  }
+  
   return (
     <EmbeddedPage>
       <PageContainer>{Message}</PageContainer>

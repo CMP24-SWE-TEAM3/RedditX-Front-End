@@ -29,7 +29,7 @@ export function EditContextProvider(props) {
   const [CancelReorder, setCancelReorder] = useState(false);
   const [saveReorder, setsaveReorder] = useState(false);
   const [flairsData, setflairsData] = useState([]);
-  const [ChangeFetch, setChangeFetch] = useState([]);
+  const [ChangeFetch, setChangeFetch] = useState(false);
   /**
    * function to handle Edit Flair State
    * @param {boolean} Edit -  Edit Flair State

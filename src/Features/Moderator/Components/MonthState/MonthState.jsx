@@ -1,12 +1,29 @@
 import { TableContainer, SortIcon } from "./MonthState.styled";
 import { FaSortDown, FaSortUp } from "react-icons/fa";
 import { useState } from "react";
+import getPageViews from "Features/Moderator/Services/getPageViews";
+import getMembersCount from "Features/Moderator/Services/getMembersCount";
+import { useEffect } from "react";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import useFetchFunction from "Hooks/useFetchFunction";
 
 /**
  * Component that displays a list of months
  * @returns
  */
 const MonthState = () => {
+  // authorization's user
+  const auth = useAuth();
+
+  // Fetch communities
+  // Call useFetchFunction hook to handle states: loading, error, data
+  // Loading: Boolean to tell if the request has been sent, or it's still loading
+  // Error: Contains error message when the request is failed
+  // Data: the response data
+  const [pageViews, errorPage, isLoadingPages, fetchPages] = useFetchFunction();
+  const [membersCount, errorMemberCount, isLoadingMember, fetchMemberCounts] =
+    useFetchFunction();
+
   // state that handles showin of sort icon
   const [flipSort, setFlipSort] = useState(true);
 
@@ -85,6 +102,15 @@ const MonthState = () => {
       MEMBERS_JOINED: 1,
     },
   ]);
+
+  // get page views
+  useEffect(() => {
+    getPageViews(fetchPages, auth);
+  }, []);
+  // get member counts
+  useEffect(() => {
+    getMembersCount(fetchMemberCounts, auth);
+  }, []);
 
   // function that handles  reversing of months
   const revertMonth = () => {

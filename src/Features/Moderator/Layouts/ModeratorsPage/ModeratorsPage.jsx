@@ -13,6 +13,7 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 
 import InviteModeratorsModal from "../InviteModeratorsModal/InviteModeratorsModal";
+import { useParams } from "react-router-dom";
 
 import {
   getModerators,
@@ -37,8 +38,8 @@ import {
  */
 
 const ModeratorsPage = () => {
-  const communityName = "t5_imagePro235";
-
+  //const communityName = "t5_imagePro235";
+  const { subredditId } = useParams();
   const [modalShowInviteModerator, setModalShowInviteModerator] =
     useState(false);
 
@@ -50,7 +51,7 @@ const ModeratorsPage = () => {
    * useEffect to get all moderators
    */
   useEffect(() => {
-    getModerators(dataFetch, communityName, auth.getToken());
+    getModerators(dataFetch, "t5_" + subredditId, auth.getToken());
   }, []);
 
   /**
@@ -62,7 +63,7 @@ const ModeratorsPage = () => {
       {
         userID: auth.getUserName(),
       },
-      communityName,
+      "t5" + subredditId,
       auth.getToken()
     );
   };
@@ -90,7 +91,7 @@ const ModeratorsPage = () => {
           </ButtonsContainer>
           <InnerContainer>
             <NameHeader>
-              Moderators of {communityName}{" "}
+              Moderators of {subredditId}{" "}
               <AiOutlineInfoCircle></AiOutlineInfoCircle>
             </NameHeader>
 
@@ -105,7 +106,10 @@ const ModeratorsPage = () => {
             <br></br>
             <EditMod>Invited moderators</EditMod>
             {!isLoading && data.users && (
-              <InvitedModerators communityName={communityName} Moderator={data.users}></InvitedModerators>
+              <InvitedModerators
+                communityName={subredditId}
+                Moderator={data.users}
+              ></InvitedModerators>
             )}
           </InnerContainer>
         </Container>

@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SentMessageItem from "../../Components/SentMessageItem/SentMessageItem";
-import { EmbeddedPage, PageContainer } from "./Unread.styled";
+import { EmbeddedPage, Empty, EmptyMessage, PageContainer } from "./Unread.styled";
 const messagesData = [
     {
       author: "Mohamed",
       title: "Greeting",
-      time: "2022, 11, 30",
+      time: "2022-11-30T",
       text: "Hello Hello",
       read: false,
       id: 1,
@@ -13,7 +13,7 @@ const messagesData = [
     {
       author: "Ahmed",
       title: "Mod",
-      time: "2022, 11, 29",
+      time: "2022-11-29T",
       text: "You are Mod",
       read: false,
       id: 2,
@@ -21,7 +21,7 @@ const messagesData = [
     {
       author: "Jacob",
       title: "Broken",
-      time: "2022, 11, 29",
+      time: "2022-11-29T",
       text: "It Is Broken Now",
       read: false,
       id: 3,
@@ -29,7 +29,7 @@ const messagesData = [
     {
       author: "Joanne",
       title: "Greeting",
-      time: "2022, 11, 29",
+      time: "2022-11-29T",
       text: "Henlo",
       read: false,
       id: 4,
@@ -37,7 +37,7 @@ const messagesData = [
     {
       author: "Arabella",
       title: "Hmmmm...",
-      time: "2022, 11, 29",
+      time: "2022-11-29T",
       text: "Hi.",
       read: false,
       id: 5,
@@ -50,21 +50,36 @@ const messagesData = [
  * @Component
  * @returns {React.Component}
  */
-const Unread = ({messages})=>{
+const Unread = ({Unreadmessages})=>{
 const [eachMessage, setEachMessage] = useState(messagesData);
+let Message = (
+  <Empty>
+    <EmptyMessage>
+      there doesn't seem to be anything here
+    </EmptyMessage>
+  </Empty>
+);
 
-const Message = eachMessage.map((item) => {
-  return(
-    <SentMessageItem
-      key = {item.id.toString()}
-      id = {item.id}
-      author = {item.author}
-      subject = {item.title}
-      time = {item.time}
-      msg = {item.text}
-    />
-  )
-});
+useEffect(()=>{
+  if(Unreadmessages&& Unreadmessages.messages &&Unreadmessages.messages.length!==0) {
+    setEachMessage(Unreadmessages.messages);
+  }
+}, [Unreadmessages]);
+
+if(Unreadmessages && Unreadmessages.length!==0){
+  Message = Unreadmessages.map((item) => {
+    return(
+      <SentMessageItem
+        key = {item._id}
+        id = {item._id}
+        author = {item.fromID}
+        subject = {item.subject}
+        time = {item.createdAt}
+        msg = {item.text}
+      />
+    )
+  });
+}
 
 return (
   <EmbeddedPage>

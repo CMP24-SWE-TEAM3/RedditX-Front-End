@@ -1,5 +1,5 @@
 import CategoryBar from "Features/User/Components/CategoryBar/CategoryBar";
-import { Container, PostContainer } from "./UserPosts.styled";
+import { Container, PostContainer, StyledDiv } from "./UserPosts.styled";
 import { useLocation } from "react-router";
 import getUserPosts from "Features/User/Services/getUserPosts";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
@@ -8,8 +8,11 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import { useUserID } from "Features/User/Contexts/UserIDProvider";
 import CollapsePost from "Features/Post/Layouts/CollapsePost/CollapsePost";
 import UserNoPosts from "Features/User/Components/UserNoPosts/UserNoPosts";
+import Post from "Features/Post/Pages/Post/Post";
 
 const UserPosts = () => {
+  const [showPost, setShowPost] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
   const [pgNum, setPgNum] = useState(1);
   const [p, setP] = useState([]);
   const location = useLocation();
@@ -17,6 +20,10 @@ const UserPosts = () => {
   const time = queryParam.get("t");
   const auth = useAuth();
   const { userID } = useUserID();
+
+  // const handleRecentPosts = () => {
+  //   localStorage.setItem("RecentPosts", JSON.stringify(recentPost));
+  // };
 
   const [data, error, isLoading, fetchData] = useFetchFunction();
 
@@ -74,16 +81,29 @@ const UserPosts = () => {
               p.map((post, i) => {
                 if (p.length === i + 1) {
                   return (
-                    <div ref={lastPostElementRef} key={i}>
+                    <StyledDiv
+                      ref={lastPostElementRef}
+                      key={i}
+                      onClick={() => {
+                        setShowPost(true);
+                        setSelectedPost(post);
+                      }}
+                    >
                       {/* {post.title} */}
                       <CollapsePost post={post} />
-                    </div>
+                    </StyledDiv>
                   );
                 } else {
                   return (
-                    <div key={i}>
+                    <StyledDiv
+                      key={i}
+                      onClick={() => {
+                        setShowPost(true);
+                        setSelectedPost(post);
+                      }}
+                    >
                       <CollapsePost post={post} />
-                    </div>
+                    </StyledDiv>
                   );
                 }
               })}
@@ -94,6 +114,9 @@ const UserPosts = () => {
                   `hmm... u/${userID.substring(3)} hasn't posted anything`
                 }
               />
+            )}
+            {selectedPost && (
+              <Post post={selectedPost} show={showPost} setShow={setShowPost} />
             )}
           </>
         }

@@ -23,6 +23,8 @@ import "react-languages-select/css/react-languages-select.css";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 
+import { useParams } from "react-router-dom";
+
 import {
   Container,
   ButtonsContainer,
@@ -59,7 +61,7 @@ import {
 } from "./CommunitySettingsPage.styled";
 
 const defaultFormFields = {
-  communityName: "imagePro235",
+  communityName: "",
   topicToAdd: "",
   reason: "",
   welcome: "Welcome message",
@@ -72,6 +74,8 @@ const defaultFormFields = {
 
 const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
   //const communityName = "t5_imagePro235";
+
+  const {subredditId}  = useParams()
 
   const [data, error, isLoading, dataFetch] = useFetchFunction();
   const [data2, error2, isLoading2, dataFetch2] = useFetchFunction();
@@ -139,10 +143,10 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
   const [currentRadioValue, setCurrentRadioValue] = useState("public");
 
   // state for disc
-  const [reason, setReason] = useState("public");
+  const [reason, setReason] = useState("");
 
   // state for welcome message
-  const [welcome, setWelcome] = useState("public");
+  const [welcome, setWelcome] = useState("");
 
   // state to know if the data arrived or not
   const [signupSubmit, setSignupSubmit] = useState(false);
@@ -153,35 +157,37 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
    * useEffect to get community settings
    */
   useEffect(() => {
-    getCommunitySettings(dataFetch, "t5_" + communityName, auth.getToken());
+    getCommunitySettings(dataFetch, "t5_" + subredditId, auth.getToken());
+    setFormFields({ ...formFields, ["communityName"]: subredditId });
     setSignupSubmit(true);
   }, []);
 
+  console.log(currentRadioValue);
   useEffect(() => {
     if (signupSubmit) {
       setSignupSubmit(false);
-      setCountry(data.region);
-      setAddedTopics(data.categories);
-      setWelcome(data.welcomeMessage);
-      setReason(data.description);
-      setAdultContent(data.nsfw);
-      setCurrentRadioValue(data.privacyType);
+      setCountry(data?.region);
+      setAddedTopics(data?.categories);
+      setWelcome(data?.welcomeMessage);
+      setReason(data?.description);
+      setAdultContent(data?.nsfw);
+      setCurrentRadioValue(data?.privacyType);
     }
 
-    console.log(data);
+    
   }, [data]);
 
   /**
    * useEffect for reason field to check the lenght of the reason
    */
   useEffect(() => {
-    setReasonLength(reason.length);
+    setReasonLength(reason?.length);
   }, [reason]);
   /**
    * useEffect for welcom field to check the lenght of the welcome
    */
   useEffect(() => {
-    setWelcomeLength(welcome.length);
+    setWelcomeLength(welcome?.length);
   }, [welcome]);
 
   /**
@@ -240,7 +246,7 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
         categories: addedTopics,
         description: reason,
       },
-      communityName,
+      "t5_" +subredditId,
       auth.getToken()
     );
   };
@@ -409,7 +415,7 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
                   onChange={(e) => {
                     setCurrentRadioValue(e.target.value);
                   }}
-                  defaultChecked={currentRadioValue === "public"}
+                  checked={currentRadioValue === "public"}
                 />
                 <LabelForm for="public">
                   <Ico>
@@ -432,7 +438,7 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
                   onChange={(e) => {
                     setCurrentRadioValue(e.target.value);
                   }}
-                  defaultChecked={currentRadioValue === "restricted"}
+                  checked={currentRadioValue === "restricted"}
                 />
                 <LabelForm for="restricted">
                   <Ico>
@@ -455,7 +461,7 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
                   onChange={(e) => {
                     setCurrentRadioValue(e.target.value);
                   }}
-                  defaultChecked={currentRadioValue === "private"}
+                  checked={currentRadioValue === "private"}
                 />
                 <LabelForm for="private">
                   <Ico>
