@@ -95,6 +95,7 @@ const NewFlair = () => {
   ////////////////////////////////////
   // Featch
   /////////////////////////
+  console.log("ctx.ChangeFetch = ", ctx.ChangeFetch);
   useEffect(() => {
     fetchFlairs(fetch, auth, subredditId);
   }, [ctx.ChangeFetch]);

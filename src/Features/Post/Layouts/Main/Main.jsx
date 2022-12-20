@@ -55,6 +55,7 @@ const Main = () => {
     var bodyFormData = new FormData();
     submitDestination.type !== "user" &&
       bodyFormData.append("communityID", submitDestination._id);
+    console.log("flair", createPostFlairs);
     // bodyFormData.append("flair", createPostFlairs);
     bodyFormData.append("title", createPostTitle);
     bodyFormData.append("textJSON", textJSON);
