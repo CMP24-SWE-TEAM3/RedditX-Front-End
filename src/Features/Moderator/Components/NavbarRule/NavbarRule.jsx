@@ -7,7 +7,7 @@ import {
   SaveBtn,
 } from "./NavbarRule.styled";
 
-const NavbarRule = ({ setShowModal, setShowDragDrop }) => {
+const NavbarRule = ({ setShowModal, setShowDragDrop, setEditor }) => {
   const [showReorder, setShowReorder] = useState(false);
   const handleShow = () => {
     setShowReorder(!showReorder);
@@ -23,7 +23,13 @@ const NavbarRule = ({ setShowModal, setShowDragDrop }) => {
       >
         Reorder rules
       </ReorderBtn>
-      <AddRuleBtn showReorder={showReorder} onClick={() => setShowModal(true)}>
+      <AddRuleBtn
+        showReorder={showReorder}
+        onClick={() => {
+          setShowModal(true);
+          // setEditor(null);
+        }}
+      >
         Add rule
       </AddRuleBtn>
       <CancelBtn

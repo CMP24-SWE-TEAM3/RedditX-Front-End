@@ -7,29 +7,31 @@ import getSubredditHotPosts from "Features/Subreddit/Services/getSubredditHotPos
 import SubRedditNoPosts from "Features/Subreddit/Components/SubRedditNoPosts/SubRedditNoPosts";
 import PostShape from "Features/Post/Layouts/PostShape/PostShape";
 import useScroll from "Features/Subreddit/Hooks/useScroll";
+import Post from "Features/Post/Pages/Post/Post";
 
 const SubRedditPosts = ({ type }) => {
-  const [pgNum, setPgNum] = useState(1);   //Page Number
-  const [p, setP] = useState([]);          //Posts
-  const location = useLocation();     
+  const [showPost, setShowPost] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
+  const [pgNum, setPgNum] = useState(1); //Page Number
+  const [p, setP] = useState([]); //Posts
+  const location = useLocation();
   const queryParam = new URLSearchParams(location.search);
   const time = queryParam.get("t");
   const auth = useAuth();
   const { communityID } = useSubRedditID();
   const { scrollPosition } = useScroll();
 
-
   const [data, error, isLoading, fetchData] = useFetchFunction();
 
-  useEffect(()=>{
+  useEffect(() => {
     setPgNum(1);
     setP([]);
-  },[type,time])
+  }, [type, time]);
 
   useEffect(() => {
     communityID &&
       getSubredditHotPosts(fetchData, communityID, auth, type, time, pgNum);
-  }, [communityID, pgNum,type,time]);
+  }, [communityID, pgNum, type, time]);
 
   const { posts } = data;
 
@@ -48,9 +50,9 @@ const SubRedditPosts = ({ type }) => {
   // },[scrollPosition,setPgNum])
 
   useEffect(() => {
-    console.log("posts",p);
-    console.log("pagenum",pgNum)
-  }, [p,pgNum]);
+    console.log("posts", p);
+    console.log("pagenum", pgNum);
+  }, [p, pgNum]);
 
   const observer = useRef();
   const lastPostElementRef = useCallback(
@@ -58,7 +60,11 @@ const SubRedditPosts = ({ type }) => {
       if (isLoading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
-        console.log(entries[0].isIntersecting,"ddd",posts && posts.length!==0);
+        console.log(
+          entries[0].isIntersecting,
+          "ddd",
+          posts && posts.length !== 0
+        );
         if (entries[0].isIntersecting && posts.length !== 0 /*&& hasMore*/) {
           setPgNum((prevPageNumber) => prevPageNumber + 1);
         }
@@ -75,20 +81,35 @@ const SubRedditPosts = ({ type }) => {
         p.map((post, i) => {
           if (p.length === i + 1) {
             return (
-              <div ref={lastPostElementRef} key={i}>
-                {/* {post.title} */}
+              <div
+                ref={lastPostElementRef}
+                key={i}
+                onClick={() => {
+                  setShowPost(true);
+                  setSelectedPost(post);
+                }}
+              >
                 <PostShape post={post} />
               </div>
             );
           } else {
             return (
-              <div key={i}>
+              <div
+                key={i}
+                onClick={() => {
+                  setShowPost(true);
+                  setSelectedPost(post);
+                }}
+              >
                 <PostShape post={post} />
               </div>
             );
           }
         })}
       {p && p.length === 0 && !isLoading && <SubRedditNoPosts />}
+      {selectedPost && (
+        <Post post={selectedPost} show={showPost} setShow={setShowPost} />
+      )}
     </>
   );
 };

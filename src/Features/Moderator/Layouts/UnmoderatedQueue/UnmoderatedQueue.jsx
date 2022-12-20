@@ -7,15 +7,28 @@ import { useEffect, useState } from "react";
 import getNewPosts from "Services/getNewPosts";
 import Post from "Features/Post/Pages/Post/Post";
 import SpamPost from "Features/Post/Layouts/SpamPost/SpamPost";
+import getSubredditHotPosts from "Features/Subreddit/Services/getSubredditHotPosts";
+import { useParams } from "react-router-dom";
+import PageNumber from "Features/Moderator/Components/PageNumber/PageNumber";
 
 const UnmoderatedQueue = () => {
   const [data, error, isLoading, dataFetch] = useFetchFunction();
   const auth = useAuth();
   const [showPost, setShowPost] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
+  const { subredditId } = useParams();
+  const [pageNumber, setPageNumber] = useState(0);
   useEffect(() => {
-    getNewPosts(dataFetch, auth, 1, 10);
+    //  fetchData,
+    // comm, auth, type, time, pgNum;
+    getSubredditHotPosts(dataFetch, subredditId, auth, "new", 10, pageNumber);
   }, []);
+  const handleNext = () => {
+    if (pageNumber * 5 < data.posts.length) setPageNumber(pageNumber + 1);
+  };
+  const handleBack = () => {
+    if (pageNumber > 0) setPageNumber(pageNumber - 1);
+  };
   return (
     <Container>
       <QueueHeader title="Unmoderated" />
@@ -37,6 +50,12 @@ const UnmoderatedQueue = () => {
       {selectedPost && (
         <Post post={selectedPost} show={showPost} setShow={setShowPost} />
       )}
+      <PageNumber
+        handleNext={handleNext}
+        handleBack={handleBack}
+        pageNumber={pageNumber}
+        numPosts={data && data.posts ? data.posts.length : 0}
+      />
     </Container>
   );
 };

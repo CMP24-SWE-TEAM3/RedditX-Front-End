@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 // import logo from "../../Assets/download.jpg";
 import { Container } from "./CommunityCardItem.styled";
@@ -7,6 +7,8 @@ import axios from "API/axios";
 import useFetchFunction from "Hooks/useFetchFunction";
 import joinCommunity from "Features/Search/Services/joinCommunity";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import SafeContext from "Features/Search/Contexts/SafeSearchContext/Safe-context";
+import { useEffect } from "react";
 /**
  * Component that contains the CommunityCardItem and manage the state of the button join.
  *
@@ -35,8 +37,13 @@ const CommunityCardItem = ({
 
   // authorization
   const auth = useAuth();
-
+  const ctx2 = useContext(SafeContext);
   // joined communities or unjonined
+  useEffect(() => {
+    if (!loadingJoining) {
+      ctx2.RefetchHandler(!ctx2.Refetch);
+    }
+  }, [loadingJoining]);
   const handleJoining = (communityName, type) => {
     joinCommunity(fetchData, auth, {
       action: !type ? "unsub" : "sub",

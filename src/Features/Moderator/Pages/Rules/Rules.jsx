@@ -25,7 +25,7 @@ const Rules = () => {
   const [rulesList, error, isLoading, fetchData] = useFetchFunction();
 
   useEffect(() => {
-    getSubreddit(fetchData, subredditId, auth);
+    getSubreddit(fetchData, `t5_${subredditId}`, auth);
   }, []);
 
   // state which handles displaying of modal rule
@@ -39,6 +39,7 @@ const Rules = () => {
       <NavbarRule
         setShowDragDrop={setShowDragDrop}
         setShowModal={setShowModal}
+        setEditor={setEditor}
       />
       <RuleHeader showNote={showDragDrop} />
       <RuleTabContainer showRuleTabs={showDragDrop}>
@@ -58,6 +59,7 @@ const Rules = () => {
                 ruleTitle={rule.title}
                 ruleDescription={rule.description}
                 ruleReason={rule.reason}
+                Id={rule._id}
                 number={index + 1}
               />
             );

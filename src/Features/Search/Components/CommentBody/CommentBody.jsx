@@ -31,8 +31,8 @@ import RichTextPostBody from "Features/Post/Components/RichTextPostBody/RichText
  * @returns {React.Component}
  */
 const CommentBody = ({ commentBody, comment }) => {
-  console.log(commentBody, "com");
-  console.log(comment, "commmm");
+  // console.log(commentBody, "com");
+  // console.log(comment, "commmm");
   if (commentBody) {
     console.log(commentBody.CommentUserImage);
     return (
@@ -49,10 +49,10 @@ const CommentBody = ({ commentBody, comment }) => {
             <ImageAlign>
               <Link to="#">
                 <div>
-                  {commentBody.CommentUserImage && (
+                  {commentBody.commentUserImage && (
                     <CommentImage
                       crossOrigin="anonymous"
-                      src={`https://api.redditswe22.tech/users/files/${commentBody.CommentUserImage}`}
+                      src={`https://api.redditswe22.tech/users/files/${commentBody.commentUserImage}`}
                       alt="People Icon"
                     />
                   )}
