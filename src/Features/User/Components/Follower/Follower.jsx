@@ -28,7 +28,7 @@ const Follower = ({ followerID, avatar }) => {
 
   const handleFollowing = (type) => {
     followUser(fetchFollowing, auth, {
-      action: type ? "unsub" : "sub",
+      action: type ? "sub" : "unsub",
       srName: userID,
     });
   };

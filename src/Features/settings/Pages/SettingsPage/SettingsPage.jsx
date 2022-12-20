@@ -21,17 +21,25 @@ import {
 } from "./SettingsPage.styled";
 import SettingModal from "../../Components/SettingModal/SettingModal";
 import useFetchFunction from "Hooks/useFetchFunction";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import fetchPrefs from "../../Services/FetchPrefs";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 const SettingsPage = () => {
+  const [prefs, setPrefs] = useState({});
   const auth = useAuth();
   const [data, error, loading, fetchData] = useFetchFunction();
 
   useEffect(() => {
     fetchPrefs(fetchData, auth);
   }, []);
+
+  useEffect(() => {
+    if (data) {
+      setPrefs(data);
+    }
+  }, [data]);
+
   console.log(data);
   const toggleHandler = (p) => {
     console.log(p);
@@ -59,15 +67,17 @@ const SettingsPage = () => {
             <Routes>
               <Route path="" element={<AccountPage />} />
               <Route path="Account" element={<AccountPage />} />
-              <Route path="Profile" element={<ProfilePage />} />
+              <Route path="Profile" element={<ProfilePage prefs={prefs} />} />
               <Route path="privacy" element={<PrivacyPage />} />
 
               <Route
                 path="feed"
                 element={
                   !loading &&
-                  data.prefs && (
-                    <FeedPage adult={data.prefs.user.searchIncludeOver18} />
+                  prefs &&
+                  prefs.user &&
+                  prefs.user.searchIncludeOver18 && (
+                    <FeedPage adult={prefs.user.searchIncludeOver18} />
                   )
                 }
               />
@@ -76,11 +86,15 @@ const SettingsPage = () => {
                 path="emails"
                 element={
                   !loading &&
-                  data.prefs && (
+                  prefs &&
+                  prefs.user &&
+                  prefs.user.emailUnsubscripeAll &&
+                  prefs.user.emailMessages &&
+                  prefs.user.enableFollowers && (
                     <EmailsPage
-                      emailSubscribe={data.prefs.user.emailUnsubscripeAll}
-                      Request={data.prefs.user.emailMessages}
-                      Followers={data.prefs.user.enableFollowers}
+                      emailSubscribe={prefs.user.emailUnsubscripeAll}
+                      Request={prefs.user.emailMessages}
+                      Followers={prefs.user.enableFollowers}
                     />
                   )
                 }
