@@ -33,7 +33,7 @@ const ReorderRules = ({ showDragDrop }) => {
   };
 
   useEffect(() => {
-    getSubreddit(fetchData, subredditId, auth);
+    getSubreddit(fetchData, `t5_${subredditId}`, auth);
   }, []);
 
   if (

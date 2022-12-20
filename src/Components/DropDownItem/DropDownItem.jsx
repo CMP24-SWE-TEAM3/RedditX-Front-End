@@ -29,7 +29,8 @@ const DropDownItem = ({ dropDownItemRef, setDisplayMenu }) => {
   return (
     <DropdownContainer as={CustomMenu}>
       <Dropdown.ItemText as={"title"}>your communities</Dropdown.ItemText>
-      {subscribed.length !== 0 &&
+      {subscribed &&
+        subscribed.length !== 0 &&
         subscribed.communities.map((community) => {
           return (
             <Dropdown.Item
