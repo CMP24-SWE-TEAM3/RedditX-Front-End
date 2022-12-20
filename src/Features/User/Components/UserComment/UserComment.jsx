@@ -26,9 +26,49 @@ import {
   ThreeDotsButton,
 } from "./UserComment.styled";
 import { FaRegCommentAlt } from "react-icons/fa";
-import {BiDotsHorizontalRounded} from "react-icons/bi"
+import { BiDotsHorizontalRounded } from "react-icons/bi";
+import RichTextPostBody from "Features/Post/Components/RichTextPostBody/RichTextPostBody";
+import { useUserID } from "Features/User/Contexts/UserIDProvider";
+import Moment from "react-moment";
+import { useState, useEffect } from "react";
 
-const UserComment = () => {
+const UserComment = ({ comment, overview }) => {
+  const { userID } = useUserID;
+  const [title, setTitle] = useState("");
+  const [communityName, setCommunityName] = useState("");
+  const [poster, setPoster] = useState("");
+  const [author, setAuthor] = useState("");
+
+  useEffect(() => {
+    comment &&
+      comment.postID &&
+      comment.postID.title &&
+      setTitle(comment.postID.title);
+
+    comment &&
+      comment.postID &&
+      comment.postID.communityID &&
+      comment.postID.communityID._id &&
+      setCommunityName(comment.postID.communityID._id);
+
+    comment &&
+      comment.postID &&
+      comment.postID.userID &&
+      comment.postID.userID._id &&
+      setPoster(comment.postID.userID._id);
+
+    comment && comment.authorId && setAuthor(comment.authorId);
+  }, [comment]);
+
+  function isJsonString(str) {
+    try {
+      JSON.parse(str);
+    } catch (e) {
+      return false;
+    }
+    return true;
+  }
+
   const CommentHeader = ({ user, title, community, posted }) => {
     return (
       <CommentHeaderContainer>
@@ -38,12 +78,14 @@ const UserComment = () => {
               <FaRegCommentAlt />
             </span>
             <CommentHeaderInfo>
-              <UserLink to="">{user}</UserLink>
+              <UserLink to={`/user/${user}`}>{user.substring(3)}</UserLink>
               {` commented on `}
               <PostTitleLink to="#">{title}</PostTitleLink>
               <Dot>.</Dot>
               <CommentHeaderRoot>
-                <CommunityLink>{`r/${community}`}</CommunityLink>
+                <CommunityLink
+                  to={`/subreddit/${community}`}
+                >{`r/${community.substring(3)}`}</CommunityLink>
                 <Dot>.</Dot>
                 {`Posted by `}
                 <PostedLink>{`u/${posted}`}</PostedLink>
@@ -57,18 +99,32 @@ const UserComment = () => {
 
   const CommentBodyInfo = ({ commented, commentContent }) => {
     return (
-      <CommentBodyInfoContainer>
+      <CommentBodyInfoContainer overview={overview?1:0}>
         <CommentBodyInfoInnerContainer>
           <CommentedContainer>
-            <CommentedLink to="">{commented}</CommentedLink>
+            <CommentedLink to={`/user/${commented}`}>
+              {commented.substring(3)}
+            </CommentedLink>
             <Point>1 point</Point>
             <Dot>.</Dot>
-            <DaysLink to="#">3 days ago</DaysLink>
+            <DaysLink to="#">
+              {comment && comment.createdAt && (
+                <Moment fromNow>{comment.createdAt}</Moment>
+              )}
+            </DaysLink>
           </CommentedContainer>
           <div>
             <CommentContainer>
               <CommentInnerContainer>
-                <p>{commentContent}</p>
+                <p>
+                  {comment.textJSON &&
+                    isJsonString(comment.textJSON) && (
+                      <RichTextPostBody post={comment} />
+                    )}
+                  {comment.textJSON &&
+                    !isJsonString(comment.textJSON) &&
+                    comment.textJSON}
+                </p>
               </CommentInnerContainer>
             </CommentContainer>
             <div>
@@ -94,7 +150,10 @@ const UserComment = () => {
         <CommentBodyInnerContainer>
           <CommentBodyContent>
             <DashedLine></DashedLine>
-            <CommentBodyInfo commented={commented} commentContent={commentContent} />
+            <CommentBodyInfo
+              commented={commented}
+              commentContent={commentContent}
+            />
           </CommentBodyContent>
         </CommentBodyInnerContainer>
       </CommentBodyContainer>
@@ -105,12 +164,13 @@ const UserComment = () => {
     <div>
       <div>
         <CommentHeader
-          user="khaled-farahat"
-          title="title"
-          community="Eln2aa4yn"
-          posted="hamza"
+          user={author}
+          title={title}
+          community={communityName}
+          posted={poster}
         />
-        <CommentBody commented="khaled-farahat" commentContent="Hello World" />
+
+        <CommentBody commented={author} />
       </div>
     </div>
   );
