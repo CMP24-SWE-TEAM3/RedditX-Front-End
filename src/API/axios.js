@@ -1,9 +1,9 @@
 import { default as axios } from "axios";
 // Base URL for the api
-const BASE_URL =
-  process.env.REACT_APP_MODE === "production"
-    ? process.env.REACT_APP_API_URL
-    : process.env.REACT_APP_MOCK_URL;
+const BASE_URL = "https://api.redditswe22.tech"
+// process.env.REACT_APP_MODE === "production"
+//   ? process.env.REACT_APP_API_URL
+//   : process.env.REACT_APP_MOCK_URL;
 
 export default axios.create({
   baseURL: BASE_URL,
