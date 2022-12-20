@@ -41,6 +41,7 @@ import unreadMessages from "Features/Messages/Services/UnreadMessage";
 import composeMessage from "../../Services/ComposeMessage";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import blockUser from "../../Services/BlockUser";
+import moderatorCheck from "../../Services/ModeratorCheck";
 /**
  * Component that contains the message item of Message Panel
  *
@@ -63,11 +64,11 @@ const MessageBannelItem = ({
   title,
   time,
   msg,
-  admin,
   read,
   id,
   deleted,
   block,
+  admin,
   reRender,
 }) => {
   const auth = useAuth();
@@ -84,7 +85,6 @@ const MessageBannelItem = ({
   const [formData, setFormData] = useState({
     message: "",
   });
-  
 
   //For Text Area
   function handleChange(event) {
@@ -163,8 +163,9 @@ const MessageBannelItem = ({
       subject: `Reply to ${aurthor}'s Message`,
       text: formData.message
     };
-    composeMessage(fetchDataSend, dataObject, auth);
+      composeMessage(fetchDataSend, dataObject, auth);
     }
+    reRender((prev)=>!prev);
     setFormData({message:""});
     setReplyPrompt(false);
     setErr(false);

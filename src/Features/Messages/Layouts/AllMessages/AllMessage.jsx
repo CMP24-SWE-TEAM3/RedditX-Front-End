@@ -3,7 +3,9 @@ import { PageContainer, EmbeddedPage, Empty, EmptyMessage } from "./AllMessage.s
 import NormalMessageAll from "../../Components/MessagesItems/AllMessageItem";
 import PostReplayItem from "../../Components/PostReply/PostReplyItem";
 import UsernameMentionItem from "../../Components/UsernameMentions/UsernameMentionsItem";
-
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import moderatorCheck from "../../Services/ModeratorCheck";
 const messagesData = [
   {
     aurthor: "Mohamed",
@@ -65,8 +67,10 @@ const messagesData = [
  * @returns {React.Component}
  */
 function AllMessagesTypes({data, Rerender}) {
+  const auth = useAuth();
   const [eachMessage, setEachMessage] = useState(data.messages);
-
+  const [moderatorRes, errorModerator, loadingModerator, fetchDataModerator] = useFetchFunction();
+  const [canBeAdmin, setAdmin] = useState(false);
   let Message = (
     <Empty>
       <EmptyMessage>
@@ -74,6 +78,14 @@ function AllMessagesTypes({data, Rerender}) {
       </EmptyMessage>
     </Empty>
   );
+
+  
+  useEffect(()=>{
+    moderatorCheck(fetchDataModerator, auth);
+    if(moderatorRes&& moderatorRes.communities&&moderatorRes.communities.length!==0) {
+      setAdmin(true);
+    }
+  },[]);
   
   // useEffect(()=>{
   //   if(data&& data.messages &&data.messages.length!==0) {
@@ -123,6 +135,7 @@ function AllMessagesTypes({data, Rerender}) {
           break;
         default:
           if(!item.isDeleted) {
+            let admins = (item.fromID===auth.getUserName())
           return (
             <NormalMessageAll
               changeMessage={setEachMessage}
@@ -131,11 +144,11 @@ function AllMessagesTypes({data, Rerender}) {
               title={item.subject}
               time={item.createdAt}
               msg={item.text}
-              admin={item.admin}
               read={item.unread_status}
               id={item._id}
               deleted={item.isDeleted}
               block={item.block}
+              admin = {admins}
               key={item._id}
             />
           );

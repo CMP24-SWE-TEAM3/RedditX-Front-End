@@ -11,7 +11,7 @@ import {
   Flex,
   Img,
 } from "./CommunityItem.styled";
-
+import SafeContext from "Features/Search/Contexts/SafeSearchContext/Safe-context";
 // Import api
 import axios from "API/axios";
 // import CommImage from "../../Assets/CommunityImage.png";
@@ -19,6 +19,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import useFetch from "Hooks/useFetch";
 import joinCommunity from "Features/Search/Services/joinCommunity";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import { useContext } from "react";
 
 /**
  * Component that render the Community item Elements.
@@ -47,7 +48,7 @@ const CommunityItem = ({
 
   // authorization
   const auth = useAuth();
-
+  const ctx2 = useContext(SafeContext);
   // joined communities or unjonined
   const handleJoining = (communityName, type) => {
     joinCommunity(fetchData, auth, {
@@ -55,6 +56,11 @@ const CommunityItem = ({
       srName: `${communityName}`,
     });
   };
+  useEffect(() => {
+    if (!loadingJoining) {
+      ctx2.RefetchHandler(!ctx2.Refetch);
+    }
+  }, [loadingJoining]);
   // the initialState of operations of join
   const initialState = `${isJoined !== undefined ? "Joined" : "Join"}`;
   // the state of the buuton

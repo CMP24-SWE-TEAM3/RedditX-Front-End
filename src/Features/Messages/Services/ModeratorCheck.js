@@ -1,19 +1,18 @@
 import axios from "API/axios";
 
+
 /**
  * Function to fetch Communities with Random Categories
  * @param {object} auth Context object coming from useAuth custom Hook
  * @param {Function} fetchFunction Coming from useFetchFunction custom hook
- * @param {object} dataObject The Data to be Sent in the POST request
  */
-const voteMessage = (fetchFunction, dataObject, auth) => {
+const moderatorCheck = (fetchFunction, auth) => {
   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
     fetchFunction({
       axiosInstance: axios,
-      method: "POST",
-      url: "http://localhost:8000/vote-message",
+      method: "GET",
+      url: "/api/r/mine/moderator",
       requestConfig: {
-        data: dataObject,
         headers: {
           "Content-Language": "en-US",
           Authorization: `Bearer ${auth.getToken()}`,
@@ -22,4 +21,4 @@ const voteMessage = (fetchFunction, dataObject, auth) => {
     });
 };
 
-export default voteMessage;
+export default moderatorCheck;

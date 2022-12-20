@@ -23,7 +23,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import hideNotification from "Features/Notifications/Services/HideNotification";
 
-const NotificationItem = ({ id, header, content, date, img, fileSrc }) => {
+const NotificationItem = ({ id, header, content, date, img, fileSrc, reRender }) => {
   const auth = useAuth();
   const [hideNotifRes, errorHideNotif, loadingHideNotif, fetchData] = useFetchFunction();
   function handleHide() {
@@ -31,6 +31,7 @@ const NotificationItem = ({ id, header, content, date, img, fileSrc }) => {
       notificationID: id,
     };
     hideNotification(fetchData, dataObject ,auth);
+    reRender((prev)=>!prev);
   }
 
   return (

@@ -8,11 +8,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 const FeedPage = ({adult, autoPlay}) => {
   const [adultContent, setAdultContent] = useState(adult? adult: false);
-  const [autoplay, setAutoPlay] = useState(autoPlay? autoPlay:false);
+  const [autoplay, setAutoPlay] = useState(false);
 
-  useEffect(()=>{
-    console.log(`Adult: ${adultContent}`);
-  }, []);
+  
 
   const [resAdult, errorAdult, loadingAdult, fetchData] = useFetchFunction();
   const [resPlay, errorPlay, loadingPlay, fetchDataPlay] = useFetchFunction();
@@ -28,10 +26,6 @@ const FeedPage = ({adult, autoPlay}) => {
 
   function AutoPlay(e) {
     setAutoPlay((prev)=>!prev);
-    let dataObject = {
-      searchIncludeOver18: e
-    };
-    setToggledPrefs(fetchDataPlay, dataObject, auth);
   }
 
   return (

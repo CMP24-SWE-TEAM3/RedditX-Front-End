@@ -18,6 +18,7 @@ import {
   ArrowUp,
   ArrowDown,
   MessageWithAu,
+  Error,
 } from "./UsernameMentionsItem.styled";
 
 import { 
@@ -38,6 +39,9 @@ import unreadMessages from "Features/Messages/Services/UnreadMessage";
 import { useState } from "react";
 import useFetchFunction from "Hooks/useFetchFunction";
 import voteMessage from "../../Services/VoteMessages";
+import composeMessage from "../../Services/ComposeMessage";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import blockUser from "../../Services/BlockUser";
 /**
  * Component that contains the Username Mention item
  *
@@ -65,41 +69,88 @@ const UsernameMentionItem = ({
   read,
   id,
   block,
+  reRender,
 }) => {
+  const auth = useAuth();
+  const [composeRes, errorCompose, loadingCompose, fetchDataSend] = useFetchFunction();
   const [unreadMessageRes, errorUnreadMessage, loadingUnreadMessage, fetchDataUnread ] = useFetchFunction();
+  const [blockRes, errorBlock, loadingBlock, fetchDataBlock ] = useFetchFunction();
   const [voteMessageRes, errorVoteMessage, loadingVoteMessage, fetchDataVote ] = useFetchFunction();
+  const [localRead, setLocalRead] = useState(!read);
   const [blockPrompt, setBlockPrompt] = useState(false);
   const [replyPrompt, setReplyPrompt] = useState(false);
+  const [err, setErr] = useState(false);
+  const [formData, setFormData] = useState({
+    message: "",
+  });
+
+  //For Text Area
+  function handleChange(event) {
+    const { message } = event.target;
+    setErr(false);  //To Remove the Error Message once we start writing
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [event.target.name]: event.target.value,
+      };
+    });
+  }
+
 
   function toggleBlockWarning() {
     setBlockPrompt((prev)=>!prev);
   }
 
-  function Block(id) {
-    changeMessage((message) => {
-      return message.map((prevState) => {
-        return prevState.id === id
-          ? { ...prevState, block: !prevState.block }
-          : prevState;
-      });
-    });
+  function handleBlock(){
+    let dataObject = {
+      userID: `t2_${aurthor}`,
+      action: true
+    };
 
-    
+    blockUser(fetchDataBlock, dataObject, auth);
+    setBlockPrompt(false);
   }
   
   function toggleReplyOn() {
     setReplyPrompt(true);
   }
 
-  function toggleReplyOff() {
+  function toggleReplyOff(event) {
     setReplyPrompt(false);
+    setErr(false);
+    event.preventDefault();
   }
 
-  function handleUnread(){
+  const handleSubmit = (event) => {  //For Reply
+    event.preventDefault();
+    event.target.reset();
+    
+    
+    if(formData.message==="") {
+      setErr(true);
+    }
+    else {
     let dataObject = {
-      msgID: `t4_${id}`
+      fromID: auth.getUserName(),
+      toID: `t2_${aurthor}`,
+      subject: `Reply to ${aurthor}'s Message`,
+      text: formData.message
     };
-    unreadMessages(fetchDataUnread, dataObject);
+      console.log(dataObject);
+      setReplyPrompt(false);
+      composeMessage(fetchDataSend, dataObject, auth);
+    }
+    reRender((prev)=>!prev);
+    setFormData({message:""});
+    setErr(false);
+  };
+
+  function handleUnread(){
+    setLocalRead(false);
+    let dataObject = {
+      msgID: `${id}`
+    };
+    // unreadMessages(fetchDataUnread, dataObject, auth);
   }
 
   function handleUpvote(){
@@ -116,7 +167,7 @@ const UsernameMentionItem = ({
         dir: 0
       }
     }
-    voteMessage(fetchDataVote, dataObject); 
+    voteMessage(fetchDataVote, dataObject, auth); 
   }
 
   function handleDownote(){
@@ -133,14 +184,14 @@ const UsernameMentionItem = ({
         dir: 2
       }
     }
-    voteMessage(fetchDataVote, dataObject); 
+    voteMessage(fetchDataVote, dataObject, auth); 
   }
 
   return (
     <OddItems className={id % 2 === 0 ? "even" : ""} key={id}>
       <MessageDetails
         onClick={() => {
-          readed(id, changeMessage);
+          setLocalRead(true);
         }}
       >
         <Subject>
@@ -170,7 +221,7 @@ const UsernameMentionItem = ({
             </TimeTag>
           </Tagline>
           <MessagesWithBtns>
-            <Visted className={read ? "" : "read-before"}>
+            <Visted className={localRead ? "" : "read-before"}>
               <Msg>{msg}</Msg>
               <ListBtns>
                 <Btns>
@@ -190,7 +241,7 @@ const UsernameMentionItem = ({
                 {!admin && (
                   <Btns>
                     <BtnsLinks
-                      className={block ? "active" : ""}
+                      className={blockPrompt ? "active" : ""}
                       onClick={() => {
                         toggleBlockWarning();
                       }}
@@ -200,11 +251,7 @@ const UsernameMentionItem = ({
                     <AreYouSure className={blockPrompt ? "active" : ""}>
                       <BtnWarning> Are You Sure </BtnWarning>
                       <BtnsLinks
-                        onClick={()=>{
-                          Block(id);
-                        }}
-                      >
-                        Yes</BtnsLinks>
+                        onClick={handleBlock}> Yes</BtnsLinks>
                       <BtnWarning> / </BtnWarning>
                       <BtnsLinks
                         onClick={() => {
@@ -216,7 +263,7 @@ const UsernameMentionItem = ({
                     </AreYouSure>
                   </Btns>
                 )}
-                {read && (
+                {localRead && (
                   <Btns>
                     <BtnsLinks
                       onClick={(e) => {
@@ -240,20 +287,30 @@ const UsernameMentionItem = ({
           </MessagesWithBtns>
         </MessageWithAu>
       </MessageDetails>
-      <ReplyDiv className={replyPrompt?"active": ""}>
-        <TextAreaDiv>
-          <MesssageDiv>
-            <TextAreaElement />
-          </MesssageDiv>
-          <ButtonsDiv>
-            <SaveButton>Save</SaveButton>
-            <SaveButton
-              onClick={toggleReplyOff}
-            >
-              Cancel</SaveButton>
-          </ButtonsDiv>
-        </TextAreaDiv>
-      </ReplyDiv>
+      <form onSubmit={handleSubmit}>      
+        <ReplyDiv className={replyPrompt? "active": ""}>
+          <TextAreaDiv>
+            <MesssageDiv>
+              <TextAreaElement 
+              type="text"
+              onChange={handleChange}
+              value={formData.message}
+              name="message"
+              />
+              <Error className={err? "active" : ""}>
+                    we need something here
+              </Error>
+            </MesssageDiv>
+            <ButtonsDiv>
+              <SaveButton>Save</SaveButton>
+              <SaveButton
+                onClick={toggleReplyOff}
+              >
+                Cancel</SaveButton>
+            </ButtonsDiv>
+          </TextAreaDiv>
+        </ReplyDiv>
+      </form>
     </OddItems>
   );
 };

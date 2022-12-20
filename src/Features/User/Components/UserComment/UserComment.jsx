@@ -24,6 +24,7 @@ import {
   ReplyShareContainer,
   ReplyShareButton,
   ThreeDotsButton,
+  StyledCommentLink,
 } from "./UserComment.styled";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
@@ -31,6 +32,7 @@ import RichTextPostBody from "Features/Post/Components/RichTextPostBody/RichText
 import { useUserID } from "Features/User/Contexts/UserIDProvider";
 import Moment from "react-moment";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const UserComment = ({ comment, overview }) => {
   const { userID } = useUserID;
@@ -38,6 +40,7 @@ const UserComment = ({ comment, overview }) => {
   const [communityName, setCommunityName] = useState("");
   const [poster, setPoster] = useState("");
   const [author, setAuthor] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     comment &&
@@ -69,6 +72,18 @@ const UserComment = ({ comment, overview }) => {
     return true;
   }
 
+  function handleClick(e) {
+    // console.log(e.currentTarget.nodeName)
+    if (e.target.nodeName !== "A") {
+      comment &&
+        comment.postID &&
+        comment.postID._id &&
+        comment._id &&
+        navigate(`/post-preview/${comment.postID._id}/${comment._id}`);
+      e.stopPropagation();
+    }
+  }
+
   const CommentHeader = ({ user, title, community, posted }) => {
     return (
       <CommentHeaderContainer>
@@ -80,7 +95,11 @@ const UserComment = ({ comment, overview }) => {
             <CommentHeaderInfo>
               <UserLink to={`/user/${user}`}>{user.substring(3)}</UserLink>
               {` commented on `}
-              <PostTitleLink to="#">{title}</PostTitleLink>
+              {comment && comment.postID && comment.postID._id && (
+                <PostTitleLink to={`/post-preview/${comment.postID._id}`}>
+                  {title}
+                </PostTitleLink>
+              )}
               <Dot>.</Dot>
               <CommentHeaderRoot>
                 <CommunityLink
@@ -99,7 +118,7 @@ const UserComment = ({ comment, overview }) => {
 
   const CommentBodyInfo = ({ commented, commentContent }) => {
     return (
-      <CommentBodyInfoContainer overview={overview?1:0}>
+      <CommentBodyInfoContainer overview={overview ? 1 : 0}>
         <CommentBodyInfoInnerContainer>
           <CommentedContainer>
             <CommentedLink to={`/user/${commented}`}>
@@ -117,10 +136,9 @@ const UserComment = ({ comment, overview }) => {
             <CommentContainer>
               <CommentInnerContainer>
                 <p>
-                  {comment.textJSON &&
-                    isJsonString(comment.textJSON) && (
-                      <RichTextPostBody post={comment} />
-                    )}
+                  {comment.textJSON && isJsonString(comment.textJSON) && (
+                    <RichTextPostBody post={comment} />
+                  )}
                   {comment.textJSON &&
                     !isJsonString(comment.textJSON) &&
                     comment.textJSON}
@@ -161,7 +179,7 @@ const UserComment = ({ comment, overview }) => {
   };
 
   return (
-    <div>
+    <div onClick={handleClick}>
       <div>
         <CommentHeader
           user={author}

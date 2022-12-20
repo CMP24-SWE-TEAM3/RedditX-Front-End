@@ -1,18 +1,18 @@
-// Import axios
 import axios from "API/axios";
 
 /**
- * Marks All Notifications as read 
+ * Function to update email of user
  * @param {object} auth Context object coming from useAuth custom Hook
  * @param {Function} fetchFunction Coming from useFetchFunction custom hook
+ * @param {object} dataObject The Data to be Sent in the POST request
  */
-
-const markAllAsRead = async (fetchData, auth, dataObject) => {
+const updateEmail = (fetchFunction, dataObject, auth) => {
   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
-  fetchData({
+  //console.log("in change pass");
+  fetchFunction({
     axiosInstance: axios,
-    method: "POST",
-    url: "/api/message/read-all-messages",
+    method: "patch",
+    url: "/api/user/update-email",
     requestConfig: {
       data: dataObject,
       headers: {
@@ -23,4 +23,4 @@ const markAllAsRead = async (fetchData, auth, dataObject) => {
   });
 };
 
-export default markAllAsRead;
+export default updateEmail;

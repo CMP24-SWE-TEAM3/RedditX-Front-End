@@ -24,6 +24,7 @@ import {
   Arrow,
   HoverDiv,
 } from "./Community.styled";
+import { useNavigate } from "react-router-dom";
 
 /**
  * Component that contains the community items of the community leaderboard page
@@ -39,15 +40,13 @@ import {
  * @returns {React.Component}
  */
  const Community = ({isJoined, img, title, description, index, members, rankChange}) => {
-
+  const navigate = useNavigate();
   const auth = useAuth();
   const [isJoinedstate, setIsJoined] = useState(
     isJoined !== undefined ? true : false
   );
   
   const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
-
-  
     
   useEffect(() => {
     setIsJoined(isJoined);
@@ -59,13 +58,13 @@ import {
       srName: `${title}`
     }
     joinCommunity(fetchFunction, dataObject, auth);
-    setIsJoined((prevJoined) => !prevJoined);
+    setIsJoined((prevJoined) => !prevJoined); 
   }
   return (
     
     <CommunityItem>
       <HoverDiv>
-        <CommunityA to={`/subreddit/*`}>
+        <CommunityA to={`/subreddit/${title}`}>
           <CommunityIndex>{index}</CommunityIndex>
           <Arrow up={rankChange>=0 || !rankChange?"true":"false"}></Arrow>
           <CommunityImg
@@ -82,7 +81,7 @@ import {
                 <HoverImg 
                   crossOrigin="anonynmous"
                   src={`${BASE_URL}/subreddits/files/${img}`}/>
-                <HoverTitle to={'/subreddit/*'}>{title.substring(3)}</HoverTitle>
+                <HoverTitle to={`/subreddit/${title}`}>{title.substring(3)}</HoverTitle>
               </ImgTitle>
               <MembersOnline>
                 <Members>
@@ -91,7 +90,7 @@ import {
                 </Members>
               </MembersOnline>
               {description && <HoverDescription>{description}</HoverDescription> }
-              <HoverButton>View Community</HoverButton>
+              <HoverButton onClick={()=>navigate(`/subreddit/${title}`)}>View Community</HoverButton>
             </HoverItem>
           </ForPadding>
         </CommunityCard>

@@ -13,6 +13,7 @@ const getSubredditHotPosts = async (
   time,
   pgNum
 ) => {
+  if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
   // console.log(comm);
   fetchData({
     axiosInstance: axios,

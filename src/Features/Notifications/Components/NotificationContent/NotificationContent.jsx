@@ -36,7 +36,7 @@ const Notifications = [
 
 
 
-const NotificationContent = ({notificationRes}) => {
+const NotificationContent = ({notificationRes, Rerender}) => {
   let notifs = [];
   console.log(notificationRes.notifications);
   if (notificationRes && notificationRes.length!==0) {
@@ -52,7 +52,7 @@ const NotificationContent = ({notificationRes}) => {
       fileSrc = "subreddits";
     }
     return(
-      <li key={item._id.toString()}>
+      <li key={item._id}>
         <NotificationItem
           id = {item._id}  //For Routing
           header={item.title}
@@ -60,6 +60,7 @@ const NotificationContent = ({notificationRes}) => {
           date = {item.createdAt}
           img = {src}
           fileSrc = {fileSrc}   //Used to Request Images, also for routing (to a user or a community)
+          reRender = {Rerender}
         />
       </li>
     );

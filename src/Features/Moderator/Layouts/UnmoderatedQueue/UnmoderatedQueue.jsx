@@ -17,18 +17,46 @@ const UnmoderatedQueue = () => {
   const [showPost, setShowPost] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
   const { subredditId } = useParams();
-  const [pageNumber, setPageNumber] = useState(0);
+  const [pageNumber, setPageNumber] = useState(1);
   useEffect(() => {
     //  fetchData,
     // comm, auth, type, time, pgNum;
-    getSubredditHotPosts(dataFetch, subredditId, auth, "new", 10, pageNumber);
+    getSubredditHotPosts(
+      dataFetch,
+      "t5_" + subredditId,
+      auth,
+      "new",
+      undefined,
+      pageNumber
+    );
   }, []);
+  console.log(data);
   const handleNext = () => {
-    if (pageNumber * 5 < data.posts.length) setPageNumber(pageNumber + 1);
+    getSubredditHotPosts(
+      dataFetch,
+      "t5_" + subredditId,
+      auth,
+      "new",
+      undefined,
+      pageNumber + 1
+    );
+    setPageNumber(pageNumber + 1);
   };
   const handleBack = () => {
-    if (pageNumber > 0) setPageNumber(pageNumber - 1);
+    if (pageNumber > 1) {
+      getSubredditHotPosts(
+        dataFetch,
+        "t5_" + subredditId,
+        auth,
+        "new",
+        undefined,
+        pageNumber - 1
+      );
+      setPageNumber(pageNumber - 1);
+    }
   };
+  console.log(data);
+  console.log(data && data.posts && data.posts.length === 12);
   return (
     <Container>
       <QueueHeader title="Unmoderated" />
@@ -55,6 +83,8 @@ const UnmoderatedQueue = () => {
         handleBack={handleBack}
         pageNumber={pageNumber}
         numPosts={data && data.posts ? data.posts.length : 0}
+        more={data && data.posts && data.posts.length === 12 ? 0 : 1}
+        less={pageNumber === 1 ? 1 : 0}
       />
     </Container>
   );

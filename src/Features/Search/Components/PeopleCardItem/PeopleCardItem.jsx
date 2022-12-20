@@ -1,5 +1,5 @@
 import { Container } from "./PeopleCardItem.styled";
-import { useState } from "react";
+import { useContext, useState } from "react";
 // import logo from "../../Assets/download.jpg";
 // Import api
 import axios from "API/axios";
@@ -7,6 +7,10 @@ import axios from "API/axios";
 import { Link } from "react-router-dom";
 import useFetchFunction from "Hooks/useFetchFunction";
 import followPeople from "Features/Search/Services/followPeople";
+import SafeContext from "Features/Search/Contexts/SafeSearchContext/Safe-context";
+import { useEffect } from "react";
+import joinCommunity from "Services/joinCommunity.js";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 /**
  * Component that contains the PeopleCardItem and manage the state of the button Follow.
  *
@@ -35,6 +39,21 @@ const PeopleCardItem = ({
 
   // initialState for the following operations
   const initialState = `${isFollow !== undefined ? "Following" : "Follow"}`;
+  const auth = useAuth();
+  const [joiningResponse, errorJoining, loadingJoining, fetchData] =
+    useFetchFunction();
+  const handleJoining = (userID, type) => {
+    joinCommunity(fetchData, auth, {
+      action: !type ? "unsub" : "sub",
+      srName: `${userID}`,
+    });
+  };
+  const ctx2 = useContext(SafeContext);
+  useEffect(() => {
+    if (!loadingJoining) {
+      ctx2.RefetchPepHandler(!ctx2.RefetchPep);
+    }
+  }, [loadingJoining]);
   // the state of the buuton
   const [btnContent, setBtnContent] = useState(
     isFollow !== undefined ? "Following" : "Follow"
@@ -59,12 +78,13 @@ const PeopleCardItem = ({
     } else {
       btnState = false;
     }
-    let dataObj = {
-      action: btnState ? "Follow" : "unFollow",
-      userName: `${username.slice(1)}`,
-    };
-    followPeople(fetchFunction, dataObj);
+    // let dataObj = {
+    //   action: btnState ? "Follow" : "unFollow",
+    //   userName: `${username.slice(1)}`,
+    // };
+    // followPeople(fetchFunction, dataObj);
     ////////////////
+    handleJoining(userID, btnState);
   }
 
   /**
@@ -91,7 +111,7 @@ const PeopleCardItem = ({
   console.log(avatar);
   return (
     <Container title="people">
-      <Link to="#">
+      <Link to={`/user/${userID}`}>
         <div className="item">
           {avatar && (
             <img

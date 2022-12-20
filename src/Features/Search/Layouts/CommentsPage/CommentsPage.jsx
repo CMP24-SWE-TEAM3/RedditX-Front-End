@@ -18,6 +18,7 @@ import { useState, useContext } from "react";
 import { IsModeratorProvider } from "Features/Subreddit/Contexts/IsModeratorProvider.js";
 import { IsBannedProvider } from "Features/Subreddit/Contexts/IsBannedProvider.js";
 import { IsMutedProvider } from "Features/Subreddit/Contexts/IsMutedProvider.js";
+import SetCommunityCard from "Features/Search/Components/SetCommunityCard/SetCommunityCard.jsx";
 /**
  * Component that render the CommentsPage component and Contains Comment item.
  * @Component
@@ -49,9 +50,11 @@ const CommentsPage = ({ CommentLists }) => {
                       </List>
                     </InnerContainer>
                   </OuterContainer>
-                  {ctx.isSubreddit && (
+                  {ctx.isSubreddit && ctx.community && (
                     <div className="side-cards">
-                      <CommunityCard />
+                      <SetCommunityCard comm={ctx.community}>
+                        <CommunityCard />
+                      </SetCommunityCard>
                     </div>
                   )}
                 </Container>

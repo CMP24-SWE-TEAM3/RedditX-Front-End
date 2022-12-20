@@ -29,7 +29,7 @@ const CommunityLeaderBoard = () => {
 
   // Fetch communities
   const [communityList, errorRandom, loadingRandom, fetchFunction] = useFetchFunction();
-
+  const [reRender, setRerender] = useState(false);
   const {categoryType} = useParams();
   const auth = useAuth();
   
@@ -44,6 +44,7 @@ const CommunityLeaderBoard = () => {
 //  }
   
 
+  console.log(communityList); 
 
   const [category, setCategory] = useState(data);
   const providedData = { category, setCategory };
