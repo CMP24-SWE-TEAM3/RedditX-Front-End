@@ -25,6 +25,7 @@ export const ButtonsContainer = styled.div`
   top: 88px;
   right: 0;
   left: 0;
+  z-index: 30;
 `;
 export const ButtonOne = styled.button`
   background-color: transparent;
