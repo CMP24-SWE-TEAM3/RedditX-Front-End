@@ -268,7 +268,9 @@ const Comment = ({ comment, postID }) => {
                   </CancelButton>
                   <SubmitButton onClick={editCommentHandler}>
                     {!isLoadingEditData && "Save"}
-                    {isLoadingEditData && <Spinner />}
+                    {isLoadingEditData && (
+                      <Spinner animation="border" variant="light" />
+                    )}
                   </SubmitButton>
                 </ButtonsContainer>
               </DraftEditorContainerOuter>
