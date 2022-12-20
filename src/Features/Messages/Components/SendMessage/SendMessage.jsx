@@ -32,7 +32,8 @@ function SendAMessage() {
   const queryParams = new URLSearchParams(location.search);
   const receiver = queryParams.get("to");
   const sender = queryParams.get("from");
-
+  console.log(receiver);
+  console.log(sender);
   const auth = useAuth();
   const [composeRes, errorCompose, loadingCompose, fetchData] = useFetchFunction();
   const [subjectErr, setSubjectErr] = useState(false);
@@ -90,12 +91,24 @@ function SendAMessage() {
     {
       console.log(formData.to);
       console.log(auth.getUserName());
-      let dataObject = {
-        fromID: auth.getUserName(),
-        toID: `t2_${formData.to}`,
-        subject: formData.subject,
-        text: formData.message
-      };
+      let dataObject;
+      if(sender && receiver) {
+        dataObject = {
+          fromID: `t2_${sender}`,
+          toID: `t2_${receiver}`,
+          subject: formData.subject,
+          text: formData.message
+        }
+      }
+      else {
+        dataObject = {
+          fromID: auth.getUserName(),
+          toID: `t2_${formData.to}`,
+          subject: formData.subject,
+          text: formData.message
+        };
+      }
+      
       composeMessage(fetchData, dataObject, auth);
       
       //Clearing form on successfull submission
@@ -115,23 +128,6 @@ function SendAMessage() {
             <Heading>Send A Private Message</Heading>
           </Spacer>
           <FormField onSubmit={handleSubmit}>
-            <Spacer>
-              <FieldDiv>
-                <Title>From</Title>
-                <FieldContent>
-                  <FromSelection
-                    onChange={handleChange}
-                    value={formData.from}
-                    name="from"
-                    required
-                  >
-                    <option value={"--Choose--"}>--Choose--</option>
-                    <option value={"mohamed"}>mohamed</option>
-                    <option value={"ahmed"}>ahmed</option>
-                  </FromSelection>
-                </FieldContent>
-              </FieldDiv>
-            </Spacer>
             <Spacer>
               <FieldDiv>
                 <Title>to
