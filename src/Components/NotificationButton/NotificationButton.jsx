@@ -71,7 +71,7 @@ const NotificationButton = () => {
   const [title, setTitle] = useLocalStorage("titleId", "null");
   const [body, setBody] = useLocalStorage("boydId", "null");
   const [type, setType] = useLocalStorage("typeId", "null");
-  const [showAlert, setShowAlert] = useState("alart", "null");
+  const [showAlert, setShowAlert] = useState(false);
 
   const [followerId, setFollowerId] = useLocalStorage("userId", "null");
   const [postId, setPostId] = useLocalStorage("postId", "null");
@@ -211,12 +211,7 @@ const NotificationButton = () => {
   useEffect(() => {
     pushNotifications(fetchData, auth);
   }, []);
-  console.log("Dataa=>>", data);
-  console.log("TYPE==>", type);
-  console.log("Post", postId);
-  console.log("USer==>", followerId);
-  console.log("comment", postId);
-  console.log("reply", postId);
+
   const navigate = useNavigate();
   return (
     <Container ref={ref}>
