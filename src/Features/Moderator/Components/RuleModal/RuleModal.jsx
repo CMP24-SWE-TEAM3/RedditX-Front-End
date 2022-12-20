@@ -65,7 +65,6 @@ const RuleModal = ({
       let result = rulesList.things[0].communityRules;
       result.map((el) => {
         if (el.title === rule && rule !== "") {
-          console.log(el.title);
           setIsUsedRule(true);
           flag = 1;
         }
@@ -239,6 +238,7 @@ const RuleModal = ({
         {showEditModal && <AddRuleBtn addRule={rule.length}>Save</AddRuleBtn>}
         <CancelBtn
           onClick={() => {
+            resetModal();
             setShowModal(false);
             setShowEditModal(false);
           }}
