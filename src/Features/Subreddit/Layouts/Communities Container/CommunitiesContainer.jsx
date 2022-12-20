@@ -81,9 +81,9 @@ import { useCallback } from "react";
     
   }, [categoryType, currCategory]);
 
-  useEffect(()=>{
-    fetchCommunities(fetchFunction, auth, currCategory, pgNum);
-  },[pgNum]);
+  // useEffect(()=>{
+  //   fetchCommunities(fetchFunction, auth, currCategory, pgNum);
+  // },[pgNum]);
 
   // const { commun } = communitiesList;
 
@@ -93,7 +93,7 @@ import { useCallback } from "react";
       setComs((prev) => {
         return [...prev, ...communitiesList.communities];
       });
-    console.log(coms);
+    // console.log(coms);
   }, [communitiesList.communities]);
 
 
@@ -119,36 +119,36 @@ if(coms && coms.length!==0)
      communities = communitiesList.communities.map((community, index) => {
     if (coms.length === index + 1) { 
         return (
-        <li ref={lastPostElementRef} key={community.id.toString()}>
+        <li ref={lastPostElementRef} key={community._id}>
           <Community
-            id={community.id}
+            id={community._id}
             index={index + 1}
-            img={community.coverImg}
-            title={community.title}
+            img={community.icon}
+            title={community._id}
             isJoined={subscribed.find((element) => {
-              return element.id === community.id;
+              return element._id === community._id;
             })}
-            members={community.members.length}
+            members={community.membersCnt}
             description={community.description}
-            rankChange={community.rankChange}
+            rankChange = {community.rank}
           />
         </li>
         );
     }
     else {
       return (
-        <li key={community.id.toString()}>
+        <li key={community._id}>
           <Community
             id={community.id}
             index={index + 1}
-            img={community.coverImg}
-            title={community.title}
+            img={community.icon}
+            title={community._id}
             isJoined={subscribed.find((element) => {
-              return element.id === community.id;
+              return element._id === community._id;
             })}
-            members={community.stats.members}
+            members={community.membersCnt}
             description={community.description}
-            rankChange={community.rankChange}
+            rankChange = {community.rank}
           />
         </li>
         );
