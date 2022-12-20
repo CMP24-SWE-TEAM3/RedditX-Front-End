@@ -6,6 +6,9 @@ import {
   EmptyMessage,
 } from "./MessagePanel.styled";
 import MessageBannelItem from "../../Components/MessagesPanel/MessagePanelItem";
+import useFetchFunction from "Hooks/useFetchFunction";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
+import moderatorCheck from "../../Services/ModeratorCheck";
 const messagesData = [
   {
     aurthor: "Mohamed",
@@ -60,6 +63,9 @@ function MessageBannel({data, Rerender}) {
     </EmptyMessage>
   </Empty>
   );
+  const auth = useAuth();
+  const [moderatorRes, errorModerator, loadingModerator, fetchDataModerator] = useFetchFunction();
+  const [canBeAdmin, setAdmin] = useState(false);
 
   const [eachMessage, setEachMessage] = useState();
 
@@ -69,6 +75,13 @@ function MessageBannel({data, Rerender}) {
       setEachMessage(data.messages);
     }
   }, [data]);
+
+  useEffect(()=>{
+    moderatorCheck(fetchDataModerator, auth);
+    if(moderatorRes&& moderatorRes.communities&&moderatorRes.communities.length!==0) {
+      setAdmin(true);
+    }
+  },[]);
 
   if(eachMessage && eachMessage.length!==0) {
     Message = eachMessage.map((item) => {
@@ -81,7 +94,7 @@ function MessageBannel({data, Rerender}) {
           title={item.subject}
           time={item.createdAt}
           msg={item.text}
-          admin={item.admin}        //Not Done
+          admin={(item.fromID===auth.getUserName())}        //Not Done
           read={item.unread_status}
           id={item._id}
           deleted={item.isDeleted}
