@@ -260,3 +260,11 @@ export const ThreeDotsButton = styled.button`
     outline: none;
   }
 `;
+
+export const StyledCommentLink = styled(Link)`
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-decoration: none;
+`;

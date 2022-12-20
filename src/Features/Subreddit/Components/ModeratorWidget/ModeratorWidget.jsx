@@ -57,7 +57,9 @@ const ModeratorWidget = () => {
    */
   const MessageMod = () => {
     return (
-      <Message to="#">
+      <Message
+        to={communityID && `/message/compose`}
+      >
         <span className="icon">
           <BiEnvelope />
         </span>
@@ -89,7 +91,9 @@ const ModeratorWidget = () => {
   const ViewAllModerators = () => {
     return (
       <ViewModeratorsContainer>
-        <ViewAllModeratorsLink to={`/subreddit/${communityID.substring(3)}/moderator/spam`}>
+        <ViewAllModeratorsLink
+          to={`/subreddit/${communityID.substring(3)}/moderator/spam`}
+        >
           View All Moderators
         </ViewAllModeratorsLink>
       </ViewModeratorsContainer>
