@@ -3,6 +3,7 @@ import getUser from "Features/User/Services/getUser";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import CommentBody from "../CommentBody/CommentBody";
 import PostFooter from "../PostFooter/PostFooter";
 import PostHeader from "../PostHeader/PostHeader";
@@ -16,6 +17,7 @@ import { Container, Layout } from "./Comment.styled";
  * @returns {React.Component}
  */
 const Comment = ({ comment }) => {
+  const navigate = useNavigate();
   // let [PeopleList, errorPeople, loadingPeople, FB] = useFetchFunction();
   // const [commentBody, setcommentBody] = useState({});
   // const auth = useAuth();
@@ -55,7 +57,13 @@ const Comment = ({ comment }) => {
     };
     console.log(postHeader, "sssssssssss");
     return (
-      <Container title="comment">
+      <Container
+        title="comment"
+        onClick={() => {
+          // navigate(`/post-preview/:${comment.postID._id}/:${comment._id}`);
+          navigate(`/post-preview/${comment.postID._id}/${comment._id}`);
+        }}
+      >
         <Layout>
           {postHeader && <PostHeader postheader={postHeader} />}
           {commentBody && (
