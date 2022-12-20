@@ -28,7 +28,7 @@ const PostItem = ({ post }) => {
     };
     const postFooter = {
       upVotes: post.votesCount,
-      Comments: post.insightCnt,
+      Comments: post.commentsNum,
     };
     const postHeader = {
       headerImage: post.communityID && post.communityID.icon,
@@ -87,7 +87,7 @@ const PostItem = ({ post }) => {
                 {postBody.flair}
               </span>
             </div>
-            {isThereImage && (
+            {/* {isThereImage && (
               <div className="post-image">
                 <div className="img">
                   <Link to="#">
@@ -102,7 +102,7 @@ const PostItem = ({ post }) => {
                   </Link>
                 </div>
               </div>
-            )}
+            )} */}
           </div>
           <PostFooter postfooter={postFooter} />
         </div>

@@ -26,13 +26,13 @@ const HeadingContent = ({ setActive, Active }) => {
                 {/* <SubLinksListElementLink to={"#"}>
                   Basketball
                 </SubLinksListElementLink> */}
-                <Link to="#">Basketball, </Link>
+                {/* <Link to="#">Basketball, </Link> */}
               </SubLinksListElement>
               <SubLinksListElement last={true}>
                 {/* <SubLinksListElementLink to={"#"}>
                   Basketball
                 </SubLinksListElementLink> */}
-                <Link to={"#"}>Basketball</Link>
+                {/* <Link to={"#"}>Basketball</Link> */}
               </SubLinksListElement>
             </SubLinksList>
           </SubLinks>

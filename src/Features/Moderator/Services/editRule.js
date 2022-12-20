@@ -12,7 +12,8 @@ const editRule = (fetchData, auth, objectData) => {
   if (objectData.rule !== undefined && objectData.srName !== undefined) {
     if (
       typeof objectData.rule === "object" &&
-      typeof objectData.srName === "string"
+      typeof objectData.srName === "string" &&
+      objectData.rule.title.length > 0
     ) {
       fetchData({
         axiosInstance: axios,
@@ -26,11 +27,8 @@ const editRule = (fetchData, auth, objectData) => {
           },
         },
       });
-      return true;
     }
-    return false;
   }
-  return false;
 };
 
 export default editRule;

@@ -24,7 +24,7 @@ const PeoplePage = ({ PeopleList, PeopleFollow }) => {
           <InnerContainer>
             <List>
               {PeopleNumber !== 0 &&
-                PeopleFollow.followers &&
+                PeopleFollow.following &&
                 PeopleList.results.map((People) => (
                   <PeopleItem
                     avatar={People.avatar}
@@ -33,7 +33,7 @@ const PeoplePage = ({ PeopleList, PeopleFollow }) => {
                     about={People.about}
                     totalKarmas={People.karma}
                     username={People._id}
-                    isFollow={PeopleFollow.followers.find((element) => {
+                    isFollow={PeopleFollow.following.find((element) => {
                       return element._id === People._id;
                     })}
                   />

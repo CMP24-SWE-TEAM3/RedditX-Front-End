@@ -29,7 +29,7 @@ const Explore = () => {
     reloadSubCommunities,
   ] = useFetchFunction();
   const [PostList, error, loading, fetch] = useFetchFunction();
-  // console.log(PostList);
+  console.log(PostList);
   // // Fetch communities
   let [communityListSub, errorSub, isLoadingSub, fetchData] =
     useFetchFunction();
@@ -81,8 +81,6 @@ const Explore = () => {
               }
             />
           </Routes>
-          {/* <Posts /> */}
-          {/* <Communities /> */}
         </BodyContainer>
       </OuterContainer>
     </Container>

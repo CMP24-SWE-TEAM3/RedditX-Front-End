@@ -16,6 +16,8 @@ import { SubRedditIDProvider } from "Features/Subreddit/Contexts/SubRedditIDProv
 import { SubRedditProvider } from "Features/Subreddit/Contexts/SubRedditProvider";
 import { useState, useContext } from "react";
 import { IsModeratorProvider } from "Features/Subreddit/Contexts/IsModeratorProvider.js";
+import { IsBannedProvider } from "Features/Subreddit/Contexts/IsBannedProvider.js";
+import { IsMutedProvider } from "Features/Subreddit/Contexts/IsMutedProvider.js";
 /**
  * Component that render the CommentsPage component and Contains Comment item.
  * @Component
@@ -27,30 +29,34 @@ const CommentsPage = ({ CommentLists }) => {
   const ctx = useContext(SearchContext);
   if (CommentLists.results) {
     const CommentsNumber = CommentLists.results.length;
-    // console.log(CommentLists.results);
+    console.log(CommentLists.results);
     return (
       <SubRedditProvider>
         <SubRedditIDProvider>
           <IsModeratorProvider>
-            <Container>
-              <OuterContainer>
-                <InnerContainer>
-                  <List>
-                    {CommentsNumber !== 0 &&
-                      CommentLists.results &&
-                      CommentLists.results.map((comment) => (
-                        <Comment comment={comment} key={comment._id} />
-                      ))}
-                    {CommentsNumber === 0 && <NotFound />}
-                  </List>
-                </InnerContainer>
-              </OuterContainer>
-              {ctx.isSubreddit && (
-                <div className="side-cards">
-                  <CommunityCard />
-                </div>
-              )}
-            </Container>
+            <IsBannedProvider>
+              <IsMutedProvider>
+                <Container>
+                  <OuterContainer>
+                    <InnerContainer>
+                      <List>
+                        {CommentsNumber !== 0 &&
+                          CommentLists.results &&
+                          CommentLists.results.map((comment) => (
+                            <Comment comment={comment} key={comment._id} />
+                          ))}
+                        {CommentsNumber === 0 && <NotFound />}
+                      </List>
+                    </InnerContainer>
+                  </OuterContainer>
+                  {ctx.isSubreddit && (
+                    <div className="side-cards">
+                      <CommunityCard />
+                    </div>
+                  )}
+                </Container>
+              </IsMutedProvider>
+            </IsBannedProvider>
           </IsModeratorProvider>
         </SubRedditIDProvider>
       </SubRedditProvider>

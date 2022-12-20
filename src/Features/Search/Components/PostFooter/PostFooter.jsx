@@ -13,7 +13,6 @@ const PostFooter = ({ postfooter }) => {
     return (
       <Footer>
         <span className="upvote" title="upvote">
-          {/* {postfooter.upVotes} */}
           {abbreviate(postfooter.upVotes, 1)} upvotes
         </span>
         {postfooter.Comments && (

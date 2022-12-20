@@ -28,6 +28,8 @@ const HandleButton = ({
   showDragDrop,
   setShowModal,
   setShowEditModal,
+  ruleData,
+  setEditor,
 }) => {
   // state  handles expand/collapse of body accordion button
   const [expand, setExpand] = useState(false);
@@ -42,6 +44,7 @@ const HandleButton = ({
         onClick={() => {
           setShowModal(true);
           setShowEditModal(true);
+          setEditor(ruleData);
         }}
       >
         <MdOutlineModeEdit size={22} />
@@ -70,25 +73,29 @@ const HandleButton = ({
 
 const RuleTab = ({
   setShowModal,
-  name,
+  number,
   showDragDrop,
   collapse,
   setShowEditModal,
   ruleTitle,
   ruleDescription,
   ruleReason,
+  ruleData,
+  setEditor,
 }) => {
   return (
     <Accordion defaultActiveKey="1">
       <AccordionContainer>
         <Card.Header>
-          <Number>{name}</Number>
+          <Number>{number}</Number>
           <RuleText>{ruleTitle}</RuleText>
           <HandleButton
             eventKey={collapse}
             showDragDrop={showDragDrop}
             setShowModal={setShowModal}
             setShowEditModal={setShowEditModal}
+            ruleData={ruleData}
+            setEditor={setEditor}
           />
           <Tabs showDragDrop={showDragDrop}>
             <GrDrag size={22} />

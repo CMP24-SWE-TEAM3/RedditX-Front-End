@@ -83,7 +83,6 @@ const ShowPosts = ({ type }) => {
   useEffect(() => {
     setrecentPost(ctx.Posts);
   }, [ctx.Posts]);
-  // TODO: replace dummy data with post data
   // handle recent posts to append and delete from local storage
   const handleRecentPosts = () => {
     localStorage.setItem("RecentPosts", JSON.stringify(recentPost));

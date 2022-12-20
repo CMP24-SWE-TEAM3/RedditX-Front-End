@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApprovedUsers Component this is a test for ApprovedUsers Component 1`] = `
+<Fragment>
+  <styled.div>
+    <styled.input
+      onChange={[Function]}
+      placeholder="Search for a user"
+    />
+    <styled.div>
+      <BiSearch />
+    </styled.div>
+  </styled.div>
+  <styled.div>
+    <ModeratorRow
+      Moderator={
+        Object {
+          "_id": "mohamedRomee",
+        }
+      }
+      approved={true}
+      communityName="t5_imagepro"
+    />
+  </styled.div>
+</Fragment>
+`;
