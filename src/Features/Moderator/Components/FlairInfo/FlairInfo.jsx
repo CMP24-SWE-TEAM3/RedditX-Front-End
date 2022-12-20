@@ -33,6 +33,7 @@ import AddFlair from "Features/Moderator/Services/AddFlair";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useParams } from "react-router-dom";
+import DeleteFlair from "Features/Moderator/Services/DeleteFlair";
 // import { useParams } from "react-router-dom";
 /**
  * Component that contains the Postslist component and the PostslistItems.
@@ -67,15 +68,12 @@ const FlairInfo = ({
     color: color,
     background: background,
   });
-  console.log("xxb", theBegin);
   const ctx = useContext(FlairContext);
-  // console.log("ali", intialState);
   const [ShowColor, setShowColor] = useState(false);
   const [Black, setBlack] = useState(true);
   const [DisSave, setDisSave] = useState(false);
   const [PickColor, setPickColor] = useState(background);
   const [Count, setCount] = useState(64 - text.length);
-  console.log(text.length);
 
   /**
    * function to handle change of color
@@ -86,7 +84,6 @@ const FlairInfo = ({
   const handleChange = (color, event) => {
     setPickColor(color.hex);
     setback(color.hex);
-    console.log(color);
     // setShowColor(false);
   };
   /**
@@ -97,7 +94,6 @@ const FlairInfo = ({
    */
   const handleChangeComplete = (color, event) => {
     setPickColor(color.hex);
-    console.log(color);
     setback(color.hex);
   };
   /**
@@ -111,7 +107,6 @@ const FlairInfo = ({
       background !== theBegin.background
     ) {
       setShowModal(true);
-      console.log("object");
     } else {
       // e.preventDefault();
       setEdit(false);
@@ -121,8 +116,19 @@ const FlairInfo = ({
       }
     }
   };
-  const [Community, error, isLoading, fetchData] = useFetchFunction();
+  const [Add, errorAdd, isLoadingAdd, fetchDataAdd] = useFetchFunction();
 
+  const [Delete, errorDelete, isLoadingDelete, fetchDataDelete] =
+    useFetchFunction();
+  useEffect(() => {
+    console.log("Add", !isLoadingAdd);
+    ctx.ChangeFetchHandler(!ctx.ChangeFetch);
+  }, [isLoadingAdd]);
+
+  useEffect(() => {
+    console.log("Delete", !isLoadingDelete);
+    ctx.ChangeFetchHandler(!ctx.ChangeFetch);
+  }, [isLoadingDelete]);
   /**
    * function to handle Save operation
    * @param {object} e -  event object
@@ -137,26 +143,35 @@ const FlairInfo = ({
     }));
     setEdit(false);
     ctx.EditHandler(false);
+    const obj = {
+      flairText: text,
+      flairTextColor: color,
+      flairBackGround: background,
+      flairModOnly: true,
+      flairAllowUserEdits: true,
+    };
     if (isNew) {
       ctx.AddHandler(false);
-      const obj = {
-        flairText: text,
-        flairTextColor: color,
-        flairBackGround: background,
-        flairModOnly: true,
-        flairAllowUserEdits: true,
-      };
       // const { subredditId } = useParams();
-      AddFlair(fetchData, obj, auth, subredditId);
-      // console.log(Community, isLoading);
-      if (!isLoading) {
-        ctx.ChangeFetchHandler(!ctx.ChangeFetch);
-      }
+      AddFlair(fetchDataAdd, obj, auth, subredditId);
+      // if (!isLoading) {
+      //   ctx.ChangeFetchHandler(!ctx.ChangeFetch);
+      // }
+    } else {
+      AddFlair(fetchDataAdd, obj, auth, subredditId);
+
+      const objDel = {
+        id: id,
+      };
+      DeleteFlair(fetchDataDelete, obj, auth, subredditId);
+
+      // if (!isLoading) {
+      //   ctx.ChangeFetchHandler(!ctx.ChangeFetch);
+      // }
     }
   };
 
   // const a = (e) => {
-  //   console.log("ffd");
   // };
   const wrapperRef = useRef();
   const inputRef = useRef();
@@ -169,7 +184,6 @@ const FlairInfo = ({
   useEffect(() => {
     setCount(64 - text.length);
   }, [text]);
-  console.log(Count);
   const onDiscard = () => {
     setTextState(theBegin.text);
     setColor(theBegin.color);

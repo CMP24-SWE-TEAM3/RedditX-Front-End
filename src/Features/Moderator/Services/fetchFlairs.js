@@ -7,6 +7,7 @@ import axios from "API/axios";
  */
 const fetchFlairs = (fetchFunction, auth, subreddit) => {
   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
+  // console.log("Fetching posts", searchWord);
   fetchFunction({
     axiosInstance: axios,
     method: "GET",
