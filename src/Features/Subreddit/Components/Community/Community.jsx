@@ -24,6 +24,7 @@ import {
   Arrow,
   HoverDiv,
 } from "./Community.styled";
+import { useNavigate } from "react-router-dom";
 
 /**
  * Component that contains the community items of the community leaderboard page
@@ -36,19 +37,16 @@ import {
  * @param {number} index - Subreddit index among fetched data to index the list
  * @param {number} members - Subreddit Member count
  * @param {number} rankChange - Subreddit Rank Change
- * @param {Function} reRender - Function to rerender parent
  * @returns {React.Component}
  */
  const Community = ({isJoined, img, title, description, index, members, rankChange}) => {
-
+  const navigate = useNavigate();
   const auth = useAuth();
   const [isJoinedstate, setIsJoined] = useState(
     isJoined !== undefined ? true : false
   );
   
   const [joinRes, errorJoin, joinLoading, fetchFunction] = useFetchFunction();
-
-  
     
   useEffect(() => {
     setIsJoined(isJoined);
@@ -60,7 +58,7 @@ import {
       srName: `${title}`
     }
     joinCommunity(fetchFunction, dataObject, auth);
-    setIsJoined((prevJoined) => !prevJoined);
+    setIsJoined((prevJoined) => !prevJoined); 
   }
   return (
     
@@ -92,7 +90,7 @@ import {
                 </Members>
               </MembersOnline>
               {description && <HoverDescription>{description}</HoverDescription> }
-              <HoverButton>View Community</HoverButton>
+              <HoverButton onClick={()=>navigate(`/subreddit/${title}`)}>View Community</HoverButton>
             </HoverItem>
           </ForPadding>
         </CommunityCard>
