@@ -74,12 +74,14 @@ const UserComment = ({ comment, overview }) => {
 
   function handleClick(e) {
     // console.log(e.currentTarget.nodeName)
-    comment &&
-      comment.postID &&
-      comment.postID._id &&
-      comment._id &&
-      navigate(`/post-preview/${comment.postID._id}/${comment._id}`);
-    e.stopPropagation();
+    if (e.target.nodeName !== "A") {
+      comment &&
+        comment.postID &&
+        comment.postID._id &&
+        comment._id &&
+        navigate(`/post-preview/${comment.postID._id}/${comment._id}`);
+      e.stopPropagation();
+    }
   }
 
   const CommentHeader = ({ user, title, community, posted }) => {

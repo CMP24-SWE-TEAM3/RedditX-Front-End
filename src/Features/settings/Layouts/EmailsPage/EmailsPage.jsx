@@ -11,9 +11,9 @@ const EmailsPage = ({emailSubscribe, Followers, Request}) => {
     console.log(`Request is: ${Request}`);
   },[]);
 
-  const [subscribe, setSubscribe] = useState(emailSubscribe? emailSubscribe: false);
-  const [followers, setFollowers] = useState(Followers? Followers: false);
-  const [request, setRequest] = useState(Request? Request: false);
+  const [subscribe, setSubscribe] = useState( false);
+  const [followers, setFollowers] = useState( false);
+  const [request, setRequest] = useState( false);
   const auth = useAuth();
   const [resUnSubscribe, errorUnSubscribe, loadingUnSubscribe, fetchDataUnSubscribe] = useFetchFunction();
   const [resRequest, errorRequest, loadingRequest, fetchRequest] = useFetchFunction();
