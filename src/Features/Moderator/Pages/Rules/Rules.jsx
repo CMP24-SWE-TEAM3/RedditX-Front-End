@@ -43,7 +43,9 @@ const Rules = () => {
       <RuleHeader showNote={showDragDrop} />
       <RuleTabContainer showRuleTabs={showDragDrop}>
         {!isLoading &&
+          rulesList &&
           rulesList.length !== 0 &&
+          rulesList.things &&
           rulesList.things[0].communityRules.length !== 0 &&
           rulesList.things[0].communityRules.map((rule) => {
             console.log(rule);

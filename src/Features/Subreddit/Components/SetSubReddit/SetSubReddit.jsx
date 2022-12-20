@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
 import { useSubRedditID } from "Features/Subreddit/Contexts/SubRedditIDProvider";
@@ -20,6 +20,7 @@ import getMutedUsers from "Features/Subreddit/Services/getMutedUsers";
  */
 const SetSubReddit = ({ comm, children }) => {
   const { community, setCommunity } = useSubReddit();
+  const [isJoined, setIsJoined] = useState(false);
   const auth = useAuth();
 
   const { setCommunityID } = useSubRedditID();
@@ -38,7 +39,7 @@ const SetSubReddit = ({ comm, children }) => {
   useEffect(() => {
     getSubreddit(fetchData, comm, auth);
   }, [comm]);
-  console.log(Community && Community.things, "__", error, "__", isLoading);
+  console.log(Community && Community.things, "_com_", error, "__", isLoading);
 
   useEffect(() => {
     Community &&
@@ -94,11 +95,26 @@ const SetSubReddit = ({ comm, children }) => {
     } else setIsMuted(false);
   }, [setIsMuted, mutedList, auth]);
 
-  if (false) {
+  useEffect(() => {
+    if (community && community.members && auth) {
+      community.members.forEach((user) => {
+        if (user._id === auth.getUserName()) {
+          setIsJoined(true);
+        }
+      });
+    } else setIsJoined(false);
+  }, [community]);
+
+  if (
+    community &&
+    community.communityOptions &&
+    community.communityOptions.privacyType === "private" &&
+    !isJoined
+  ) {
     return <PrivatePage />;
   }
 
-  if (false) {
+  if (!community & !isLoading) {
     return <NoSubReddit />;
   }
 
