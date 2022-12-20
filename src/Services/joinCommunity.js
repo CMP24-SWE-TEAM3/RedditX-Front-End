@@ -10,6 +10,7 @@ const joinCommunity = (fetchData, auth, dataObject) => {
   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
 
   if (dataObject.action !== undefined && dataObject.srName !== undefined) {
+    console.log("gdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaaaa");
     if (
       typeof dataObject.action === "string" &&
       typeof dataObject.srName === "string"

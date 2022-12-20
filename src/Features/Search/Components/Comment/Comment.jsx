@@ -16,25 +16,21 @@ import { Container, Layout } from "./Comment.styled";
  * @returns {React.Component}
  */
 const Comment = ({ comment }) => {
-  let [PeopleList, errorPeople, loadingPeople, FB] = useFetchFunction();
+  // let [PeopleList, errorPeople, loadingPeople, FB] = useFetchFunction();
   // const [commentBody, setcommentBody] = useState({});
-  const auth = useAuth();
-  let userImage;
-  useEffect(() => {
-    if (comment.authorId) {
-      getUser(FB, comment.authorId, auth);
-    }
-  }, [comment.authorId]);
+  // const auth = useAuth();
+  // let userImage;
+  // useEffect(() => {
+  //   if (comment.authorId) {
+  //     getUser(FB, comment.authorId, auth);
+  //   }
+  // }, [comment.authorId]);
 
   if (comment && comment.postID) {
     const commentBody = {
       postContent: comment.postID.title,
-      commentUserImage:
-        PeopleList &&
-        PeopleList.about &&
-        PeopleList.about.user &&
-        PeopleList.about.user.avatar,
-      userName: comment.authorId,
+      commentUserImage: comment.authorId.avatar,
+      userName: comment.authorId._id,
       time: comment.createdAt,
       bodyContent: comment.textJSON,
       postFooter: {
@@ -42,16 +38,15 @@ const Comment = ({ comment }) => {
         // Comments: comment.replyingTo.commentsNum,
       },
     };
+    console.log(comment.authorId.avatar);
     const postFooter = {
       upVotes: comment.postID.votesCount,
       Comments: comment.postID.commentsNum,
     };
     const postHeader = {
-      headerImage:
-        comment.postID.communityID && comment.postID.communityID.icon,
-      communityName:
-        comment.postID.communityID && comment.postID.communityID._id,
-      communityID: comment.postID.communityID && comment.postID.communityID._id,
+      headerImage: comment.communityID && comment.communityID.icon,
+      communityName: comment.communityID && comment.communityID._id,
+      communityID: comment.communityID && comment.communityID._id,
       userName: comment.postID.userID._id,
       userID: comment.postID.userID._id,
       time: comment.postID.createdAt,

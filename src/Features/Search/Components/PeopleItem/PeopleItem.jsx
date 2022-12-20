@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   BtnContainer,
   Button,
@@ -18,6 +18,7 @@ import PeopleImage from "../../Assets/People_Image.jpg";
 import useFetchFunction from "Hooks/useFetchFunction.js";
 import followPeople from "Features/Search/Services/followPeople.js";
 import { useAuth } from "Features/Authentication/Contexts/Authentication.js";
+import SafeContext from "Features/Search/Contexts/SafeSearchContext/Safe-context";
 import joinCommunity from "Services/joinCommunity.js";
 /**
  * Component that contains the PeopleItem and manage the state of the button Follow.
@@ -45,12 +46,18 @@ const PeopleItem = ({
     useFetchFunction();
   const auth = useAuth();
 
-  const handleJoining = (communityName, type) => {
+  const handleJoining = (userID, type) => {
     joinCommunity(fetchData, auth, {
       action: !type ? "unsub" : "sub",
-      srName: `${communityName}`,
+      srName: `${userID}`,
     });
   };
+  const ctx2 = useContext(SafeContext);
+  useEffect(() => {
+    if (!loadingJoining) {
+      ctx2.RefetchPepHandler(!ctx2.RefetchPep);
+    }
+  }, [loadingJoining]);
   // // initialState for the following operations
   // const initialState = `${isFollow !== undefined ? "Following" : "Follow"}`;
   // the state of the buuton
@@ -76,12 +83,7 @@ const PeopleItem = ({
     } else {
       btnState = false;
     }
-    // let dataObj = {
-    //   action: btnState ? "Follow" : "unFollow",
-    //   userName: `${username.slice(1)}`,
-    // };
-    // followPeople(fetchFunction, dataObj);
-    handleJoining(username, btnState);
+    handleJoining(userID, btnState);
   }
   /**
    * it is the function that handle the state of the button when mouseEnter on it.
@@ -104,7 +106,7 @@ const PeopleItem = ({
   var abbreviate = require("number-abbreviate");
   console.log(avatar);
   return (
-    <Container href="#" title="people">
+    <Container href={`/user/${userID}`} title="people">
       <Flex>
         {avatar && (
           <Img
