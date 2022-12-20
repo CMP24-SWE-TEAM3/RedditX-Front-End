@@ -34,7 +34,7 @@ const FlairWidget = () => {
   }, [community]);
 
   useEffect(() => {
-    console.log(flairList);
+    console.log("flair",flairList);
   }, [flairList]);
 
   /**
@@ -45,54 +45,6 @@ const FlairWidget = () => {
     setToggle((prev) => !prev);
     // console.log(height);
   }
-
-  // const flairList = [
-  //   {
-  //     text: "No problem",
-  //     backgroundColor: "green",
-  //     color: "#fff",
-  //   },
-  //   {
-  //     text: "fundamentals",
-  //     backgroundColor: "yellow",
-  //     color: "#fff",
-  //   },
-  //   {
-  //     text: "its fine",
-  //     backgroundColor: "blue",
-  //     color: "#fff",
-  //   },
-  //   {
-  //     text: "bye bye",
-  //     backgroundColor: "black",
-  //     color: "#fff",
-  //   },
-  //   {
-  //     text: "search",
-  //     backgroundColor: "cyan",
-  //     color: "black",
-  //   },
-  //   {
-  //     text: "good morning",
-  //     backgroundColor: "white",
-  //     color: "#000",
-  //   },
-  //   {
-  //     text: "How are you",
-  //     backgroundColor: "green",
-  //     color: "#000",
-  //   },
-  //   {
-  //     text: "lets talk",
-  //     backgroundColor: "#cc8b00",
-  //     color: "#000",
-  //   },
-  //   {
-  //     text: "Announcement",
-  //     backgroundColor: "red",
-  //     color: "#fff",
-  //   },
-  // ];
 
   return (
     <WidgetContainer headerText="Filter by flair">
@@ -112,7 +64,7 @@ const FlairWidget = () => {
                     backgroundColor: flair.flairBackGround,
                   }}
                 >
-                  {flair.flairTextColor}
+                  {flair.flairText}
                 </StyledLink>
               </ListItem>
             );

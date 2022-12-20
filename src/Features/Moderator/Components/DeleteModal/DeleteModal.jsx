@@ -21,10 +21,8 @@ const DeleteModal = ({ ShowModal, setShowModal, id }) => {
   const handleShow = () => setShow(true);
   const { subredditId } = useParams();
   useEffect(() => {
-    if (!isLoading) {
-      ctx.ChangeFetchHandler(!ctx.ChangeFetch);
-    }
-  }, [isLoading]);
+    console.log("Community = = = ", Community);
+  }, [Community]);
   const DeleteHandler = () => {
     setShow(false);
     setShowModal(false);
@@ -33,6 +31,7 @@ const DeleteModal = ({ ShowModal, setShowModal, id }) => {
       id: id,
     };
     DeleteFlair(fetchData, obj, auth, subredditId);
+    ctx.ChangeFetchHandler(!ctx.ChangeFetch);
   };
   return (
     <>

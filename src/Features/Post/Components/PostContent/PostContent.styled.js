@@ -46,3 +46,17 @@ export const PostTitle = styled.h5`
 export const CarouselItem = styled(Carousel.Item)`
   height: ${(height) => height};
 `;
+
+export const Flair = styled.span`
+  background-color: ${({ backgroundColor }) => backgroundColor};
+  color: ${({ color }) => color};
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-right: 5px;
+  word-break: normal;
+  padding: 0 4px;
+  margin-right: auto;
+`;

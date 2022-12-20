@@ -118,6 +118,7 @@ const Post = ({ post, show, setShow }) => {
               setText={setText}
               setTextHTML={setHtmlText}
               submitComment={handleSubmitComment}
+              isLoading={isLoadingComment}
             />
           </DraftEditorContainer>
           <CommentsContainer>

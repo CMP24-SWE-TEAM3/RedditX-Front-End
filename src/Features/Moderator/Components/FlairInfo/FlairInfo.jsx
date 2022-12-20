@@ -121,14 +121,17 @@ const FlairInfo = ({
   const [Delete, errorDelete, isLoadingDelete, fetchDataDelete] =
     useFetchFunction();
   useEffect(() => {
-    console.log("Add", !isLoadingAdd);
-    ctx.ChangeFetchHandler(!ctx.ChangeFetch);
-  }, [isLoadingAdd]);
+    if (isLoadingAdd && Add && Add.status === "success") {
+      ctx.ChangeFetchHandler(!ctx.ChangeFetch);
+    }
+  });
+  console.log("errorDelete = ", errorDelete);
 
   useEffect(() => {
-    console.log("Delete", !isLoadingDelete);
-    ctx.ChangeFetchHandler(!ctx.ChangeFetch);
-  }, [isLoadingDelete]);
+    if (!isLoadingDelete && Delete && Delete.status === "success") {
+      ctx.ChangeFetchHandler(!ctx.ChangeFetch);
+    }
+  });
   /**
    * function to handle Save operation
    * @param {object} e -  event object
@@ -166,12 +169,13 @@ const FlairInfo = ({
       const objDel = {
         id: id,
       };
-      DeleteFlair(fetchDataDelete, obj, auth, subredditId);
+      DeleteFlair(fetchDataDelete, objDel, auth, subredditId);
 
       // if (!isLoading) {
       //   ctx.ChangeFetchHandler(!ctx.ChangeFetch);
       // }
     }
+    ctx.ChangeFetchHandler(!ctx.ChangeFetch);
   };
 
   // const a = (e) => {
