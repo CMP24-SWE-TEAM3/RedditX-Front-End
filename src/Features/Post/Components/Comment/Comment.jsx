@@ -147,6 +147,7 @@ const Comment = ({ comment, postID }) => {
       },
       auth.getToken()
     );
+    
   };
   const handleSubmitReply = () => {
     submitReply(
