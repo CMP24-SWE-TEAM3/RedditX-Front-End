@@ -39,9 +39,9 @@ const CommunityLeaderBoard = () => {
   }, []); // Only re-run the effect if count changes
 
 
- if(CommunitiesSub.communities) {
-  CommunitiesSub.communities = subscribed;
- }
+//  if(CommunitiesSub.communities) {
+//   CommunitiesSub.communities = subscribed;
+//  }
   
 
 

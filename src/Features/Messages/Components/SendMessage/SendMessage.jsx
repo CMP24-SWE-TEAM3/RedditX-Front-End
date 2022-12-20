@@ -27,7 +27,7 @@ import { useLocation } from "react-router-dom";
  * @Component
  * @returns {React.Component}
  */
-function SendAMessage() {
+function SendAMessage({Rerender}) {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const receiver = queryParams.get("to");
@@ -109,7 +109,7 @@ function SendAMessage() {
       }
       
       composeMessage(fetchData, dataObject, auth);
-      
+      Rerender((prev)=>!prev);
       //Clearing form on successfull submission
       setFormData({from:""});
       setFormData({to:""});
