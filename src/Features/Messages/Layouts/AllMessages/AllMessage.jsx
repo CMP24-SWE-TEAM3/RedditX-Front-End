@@ -64,7 +64,7 @@ const messagesData = [
  * @Component
  * @returns {React.Component}
  */
-function AllMessagesTypes({data}) {
+function AllMessagesTypes({data, Rerender}) {
   const [eachMessage, setEachMessage] = useState(data.messages);
 
   let Message = (
@@ -126,6 +126,7 @@ function AllMessagesTypes({data}) {
           return (
             <NormalMessageAll
               changeMessage={setEachMessage}
+              reRender = {Rerender}
               aurthor={item.fromID.substring(3)}
               title={item.subject}
               time={item.createdAt}

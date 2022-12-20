@@ -48,8 +48,7 @@ const NotificationContent = ({notificationRes}) => {
       fileSrc = "users";
     }
     else {
-      src="community-icon-t5_imagePro235-1670710332045.jpg";
-      //item.communityIcon;
+      src=item.communityIcon;
       fileSrc = "subreddits";
     }
     return(
