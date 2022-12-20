@@ -13,6 +13,7 @@ import { SubRedditProvider } from "Features/Subreddit/Contexts/SubRedditProvider
 import { IsModeratorProvider } from "Features/Subreddit/Contexts/IsModeratorProvider";
 import { IsBannedProvider } from "Features/Subreddit/Contexts/IsBannedProvider";
 import { IsMutedProvider } from "Features/Subreddit/Contexts/IsMutedProvider";
+import SetCommunityCard from "Features/Search/Components/SetCommunityCard/SetCommunityCard";
 /**
  * Component that contains the Posts Page included the 2 drop downs and posts list component and the People Card Component ,Community Card Component.
  *
@@ -202,7 +203,11 @@ const Posts = ({
                           <CreateCommunity />
                         </>
                       )}
-                      {ctx.isSubreddit && <CommunityCard />}
+                      {ctx.isSubreddit && ctx.community && (
+                        <SetCommunityCard comm={ctx.community}>
+                          <CommunityCard />
+                        </SetCommunityCard>
+                      )}
                     </div>
                   </div>
                 </ContainerPosts>
@@ -213,7 +218,6 @@ const Posts = ({
       </SubRedditProvider>
     </>
   );
-  // }
 };
 
 export default Posts;
