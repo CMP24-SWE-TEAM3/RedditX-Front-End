@@ -79,8 +79,8 @@ const Post = ({ post, show, setShow }) => {
   };
   const navigate = useNavigate();
   useEffect(() => {
-    console.log(" assadasd", comment, post);
-    if (!isLoadingComment && comment && comment._id && post && post._id) {
+    console.log(" dddddassadadsd", comment.status, post);
+    if (!isLoadingComment && comment && comment.status && post && post._id) {
       navigate(`/post-preview/${post._id}`);
     }
   }, [comment]);
