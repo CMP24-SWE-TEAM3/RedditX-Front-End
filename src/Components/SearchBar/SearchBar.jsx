@@ -7,7 +7,7 @@ import {
   ClearBtn,
   StyledDropdown,
 } from "./SearchBar.styled";
-import { useNavigate } from "react-router-dom/dist";
+import { useLocation, useNavigate, useParams } from "react-router-dom/dist";
 import SearchContext from "Features/Search/Contexts/SearchWordContext/Search-context";
 import BodySearch from "Components/SearchDropDown/SearchDropDown";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
@@ -90,7 +90,21 @@ const SearchBar = () => {
       })
       .slice(0, 10);
   };
-
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { id } = useParams();
+  const submitSearch = (event) => {
+    if (event.which === 13) {
+      navigate({
+        pathname: "/search",
+        search: `?query=${event.target.value}${
+          location.pathname.search("subreddit") !== -1
+            ? `&destination=${id}`
+            : ""
+        }`,
+      });
+    }
+  };
   /**
    * state of search field that show trending posts
    */
@@ -114,6 +128,7 @@ const SearchBar = () => {
         placeholder={"Search Reddit"}
         value={query}
         onChange={onChangeText}
+        onKeyDown={submitSearch}
       />
       <ClearBtn
         textValue={query.length}

@@ -23,7 +23,6 @@ import { TbArrowsDiagonalMinimize } from "react-icons/tb";
 import { GrDrag } from "react-icons/gr";
 import Card from "react-bootstrap/Card";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
-
 const HandleButton = ({
   eventKey,
   showDragDrop,
@@ -75,13 +74,16 @@ const RuleTab = ({
   showDragDrop,
   collapse,
   setShowEditModal,
+  ruleTitle,
+  ruleDescription,
+  ruleReason,
 }) => {
   return (
     <Accordion defaultActiveKey="1">
       <AccordionContainer>
         <Card.Header>
           <Number>{name}</Number>
-          <RuleText>try</RuleText>
+          <RuleText>{ruleTitle}</RuleText>
           <HandleButton
             eventKey={collapse}
             showDragDrop={showDragDrop}
@@ -96,7 +98,7 @@ const RuleTab = ({
           <Card.Body>
             <ReportReason>
               <StampOne>REPORT REASON</StampOne>
-              <StampTwo>try</StampTwo>
+              <StampTwo>{ruleReason}</StampTwo>
             </ReportReason>
             <Apply>
               <MarginRight>
@@ -112,7 +114,7 @@ const RuleTab = ({
               <StampOne>Full description</StampOne>
               <StampTwo>
                 <StampTwo>
-                  <p>just a try</p>
+                  <p>{ruleDescription}</p>
                 </StampTwo>
               </StampTwo>
             </Description>

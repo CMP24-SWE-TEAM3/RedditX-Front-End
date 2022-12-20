@@ -8,13 +8,17 @@ import axios from "API/axios";
  * @return {Boolean}
  */
 
-const postRule = (fetchData, auth, objectData) => {
-  if (objectData.rule !== undefined) {
-    if (typeof objectData.rule === "string") {
+const createRule = (fetchData, auth, objectData) => {
+  if (objectData.rule !== undefined && objectData.srName !== undefined) {
+    if (
+      typeof objectData.rule === "object" &&
+      typeof objectData.srName === "string" &&
+      objectData.rule.title.length > 0
+    ) {
       fetchData({
         axiosInstance: axios,
         method: "post",
-        url: "/api/r/create-rule/",
+        url: "/api/r/community-rule",
         requestConfig: {
           data: objectData,
           headers: {
@@ -23,11 +27,8 @@ const postRule = (fetchData, auth, objectData) => {
           },
         },
       });
-      return true;
     }
-    return false;
   }
-  return false;
 };
 
-export default postRule;
+export default createRule;

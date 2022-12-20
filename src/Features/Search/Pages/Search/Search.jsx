@@ -1,7 +1,13 @@
 import CommentsPage from "Features/Search/Layouts/CommentsPage/CommentsPage";
 import CommunitiesPage from "Features/Search/Layouts/CommunitiesPage/CommunitiesPage";
 import PeoplePage from "Features/Search/Layouts/PeoplePage/PeoplePage";
-import { Navigate, Outlet, Route, Routes } from "react-router-dom";
+import {
+  Navigate,
+  Outlet,
+  Route,
+  Routes,
+  useSearchParams,
+} from "react-router-dom";
 import React from "react";
 // import Form from "react-bootstrap/Form";
 import Links from "../../Components/MainHeader/MainHeader";
@@ -43,6 +49,9 @@ const Search = () => {
   const [ActiveLink, setActiveLink] = useState("posts");
   // Fetch Posts
   const [PostList, error, loading, fetch] = useFetchFunction();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  console.log(searchParams.get("query"), searchParams.get("destination"));
   // useEffect(() => {
   //   fetchPosts(fetch);
   // }, []); // Only re-run the effect if count changes

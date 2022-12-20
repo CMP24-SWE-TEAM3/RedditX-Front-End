@@ -20,17 +20,12 @@ let onDragEnd = (result) => {
     return;
   }
   let sourceIdx = parseInt(result.source.index);
-  // console.log("Source ",sourceIdx)
   let destIdx = parseInt(result.destination.index);
-  // console.log("Destination ",destIdx)
   let draggedLink = rules[0].list[sourceIdx];
-  console.log("DraggedLink ", draggedLink);
   let newList = rules[0].list.slice();
-  // console.log("New List-1 ",newList)
   newList.splice(sourceIdx, 1);
   newList.splice(destIdx, 0, draggedLink);
   rules[0].list = newList;
-  // console.log("New List-2 ",newList)
 };
 const ReorderRules = ({ showDragDrop }) => {
   return (
