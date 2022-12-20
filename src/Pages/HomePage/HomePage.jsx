@@ -27,10 +27,10 @@ import ShowPosts from "Layouts/ShowPosts/ShowPosts";
 import { Button } from "react-bootstrap";
 
 //////////////////////////////////////////////////////////////
-import {
-  onForegroundMessage,
-  requestPermission,
-} from "PushNotification/messaging_init_in_sw";
+// import {
+//   onForegroundMessage,
+//   requestPermission,
+// } from "PushNotification/messaging_init_in_sw";
 //////////////////////////////////////////////////////////////
 
 /**
@@ -40,26 +40,25 @@ import {
  */
 
 const HomePage = () => {
-  const [notifications, setNotifications] = React.useState([]);
-  console.log("notifications: ", notifications);
-  useDocumentTitle("reddit.com: Welcome back");
-  useEffect(() => {
-    onForegroundMessage()
-      .then((payload) => {
-        console.log("Received foreground message: ", payload);
-        const {
-          notification: { title, body },
-        } = payload;
-        setNotifications([...notifications, { title, body }]);
-        console.log("title: ", title, "body: ", body);
-      })
-      .catch((err) =>
-        console.log(
-          "An error occured while retrieving foreground message. ",
-          err
-        )
-      );
-  });
+  // const [notifications, setNotifications] = React.useState([]);
+  // console.log("notifications: ", notifications);
+  // useEffect(() => {
+  //   onForegroundMessage()
+  //     .then((payload) => {
+  //       console.log("Received foreground message: ", payload);
+  //       const {
+  //         notification: { title, body },
+  //       } = payload;
+  //       setNotifications([...notifications, { title, body }]);
+  //       console.log("title: ", title, "body: ", body);
+  //     })
+  //     .catch((err) =>
+  //       console.log(
+  //         "An error occured while retrieving foreground message. ",
+  //         err
+  //       )
+  //     );
+  // });
   return (
     <AppContainer>
       <AppHeader>

@@ -204,3 +204,19 @@ export const Footer = styled.footer`
     color: #24a0ed;
   }
 `;
+
+export const NotyIconStyle = styled.div`
+  position: relative;
+  display: inline;
+`;
+export const AlarmIcon = styled.div`
+  position: absolute;
+  right: 0;
+  background-color: #ff4500;
+  font-size: 11px;
+  color: ${({ theme }) => theme.lineColor.primary};
+  display: inline;
+  height: fit-content;
+  padding: 3px 5px;
+  border-radius: 100%;
+`;
