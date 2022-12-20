@@ -74,7 +74,7 @@ const ModeratorWidget = () => {
   const Moderator = ({ moderator }) => {
     return (
       <ModeratorContainer>
-        <Link to={`user/${moderator.userID}`}>
+        <Link to={`/user/${moderator.userID}`}>
           <User>{"u/" + moderator.userID.substring(3)}</User>
         </Link>
       </ModeratorContainer>

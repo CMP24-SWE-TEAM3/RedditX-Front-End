@@ -10,11 +10,11 @@ import LinkForm from "Features/Post/Components/LinkForm/LinkForm";
  * @param {Function} submitPost - Function to submit the post
  * @returns {React.Component} Link Tab component (The tab that contains the link in create post page)
  */
-const LinkTab = ({ submitPost }) => {
+const LinkTab = ({ submitPost, isLoading }) => {
   return (
     <div>
       <LinkTabContainer>
-        <LinkForm submitPost={submitPost} />
+        <LinkForm submitPost={submitPost} isLoadingSubmit={isLoading} />
       </LinkTabContainer>
     </div>
   );

@@ -9,6 +9,9 @@ import PrivatePage from "../PrivatePage/PrivatePage";
 import { useIsBanned } from "Features/Subreddit/Contexts/IsBannedProvider";
 import { useIsMuted } from "Features/Subreddit/Contexts/IsMutedProvider";
 import NoSubReddit from "../NoSubReddit/NoSubReddit";
+import getBannedUsers from "Features/Subreddit/Services/getBannedUsers";
+import getMutedUsers from "Features/Subreddit/Services/getMutedUsers";
+
 /**
  *
  * @param {string} comName - community name to fitch its data
@@ -16,7 +19,7 @@ import NoSubReddit from "../NoSubReddit/NoSubReddit";
  * @returns {React.Component}
  */
 const SetSubReddit = ({ comm, children }) => {
-  const { setCommunity } = useSubReddit();
+  const { community, setCommunity } = useSubReddit();
   const auth = useAuth();
 
   const { setCommunityID } = useSubRedditID();
@@ -26,24 +29,15 @@ const SetSubReddit = ({ comm, children }) => {
   }, [comm, setCommunityID]);
 
   const { setIsMod } = useIsModerator();
-  useEffect(() => {
-    setIsMod(false);
-  }, [setIsMod]);
 
   const { setIsBanned } = useIsBanned();
-  useEffect(() => {
-    setIsBanned(false);
-  }, [setIsBanned]);
 
   const { setIsMuted } = useIsMuted();
-  useEffect(() => {
-    setIsMuted(false);
-  }, [setIsMuted]);
 
   const [Community, error, isLoading, fetchData] = useFetchFunction();
   useEffect(() => {
     getSubreddit(fetchData, comm, auth);
-  }, []);
+  }, [comm]);
   console.log(Community && Community.things, "__", error, "__", isLoading);
 
   useEffect(() => {
@@ -52,6 +46,53 @@ const SetSubReddit = ({ comm, children }) => {
       Community.things.length &&
       setCommunity(Community.things[0]);
   }, [Community]);
+
+  useEffect(() => {
+    if (community && community.moderators && auth) {
+      community.moderators.forEach((mod) => {
+        if (mod.userID === auth.getUserName()) {
+          setIsMod(true);
+        }
+      });
+    } else setIsMod(false);
+  }, [setIsMod, community, auth]);
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+  const [bannedList, errorBanned, isLoadingBanned, fetchDataBanned] =
+    useFetchFunction();
+  useEffect(() => {
+    getBannedUsers(fetchDataBanned, auth, comm);
+  }, [comm]);
+  console.log(bannedList, "_banned_", errorBanned, "_banned_", isLoadingBanned);
+  ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+  const [mutedList, errorMuted, isLoadingMuted, fetchDataMuted] =
+    useFetchFunction();
+  useEffect(() => {
+    getMutedUsers(fetchDataMuted, auth, comm);
+  }, [comm]);
+  console.log(mutedList, "_muted_", errorMuted, "_muted_", isLoadingMuted);
+
+  useEffect(() => {
+    if (bannedList && bannedList.users && auth) {
+      bannedList.users.forEach((banned) => {
+        if (banned._id === auth.getUserName()) {
+          setIsBanned(true);
+        }
+      });
+    } else setIsBanned(false);
+  }, [setIsBanned, bannedList, auth]);
+
+  useEffect(() => {
+    if (mutedList && mutedList.users && auth) {
+      mutedList.users.forEach((muted) => {
+        if (muted._id === auth.getUserName()) {
+          setIsMuted(true);
+        }
+      });
+    } else setIsMuted(false);
+  }, [setIsMuted, mutedList, auth]);
 
   if (false) {
     return <PrivatePage />;
