@@ -4,6 +4,7 @@ import { GlobalButtonStyled } from "Components/GlobalButton/GlobalButton.styled"
 import React, { useState, useRef, useEffect } from "react";
 import Overlay from "react-bootstrap/Overlay";
 import Popover from "react-bootstrap/Popover";
+import ParseDateFromNow from "Features/Notifications/Utils/ParseDateFromNow";
 import { BASE_URL } from "API/axios";
 import {
   Container,
@@ -29,7 +30,6 @@ import {
 } from "./NotificationButton.styled";
 import { BsThreeDots, BsClipboardCheck } from "react-icons/bs";
 import { FiSettings } from "react-icons/fi";
-import link from "Assets/Images/link.png";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { Link } from "react-router-dom";
@@ -37,14 +37,10 @@ import pushNotifications from "Services/pushNotifications";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useNavigate } from "react-router-dom";
-import getUser from "Features/User/Services/getUser";
-import getCommunityInfo from "Features/Post/Services/getCommunityInfo";
-import useLocalStorage from "Hooks/useLocalStorage";
 import {
   onForegroundMessage,
   requestPermission,
 } from "PushNotification/messaging_init_in_sw";
-import { FormLabel } from "Features/Post/Components/DraftLinkForm/DraftLinkForm.styled";
 
 /**
  * Component that displays notifications about changes in the state of the application
@@ -63,47 +59,18 @@ const NotificationButton = () => {
   const [target, setTarget] = useState(null);
 
   // push notification
-  const [notifications, setNotifications] = useLocalStorage(
-    "notificationId",
-    JSON.stringify([])
-  );
-  const [data, setData] = useLocalStorage("dataId", JSON.stringify([]));
-  const [title, setTitle] = useLocalStorage("titleId", "null");
-  const [body, setBody] = useLocalStorage("boydId", "null");
-  const [type, setType] = useLocalStorage("typeId", "null");
   const [showAlert, setShowAlert] = useState(false);
-
-  const [followerId, setFollowerId] = useLocalStorage("userId", "null");
-  const [postId, setPostId] = useLocalStorage("postId", "null");
-  const [commentId, setCommentId] = useLocalStorage("commentId", "null");
-  const [replyId, setReplyId] = useLocalStorage("replyId", "null");
-
-  // useFetchFunction
-  const [userInfo, errorUserInfo, loading, fetchUser] = useFetchFunction();
-  const [post, errorPostInfo, isloading, fetchPost] = useFetchFunction();
+  const [notification, setNotification] = useState(null);
 
   useEffect(() => {
     onForegroundMessage()
       .then((payload) => {
         console.log("Received foreground message: ", payload);
+        setShowAlert(true);
         const {
           notification: { title, body },
         } = payload;
-        const { data } = payload;
-        setNotifications(JSON.stringify([...notifications, { title, body }]));
-        setData(JSON.stringify(data));
-        setType(data.type);
-        setTitle(title);
-        setBody(body);
-        if (data.type === "1") setFollowerId(data.followerID);
-        else if (data.type === "2") setPostId(data.postID);
-        else if (data.type === "3" || type === "4") {
-          setCommentId(data.commentID);
-          setPostId(data.postID);
-        } else if (data.type === "5") {
-          setCommentId(data.commentID);
-          setReplyId(data.replyID);
-        }
+        setNotification(JSON.stringify([...notification, { title, body }]));
       })
       .catch((err) =>
         console.log(
@@ -111,38 +78,7 @@ const NotificationButton = () => {
           err
         )
       );
-  });
-
-  // get user info
-  useEffect(() => {
-    if (type === "1") {
-      getUser(fetchUser, followerId, auth);
-      setShowAlert(true);
-    }
-  }, [followerId]);
-
-  // get post
-  useEffect(() => {
-    if (type === "2") {
-      getCommunityInfo(fetchPost, postId, auth);
-      setShowAlert(true);
-    }
-  }, [postId]);
-  // get comment
-  useEffect(() => {
-    if (type === "4") {
-      getCommunityInfo(fetchPost, commentId, auth);
-      setShowAlert(true);
-    }
-  }, [commentId]);
-
-  // get reply
-  useEffect(() => {
-    if (type === "5") {
-      getCommunityInfo(fetchPost, replyId, auth);
-      setShowAlert(true);
-    }
-  }, [replyId]);
+  }, [notification]);
 
   // ref the event listener
   const ref = useRef(null);
@@ -187,19 +123,7 @@ const NotificationButton = () => {
     setShowAlert(false);
     setShow(!show);
   };
-  const handleRoutes = () => {
-    if (type === "1") {
-      navigate(`/user/${followerId}`);
-    } else if (type === "2") {
-      navigate(`/post-preview/${postId}`);
-    } else if (type === "3") {
-      navigate(`/post-preview/${postId}/${commentId}`);
-    } else if (type === "4") {
-      navigate(`/post-preview/${postId}`);
-    } else if (type === "5") {
-      navigate(`/post-preview/${postId}/${commentId}`);
-    }
-  };
+
   useOutsideAlerter(wrapperRef);
 
   // Fetch notifications
@@ -260,53 +184,30 @@ const NotificationButton = () => {
           </Popover.Header>
           <Popover.Body data-testid={"notificationListId"}>
             <PopContainer />
-            {data.type && (
-              <Content onClick={handleRoutes}>
-                <ContentSymbol>
-                  <Link>
-                    {userInfo && userInfo.about && userInfo.user && (
-                      <ImageContainer>
-                        <img
-                          src={`${BASE_URL}/users/files/${userInfo.about.user.avatar}`}
-                          alt={"community-name"}
-                        />
-                      </ImageContainer>
-                    )}
-                    <SpanContainer>
-                      <Child>
-                        <SubChild>
-                          <Info>{title}</Info>
-                          {/* <Dot>.</Dot>
-                          <Time>{}h</Time> */}
-                        </SubChild>
-                        <DotBtn>
-                          <DotBtn>
-                            <BsThreeDots />
-                          </DotBtn>
-                        </DotBtn>
-                      </Child>
-                      <InfoChild>{body}</InfoChild>
-                    </SpanContainer>
-                  </Link>
-                </ContentSymbol>
-              </Content>
-            )}
             <Content>
               {notificationList &&
                 notificationList.length !== 0 &&
                 notificationList.notifications.map((comment, index) => {
                   return (
                     <ContentSymbol key={index}>
-                      <Link>
+                      <Link to={`/user/${comment.sourceThing}`}>
                         <ImageContainer>
-                          <img src={link} alt={"community-name"} />
+                          <img
+                            crossOrigin="anonynmous"
+                            src={`${BASE_URL}/users/files/${comment.userIcon}`}
+                            alt=""
+                          />
                         </ImageContainer>
                         <SpanContainer>
                           <Child>
                             <SubChild>
                               <Info key={comment._id}>Now {comment.title}</Info>
                               <Dot>.</Dot>
-                              <Time>{comment.createdAt}h</Time>
+                              <Time>
+                                {ParseDateFromNow(
+                                  comment.createdAt
+                                ).toDateString()}
+                              </Time>
                             </SubChild>
                             <DotBtn>
                               <DotBtn>

@@ -216,7 +216,6 @@ export const AlarmIcon = styled.div`
   font-size: 11px;
   color: ${({ theme }) => theme.lineColor.primary};
   display: inline;
-  height: fit-content;
   padding: 3px 5px;
   border-radius: 100%;
 `;

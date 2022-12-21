@@ -68,6 +68,7 @@ const Rules = () => {
       <ReorderRules showDragDrop={showDragDrop} />
       <RuleModal
         ruleData={editor}
+        setEditor={setEditor}
         setShowEditModal={setShowEditModal}
         showEditModal={showEditModal}
         showModal={showModal}

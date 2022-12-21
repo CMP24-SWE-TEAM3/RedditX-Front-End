@@ -26,8 +26,8 @@ const NavbarRule = ({ setShowModal, setShowDragDrop, setEditor }) => {
       <AddRuleBtn
         showReorder={showReorder}
         onClick={() => {
-          setShowModal(true);
           // setEditor(null);
+          setShowModal(true);
         }}
       >
         Add rule

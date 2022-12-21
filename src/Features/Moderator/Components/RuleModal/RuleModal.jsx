@@ -29,6 +29,7 @@ const RuleModal = ({
   showEditModal,
   setShowEditModal,
   ruleData,
+  setEditor,
 }) => {
   // get name of community
   const { subredditId } = useParams();
@@ -135,13 +136,12 @@ const RuleModal = ({
 
   // function that reset all values in modal
   const resetModal = () => {
-    if (ruleData === null) {
-      setRule("");
-      setDescription("");
-      setReasonRule("");
-      setCurrentRadioValue("posts-comments");
-      setShowEditModal(false);
-    }
+    setRule("");
+    setDescription("");
+    setReasonRule("");
+    setCurrentRadioValue("posts-comments");
+    setShowEditModal(false);
+    setEditor(null);
   };
 
   /**
@@ -166,7 +166,10 @@ const RuleModal = ({
       }}
     >
       <Modal.Header closeButton>
-        <Modal.Title>Edit rule</Modal.Title>
+        <Modal.Title>
+          {showEditModal && "Edit rule"}
+          {!showEditModal && "Add rule"}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
@@ -285,7 +288,12 @@ const RuleModal = ({
         {showEditModal && (
           <AddRuleBtn
             onClick={handleEditRule}
-            addRule={rule !== ruleData.title}
+            addRule={
+              ruleData !== null &&
+              (rule !== ruleData.title ||
+                description !== ruleData.description ||
+                reasonRule !== ruleData.reason)
+            }
           >
             Save
           </AddRuleBtn>
