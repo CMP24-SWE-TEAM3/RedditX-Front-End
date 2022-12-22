@@ -10,7 +10,10 @@ import { IoPricetagOutline } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
 
 /**
- * SpamPostFooter Component that is in the side of Post
+ * The footer of a spam post
+ *
+ * @param {Object} post - Post object
+ * @param {Function} handlerApprove - Approve post handler
  * @returns {React.Component} SpamPostFooter component
  */
 const SpamPostFooter = ({ post, handlerApprove }) => {

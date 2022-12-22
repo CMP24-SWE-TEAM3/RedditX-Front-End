@@ -24,6 +24,7 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
 /**
  * component that preview your subreddit flair
  *
+ * @param {Object} flairList - list of flairs
  * @returns {React.Component} CreatePost component
  */
 const UserFlairPreview = ({ flairList }) => {

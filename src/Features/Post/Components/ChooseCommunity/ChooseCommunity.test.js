@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import TestingComponent from "Features/Post/TestingComponent";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 // Import components
 import ChooseCommunity from "./ChooseCommunity";
@@ -29,6 +30,20 @@ jest.mock(
     };
   }
 );
+jest.mock("Features/Post/Services/getUser", () => (fetchData, auth) => {
+  return {
+    user: {
+      userInfo: {
+        about: {
+          user: {
+            avatar:
+              "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png",
+          },
+        },
+      },
+    },
+  };
+});
 
 describe("Choose community", () => {
   it("test search input show", async () => {
