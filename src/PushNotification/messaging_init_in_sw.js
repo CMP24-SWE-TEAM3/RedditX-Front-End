@@ -1,8 +1,9 @@
 import { initializeApp } from "firebase/app";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
 
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://firebase.google.com/docs/web/learn-more#config-object
+/**
+ * configuration of push notifications
+ */
 const firebaseConfig = {
   apiKey: "AIzaSyClEjbza4FfTRtOzhH68lmeKIbQi7wvlFE",
   authDomain: "reddit-f129b.firebaseapp.com",
@@ -64,7 +65,7 @@ const onMessageListener = () =>
       resolve(payload);
     });
   });
-
+// receive notifications on ForeBackground
 const onForegroundMessage = () =>
   new Promise((resolve) => onMessage(messaging, (payload) => resolve(payload)));
 export { requestPermission, onForegroundMessage, onMessageListener };

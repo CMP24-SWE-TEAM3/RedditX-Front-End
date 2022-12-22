@@ -7,6 +7,11 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
+
+/**
+ * Component that displays a list of members that are joined or left in community per day of the week
+ * @returns {React.Component}
+ */
 const DayOfWeek = () => {
   const { subredditId } = useParams();
 
@@ -46,11 +51,13 @@ const DayOfWeek = () => {
       "joined"
     );
   }, []);
+
   // get member counts
   useEffect(() => {
     getMembersCount(fetchMemberCountsLeft, auth, `t5_${subredditId}`, "left");
   }, []);
 
+  // state change filp order of days
   const [flipSort, setFlipSort] = useState(true);
   const [days, setDays] = useState([
     {

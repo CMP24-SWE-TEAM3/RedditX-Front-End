@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// Import Components
+import React from "react";
 import Modal from "react-bootstrap/Modal";
 import { useNavigate } from "react-router-dom";
 import {
@@ -6,11 +7,17 @@ import {
   ButtonModal,
 } from "./ModalAfterCreateCommunity.styled";
 
+/**
+ * Component that displays a modal after creating a new community
+ * @param {boolean,function (boolean),string}
+ * @returns {React.Component}
+ */
 const ModalAfterCreateCommunity = ({
   showModal,
   setShowWelcomeModal,
   community,
 }) => {
+  // close the modal
   const handleClose = () => setShowWelcomeModal(false);
   const navigate = useNavigate();
 
