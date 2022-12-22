@@ -14,6 +14,12 @@ import { RulesContainer, RuleTabContainer } from "./Rules.styled";
 const Rules = () => {
   const { subredditId } = useParams();
   const [editor, setEditor] = useState(null);
+  // state which handles displaying of modal rule
+  const [showModal, setShowModal] = useState(false);
+  // handle displaying of droppable rule tabs
+  const [showDragDrop, setShowDragDrop] = useState(false);
+  // handle edit modal rule
+  const [showEditModal, setShowEditModal] = useState(false);
 
   // authorization's user
   const auth = useAuth();
@@ -26,14 +32,8 @@ const Rules = () => {
 
   useEffect(() => {
     getSubreddit(fetchData, `t5_${subredditId}`, auth);
-  }, []);
+  }, [showModal]);
 
-  // state which handles displaying of modal rule
-  const [showModal, setShowModal] = useState(false);
-  // handle displaying of droppable rule tabs
-  const [showDragDrop, setShowDragDrop] = useState(false);
-  // handle edit modal rule
-  const [showEditModal, setShowEditModal] = useState(false);
   return (
     <RulesContainer>
       <NavbarRule

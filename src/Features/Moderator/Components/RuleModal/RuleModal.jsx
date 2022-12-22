@@ -100,7 +100,7 @@ const RuleModal = ({
 
   // create new rule
   const handleCreateRule = () => {
-    if (!isUsedRule) {
+    if (!isUsedRule && rule.length > 0) {
       createRule(fetchData, auth, {
         srName: `t5_${subredditId}`,
         rule: {
