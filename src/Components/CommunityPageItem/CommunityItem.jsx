@@ -20,6 +20,20 @@ import joinCommunity from "Features/Search/Services/joinCommunity";
 import { useEffect } from "react";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import CategoryContext from "Contexts/CategoryContext/Category-context";
+
+/**
+ * Component that contains the CommunityItem and manage the state of the button join.
+ *
+ * @Component
+ * @param {String} communityIcon - The image of the CommunityCardItem
+ * @param {String} communityID - The ID of the CommunityCardItem
+ * @param {String} communityDescription - The Description of the CommunityCardItem
+ * @param {number} membersCount - The membersCount of the CommunityCardItem
+ * @param {String} communityName - The name of the CommunityCardItem
+ * @param {object} isJoined - it is object indicating whether the user is joining this community
+ * @returns {React.Component}
+ */
+
 const CommunityItem = ({
   communityIcon,
   communityDescription,
