@@ -1,4 +1,4 @@
-import { giveVote, makeFollow } from "./postActions";
+import { giveVote, makeFollow } from "../postActions";
 
 const dataFetch = async (configObj) => {};
 
