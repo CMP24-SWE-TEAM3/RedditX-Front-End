@@ -6,6 +6,15 @@ import setToggledPrefs from "Features/settings/Services/SetToggledPrefs";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useState } from "react";
 import { useEffect } from "react";
+
+/**
+ * Component that contains the Feed Layout
+ *
+ * @Component
+ * @param {boolean} adult - Whether this setting is enabled or not
+ * @param {boolean} autoPlay - Whether this setting is enabled or not
+ * @returns {React.Component}
+ */
 const FeedPage = ({adult, autoPlay}) => {
   const [adultContent, setAdultContent] = useState(adult? adult: false);
   const [autoplay, setAutoPlay] = useState(false);

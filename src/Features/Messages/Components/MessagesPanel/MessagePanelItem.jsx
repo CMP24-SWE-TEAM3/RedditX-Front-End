@@ -51,11 +51,12 @@ import moderatorCheck from "../../Services/ModeratorCheck";
  * @param {string} title - Message Title
  * @param {Date} time - Time the message was sent
  * @param {string} msg - The Message Text
- * @param {boolean} admin - Whether the message was sent by an admin
  * @param {boolean} read - Whether the message was read or not
  * @param {boolean} deleted - Whether the message was deleted or not
  * @param {boolean} block - Whether the message was sent by a blocked user
  * @param {number} id - Id of the message
+ * @param {boolean} admin - Whether the message was sent by an admin
+ * @param {Function} reRender - Used to signal a re-render message to parent component
  * @returns {React.Component}
  */
 const MessageBannelItem = ({

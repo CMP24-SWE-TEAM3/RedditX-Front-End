@@ -5,6 +5,16 @@ import { Header } from "./EmailsPage.styled";
 import useFetchFunction from "Hooks/useFetchFunction";
 import {useAuth} from "Features/Authentication/Contexts/Authentication";
 import { useEffect, useState } from "react";
+
+/**
+ * Component that contains the Emails Layout
+ *
+ * @Component
+ * @param {boolean} emailSubscribe - Whether this setting is enabled or not
+ * @param {boolean} Followers - Whether this setting is enabled or not
+ * @param {boolean} Request - Whether this setting is enabled or not
+ * @returns {React.Component}
+ */
 const EmailsPage = ({emailSubscribe, Followers, Request}) => {
 
   useEffect(()=>{

@@ -28,6 +28,12 @@ import uploadUserPhoto from "Features/Authentication/Services/uploadUserPhoto";
 import { useEffect } from "react";
 import getUser from "Features/settings/Services/getMine";
 
+/**
+ * Component that contains the change profile pic setting
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const ProfileImage = () => {
   /**
    * state to store user's uploaded profile photo

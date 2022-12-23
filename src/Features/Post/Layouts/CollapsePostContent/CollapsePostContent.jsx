@@ -10,7 +10,7 @@ import { Container, PostTitle } from "./CollapsePostContent.styled";
  * @param {Boolean} collapse - if the post is collapsed or not
  * @param {Function} setCollapse - set collapse state
  * @param {Boolean} fullPost - if the post is full post or not
- * @returns
+ * @returns {React.Component}
  */
 const CollapsePostContent = ({ fullPost, collapse, setCollapse, post }) => {
   return (
