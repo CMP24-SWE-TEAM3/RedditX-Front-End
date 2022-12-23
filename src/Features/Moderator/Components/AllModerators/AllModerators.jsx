@@ -14,6 +14,7 @@ import {
 
 /**
  * AllModerators component that is used in User management
+ * @param {List} Moderator list of moderators 
  * @returns {React.Component}  AllModerators component that is used in User management
  */
 

@@ -1,10 +1,10 @@
 import { shallow, mount } from "enzyme";
 import { enzymeFind } from "styled-components/test-utils";
-import BannedUsers from "./BannedUsers";
 import { ThemeProvider } from "styled-components";
 import darkTheme from "Theme/darkTheme";
 import { BrowserRouter } from "react-router-dom";
-import { SearchInput } from "./BannedUsers.styled";
+import { SearchInput } from "./BanUser.styled";
+import BanUser from "./BanUser";
 
 const Moderator = [
   {
@@ -19,17 +19,20 @@ jest.mock("react-router-dom", () => ({
 
 const communityName = "t5_imagepro";
 
-describe("BannedUsers Component", () => {
-  it("this is a test for BannedUsers Component", () => {
+describe("BanUser Component", () => {
+  it("this is a test for BanUser Component", () => {
     const wrapper = mount(
       <BrowserRouter>
         <ThemeProvider theme={darkTheme}>
-          <BannedUsers Moderator={Moderator} communityName={communityName} />{" "}
+          <BanUser
+            Moderator={Moderator}
+            communityName={communityName}
+          />{" "}
         </ThemeProvider>
       </BrowserRouter>
     );
 
     const renderedComponent = enzymeFind(wrapper, SearchInput);
-    expect(renderedComponent.prop("className")).toBeDefined();
+    expect(renderedComponent.first().prop("className")).toBeDefined();
   });
 });

@@ -38,6 +38,7 @@ import {
 
 /**
  * PostsAndCommentsPage Layout that is used in Community settings
+ * @param {Function} setModalShowBaneUser function to show or hide the modal of ban user
  * @returns {React.Component}  PostsAndCommentsPage Layout that is used in Community settings
  */
 

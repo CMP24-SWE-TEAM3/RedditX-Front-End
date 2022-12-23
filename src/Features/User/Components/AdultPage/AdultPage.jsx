@@ -14,8 +14,18 @@ import {
 } from "./AdultPage.styled";
 import nsfw from "Features/User/Assets/images/nsfw.png";
 
+
+/**
+ * the +18 page
+ *
+ * @param {function} onHide - function to hide page
+ * @returns {React.Component}
+ */
 const AdultPage = ({onHide}) => {
 
+  /**
+   * function to set hide
+   */
   const handleYes = () => {
     onHide(true);
   };
