@@ -103,6 +103,7 @@ const mainTopics = [
 
 /**
  * CommunitySettingsPage Layout that is used in Community settings
+ * @param {Function} setModalShowBaneUser function to show or hide the modal of ban user
  * @returns {React.Component}  CommunitySettingsPage Layout that is used in Community settings
  */
 

@@ -38,6 +38,13 @@ import {
 
 /**
  * ModeratorRow component that is used in User management
+ * @param {Object} Moderator moderator info
+ * @param {Boolean} edit boolean to show the styles of edit moderators
+ * @param {Boolean} invited boolean to show the styles of invited moderators
+ * @param {Boolean} approved boolean to show the styles of approved moderators
+ * @param {Boolean} muted boolean to show the styles of muted moderators
+ * @param {Boolean} banned boolean to show the styles of banned moderators
+ * @param {String} communityName the community id
  * @returns {React.Component}  ModeratorRow component that is used in User management
  */
 

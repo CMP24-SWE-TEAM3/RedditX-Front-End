@@ -30,6 +30,7 @@ const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
 
 /**
  * InviteModerators Layout that is used in User management
+ * @param {Function} setModalShowInviteModerator function to show or hide the modal of invite moderator
  * @returns {React.Component}  InviteModerators Layout that is used in User management
  */
 
