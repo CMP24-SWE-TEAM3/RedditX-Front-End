@@ -56,7 +56,7 @@ const ModeratorOf = () => {
    *
    * @param {string} name -name of community
    * @param {number} members - number of members in community
-   * @returns
+   * @returns {React.Component}
    */
   const CommunityNameMembers = ({ name, members }) => {
     return (

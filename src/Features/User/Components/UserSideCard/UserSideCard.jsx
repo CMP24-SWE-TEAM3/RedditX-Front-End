@@ -311,7 +311,7 @@ const UserSideCard = () => {
    * the about user component
    *
    * @param {string} text - about text
-   * @returns
+   * @returns {React.Component}
    */
   const UserAbout = ({ text }) => {
     return <UserAboutContainer>{text}</UserAboutContainer>;

@@ -70,7 +70,12 @@ const HandleButton = ({
     </Space>
   );
 };
-
+/**
+ *
+ * Component that displays the expanded version of the rules
+ * @param{function (boolean),integer,function (boolean),boolean,string,boolean,boolean,object,function (boolean)}}
+ * @returns {React.Component}
+ */
 const RuleTab = ({
   setShowModal,
   number,

@@ -13,7 +13,7 @@ import Post from "Features/Post/Pages/Post/Post";
  * component responsible for showing posts
  * 
  * @param {string} type - type of posts 
- * @returns 
+ * @returns {React.Component}
  */
 const SubRedditPosts = ({ type }) => {
   const [showPost, setShowPost] = useState(false);
