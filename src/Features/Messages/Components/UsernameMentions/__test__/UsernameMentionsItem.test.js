@@ -1,18 +1,18 @@
 import { render, screen } from "@testing-library/react";
 import TestingComponent from "Features/Messages/Utils/TestingComponent";
-import NormalMessageAll from "../AllMessageItem";
-describe("AllMessageItem component", () => {
+import UsernameMentionItem from "../UsernameMentionsItem";
+describe("Username Mention Item component", () => {
 
-  it('renders Passed Message Author', () => {
+  it('renders Date', () => {
     render(
       <TestingComponent>
-        <NormalMessageAll 
+        <UsernameMentionItem 
         changeMessage={()=>{}}
         aurthor={"Jacob"}
         title={"Mobiles"}
-        time={"2022-11-29T"}
+        time={"2022-11-30T"}
         msg={"Broken Now"}
-        upvote={"neutral"}
+        upvote = {"neutral"}
         admin={true}
         read={false}
         id={2}
@@ -21,20 +21,21 @@ describe("AllMessageItem component", () => {
         />
       </TestingComponent>
     );
-    const outputElement = screen.getByText("Jacob");
+    const outputElement = screen.getByText("Wed Nov 30 2022");
     expect(outputElement).toBeInTheDocument();
   });
 
+  
   it('renders Passed Message Content', () => {
     render(
       <TestingComponent>
-        <NormalMessageAll
+        <UsernameMentionItem
         changeMessage={()=>{}}
         aurthor={"Jacob"}
         title={"Mobiles"}
         time={"2022-11-29T"}
         msg={"Broken Now"}
-        upvote={"neutral"}
+        upvote = {"neutral"}
         admin={true}
         read={false}
         id={2}
@@ -50,13 +51,13 @@ describe("AllMessageItem component", () => {
   it('renders static Subheading', () => {
     render(
       <TestingComponent>
-        <NormalMessageAll 
+        <UsernameMentionItem 
         changeMessage={()=>{}}
         aurthor={"Jacob"}
         title={"Mobiles"}
         time={"2022-11-29T"}
         msg={"Broken Now"}
-        upvote={"neutral"}
+        upvote = {"neutral"}
         admin={true}
         read={false}
         id={2}
@@ -65,20 +66,20 @@ describe("AllMessageItem component", () => {
         />
       </TestingComponent>
     );
-    const outputElement = screen.getByText("Mobiles:");
+    const outputElement = screen.getByText("username mention: Mobiles");
     expect(outputElement).toBeInTheDocument();
   });
 
   it('Tests Author Text Color [Red]', () => {
     render(
       <TestingComponent>
-        <NormalMessageAll 
+        <UsernameMentionItem 
         changeMessage={()=>{}}
         aurthor={"Jacob"}
         title={"Mobiles"}
         time={"2022-11-29T"}
         msg={"Broken Now"}
-        upvote={"neutral"}
+        upvote = {"neutral"}
         admin={true}
         read={false}
         id={2}
@@ -87,32 +88,52 @@ describe("AllMessageItem component", () => {
         />
       </TestingComponent>
     );
-    const outputElement = screen.getByTestId("author-element");
-    expect(outputElement).toHaveStyle(`color: #ff0011`);
+    const outputElement = screen.queryAllByText("Jacob");
+    expect(outputElement[0]).toHaveStyle(`color: #ff0011`);
   });
 
-  it('Tests Message Read', () => {
+  it('Tests Author Text Color not [Red]', () => {
     render(
       <TestingComponent>
-        <NormalMessageAll 
+        <UsernameMentionItem 
         changeMessage={()=>{}}
         aurthor={"Jacob"}
         title={"Mobiles"}
         time={"2022-11-29T"}
         msg={"Broken Now"}
-        upvote={"neutral"}
+        upvote = {"neutral"}
         admin={false}
-        read={true}
+        read={false}
         id={2}
         block={false}
         key={2}
         />
       </TestingComponent>
     );
-    const outputElement = screen.getByTestId("read-test");
-    const style = window.getComputedStyle(outputElement);
-    console.log(style.color);
-    expect(style.backgroundColor).toBe(`rgb(237, 239, 241)`);
+    const outputElement = screen.queryAllByText("Jacob");
+    expect(outputElement[0]).not.toHaveStyle(`color: #ff0011`);
+  });
+
+  it('Tests Author Text', () => {
+    render(
+      <TestingComponent>
+        <UsernameMentionItem 
+        changeMessage={()=>{}}
+        aurthor={"Jacob"}
+        title={"Mobiles"}
+        time={"2022-11-29T"}
+        msg={"Broken Now"}
+        upvote = {"neutral"}
+        admin={true}
+        read={false}
+        id={2}
+        block={false}
+        key={2}
+        />
+      </TestingComponent>
+    );
+    const outputElement = screen.queryAllByText("Jacob");
+    expect(outputElement).not.toBeNull();
   });
 });
 
