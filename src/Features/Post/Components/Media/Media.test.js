@@ -18,6 +18,7 @@ const contentState = {
 const block = {
   getEntityAt: function () {},
 };
+
 describe("Button Component", () => {
   it("this is a test for Button Component", () => {
     shallow(<Media contentState={contentState} block={block} />);
