@@ -74,7 +74,7 @@ const UserComment = ({ comment, overview }) => {
    * function that check string if it is json
    *
    * @param {string} str - string to be checked
-   * @returns
+   * @returns {boolean}
    */
   function isJsonString(str) {
     try {
