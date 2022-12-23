@@ -24,6 +24,7 @@ import {
   ReplyShareContainer,
   ReplyShareButton,
   ThreeDotsButton,
+  StyledCommentLink,
 } from "./UserComment.styled";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
@@ -31,13 +32,22 @@ import RichTextPostBody from "Features/Post/Components/RichTextPostBody/RichText
 import { useUserID } from "Features/User/Contexts/UserIDProvider";
 import Moment from "react-moment";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
+/**
+ * comment component
+ *
+ * @param {object} comment - comment object to be viewed
+ * @param {boolean} overview - if true, the comment will be shown in overview mode
+ * @returns {React.Component}
+ */
 const UserComment = ({ comment, overview }) => {
   const { userID } = useUserID;
   const [title, setTitle] = useState("");
   const [communityName, setCommunityName] = useState("");
   const [poster, setPoster] = useState("");
   const [author, setAuthor] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     comment &&
@@ -60,6 +70,12 @@ const UserComment = ({ comment, overview }) => {
     comment && comment.authorId && setAuthor(comment.authorId);
   }, [comment]);
 
+  /**
+   * function that check string if it is json
+   *
+   * @param {string} str - string to be checked
+   * @returns
+   */
   function isJsonString(str) {
     try {
       JSON.parse(str);
@@ -69,6 +85,32 @@ const UserComment = ({ comment, overview }) => {
     return true;
   }
 
+  /**
+   * function handle click on comment
+   *
+   * @param {event} e - event of click
+   */
+  function handleClick(e) {
+    // console.log(e.currentTarget.nodeName)
+    if (e.target.nodeName !== "A") {
+      comment &&
+        comment.postID &&
+        comment.postID._id &&
+        comment._id &&
+        navigate(`/post-preview/${comment.postID._id}/${comment._id}`);
+      e.stopPropagation();
+    }
+  }
+
+  /**
+   * header of comment
+   *
+   * @param {string} user - user name
+   * @param {string} title - post title that commented it
+   * @param {string} community - community name
+   * @param {string} posted - user name that posted the post
+   * @returns {React.Component}
+   */
   const CommentHeader = ({ user, title, community, posted }) => {
     return (
       <CommentHeaderContainer>
@@ -80,7 +122,11 @@ const UserComment = ({ comment, overview }) => {
             <CommentHeaderInfo>
               <UserLink to={`/user/${user}`}>{user.substring(3)}</UserLink>
               {` commented on `}
-              <PostTitleLink to="#">{title}</PostTitleLink>
+              {comment && comment.postID && comment.postID._id && (
+                <PostTitleLink to={`/post-preview/${comment.postID._id}`}>
+                  {title}
+                </PostTitleLink>
+              )}
               <Dot>.</Dot>
               <CommentHeaderRoot>
                 <CommunityLink
@@ -97,9 +143,16 @@ const UserComment = ({ comment, overview }) => {
     );
   };
 
+  /**
+   * comment body details
+   *
+   * @param {string} commented - user name that commented
+   * @param {string} commentContent - comment content
+   * @returns {React.Component}
+   */
   const CommentBodyInfo = ({ commented, commentContent }) => {
     return (
-      <CommentBodyInfoContainer overview={overview?1:0}>
+      <CommentBodyInfoContainer overview={overview ? 1 : 0}>
         <CommentBodyInfoInnerContainer>
           <CommentedContainer>
             <CommentedLink to={`/user/${commented}`}>
@@ -117,10 +170,9 @@ const UserComment = ({ comment, overview }) => {
             <CommentContainer>
               <CommentInnerContainer>
                 <p>
-                  {comment.textJSON &&
-                    isJsonString(comment.textJSON) && (
-                      <RichTextPostBody post={comment} />
-                    )}
+                  {comment.textJSON && isJsonString(comment.textJSON) && (
+                    <RichTextPostBody post={comment} />
+                  )}
                   {comment.textJSON &&
                     !isJsonString(comment.textJSON) &&
                     comment.textJSON}
@@ -144,6 +196,12 @@ const UserComment = ({ comment, overview }) => {
     );
   };
 
+  /**
+   *
+   * @param {string} commented - user name that commented
+   * @param {string} commentContent - comment content
+   * @returns {React.Component}
+   */
   const CommentBody = ({ commented, commentContent }) => {
     return (
       <CommentBodyContainer>
@@ -161,7 +219,7 @@ const UserComment = ({ comment, overview }) => {
   };
 
   return (
-    <div>
+    <div onClick={handleClick}>
       <div>
         <CommentHeader
           user={author}

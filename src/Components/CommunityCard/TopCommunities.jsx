@@ -32,6 +32,7 @@ const TopCommunities = ({ CommunityList, communityListSub }) => {
           CommunityList &&
           CommunityList.results &&
           communityListSub &&
+          communityListSub.communities &&
           CommunityList.results.slice(0, 8).map((Community) => (
             <CommunityCardItem
               communityIcon={Community.icon}

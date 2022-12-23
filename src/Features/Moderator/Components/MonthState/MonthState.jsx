@@ -10,7 +10,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
 
 /**
  * Component that displays a list of months
- * @returns
+ * @returns {React.Component}
  */
 const MonthState = () => {
   const { subredditId } = useParams();
@@ -44,7 +44,12 @@ const MonthState = () => {
 
   // get member counts
   useEffect(() => {
-    getMembersCount(fetchMemberCountsJoined, auth, `t5_${subredditId}`, "joined");
+    getMembersCount(
+      fetchMemberCountsJoined,
+      auth,
+      `t5_${subredditId}`,
+      "joined"
+    );
   }, []);
   // get member counts
   useEffect(() => {
@@ -216,7 +221,7 @@ const MonthState = () => {
     }
   }, [membersCountJoined, pageViews, membersCountLeft]);
 
-  // state that handles showin of sort icon
+  // state change filp order of days
   const [flipSort, setFlipSort] = useState(true);
 
   // function that handles  reversing of months

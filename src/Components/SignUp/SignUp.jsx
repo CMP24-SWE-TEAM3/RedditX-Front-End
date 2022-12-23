@@ -4,6 +4,7 @@ import { SignUpStyled } from "Components/SignUp/SignUp.styled";
 
 /**
  * Component that displays SignUp button in Navbar'
+ * @param {function setModalShowSignUp(boolean)}
  * @returns {React.Component}
  */
 const SignUp = ({ setModalShowSignUp }) => {

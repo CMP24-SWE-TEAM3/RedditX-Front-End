@@ -14,6 +14,8 @@ import {
 /**
  * show rules of the community
  *
+ * @param {object} rules - rules of the community
+ * @param {number} communityId - id of the community
  * @returns {React.Component} CreatePost component
  */
 const RulesWidget = ({ rules, communityId }) => {

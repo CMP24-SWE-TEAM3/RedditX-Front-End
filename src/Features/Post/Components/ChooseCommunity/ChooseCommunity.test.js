@@ -1,5 +1,10 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import TestingComponent from "Features/Post/TestingComponent";
+// Import contexts
+import {
+  AuthProvider,
+  useAuth,
+} from "Features/Authentication/Contexts/Authentication";
 
 // Import components
 import ChooseCommunity from "./ChooseCommunity";
@@ -29,7 +34,38 @@ jest.mock(
     };
   }
 );
+jest.mock("Features/Post/Services/getUser", () => (fetchData, auth) => {
+  return {
+    user: {
+      userInfo: {
+        about: {
+          user: {
+            avatar:
+              "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png",
+          },
+        },
+      },
+    },
+  };
+});
 
+jest.mock("Features/Authentication/Contexts/Authentication", () => ({
+  __esModule: true, // this property makes it work
+  useAuth: function () {
+    return {
+      getUserName: jest.fn().mockReturnValue("username"),
+      getToken: jest.fn().mockReturnValue("token"),
+      isLoggedIn: jest.fn().mockReturnValue(true),
+    };
+  },
+  AuthProvider: ({ children }) => {
+    return (
+      <mock-authprovider data-testid="auth-provider">
+        {children}
+      </mock-authprovider>
+    );
+  },
+}));
 describe("Choose community", () => {
   it("test search input show", async () => {
     render(

@@ -12,7 +12,10 @@ import {
 } from "./CollapsePost.styled";
 
 /**
- * PostPublisher Component
+ * Collapsed post Component
+ *
+ * @param {Object} post - post object
+ * @param {Boolean} fullPost - if the post is full post or not
  * @returns {React.Component} PostPublisher component
  */
 const CollapsePost = ({ fullPost, post }) => {

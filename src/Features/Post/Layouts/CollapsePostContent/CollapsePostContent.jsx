@@ -1,9 +1,17 @@
 import PostPublisher from "Features/Post/Components/PostPublisher/PostPublisher";
-import PostContent from "Features/Post/Components/PostContent/PostContent";
 import CollapsePostFooter from "Features/Post/Components/CollapsePostFooter/CollapsePostFooter";
 
 import { Container, PostTitle } from "./CollapsePostContent.styled";
-import { useState } from "react";
+
+/**
+ * The content of the collapsed post
+ *
+ * @param {Object} post - post object
+ * @param {Boolean} collapse - if the post is collapsed or not
+ * @param {Function} setCollapse - set collapse state
+ * @param {Boolean} fullPost - if the post is full post or not
+ * @returns
+ */
 const CollapsePostContent = ({ fullPost, collapse, setCollapse, post }) => {
   return (
     <Container>

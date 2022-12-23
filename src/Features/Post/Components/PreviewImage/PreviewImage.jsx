@@ -13,6 +13,7 @@ import {
 } from "./PreviewImage.styled";
 
 /**
+ * PreviewImage component to preview the selected image in create post image and videos tab
  *
  * @param {Number} selectedImageId - The id of the selected image
  * @param {Array} files - The array of images

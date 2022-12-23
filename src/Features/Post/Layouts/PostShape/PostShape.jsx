@@ -22,7 +22,14 @@ import { Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 /**
- * PostShape Component
+ * The main post component like in home page and other pages
+ *
+ * @param {Object} post - post object
+ * @param {Boolean} fullPost - if the post is full post or not
+ * @param {Boolean} fullWidth - if the post is full width or not
+ * @param {Function} handlePostEdit - Function to handle post edit
+ * @param {Boolean} editPost - if the post is in edit mode or not
+ * @param {Function} setEditPost - Function to set edit post mode
  * @returns {React.Component} PostShape component
  */
 const PostShape = ({

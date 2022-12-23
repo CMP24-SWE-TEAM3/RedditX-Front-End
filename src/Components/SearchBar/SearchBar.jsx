@@ -5,18 +5,15 @@ import {
   StyledSearchIcon,
   StyledSearcherInput,
   ClearBtn,
-  StyledDropdown,
 } from "./SearchBar.styled";
 import { useLocation, useNavigate, useParams } from "react-router-dom/dist";
-import SearchContext from "Features/Search/Contexts/SearchWordContext/Search-context";
 import BodySearch from "Components/SearchDropDown/SearchDropDown";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import fetchCommunities from "Features/Search/Services/fetchCommunities";
 import fetchPeople from "Features/Search/Services/fetchPeople";
 import { CiCircleRemove } from "react-icons/ci";
-import { Dropdown } from "react-bootstrap";
 
 /**
  * Component that displays the search results for a given search term.
@@ -105,19 +102,6 @@ const SearchBar = () => {
       });
     }
   };
-  /**
-   * state of search field that show trending posts
-   */
-  // const navigate = useNavigate();
-  // const ctx = useContext(SearchContext);
-  // const handleKeyDown = (event) => {
-  //   // Cancel the default action, if needed
-  //   event.preventDefault();
-  //   ctx.wordHandler(event.target.value);
-  //   ctx.isSubredditHandler(true);
-  //   ctx.communityHandler("t5_imagePro235");
-  //   navigate("/search/posts");
-  // };
 
   return (
     <StyledSearchButton>
