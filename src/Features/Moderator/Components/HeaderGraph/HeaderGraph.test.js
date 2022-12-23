@@ -10,7 +10,7 @@ import {
 } from "Features/Authentication/Contexts/Authentication";
 
 // import Components
-import RecentPosts from "./RecentPosts";
+import HeaderGraph from "./HeaderGraph";
 
 jest.mock("Features/Authentication/Contexts/Authentication", () => ({
   __esModule: true, // this property makes it work
@@ -28,18 +28,18 @@ jest.mock("Features/Authentication/Contexts/Authentication", () => ({
   },
 }));
 
-describe("Recent Posts Layout", () => {
-  test("Recent Posts should be appeard", async () => {
+describe("Header Graph Component", () => {
+  test("Header Graph  should be appeard", async () => {
     render(
       <BrowserRouter>
         <AuthProvider>
           <ThemeProvider theme={darkTheme}>
-            <RecentPosts />
+            <HeaderGraph />
           </ThemeProvider>
         </AuthProvider>
       </BrowserRouter>
     );
-    const test = screen.getByText("Home");
+    const test = screen.getByText("MEMBERS JOINED");
     expect(test).toBeInTheDocument();
   });
 });

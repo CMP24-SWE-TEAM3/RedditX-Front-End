@@ -7,9 +7,7 @@ import Tooltip from "react-bootstrap/Tooltip";
 import { useNavigate } from "react-router-dom";
 
 /**
- * Component that displays the profile button
- *
- * @param props to test against properties
+ * Component that navigates to create post page
  *
  * @returns {React.Component}
  */

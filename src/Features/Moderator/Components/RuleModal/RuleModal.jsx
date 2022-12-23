@@ -21,6 +21,11 @@ import {
   DeleteBtn,
   UsedBefore,
 } from "./RuleModal.styled";
+/**
+ * Component that displays the form control of adding or editing rule
+ * @param {boolean,boolean,function(boolean),function(boolean),object}
+ * @returns {React.Component}
+ */
 
 const RuleModal = ({
   showModal,

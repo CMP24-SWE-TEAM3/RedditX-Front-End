@@ -6,7 +6,11 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useParams } from "react-router-dom";
 import getSubreddit from "Features/Subreddit/Services/getSubreddit";
-
+/**
+ *
+ * @param {showDragDrop}
+ * @returns  {React.Component}
+ */
 const ReorderRules = ({ showDragDrop }) => {
   const { subredditId } = useParams();
   let Rules = [];
