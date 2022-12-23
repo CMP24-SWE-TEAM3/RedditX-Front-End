@@ -6,7 +6,7 @@ import axios from "API/axios";
  * @param {Object} objectData Object that contains the data that will be sent to the api
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const loginApi = (dataFetch, objectData) => {
+const loginApi = (dataFetch, objectData) => {
   if (
     objectData.type !== undefined &&
     objectData.username !== undefined &&
@@ -36,7 +36,7 @@ export const loginApi = (dataFetch, objectData) => {
  * @param {Object} objectData Object that contains the data that will be sent to the api
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const signupApi = (dataFetch, objectData) => {
+const signupApi = (dataFetch, objectData) => {
   if (
     objectData.type !== undefined &&
     objectData.email !== undefined &&
@@ -69,7 +69,7 @@ export const signupApi = (dataFetch, objectData) => {
  * @param {Object} objectData Object that contains the data that will be sent to the api
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const loginWithGoogle = (dataFetch, objectData) => {
+const loginWithGoogle = (dataFetch, objectData) => {
   if (
     objectData.type !== undefined &&
     objectData.googleOrFacebookToken !== undefined
@@ -99,7 +99,7 @@ export const loginWithGoogle = (dataFetch, objectData) => {
  * @param {Object} objectData Object that contains the data that will be sent to the api
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const loginWithFacebook = (dataFetch, objectData) => {
+const loginWithFacebook = (dataFetch, objectData) => {
   if (
     objectData.type !== undefined &&
     objectData.googleOrFacebookToken !== undefined
@@ -128,7 +128,7 @@ export const loginWithFacebook = (dataFetch, objectData) => {
  * @param {Object} objectData Object that contains the data that will be sent to the api
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const signupWithGoogle = (dataFetch, objectData) => {
+const signupWithGoogle = (dataFetch, objectData) => {
   if (
     objectData.type !== undefined &&
     objectData.googleOrFacebookToken !== undefined
@@ -157,7 +157,7 @@ export const signupWithGoogle = (dataFetch, objectData) => {
  * @param {Object} objectData Object that contains the data that will be sent to the api
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const signupWithFacebook = (dataFetch, objectData) => {
+const signupWithFacebook = (dataFetch, objectData) => {
   if (
     objectData.type !== undefined &&
     objectData.googleOrFacebookToken !== undefined
@@ -186,7 +186,7 @@ export const signupWithFacebook = (dataFetch, objectData) => {
  * @param {String} userName The userName that the user chose
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const isUserNameAvailable = (dataFetch, userName) => {
+const isUserNameAvailable = (dataFetch, userName) => {
   let searchUserName = "t2_" + userName;
   if (userName?.length > 0) {
     dataFetch({
@@ -213,7 +213,7 @@ export const isUserNameAvailable = (dataFetch, userName) => {
  * @param {String} userName The userName that the user chose
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const forgetUserNameApi = (dataFetch, objectData) => {
+const forgetUserNameApi = (dataFetch, objectData) => {
   if (objectData.operation !== undefined && objectData.email !== undefined) {
     if (objectData.operation === true && typeof objectData.email === "string") {
       dataFetch({
@@ -237,7 +237,7 @@ export const forgetUserNameApi = (dataFetch, objectData) => {
  * @param {String} userName The userName that the user chose
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const forgetPasswordApi = (dataFetch, objectData) => {
+const forgetPasswordApi = (dataFetch, objectData) => {
   if (
     objectData.operation !== undefined &&
     objectData.email !== undefined &&
@@ -269,7 +269,7 @@ export const forgetPasswordApi = (dataFetch, objectData) => {
  * @param {String} userName The userName of the user
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const resetForgottenPassword = (dataFetch, myToken, objectData) => {
+const resetForgottenPassword = (dataFetch, myToken, objectData) => {
   const apiUrl = "/api/auth/reset-forgotten-password/" + myToken;
 
   if (
@@ -303,7 +303,7 @@ export const resetForgottenPassword = (dataFetch, myToken, objectData) => {
  * @param {String} token The token of the user
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const setGenderFunction = (dataFetch, objectData, token) => {
+const setGenderFunction = (dataFetch, objectData, token) => {
   if (objectData.type !== undefined && objectData.value !== undefined) {
     if (
       objectData.type === "gender" &&
@@ -336,7 +336,7 @@ export const setGenderFunction = (dataFetch, objectData, token) => {
  * @param {String} token The token of the user
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const setInterestsFunction = (dataFetch, objectData, token) => {
+const setInterestsFunction = (dataFetch, objectData, token) => {
   if (objectData.categories !== undefined) {
     console.log("Entered setInterests");
     dataFetch({
@@ -354,4 +354,19 @@ export const setInterestsFunction = (dataFetch, objectData, token) => {
     return true;
   }
   return false;
+};
+
+export {
+  loginApi,
+  signupApi,
+  loginWithGoogle,
+  loginWithFacebook,
+  signupWithGoogle,
+  signupWithFacebook,
+  isUserNameAvailable,
+  forgetUserNameApi,
+  forgetPasswordApi,
+  resetForgottenPassword,
+  setGenderFunction,
+  setInterestsFunction,
 };

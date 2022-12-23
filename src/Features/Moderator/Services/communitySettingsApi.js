@@ -7,7 +7,7 @@ import axios from "API/axios";
  * @param {String} token The token of the user
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const getCommunitySettings = (dataFetch, subredditName, token) => {
+const getCommunitySettings = (dataFetch, subredditName, token) => {
   //let searchSubredditName = "t5_" + subredditName;
   let finalUrl = "/api/r/" + subredditName + "/about/edit";
 
@@ -45,7 +45,7 @@ export const getCommunitySettings = (dataFetch, subredditName, token) => {
  * @param {String} token The token of the user
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const updateSettings = (dataFetch, objectData, subredditName, token) => {
+const updateSettings = (dataFetch, objectData, subredditName, token) => {
   let finalUrl = "/api/r/" + subredditName + "/site-admin";
   if (
     dataFetch !== undefined &&
@@ -72,3 +72,5 @@ export const updateSettings = (dataFetch, objectData, subredditName, token) => {
   }
   return false;
 };
+
+export { getCommunitySettings, updateSettings };

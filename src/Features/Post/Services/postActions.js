@@ -5,7 +5,7 @@ import axios from "API/axios";
  * @param {Function} dataFetch Coming from useFetchFunction custom hook
  * @param {Object} objectData Object that contains the data that will be sent to the api
  */
-export const giveVote = (dataFetch, objectData, token) => {
+const giveVote = (dataFetch, objectData, token) => {
   console.log(objectData);
 
   if (objectData.id !== undefined && objectData.dir !== undefined) {
@@ -40,7 +40,7 @@ export const giveVote = (dataFetch, objectData, token) => {
  * @param {Function} dataFetch Coming from useFetchFunction custom hook
  * @param {Object} objectData Object that contains the data that will be sent to the api
  */
-export const makeFollow = (dataFetch, objectData, token) => {
+const makeFollow = (dataFetch, objectData, token) => {
   if (objectData.linkID !== undefined && objectData.action !== undefined) {
     if (
       typeof objectData.linkID === "string" &&
@@ -70,7 +70,7 @@ export const makeFollow = (dataFetch, objectData, token) => {
  * @param {Function} dataFetch Coming from useFetchFunction custom hook
  * @param {Object} objectData Object that contains the data that will be sent to the api
  */
-export const hidePost = (dataFetch, objectData, token) => {
+const hidePost = (dataFetch, objectData, token) => {
   if (objectData.linkID !== undefined) {
     if (typeof objectData.linkID === "string") {
       dataFetch({
@@ -91,3 +91,5 @@ export const hidePost = (dataFetch, objectData, token) => {
   }
   return false;
 };
+
+export { giveVote, makeFollow, hidePost };

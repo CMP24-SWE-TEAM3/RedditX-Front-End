@@ -1,3 +1,7 @@
+/**
+ * Function to get random userName
+ * @returns {String} random userName
+ */
 const RandomUserName = () => {
   var wordList = [
     "3d",
