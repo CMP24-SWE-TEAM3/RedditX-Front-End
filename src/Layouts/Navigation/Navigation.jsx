@@ -12,7 +12,6 @@ import GlobalStyle from "./Navigation.styled";
 import Navbar from "react-bootstrap/Navbar";
 import NotificationButton from "Components/NotificationButton/NotificationButton";
 import Moderator from "Components/ModeratorButton/ModeratorButton";
-import ChatButton from "Components/ChatButton/ChatButton";
 import PopularButton from "Components/PopularButton/PopularButton";
 import SearchBar from "Components/SearchBar/SearchBar";
 import DropDownRightButton from "Components/DropDownRight/DropDownRight";
@@ -20,8 +19,6 @@ import CreatePostButton from "Components/CreatePostButton/CreatePostButton";
 import AdvertiseButton from "Components/AdvertiseButton/AdvertiseButton";
 import DropDownLeft from "Components/DropDownButtonLeft/DropDownLeft";
 import Badge from "Components/BadgeButton/Badge";
-import CoinButton from "Components/CoinButton/CoinButton";
-import { StyledSeperator } from "Layouts/Navbar/Navbar.styled";
 import {
   StyledNavbar,
   ContainerNav,
