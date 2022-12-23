@@ -7,6 +7,15 @@ import {
   OuterContainer,
 } from "./Communities.styled";
 
+/**
+ * Component that contains the CommunityCardItem and manage the state of the button join.
+ *
+ * @Component
+ * @param {object} CommunityList - The CommunityList object
+ * @param {object} communityListSub - The communityListSub that user subscribe
+ * @returns {React.Component}
+ */
+
 const Communities = ({ CommunityList, communityListSub }) => {
   if (CommunityList.results && communityListSub) {
     console.log(CommunityList);
