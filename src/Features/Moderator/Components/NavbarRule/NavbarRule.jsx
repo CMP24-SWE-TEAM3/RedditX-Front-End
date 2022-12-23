@@ -8,7 +8,6 @@ import {
 } from "./NavbarRule.styled";
 /**
  * Component that displays the navigation of rules
- * @param {function setShowModal(boolean),function setShowDragDrop(boolean)}
  * @returns {React.Component}
  */
 const NavbarRule = ({ setShowModal, setShowDragDrop }) => {

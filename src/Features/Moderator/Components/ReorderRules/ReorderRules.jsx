@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import getSubreddit from "Features/Subreddit/Services/getSubreddit";
 /**
  *
- * @param {showDragDrop}
+ * Component that recoder rules
  * @returns  {React.Component}
  */
 const ReorderRules = ({ showDragDrop }) => {

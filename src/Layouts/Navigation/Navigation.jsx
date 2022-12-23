@@ -8,7 +8,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 
 // import components
 import Nav from "react-bootstrap/Nav";
-import   GlobalStyle  from "./Navigation.styled";
+import GlobalStyle from "./Navigation.styled";
 import Navbar from "react-bootstrap/Navbar";
 import NotificationButton from "Components/NotificationButton/NotificationButton";
 import Moderator from "Components/ModeratorButton/ModeratorButton";
@@ -35,6 +35,11 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import SignUp from "Components/SignUp/SignUp";
 import LoginButton from "Components/LoginButton/LoginButton";
 import Search from "Components/Search/Search";
+/**
+ *
+ * Component that  Main Links component in header  called navigation bar.
+ * @returns {React.Component}
+ */
 const Navigation = ({
   theme,
   toggleMode,
