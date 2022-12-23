@@ -5,7 +5,7 @@ import axios from "API/axios";
 import useFetch from "Hooks/useFetch";
 
 /**
- * Component that contains the CommunityCardItem and manage the state of the button join.
+ * Component that contains the CommunityItems.
  *
  * @Component
  * @param {object} CommunityList - The CommunityList object

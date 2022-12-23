@@ -8,7 +8,7 @@ import {
 } from "./Communities.styled";
 
 /**
- * Component that contains the CommunityCardItem and manage the state of the button join.
+ * Component that contains the Communities.
  *
  * @Component
  * @param {object} CommunityList - The CommunityList object
