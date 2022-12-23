@@ -1,0 +1,7 @@
+version: '3.3'
+services:
+  front:
+    build: ./
+    container_name: client_container
+    ports:
+      - '4000:80'
