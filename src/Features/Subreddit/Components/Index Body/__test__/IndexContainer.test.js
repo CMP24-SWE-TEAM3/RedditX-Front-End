@@ -17,5 +17,10 @@ describe("Index Body component Heading", () => {
     expect(outputElement.textContent).toContain("Browse communities", {
       exact: false,
     });
+    const indexElement = screen.getByText("First");
+    expect(indexElement).toBeInTheDocument();
+
+    const indexElement2 = screen.getByText("Second");
+    expect(indexElement2).toBeInTheDocument();
   });
 });
