@@ -12,6 +12,13 @@ import markAllAsRead from "Features/Notifications/Services/MarkAllAsRead";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
+/**
+ * Component that contains the Header of the community page
+ *
+ * @Component
+ * @param {object} notifs - Arrat that Contains Notification Items 
+ * @returns {React.Component}
+ */
 const NotificationsUpperSide = ({notifs}) => {
   const auth = useAuth();
   const [markReadRes, errorMarkRead, loadingMarkRead, fetchData] =

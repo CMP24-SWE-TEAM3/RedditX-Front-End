@@ -5,6 +5,7 @@ import TestingComponent from "Features/Post/TestingComponent";
 import LinkControls from "./LinkControls";
 
 const mockPromptForLink = jest.fn();
+
 describe("Link controls of draft editor", () => {
   it("should render without crashing", () => {
     render(

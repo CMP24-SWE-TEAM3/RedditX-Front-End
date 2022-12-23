@@ -1,12 +1,46 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-
-// Import components
+import { fireEvent, render, screen } from "@testing-library/react";
+import TestingComponent from "Features/Post/TestingComponent";
 import CreatePost from "./CreatePost";
 
-import { shallow } from "enzyme";
+jest.mock("Features/Authentication/Contexts/Authentication", () => ({
+  __esModule: true, // this property makes it work
+  useAuth: function () {
+    return {
+      getUserName: jest.fn().mockReturnValue("username"),
+      getToken: jest.fn().mockReturnValue("token"),
+      isLoggedIn: jest.fn().mockReturnValue(true),
+    };
+  },
+  AuthProvider: ({ children }) => {
+    return (
+      <mock-authprovider data-testid="auth-provider">
+        {children}
+      </mock-authprovider>
+    );
+  },
+}));
 
-describe("Create post page", () => {
-  it("should render without crashing", () => {
-    shallow(<CreatePost />);
+
+jest.mock("Hooks/useFetchFunction.js", () => () => {
+  return [
+    "data",
+    "error",
+    "loading",
+    jest.fn().mockReturnValue({
+      data: {
+        name: "test",
+        type: "subreddit",
+      },
+    }),
+  ];
+});
+
+describe("CreatePost", () => {
+  it("renders CreatePost component", () => {
+    render(
+      <TestingComponent>
+        <CreatePost />
+      </TestingComponent>
+    );
   });
 });

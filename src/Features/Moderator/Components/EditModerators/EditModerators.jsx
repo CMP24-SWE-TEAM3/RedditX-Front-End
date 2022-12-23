@@ -14,6 +14,7 @@ import {
 
 /**
  * EditModerators component that is used in User management
+ *  @param {List} Moderator List of Moderators users
  * @returns {React.Component}  EditModerators component that is used in User management
  */
 

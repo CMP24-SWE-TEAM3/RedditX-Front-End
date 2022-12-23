@@ -9,6 +9,12 @@ import { Header } from "Features/settings/Components/BlockPeople/BlockPeople.sty
 import { StyledTextArea } from "./AboutUser.styled";
 import { useState } from "react";
 
+/**
+ * Component that returns information about the user
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const AboutUser = () => {
   const [about, setAbout] = useState("");
 

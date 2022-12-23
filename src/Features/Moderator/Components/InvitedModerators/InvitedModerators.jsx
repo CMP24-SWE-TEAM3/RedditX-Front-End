@@ -14,6 +14,8 @@ import {
 
 /**
  * InvitedModerators component that is used in User management
+ * @param {List} Moderator List of Moderators users
+ * @param {String} communityName the community id
  * @returns {React.Component}  InvitedModerators component that is used in User management
  */
 

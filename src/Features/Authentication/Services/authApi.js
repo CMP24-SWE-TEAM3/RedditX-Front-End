@@ -4,6 +4,7 @@ import axios from "API/axios";
  * Function to login with username and password
  * @param {Function} dataFetch Coming from useFetchFunction custom hook
  * @param {Object} objectData Object that contains the data that will be sent to the api
+ * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
 export const loginApi = (dataFetch, objectData) => {
   if (
@@ -33,6 +34,7 @@ export const loginApi = (dataFetch, objectData) => {
  * Function to signup with email, password and userName
  * @param {Function} dataFetch Coming from useFetchFunction custom hook
  * @param {Object} objectData Object that contains the data that will be sent to the api
+ * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
 export const signupApi = (dataFetch, objectData) => {
   if (
@@ -65,6 +67,7 @@ export const signupApi = (dataFetch, objectData) => {
  * Function to login with google account
  * @param {Function} dataFetch Coming from useFetchFunction custom hook
  * @param {Object} objectData Object that contains the data that will be sent to the api
+ * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
 export const loginWithGoogle = (dataFetch, objectData) => {
   if (
@@ -94,6 +97,7 @@ export const loginWithGoogle = (dataFetch, objectData) => {
  * Function to login with facebook account
  * @param {Function} dataFetch Coming from useFetchFunction custom hook
  * @param {Object} objectData Object that contains the data that will be sent to the api
+ * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
 export const loginWithFacebook = (dataFetch, objectData) => {
   if (
@@ -122,6 +126,7 @@ export const loginWithFacebook = (dataFetch, objectData) => {
  * Function to signup with google account
  * @param {Function} dataFetch Coming from useFetchFunction custom hook
  * @param {Object} objectData Object that contains the data that will be sent to the api
+ * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
 export const signupWithGoogle = (dataFetch, objectData) => {
   if (
@@ -150,6 +155,7 @@ export const signupWithGoogle = (dataFetch, objectData) => {
  * Function to signup with facebook account
  * @param {Function} dataFetch Coming from useFetchFunction custom hook
  * @param {Object} objectData Object that contains the data that will be sent to the api
+ * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
 export const signupWithFacebook = (dataFetch, objectData) => {
   if (
@@ -178,6 +184,7 @@ export const signupWithFacebook = (dataFetch, objectData) => {
  * Function to know if the userName is taken or not
  * @param {Function} dataFetch Coming from useFetchFunction custom hook
  * @param {String} userName The userName that the user chose
+ * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
 export const isUserNameAvailable = (dataFetch, userName) => {
   let searchUserName = "t2_" + userName;
@@ -204,6 +211,7 @@ export const isUserNameAvailable = (dataFetch, userName) => {
  * Function to handle with forget username api
  * @param {Function} dataFetch Coming from useFetchFunction custom hook
  * @param {String} userName The userName that the user chose
+ * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
 export const forgetUserNameApi = (dataFetch, objectData) => {
   if (objectData.operation !== undefined && objectData.email !== undefined) {
@@ -227,6 +235,7 @@ export const forgetUserNameApi = (dataFetch, objectData) => {
  * Function to handle with forget password api
  * @param {Function} dataFetch Coming from useFetchFunction custom hook
  * @param {String} userName The userName that the user chose
+ * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
 export const forgetPasswordApi = (dataFetch, objectData) => {
   if (
@@ -258,6 +267,7 @@ export const forgetPasswordApi = (dataFetch, objectData) => {
  * Function to handle with forget password api
  * @param {String} email The email of the user
  * @param {String} userName The userName of the user
+ * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
 export const resetForgottenPassword = (dataFetch, myToken, objectData) => {
   const apiUrl = "/api/auth/reset-forgotten-password/" + myToken;
@@ -291,6 +301,7 @@ export const resetForgottenPassword = (dataFetch, myToken, objectData) => {
  * @param {Function} dataFetch Coming from useFetchFunction custom hook
  * @param {Object} objectData Object that contains the data that will be sent to the api
  * @param {String} token The token of the user
+ * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
 export const setGenderFunction = (dataFetch, objectData, token) => {
   if (objectData.type !== undefined && objectData.value !== undefined) {
@@ -323,6 +334,7 @@ export const setGenderFunction = (dataFetch, objectData, token) => {
  * @param {Function} dataFetch Coming from useFetchFunction custom hook
  * @param {Object} objectData Object that contains the data that will be sent to the api
  * @param {String} token The token of the user
+ * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
 export const setInterestsFunction = (dataFetch, objectData, token) => {
   if (objectData.categories !== undefined) {

@@ -30,6 +30,7 @@ const messagesData = [
  * Component that contains the Username Mention Panel
  *
  * @Component
+ * @param {object} mentions - Array that has mentions
  * @returns {React.Component}
  */
 function UsernameMentions({mentions}) {

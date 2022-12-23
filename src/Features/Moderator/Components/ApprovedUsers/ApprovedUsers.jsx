@@ -14,6 +14,8 @@ import {
 
 /**
  * ApprovedUsers component that is used in User management
+ * @param {List} Moderator List of approved users
+ * @param {String} communityName the community id
  * @returns {React.Component}  ApprovedUsers component that is used in User management
  */
 

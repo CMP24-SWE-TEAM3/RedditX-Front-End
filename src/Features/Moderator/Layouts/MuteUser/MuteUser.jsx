@@ -29,6 +29,8 @@ const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
 
 /**
  * MuteUser Layout that is used in User management
+ * @param {Function} setModalShowApproveUser function to show or hide the modal of mute user
+ * @param {String} communityName the community id
  * @returns {React.Component}  MuteUser Layout that is used in User management
  */
 

@@ -9,7 +9,10 @@ import {
 
 /**
  * Component that displays a modal after creating a new community
- * @param {boolean,function (boolean),string}
+ * @Component
+ * @param {boolean} showModal - Whether to show the modal or not
+ * @param {Function} setShowWelcomeModal - To set Show Modal
+ * @param {string} community - String that has community Name
  * @returns {React.Component}
  */
 const ModalAfterCreateCommunity = ({

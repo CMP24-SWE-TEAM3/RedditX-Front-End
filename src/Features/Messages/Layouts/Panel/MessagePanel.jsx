@@ -52,6 +52,8 @@ const messagesData = [
  * Component that contains the Messages Panel
  *
  * @Component
+ * @param {object} data - Array that has messages
+ * @param {Function} Rerender - Used to signal a re-render message to parent component
  * @returns {React.Component}
  */
 function MessageBannel({data, Rerender}) {

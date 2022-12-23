@@ -48,6 +48,7 @@ const messagesData = [
  * Component that contains the Unread Messages Panel
  *
  * @Component
+ * @param {object} Unreadmessages - An Array that contains unread messages
  * @returns {React.Component}
  */
 const Unread = ({Unreadmessages})=>{

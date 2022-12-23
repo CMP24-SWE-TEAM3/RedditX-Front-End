@@ -42,7 +42,7 @@ import { useCreatePostFlairs } from "Features/Post/Contexts/createPostFlairs";
  * @param {String} error - error message
  * @param {Boolean} isLoading - boolean to show loading spinner
  * @param {String} postOrUser - string to check if the modal is for post or user
- * @returns
+ * @returns {React.Component}
  */
 const FlairModal = ({
   show,

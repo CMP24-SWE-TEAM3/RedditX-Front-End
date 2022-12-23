@@ -40,6 +40,9 @@ const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
 
 /**
  * EditBanUser Layout that is used in User management
+ * @param {Object} moderator object have the some info of ban
+ * @param {Function} setShowEditModal function to show or hide the modal of edit ban user
+ * @param {String} userName the userName of the banned user
  * @returns {React.Component}  EditBanUser Layout that is used in User management
  */
 

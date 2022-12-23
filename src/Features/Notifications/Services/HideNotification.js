@@ -2,8 +2,9 @@
 import axios from "API/axios";
 
 /**
- * Marks All Notifications as read 
+ * Deletes a notification
  * @param {object} auth Context object coming from useAuth custom Hook
+ * @param {object} dataObject The Data to be Sent in the POST request
  * @param {Function} fetchFunction Coming from useFetchFunction custom hook
  */
 

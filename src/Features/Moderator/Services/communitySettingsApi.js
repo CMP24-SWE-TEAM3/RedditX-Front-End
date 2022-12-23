@@ -5,6 +5,7 @@ import axios from "API/axios";
  * @param {Function} dataFetch Coming from useFetchFunction custom hook
  * @param {String} subredditName The name of the subreddit
  * @param {String} token The token of the user
+ * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
 export const getCommunitySettings = (dataFetch, subredditName, token) => {
   //let searchSubredditName = "t5_" + subredditName;
@@ -42,6 +43,7 @@ export const getCommunitySettings = (dataFetch, subredditName, token) => {
  * @param {Object} objectData Object that contains the data that will be sent to the api
  * @param {String} subredditName The name of the subreddit
  * @param {String} token The token of the user
+ * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
 export const updateSettings = (dataFetch, objectData, subredditName, token) => {
   let finalUrl = "/api/r/" + subredditName + "/site-admin";

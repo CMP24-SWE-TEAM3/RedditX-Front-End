@@ -10,6 +10,10 @@ import { IsMutedProvider } from "Features/Subreddit/Contexts/IsMutedProvider";
 
 const theme = { ...defaultTheme, ...lightTheme };
 
+/**
+ * Function that wraps Children props inside a Browser Router and a Theme Provider
+ * @returns {React.Component}The component is being returned.
+ */
 const SubredditTestingComponent = ({ children }) => {
   return (
     <Router>

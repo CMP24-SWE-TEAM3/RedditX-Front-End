@@ -34,6 +34,13 @@ import Moment from "react-moment";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * comment component
+ *
+ * @param {object} comment - comment object to be viewed
+ * @param {boolean} overview - if true, the comment will be shown in overview mode
+ * @returns {React.Component}
+ */
 const UserComment = ({ comment, overview }) => {
   const { userID } = useUserID;
   const [title, setTitle] = useState("");
@@ -63,6 +70,12 @@ const UserComment = ({ comment, overview }) => {
     comment && comment.authorId && setAuthor(comment.authorId);
   }, [comment]);
 
+  /**
+   * function that check string if it is json
+   *
+   * @param {string} str - string to be checked
+   * @returns
+   */
   function isJsonString(str) {
     try {
       JSON.parse(str);
@@ -72,6 +85,11 @@ const UserComment = ({ comment, overview }) => {
     return true;
   }
 
+  /**
+   * function handle click on comment
+   *
+   * @param {event} e - event of click
+   */
   function handleClick(e) {
     // console.log(e.currentTarget.nodeName)
     if (e.target.nodeName !== "A") {
@@ -84,6 +102,15 @@ const UserComment = ({ comment, overview }) => {
     }
   }
 
+  /**
+   * header of comment
+   *
+   * @param {string} user - user name
+   * @param {string} title - post title that commented it
+   * @param {string} community - community name
+   * @param {string} posted - user name that posted the post
+   * @returns {React.Component}
+   */
   const CommentHeader = ({ user, title, community, posted }) => {
     return (
       <CommentHeaderContainer>
@@ -116,6 +143,13 @@ const UserComment = ({ comment, overview }) => {
     );
   };
 
+  /**
+   * comment body details
+   *
+   * @param {string} commented - user name that commented
+   * @param {string} commentContent - comment content
+   * @returns {React.Component}
+   */
   const CommentBodyInfo = ({ commented, commentContent }) => {
     return (
       <CommentBodyInfoContainer overview={overview ? 1 : 0}>
@@ -162,6 +196,12 @@ const UserComment = ({ comment, overview }) => {
     );
   };
 
+  /**
+   *
+   * @param {string} commented - user name that commented
+   * @param {string} commentContent - comment content
+   * @returns {React.Component}
+   */
   const CommentBody = ({ commented, commentContent }) => {
     return (
       <CommentBodyContainer>
