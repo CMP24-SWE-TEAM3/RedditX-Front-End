@@ -34,7 +34,7 @@ jest.mock("Hooks/useFetchFunction.js", () => () => {
   ];
 });
 
-describe("About User", () => {
+describe("PopularButton User", () => {
   it("test AboutUser renders correctly", async () => {
     render(
       <TestingComponent>

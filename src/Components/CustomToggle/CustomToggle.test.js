@@ -33,7 +33,7 @@ jest.mock("Hooks/useFetchFunction.js", () => () => {
   ];
 });
 
-describe("About User", () => {
+describe("CustomToggle User", () => {
   it("test AboutUser renders correctly", async () => {
     render(
       <TestingComponent>
