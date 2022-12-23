@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import TestingComponent from "Features/settings/Components/TestingComponent";
-import ChatButton from "./ChatButton";
+import SwitchButton from "./SwitchButton";
 
 jest.mock("Features/Authentication/Contexts/Authentication", () => ({
   __esModule: true, // this property makes it work
@@ -38,7 +38,7 @@ describe("About User", () => {
   it("test AboutUser renders correctly", async () => {
     render(
       <TestingComponent>
-        <ChatButton />
+        <SwitchButton />
       </TestingComponent>
     );
   });
