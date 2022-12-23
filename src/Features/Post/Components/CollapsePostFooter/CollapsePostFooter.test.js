@@ -30,6 +30,23 @@ jest.mock(
   }
 );
 
+jest.mock("Features/Authentication/Contexts/Authentication", () => ({
+  __esModule: true, // this property makes it work
+  useAuth: function () {
+    return {
+      getUserName: jest.fn().mockReturnValue("username"),
+      getToken: jest.fn().mockReturnValue("token"),
+      isLoggedIn: jest.fn().mockReturnValue(true),
+    };
+  },
+  AuthProvider: ({ children }) => {
+    return (
+      <mock-authprovider data-testid="auth-provider">
+        {children}
+      </mock-authprovider>
+    );
+  },
+}));
 describe("Collapse Post Footer Controls", () => {
   it("test CollapsePostFooter renders correctly", async () => {
     render(
@@ -37,5 +54,9 @@ describe("Collapse Post Footer Controls", () => {
         <CollapsePostFooter post={{ commentNumber: 10 }} />
       </TestingComponent>
     );
+    expect(screen.getByText("Comments")).toBeInTheDocument();
+    expect(screen.getByText("Share")).toBeInTheDocument();
+    expect(screen.getByText("Award")).toBeInTheDocument();
+    expect(screen.getByText("Save")).toBeInTheDocument();
   });
 });
