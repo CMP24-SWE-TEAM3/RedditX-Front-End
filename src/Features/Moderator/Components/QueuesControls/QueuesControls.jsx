@@ -13,7 +13,7 @@ import { useState } from "react";
  * Posts and comments Queues controls
  *
  * @param {Boolean} postsOnly is the queue posts only
- * @returns
+ * @returns {React.Component} QueuesControls component
  */
 const QueuesControls = ({ postsOnly }) => {
   const [sort, setSort] = useState("Newest First");
