@@ -1,8 +1,13 @@
-import Enzyme, { shallow } from "enzyme";
+import { render, screen } from "@testing-library/react";
+import TestingComponent from "Features/Post/TestingComponent";
 import RulesWidget from "./RulesWidget";
 
-describe("widget show rules", () => {
-  it("should render without crashing", () => {
-    expect(shallow(<RulesWidget />)).toMatchSnapshot();
+describe("RulesWidget", () => {
+  it("should be able to render without crashing", async () => {
+    render(
+      <TestingComponent>
+        <RulesWidget />
+      </TestingComponent>
+    );
   });
 });

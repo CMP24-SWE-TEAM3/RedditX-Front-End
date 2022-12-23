@@ -14,6 +14,7 @@ describe("StyleControlButton in draft editor", () => {
       </TestingComponent>
     );
   });
+
   it("should render its content", () => {
     render(
       <TestingComponent>

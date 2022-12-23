@@ -1,25 +1,17 @@
-import { render, screen, rerender } from "@testing-library/react";
-
+import { render, screen } from "@testing-library/react";
 import TestingComponent from "Features/Post/TestingComponent";
+import RichTextPostBody from "./RichTextPostBody";
 
-// Import components
-import PostShape from "./PostShape";
-
-jest.mock(
-  "Features/Post/Services/getCommunityInfo",
-  () => (fetchData, auth) => {}
-);
-
-describe("PostShape", () => {
-  it("renders PostShape component", () => {
+describe("RichTextPostBody", () => {
+  it("should be able to render without crashing", async () => {
     render(
       <TestingComponent>
-        <PostShape
+        <RichTextPostBody
           post={{
             // _id: "63a51f64e5de076130c9a910",
             title: "New title",
-            textHTML: "not a link",
-            textJSON: "not a link",
+            textHTML: "<p>My comment</p>",
+            textJSON: `{"blocks":[{"key":"afmo3","text":"My comment","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
             isDeleted: false,
             attachments: [],
             spoiler: false,

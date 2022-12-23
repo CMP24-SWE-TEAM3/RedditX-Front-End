@@ -1,9 +1,7 @@
 import { render, screen, rerender } from "@testing-library/react";
 
 import TestingComponent from "Features/Post/TestingComponent";
-
-// Import components
-import PostShape from "./PostShape";
+import CollapsePostContent from "./CollapsePostContent";
 
 jest.mock(
   "Features/Post/Services/getCommunityInfo",
@@ -14,7 +12,7 @@ describe("PostShape", () => {
   it("renders PostShape component", () => {
     render(
       <TestingComponent>
-        <PostShape
+        <CollapsePostContent
           post={{
             // _id: "63a51f64e5de076130c9a910",
             title: "New title",
@@ -51,6 +49,9 @@ describe("PostShape", () => {
             postComments: [],
             spammers: [],
           }}
+          fullPost={true}
+          setFullPost={() => {}}
+          collapse={true}
         />
       </TestingComponent>
     );

@@ -3,18 +3,14 @@ import { render, screen, rerender } from "@testing-library/react";
 import TestingComponent from "Features/Post/TestingComponent";
 
 // Import components
-import PostShape from "./PostShape";
+import SpamPost from "./SpamPost";
 
-jest.mock(
-  "Features/Post/Services/getCommunityInfo",
-  () => (fetchData, auth) => {}
-);
 
-describe("PostShape", () => {
-  it("renders PostShape component", () => {
+describe("SpamPost", () => {
+  it("renders SpamPost component", () => {
     render(
       <TestingComponent>
-        <PostShape
+        <SpamPost
           post={{
             // _id: "63a51f64e5de076130c9a910",
             title: "New title",
@@ -51,6 +47,8 @@ describe("PostShape", () => {
             postComments: [],
             spammers: [],
           }}
+          fullPost={true}
+          handleApprove={() => {}}
         />
       </TestingComponent>
     );

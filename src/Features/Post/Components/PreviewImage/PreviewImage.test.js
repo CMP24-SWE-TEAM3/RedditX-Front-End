@@ -4,6 +4,7 @@ import TestingComponent from "Features/Post/TestingComponent";
 // Import components
 import PreviewImage from "./PreviewImage";
 
+
 const mockFiles = [
   {
     name: "test1.jpg",

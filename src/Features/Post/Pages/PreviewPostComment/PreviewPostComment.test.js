@@ -10,6 +10,7 @@ jest.mock(
   "Features/Post/Services/submitComment",
   () => (fetchData, auth) => {}
 );
+
 jest.mock("Features/Authentication/Contexts/Authentication", () => ({
   __esModule: true, // this property makes it work
   useAuth: function () {

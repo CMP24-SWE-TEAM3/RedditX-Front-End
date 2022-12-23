@@ -6,6 +6,7 @@ import PostFlagsWrapper from "./PostFlagsWrapper";
 
 const mockFlairHandler = jest.fn();
 
+
 describe("Post flag wrapper", () => {
   it("should contain 6 buttons", async () => {
     render(

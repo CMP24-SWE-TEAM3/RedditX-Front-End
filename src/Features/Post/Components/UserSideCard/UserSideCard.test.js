@@ -1,10 +1,8 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import TestingComponent from "Features/Post/TestingComponent";
+import UserSideCard from "./UserSideCard";
 
-// Import components
-import Main from "./Main";
-
-jest.mock("Features/Post/Services/submitPost", () => (fetchData, auth) => {});
+jest.mock("Features/Post/Services/getUser", () => (fetchData, auth) => {});
 
 jest.mock("Features/Authentication/Contexts/Authentication", () => ({
   __esModule: true, // this property makes it work
@@ -24,27 +22,12 @@ jest.mock("Features/Authentication/Contexts/Authentication", () => ({
   },
 }));
 
-jest.mock("Hooks/useFetchFunction.js", () => () => {
-  return [
-    "data",
-    "error",
-    "loading",
-    jest.fn().mockReturnValue({
-      data: {
-        name: "test",
-        type: "subreddit",
-      },
-    }),
-  ];
-});
-describe("Main section", () => {
-  it("renders Main component", () => {
+describe("UserSideCard", () => {
+  it("should be able to render without crashing", async () => {
     render(
       <TestingComponent>
-        <Main />
+        <UserSideCard />
       </TestingComponent>
     );
-    const headingElement = screen.getByText("Create a post");
-    expect(headingElement).toBeVisible();
   });
 });
