@@ -9,7 +9,7 @@ import {
   getMutted,
   banUser,
   muteUser,
-} from "./userManagementApi";
+} from "../userManagementApi";
 
 const dataFetch = async (configObj) => {};
 
