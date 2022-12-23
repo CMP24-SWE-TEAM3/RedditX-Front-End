@@ -3,7 +3,7 @@ import User from "./User";
 import UserTestingComponent from "Features/User/UserTestingComponent";
 import { BrowserRouter } from "react-router-dom";
 
-describe("overview page", () => {
+describe("user page", () => {
   // it("should renderCorrectly", async () => {
 
   //   jest.mock("react-router-dom", () => ({

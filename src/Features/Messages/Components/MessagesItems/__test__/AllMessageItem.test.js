@@ -10,7 +10,7 @@ describe("AllMessageItem component", () => {
         changeMessage={()=>{}}
         aurthor={"Jacob"}
         title={"Mobiles"}
-        time={"time"}
+        time={"2022-11-29T"}
         msg={"Broken Now"}
         upvote={"neutral"}
         admin={true}
@@ -28,11 +28,11 @@ describe("AllMessageItem component", () => {
   it('renders Passed Message Content', () => {
     render(
       <TestingComponent>
-        <NormalMessageAll 
+        <NormalMessageAll
         changeMessage={()=>{}}
         aurthor={"Jacob"}
         title={"Mobiles"}
-        time={"time"}
+        time={"2022-11-29T"}
         msg={"Broken Now"}
         upvote={"neutral"}
         admin={true}
@@ -54,7 +54,7 @@ describe("AllMessageItem component", () => {
         changeMessage={()=>{}}
         aurthor={"Jacob"}
         title={"Mobiles"}
-        time={"time"}
+        time={"2022-11-29T"}
         msg={"Broken Now"}
         upvote={"neutral"}
         admin={true}
@@ -76,7 +76,7 @@ describe("AllMessageItem component", () => {
         changeMessage={()=>{}}
         aurthor={"Jacob"}
         title={"Mobiles"}
-        time={"time"}
+        time={"2022-11-29T"}
         msg={"Broken Now"}
         upvote={"neutral"}
         admin={true}
@@ -98,11 +98,11 @@ describe("AllMessageItem component", () => {
         changeMessage={()=>{}}
         aurthor={"Jacob"}
         title={"Mobiles"}
-        time={"time"}
+        time={"2022-11-29T"}
         msg={"Broken Now"}
         upvote={"neutral"}
         admin={false}
-        read={false}
+        read={true}
         id={2}
         block={false}
         key={2}
@@ -115,3 +115,5 @@ describe("AllMessageItem component", () => {
     expect(style.backgroundColor).toBe(`rgb(237, 239, 241)`);
   });
 });
+
+
