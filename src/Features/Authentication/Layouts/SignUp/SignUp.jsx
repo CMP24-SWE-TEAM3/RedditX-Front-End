@@ -19,6 +19,8 @@ var defaultFormFields = {
 
 /**
  * Signup component that is used in Signup modal
+ * @param {Function} setModalShowSignUp state to show or hide modal of sign up
+ * @param {Function} setModalAfterSignUp state to show the modal after sign up
  * @returns {React.Component}  Signup component that is used in Signup modal
  */
 
