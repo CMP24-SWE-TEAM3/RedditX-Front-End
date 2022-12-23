@@ -1,7 +1,7 @@
 /**
  * Function to get the strength of the password
  * @param {string} str The user password
- * @returns {number}
+ * @returns {number} password strength
  */
 
 let GetPasswordStrength = (str) => {

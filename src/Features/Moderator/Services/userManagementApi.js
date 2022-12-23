@@ -1,6 +1,5 @@
 import axios from "API/axios";
 
-
 /**
  * Function to get the moderators of subreddit
  * @param {Function} dataFetch Coming from useFetchFunction custom hook
@@ -8,7 +7,7 @@ import axios from "API/axios";
  * @param {String} token The token of the user
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const getModerators = (dataFetch, subredditName, token) => {
+const getModerators = (dataFetch, subredditName, token) => {
   //let searchSubredditName = "t5_" + subredditName;
   let finalUrl = "/api/r/" + subredditName + "/about/moderators";
   if (
@@ -45,7 +44,7 @@ export const getModerators = (dataFetch, subredditName, token) => {
  * @param {String} token The token of the user
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const getApproved = (dataFetch, subredditName, token) => {
+const getApproved = (dataFetch, subredditName, token) => {
   //let searchSubredditName = "t5_" + subredditName;
   let finalUrl = "/api/r/" + subredditName + "/about/members";
   if (
@@ -81,7 +80,7 @@ export const getApproved = (dataFetch, subredditName, token) => {
  * @param {String} token The token of the user
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const inviteModerator = (dataFetch, objectData, token) => {
+const inviteModerator = (dataFetch, objectData, token) => {
   if (
     objectData?.userID !== undefined &&
     objectData?.type !== undefined &&
@@ -121,7 +120,7 @@ export const inviteModerator = (dataFetch, objectData, token) => {
  * @param {String} token The token of the user
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const leaveModerator = (dataFetch, objectData, subredditName, token) => {
+const leaveModerator = (dataFetch, objectData, subredditName, token) => {
   if (
     objectData?.userID !== undefined &&
     dataFetch !== undefined &&
@@ -161,7 +160,7 @@ export const leaveModerator = (dataFetch, objectData, subredditName, token) => {
  * @param {String} token The token of the user
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const kickModerator = (dataFetch, objectData, subredditName, token) => {
+const kickModerator = (dataFetch, objectData, subredditName, token) => {
   if (
     objectData?.userID !== undefined &&
     dataFetch !== undefined &&
@@ -201,7 +200,7 @@ export const kickModerator = (dataFetch, objectData, subredditName, token) => {
  * @param {String} token The token of the user
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const kickMember = (dataFetch, objectData, subredditName, token) => {
+const kickMember = (dataFetch, objectData, subredditName, token) => {
   if (
     objectData?.userID !== undefined &&
     dataFetch !== undefined &&
@@ -240,7 +239,7 @@ export const kickMember = (dataFetch, objectData, subredditName, token) => {
  * @param {String} token The token of the user
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const getBanned = (dataFetch, subredditName, token) => {
+const getBanned = (dataFetch, subredditName, token) => {
   //let searchSubredditName = "t5_" + subredditName;
   if (
     dataFetch !== undefined &&
@@ -277,7 +276,7 @@ export const getBanned = (dataFetch, subredditName, token) => {
  * @param {String} token The token of the user
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const getMutted = (dataFetch, subredditName, token) => {
+const getMutted = (dataFetch, subredditName, token) => {
   //let searchSubredditName = "t5_" + subredditName;
   let finalUrl = "/api/r/" + subredditName + "/about/muted";
   if (
@@ -315,7 +314,7 @@ export const getMutted = (dataFetch, subredditName, token) => {
  * @param {String} token The token of the user
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const banUser = (dataFetch, objectData, subredditName, token) => {
+const banUser = (dataFetch, objectData, subredditName, token) => {
   if (
     objectData?.userID !== undefined &&
     objectData?.operation !== undefined &&
@@ -357,7 +356,7 @@ export const banUser = (dataFetch, objectData, subredditName, token) => {
  * @param {String} token The token of the user
  * @returns {Boolean}  return boolean to if the data if the request has been sent or not
  */
-export const muteUser = (dataFetch, objectData, subredditName, token) => {
+const muteUser = (dataFetch, objectData, subredditName, token) => {
   if (
     objectData?.userID !== undefined &&
     objectData?.operation !== undefined &&
@@ -389,4 +388,17 @@ export const muteUser = (dataFetch, objectData, subredditName, token) => {
     return false;
   }
   return false;
+};
+
+export {
+  getModerators,
+  getApproved,
+  inviteModerator,
+  leaveModerator,
+  kickModerator,
+  kickMember,
+  getBanned,
+  getMutted,
+  banUser,
+  muteUser,
 };
