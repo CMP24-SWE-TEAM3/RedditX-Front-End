@@ -1,5 +1,3 @@
-// import Adapter from "@zarconontol/enzyme-adapter-react-18";
-// import Enzyme, { shallow } from "enzyme";
 import SubReddit from "./SubReddit";
 import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
