@@ -3,7 +3,10 @@ import axios from "API/axios";
  * A service to handle Posts list retrieval
  *
  * @param {Function} fetchFunction - The function to make the request
- * @param {searchWord} fetchFunction - the word we search for
+ * @param {string} searchWord - the word we search for
+ * @param {string} Sort - the Sort we search for
+ * @param {object} auth - the authentication
+ * @param {string} community - the community we search for
  */
 const fetchPostsCommunity = (
   fetchFunction,

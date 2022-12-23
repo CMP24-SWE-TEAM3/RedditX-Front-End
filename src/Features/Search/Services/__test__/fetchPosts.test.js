@@ -1,5 +1,5 @@
-import getCommunitiesList from "Features/Post/Services/getCommunitiesList";
 import axios from "API/axios";
+import fetchPosts from "../fetchPosts";
 
 const mockFetchData = jest.fn(function (config) {
   return config;
@@ -20,33 +20,29 @@ const mockAuthWithTokenAndLogin = {
   getToken: () => "token",
   isLoggedIn: () => true,
 };
-describe("getCommunitiesList", () => {
-  it("Should not submit if auth is missing", () => {
-    getCommunitiesList(mockFetchData);
-    expect(mockFetchData).not.toHaveBeenCalled();
-  });
+describe("fetchPosts", () => {
   it("Should not submit if token is missing && not logged in", () => {
-    getCommunitiesList(mockFetchData, mockAuth);
+    fetchPosts(mockFetchData, mockAuth, "text", "new");
     expect(mockFetchData).not.toHaveBeenCalled();
   });
   it("Should not submit if not logged in", () => {
-    getCommunitiesList(mockFetchData, mockAuthWithLogin);
+    fetchPosts(mockFetchData, mockAuthWithLogin, "text", "new");
     expect(mockFetchData).not.toHaveBeenCalled();
   });
   it("Should not submit if not logged in and token is available", () => {
-    getCommunitiesList(mockFetchData, mockAuthWithToken);
+    fetchPosts(mockFetchData, mockAuthWithToken, "text", "new");
     expect(mockFetchData).not.toHaveBeenCalled();
   });
   it("Should submit if logged in and token is available", () => {
-    getCommunitiesList(mockFetchData, mockAuthWithTokenAndLogin);
+    fetchPosts(mockFetchData, mockAuthWithTokenAndLogin, "text", "new");
     expect(mockFetchData).toBeCalledWith({
       axiosInstance: axios,
       method: "GET",
-      url: "/api/r/mine/subscriber/",
+      url: `/api/search/r?type=post&q=text&sort=new`,
       requestConfig: {
         headers: {
           "Content-Language": "en-US",
-          Authorization: `Bearer token`,
+          Authorization: ` Bearer token`,
         },
       },
     });

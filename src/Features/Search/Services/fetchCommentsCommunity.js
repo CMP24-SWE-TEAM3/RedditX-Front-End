@@ -1,9 +1,11 @@
 import axios from "API/axios";
 /**
- * A service to handle Posts list retrieval
+ * A service to handle CommentsCommunity list retrieval
  *
  * @param {Function} fetchFunction - The function to make the request
- * @param {searchWord} fetchFunction - the word we search for
+ * @param {string} searchWord - the word we search for
+ * @param {string} community - the community we search for
+ * @param {object} auth - the authentication
  */
 const fetchCommentsCommunity = (fetchFunction, auth, searchWord, community) => {
   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;

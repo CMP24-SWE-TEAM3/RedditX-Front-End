@@ -1,4 +1,4 @@
-import getCommunitiesList from "Features/Post/Services/getCommunitiesList";
+import fetchCommunities from "Features/Subreddit/Services/fetchCommunities";
 import axios from "API/axios";
 
 const mockFetchData = jest.fn(function (config) {
@@ -20,29 +20,29 @@ const mockAuthWithTokenAndLogin = {
   getToken: () => "token",
   isLoggedIn: () => true,
 };
-describe("getCommunitiesList", () => {
+describe("fetchCommunities", () => {
   it("Should not submit if auth is missing", () => {
-    getCommunitiesList(mockFetchData);
+    fetchCommunities(mockFetchData);
     expect(mockFetchData).not.toHaveBeenCalled();
   });
   it("Should not submit if token is missing && not logged in", () => {
-    getCommunitiesList(mockFetchData, mockAuth);
+    fetchCommunities(mockFetchData, mockAuth, "Gaming", 1);
     expect(mockFetchData).not.toHaveBeenCalled();
   });
   it("Should not submit if not logged in", () => {
-    getCommunitiesList(mockFetchData, mockAuthWithLogin);
+    fetchCommunities(mockFetchData, mockAuthWithLogin, "Gaming", 1);
     expect(mockFetchData).not.toHaveBeenCalled();
   });
   it("Should not submit if not logged in and token is available", () => {
-    getCommunitiesList(mockFetchData, mockAuthWithToken);
+    fetchCommunities(mockFetchData, mockAuthWithToken, "Gaming", 1);
     expect(mockFetchData).not.toHaveBeenCalled();
   });
   it("Should submit if logged in and token is available", () => {
-    getCommunitiesList(mockFetchData, mockAuthWithTokenAndLogin);
+    fetchCommunities(mockFetchData, mockAuthWithTokenAndLogin, "Gaming", 1);
     expect(mockFetchData).toBeCalledWith({
       axiosInstance: axios,
       method: "GET",
-      url: "/api/r/mine/subscriber/",
+      url: `https://api.redditswe22.tech/api/r/get-specific-category/?category=Gaming&page=1&limit=12`,
       requestConfig: {
         headers: {
           "Content-Language": "en-US",
@@ -52,4 +52,3 @@ describe("getCommunitiesList", () => {
     });
   });
 });
-//
