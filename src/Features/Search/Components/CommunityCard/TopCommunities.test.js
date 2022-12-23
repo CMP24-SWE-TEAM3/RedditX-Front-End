@@ -16,7 +16,16 @@ const communityList = {
     },
   ],
 };
-const CommunitiesSub2 = [];
+const CommunitiesSub2 = {
+  status: "success",
+  communities: [
+    {
+      _id: "t5_7asebb kedaa",
+      icon: "default-icon.jpg",
+      membersCnt: 1,
+    },
+  ],
+};
 describe("TopCommunities component", () => {
   it('renders "Communities" in title', async () => {
     render(
@@ -57,3 +66,4 @@ describe("TopCommunities component", () => {
   });
 });
 // it("this is a test", () => {});
+// hh
