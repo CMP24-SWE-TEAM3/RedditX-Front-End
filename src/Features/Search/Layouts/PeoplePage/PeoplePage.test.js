@@ -16,7 +16,17 @@ const PeopleList = {
     },
   ],
 };
-const PeopleFollow = [];
+const PeopleFollow = {
+  following: [
+    {
+      _id: "Ahmedlotfy202",
+      avatar: "default.jpg",
+      createdAt: "2022-12-20T02:21:09.233Z",
+      about: "my name is lotfy and i will be 22 at 15DEC",
+      karma: 10,
+    },
+  ],
+};
 describe("People component", () => {
   it("check that people are renders well", async () => {
     render(

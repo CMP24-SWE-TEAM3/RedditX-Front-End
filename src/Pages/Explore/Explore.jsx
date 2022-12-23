@@ -17,6 +17,13 @@ import { useContext } from "react";
 import CategoryContext from "Contexts/CategoryContext/Category-context.js";
 import fetchPosts from "Features/Search/Services/fetchPosts.js";
 import getCommunitiesList from "Features/Post/Services/getCommunitiesList.js";
+
+/**
+ * Component that contains the Explore Page.
+ * @Component
+ * @returns {React.Component}
+ */
+
 const Explore = () => {
   const auth = useAuth();
   const [Active, setActive] = useState("Posts");

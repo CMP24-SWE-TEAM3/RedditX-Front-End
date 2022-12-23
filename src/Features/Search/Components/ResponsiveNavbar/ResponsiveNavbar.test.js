@@ -5,3 +5,4 @@ describe("Responsive Navbar", () => {
     expect(shallow(<ResponsiveNavbar />)).toMatchSnapshot();
   });
 });
+// test

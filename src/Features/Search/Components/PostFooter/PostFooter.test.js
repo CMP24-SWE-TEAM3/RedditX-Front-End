@@ -39,3 +39,4 @@ describe("PostFooter component", () => {
     expect(outputElement.textContent).toBe("1k comments");
   });
 });
+// test

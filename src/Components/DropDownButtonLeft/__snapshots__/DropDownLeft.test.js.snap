@@ -12,33 +12,27 @@ exports[`Drop Down list Component this is a test for Drop Down list Component 1`
     id="dropdown-home"
     onClick={[Function]}
   >
-    <div
-      className="all-drop"
-    >
-      <div
-        className="home-ico"
-      >
+    <styled.div>
+      <styled.div>
         <span>
           <AiFillHome />
         </span>
         <span>
-          <h6>
+          <styled.h6>
             Home
-          </h6>
+          </styled.h6>
         </span>
-      </div>
-    </div>
+      </styled.div>
+    </styled.div>
     <div>
       <SideBar
         setShowSideBar={[Function]}
         showButton={false}
         showSideBar={false}
       />
-      <span
-        className="down-form"
-      >
+      <styled.span>
         <GrFormDown />
-      </span>
+      </styled.span>
     </div>
   </DropdownToggle>
   <DropDownMenu
