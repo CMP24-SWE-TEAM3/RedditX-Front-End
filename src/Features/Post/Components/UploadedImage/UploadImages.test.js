@@ -17,6 +17,7 @@ const mockFile = {
 const mockDeleteFile = jest.fn();
 const mockHandleClick = jest.fn();
 
+
 describe("Uploaded images", () => {
   window.URL.revokeObjectURL = jest.fn();
   it("should render Uploaded image", () => {

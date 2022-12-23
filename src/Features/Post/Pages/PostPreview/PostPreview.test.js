@@ -6,6 +6,7 @@ jest.mock(
   "Features/Post/Services/getCommunityInfo",
   () => (fetchData, auth) => {}
 );
+
 jest.mock(
   "Features/Post/Services/submitComment",
   () => (fetchData, auth) => {}

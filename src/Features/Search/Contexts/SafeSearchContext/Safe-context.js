@@ -27,10 +27,20 @@ export function SafeContextProvider(props) {
     setsafe(safe);
     // console.log(safe);
   };
+  /**
+   * Function for the safe search
+   *
+   * @param {boolean} Refetch  - which indicates the refetch
+   */
   const RefetchHandler = (Refetch) => {
     setRefetch(Refetch);
     // console.log(safe);
   };
+  /**
+   * Function for the safe search
+   *
+   * @param {boolean} Refetch  - which indicates the refetch for people
+   */
   const RefetchPepHandler = (RefetchPep) => {
     setRefetchPep(RefetchPep);
     // console.log(safe);

@@ -35,6 +35,7 @@ const Posts = ({
   CommunitiesSub2,
   OnSort,
 }) => {
+  console.log(PeopleFollow, "PostList");
   /**
    * State That Hndle Sorting Operation
    */

@@ -4,6 +4,7 @@ import TestingComponent from "Features/Post/TestingComponent";
 // Import components
 import PostFormFooter from "./PostFormFooter";
 
+
 describe("Post form footer", () => {
   it("should link and checkbox", () => {
     render(

@@ -11,6 +11,7 @@ jest.mock(
   () => (fetchData, auth) => {}
 );
 
+
 describe("Post", () => {
   it("renders Post component", () => {
     render(

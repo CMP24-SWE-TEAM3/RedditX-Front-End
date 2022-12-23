@@ -9,6 +9,12 @@ import {
 import Dropdown from "react-bootstrap/Dropdown";
 import { useState } from "react";
 
+/**
+ * Posts and comments Queues controls
+ *
+ * @param {Boolean} postsOnly is the queue posts only
+ * @returns
+ */
 const QueuesControls = ({ postsOnly }) => {
   const [sort, setSort] = useState("Newest First");
   const [filter, setFilter] = useState("Posts And Comments");

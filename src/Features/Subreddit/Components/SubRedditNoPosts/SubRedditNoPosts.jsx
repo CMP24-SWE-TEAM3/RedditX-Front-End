@@ -16,12 +16,17 @@ import {
 import { TbArrowBigTop, TbArrowBigDown } from "react-icons/tb";
 /**
  * component appear when there is no posts
- * 
+ *
  * @returns {React.Component}
  */
 const SubRedditNoPosts = () => {
   const n = 10;
 
+  /**
+   * outline of a post
+   *
+   * @returns {React.Component}
+   */
   const FakePost = () => {
     return (
       <FakePostContainer>

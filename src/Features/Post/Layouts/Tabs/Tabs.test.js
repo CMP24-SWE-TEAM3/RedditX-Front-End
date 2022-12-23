@@ -4,6 +4,7 @@ import TestingComponent from "Features/Post/TestingComponent";
 // Import components
 import Tabs from "./Tabs";
 
+
 describe("Tabs", () => {
   it("renders tabs component", () => {
     render(
@@ -11,6 +12,7 @@ describe("Tabs", () => {
         <Tabs />
       </TestingComponent>
     );
+
     const postTabButton = screen.getByTestId("post-tab-btn");
     expect(postTabButton).toBeInTheDocument();
     const imagesTabButton = screen.getByTestId("image-tab-btn");
