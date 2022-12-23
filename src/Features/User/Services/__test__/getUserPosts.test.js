@@ -1,4 +1,4 @@
-import getCommunitiesList from "Features/Post/Services/getCommunitiesList";
+import getUserPosts from "../getUserPosts";
 import axios from "API/axios";
 
 const mockFetchData = jest.fn(function (config) {
@@ -20,29 +20,35 @@ const mockAuthWithTokenAndLogin = {
   getToken: () => "token",
   isLoggedIn: () => true,
 };
-describe("getCommunitiesList", () => {
+describe("getUserPosts", () => {
   it("Should not submit if auth is missing", () => {
-    getCommunitiesList(mockFetchData);
+    getUserPosts(mockFetchData);
     expect(mockFetchData).not.toHaveBeenCalled();
   });
   it("Should not submit if token is missing && not logged in", () => {
-    getCommunitiesList(mockFetchData, mockAuth);
+    getUserPosts(mockFetchData, "username", mockAuth, "week", 1);
     expect(mockFetchData).not.toHaveBeenCalled();
   });
   it("Should not submit if not logged in", () => {
-    getCommunitiesList(mockFetchData, mockAuthWithLogin);
+    getUserPosts(mockFetchData, "username", mockAuthWithLogin, "week", 1);
     expect(mockFetchData).not.toHaveBeenCalled();
   });
   it("Should not submit if not logged in and token is available", () => {
-    getCommunitiesList(mockFetchData, mockAuthWithToken);
+    getUserPosts(mockFetchData, "username", mockAuthWithToken, "week", 1);
     expect(mockFetchData).not.toHaveBeenCalled();
   });
   it("Should submit if logged in and token is available", () => {
-    getCommunitiesList(mockFetchData, mockAuthWithTokenAndLogin);
+    getUserPosts(
+      mockFetchData,
+      "username",
+      mockAuthWithTokenAndLogin,
+      "week",
+      1
+    );
     expect(mockFetchData).toBeCalledWith({
       axiosInstance: axios,
       method: "GET",
-      url: "/api/r/mine/subscriber/",
+      url: `/api/user/username/submitted?page=1&limit=12&t=week`,
       requestConfig: {
         headers: {
           "Content-Language": "en-US",
@@ -52,4 +58,3 @@ describe("getCommunitiesList", () => {
     });
   });
 });
-//
