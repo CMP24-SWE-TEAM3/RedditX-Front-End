@@ -5,7 +5,9 @@ import axios from "API/axios";
  * A service to handle the submission of a post
  *
  * @param {Function} dataFetch - The function to make the request
- * @param {Object} post - The post data
+ * @param {Object} post - The  data we post for
+ * @param {object} auth - the authentication
+ * @param {string} communityName - the community we inside
  */
 const AddFlair = (dataFetch, post, auth, communityName) => {
   if (!auth || !auth.isLoggedIn() || !auth.getToken()) return;
