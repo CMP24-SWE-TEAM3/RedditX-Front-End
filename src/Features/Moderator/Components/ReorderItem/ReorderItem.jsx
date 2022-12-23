@@ -5,7 +5,6 @@ import { ItemContainer } from "./ReorderItem.styled";
 
 /**
  * Component that displays a list of draggble rule
- * @param {integer,Component}
  * @returns {React.Component}
  */
 const ReorderItem = ({ index, item }) => {

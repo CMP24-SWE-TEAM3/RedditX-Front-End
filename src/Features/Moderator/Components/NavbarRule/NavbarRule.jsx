@@ -6,6 +6,7 @@ import {
   CancelBtn,
   SaveBtn,
 } from "./NavbarRule.styled";
+
 /**
  * Component that displays the navigation of rules
  * @returns {React.Component}
