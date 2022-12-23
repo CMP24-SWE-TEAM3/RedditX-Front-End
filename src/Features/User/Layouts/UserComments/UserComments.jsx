@@ -9,6 +9,11 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import getUserComments from "Features/User/Services/getUserComments";
 import UserNoPosts from "Features/User/Components/UserNoPosts/UserNoPosts";
 
+/**
+ * comments page
+ * 
+ * @returns {React.Component}
+ */
 const UserComments = () => {
   const [pgNum, setPgNum] = useState(1);
   const [p, setP] = useState([]);

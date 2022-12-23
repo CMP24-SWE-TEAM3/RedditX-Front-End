@@ -1,4 +1,4 @@
-import { getCommunitySettings, updateSettings } from "./communitySettingsApi";
+import { getCommunitySettings, updateSettings } from "../communitySettingsApi";
 
 const dataFetch = async (configObj) => {};
 

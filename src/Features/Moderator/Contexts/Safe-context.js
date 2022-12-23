@@ -79,8 +79,8 @@ export function EditContextProvider(props) {
     console.log(flairsData);
   };
   /**
-   * function to handle ChangeFetch order
-   * @param {object} ChangeFetch  -  current order
+   * function to handle ChangeFetch
+   * @param {object} ChangeFetch
    */
   const ChangeFetchHandler = (ChangeFetch) => {
     setChangeFetch(ChangeFetch);
