@@ -1,14 +1,12 @@
 import { render } from "@testing-library/react";
+import SubRedditPosts from "./SubRedditPosts";
 import SubredditTestingComponent from "Features/Subreddit/SubredditTestingComponent";
 
-// import Components
-import ProfilePostButton from "./ProfilePostButton";
-
-describe("Profile Post button Component", () => {
-  it("this is a test for Profile Post Button Component", () => {
+describe("all components after header", () => {
+  it("should render body without crashing", () => {
     render(
       <SubredditTestingComponent>
-        <ProfilePostButton />
+        <SubRedditPosts />
       </SubredditTestingComponent>
     );
   });

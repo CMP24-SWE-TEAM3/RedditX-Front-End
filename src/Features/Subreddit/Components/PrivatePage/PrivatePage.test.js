@@ -1,14 +1,14 @@
+import PrivatePage from "./PrivatePage";
 import { render } from "@testing-library/react";
 import SubredditTestingComponent from "Features/Subreddit/SubredditTestingComponent";
 
-// import Components
-import ProfilePostButton from "./ProfilePostButton";
+// Enzyme.configure({ adapter: new Adapter() });
 
-describe("Profile Post button Component", () => {
-  it("this is a test for Profile Post Button Component", () => {
+describe("private page", () => {
+  it("show private page", () => {
     render(
       <SubredditTestingComponent>
-        <ProfilePostButton />
+        <PrivatePage />
       </SubredditTestingComponent>
     );
   });

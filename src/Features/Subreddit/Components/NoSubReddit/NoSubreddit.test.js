@@ -1,15 +1,18 @@
-import FlairWidget from "./FlairWidget";
-import { render } from "@testing-library/react";
+import NoSubReddit from "./NoSubReddit";
+import { screen, render } from "@testing-library/react";
 import SubredditTestingComponent from "Features/Subreddit/SubredditTestingComponent";
 
 // Enzyme.configure({ adapter: new Adapter() });
 
-describe("Show post flairs", () => {
+describe("no post component", () => {
   it("show topics dropdown", () => {
     render(
       <SubredditTestingComponent>
-        <FlairWidget />
+        <NoSubReddit />
       </SubredditTestingComponent>
     );
+
+    const textElement = screen.getByText("Go Home");
+    expect(textElement).toBeInTheDocument();
   });
 });

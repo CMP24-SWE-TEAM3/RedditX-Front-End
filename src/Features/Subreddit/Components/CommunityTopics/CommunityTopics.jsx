@@ -105,6 +105,11 @@ const CommunityTopics = () => {
 
   const [topicData, topicError, topicLoading, fetchTopic] = useFetchFunction();
 
+  /**
+   * handler of post topic
+   *
+   * @param {string} topic topic/category of  community
+   */
   function handleTopic(topic) {
     updateSettings(
       fetchTopic,
@@ -114,6 +119,11 @@ const CommunityTopics = () => {
     );
   }
 
+  /**
+   * handle post of categories
+   *
+   * @param {array} subtopics subtopics/categories of community
+   */
   function handleSubTopics(subtopics) {
     updateSettings(
       fetchTopic,

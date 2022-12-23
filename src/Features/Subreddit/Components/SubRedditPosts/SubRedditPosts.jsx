@@ -9,6 +9,12 @@ import PostShape from "Features/Post/Layouts/PostShape/PostShape";
 import useScroll from "Features/Subreddit/Hooks/useScroll";
 import Post from "Features/Post/Pages/Post/Post";
 
+/**
+ * component responsible for showing posts
+ * 
+ * @param {string} type - type of posts 
+ * @returns 
+ */
 const SubRedditPosts = ({ type }) => {
   const [showPost, setShowPost] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
