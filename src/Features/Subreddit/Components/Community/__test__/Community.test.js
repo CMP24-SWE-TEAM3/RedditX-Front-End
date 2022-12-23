@@ -2,7 +2,7 @@ import { fireEvent, render, screen, waitFor  } from "@testing-library/react";
 
 import TestingComponent from "Features/Subreddit/Utils/TestingComponent";
 import Community from "../Community";
-describe("CommunityCardItem component", () => {
+describe("Community component", () => {
 
   it('renders "join" if the button was NOT clicked', () => {
     render(
