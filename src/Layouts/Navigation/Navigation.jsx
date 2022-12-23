@@ -34,7 +34,6 @@ import {
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import SignUp from "Components/SignUp/SignUp";
 import LoginButton from "Components/LoginButton/LoginButton";
-import Search from "Components/Search/Search";
 /**
  *
  * Component that  Main Links component in header  called navigation bar.
