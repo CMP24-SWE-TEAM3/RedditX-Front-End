@@ -13,6 +13,11 @@ import {
 } from "./UserNotFound.styled";
 import logo from "Features/User/Assets/images/snoo_thoughtful.png";
 
+/**
+ * page appear when this user is not found or blocked
+ * 
+ * @returns {React.Component}
+ */
 const UserNotFound = () => {
   return (
     <PrivatePageContainer>
