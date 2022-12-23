@@ -11,12 +11,18 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { async } from "@firebase/util";
 
+jest.mock(
+  "Features/Post/Services/getCommunityInfo",
+  () => (fetchData, auth) => {}
+);
+
 const TestSubmitDestination = () => {
   const { submitDestination, setSubmitDestination } = useSubmitDestination();
   useEffect(() => {
     setSubmitDestination({
       destination: "test",
       name: "test",
+      type: "subreddit",
     });
   }, []);
   return (
