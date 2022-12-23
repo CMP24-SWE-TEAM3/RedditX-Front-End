@@ -5,6 +5,12 @@ import {
 } from "./QueueHeaderPopup.styled";
 
 import image from "Features/Moderator/Assets/Images/snoo-sunglasses.png";
+
+/**
+ * Comments and posts Queue header popup
+ *
+ * @returns {React.Component} Queue header popup
+ */
 const QueueHeaderPopup = () => {
   return (
     <Container>
