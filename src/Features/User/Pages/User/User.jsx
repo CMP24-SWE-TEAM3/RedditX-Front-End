@@ -21,6 +21,11 @@ import useDocumentTitle from "Hooks/useDocumentTitle";
 import Followers from "Features/User/Layouts/Followers/Followers";
 import { FollowingProvider } from "Features/User/Contexts/FollowingProvider";
 
+/**
+ * profile page
+ * 
+ * @returns {React.Component}
+ */
 const User = () => {
   const [me, setMe] = useState(false);
   const { userId } = useParams();

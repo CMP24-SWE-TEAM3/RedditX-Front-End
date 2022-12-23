@@ -5,6 +5,12 @@ import { Container } from "./QueueHeader.styled";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useState } from "react";
 import QueueHeaderPopup from "../QueueHeaderPopup/QueueHeaderPopup";
+/**
+ * Posts and comments Queue header
+ *
+ * @param {String} title title of the queue
+ * @returns {React.Component} Queue header
+ */
 const QueueHeader = ({ title }) => {
   const [showPopup, setShowPopup] = useState(false);
   return (
