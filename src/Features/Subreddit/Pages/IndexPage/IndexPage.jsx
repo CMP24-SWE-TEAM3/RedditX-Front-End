@@ -11,13 +11,21 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
  * @returns {React.Component}
  */
 const IndexPage = () => {
-const auth = useAuth();
-const [communityIndex, error, loading, indexFetchFunction] = useFetchFunction();
+// const auth = useAuth();
+// let [communityIndex, error, loading, indexFetchFunction] = useFetchFunction();
 
-useEffect(() => {
-  fetchIndexedCommunities(indexFetchFunction, auth);
-}, []); // Only re-run the effect if count changes
-  return !loading && (
+// useEffect(() => {
+//   fetchIndexedCommunities(indexFetchFunction, auth);
+// }, []); // Only re-run the effect if count changes
+
+let communityIndex = [ 
+  {id:1 , title: 'A24'},
+  {id:2, title: 'ALangeSohne'},
+  {id:3, title: 'AISJeddah'},
+  {id:4, title: 'AutoGlassStLouis'},
+  {id:5, title: 'Apex'}
+];
+  return (
     <IndexPageContainer>
       <StyledIndexPage>
         <IndexHeader />
