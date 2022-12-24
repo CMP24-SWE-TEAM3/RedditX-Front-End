@@ -1,0 +1,7 @@
+version: '3.3'
+services:
+  front_test:
+    build: ./
+    container_name: client_container_test
+    ports:
+      - '8000:80'
