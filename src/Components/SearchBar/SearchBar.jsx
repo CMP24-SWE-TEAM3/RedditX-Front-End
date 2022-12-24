@@ -8,6 +8,7 @@ import {
 } from "./SearchBar.styled";
 import { useLocation, useNavigate, useParams } from "react-router-dom/dist";
 import BodySearch from "Components/SearchDropDown/SearchDropDown";
+import { SearchDropDown } from "Components/SearchDropDown/SearchDropDown";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useEffect } from "react";
@@ -24,6 +25,7 @@ import { CiCircleRemove } from "react-icons/ci";
 const SearchBar = () => {
   const [query, setQuery] = useState("");
   const [showResults, setShowResults] = useState(false);
+  const [showTrending, setShowTrending] = useState(false);
 
   const auth = useAuth();
 
@@ -61,8 +63,10 @@ const SearchBar = () => {
 
   const onChangeText = (event, searchItems) => {
     setQuery(event.target.value);
-    if (event.target.value.length > 0) setShowResults(true);
-    else setShowResults(false);
+    if (event.target.value.length > 0) {
+      setShowResults(true);
+      setShowTrending(false);
+    } else setShowResults(false);
     communityResults = searchItems
       .filter((item) => {
         const searchTerm = query.toLowerCase();
@@ -113,6 +117,7 @@ const SearchBar = () => {
         value={query}
         onChange={onChangeText}
         onKeyDown={submitSearch}
+        onClick={() => setShowTrending(true)}
       />
       <ClearBtn
         textValue={query.length}
@@ -123,7 +128,7 @@ const SearchBar = () => {
       >
         <CiCircleRemove size={22} />
       </ClearBtn>
-
+      <SearchDropDown showTrending={query.length === 0 && showTrending} />
       <BodySearch
         searchItemsCommunities={communityResults}
         searchItemsPeople={peopleResults}

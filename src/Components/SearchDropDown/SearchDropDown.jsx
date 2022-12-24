@@ -27,6 +27,7 @@ import { BsArrowUpRightCircle } from "react-icons/bs";
 import { IoIosLink } from "react-icons/io";
 import { BsDot } from "react-icons/bs";
 import trendingSearch from "Services/trendingSearch";
+import data from "Data/db";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useContext } from "react";
 import SearchContext from "Features/Search/Contexts/SearchWordContext/Search-context";
@@ -37,7 +38,7 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
  * @param show
  * @return {React.Component}
  */
-const SearchDropDown = ({ searchItems }) => {
+const SearchDropDown = ({ showTrending }) => {
   // authorization user
   const auth = useAuth();
 
@@ -48,50 +49,44 @@ const SearchDropDown = ({ searchItems }) => {
   }, []);
 
   return (
-    <SearchDropDownStyled autoClose={"outside"}>
+    <SearchDropDownStyled show={showTrending} autoClose={"outside"}>
       <Dropdown.Header>trending today</Dropdown.Header>
-      {trendingPostList &&
-        trendingPostList.length !== 0 &&
-        trendingPostList.map((recentPost) => {
-          return (
-            <>
-              <Dropdown.Item eventKey={recentPost._id} disabled={false}>
-                <Link>
+      {data.TrendingPosts.map((recentPost) => {
+        return (
+          <>
+            <Dropdown.Item eventKey={recentPost.id} disabled={false}>
+              <Link>
+                <div>
                   <div>
-                    <div>
-                      <HeaderName>
-                        <Arrow>
-                          <BsArrowUpRightCircle />
-                        </Arrow>
-                        {recentPost.title}
-                      </HeaderName>
-                      <Description>{recentPost.description}</Description>
-                    </div>
-                    <Footer>
-                      <img
-                        crossOrigin="anonymous"
-                        src={`${BASE_URL}/subreddits/files/${recentPost.srIcon}`}
-                        alt={"img-category"}
-                      />
-                      <span>r/{recentPost.category} and more</span>
-                    </Footer>
+                    <HeaderName>
+                      <Arrow>
+                        <BsArrowUpRightCircle />
+                      </Arrow>
+                      {recentPost.title}
+                    </HeaderName>
+                    <Description>{recentPost.description}</Description>
                   </div>
-                  <Aside>
-                    <LinkSide>
-                      <Child>
-                        <SubChild>
-                          {" "}
-                          <IoIosLink />
-                        </SubChild>
-                      </Child>
-                    </LinkSide>
-                  </Aside>
-                </Link>
-              </Dropdown.Item>
-              <Dropdown.Divider />
-            </>
-          );
-        })}
+                  <Footer>
+                    <img src={recentPost.cover} alt={"img-category"} />
+                    <span>r/{recentPost.category} and more</span>
+                  </Footer>
+                </div>
+                <Aside>
+                  <LinkSide>
+                    <Child>
+                      <SubChild>
+                        {" "}
+                        <IoIosLink />
+                      </SubChild>
+                    </Child>
+                  </LinkSide>
+                </Aside>
+              </Link>
+            </Dropdown.Item>
+            <Dropdown.Divider />
+          </>
+        );
+      })}
     </SearchDropDownStyled>
   );
 };
