@@ -32,7 +32,7 @@ pipeline {
                 sh 'ls'
 //                 sh 'cp -r /home/waleeddevops/Front_Test ./'
                 sh 'cd /home/waleeddevops/Front_Test/'
-                sh 'npm ci'
+                sh 'npm install'
                 sh 'npx cypress run --spec "cypress/e2e/Sign-Up/CheckEmail.cy.js"'
             }
         }
