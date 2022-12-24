@@ -10,6 +10,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import { banUser } from "Features/Moderator/Services/userManagementApi";
 
 import LoadingSpinner from "Features/Authentication/Components/LoadingSpinner/LoadingSpinner";
+import { useParams } from "react-router-dom";
 
 import {
   Container,
@@ -43,7 +44,9 @@ const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
  */
 
 const BanUser = ({ setModalShowBaneUser }) => {
-  const communityName = "t5_imagePro235";
+  // const communityName = "t5_imagePro235";
+
+  const { subredditId } = useParams();
 
   const [data, error, isLoading, dataFetch] = useFetchFunction();
 
@@ -116,7 +119,7 @@ const BanUser = ({ setModalShowBaneUser }) => {
         userID: "t2_" + userName,
         operation: "ban",
       },
-      communityName,
+      "t5_" + subredditId,
       auth.getToken()
     );
     setModalShowBaneUser(false);

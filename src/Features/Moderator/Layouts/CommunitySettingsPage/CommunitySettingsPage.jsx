@@ -321,7 +321,8 @@ const CommunitySettingsPage = ({ setModalShowBaneUser }) => {
             <SearchContainer>
               <SearchInput
                 name="communityName"
-                value={communityName}
+                value={subredditId}
+                disabled
                 onChange={handleChange}
               ></SearchInput>
             </SearchContainer>

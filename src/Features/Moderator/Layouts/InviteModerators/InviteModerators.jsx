@@ -21,6 +21,7 @@ import {
 
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
+import { useParams } from "react-router-dom";
 
 const defaultFormFields = {
   userName: "",
@@ -35,7 +36,9 @@ const USER_REGEX = /^[A-z0-9-_]{3,20}$/;
  */
 
 const InviteModerators = ({ setModalShowInviteModerator }) => {
-  const communityName = "t5_imagePro235";
+ // const communityName = "t5_imagePro235";
+
+ const { subredditId } = useParams();
 
   const [data, error, isLoading, dataFetch] = useFetchFunction();
 
@@ -80,7 +83,7 @@ const InviteModerators = ({ setModalShowInviteModerator }) => {
       {
         userID: "t2_" + userName,
         type: "moderator_invite",
-        communityID: communityName,
+        communityID: "t5_"+subredditId,
       },
       auth.getToken()
     );
