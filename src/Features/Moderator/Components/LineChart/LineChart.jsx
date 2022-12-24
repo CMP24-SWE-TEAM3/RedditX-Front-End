@@ -30,7 +30,12 @@ const LineChart = () => {
 
   // get member joined
   useEffect(() => {
-    getMembersCount(fetchMemberCountsJoined, auth, `t5_${subredditId}`, "joined");
+    getMembersCount(
+      fetchMemberCountsJoined,
+      auth,
+      `t5_${subredditId}`,
+      "joined"
+    );
   }, []);
 
   // get member left
@@ -40,7 +45,20 @@ const LineChart = () => {
   // function which contains datasets of members to display on chart
   const data = () => {
     return {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
+      labels: [
+        "December",
+        "November",
+        "October",
+        "September",
+        "August",
+        "July",
+        "June",
+        "May",
+        "April",
+        "March",
+        "February",
+        "January",
+      ],
       datasets: [
         {
           label: "left members",
@@ -52,7 +70,7 @@ const LineChart = () => {
             membersCountLeft.months &&
             membersCountLeft.months.length !== 0
               ? membersCountLeft.months
-              : [1, 0.1, 0.3, 0.1, 0.2, 0.1, 0.12, 0.9, 0.6],
+              : [1, 0.32, 0.13, 0.1, 0.3, 0.1, 0.2, 0.1, 0.12, 0.9, 0.6, 0.34],
         },
         {
           label: "joined members",
@@ -64,7 +82,7 @@ const LineChart = () => {
             membersCountJoined.months &&
             membersCountJoined.months.length !== 0
               ? membersCountJoined.months
-              : [1, 0.3, 0.3, 0.3, 0.5, 0.3, 0.7, 0.8, 0.1],
+              : [1, 0.32, 0.13, 0.1, 0.3, 0.1, 0.2, 0.1, 0.12, 0.9, 0.6, 0.34],
         },
       ],
     };
