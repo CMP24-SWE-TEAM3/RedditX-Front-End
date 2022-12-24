@@ -33,8 +33,8 @@ pipeline {
 //                 sh 'cp -r /home/waleeddevops/Front_Test ./'
                 sh 'cd Front_Test/'
 //                 sh 'npm ci'
-                sh 'sudo npm install -g eslint --unsafe-perm=true --allow-root'
-                sh 'sudo npx cypress run --spec "cypress/e2e/Sign-Up/CheckEmail.cy.js"'
+                sh 'npm install -g eslint --unsafe-perm=true --allow-root'
+                sh 'npx cypress run --spec "cypress/e2e/Sign-Up/CheckEmail.cy.js"'
             }
         }
 //         stage('Post-Test Cleanup') {
