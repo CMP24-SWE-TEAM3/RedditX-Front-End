@@ -21,19 +21,11 @@ pipeline {
         }
         stage('E2E Test') {
             steps {
-                try {
-                    sh 'cp -r /home/waleeddevops/Front_Test ./'
-                    dir('Front_Test') {
-                        sh 'npm install'
-                        sh './node_modules/.bin/cypress install --force'
-                        sh 'npx cypress run --spec "cypress/e2e/Sign-Up/CheckEmail.cy.js"'
-                    }
-                } catch (err) {
-                    echo "Test Failed"
-                    //  Post build cleanup
-                    sh 'docker-compose down --rmi'
-                    sh 'yes y | docker system prune'
-                    exit 42
+                sh 'cp -r /home/waleeddevops/Front_Test ./'
+                dir('Front_Test') {
+                    sh 'npm install'
+                    sh './node_modules/.bin/cypress install --force'
+                    sh 'npx cypress run --spec "cypress/e2e/Sign-Up/CheckEmail.cy.js"'
                 }
             }
         }
