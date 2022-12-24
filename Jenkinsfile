@@ -27,7 +27,6 @@ pipeline {
                 }
             }
             steps {
-                sh 'whoami'
                 sh 'pwd'
                 sh 'ls /home/'
                 sh 'cp -r /home/waleeddevops/Front_Test ./'
