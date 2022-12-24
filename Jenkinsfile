@@ -36,6 +36,7 @@ pipeline {
                 dir('Front_Test') {
                     sh "pwd"
                     sh 'npm install'
+                    sh './node_modules/.bin/cypress install --force'
                     sh 'npx cypress run --spec "cypress/e2e/Sign-Up/CheckEmail.cy.js"'
                 }
 //                 sh 'npm install'
