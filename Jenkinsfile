@@ -35,8 +35,12 @@ pipeline {
                 sh 'cd ./Front_Test'
                 sh 'pwd'
                 sh 'ls'
+                dir('Front_Test') {
+                    sh "pwd"
+                    sh 'npx cypress run --spec "cypress/e2e/Sign-Up/CheckEmail.cy.js"'
+                }
 //                 sh 'npm install'
-                sh 'npx cypress run --spec "cypress/e2e/Sign-Up/CheckEmail.cy.js"'
+                
             }
         }
 //         stage('Post-Test Cleanup') {
