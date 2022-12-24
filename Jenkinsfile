@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Pre-Build Setup') {
             steps {
+                sh 'whoami'
                 sh 'cp /home/waleeddevops/client-nginx.conf .'
                 sh 'mv Dockerfile.prod Dockerfile'
             }
