@@ -30,13 +30,19 @@ const LineChart = () => {
 
   // get member joined
   useEffect(() => {
-    getMembersCount(fetchMemberCountsJoined, auth, `t5_${subredditId}`, "joined");
+    getMembersCount(
+      fetchMemberCountsJoined,
+      auth,
+      `t5_${subredditId}`,
+      "joined"
+    );
   }, []);
 
   // get member left
   useEffect(() => {
     getMembersCount(fetchMemberCountsLeft, auth, `t5_${subredditId}`, "left");
   }, []);
+
   // function which contains datasets of members to display on chart
   const data = () => {
     return {

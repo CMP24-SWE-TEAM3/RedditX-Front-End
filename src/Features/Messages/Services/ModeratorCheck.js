@@ -2,7 +2,7 @@ import axios from "API/axios";
 
 
 /**
- * Function to fetch Communities with Random Categories
+ * Function to Check if current user is a modertor
  * @param {object} auth Context object coming from useAuth custom Hook
  * @param {Function} fetchFunction Coming from useFetchFunction custom hook
  */

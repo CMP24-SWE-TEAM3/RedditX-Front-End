@@ -12,8 +12,8 @@ import LineChart from "Features/Moderator/Components/LineChart/LineChart";
 import Results from "Features/Moderator/Components/Results/Results";
 import AsideGraph from "Features/Moderator/Components/AsideGraph/AsideGraph";
 /**
- * Component that displays the graph with
- * @returns
+ * Component that displays the graph with statistics of members per day and months
+ * @returns {React.Component}
  */
 const Graph = () => {
   return (

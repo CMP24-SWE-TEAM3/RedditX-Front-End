@@ -10,6 +10,7 @@ const Tables = () => {
   // State for selected table
   const [showState, setShowState] = useState(true);
 
+  // handle nav-links of statistics per day and month
   const handleShowTable = (e) => {
     if (e.target.id === "1") setShowState(true);
     else setShowState(false);

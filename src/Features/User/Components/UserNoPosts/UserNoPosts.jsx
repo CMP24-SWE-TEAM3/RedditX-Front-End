@@ -15,11 +15,17 @@ import { TbArrowBigTop, TbArrowBigDown } from "react-icons/tb";
 /**
  * component appear when there is no posts
  *
+ * @param {string} text - text to be shown
  * @returns {React.Component}
  */
 const UserNoPosts = ({ text }) => {
   const n = 10;
 
+  /**
+   * the outline of post
+   *
+   * @returns {React.Component}
+   */
   const FakePost = () => {
     return (
       <FakePostContainer>

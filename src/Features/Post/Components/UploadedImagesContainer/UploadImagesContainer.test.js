@@ -16,6 +16,7 @@ const mockFiles = [
   },
 ];
 
+
 const mockSetFiles = jest.fn();
 const mockSetSelectedImageId = jest.fn();
 

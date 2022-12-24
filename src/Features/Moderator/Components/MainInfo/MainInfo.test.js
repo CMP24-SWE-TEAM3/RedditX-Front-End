@@ -14,3 +14,4 @@ describe("MainInfo component", () => {
   //   expect(outputElement.textContent).toBe("Post flair management");
   //   expect(outputElement).toBeTruthy();
 });
+//test

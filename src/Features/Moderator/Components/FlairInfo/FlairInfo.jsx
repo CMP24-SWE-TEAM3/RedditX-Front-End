@@ -41,6 +41,7 @@ import DeleteFlair from "Features/Moderator/Services/DeleteFlair";
  * @Component
  * @param {String} text -  the text of Flair
  * @param {String} color -  the color of Flair
+ * @param {String} id -  the id of Flair
  * @param {boolean} Edit -  is this flair are editing now
  * @param {String} background -  the background of Flair
  * @param {boolean} isNew -  the state of Flair is it created new or only fetched
@@ -132,12 +133,12 @@ const FlairInfo = ({
       ctx.ChangeFetchHandler(!ctx.ChangeFetch);
     }
   });
+  const { subredditId } = useParams();
+  const auth = useAuth();
   /**
    * function to handle Save operation
    * @param {object} e -  event object
    */
-  const { subredditId } = useParams();
-  const auth = useAuth();
   const saveHandler = (e) => {
     // e.preventDefault();
     settheBegin((old) => ({

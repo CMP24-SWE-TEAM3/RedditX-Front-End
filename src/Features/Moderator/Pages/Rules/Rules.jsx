@@ -10,9 +10,14 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useParams } from "react-router-dom";
 import getSubreddit from "Features/Subreddit/Services/getSubreddit";
 import { RulesContainer, RuleTabContainer } from "./Rules.styled";
-
+/**
+ * Component that displays a list of rules
+ * @returns {React.Component}
+ */
 const Rules = () => {
+  // getting subreddit name
   const { subredditId } = useParams();
+  // getting data of edited rule
   const [editor, setEditor] = useState(null);
 
   // authorization's user
@@ -24,6 +29,7 @@ const Rules = () => {
   // Data: the response data
   const [rulesList, error, isLoading, fetchData] = useFetchFunction();
 
+  // function to handle subreddit info
   useEffect(() => {
     getSubreddit(fetchData, `t5_${subredditId}`, auth);
   }, []);

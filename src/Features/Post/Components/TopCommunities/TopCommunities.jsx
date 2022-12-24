@@ -23,7 +23,7 @@ const CommunityList = [
   },
 ];
 /**
- * Component that contains the Community Card Elements.
+ * Component that contains the community card elements (container for community card elements).
  *
  * @Component
  * @param {object} CommunityList -  contains the Community list elements

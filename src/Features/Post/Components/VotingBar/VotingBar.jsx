@@ -13,7 +13,7 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 /**
- * VotingBar Component that is in the side of Post Container
+ * VotingBar Component that is in the side of Post Container (it contains up vote and down vote buttons).
  * @returns {React.Component} VotingBar component
  */
 const VotingBar = ({ number, id, voters }) => {

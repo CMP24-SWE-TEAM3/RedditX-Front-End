@@ -119,3 +119,4 @@ describe("CommunityCardItem component", () => {
     // expect(outputmembers).toBeInTheDocument();
   });
 });
+//test

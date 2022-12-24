@@ -5,3 +5,4 @@ describe("Safe Search", () => {
     expect(shallow(<SafeSearch />)).toMatchSnapshot();
   });
 });
+// test

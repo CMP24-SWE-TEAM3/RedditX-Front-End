@@ -1,7 +1,7 @@
 import axios from "API/axios";
 
 /**
- * Function to fetch Communities with Random Categories
+ * Function to fetch Settings
  * @param {object} auth Context object coming from useAuth custom Hook
  * @param {Function} fetchFunction Coming from useFetchFunction custom hook
  */

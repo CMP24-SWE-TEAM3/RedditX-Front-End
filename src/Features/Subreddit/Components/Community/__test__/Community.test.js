@@ -2,7 +2,7 @@ import { fireEvent, render, screen, waitFor  } from "@testing-library/react";
 
 import TestingComponent from "Features/Subreddit/Utils/TestingComponent";
 import Community from "../Community";
-describe("CommunityCardItem component", () => {
+describe("Community component", () => {
 
   it('renders "join" if the button was NOT clicked', () => {
     render(
@@ -108,7 +108,7 @@ describe("CommunityCardItem component", () => {
       <TestingComponent>
         <Community
           img="logo.svg"
-          title = {"r/Gaming"}
+          title = {"t5_Gaming"}
           index = {1}
           communityID={"1"}
           description={
@@ -122,7 +122,7 @@ describe("CommunityCardItem component", () => {
 
     // Assert
     //Assertion for Titles
-    let outputElement = screen.getAllByText("r/Gaming");
+    let outputElement = screen.getAllByText("Gaming");
     expect(outputElement.length).toBe(2);
     
     //Assertion for Members Count

@@ -6,8 +6,13 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import { StyledButton } from "./StyleControlButton.styled";
 
 /**
+ * A button that controls the style of the text in rich (draft) text editor
  *
- * @param {*} param0
+ * @param {String} style - style of the text
+ * @param {Function} onToggle - function to toggle the style
+ * @param {Boolean} active - whether the style is active or not
+ * @param {String} label - label of the button
+ * @param {React.Component} icon - icon of the button
  * @returns {React.Component} StyleControlButton component
  */
 const StyleControlButton = ({ style, onToggle, active, label, icon }) => {

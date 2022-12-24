@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Component this is a test for Button Component 1`] = `
+<styled.div>
+  <p
+    className="title"
+  >
+    Communities
+  </p>
+  <CommunityCardItem
+    communityDescription="we are looking for a new community"
+    communityID="1"
+    communityName="Cufe"
+    key="1"
+    membersCount="4"
+  />
+  <CommunityCardItem
+    communityDescription="we are looking for a new modal"
+    communityID="2"
+    communityName="ASU"
+    key="2"
+    membersCount="1"
+  />
+  <CommunityCardItem
+    communityDescription="we are looking for a new school"
+    communityID="3"
+    communityName="MCE"
+    key="3"
+    membersCount="1"
+  />
+</styled.div>
+`;

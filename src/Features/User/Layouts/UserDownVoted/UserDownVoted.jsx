@@ -12,6 +12,11 @@ import CollapsePost from "Features/Post/Layouts/CollapsePost/CollapsePost";
 import UserNoPosts from "Features/User/Components/UserNoPosts/UserNoPosts";
 import Post from "Features/Post/Pages/Post/Post";
 
+/**
+ * downvoted page
+ * 
+ * @returns {React.Component}
+ */
 const UserDownVoted = () => {
   const [showPost, setShowPost] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);

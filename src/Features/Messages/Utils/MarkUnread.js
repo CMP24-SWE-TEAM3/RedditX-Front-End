@@ -1,10 +1,10 @@
 /**
  * Function that handles Marking a message as Unread
  *
- * @Component
+ * @Function
  * @param {number} id - id of the message
  * @param {Function} changeMessage - Function that changes the contents of the current message
- * @returns {React.Component}
+ * @returns {object} - State after marking Unread
  */
 function markUnread(id, changeMessage) {
     changeMessage((message) => {

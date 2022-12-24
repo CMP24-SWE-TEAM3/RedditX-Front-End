@@ -10,6 +10,14 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 import useFetchFunction from "Hooks/useFetchFunction";
 
+/**
+ * Component that contains the email address change modal
+ *
+ * @Component
+ * @param {boolean} showModal - Boolean to show or hide the modal
+ * @param {Function} setShowModal - Function to change that state
+ * @returns {React.Component}
+ */
 const SettingModal = ({ showModal, setShowModal }) => {
   const auth = useAuth();
 

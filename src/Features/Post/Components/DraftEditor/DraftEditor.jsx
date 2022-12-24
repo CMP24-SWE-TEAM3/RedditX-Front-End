@@ -55,6 +55,12 @@ function findLinkEntities(contentBlock, callback, contentState) {
   }, callback);
 }
 
+/**
+ * Link component in draft editor
+ *
+ * @param {Object} props - contentState and entityKey from draft editor
+ * @returns {React.Component}
+ */
 const Link = (props) => {
   const { url } = props.contentState.getEntity(props.entityKey).getData();
   return (
@@ -83,7 +89,7 @@ const Link = (props) => {
 };
 
 /**
- * DraftEditor component
+ * DraftEditor component (main component for draft editor) (rich text editor)
  * @returns {React.Component} DraftEditor
  */
 const DraftEditor = ({ files, setFiles, text, setText, load, setTextHTML }) => {

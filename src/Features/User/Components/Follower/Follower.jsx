@@ -13,6 +13,13 @@ import { useUserID } from "Features/User/Contexts/UserIDProvider";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
+/**
+ * component of follower in followers page
+ *
+ * @param {string} followerID - the id of follower
+ * @param {string} avatar - the avatar of follower
+ * @returns {React.Component}
+ */
 const Follower = ({ followerID, avatar }) => {
   const [isFollowing, setIsFollowing] = useState(false);
   const { following } = useFollowing();
@@ -26,6 +33,11 @@ const Follower = ({ followerID, avatar }) => {
     fetchFollowing,
   ] = useFetchFunction();
 
+  /**
+   * function to handle following and unfollowing
+   *
+   * @param {boolean} type
+   */
   const handleFollowing = (type) => {
     followUser(fetchFollowing, auth, {
       action: type ? "sub" : "unsub",
@@ -43,6 +55,9 @@ const Follower = ({ followerID, avatar }) => {
     }
   }, [following, followerID]);
 
+  /**
+   * function to handle state of following
+   */
   function followingHandler() {
     setIsFollowing((prev) => !prev);
     handleFollowing(isFollowing);

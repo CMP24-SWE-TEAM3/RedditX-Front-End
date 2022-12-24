@@ -28,6 +28,12 @@ import getMyData from "Features/Post/Services/getMyData";
 import { BASE_URL } from "API/axios";
 import getUser from "Features/Post/Services/getUser";
 
+/**
+ * The sidebar for user's information in create post and post pages.
+ *
+ * @param {String} userId - id of the user
+ * @returns {React.Component} UserSideCard component
+ */
 const UserSideCard = ({ userId }) => {
   console.log("userId", userId);
   const [toggle, setToggle] = useState(false);

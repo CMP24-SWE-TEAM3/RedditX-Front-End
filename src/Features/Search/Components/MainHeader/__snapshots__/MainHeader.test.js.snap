@@ -16,6 +16,7 @@ exports[`People Main Header this is a test for Main Header 1`] = `
           "active": "#F6F7F8",
           "card_hover": "#E3EDF6",
           "comment": "#e9f5fd",
+          "comment_overview_background": "#f2f8fd",
           "fill": "#f6f7f878",
           "header": "#f6f7f8",
           "hover_background": "#f5fafd",
@@ -98,6 +99,10 @@ exports[`People Main Header this is a test for Main Header 1`] = `
         },
         "linecolor": Object {
           "sideBorder": "#ccc",
+        },
+        "reportModalExp": Object {
+          "headline": "#1c1c1c",
+          "text": "#9fa1a3",
         },
       }
     }

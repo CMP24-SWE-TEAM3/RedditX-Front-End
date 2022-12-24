@@ -2,7 +2,7 @@ import axios from "API/axios";
 
 /**
  * A service to handle User opened retrieval 
- *
+ * @param {object} auth Context object coming from useAuth custom Hook
  * @param {Function} fetchData - The function to make the request
  */
 const getUser = async (fetchData, auth) => {

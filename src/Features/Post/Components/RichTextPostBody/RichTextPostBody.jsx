@@ -3,7 +3,7 @@ import Draft from "draft-js";
 import { useState } from "react";
 import Media from "../Media/Media";
 
-import { Container, RichEditorEditor } from "./RichTextPostBody.styled";
+import { RichEditorEditor } from "./RichTextPostBody.styled";
 
 // Extract Draft variables
 const { convertFromRaw, Editor, EditorState } = Draft;
@@ -35,6 +35,12 @@ const styleMap = {
   },
 };
 
+/**
+ * RichTextPostBody a component that renders a post body in rich text format
+ *
+ * @param {Object} post - Post object
+ * @returns {React.Component} - RichTextPostBody component
+ */
 const RichTextPostBody = ({ post }) => {
   // console.log("RichTextPostBody", post.text, post);
   // State for draft editor

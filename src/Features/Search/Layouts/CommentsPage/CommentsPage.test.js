@@ -8,16 +8,89 @@ import TestingComponent from "Features/Search/TestingComponent";
 const CommentList = {
   results: [
     {
-      postContent:
-        "[WP] They tell you the warmachines aren't sentient, being kind to them does nothing. But at the same time, it seems funny to you that their targets often seems the be the ones currently shooting at you.",
-      commentUserImage: "download.jpg",
-      userName: "t2_moazMohamed",
-      time: "2022-11-08T20:34:43.515Z",
-      bodyContent: "texttexttexttexttextt",
-      postFooter: {
-        upVotes: 20,
-        Comments: "",
+      _id: "639e99a3d6e0868d81fc5f3b",
+      authorId: {
+        _id: "t2_ZiadSherif10",
+        avatar: "user-t2_ZiadSherif10-1671302529582.jpg",
       },
+      isRoot: true,
+      replyingTo: "639e9963d6e0868d81fc5d8b",
+      postID: {
+        _id: "639e9963d6e0868d81fc5d8b",
+        title: "ahee ya waldyy",
+        votesCount: 1,
+        createdAt: "2022-12-20T02:21:09.244Z",
+        userID: "t2_ZiadSherif10",
+      },
+      replies: [
+        "63a206ba156ce9f6a82566b0",
+        "63a207139aac17c1d02148ce",
+        "63a20798d571d9878c7601ce",
+      ],
+      textHTML: "@lotfy",
+      textJSON:
+        '{"blocks":[{"key":"cl7pl","text":"@lotfy","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}',
+      votesCount: 1,
+      voters: [
+        {
+          userID: "t2_ZiadSherif10",
+          voteType: 1,
+          _id: "639e99a3d6e0868d81fc5f3c",
+        },
+        {
+          userID: "t2_lotfy2",
+          voteType: -1,
+          _id: "63a205fb156ce9f6a8256623",
+        },
+      ],
+      isDeleted: false,
+      isLocked: false,
+      communityID: {
+        _id: "t5_lotfy_subreddit3",
+        icon: "default-icon.jpg",
+      },
+      spamCount: 0,
+      isCollapsed: false,
+      spams: [],
+      createdAt: "2022-12-20T02:21:27.190Z",
+    },
+    {
+      _id: "639e99abd6e0868d81fc5f4d",
+      authorId: {
+        _id: "t2_ZiadSherif10",
+        avatar: "user-t2_ZiadSherif10-1671302529582.jpg",
+      },
+      isRoot: true,
+      replyingTo: "639e9963d6e0868d81fc5d8b",
+      postID: {
+        _id: "639e9963d6e0868d81fc5d8b",
+        title: "ahee ya waldyy",
+        votesCount: 1,
+        createdAt: "2022-12-20T02:21:09.244Z",
+        userID: "t2_ZiadSherif10",
+      },
+      replies: [],
+      textHTML: "@lotfy",
+      textJSON:
+        '{"blocks":[{"key":"cl7pl","text":"@lotfy","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}',
+      votesCount: 1,
+      voters: [
+        {
+          userID: "t2_ZiadSherif10",
+          voteType: 1,
+          _id: "639e99abd6e0868d81fc5f4e",
+        },
+      ],
+      isDeleted: false,
+      isLocked: false,
+      communityID: {
+        _id: "t5_lotfy_subreddit3",
+        icon: "default-icon.jpg",
+      },
+      spamCount: 0,
+      isCollapsed: false,
+      spams: [],
+      createdAt: "2022-12-20T02:21:27.190Z",
     },
   ],
 };
@@ -35,3 +108,4 @@ describe("Comments component", () => {
 });
 
 // it("this is a test", () => {});
+// test

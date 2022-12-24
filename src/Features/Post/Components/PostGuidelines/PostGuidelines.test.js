@@ -4,6 +4,7 @@ import TestingComponent from "Features/Post/TestingComponent";
 // Import components
 import PostGuidelines from "./PostGuidelines";
 
+
 describe("Post form footer", () => {
   it("should contain 5 table data", () => {
     render(

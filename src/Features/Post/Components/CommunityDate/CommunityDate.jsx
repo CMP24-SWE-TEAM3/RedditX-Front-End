@@ -23,6 +23,7 @@ import { useSubmitDestination } from "Features/Post/Contexts/submitDestination";
 import getDaysCount from "Features/Post/Utils/getDaysCount";
 import { BASE_URL } from "API/axios";
 /**
+ * A card that contains the community information
  *
  * @returns {React.Component} CreatePost component
  */

@@ -10,6 +10,16 @@ import Form from "react-bootstrap/Form";
 // import { StyledForm } from "Features/Subreddit/Components/CommunityOptions/CommunityOptions.styled";
 import { useState } from "react";
 
+/**
+ * Component that contains the password change modal
+ *
+ * @Component
+ * @param {string} headerText - Component Header
+ * @param {string} innerText - Component Content
+ * @param {Function} onToggle - What should happen when the component is toggled
+ * @param {boolean} state - Initial State of the toggle element
+ * @returns {React.Component}
+ */
 const SettingsComponent = ({ headerText, innerText, onToggle, state }) => {
   const [toggle, setToggle] = useState(state);
 

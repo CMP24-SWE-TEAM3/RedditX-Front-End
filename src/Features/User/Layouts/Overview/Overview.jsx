@@ -11,6 +11,11 @@ import PostShape from "Features/Post/Layouts/PostShape/PostShape";
 import UserComment from "Features/User/Components/UserComment/UserComment";
 import Post from "Features/Post/Pages/Post/Post";
 
+/**
+ * overview page
+ *
+ * @returns {React.Component}
+ */
 const Overview = () => {
   const [showPost, setShowPost] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
@@ -118,7 +123,7 @@ const Overview = () => {
                         setSelectedPost(post);
                       }}
                     >
-                      <PostShape post={post}/>
+                      <PostShape post={post} />
                     </div>
                   );
                 }

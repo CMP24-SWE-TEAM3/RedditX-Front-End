@@ -18,6 +18,12 @@ import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
 import RequestMods from "../RequestMods/RequestMods";
 import { useState } from "react";
 
+/**
+ * page appear when user try to access private subreddit
+ * and he is not a member
+ *
+ * @returns {React.Component}
+ */
 const PrivatePage = () => {
   const [modalShow, setModalShow] = useState(false);
   const { communityID } = useSubRedditID();
@@ -27,6 +33,11 @@ const PrivatePage = () => {
     setModalShow(true);
   }
 
+  /**
+   * have description of community
+   *
+   * @returns {React.Component}
+   */
   const CommunityDesc = () => {
     return (
       <CommunityDescContainer>
@@ -45,6 +56,11 @@ const PrivatePage = () => {
     );
   };
 
+  /**
+   * button to request join
+   *
+   * @returns {React.Component}
+   */
   const Buttons = () => {
     return (
       <ButtonsDiv>
