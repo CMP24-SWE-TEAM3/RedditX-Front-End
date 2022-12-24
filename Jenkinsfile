@@ -5,13 +5,14 @@ pipeline {
         stage('Pre-Build Setup') {
             steps {
                 sh 'cp /home/waleeddevops/client-nginx.conf .'
-                sh 'cp /home/waleeddevops/docker-compose-front-test.yaml .'
+                sh 'cp /home/waleeddevops/docker-compose-front-test.yaml ./docker-compose.yaml'
+                sh 'cat docker-compose.yaml'
                 sh 'mv Dockerfile.prod Dockerfile'
             }
         }
         stage('Build') {
             steps {
-                sh 'docker-compose up -d --build -f docker-compose-front-test.yaml'
+                sh 'docker-compose up -d --build'
             }
         }
         stage('Post-Build Cleanup #1') {
