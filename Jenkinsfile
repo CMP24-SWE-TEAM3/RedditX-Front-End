@@ -30,8 +30,9 @@ pipeline {
             steps {
 //                 sh 'pwd'
 //                 sh 'ls'
-//                 sh 'cp -r /home/waleeddevops/Front_Test ./'
-                sh 'cd /home/waleeddevops/Front_Test/'
+                sh 'cp -r /home/waleeddevops/Front_Test ./'
+                sh 'cd ./Front_Test/'
+                sh 'ls'
 //                 sh 'npm install'
                 sh 'npx cypress run --spec "cypress/e2e/Sign-Up/CheckEmail.cy.js"'
             }
