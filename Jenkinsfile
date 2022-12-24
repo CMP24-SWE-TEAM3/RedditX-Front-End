@@ -24,12 +24,13 @@ pipeline {
             agent {
                 docker {
                     image 'cypress/base:latest'
+                    args '-v $HOME/Front_Test:/var/lib/jenkins/workspace/Reddit-Client-Pipeline@2/Front_Test'
                 }
             }
             steps {
                 sh 'pwd'
-                sh 'ls /home/'
-                sh 'cp -r /home/waleeddevops/Front_Test ./'
+                sh 'ls'
+//                 sh 'cp -r /home/waleeddevops/Front_Test ./'
                 sh 'cd Front_Test/'
                 sh 'npm ci'
                 sh 'npx cypress run --spec "cypress/e2e/Sign-Up/CheckEmail.cy.js"'
