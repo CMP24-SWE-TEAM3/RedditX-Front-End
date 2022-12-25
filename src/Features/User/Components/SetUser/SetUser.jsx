@@ -12,6 +12,12 @@ import AdultPage from "../AdultPage/AdultPage";
 import fetchPeopleFollowed from "Features/Search/Services/fetchPeopleFollowed";
 import { useFollowing } from "Features/User/Contexts/FollowingProvider";
 
+/**
+ *
+ * @param {string} userId - the id of user
+ * @param {React.Component} children - the children components
+ * @returns {React.Component}
+ */
 const SetUser = ({ userId, children }) => {
   const [show, setShow] = useState(false);
   const auth = useAuth();

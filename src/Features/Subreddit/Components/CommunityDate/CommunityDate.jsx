@@ -62,6 +62,11 @@ const CommunityDate = () => {
 
   const [descData, descError, descLoading, descFetch] = useFetchFunction();
 
+  /**
+   * handle when click save description
+   * 
+   * @param {string} desc the description of community
+   */
   const handleSaving = (desc) => {
     updateSettings(
       descFetch,
@@ -183,7 +188,7 @@ const CommunityDate = () => {
 
   /**
    *
-   * @param {function} onClick - handle when click on description
+   * @param {function} click - handle when click on description
    * @returns {React.Component} description
    */
   const Description = ({ click }) => {
@@ -201,6 +206,11 @@ const CommunityDate = () => {
     );
   };
 
+  /**
+   * static description that can not edit
+   * 
+   * @returns {React.Component}
+   */
   const StaticDescription = () => {
     return (
       <StaticDescriptionContainer>

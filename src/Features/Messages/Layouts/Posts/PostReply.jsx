@@ -31,6 +31,7 @@ const messagesData = [
  * Component that contains the Post Replies Panel
  *
  * @Component
+ * @param {object} replies - Array that has post Replies
  * @returns {React.Component}
  */
 function PostReplay({replies}) {

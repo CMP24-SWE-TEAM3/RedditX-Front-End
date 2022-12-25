@@ -42,6 +42,7 @@ const LineChart = () => {
   useEffect(() => {
     getMembersCount(fetchMemberCountsLeft, auth, `t5_${subredditId}`, "left");
   }, []);
+
   // function which contains datasets of members to display on chart
   const data = () => {
     return {

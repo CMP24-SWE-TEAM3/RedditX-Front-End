@@ -42,6 +42,7 @@ import { useParams } from "react-router-dom";
 import getUser from "Features/Post/Services/getUser";
 
 /**
+ * A dropdown menu that contains the communities in the post form
  *
  * @returns {React.Component} - ChooseCommunity component (The dropdown menu that contains the communities in the post form)
  */

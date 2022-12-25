@@ -1,11 +1,11 @@
 /**
- * Function that handles downvoting a Post Reply or a Username Mention
+ * Function that handles downvoting a Post Reply or a Username Mention  [Used in UI]
  *
- * @Component
+ * @Function
  * @param {number} id - id of the message
  * @param {Function} changeMessage - Function that changes the contents of the current message
  * @param {boolean} upvote - Indicates Upvote status of the comment
- * @returns {React.Component}
+ * @returns {object} - State after being edited
  */
 function downVote(id, changeMessage, upvote) {
     changeMessage((message) => {

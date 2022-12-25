@@ -12,6 +12,12 @@ import {
   Text,
 } from "./BlockPeople.styled";
 
+/**
+ * Component that contains the area for blocking users
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const BlockPeople = () => {
   const auth = useAuth();
   const [res, error, loading, fetchData] = useFetchFunction();

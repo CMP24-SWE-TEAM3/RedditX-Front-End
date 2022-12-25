@@ -3,6 +3,10 @@ import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { ItemContainer } from "./ReorderItem.styled";
 
+/**
+ * Component that displays a list of draggble rule
+ * @returns {React.Component}
+ */
 const ReorderItem = ({ index, item }) => {
   return (
     <Draggable draggableId={`${index}`} index={index}>

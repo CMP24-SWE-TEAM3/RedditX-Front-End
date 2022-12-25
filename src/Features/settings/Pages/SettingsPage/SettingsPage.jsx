@@ -25,6 +25,12 @@ import { useEffect, useState } from "react";
 import fetchPrefs from "../../Services/FetchPrefs";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
+/**
+ * Component that contains the whole Settings Page
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const SettingsPage = () => {
   const [prefs, setPrefs] = useState({});
   const auth = useAuth();

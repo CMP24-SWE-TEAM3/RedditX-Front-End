@@ -34,16 +34,16 @@ export function SearchContextProvider(props) {
     console.log(isSubreddit);
   };
   /**
-   * Function for is the search for Subreddit
-   * @param {string} community  - which indicates the Subreddit we search for.
+   * Function for is the search for community
+   * @param {string} community  - which indicates the community we search for.
    */
   const communityHandler = (community) => {
     setcommunity(community);
     console.log(community);
   };
   /**
-   * Function for is the search for Subreddit
-   * @param {string} community  - which indicates the Subreddit we search for.
+   * Function for is the search for Sort
+   * @param {string} Sort  - which indicates the Sort we search for.
    */
   const SortHandler = (Sort) => {
     setSort(Sort);

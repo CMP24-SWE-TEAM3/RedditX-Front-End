@@ -9,6 +9,10 @@ import { Dropdown } from "react-bootstrap";
 import { NavLink, useLocation } from "react-router-dom";
 import { useIsMe } from "Features/User/Contexts/IsMeProvider";
 
+/**
+ * 
+ * @returns {React.Component}
+ */
 const UserNav = () => {
   const location = useLocation();
   const url = location.pathname;
@@ -17,6 +21,10 @@ const UserNav = () => {
 
   const { isMe } = useIsMe();
 
+  /**
+   * 
+   * @returns {React.Component}
+   */
   const DropNav = () => {
     return (
       <DotsDropdown>

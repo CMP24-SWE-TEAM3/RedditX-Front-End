@@ -123,3 +123,4 @@ describe("CommunityItem component", () => {
     expect(outputdesc).toBeInTheDocument();
   });
 });
+//test

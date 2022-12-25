@@ -13,7 +13,14 @@ import PasswordModal from "../PasswordModal/PasswordModal";
 
 
 
-
+/**
+ * Component that contains the password change setting
+ *
+ * @Component
+ * @param {string} header - Component Header
+ * @param {string} content - Component Title
+ * @returns {React.Component}
+ */
 const PasswordChange = ({header, content}) => {
 
     const[showModal, setShowModal] = useState(false); 

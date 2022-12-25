@@ -9,6 +9,13 @@ import {
   ContainerNotifications,
   ContainerNotificationsInner,
 } from "./Notifications.styled";
+
+/**
+ * Component that contains the whole Notification page
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const Notifications = () => {
   const [notificationRes, errorNotification, notificationLoading, fetchFunction] = useFetchFunction();
   const auth = useAuth();

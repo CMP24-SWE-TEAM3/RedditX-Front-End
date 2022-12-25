@@ -13,11 +13,21 @@ import { useFollowers } from "Features/User/Contexts/FollowersProvider";
 import { FiSearch } from "react-icons/fi";
 import Follower from "Features/User/Components/Follower/Follower";
 
+/**
+ * followers page of user
+ *
+ * @returns {React.Component}
+ */
 const Followers = () => {
   const [searchText, setSearchText] = useState("");
   const [filteredList, setFilteredList] = useState([]);
   const { followers } = useFollowers();
 
+  /**
+   * handle change of text
+   *
+   * @param {event} event
+   */
   function handleSearchTextChange(event) {
     setSearchText(event.target.value);
   }
@@ -26,6 +36,9 @@ const Followers = () => {
     setFilteredList(followers);
   }, [followers]);
 
+  /**
+   * handle click on search button
+   */
   function handleSearchButtonClick() {
     setFilteredList(
       followers.filter((follower) => {

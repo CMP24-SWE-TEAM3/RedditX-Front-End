@@ -21,7 +21,6 @@ import DeleteModal from "../DeleteModal/DeleteModal";
 
 /**
  * Component that contains Flair Item
- *
  * @Component
  * @param {String} text -  the text of Flair
  * @param {String} color -  the color of Flair

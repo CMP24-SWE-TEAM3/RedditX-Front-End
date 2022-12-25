@@ -69,6 +69,11 @@ const MONTHS = [
   "Dec",
 ];
 
+/**
+ * user side card component
+ *
+ * @returns {React.Component}
+ */
 const UserSideCard = () => {
   const [isFollowing, setIsFollowing] = useState(false);
   const [toggle, setToggle] = useState(false);
@@ -113,14 +118,27 @@ const UserSideCard = () => {
     }
   }, [selectedImage]);
 
+  /**
+   * function handle click on more
+   */
   function toggleHandler() {
     setToggle((prev) => !prev);
   }
 
+  /**
+   * background of avatar
+   *
+   * @returns {React.Component}
+   */
   const Background = () => {
     return <BackgroundContainer></BackgroundContainer>;
   };
 
+  /**
+   * profile picture of user
+   *
+   * @returns {React.Component}
+   */
   const ProfilePic = () => {
     return (
       <AvatarContainer>
@@ -185,6 +203,11 @@ const UserSideCard = () => {
     );
   };
 
+  /**
+   * component for karma and cake day
+   *
+   * @returns {React.Component}
+   */
   const KarmaCake = () => {
     return (
       <KarmaCakeContainer>
@@ -256,6 +279,11 @@ const UserSideCard = () => {
     );
   };
 
+  /**
+   * component of more options for user
+   *
+   * @returns {React.Component}
+   */
   const MoreOptions = () => {
     return (
       <MoreOptionsContainer>
@@ -266,6 +294,11 @@ const UserSideCard = () => {
     );
   };
 
+  /**
+   * options in more options
+   *
+   * @returns {React.Component}
+   */
   const MoreOptionsContent = () => {
     return (
       <MoreOptionsContainer>
@@ -274,10 +307,21 @@ const UserSideCard = () => {
     );
   };
 
+  /**
+   * the about user component
+   *
+   * @param {string} text - about text
+   * @returns {React.Component}
+   */
   const UserAbout = ({ text }) => {
     return <UserAboutContainer>{text}</UserAboutContainer>;
   };
 
+  /**
+   * button to unblock user
+   *
+   * @returns {React.Component}
+   */
   const UnBlockButton = () => {
     return (
       <BlockedButton
@@ -293,10 +337,16 @@ const UserSideCard = () => {
     );
   };
 
+  /**
+   * function handle on mouse in component
+   */
   function onInBLockHandler() {
     setBlockText("Unblock");
   }
 
+  /**
+   * function handle when mouse out component
+   */
   function onOutBlockHandler() {
     setBlockText("Block");
   }
@@ -313,6 +363,9 @@ const UserSideCard = () => {
     loadingUnBlock
   );
 
+  /**
+   * function handle post of unblock
+   */
   const handleUnBlock = () => {
     blockUser(unBlockData, auth, {
       userID: userID,
@@ -320,11 +373,19 @@ const UserSideCard = () => {
     });
   };
 
+  /**
+   * function handle when user click on unblock button
+   */
   function unBlockHandler() {
     setShow(false);
     handleUnBlock();
   }
 
+  /**
+   * follow button
+   *
+   * @returns {React.Component}
+   */
   const FollowButton = () => {
     return (
       <StyledFollowButton
@@ -345,6 +406,11 @@ const UserSideCard = () => {
     fetchFollowing,
   ] = useFetchFunction();
 
+  /**
+   * function handle post of follow
+   *
+   * @param {boolean} type - boolean for follow or unfollow
+   */
   const handleFollowing = (type) => {
     followUser(fetchFollowing, auth, {
       action: type ? "unsub" : "sub",
@@ -362,6 +428,9 @@ const UserSideCard = () => {
     }
   }, [following, userID]);
 
+  /**
+   * function handle when user click on follow button
+   */
   function followingHandler() {
     setIsFollowing((prev) => !prev);
     handleFollowing(isFollowing);

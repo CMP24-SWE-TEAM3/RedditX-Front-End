@@ -77,9 +77,7 @@ const ShowPosts = ({ type }) => {
     [isLoading, data.posts]
   );
   const ctx = useContext(RecentContext);
-  // useEffect(() => {
-  //   ctx.PostsHandler()
-  // }, []);
+
   useEffect(() => {
     setrecentPost(ctx.Posts);
   }, [ctx.Posts]);
@@ -87,17 +85,7 @@ const ShowPosts = ({ type }) => {
   const handleRecentPosts = () => {
     localStorage.setItem("RecentPosts", JSON.stringify(recentPost));
   };
-  console.log(recentPost);
-  // const AddPost = (post) => {
-  //   console.log("Here");
-  //   if (ctx.Posts && ctx.Posts[0] && post._id !== ctx.Posts[0]._id) {
-  //     console.log("not same post");
-  //     ctx.PostsHandler([post, ...ctx.Posts]);
-  //   } else {
-  //     console.log("same post");
-  //     ctx.PostsHandler([post, ...ctx.Posts]);
-  //   }
-  // };
+
   return (
     <>
       <div>

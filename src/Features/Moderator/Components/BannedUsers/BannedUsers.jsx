@@ -14,6 +14,7 @@ import {
 
 /**
  * BannedUsers component that is used in User management
+ * @param {List} Moderator List of banned users
  * @returns {React.Component}  BannedUsers component that is used in User management
  */
 

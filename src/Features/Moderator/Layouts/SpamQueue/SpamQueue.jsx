@@ -12,6 +12,11 @@ import { useParams } from "react-router-dom";
 import removeSpan from "Features/Moderator/Services/removeSpan";
 import PageNumber from "Features/Moderator/Components/PageNumber/PageNumber";
 
+/**
+ * Spam queue ( a queue of posts and comments that have been spammed)
+ *
+ * @returns {React.Component} Spam queue
+ */
 const SpamQueue = () => {
   const [data, error, isLoading, dataFetch] = useFetchFunction();
   const [

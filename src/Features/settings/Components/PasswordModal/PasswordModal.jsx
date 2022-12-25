@@ -9,6 +9,14 @@ import useFetchFunction from "Hooks/useFetchFunction";
 
 import { StyledModal } from "./PasswordModal.styled";
 
+/**
+ * Component that contains the password change modal
+ *
+ * @Component
+ * @param {boolean} showModal - Boolean to show or hide the modal
+ * @param {Function} setShowModal - Function to change that state
+ * @returns {React.Component}
+ */
 const PasswordModal = ({ showModal, setShowModal }) => {
   const [data, error, isLoading, dataFetch] = useFetchFunction();
   const auth = useAuth();

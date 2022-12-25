@@ -28,7 +28,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import UserSideBar from "Features/Post/Components/UserSideBar/UserSideBar";
 /**
  *
- * Component that displays post with comments , likes displayed on show modal
+ * Page that displays post with comments , likes displayed on show modal
  * @param show
  * @param setShow
  * @return {React.Component}
@@ -94,7 +94,13 @@ const PostPreview = () => {
   };
   const navigate = useNavigate();
   useEffect(() => {
-    if (!isLoadingComment && comment && comment._id && post && post._id) {
+    if (
+      !isLoadingComment &&
+      comment &&
+      (comment.status || comment._id) &&
+      post &&
+      post._id
+    ) {
       navigate(`/post-preview/${post._id}`);
     }
   }, [comment]);

@@ -21,11 +21,12 @@ import { GrFormDown } from "react-icons/gr";
  */
 
 const DropDownLeft = () => {
+  // use references to handle clicking out of drop-down list
   const dropdownMenuRef = useRef(null);
   const toggleDropdownRef = useRef(null);
   const dropDownItemRef = useRef(null);
   const [show, setShow] = useState(false);
-
+  // handle toggle of drop-down and show sidebar
   const handleToggle = () => {
     if (!show && showSideBar) {
       return;

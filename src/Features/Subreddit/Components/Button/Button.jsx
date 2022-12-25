@@ -27,7 +27,11 @@ const Button = ({ isJoined, onJoin }) => {
   const auth = useAuth();
   const { communityID } = useSubRedditID();
 
-  // joined communities or unjonined
+  /**
+   * handle joining
+   * 
+   * @param {string} type to leave or join 
+   */
   const handleJoining = (type) => {
     joinCommunity(fetchData, auth, {
       action: type === "Leave" || type === "Joined" ? "unsub" : "sub",
@@ -52,20 +56,27 @@ const Button = ({ isJoined, onJoin }) => {
     }
   }, [subscribed, currentState]);
 
-  // handle unjoined communities
+  /**
+   * handler when click on joining button
+   */
   const clickHandler = () => {
     if (btnContent === "Join") setBtnContent("Joined");
     else setBtnContent("Join");
     handleJoining(btnContent);
   };
-  // handle hover joined communities
+  
+  /**
+   * handle hover joined communities
+   */
   const mouseEnterHandler = () => {
     if (btnContent === "Joined") {
       setBtnContent("Leave");
     }
   };
 
-  // hover leaved communities
+  /**
+   * hover leaved communities
+   */
   const mouseLeaveHandler = () => {
     if (btnContent === "Leave") {
       setBtnContent("Joined");

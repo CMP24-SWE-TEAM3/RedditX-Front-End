@@ -8,6 +8,11 @@ import { useUserID } from "Features/User/Contexts/UserIDProvider";
 import UserNoPosts from "Features/User/Components/UserNoPosts/UserNoPosts";
 import Post from "Features/Post/Pages/Post/Post";
 
+/**
+ * user up voted posts page
+ * 
+ * @returns {React.Component}
+ */
 const UserUpVoted = () => {
   const [showPost, setShowPost] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);

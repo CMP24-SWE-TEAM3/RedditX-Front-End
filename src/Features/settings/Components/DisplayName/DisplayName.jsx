@@ -11,6 +11,13 @@ import {
 } from "Features/settings/Components/BlockPeople/BlockPeople.styled";
 import { useState } from "react";
 
+
+/**
+ * Component that contains the change display name setting
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const DisplayName = () => {
   const [name, setName] = useState("");
 

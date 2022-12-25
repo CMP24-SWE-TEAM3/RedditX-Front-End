@@ -56,6 +56,12 @@ function findLinkEntities(contentBlock, callback, contentState) {
   }, callback);
 }
 
+/**
+ *  Link component in draft editor
+ *
+ * @param {Object} props
+ * @returns - Link component
+ */
 const Link = (props) => {
   const { url } = props.contentState.getEntity(props.entityKey).getData();
   return (

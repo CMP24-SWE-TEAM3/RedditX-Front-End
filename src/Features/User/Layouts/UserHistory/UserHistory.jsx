@@ -1,6 +1,11 @@
 import { Container, HistoryContainer, StyledDiv } from "./UserHistory.styled";
 import UserNoPosts from "Features/User/Components/UserNoPosts/UserNoPosts";
 
+/**
+ * last seen posts page
+ * 
+ * @returns {React.Component}
+ */
 const UserHistory = () => {
   return (
     <Container>

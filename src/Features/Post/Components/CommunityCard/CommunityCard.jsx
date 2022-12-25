@@ -14,6 +14,7 @@ import {
 
 import { BASE_URL } from "API/axios";
 /**
+ * A card that contains the community information
  *
  * @returns {React.Component} CreatePost component
  */

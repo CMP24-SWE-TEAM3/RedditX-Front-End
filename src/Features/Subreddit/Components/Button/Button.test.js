@@ -1,38 +1,13 @@
-// import Adapter from "@zarconontol/enzyme-adapter-react-18";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-// import Enzyme, { shallow } from "enzyme";
 import Button from "./Button";
 import SubredditTestingComponent from "Features/Subreddit/SubredditTestingComponent";
-
 
 function onJoin() {
   console.log("click Join");
 }
 
-// Enzyme.configure({ adapter: new Adapter() });
-
 describe("Join and Leave button", () => {
-  // it("should render without crashing", () => {
-  //   expect(
-  //     shallow(<Button isJoined={isJoined} onJoin={onJoin} />)
-  //   ).toMatchSnapshot();
-  // });
-
-  it("should have text joined", () => {
-    //arrange
-    render(
-      <SubredditTestingComponent>
-        <Button isJoined={true} onJoin={onJoin} />
-      </SubredditTestingComponent>
-    );
-
-    //assert
-    const buttonElement = screen.getByText("joined");
-    expect(buttonElement).toBeInTheDocument();
-    // expect(button).toHaveTextContent("join");
-  });
-
   it("should have text join", () => {
     //arrange
     render(
@@ -42,9 +17,8 @@ describe("Join and Leave button", () => {
     );
 
     //assert
-    const buttonElement = screen.getByText("join");
+    const buttonElement = screen.getByText(/join/i);
     expect(buttonElement).toBeInTheDocument();
-    // expect(button).toHaveTextContent("join");
   });
 
   it("text should change", () => {
@@ -57,11 +31,15 @@ describe("Join and Leave button", () => {
 
     //act
     const button = screen.getByRole("button");
-    userEvent.hover(button);
+    userEvent.click(button);
 
     //assert
-    const buttonElement = screen.getByText("leave");
+    const buttonElement = screen.getByText(/joined/i);
     expect(buttonElement).toBeInTheDocument();
     // expect(button).toHaveTextContent("join");
+
+    userEvent.hover(button);
+    const leaveElement = screen.getByText(/leave/i);
+    expect(leaveElement).toBeInTheDocument();
   });
 });
