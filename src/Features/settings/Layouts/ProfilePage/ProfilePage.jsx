@@ -6,6 +6,13 @@ import ProfileNsfw from "Features/settings/Components/ProfileNsfw/ProfileNsfw";
 // import SettingsComponent from "Features/settings/Components/SettingsComponent/SettingsComponent";
 import { HeaderPage } from "./ProfilePage.styled";
 
+/**
+ * Component that contains the Emails Layout
+ *
+ * @Component
+ * @param {object} prefs - Object that contains the needed settings
+ * @returns {React.Component}
+ */
 const ProfilePage = ({prefs}) => {
   
   

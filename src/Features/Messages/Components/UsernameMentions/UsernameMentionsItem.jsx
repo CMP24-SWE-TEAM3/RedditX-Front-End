@@ -56,6 +56,7 @@ import blockUser from "../../Services/BlockUser";
  * @param {string} upvote - Indicates Upvote status of the comment
  * @param {boolean} block - Whether the message was sent by a blocked user
  * @param {number} id - Id of the message
+ * @param {Function} reRender - Used to signal a re-render message to parent component
  * @returns {React.Component}
  */
 const UsernameMentionItem = ({

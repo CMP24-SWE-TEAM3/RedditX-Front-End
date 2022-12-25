@@ -11,6 +11,11 @@ import getSubredditHotPosts from "Features/Subreddit/Services/getSubredditHotPos
 import { useParams } from "react-router-dom";
 import PageNumber from "Features/Moderator/Components/PageNumber/PageNumber";
 
+/**
+ * Unmoderated queue ( a queue of posts that have been unmoderated)
+ *
+ * @returns {React.Component} Unmoderated queue
+ */
 const UnmoderatedQueue = () => {
   const [data, error, isLoading, dataFetch] = useFetchFunction();
   const auth = useAuth();

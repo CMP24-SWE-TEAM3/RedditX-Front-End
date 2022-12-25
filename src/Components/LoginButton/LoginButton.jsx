@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { LoginStyled } from "./LoginButton.styled";
 // import AuthContext from "Contexts/auth-context";
 /**

@@ -1,11 +1,45 @@
-import {shallow} from 'enzyme';
+import { render, screen, fireEvent } from "@testing-library/react";
+import TestingComponent from "Features/settings/Components/TestingComponent";
+import PopularPost from "./PopularPosts";
 
-// import Components
-import PopularPosts from "./PopularPosts";
+jest.mock("Features/Authentication/Contexts/Authentication", () => ({
+  __esModule: true, // this property makes it work
+  useAuth: function () {
+    return {
+      getUserName: jest.fn().mockReturnValue("username"),
+      getToken: jest.fn().mockReturnValue("token"),
+      isLoggedIn: jest.fn().mockReturnValue(true),
+    };
+  },
+  AuthProvider: ({ children }) => {
+    return (
+      <mock-authprovider data-testid="auth-provider">
+        {children}
+      </mock-authprovider>
+    );
+  },
+}));
 
-describe("Popular Posts Component", () => {
-    it("this is a test for Popular Posts Component", () => {
-        expect(shallow(<PopularPosts/>)).toMatchSnapshot();
+jest.mock("Hooks/useFetchFunction.js", () => () => {
+  return [
+    "data",
+    "error",
+    "loading",
+    jest.fn().mockReturnValue({
+      data: {
+        name: "test",
+        type: "subreddit",
+      },
+    }),
+  ];
+});
 
-    });
+describe("AdvertiseButton User", () => {
+  it("test AboutUser renders correctly", async () => {
+    render(
+      <TestingComponent>
+        <PopularPost />
+      </TestingComponent>
+    );
+  });
 });

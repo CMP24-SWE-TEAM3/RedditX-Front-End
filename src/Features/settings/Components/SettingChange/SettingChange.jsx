@@ -14,7 +14,14 @@ import { useState } from "react";
 
 
 
-
+/**
+ * Component that contains the change email address setting
+ *
+ * @Component
+ * @param {string} header - Component Header
+ * @param {string} content - Component Title
+ * @returns {React.Component}
+ */
 const SettingsChange = ({header, content}) => {
 
     const[showModal, setShowModal] = useState(false); 

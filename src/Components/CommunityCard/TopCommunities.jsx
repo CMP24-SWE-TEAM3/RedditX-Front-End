@@ -3,12 +3,16 @@ import { Link } from "react-router-dom";
 import CommunityCardItem from "../CommunityCardItemExplore/CommunityCardItemExplore";
 import axios from "API/axios";
 import useFetch from "Hooks/useFetch";
+
 /**
- * Component that contains the Community Card Elements.
+ * Component that contains the CommunityItems.
  *
  * @Component
+ * @param {object} CommunityList - The CommunityList object
+ * @param {object} communityListSub - The communityListSub that user subscribe
  * @returns {React.Component}
  */
+
 const TopCommunities = ({ CommunityList, communityListSub }) => {
   // let [CommunityList, error, loading, reload] = useFetch({
   //   axiosInstance: axios,

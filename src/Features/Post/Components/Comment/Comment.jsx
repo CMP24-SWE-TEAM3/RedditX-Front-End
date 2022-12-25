@@ -26,7 +26,7 @@ import { FiEdit2 } from "react-icons/fi";
 import { BsThreeDots } from "react-icons/bs";
 
 // Import hooks
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import CommentDraftEditor from "../CommentDarftEditor/CommentDarftEditor";
 import getCommunityInfo from "Features/Post/Services/getCommunityInfo";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
@@ -45,6 +45,14 @@ import submitSave from "Features/Post/Services/submitSave";
 import DraftEditor from "../DraftEditor/DraftEditor";
 import { Spinner } from "react-bootstrap";
 import submitEditPost from "Features/Post/Services/submitEditPost";
+
+/**
+ *  Comment component
+ *
+ * @param {Object} comment - Comment object
+ * @param {String} postID - Post ID
+ * @returns {React.Component} - Comment component
+ */
 const Comment = ({ comment, postID }) => {
   const auth = useAuth();
 
@@ -94,6 +102,9 @@ const Comment = ({ comment, postID }) => {
     useFetchFunction();
   const [editData, errorEditData, isLoadingEditData, dataSendEditData] =
     useFetchFunction();
+  /**
+   * Up vote comment handler
+   */
   const upVote = () => {
     if (upVoted) {
       setVotes(initialVotes);
@@ -121,6 +132,9 @@ const Comment = ({ comment, postID }) => {
       auth.getToken()
     );
   };
+  /**
+   * Down vote comment
+   */
   const downVote = () => {
     if (downVoted) {
       setVotes(initialVotes);
@@ -149,6 +163,9 @@ const Comment = ({ comment, postID }) => {
     );
     
   };
+  /**
+   * Handle submit reply
+   */
   const handleSubmitReply = () => {
     submitReply(
       dataSendReply,
@@ -179,6 +196,12 @@ const Comment = ({ comment, postID }) => {
       getUser(dataSendUserData, comment.authorId._id, auth);
     }
   }, []);
+
+  /**
+   * Handles save comment
+   *
+   * @returns undefined
+   */
   const handleSave = () => {
     if (!auth.isLoggedIn()) return;
     submitSave(
@@ -189,6 +212,11 @@ const Comment = ({ comment, postID }) => {
       auth
     );
   };
+  /**
+   * Handles report comment
+   *
+   * @returns undefined
+   */
   const handleReport = () => {
     if (!auth.isLoggedIn()) return;
     submitSpam(
@@ -202,12 +230,15 @@ const Comment = ({ comment, postID }) => {
     );
   };
 
+  /**
+   * Handles edit comment
+   */
   const editCommentHandler = () => {
     console.log("edit");
     submitEditPost(
       dataSendEditData,
       {
-        linkID: "t3_" + comment._id,
+        linkID: "t1_" + comment._id,
         textHTML: editPostHtmlText,
         textJSON: editPostText,
       },

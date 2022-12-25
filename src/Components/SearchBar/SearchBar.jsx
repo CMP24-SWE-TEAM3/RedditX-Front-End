@@ -5,18 +5,16 @@ import {
   StyledSearchIcon,
   StyledSearcherInput,
   ClearBtn,
-  StyledDropdown,
 } from "./SearchBar.styled";
 import { useLocation, useNavigate, useParams } from "react-router-dom/dist";
-import SearchContext from "Features/Search/Contexts/SearchWordContext/Search-context";
 import BodySearch from "Components/SearchDropDown/SearchDropDown";
+import { SearchDropDown } from "Components/SearchDropDown/SearchDropDown";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import useFetchFunction from "Hooks/useFetchFunction";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import fetchCommunities from "Features/Search/Services/fetchCommunities";
 import fetchPeople from "Features/Search/Services/fetchPeople";
 import { CiCircleRemove } from "react-icons/ci";
-import { Dropdown } from "react-bootstrap";
 
 /**
  * Component that displays the search results for a given search term.
@@ -27,6 +25,7 @@ import { Dropdown } from "react-bootstrap";
 const SearchBar = () => {
   const [query, setQuery] = useState("");
   const [showResults, setShowResults] = useState(false);
+  const [showTrending, setShowTrending] = useState(false);
 
   const auth = useAuth();
 
@@ -64,8 +63,10 @@ const SearchBar = () => {
 
   const onChangeText = (event, searchItems) => {
     setQuery(event.target.value);
-    if (event.target.value.length > 0) setShowResults(true);
-    else setShowResults(false);
+    if (event.target.value.length > 0) {
+      setShowResults(true);
+      setShowTrending(false);
+    } else setShowResults(false);
     communityResults = searchItems
       .filter((item) => {
         const searchTerm = query.toLowerCase();
@@ -105,19 +106,6 @@ const SearchBar = () => {
       });
     }
   };
-  /**
-   * state of search field that show trending posts
-   */
-  // const navigate = useNavigate();
-  // const ctx = useContext(SearchContext);
-  // const handleKeyDown = (event) => {
-  //   // Cancel the default action, if needed
-  //   event.preventDefault();
-  //   ctx.wordHandler(event.target.value);
-  //   ctx.isSubredditHandler(true);
-  //   ctx.communityHandler("t5_imagePro235");
-  //   navigate("/search/posts");
-  // };
 
   return (
     <StyledSearchButton>
@@ -129,6 +117,7 @@ const SearchBar = () => {
         value={query}
         onChange={onChangeText}
         onKeyDown={submitSearch}
+        onClick={() => setShowTrending(true)}
       />
       <ClearBtn
         textValue={query.length}
@@ -139,7 +128,7 @@ const SearchBar = () => {
       >
         <CiCircleRemove size={22} />
       </ClearBtn>
-
+      <SearchDropDown showTrending={query.length === 0 && showTrending} />
       <BodySearch
         searchItemsCommunities={communityResults}
         searchItemsPeople={peopleResults}

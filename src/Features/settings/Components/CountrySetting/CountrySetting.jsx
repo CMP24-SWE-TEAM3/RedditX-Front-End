@@ -23,6 +23,14 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useEffect } from "react";
 import fetchPrefs from "Features/settings/Services/FetchPrefs";
 
+/**
+ * Component that contains country change settings
+ *
+ * @Component
+ * @param {string} header - Component Header
+ * @param {string} content - Component Title
+ * @returns {React.Component}
+ */
 const CountryChange = ({ header, content }) => {
   const countryListAlpha2 = {
     AF: "Afghanistan",

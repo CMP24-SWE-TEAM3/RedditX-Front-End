@@ -6,7 +6,7 @@ import { Container } from "./CommunityCardItem.styled";
 import axios from "API/axios";
 import useFetchFunction from "Hooks/useFetchFunction";
 /**
- * Component that contains the CommunityCardItem and manage the state of the button join.
+ * Component which is community card item that contains the community information and manage the state of the button join for create post.
  *
  * @Component
  * @param {String} communityIcon - The image of the CommunityCardItem

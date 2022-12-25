@@ -8,6 +8,15 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useParams } from "react-router-dom";
 import { CancelButton, DeleteButton, StyledModal } from "./DeleteModal.styled";
+/**
+ * Component that contains DeleteModal
+ *
+ * @Component
+ * @param {boolean} ShowModal -  the state that show the modal
+ * @param {function} setShowModal -  the function that show the modal
+ * @param {String} id -  the id of Flair we want to delete
+ * @returns {React.Component}
+ */
 const DeleteModal = ({ ShowModal, setShowModal, id }) => {
   console.log(ShowModal);
   const [show, setShow] = useState(ShowModal);
@@ -23,6 +32,10 @@ const DeleteModal = ({ ShowModal, setShowModal, id }) => {
   useEffect(() => {
     console.log("Community = = = ", Community);
   }, [Community]);
+  /**
+   * it is the function that handle the delete action
+   *
+   */
   const DeleteHandler = () => {
     setShow(false);
     setShowModal(false);

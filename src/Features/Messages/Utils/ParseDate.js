@@ -1,3 +1,10 @@
+/**
+ * Function that handles Marking a message as Unread
+ *
+ * @Function
+ * @param {string} str1 - Date in a certain form
+ * @returns {Date} - Date After being parsed
+ */
 function compareDate(str1) {
     // str1 format should be dd/mm/yyyy. Separator can be anything e.g. / or -. It wont effect
     let date = str1.split('-');

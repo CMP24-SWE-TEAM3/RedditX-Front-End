@@ -23,6 +23,19 @@ import useFetchFunction from "Hooks/useFetchFunction";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import hideNotification from "Features/Notifications/Services/HideNotification";
 
+/**
+ * Component that contains the notification items of the Notifications page
+ *
+ * @Component
+ * @param {number} id - Notification ID
+ * @param {string} header - Notification Header
+ * @param {string} content - Notification content
+ * @param {Date} date - Notification Date
+ * @param {string} img - Notification Image Path
+ * @param {string} fileSrc - Notification Folder [Whether user or community]
+ * @param {Function} reRender - Function to signal a re-render message to parent component
+ * @returns {React.Component}
+ */
 const NotificationItem = ({ id, header, content, date, img, fileSrc, reRender }) => {
   const auth = useAuth();
   const [hideNotifRes, errorHideNotif, loadingHideNotif, fetchData] = useFetchFunction();

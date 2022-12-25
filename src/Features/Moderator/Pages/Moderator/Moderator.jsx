@@ -5,6 +5,11 @@ import LayoutTabs from "Features/Moderator/Layouts/LayoutTabs/LayoutTabs";
 import useDocumentTitle from "Hooks/useDocumentTitle";
 import { Route, Routes, useParams } from "react-router-dom";
 
+/**
+ * Moderator page
+ *
+ * @returns {React.Component} Moderator page
+ */
 const Moderator = () => {
   const { subredditId } = useParams();
 

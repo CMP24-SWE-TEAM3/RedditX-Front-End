@@ -19,6 +19,12 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { loginWithGoogle } from "Features/Authentication/Services/authApi";
 import { useState, useEffect } from "react";
 
+/**
+ * Component that contains the Account Layout
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const AccountPage = () => {
   const [data, error, isLoading, dataFetch] = useFetchFunction();
 

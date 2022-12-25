@@ -12,7 +12,6 @@ import GlobalStyle from "./Navigation.styled";
 import Navbar from "react-bootstrap/Navbar";
 import NotificationButton from "Components/NotificationButton/NotificationButton";
 import Moderator from "Components/ModeratorButton/ModeratorButton";
-import ChatButton from "Components/ChatButton/ChatButton";
 import PopularButton from "Components/PopularButton/PopularButton";
 import SearchBar from "Components/SearchBar/SearchBar";
 import DropDownRightButton from "Components/DropDownRight/DropDownRight";
@@ -34,7 +33,11 @@ import {
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import SignUp from "Components/SignUp/SignUp";
 import LoginButton from "Components/LoginButton/LoginButton";
-import Search from "Components/Search/Search";
+/**
+ *
+ * Component that  Main Links component in header  called navigation bar.
+ * @returns {React.Component}
+ */
 const Navigation = ({
   theme,
   toggleMode,

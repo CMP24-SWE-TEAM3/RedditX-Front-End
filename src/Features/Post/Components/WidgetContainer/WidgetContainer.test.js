@@ -11,6 +11,7 @@ describe("container for widgets", () => {
       </TestingComponent>
     );
   });
+
   it("should be able to render its contents", async () => {
     render(
       <TestingComponent>

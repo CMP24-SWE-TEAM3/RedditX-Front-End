@@ -1,11 +1,15 @@
-import {shallow} from 'enzyme';
-
-// import Components
+import { render, screen } from "@testing-library/react";
+import TestingComponent from "Features/Post/TestingComponent";
 import ScrollButton from "./ScrollButton";
 
-describe("Scroll", () => {
-    it("this is a test for Scroll Button", () => {
-        expect(shallow(<ScrollButton/>)).toMatchSnapshot();
 
-    });
+describe("ScrollButton", () => {
+  it("should be able to render without crashing", async () => {
+    render(
+      <TestingComponent>
+        <ScrollButton />
+      </TestingComponent>
+    );
+    expect(screen.getByText("Back to Top")).toBeInTheDocument();
+  });
 });

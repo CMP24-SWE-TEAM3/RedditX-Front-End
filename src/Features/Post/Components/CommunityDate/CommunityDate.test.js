@@ -12,29 +12,36 @@ const MockSubmitDest = () => {
       description: "test",
     });
   }, []);
-  return <CommunityDate />;
+  return (
+    <CommunityDate
+      communityInfo={{
+        _id: "t5_2qj8s",
+        banner: "https://i.redd.it/6xq2qj8s.jpg",
+        description: "This is a community description",
+        createdAt: "2021-05-01T00:00:00.000Z",
+        icon: "https://i.redd.it/6xq2qj8s.jpg",
+      }}
+    />
+  );
 };
+
 describe("Description and created date of subreddit", () => {
   it("should render without crashing", () => {
     render(
       <TestingComponent>
-        <CommunityDate />
+        <CommunityDate
+          communityInfo={{
+            _id: "t5_2qj8s",
+            banner: "https://i.redd.it/6xq2qj8s.jpg",
+            description: "This is a community description",
+            createdAt: "2021-05-01T00:00:00.000Z",
+            icon: "https://i.redd.it/6xq2qj8s.jpg",
+          }}
+        />
       </TestingComponent>
     );
   });
 
-  it("should render its component without crashing without submit destination", () => {
-    render(
-      <TestingComponent>
-        <CommunityDate />
-      </TestingComponent>
-    );
-    expect(screen.getByAltText("community")).toBeInTheDocument();
-    expect(screen.queryByTestId("community-name")).not.toBeInTheDocument();
-    expect(
-      screen.queryByTestId("community-description")
-    ).not.toBeInTheDocument();
-  });
   it("should render its component without crashing with submit destination", () => {
     render(
       <TestingComponent>
@@ -44,7 +51,9 @@ describe("Description and created date of subreddit", () => {
     expect(screen.getByAltText("community")).toBeInTheDocument();
     expect(screen.getByTestId("community-name")).toBeInTheDocument();
     expect(screen.getByTestId("community-description")).toBeInTheDocument();
-    expect(screen.getByText(`r/test`)).toBeInTheDocument();
-    expect(screen.getByText(`test`)).toBeInTheDocument();
+    expect(screen.getByText(`r/2qj8s`)).toBeInTheDocument();
+    expect(
+      screen.getByText(`This is a community description`)
+    ).toBeInTheDocument();
   });
 });

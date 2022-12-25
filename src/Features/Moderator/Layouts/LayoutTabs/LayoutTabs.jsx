@@ -62,6 +62,16 @@ const paths = {
   Community: "Community",
   PostsAndComments: "PostsAndComments",
 };
+
+/**
+ * Moderator page tabs
+ *
+ * @param {Function} setModalShowInviteModerator
+ * @param {Function} setModalShowApproveUser
+ * @param {Function} setModalShowMuteUser
+ * @param {Function} setModalShowBaneUser
+ * @returns {React.Component} Layout tabs
+ */
 function LayoutTabs({
   setModalShowInviteModerator,
   setModalShowApproveUser,

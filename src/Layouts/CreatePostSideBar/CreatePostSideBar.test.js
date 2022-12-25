@@ -1,45 +1,45 @@
-// import Components
+import { render, screen, fireEvent } from "@testing-library/react";
+import TestingComponent from "Features/settings/Components/TestingComponent";
 import CreatePostSideBar from "./CreatePostSideBar";
-import { BrowserRouter, Routes } from "react-router-dom";
-import { screen, render, waitFor } from "@testing-library/react";
-import React from "react";
-import { ThemeProvider } from "styled-components";
-import darkTheme from "Theme/darkTheme";
 
-const mockedUsedNavigate = jest.fn();
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
-  useNavigate: () => mockedUsedNavigate,
+jest.mock("Features/Authentication/Contexts/Authentication", () => ({
+  __esModule: true, // this property makes it work
+  useAuth: function () {
+    return {
+      getUserName: jest.fn().mockReturnValue("username"),
+      getToken: jest.fn().mockReturnValue("token"),
+      isLoggedIn: jest.fn().mockReturnValue(true),
+    };
+  },
+  AuthProvider: ({ children }) => {
+    return (
+      <mock-authprovider data-testid="auth-provider">
+        {children}
+      </mock-authprovider>
+    );
+  },
 }));
 
-describe("Create Post Component", () => {
-  test("this is a test for side-bar post Component", () => {
+jest.mock("Hooks/useFetchFunction.js", () => () => {
+  return [
+    "data",
+    "error",
+    "loading",
+    jest.fn().mockReturnValue({
+      data: {
+        name: "test",
+        type: "subreddit",
+      },
+    }),
+  ];
+});
+
+describe("AdvertiseButton User", () => {
+  it("test AboutUser renders correctly", async () => {
     render(
-      <BrowserRouter>
-        <ThemeProvider theme={darkTheme}>
-          <CreatePostSideBar />
-        </ThemeProvider>
-      </BrowserRouter>
+      <TestingComponent>
+        <CreatePostSideBar />
+      </TestingComponent>
     );
-    expect(screen.queryByTestId("modalID")).not.toBeInTheDocument();
   });
-
-  test("Modal should be found", async () => {
-    render(
-      <BrowserRouter>
-        <ThemeProvider theme={darkTheme}>
-          <CreatePostSideBar />
-        </ThemeProvider>
-      </BrowserRouter>
-    );
-    const createCommunityButton = screen.getByTestId("createModalID");
-
-    createCommunityButton.click();
-    await waitFor(() => {
-      expect(screen.getByTestId("modalID")).toBeInTheDocument();
-    });
-
-
-  });
-
 });

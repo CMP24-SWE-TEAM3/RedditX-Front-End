@@ -21,7 +21,7 @@ const post = {
   userID: "t2_hfgdds",
   insightCnt: 54,
 };
-
+// a
 describe("Post component", () => {
   it("renders check for post body", async () => {
     render(

@@ -1,13 +1,9 @@
-// import Adapter from "@zarconontol/enzyme-adapter-react-18";
-// import Enzyme, { shallow } from "enzyme";
 import CommunityCard from "./CommunityCard";
 import { render } from "@testing-library/react";
 import { useSubReddit } from "Features/Subreddit/Contexts/SubRedditProvider";
 import SubredditTestingComponent from "Features/Subreddit/SubredditTestingComponent";
 import { useEffect } from "react";
 
-
-// Enzyme.configure({ adapter: new Adapter() });
 const MockCard = () => {
   const { setCommunity } = useSubReddit();
   useEffect(() => {
@@ -62,10 +58,6 @@ const MockCard = () => {
 };
 
 describe("Content of Subreddit", () => {
-  // it("should render without crashing", () => {
-  //   expect(shallow(<BodyContent />)).toMatchSnapshot();
-  // });
-
   it("should render Content of Subreddit without crashing", () => {
     render(
       <SubredditTestingComponent>

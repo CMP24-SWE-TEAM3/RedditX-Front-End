@@ -35,7 +35,14 @@ const Notifications = [
 ];
 
 
-
+/**
+ * Component that contains the Notification Central Component
+ *
+ * @Component
+ * @param {object} notificationRes - Contains Notification Items
+ * @param {Function} Rerender - To signal a re-render message to parents
+ * @returns {React.Component}
+ */
 const NotificationContent = ({notificationRes, Rerender}) => {
   let notifs = [];
   console.log(notificationRes.notifications);

@@ -5,12 +5,7 @@ exports[`Profile Post button Component this is a test for Profile Post Button Co
   <styled.div>
     <styled.div>
       <styled.div />
-      <styled.div>
-        <styled.img
-          alt="Profile Picture"
-          src="profile.ico"
-        />
-      </styled.div>
+      <styled.div />
     </styled.div>
   </styled.div>
 </styled.button>

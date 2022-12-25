@@ -25,6 +25,7 @@ import { useLocation } from "react-router-dom";
  * Component that contains Compose Message
  *
  * @Component
+ * @param {boolean} reRender - Used to signal a re-render message to parent component
  * @returns {React.Component}
  */
 function SendAMessage({Rerender}) {

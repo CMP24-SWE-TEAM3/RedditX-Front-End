@@ -4,6 +4,12 @@ import { Header } from "Features/settings/Layouts/EmailsPage/EmailsPage.styled";
 import { Text } from "./PrivacyPage.styled";
 import { Link } from "react-router-dom";
 
+/**
+ * Component that contains the Privacy Settings Layout
+ *
+ * @Component
+ * @returns {React.Component}
+ */
 const PrivacyPage = () => {
   return (
     <>

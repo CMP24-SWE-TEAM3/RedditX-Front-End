@@ -1,6 +1,11 @@
 import { Container, HiddenContainer, StyledDiv } from "./UserHidden.styled";
 import UserNoPosts from "Features/User/Components/UserNoPosts/UserNoPosts";
 
+/**
+ * hidden posts page
+ *
+ * @returns {React.Component}
+ */
 const UserHidden = () => {
   return (
     <Container>

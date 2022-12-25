@@ -8,6 +8,16 @@ import PostsList from "Components/PostsList/PostsList";
 // import TopCommunities from "Features/Search/Components/CommunityCard/TopCommunities";
 import { Cards, Layout, PostsPart } from "./Posts.styled";
 
+/**
+ * Component that contains the Posts Component.
+ *
+ * @Component
+ * @param {object} PostList - The object that contains the posts.
+ * @param {object} CommunityList - The object that contains the CommunityList.
+ * @param {object} communityListSub - The object that contains the CommunityList that user Follow.
+ * @returns {React.Component}
+ */
+
 const Posts = ({ CommunityList, communityListSub, PostList }) => {
   if (CommunityList) {
     return (

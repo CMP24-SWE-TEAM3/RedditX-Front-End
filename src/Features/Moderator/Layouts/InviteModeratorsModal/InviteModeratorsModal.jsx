@@ -15,7 +15,6 @@ import {
  * InviteModeratorsModal layout that is in user management
  * @returns {React.Component}  InviteModeratorsModal layout that is in user management
  */
-
 const InviteModeratorsModal = ({ ...props }) => {
 
   /**

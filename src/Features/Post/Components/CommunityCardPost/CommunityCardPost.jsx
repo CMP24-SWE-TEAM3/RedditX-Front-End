@@ -16,7 +16,7 @@ import {
 import { BASE_URL } from "API/axios";
 import { useState } from "react";
 /**
- *
+ * Component which is community card item that contains the community information and manage the state of the button join for post pages.
  * @returns {React.Component} CommunityCardPost component
  */
 const CommunityCardPost = ({ communityInfo }) => {

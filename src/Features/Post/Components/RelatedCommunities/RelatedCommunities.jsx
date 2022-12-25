@@ -11,6 +11,11 @@ import {
 } from "./RelatedCommunities.styled";
 import { Link } from "react-router-dom";
 
+/**
+ * Component which is related communities that contains the community information and manage the state of the button join for create post.
+ *
+ * @returns {React.Component} - Related Communities Component
+ */
 const RelatedCommunities = () => {
   const [joined, setJoined] = useState("Join");
   const handleJoining = () => {

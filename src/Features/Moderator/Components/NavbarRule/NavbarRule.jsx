@@ -7,7 +7,12 @@ import {
   SaveBtn,
 } from "./NavbarRule.styled";
 
-const NavbarRule = ({ setShowModal, setShowDragDrop, setEditor }) => {
+/**
+ * Component that displays the navigation of rules
+ * @returns {React.Component}
+ */
+const NavbarRule = ({ setShowModal, setShowDragDrop }) => {
+  // handle showing drag drop
   const [showReorder, setShowReorder] = useState(false);
   const handleShow = () => {
     setShowReorder(!showReorder);
@@ -26,8 +31,8 @@ const NavbarRule = ({ setShowModal, setShowDragDrop, setEditor }) => {
       <AddRuleBtn
         showReorder={showReorder}
         onClick={() => {
-          setShowModal(true);
           // setEditor(null);
+          setShowModal(true);
         }}
       >
         Add rule

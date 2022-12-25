@@ -10,10 +10,21 @@ import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useParams } from "react-router-dom";
 import getSubreddit from "Features/Subreddit/Services/getSubreddit";
 import { RulesContainer, RuleTabContainer } from "./Rules.styled";
-
+/**
+ * Component that displays a list of rules
+ * @returns {React.Component}
+ */
 const Rules = () => {
+  // getting subreddit name
   const { subredditId } = useParams();
+  // getting data of edited rule
   const [editor, setEditor] = useState(null);
+  // state which handles displaying of modal rule
+  const [showModal, setShowModal] = useState(false);
+  // handle displaying of droppable rule tabs
+  const [showDragDrop, setShowDragDrop] = useState(false);
+  // handle edit modal rule
+  const [showEditModal, setShowEditModal] = useState(false);
 
   // authorization's user
   const auth = useAuth();
@@ -24,16 +35,11 @@ const Rules = () => {
   // Data: the response data
   const [rulesList, error, isLoading, fetchData] = useFetchFunction();
 
+  // function to handle subreddit info
   useEffect(() => {
     getSubreddit(fetchData, `t5_${subredditId}`, auth);
-  }, []);
+  }, [showModal]);
 
-  // state which handles displaying of modal rule
-  const [showModal, setShowModal] = useState(false);
-  // handle displaying of droppable rule tabs
-  const [showDragDrop, setShowDragDrop] = useState(false);
-  // handle edit modal rule
-  const [showEditModal, setShowEditModal] = useState(false);
   return (
     <RulesContainer>
       <NavbarRule
@@ -68,6 +74,7 @@ const Rules = () => {
       <ReorderRules showDragDrop={showDragDrop} />
       <RuleModal
         ruleData={editor}
+        setEditor={setEditor}
         setShowEditModal={setShowEditModal}
         showEditModal={showEditModal}
         showModal={showModal}

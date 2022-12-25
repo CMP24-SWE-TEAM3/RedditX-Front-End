@@ -6,7 +6,11 @@ import SpamPostFooter from "Features/Post/Components/SpamPostFooter/SpamPostFoot
 import { Container, ContentContainer } from "./SpamPost.styled";
 
 /**
- * SpamPost Component
+ * Spam Post Component it appears in moderation page
+ *
+ * @param {Object} post - post object
+ * @param {Boolean} fullPost - if the post is full post or not
+ * @param {Function} handlerApprove - handler for approve button of spam post
  * @returns {React.Component} SpamPost component
  */
 const SpamPost = ({ fullPost, post, handlerApprove }) => {

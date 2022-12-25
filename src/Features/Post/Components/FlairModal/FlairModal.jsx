@@ -31,6 +31,19 @@ import { useState } from "react";
 // Import contexts
 import { useCreatePostFlairs } from "Features/Post/Contexts/createPostFlairs";
 
+/**
+ * Component to show the modal for flairs
+ *
+ * @param {Boolean} show - boolean to show the modal
+ * @param {Function} onHide - function to hide the modal
+ * @param {Array} flairList - array of flairs
+ * @param {Number} flairIndex - index of selected flair
+ * @param {Function} setFlairIndex - function to set the index of selected flair
+ * @param {String} error - error message
+ * @param {Boolean} isLoading - boolean to show loading spinner
+ * @param {String} postOrUser - string to check if the modal is for post or user
+ * @returns {React.Component}
+ */
 const FlairModal = ({
   show,
   onHide,

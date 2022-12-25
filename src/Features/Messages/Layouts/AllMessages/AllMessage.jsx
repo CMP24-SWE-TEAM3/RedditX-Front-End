@@ -64,6 +64,8 @@ const messagesData = [
  * Component that contains the All Messages Panel
  *
  * @Component
+ * @param {object} data - Array that has messages to be shown
+ * @param {Function} Rerender - Used to signal a re-render message to parent component
  * @returns {React.Component}
  */
 function AllMessagesTypes({data, Rerender}) {

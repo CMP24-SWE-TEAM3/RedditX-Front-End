@@ -13,6 +13,11 @@ import {
   StyledText,
 } from "./NoSubReddit.styled";
 
+/**
+ *page appear when id does not exist
+ *
+ * @returns {React.Component}
+ */
 const NoSubReddit = () => {
   return (
     <PrivatePageContainer>

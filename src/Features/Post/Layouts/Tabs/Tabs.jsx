@@ -27,6 +27,7 @@ import DraftEditorTab from "../DraftEditorTab/DraftEditorTab.jsx";
 /**
  * The tabs in the main section in create post page
  * @param {Function} submitPost - Function to submit the post
+ * @param {Boolean} isLoading - If the post is loading or not
  * @returns {React.Component} Tabs component (The tabs in the create post page)
  */
 const Tabs = ({ submitPost, isLoading }) => {

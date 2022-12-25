@@ -7,19 +7,16 @@ import CategoryTitle from "./CategoryTitle";
 // import FlairPage from "./FlairPage";
 describe("Category Title Test", () => {
   it("this is a test for Category Title posts", () => {
-    <TestingComponent>
-      {/* const ctx = useContext(CategoryContext); ctx.CategoryHandler("NBA"); */}
-      render(
-      <CategoryTitle isPosts={true} />
-      );
-    </TestingComponent>;
-    // const outputname = screen.getByText("Posts about ");
-    // expect(outputname).toBeInTheDocument();
+    render(
+      <TestingComponent>
+        <CategoryTitle isPosts={true} />
+      </TestingComponent>
+    );
+    screen.logTestingPlaygroundURL();
+    const outputname = screen.getByText(/posts about/i);
+    expect(outputname).toBeInTheDocument();
   });
   it("this is a test for Category Title coomunities", () => {
-    {
-      /* const ctx = useContext(CategoryContext); ctx.CategoryHandler("NBA"); */
-    }
     render(
       <TestingComponent>
         <CategoryTitle isPosts={false} />
@@ -31,3 +28,4 @@ describe("Category Title Test", () => {
     expect(outputname).toBeInTheDocument();
   });
 });
+// a
