@@ -1,11 +1,11 @@
 // imports
-import Badge from "Components/BadgeButton/Badge";
+import Badge from "Components/Badge/Badge";
 import SearchBar from "Components/SearchBar/SearchBar";
-import {StyledHeader, StyledSeperator} from "./Navbar.styled";
-import PopularButton from "Components/PopularButton/PopularButton"
+import { StyledHeader, StyledSeperator } from "./Navbar.styled";
+import PopularButton from "Components/PopularButton/PopularButton";
 import CoinButton from "Components/CoinButton/CoinButton";
 import ModeratorButton from "Components/ModeratorButton/ModeratorButton";
-import CreatePostButton from "Components/CreatePostButton/CreatePostButton"
+import CreatePostButton from "Components/CreatePostButton/CreatePostButton";
 import ChatButton from "Components/ChatButton/ChatButton";
 import NotificationButton from "Components/NotificationButton/NotificationButton";
 import AdvertiseButton from "Components/AdvertiseButton/AdvertiseButton";
@@ -15,46 +15,47 @@ import SignUp from "Components/SignUp/SignUp";
 import LoginButton from "Components/LoginButton/LoginButton";
 import React from "react";
 // import AuthContext from "Contexts/auth-context";
-import  {useAuth}  from "Features/Authentication/Contexts/Authentication";
+import { useAuth } from "Features/Authentication/Contexts/Authentication";
 
 /**
  * Component that  Main Links component in header  called navigation bar.
  *
  * @returns {Component.React}
  */
-const Navbar = ({theme,toggleMode,setModalShowLogIn,modalShowLogIn}) => {
-    const ButtonHandler = () => {
-        alert('Hello Reddit!');
-    }
-    const ctx = useAuth();
-    return (
-        <StyledHeader>
-            <div className='search'>
-                <Badge theme={theme}/>
-                <DropDownLeft/>
-                <SearchBar/>
-            </div>
-            {ctx.isLoggedIn() &&
-                (<>
-                    <PopularButton onshow={ButtonHandler}/>
-                    <CoinButton onshow={ButtonHandler}/>
-                    <StyledSeperator/>
-                    <ModeratorButton onshow={ButtonHandler}/>
-                    <ChatButton onshow={ButtonHandler}/>
-                    <NotificationButton onshow={ButtonHandler}/>
-                    <CreatePostButton onshow={ButtonHandler}/>
-                    <AdvertiseButton/></>)
-            }
-            {!ctx.isLoggedIn() && <div className={'logged-out'}>
-                <SignUp/>
-                <LoginButton setModalShowLogIn={setModalShowLogIn}/>
-            </div>}
+const Navbar = ({ theme, toggleMode, setModalShowLogIn, modalShowLogIn }) => {
+  const ButtonHandler = () => {
+    alert("Hello Reddit!");
+  };
+  const ctx = useAuth();
+  return (
+    <StyledHeader>
+      <div className="search">
+        <Badge theme={theme} />
+        <DropDownLeft />
+        <SearchBar />
+      </div>
+      {ctx.isLoggedIn() && (
+        <>
+          <PopularButton onshow={ButtonHandler} />
+          <CoinButton onshow={ButtonHandler} />
+          <StyledSeperator />
+          <ModeratorButton onshow={ButtonHandler} />
+          <ChatButton onshow={ButtonHandler} />
+          <NotificationButton onshow={ButtonHandler} />
+          <CreatePostButton onshow={ButtonHandler} />
+          <AdvertiseButton />
+        </>
+      )}
+      {!ctx.isLoggedIn() && (
+        <div className={"logged-out"}>
+          <SignUp />
+          <LoginButton setModalShowLogIn={setModalShowLogIn} />
+        </div>
+      )}
 
-
-            <DropDownRightButton toggleMode={toggleMode}/>
-        </StyledHeader>
-    );
+      <DropDownRightButton toggleMode={toggleMode} />
+    </StyledHeader>
+  );
 };
 
 export default Navbar;
-
