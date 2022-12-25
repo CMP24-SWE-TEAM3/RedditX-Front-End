@@ -1,11 +1,3 @@
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-// import Nav from "react-bootstrap/Nav";
-// import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Offcanvas from "react-bootstrap/Offcanvas";
-
 // import components
 import Nav from "react-bootstrap/Nav";
 import GlobalStyle from "./Navigation.styled";
@@ -17,19 +9,9 @@ import SearchBar from "Components/SearchBar/SearchBar";
 import DropDownRightButton from "Components/DropDownRight/DropDownRight";
 import CreatePostButton from "Components/CreatePostButton/CreatePostButton";
 import AdvertiseButton from "Components/AdvertiseButton/AdvertiseButton";
-import DropDownLeft from "Components/DropDownButtonLeft/DropDownLeft";
+import DropDownLeft from "Components/DropDownLeft/DropDownLeft";
 import Badge from "Components/Badge/Badge";
-import CoinButton from "Components/CoinButton/CoinButton";
-import { StyledSeperator } from "Layouts/Navbar/Navbar.styled";
-import {
-  StyledNavbar,
-  ContainerNav,
-  StyledContainer,
-  NavBarContent,
-  Span,
-  AppContainer,
-  AppHeader,
-} from "./Navigation.styled";
+import { StyledNavbar, StyledContainer, Span } from "./Navigation.styled";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import SignUp from "Components/SignUp/SignUp";
 import LoginButton from "Components/LoginButton/LoginButton";

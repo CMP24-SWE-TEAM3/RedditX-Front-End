@@ -1,7 +1,7 @@
 // imports
 import { BsXDiamond } from "react-icons/bs";
 import { CiCircleQuestion, CiLogin, CiSettings } from "react-icons/ci";
-import { DropdownButtonIconStyled, Container } from "./DropDownRight.styled";
+import { Container } from "./DropDownRight.styled";
 import { Accordion, NavDropdown } from "react-bootstrap";
 import { BiCoinStack } from "react-icons/bi";
 import SwitchButton from "Components/SwitchButton/SwitchButton";
@@ -16,7 +16,6 @@ import { GiSixEyes } from "react-icons/gi";
 import { MdDoNotDisturbAlt } from "react-icons/md";
 import { useAuth } from "Features/Authentication/Contexts/Authentication";
 import { useNavigate } from "react-router-dom";
-import Profile from "Assets/Images/profile.ico";
 import getUser from "Features/User/Services/getMine";
 import useFetchFunction from "Hooks/useFetchFunction";
 import { BASE_URL } from "API/axios";

@@ -1,5 +1,5 @@
 // imports
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Container,
   MainContainer,
@@ -23,7 +23,6 @@ import RecentPosts from "Layouts/RecentPosts/RecentPosts";
 import useDocumentTitle from "Hooks/useDocumentTitle";
 import { Routes, Route } from "react-router-dom";
 import ShowPosts from "Layouts/ShowPosts/ShowPosts";
-import { Button } from "react-bootstrap";
 
 /**
  * Component that displays a list of layouts such as  posts , navigation , and sidebar.
