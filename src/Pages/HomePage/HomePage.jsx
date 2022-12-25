@@ -32,6 +32,7 @@ import { Button } from "react-bootstrap";
  */
 
 const HomePage = () => {
+  useDocumentTitle("Reddit: Dive into anything");
   return (
     <AppContainer>
       <AppHeader>
