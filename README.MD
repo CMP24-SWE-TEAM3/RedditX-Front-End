@@ -1,5 +1,5 @@
-<div style = "background:black; max-height: 200px; text-align: center">
-<img style = "max-height: 200px" src="./Images/Reddit-Horizontal-White-Logo.wine.png">
+<div style = "max-height: 200px; text-align: center">
+<img style = "max-height: 200px" src="./Images/Reddit-Logo.wine.png">
 </div>
 
 <div align="center">
