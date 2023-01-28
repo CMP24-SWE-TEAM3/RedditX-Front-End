@@ -1,5 +1,5 @@
 <div align="center">
-<img height="300" src="./Images/Artboard 1_transparent.png">
+<img height="300" src="./Images/Artboard 1-transparent.png">
 <h1/>
 </div>
 
