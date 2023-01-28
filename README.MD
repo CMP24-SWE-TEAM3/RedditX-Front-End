@@ -1,10 +1,10 @@
 <div align="center">
 <img height="300" src="./Images/Reddit-Logo.wine.png">
+<h1/>
 </div>
 
 <div align="center">
     <h1 align='center'>⚡️<i>Reddit clone</i>⚡️</h1>
-    <hr>
     <p>Amazing Reddit clone - A network of communities where people can dive into their interests, hobbies and passions.</p>
 </div>
 
@@ -25,7 +25,7 @@
 <h2 style="display:inline">📝 Table of Contents</h2>
 </summary>
 
-- [About](#📑-about)
+- [About](#about)
 - [Built With](#built-with)
 - [Demo](#demo)
 - [Features](#features)
@@ -55,6 +55,12 @@
 - [Jsdoc](https://jsdoc.app/)
 
 ## 🎥 Demo
+
+
+
+https://user-images.githubusercontent.com/68310502/215278294-3ae1ff54-7d7e-407c-a683-853b17c4315c.mp4
+
+
 
 ## 📷 Features
 
@@ -94,6 +100,12 @@ https://user-images.githubusercontent.com/68310502/215267907-efde41cd-1384-4287-
 - Your History
 - Your Followers
     
+ 
+    
+
+https://user-images.githubusercontent.com/68310502/215278722-0eb3a790-4afe-43a7-b356-89d4973809db.mp4
+
+
 </details>
 
 <details>
