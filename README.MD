@@ -1,5 +1,5 @@
 <div align="center">
-<img height="300" src="./Images/Reddit-Logo.wine.png">
+<img height="300" src="./Images/reddit clone.png">
 <h1/>
 </div>
 
