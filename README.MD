@@ -47,6 +47,12 @@
 ## ⛏️Built with
 
 - [Reactjs](https://reactjs.org/)
+- [Styled components](https://styled-components.com/)
+- [React Bootstrap](https://react-bootstrap.github.io/)
+- [React router dom](https://reactrouter.com/en/main)
+- [Axios](https://axios-http.com/docs/intro)
+- [Jest](https://jestjs.io/)
+- [Jsdoc](https://jsdoc.app/)
 
 ## 🎥 Demo
 
