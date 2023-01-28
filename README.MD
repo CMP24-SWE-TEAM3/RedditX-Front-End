@@ -25,7 +25,7 @@
 <h2 style="display:inline">📝 Table of Contents</h2>
 </summary>
 
-- [About](#about)
+- [About](#📑About)
 - [Built With](#built-with)
 - [Demo](#demo)
 - [Features](#features)
@@ -396,7 +396,7 @@ $ npm start
     * <details>
       <summary><b><u> Button </u></b></summary>
       <p> Button.jsx </p>
-      <p> Button.module.css </p>
+      <p> Button.styled.js </p>
       <p> Button.test.js </p>
     
       </details>
@@ -410,7 +410,7 @@ $ npm start
     * <details>
       <summary><b><u> Form </u></b></summary>
       <p> Form.jsx </p>
-      <p> Form.module.css </p>
+      <p> Form.styled.js </p>
       <p> Form.test.js </p>
 
       </details>  
@@ -424,7 +424,7 @@ $ npm start
     * <details>
       <summary><b><u> Home </u></b></summary>
       <p> Home.jsx </p>
-      <p> Home.module.css </p>
+      <p> Home.styled.js </p>
       <p> Home.test.js </p>
 
       </details>  
