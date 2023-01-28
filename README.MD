@@ -317,6 +317,26 @@ https://user-images.githubusercontent.com/68310502/215268179-740b2580-7930-4e5f-
 
 </details>
 
+
+<details>
+<summary>
+<h4 style="display:inline">
+<strong><em>Subreddit (Community)</em></strong></h4>
+</summary>
+
+- Create subreddit (Public, restricted and private)
+- Join/Leave subreddit
+- Add a post to subreddit
+- View subreddit categories
+
+
+
+https://user-images.githubusercontent.com/68310502/215283815-5d850698-d6de-4fc5-8a39-7dab5ef8d7ce.mp4
+
+
+ 
+</details>
+
 <details>
 <summary>
 <h4 style="display:inline">
