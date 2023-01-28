@@ -25,7 +25,7 @@
 <h2 style="display:inline">📝 Table of Contents</h2>
 </summary>
 
-- [About](#📑About)
+- [About](#📑-About)
 - [Built With](#built-with)
 - [Demo](#demo)
 - [Features](#features)
