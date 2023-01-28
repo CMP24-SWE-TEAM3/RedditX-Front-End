@@ -42,7 +42,7 @@
 
 - A Social Network for Communities and Groups - Reddit is a network of communities based on people's interests. Find communities you're interested in, and become part of an online community!
 
-- The Reddit clone software project is an ambitious undertaking that seeks to replicate the popular online forum platform. The project aims to create a platform that is as user-friendly and feature-rich as Reddit, while also providing additional features and customization options. The project team is currently working on developing the software, which will include a variety of tools for creating and managing subreddits, user profiles, and other features. Ultimately, the goal of the project is to create a powerful and versatile platform that can be used by anyone looking to create their own online community.
+- The Reddit clone software project is an ambitious undertaking that seeks to replicate the popular online forum platform. The project aims to create a platform that is as user-friendly and feature-rich as Reddit, while also providing additional features and customization options. The project team developed the software, which will include a variety of tools for creating and managing subreddits, user profiles, and other features. Ultimately, the goal of the project is to create a powerful and versatile platform that can be used by anyone looking to create their own online community.
 
 ## ⛏️Built with
 
