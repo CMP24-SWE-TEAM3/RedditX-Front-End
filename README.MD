@@ -1,5 +1,5 @@
-<div style = "max-height: 200px; text-align: center">
-<img style = "max-height: 200px" src="./Images/Reddit-Logo.wine.png">
+<div align="center">
+<img height="300" src="./Images/Reddit-Logo.wine.png">
 </div>
 
 <div align="center">
@@ -64,6 +64,12 @@
 - Forget password
 - Forget username
 
+
+
+https://user-images.githubusercontent.com/68310502/215267907-efde41cd-1384-4287-9b16-880b78e00970.mp4
+
+
+ 
 </details>
 
 <details>
@@ -81,7 +87,7 @@
 - Your Hidden Posts and Comments
 - Your History
 - Your Followers
-
+    
 </details>
 
 <details>
@@ -103,6 +109,16 @@
 - Edit post
 - Delete post
 
+
+
+https://user-images.githubusercontent.com/68310502/215268041-26002c5d-b1a7-4d69-912d-344d35906f1f.mp4
+
+
+
+https://user-images.githubusercontent.com/68310502/215268050-4038fc90-60d3-421e-8f9a-4e812680a2ae.mp4
+
+
+    
 </details>
 
 <details>
@@ -117,6 +133,12 @@
 - Reply to comment
 - Edit comment
 - Report comment
+
+
+
+https://user-images.githubusercontent.com/68310502/215268211-7c04971c-7569-47cd-b083-dcff59de2d40.mp4
+
+
 
 </details>
 
@@ -141,6 +163,12 @@
   - Comments
   - People
 
+ 
+
+https://user-images.githubusercontent.com/68310502/215268129-cdc19cdb-27d7-492a-bf4d-ca49d2989c88.mp4
+
+
+    
 </details>
 
 <details>
@@ -162,7 +190,13 @@
   - Delete message
   - Report message
   - Reply to message
+    
+ 
 
+https://user-images.githubusercontent.com/68310502/215268139-df4edad3-f956-49b8-aba7-cb58f4932b05.mp4
+
+
+    
 </details>
 
 <details>
@@ -209,6 +243,13 @@
   - Members joined
   - Members left
 
+ 
+ 
+
+https://user-images.githubusercontent.com/68310502/215268225-e2584a03-bb12-4110-a9c4-7cdf800a3666.mp4
+
+
+ 
 </details>
 
 <details>
@@ -241,6 +282,29 @@
   - Enable/disable chat requests
   - Enable/disable new followers
 
+ 
+
+https://user-images.githubusercontent.com/68310502/215268179-740b2580-7930-4e5f-8cb5-0ff17843b46c.mp4
+
+
+
+</details>
+
+
+</details>
+
+<details>
+<summary>
+<h4 style="display:inline">
+<strong><em>Dark mode</em></strong></h4>
+</summary>
+
+
+
+https://user-images.githubusercontent.com/68310502/215268533-ba9a1e6c-72b5-4180-807d-10cec313dbd3.mp4
+
+
+ 
 </details>
 
 
@@ -272,9 +336,163 @@ $ npm install
 $ npm start
 ```
 
+## Folder structure
+
+<details>
+  <summary><b><u>src</u></b></summary>
+  <p> Source directory </p>
+  <p> App.js </p>
+
+* <details>
+      <summary><b><i>API</i></b></summary>
+      <p> Contains Axios instance</p>
+      </details>
+* <details>
+    <summary><b><u> Assets </u></b></summary>
+    <p> Contains Images, videos directories etc... </p>
+
+    * <details>
+      <summary><b><i>Images</i></b></summary>
+      <p> Contains Images</p>
+      </details>
+
+    * <details>
+      <summary><b><i>Videos</i></b></summary>
+      <p> Contains Videos</p>
+      </details>
+
+  </details>
+
+* <details>
+    <summary><b><u> Contexts </u></b></summary>
+    <p> Contains contexts <b>files</b> </p>
+  </details>
+
+* <details>
+    <summary><b><u> Utils </u></b></summary>
+    <p> Contains helper functions <b>(Pure functions)</b> </p>
+  </details>
+
+* <details>
+    <summary><b><u> Hooks </u></b></summary>
+    <p> Contains <b>Custom</b> hooks </p>
+  </details>
+
+* <details>
+    <summary><b><u> Services </u></b></summary>
+    <p> Contains any functions that deals with the <b>API</b> </p>
+  </details>
+
+* <details>
+    <summary><b><u> Components </u></b></summary>
+    <p> Contains Small components </p>
+
+    * <details>
+      <summary><b><u> Button </u></b></summary>
+      <p> Button.jsx </p>
+      <p> Button.module.css </p>
+      <p> Button.test.js </p>
+    
+      </details>
+
+  </details>
+
+* <details>
+    <summary><b><u> Layouts </u></b></summary>
+    <p> Contains layouts that consists of components <b>Bigger components</b> </p>
+   
+    * <details>
+      <summary><b><u> Form </u></b></summary>
+      <p> Form.jsx </p>
+      <p> Form.module.css </p>
+      <p> Form.test.js </p>
+
+      </details>  
+  
+  </details>
+
+* <details>
+    <summary><b><u> Pages </u></b></summary>
+    <p> Pages that consists of Layouts and may be some components</b> </p>
+
+    * <details>
+      <summary><b><u> Home </u></b></summary>
+      <p> Home.jsx </p>
+      <p> Home.module.css </p>
+      <p> Home.test.js </p>
+
+      </details>  
+  
+  </details>
+
+* <details>
+    <summary><b><u><i> Features </i></u></b></summary>
+    <p> Contains features that is considered a small project ex. Authentication, Posts, Community etc... </b> </p>
+
+    * <details>
+        <summary><b><u><i> Authentication </i></u></b></summary>
+        <p> Contains Authentication features (pages, components, helpers ,contexts ,etc.. </b> </p>
+        <p> index.js </p>
+
+        * <details>
+          <summary><b><u> Assets </u></b></summary>
+          <p> Contains Images, videos directories etc... </p>
+
+            * <details>
+              <summary><b><i>Images</i></b></summary>
+              <p> Contains Images</p>
+              </details>
+
+            * <details>
+              <summary><b><i>Videos</i></b></summary>
+              <p> Contains Videos</p>
+              </details>
+          </details>
+
+        * <details>
+          <summary><b><u> Contexts </u></b></summary>
+          <p> Contains contexts <b>files</b> </p>
+          </details>
+
+        * <details>
+          <summary><b><u> Utils </u></b></summary>
+          <p> Contains helper functions <b>(Pure functions)</b> </p>
+          </details>
+
+        * <details>
+          <summary><b><u> Hooks </u></b></summary>
+          <p> Contains <b>Custom</b> hooks </p>
+          </details>
+
+        * <details>
+          <summary><b><u> Services </u></b></summary>
+          <p> Contains any functions that deals with the <b>API</b> </p>
+          </details>
+
+        * <details>
+          <summary><b><u> Components </u></b></summary>
+          <p> Contains Small components </p>
+          </details>
+
+        * <details>
+          <summary><b><u> Layouts </u></b></summary>
+          <p> Contains layouts that consists of components <b>Bigger components</b> </p>
+          </details>
+
+        * <details>
+          <summary><b><u> Pages </u></b></summary>
+          <p> Pages that consists of Layouts and may be some components</b> </p>
+          </details>
+
+    </details>
+
+  </details>
+
+</details>
+
 <details>
 <summary>
-  <h2 style="display:inline"> Folder Structure </h2>
+  <h3 style="display:inline">Actual folder Structure </h3>
 </summary>
 
 ```
