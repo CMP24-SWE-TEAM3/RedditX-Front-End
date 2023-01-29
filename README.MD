@@ -10,12 +10,12 @@
 
 <div align="center">
 
-[![GitHub contributors](https://img.shields.io/github/contributors/CMP24-SWE-TEAM3/Front-End)](https://github.com/CMP24-SWE-TEAM3/Front-End/contributors)
-[![GitHub issues](https://img.shields.io/github/issues/CMP24-SWE-TEAM3/Front-End)](https://github.com/CMP24-SWE-TEAM3/Front-End/issues)
-[![GitHub license](https://img.shields.io/github/license/CMP24-SWE-TEAM3/Front-End)](https://github.com/CMP24-SWE-TEAM3/Front-End/blob/master/LICENSE)
-[![GitHub forks](https://img.shields.io/github/forks/CMP24-SWE-TEAM3/Front-End)](https://github.com/CMP24-SWE-TEAM3/Front-End/network)
-[![GitHub stars](https://img.shields.io/github/stars/CMP24-SWE-TEAM3/Front-End)](https://github.com/CMP24-SWE-TEAM3/Front-End/stargazers)
-[![GitHub Language](https://img.shields.io/github/languages/top/CMP24-SWE-TEAM3/Front-End)](https://img.shields.io/github/languages/count/CMP24-SWE-TEAM3/Front-End)
+[![GitHub contributors](https://img.shields.io/github/contributors/CMP24-SWE-TEAM3/RedditX-Front-End)](https://github.com/CMP24-SWE-TEAM3/RedditX-Front-End/contributors)
+[![GitHub issues](https://img.shields.io/github/issues/CMP24-SWE-TEAM3/RedditX-Front-End)](https://github.com/CMP24-SWE-TEAM3/RedditX-Front-End/issues)
+[![GitHub license](https://img.shields.io/github/license/CMP24-SWE-TEAM3/RedditX-Front-End)](https://github.com/CMP24-SWE-TEAM3/RedditX-Front-End/blob/master/LICENSE)
+[![GitHub forks](https://img.shields.io/github/forks/CMP24-SWE-TEAM3/RedditX-Front-End)](https://github.com/CMP24-SWE-TEAM3/RedditX-Front-End/network)
+[![GitHub stars](https://img.shields.io/github/stars/CMP24-SWE-TEAM3/RedditX-Front-End)](https://github.com/CMP24-SWE-TEAM3/RedditX-Front-End/stargazers)
+[![GitHub Language](https://img.shields.io/github/languages/top/CMP24-SWE-TEAM3/RedditX-Front-End)](https://img.shields.io/github/languages/count/CMP24-SWE-TEAM3/RedditX-Front-End)
 
 </div>
 
