@@ -357,13 +357,13 @@ https://user-images.githubusercontent.com/68310502/215268533-ba9a1e6c-72b5-4180-
 1. **_Clone the repository_**
 
 ```sh
-$ git clone https://github.com/CMP24-SWE-TEAM3/Front-End.git
+$ git clone https://github.com/CMP24-SWE-TEAM3/RedditX-Front-End.git
 ```
 
 2. **_Navigate to repository directory_**
 
 ```sh
-$ cd Front-End
+$ cd RedditX-Front-End
 ```
 
 3. **_Install dependencies_**
