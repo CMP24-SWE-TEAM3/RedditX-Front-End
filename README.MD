@@ -25,14 +25,14 @@
 <h2 style="display:inline">📝 Table of Contents</h2>
 </summary>
 
-- [About](#about)
-- [Built With](#built-with)
-- [Demo](#demo)
-- [Features](#features)
-- [Getting started](#getting-started)
-- [Folder structure](#folder-structure)
-- [Contributors](#contributors)
-- [License](#license)
+- [📑 About](#about)
+- [⛏️ Built With](#built-with)
+- [🎥 Demo](#demo)
+- [📷 Features](#features)
+- [🏁 Getting started](#getting-started)
+- [📂 Folder structure](#folder-structure)
+- [✍️ Contributors](#contributors)
+- [🔒 License](#license)
 
 </details>
 
@@ -44,7 +44,7 @@
 
 - The Reddit clone software project is an ambitious undertaking that seeks to replicate the popular online forum platform. The project aims to create a platform that is as user-friendly and feature-rich as Reddit, while also providing additional features and customization options. The project team developed the software, which will include a variety of tools for creating and managing subreddits, user profiles, and other features. Ultimately, the goal of the project is to create a powerful and versatile platform that can be used by anyone looking to create their own online community.
 
-## ⛏️Built with
+## ⛏️ Built with
 
 - [Reactjs](https://reactjs.org/)
 - [Styled components](https://styled-components.com/)
@@ -67,7 +67,7 @@ https://user-images.githubusercontent.com/68310502/215278294-3ae1ff54-7d7e-407c-
 <details>
 <summary>
 <h4 style="display:inline">
-<strong><em>User Authentication</em></strong></h4>
+<strong><em>🔒 User Authentication</em></strong></h4>
 </summary>
 
 - You can use your Google account or Facebook account
@@ -87,7 +87,7 @@ https://user-images.githubusercontent.com/68310502/215267907-efde41cd-1384-4287-
 <details>
 <summary>
 <h4 style="display:inline">
-<strong><em>User Profile</em></strong></h4>
+<strong><em> 🙍‍♂️ User Profile</em></strong></h4>
 </summary>
 
 - Profile overview (posts, comments, upvotes, downvotes, etc.)
@@ -111,7 +111,7 @@ https://user-images.githubusercontent.com/68310502/215278722-0eb3a790-4afe-43a7-
 <details>
 <summary>
 <h4 style="display:inline">
-<strong><em>Post</em></strong></h4>
+<strong><em> 📰 Post</em></strong></h4>
 </summary>
 
 - Create rich text post
@@ -142,7 +142,7 @@ https://user-images.githubusercontent.com/68310502/215268050-4038fc90-60d3-421e-
 <details>
 <summary>
 <h4 style="display:inline">
-<strong><em>Comment</em></strong></h4>
+<strong><em> 💬 Comment</em></strong></h4>
 </summary>
 
 - Create rich text comment
@@ -163,7 +163,7 @@ https://user-images.githubusercontent.com/68310502/215268211-7c04971c-7569-47cd-
 <details>
 <summary>
 <h4 style="display:inline">
-<strong><em>Search</em></strong></h4>
+<strong><em> 🔍 Search</em></strong></h4>
 </summary>
 
 - Safe search
@@ -192,7 +192,7 @@ https://user-images.githubusercontent.com/68310502/215268129-cdc19cdb-27d7-492a-
 <details>
 <summary>
 <h4 style="display:inline">
-<strong><em>Messages & Notifications</em></strong></h4>
+<strong><em> 📧 Messages & Notifications</em></strong></h4>
 </summary>
 
 - Notifications
@@ -220,7 +220,7 @@ https://user-images.githubusercontent.com/68310502/215268139-df4edad3-f956-49b8-
 <details>
 <summary>
 <h4 style="display:inline">
-<strong><em>Moderator</em></strong></h4>
+<strong><em> 🧑‍💼 Moderator</em></strong></h4>
 </summary>
 
 - Queues
@@ -279,7 +279,7 @@ https://user-images.githubusercontent.com/68310502/215268225-e2584a03-bb12-4110-
 <details>
 <summary>
 <h4 style="display:inline">
-<strong><em>User settings</em></strong></h4>
+<strong><em> ⚙️ User settings</em></strong></h4>
 </summary>
 
 - Account
@@ -321,7 +321,7 @@ https://user-images.githubusercontent.com/68310502/215268179-740b2580-7930-4e5f-
 <details>
 <summary>
 <h4 style="display:inline">
-<strong><em>Subreddit (Community)</em></strong></h4>
+<strong><em> 👥 Subreddit (Community)</em></strong></h4>
 </summary>
 
 - Create subreddit (Public, restricted and private)
@@ -340,7 +340,7 @@ https://user-images.githubusercontent.com/68310502/215283815-5d850698-d6de-4fc5-
 <details>
 <summary>
 <h4 style="display:inline">
-<strong><em>Dark mode</em></strong></h4>
+<strong><em> 🌙 Dark mode</em></strong></h4>
 </summary>
 
 
@@ -380,7 +380,7 @@ $ npm install
 $ npm start
 ```
 
-## Folder structure
+## 📂 Folder structure
 
 <details>
   <summary><b><u>src</u></b></summary>
@@ -1063,7 +1063,7 @@ $ npm start
 
 </details>
 
-## Contributors
+## ✍️ Contributors
 
 <table>
   <tr>
@@ -1110,6 +1110,6 @@ $ npm start
     </td>
 </table>
 
-## License <a name = "license"></a>
+## 🔒 License <a name = "license"></a>
 
 > This software is licensed under MIT License, See [License](https://github.com/CMP24-SWE-TEAM3/Front-End/blob/main/LICENSE) .
