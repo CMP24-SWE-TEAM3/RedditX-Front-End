@@ -1101,6 +1101,15 @@ $ npm start
 </tr>
  </table>
 
+### Devops
+<table>
+    <td align="center">
+        <a href="https://github.com/waleedhesham446" target="_blank">
+            <img src="https://avatars.githubusercontent.com/u/72695729?v=4" width="150px;" alt="Waleed Hesham"/><br />
+            <sub><b>Waleed Hesham</b></sub></a><br />
+    </td>
+</table>
+
 ## License <a name = "license"></a>
 
 > This software is licensed under MIT License, See [License](https://github.com/CMP24-SWE-TEAM3/Front-End/blob/main/LICENSE) .
